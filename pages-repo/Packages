@@ -5,14 +5,14 @@ Depends: firmware (>= 8.0), mobilesubstrate
 Architecture: iphoneos-arm64
 Section: AMG
 Maintainer: Local Patch Repo
-Name: 纯净版18.1.1_AMG奔驰正版[无根] Patch
+Name: 纯净版18.1.1_AMG奔驰正版[无根] Patch NoExit
 Author: Local Patch Repo
-Filename: ./debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
-Size: 6206424
-MD5sum: 3fde6559398f9000b5b2fb9f0204c123
-SHA1: a742b4690e297bab410497f4b9a2b9cb219ebb96
-SHA256: b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
+Filename: ./debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
+Size: 6206412
+MD5sum: 81a467636e21e8111d8f2702c25c5d82
+SHA1: 49e3f45579735bada07dd0d09a7d9e7e932afaea
+SHA256: 0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
 Depiction: ./depictions/com.amg456.rootless.html
 Icon: ./CydiaIcon.png
-Description: 授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，并禁用周期心跳检测。
+Description: 授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，禁用周期心跳检测，并移除延迟退出路径。
 

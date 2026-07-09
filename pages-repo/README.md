@@ -5,12 +5,12 @@
 ## 当前挂载包
 
 - Package: `com.amg456.rootless`
-- Name: `纯净版18.1.1_AMG奔驰正版[无根] Patch`
+- Name: `纯净版18.1.1_AMG奔驰正版[无根] Patch NoExit`
 - Section: `AMG`
 - Version: `18.1.1`
-- File: `debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb`
-- Size: `6206424` bytes
-- SHA256: `b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697`
+- File: `debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb`
+- Size: `6206412` bytes
+- SHA256: `0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866`
 
 > 注意：deb 内部版本仍是 `18.1.1`。如果设备已经安装同版本原包，包管理器可能不提示升级；需要强制升级时应重打 deb 并同步提升 deb control 中的 `Version`。
 
@@ -52,7 +52,7 @@ GitHub Pages 不能直接发布 Git LFS 文件。本目录自带 `.gitattributes
 ```bash
 gzip -t pages-repo/Packages.gz
 python3 scripts/build_pages_repo.py
-shasum -a 256 pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
+shasum -a 256 pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 ```
 
 部署后校验：
@@ -60,6 +60,6 @@ shasum -a 256 pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbea
 ```bash
 curl -fsSL https://<user>.github.io/<repo>/Packages.gz | gzip -t
 curl -fsSL https://<user>.github.io/<repo>/Packages.gz | gzip -dc | grep -A20 '^Package: com.amg456.rootless'
-curl -fsSLO https://<user>.github.io/<repo>/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
-shasum -a 256 com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
+curl -fsSLO https://<user>.github.io/<repo>/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
+shasum -a 256 com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 ```

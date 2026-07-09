@@ -28,18 +28,18 @@ SOURCE_PACKAGES = DOWNLOADS_DIR / "Packages"
 OUT = ROOT / "pages-repo"
 
 PACKAGE_ID = "com.amg456.rootless"
-DEB_SOURCE = PATCHED_DIR / "纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat.deb"
-DEB_NAME = "com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb"
+DEB_SOURCE = PATCHED_DIR / "纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat_noexit.deb"
+DEB_NAME = "com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb"
 
 ORIGINAL_REPO_NAME = "AMG官方源™"
 ORIGINAL_REPO_DESC = "AMG唯一正版官方源"
 REPO_NAME = "AMG官方源™ Patch Repo"
 REPO_DESC = "自用授权测试源：前端还原 AMG 越狱源分类目录，APT 仅挂载 patched 补丁 deb。"
-PUBLISH_NAME = "纯净版18.1.1_AMG奔驰正版[无根] Patch"
+PUBLISH_NAME = "纯净版18.1.1_AMG奔驰正版[无根] Patch NoExit"
 PUBLISH_MAINTAINER = "Local Patch Repo"
 PUBLISH_AUTHOR = "Local Patch Repo"
 PUBLISH_SECTION = "AMG"
-PUBLISH_DESC = "授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，并禁用周期心跳检测。"
+PUBLISH_DESC = "授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，禁用周期心跳检测，并移除延迟退出路径。"
 SOURCE_LAST_UPDATED = "2026-07-08 19:44:22"
 
 

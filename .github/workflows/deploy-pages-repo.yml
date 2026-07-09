@@ -37,8 +37,8 @@ jobs:
             echo "Git LFS pointer detected under pages-repo" >&2
             exit 1
           fi
-          test "$(stat -c%s pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb)" = "6206424"
-          echo "b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697  pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb" | sha256sum -c -
+          test "$(stat -c%s pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb)" = "6206412"
+          echo "0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866  pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb" | sha256sum -c -
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

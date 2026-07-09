@@ -6,13 +6,13 @@ Codename: ios-patch
 Architectures: iphoneos-arm64
 Components: main
 Description: 自用授权测试源：前端还原 AMG 越狱源分类目录，APT 仅挂载 patched 补丁 deb。
-Date: Thu, 09 Jul 2026 12:16:34 +0000
+Date: Thu, 09 Jul 2026 12:41:03 +0000
 MD5Sum:
- 1522a6e1dbe6b6c480702162e6cc0443 709 Packages
- f1de861a6b887f4c964ded6c3bad43c8 577 Packages.gz
+ 05f070173085412b6e1b42ca43caafe5 750 Packages
+ 742b4bd3b6ad26944bd2fae2a8923fe1 605 Packages.gz
 SHA1:
- 285c126edc3cb0dfa692b2735171cf32eb355a49 709 Packages
- 9fc38d4c302f3ca3ec067a7b4d3e53d370c1f6c2 577 Packages.gz
+ d99528945facd94d2063384f2121364c833dc21b 750 Packages
+ 28f548678b88e1c8e4b4025bfb578b4bfe244b3e 605 Packages.gz
 SHA256:
- db0bd05570b0762c97b67a4e112394e545a94eea42c03982a18b334bea879878 709 Packages
- 2d79f716ded69ff88e3617a0d98931e2af4bcf35045f1e21052063d2d28abe33 577 Packages.gz
+ d751c88e2e472ead257cf9c1edd659b6a2b79be0d686dcc10a0336319cea229b 750 Packages
+ 5f97f83dc6e9efdf05a8643eba9035a8b49eccb5ce126ab7c159cd24472ee380 605 Packages.gz

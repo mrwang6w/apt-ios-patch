@@ -3,7 +3,7 @@
 > 文档路径：`/Users/zest/myworks/apt-ios-patch/docs/去除卡密弹窗与2099过期时间_patch分析链路.md`  
 > 项目根目录：`/Users/zest/myworks/apt-ios-patch`  
 > 目标包：`/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless.deb`  
-> 最新最终产物：`/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat.deb`
+> 最新最终产物：`/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat_noexit.deb`
 
 ## 1. 任务目标
 
@@ -45,9 +45,12 @@ work/com.amg456.rootless-18.1.1/
 ├── buildroot-nopopup-2099/          # 第一阶段重打包构建根目录（去弹窗 + 2099）
 ├── pkgparts-nopopup-2099/           # 第一阶段 deb 的 debian-binary/control/data parts
 ├── verify-nopopup-2099-final/       # 第一阶段 deb 重新解包验证目录
-├── buildroot-nopopup-2099-noheartbeat/   # 最新最终包构建根目录
-├── pkgparts-nopopup-2099-noheartbeat/    # 最新最终包 debian-binary/control/data parts
-└── verify-nopopup-2099-noheartbeat-final/ # 最新最终包重新解包验证目录
+├── buildroot-nopopup-2099-noheartbeat/   # 第二阶段构建根目录（禁用心跳 timer）
+├── pkgparts-nopopup-2099-noheartbeat/    # 第二阶段 debian-binary/control/data parts
+├── verify-nopopup-2099-noheartbeat-final/ # 第二阶段重新解包验证目录
+├── buildroot-nopopup-2099-noheartbeat-noexit/   # 最新最终包构建根目录（移除延迟退出）
+├── pkgparts-nopopup-2099-noheartbeat-noexit/    # 最新最终包 debian-binary/control/data parts
+└── verify-nopopup-2099-noheartbeat-noexit-final/ # 最新最终包重新解包验证目录
 ```
 
 ### 2.3 阶段性与最新最终 deb
@@ -60,12 +63,20 @@ SHA256: 82f39a133c9c156509a7cab0f88bca7a9a1d2d1c83da90f2cf4e76216e8e32b1
 TG@wx_zyyy.dylib SHA256: a4bce2ba92f2a9555ff171a825bac282c6c9e337af0b1bc943a9400724a19a78
 ```
 
-最新最终产物（去弹窗 + 2099 + 禁用心跳）：
+第二阶段产物（去弹窗 + 2099 + 禁用心跳 timer）：
 
 ```text
 /Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat.deb
 SHA256: b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
 TG@wx_zyyy.dylib SHA256: 39cca71d7825ff4b3c48392ce2ead907caafc90159ff39800ab1d2d7439c0460
+```
+
+最新最终产物（去弹窗 + 2099 + 禁用心跳 timer + 移除延迟退出）：
+
+```text
+/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat_noexit.deb
+SHA256: 0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
+TG@wx_zyyy.dylib SHA256: fb3a9f2861db58a5cc884980f9962f1c33b22a4a69360a5fd22e67771dbe2e54
 ```
 
 ## 3. deb 解包后的关键文件
@@ -698,7 +709,7 @@ rm -f /var/jb/Applications/AMG.app/AMG_run
 /Users/zest/myworks/apt-ios-patch/work/doc-verify-nopopup-2099
 ```
 
-> 注：本节记录第一阶段 `nopopup_2099` 包的验证结果。最新最终包的 noheartbeat 复验见第 19 节。
+> 注：本节记录第一阶段 `nopopup_2099` 包的验证结果。第二阶段 `noheartbeat` 复验见第 19 节；最新最终 `noheartbeat_noexit` 复验见第 20 节。
 
 验证命令核心流程：
 
@@ -749,7 +760,7 @@ CODESIGN_APP OK
 5. `[一键新机]` 路径未发现独立卡密校验证据；当前判断授权判断集中在 `TG@wx_zyyy.dylib` 全局授权层。
 6. 第一阶段 deb 重新解包后 byte-level 验证、hash 验证、codesign 验证均通过。
 
-第一阶段尚未禁用周期心跳；后续真机反馈的延迟闪退问题在第 17～21 节继续处理。
+第一阶段尚未禁用周期心跳；后续真机反馈的延迟闪退问题在第 17～22 节继续处理。
 
 ## 15. 关键产物索引
 
@@ -1243,9 +1254,9 @@ codesign -f -s - --deep "/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootl
 
 当前 noheartbeat 包只声明已覆盖 `TG@wx_zyyy.dylib` 中有静态符号证据的 `ActiveHUD` 心跳链路。
 
-## 19. noheartbeat 最终 deb 打包与复验
+## 19. 第二阶段 noheartbeat deb 打包与复验
 
-### 19.1 新最终 deb
+### 19.1 第二阶段 noheartbeat deb
 
 路径：
 
@@ -1278,15 +1289,15 @@ b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
 /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/pkgparts-nopopup-2099-noheartbeat
 ```
 
-从最终 deb 重新解包验证目录：
+从第二阶段 deb 重新解包验证目录：
 
 ```text
 /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/verify-nopopup-2099-noheartbeat-final
 ```
 
-### 19.2 从最终 deb 复验 patch bytes
+### 19.2 从第二阶段 deb 复验 patch bytes
 
-最终 deb 解包后的验证文件：
+第二阶段 deb 解包后的验证文件：
 
 ```text
 /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/verify-nopopup-2099-noheartbeat-final/verify_patch_bytes_from_final_deb.txt
@@ -1325,7 +1336,7 @@ TG_DYLIB_SHA256 39cca71d7825ff4b3c48392ce2ead907caafc90159ff39800ab1d2d7439c0460
 
 ### 19.3 安装脚本复验
 
-新包仍保留第一阶段的安装脚本修复，并额外把 `postinst` 中的 `AMG_run` 清理路径加上引号。
+第二阶段包仍保留第一阶段的安装脚本修复，并额外把 `postinst` 中的 `AMG_run` 清理路径加上引号。
 
 关键复验结果：
 
@@ -1343,7 +1354,151 @@ else
 fi
 ```
 
-## 20. GitHub Pages 静态源同步
+
+## 20. 第二轮修复：延迟退出 noexit 补丁
+
+### 20.1 现象与重新定位
+
+第二阶段 `nopopup_2099_noheartbeat` 已经禁用了 `startAutoHeartbeat`、timer block、`heartbeat_action`，但真机仍反馈：
+
+```text
+隔一两分钟自动闪退
+```
+
+这说明“心跳闪退”的实际表现不只来自 `NSTimer` 心跳动作，也可能来自 `ActiveHUD.ff()` 中通过 `DispatchQueue.asyncAfter` 安排的延迟退出 closure。
+
+重新枚举 `TG@wx_zyyy.dylib` 后发现：
+
+```text
+ActiveHUD.ff() 存在多个 Swift closure：
+0xb47c  _$s2lk9ActiveHUDC2ffyyFyycfU_
+0xb6ac  _$s2lk9ActiveHUDC2ffyyFyycfU0_
+0xb6e0  _$s2lk9ActiveHUDC2ffyyFyyScMYccfU1_
+0xb748  _$s2lk9ActiveHUDC2ffyyFyyScMYccfU2_
+```
+
+其中 `_$s2lk9ActiveHUDC2ffyyFyycfU_` 内存在明确的退出调用：
+
+```text
+arm64:
+0xb59c  mov w0, #0x0
+0xb5a0  bl _exit
+
+arm64e:
+0xc05c  mov w0, #0x0
+0xc060  bl _exit
+```
+
+另外，`TG@wx_zyyy.dylib` 内还有 3 处 `_exit(0)` 路径，分别位于 `gg` / `gg(String?)` / `zz(String?)` 相关 closure。虽然首页 `gg()` 已经直接返回，但为避免异步/间接路径继续触发退出，本轮统一移除 TG 内所有显式 `_exit` call。
+
+### 20.2 noexit patch 原则
+
+本轮没有直接砍掉整个 `ActiveHUD.ff()`，原因是 `ff()` 还包含初始化、异步调度、状态处理等逻辑。更稳的做法是：
+
+- 保留原函数和 closure 的控制流。
+- 只把 `bl _exit` 替换成 `nop`。
+- 让命中退出条件后继续执行函数 epilogue 正常返回。
+
+`nop` 机器码：
+
+```text
+1f2003d5
+```
+
+### 20.3 noexit patch 点
+
+#### arm64
+
+| 功能 | 位置/函数 | offset | 原始 bytes | patch bytes |
+|---|---|---:|---|---|
+| `ActiveHUD.ff()` 延迟退出 closure | `_$s2lk9ActiveHUDC2ffyyFyycfU_` | `0xb5a0` | `aa510094` | `1f2003d5` |
+| `gg()` 退出按钮 closure | `_$s2lk9ActiveHUDC2gg...UIAlertAction...` | `0xc9d0` | `9e4c0094` | `1f2003d5` |
+| `gg(String?)` 退出路径 | `_$s2lk9ActiveHUDC2ggyySSSgF...` | `0xeb60` | `3a440094` | `1f2003d5` |
+| `zz(String?)` 延迟退出 closure | `_$s2lk9ActiveHUDC2zzyySSSgF...` | `0xf128` | `c8420094` | `1f2003d5` |
+
+#### arm64e
+
+| 功能 | 位置/函数 | offset | 原始 bytes | patch bytes |
+|---|---|---:|---|---|
+| `ActiveHUD.ff()` 延迟退出 closure | `_$s2lk9ActiveHUDC2ffyyFyycfU_` | `0xc060` | `60590094` | `1f2003d5` |
+| `gg()` 退出按钮 closure | `_$s2lk9ActiveHUDC2gg...UIAlertAction...` | `0xd65c` | `e1530094` | `1f2003d5` |
+| `gg(String?)` 退出路径 | `_$s2lk9ActiveHUDC2ggyySSSgF...` | `0xfc08` | `764a0094` | `1f2003d5` |
+| `zz(String?)` 延迟退出 closure | `_$s2lk9ActiveHUDC2zzyySSSgF...` | `0x102d4` | `c3480094` | `1f2003d5` |
+
+### 20.4 noexit patch 验证
+
+工作区验证产物：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/noexit_patch_report.txt
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/verify_all_patch_bytes_after_noexit.txt
+```
+
+关键验证结果：
+
+```text
+arm64:
+0xb5a0 1f2003d5 OK
+0xc9d0 1f2003d5 OK
+0xeb60 1f2003d5 OK
+0xf128 1f2003d5 OK
+
+arm64e:
+0xc060 1f2003d5 OK
+0xd65c 1f2003d5 OK
+0xfc08 1f2003d5 OK
+0x102d4 1f2003d5 OK
+```
+
+反汇编验证：
+
+```text
+No _exit call remains in TG disasm
+```
+
+noexit 后工作区 dylib SHA256：
+
+```text
+fb3a9f2861db58a5cc884980f9962f1c33b22a4a69360a5fd22e67771dbe2e54
+```
+
+### 20.5 noexit 最终 deb
+
+路径：
+
+```text
+/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat_noexit.deb
+```
+
+大小：
+
+```text
+6206412 bytes
+```
+
+SHA256：
+
+```text
+0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
+```
+
+最终 deb 重新解包验证目录：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/verify-nopopup-2099-noheartbeat-noexit-final
+```
+
+复验结果：
+
+```text
+所有 2099 / 去弹窗 / noheartbeat / noexit patch bytes 均 OK
+No _exit call remains in final deb TG disasm
+codesign extracted dylib OK
+codesign extracted app OK
+```
+
+## 21. GitHub Pages 静态源同步
+
 
 因为当前推荐的前端源只挂载 `patched/` 中的最新补丁 deb，心跳补丁完成后同步更新了静态源构建脚本与产物：
 
@@ -1355,16 +1510,16 @@ fi
 /Users/zest/myworks/apt-ios-patch/pages-repo/index.html
 /Users/zest/myworks/apt-ios-patch/pages-repo/README.md
 /Users/zest/myworks/apt-ios-patch/pages-repo/depictions/com.amg456.rootless.html
-/Users/zest/myworks/apt-ios-patch/pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
+/Users/zest/myworks/apt-ios-patch/pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 /Users/zest/myworks/apt-ios-patch/.github/workflows/deploy-pages-repo.yml
 ```
 
 Pages 当前挂载文件：
 
 ```text
-pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
-Size: 6206424
-SHA256: b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
+pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
+Size: 6206412
+SHA256: 0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
 ```
 
 本地校验：
@@ -1372,7 +1527,7 @@ SHA256: b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
 ```bash
 python3 /Users/zest/myworks/apt-ios-patch/scripts/build_pages_repo.py
 gzip -t /Users/zest/myworks/apt-ios-patch/pages-repo/Packages.gz
-shasum -a 256 /Users/zest/myworks/apt-ios-patch/pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
+shasum -a 256 /Users/zest/myworks/apt-ios-patch/pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 ```
 
 GitHub Actions workflow 也同步更新了 size/hash 断言，避免部署 Git LFS pointer 或旧 deb。
@@ -1389,16 +1544,17 @@ Razer雷蛇: 3 packages
 VBox虚拟盒子: 3 packages
 ```
 
-实现边界：`index.html` 展示原源快照中的分类/条目结构，非补丁条目标记为“目录镜像”；APT `Packages` 与 `pages-repo/debs/` 仍只发布 `com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb` 一个补丁包。
+实现边界：`index.html` 展示原源快照中的分类/条目结构，非补丁条目标记为“目录镜像”；APT `Packages` 与 `pages-repo/debs/` 仍只发布 `com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb` 一个补丁包。
 
-## 21. 当前最新结论
+## 22. 当前最新结论
 
-最新 `nopopup_2099_noheartbeat` 包在第一阶段基础上新增了心跳禁用：
+最新 `nopopup_2099_noheartbeat_noexit` 包在前两阶段基础上新增了延迟退出移除：
 
 1. `ActiveHUD.gg()` Swift/ObjC 入口直接返回，首页激活码弹窗不再展示。
 2. `ActiveHUD.dd()` Swift/ObjC 入口固定返回 `4102444799`，过期时间等效为 `2099-12-31 23:59:59 UTC`。
 3. `startAutoHeartbeat`、timer block、`heartbeat_action` 三处同时直接返回，阻断周期心跳 timer 创建与执行。
-4. arm64 / arm64e 双架构 patch bytes 均已从最终 deb 反解包复验通过。
-5. dylib 与 app 已重签；最终 deb、Pages repo、workflow 校验值均已同步到 noheartbeat 版本。
+4. `TG@wx_zyyy.dylib` 内 4 处显式 `_exit(0)` 调用均替换为 `nop`，覆盖 `ActiveHUD.ff()` 的 1～2 分钟延迟退出 closure。
+5. arm64 / arm64e 双架构 patch bytes 均已从最终 deb 反解包复验通过。
+6. dylib 与 app 已重签；最终 deb、Pages repo、workflow 校验值均已同步到 noheartbeat_noexit 版本。
 
 后续如果真机仍出现延迟闪退，应继续按运行时证据定位其它定时器、后台线程或完整性检测分支；但当前已覆盖本次静态证据中最明确的 `ActiveHUD` 心跳链路。
