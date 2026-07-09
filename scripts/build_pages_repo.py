@@ -51,11 +51,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "app.Razer854.rootless",
-        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0-8_app.Razer854.rootless_authstate_ustar.deb",
-        "deb_name": "app.Razer854.rootless_2.5.0-8_authstate_ustar.deb",
-        "publish_name": "2.5.0-8_Razer雷蛇(无根) Patch AuthState USTAR",
+        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0-11_app.Razer854.rootless_authstate_ustar.deb",
+        "deb_name": "app.Razer854.rootless_2.5.0-11_authstate_ustar.deb",
+        "publish_name": "2.5.0-11_Razer雷蛇(无根) Patch AuthState USTAR",
         "publish_section": "Razer雷蛇",
-        "publish_desc": "授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期仅将 LicenseAccepted/ExpiredText 状态读为有效和 2099，并使用无 PAX 扩展头的 USTAR deb 归档。",
+        "publish_desc": "授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期覆盖具体 NSDictionary 类簇的授权响应状态与 2099 过期时间，并使用无 PAX 扩展头的 USTAR deb 归档。",
         "depiction_name": "app.Razer854.rootless.html",
     },
 ]

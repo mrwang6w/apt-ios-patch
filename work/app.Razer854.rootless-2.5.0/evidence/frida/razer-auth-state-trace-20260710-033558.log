@@ -1,0 +1,3 @@
+[2026-07-10T03:35:58] ready base=0x102574000 size=33931264
+[2026-07-10T03:36:00] ENTER sel=doubleForKey: key=kTimeOffsetKey caller=0x10259e6d8 bt=0x10259e6d8 Razer!-[ networkOffset] <- 0x183c76f78 UIKitCore!UIApplicationMain <- 0x183c76f78 UIKitCore!UIApplicationMain <- 0x19d17ffb3
+[2026-07-10T03:36:01] SCRIPT DESTROYED

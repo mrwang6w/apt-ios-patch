@@ -1,0 +1,13 @@
+[2026-07-10T03:39:28] METHOD missing class=NSUserDefaults sel=objectForKey:
+[2026-07-10T03:39:28] METHOD missing class=NSUserDefaults sel=objectForKeyedSubscript:
+[2026-07-10T03:39:28] METHOD missing class=NSUserDefaults sel=boolForKey:
+[2026-07-10T03:39:28] METHOD missing class=NSUserDefaults sel=stringForKey:
+[2026-07-10T03:39:28] METHOD missing class=NSUserDefaults sel=integerForKey:
+[2026-07-10T03:39:28] METHOD missing class=NSUserDefaults sel=doubleForKey:
+[2026-07-10T03:39:28] HOOK class=NSDictionary sel=objectForKey: imp=0x18184e15c
+[2026-07-10T03:39:28] HOOK class=NSDictionary sel=objectForKeyedSubscript: imp=0x18171d6d8
+[2026-07-10T03:39:28] METHOD missing class=NSDictionary sel=boolForKey:
+[2026-07-10T03:39:28] METHOD missing class=NSDictionary sel=stringForKey:
+[2026-07-10T03:39:28] METHOD missing class=NSDictionary sel=integerForKey:
+[2026-07-10T03:39:28] METHOD missing class=NSDictionary sel=doubleForKey:
+[2026-07-10T03:39:28] ready base=0x100178000 size=33931264

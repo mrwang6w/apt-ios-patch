@@ -17,20 +17,20 @@ Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，禁用周期心跳检测，并移除延迟退出路径。
 
 Package: app.Razer854.rootless
-Version: 2.5.0-8
+Version: 2.5.0-11
 Priority: optional
 Depends: firmware (>= 8.0), mobilesubstrate
 Architecture: iphoneos-arm64
 Section: Razer雷蛇
 Maintainer: Local Patch Repo
-Name: 2.5.0-8_Razer雷蛇(无根) Patch AuthState USTAR
+Name: 2.5.0-11_Razer雷蛇(无根) Patch AuthState USTAR
 Author: Local Patch Repo
-Filename: ./debs/app.Razer854.rootless_2.5.0-8_authstate_ustar.deb
-Size: 21216952
-MD5sum: f1377dee3cab47afc6b0c2066b89a891
-SHA1: be8fec14100658b395f67e1c9222cb2dfb887a14
-SHA256: 86b65d8e43b334713f748b02e4af29e59fee9aea9ce07f253d9e8b0a167ce110
+Filename: ./debs/app.Razer854.rootless_2.5.0-11_authstate_ustar.deb
+Size: 21217862
+MD5sum: 6e050e5567074bde775fcd1cb4283ac1
+SHA1: 52570942286aefbf294cacdf760fd57eb6d2e8d9
+SHA256: 53deb601ec0458da67379ddd0390b5f57e06ef7549079756bb3f7c8f351a8e21
 Depiction: ./depictions/app.Razer854.rootless.html
 Icon: ./CydiaIcon.png
-Description: 授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期仅将 LicenseAccepted/ExpiredText 状态读为有效和 2099，并使用无 PAX 扩展头的 USTAR deb 归档。
+Description: 授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期覆盖具体 NSDictionary 类簇的授权响应状态与 2099 过期时间，并使用无 PAX 扩展头的 USTAR deb 归档。
 

@@ -7,11 +7,11 @@
 - 原始 size：`21521984` bytes
 - Package：`app.Razer854.rootless`
 - 原始 Version：`2.5.0`
-- 最终 Patch Version：`2.5.0-8`
+- 最终 Patch Version：`2.5.0-11`
 - Architecture：`iphoneos-arm64`
-- 最终 deb：`/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0-8_app.Razer854.rootless_authstate_ustar.deb`
-- 最终 SHA256：`86b65d8e43b334713f748b02e4af29e59fee9aea9ce07f253d9e8b0a167ce110`
-- 最终 size：`21216952` bytes
+- 最终 deb：`/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0-11_app.Razer854.rootless_authstate_ustar.deb`
+- 最终 SHA256：`53deb601ec0458da67379ddd0390b5f57e06ef7549079756bb3f7c8f351a8e21`
+- 最终 size：`21217862` bytes
 
 工作目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/`。按用户要求，`work/` 内审计、反编译、反汇编、重包、验证等产物全部留存。
 
@@ -48,6 +48,8 @@ rootless payload 位于 `var/jb/`：
 - 退出：`exit:xr:`、`exit2:xr:`、`exitClicked:`、`Kill APP`、`killall -9 razerdaemon`。
 
 最终判断：Razer 主 app 通过 VM trampoline 分发业务逻辑；授权状态由 app UI 与 daemon 设备/授权信息链路共同影响。过宽 early return 会把刷新/设备信息链路掐断，导致 UI fallback 到 epoch 0，东八区显示 `1970.01.01 08:00`。
+
+v8 真机反馈仍为“请输入授权码 / error 未授权 / 1970.01.01 08:00”。Frida native-only 证据显示 v8 的 `NSDictionary` 基类方法没有捕获授权读取，而具体 `__NSDictionaryM` 已捕获 `LicenseAccepted` 读取；因此 v11 将状态覆盖下沉到具体类簇，并仅在包含 `License`、`Authorization`、`ExpiredText` 或 `LicenseAccepted` 的响应字典中覆盖 `retcode`、`retCode`、`code`，同时保留 `LicenseAccepted` 与 `ExpiredText` 覆盖。
 
 ## 4. 真机反馈后的修复策略
 
@@ -130,7 +132,7 @@ ENTER abort -> pthread_kill -> process-terminated
 
 这两个位置只能隐藏失败结果，不能让 VM dispatcher 中的授权 predicate 通过；并且吞掉原始 `presentViewController:` 会破坏业务 action 依赖的完成时序。
 
-v7 恢复上述四处 VM trampoline prologue `ff 03 10 d1`，移除 `UILabel setText:` 和 `UIViewController presentViewController:` swizzle。新的 `RazerAuth2099.dylib` 不链接 UIKit，在 `UIApplicationDidFinishLaunchingNotification` 后仅对 `NSDictionary`/`NSUserDefaults` 的 `LicenseAccepted`、`ExpiredText`（及明确时间型 expiry key）读取返回有效值。业务 selector、alert 和 completion 保持原始实现。
+v7 恢复上述四处 VM trampoline prologue `ff 03 10 d1`，移除 `UILabel setText:` 和 `UIViewController presentViewController:` swizzle。v11 的 `RazerAuth2099.dylib` 不链接 UIKit，在 `UIApplicationDidFinishLaunchingNotification` 后仅对具体 `NSDictionary` 类簇及 `NSUserDefaults` 的授权响应读取返回有效值；业务 selector、alert 和 completion 保持原始实现。
 
 | Binary | Arch | Function / symbol | VA | file offset | old bytes | new bytes | reason |
 |---|---|---:|---:|---:|---|---|---|
@@ -140,7 +142,17 @@ v7 恢复上述四处 VM trampoline prologue `ff 03 10 d1`，移除 `UILabel set
 | `var/jb/Applications/razer.app/Razer` | arm64 | `showAlert:`（授权页组） | `0x100d9b8c0` | `0x00d9b8c0` | `c0 03 5f d6` (v6) | `ff 03 10 d1` | 不再以 alert 层作为授权绕过点。 |
 | `var/jb/Library/MobileSubstrate/DynamicLibraries/RazerAuth2099.dylib` | arm64 | post-launch auth state hook | N/A | N/A | v6 UIKit UI swizzle | v7 `NSDictionary`/`NSUserDefaults` scoped read override | 强制授权 state，而不拦截 UI 或业务回调。 |
 
-v7 的业务修复在安装阶段暴露了归档兼容性缺陷，已由 v8 取代。v8 反解包验证：`Package=app.Razer854.rootless`、`Version=2.5.0-8`、三段 deb member 正常；上述四个 offset 均为 `ff0310d1`。`codesign --verify --deep --strict razer.app` 与 `codesign --verify --strict RazerAuth2099.dylib` 均通过。hook 的 `otool -L` 只有 Foundation/CoreFoundation/libobjc/libSystem，不含 UIKit；字符串检查不含 `presentViewController:`、`UILabel`、`UIViewController` 或 `setText:`。
+v7 的业务修复在安装阶段暴露了归档兼容性缺陷，v8 曾修复 USTAR 归档并验证通过；v11 在此基础上重新重包。v11 反解包验证：`Package=app.Razer854.rootless`、`Version=2.5.0-11`、三段 deb member 正常；上述四个 offset 均为 `ff0310d1`。`codesign --verify --deep --strict razer.app` 与 `codesign --verify --strict RazerAuth2099.dylib` 均通过。hook 的 `otool -L` 只有 Foundation/CoreFoundation/libobjc/libSystem，不含 UIKit；字符串检查不含 `presentViewController:`、`UILabel`、`UIViewController` 或 `setText:`。
+
+### 5.4 v11 具体字典类簇状态修复
+
+v11 源码：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/patch-src/RazerAuth2099Hook.m`。
+
+- `NSDictionary` 是 class cluster；仅交换抽象基类不能覆盖 `__NSDictionaryI` / `__NSDictionaryM` 等实际响应对象。
+- v11 在应用完成启动后保存每个具体类的原始 IMP，并用 `method_setImplementation` 安装 wrapper；wrapper 沿 superclass 查找 entry，避免具体字典子类因找不到 entry 而错误返回 `nil`。
+- 状态覆盖为 `LicenseAccepted=YES`、`ExpiredText=2099.01.01 00:00`；只有授权响应字典同时包含授权相关字段时，才覆盖 `retcode`、`retCode`、`code` 为 `0`，没有吞掉 alert 或 action。
+- native-only Frida 探针、无脚本 spawn 基线和具体类命中日志均留存在 `evidence/frida/`；启动期全局 `objc_msgSend` 版本导致进程终止的失败日志也保留，未用于最终包。
+- 具体类命中日志来自 v11 安装前的当前真机版本，仅证明授权读取位于 `__NSDictionaryM` 路径；v11 包本身已完成静态、签名和归档验证，安装后的授权成功 UI 回归仍需单独验证。
 
 ### 5.2 v7 安装失败与 v8 USTAR 重包修复
 
@@ -152,7 +164,7 @@ v8 验证结果：`control.tar.gz: members=6 typeflags=0,5`，`data.tar.gz: memb
 
 ### 5.3 v6 历史静态 patch 表
 
-以下表格只记录已废弃的 v6 静态 patch，不能用于 v8。所有 VA 均基于 Mach-O image base `0x100000000`，file offset = `VA - 0x100000000`；当时新增的静态指令为 ARM64 `ret`：`c0 03 5f d6`。v8 当前 `requestlicense`、两组 `showAlert:` 和 `buttonAuthTapped` 均已恢复为 `ff 03 10 d1`，以保留主面板 action 调用链。
+以下表格只记录已废弃的 v6 静态 patch，不能用于 v11。所有 VA 均基于 Mach-O image base `0x100000000`，file offset = `VA - 0x100000000`；当时新增的静态指令为 ARM64 `ret`：`c0 03 5f d6`。v11 当前 `requestlicense`、两组 `showAlert:` 和 `buttonAuthTapped` 均已恢复为 `ff 03 10 d1`，以保留主面板 action 调用链。
 
 | Binary | Arch | Function / symbol | VA | file offset | old bytes | new bytes | reason |
 |---|---|---:|---:|---:|---|---|---|
@@ -180,15 +192,15 @@ v8 验证结果：`control.tar.gz: members=6 typeflags=0,5`，`data.tar.gz: memb
 
 新增 hook 源码：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/patch-src/RazerAuth2099Hook.m`。
 
-当前最终验证目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/verify-final-2.5.0-8/`。
+当前最终验证目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/verify-final-2.5.0-11/`。
 
 最终 `deb_audit`：
 
 ```text
-/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/final-audit-2.5.0-8/
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/final-audit-2.5.0-11/
 lfs_pointer=false
 Package=app.Razer854.rootless
-Version=2.5.0-8
+Version=2.5.0-11
 ```
 
 最终 deb 反解包 byte 验证：
@@ -224,9 +236,9 @@ pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 SIZE=6206412
 SHA256=0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
 
-pages-repo/debs/app.Razer854.rootless_2.5.0-8_authstate_ustar.deb
-SIZE=21216952
-SHA256=86b65d8e43b334713f748b02e4af29e59fee9aea9ce07f253d9e8b0a167ce110
+pages-repo/debs/app.Razer854.rootless_2.5.0-11_authstate_ustar.deb
+SIZE=21217862
+SHA256=53deb601ec0458da67379ddd0390b5f57e06ef7549079756bb3f7c8f351a8e21
 ```
 
 `pages-repo/Packages` 包含两条记录：
@@ -237,8 +249,8 @@ Version: 18.1.1
 Filename: ./debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 
 Package: app.Razer854.rootless
-Version: 2.5.0-8
-Filename: ./debs/app.Razer854.rootless_2.5.0-8_authstate_ustar.deb
+Version: 2.5.0-11
+Filename: ./debs/app.Razer854.rootless_2.5.0-11_authstate_ustar.deb
 ```
 
 没有在仓库根目录复制 `index.html`、`Packages`、`debs/` 等重复 Pages 产物；所有展示前端和 APT 静态源只位于 `pages-repo/`。

@@ -6,13 +6,13 @@ Codename: ios-patch
 Architectures: iphoneos-arm64
 Components: main
 Description: 自用授权测试源：Pages 挂载已完成目标的最终 patched 补丁 deb，不发布中间态补丁包或原始源全量资源。
-Date: Thu, 09 Jul 2026 19:22:19 +0000
+Date: Thu, 09 Jul 2026 20:12:04 +0000
 MD5Sum:
- ff218846570c69cf3082e210cfd0c439 1552 Packages
- f572c626d49c13176bec5f0e3baaa7c8 954 Packages.gz
+ a1b5a4e744c93c6290372ff64109be0e 1568 Packages
+ 9dc7845cea16dae46f129cff42a538af 953 Packages.gz
 SHA1:
- 7b57291d35be6529f0f3bc3582aec94a1de45eda 1552 Packages
- 3a984d52945d68c7b2ec164ce89cd5b33f243e61 954 Packages.gz
+ 9876e5c3bb180876d3476a4b2155e07cea43ebbf 1568 Packages
+ 071ef49fb6b9e78f3a98c0fcf74f293bebf78999 953 Packages.gz
 SHA256:
- bc5cbd172b831ff294eb99b287cace25c1247043510d157a5945b87b31ff969a 1552 Packages
- ffbc178ae9554737d9ea14341f927b47673e4eb09176142ac666ad35da8b69bd 954 Packages.gz
+ 5d471546adbb7b1543ccecde63fc60a33b84edf37e2d60b6204c3aa0b25e712b 1568 Packages
+ 0cb0a1221339772afd27cb4f1875cc222491a208c18e94380904dc945c5c6d9d 953 Packages.gz
