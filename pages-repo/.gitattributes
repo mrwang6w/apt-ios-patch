@@ -1,0 +1,3 @@
+# GitHub Pages 不能发布 Git LFS pointer；本目录内压缩包和 deb 必须作为普通 blob 提交。
+*.deb -filter -diff -merge -text
+*.gz -filter -diff -merge -text

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="自用授权测试源：仅挂载 patched 目录中的补丁 deb。">
+  <title>iOS Patch Repo</title>
+  <link rel="apple-touch-icon" href="./CydiaIcon.png">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <style>
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:#fff7ed; color:#1f2937; }
+    main { max-width:720px; margin:0 auto; padding:24px 16px 40px; }
+    .card { background:#fff; border:1px solid #fed7aa; border-radius:18px; padding:18px; margin:14px 0; box-shadow:0 8px 28px rgba(124,45,18,.08); }
+    .hero { text-align:center; }
+    .icon { width:72px; height:72px; border-radius:16px; }
+    h1 { margin:12px 0 4px; font-size:28px; }
+    .muted { color:#6b7280; font-size:14px; }
+    .btns { display:grid; gap:12px; grid-template-columns:1fr; margin-top:16px; }
+    .btn { display:block; padding:14px 16px; border-radius:14px; text-decoration:none; color:#fff; font-weight:700; text-align:center; }
+    .cydia { background:#8b5cf6; } .sileo { background:#0ea5e9; } .download { background:#16a34a; }
+    code { word-break:break-all; background:#f3f4f6; padding:2px 5px; border-radius:5px; }
+    table { width:100%; border-collapse:collapse; } td { padding:7px 0; border-bottom:1px solid #f3f4f6; vertical-align:top; } td:first-child { color:#6b7280; width:92px; }
+  </style>
+</head>
+<body>
+<main>
+  <section class="card hero">
+    <img class="icon" src="./CydiaIcon.png" alt="repo icon">
+    <h1>iOS Patch Repo</h1>
+    <p class="muted">自用授权测试源：仅挂载 patched 目录中的补丁 deb。</p>
+    <div class="btns">
+      <a id="add-cydia" class="btn cydia" href="#">添加到 Cydia</a>
+      <a id="add-sileo" class="btn sileo" href="#">添加到 Sileo</a>
+      <a class="btn download" href="./debs/com.amg456.rootless_18.1.1_nopopup_2099.deb">直接下载 deb</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>源地址</h2>
+    <p><code id="repo-url">部署到 GitHub Pages 后自动显示</code></p>
+    <p class="muted">如果页面在子路径，例如 <code>/ios-repo/</code>，请把完整目录 URL 添加到包管理器。</p>
+  </section>
+
+  <section class="card">
+    <h2>当前挂载包</h2>
+    <table>
+      <tr><td>Package</td><td><code>com.amg456.rootless</code></td></tr>
+      <tr><td>Name</td><td>AMG Rootless Patch (NoPopup 2099)</td></tr>
+      <tr><td>Version</td><td>18.1.1</td></tr>
+      <tr><td>Arch</td><td>iphoneos-arm64</td></tr>
+      <tr><td>Size</td><td>6206410 bytes</td></tr>
+      <tr><td>SHA256</td><td><code>82f39a133c9c156509a7cab0f88bca7a9a1d2d1c83da90f2cf4e76216e8e32b1</code></td></tr>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>说明</h2>
+    <p>本页面只展示并挂载本项目 <code>patched/</code> 中的补丁 deb，不镜像原始源全部资源。</p>
+    <p class="muted">请仅在自有设备或授权测试环境中使用。</p>
+  </section>
+</main>
+<script>
+(function() {
+  var repo = new URL('./', window.location.href).href;
+  document.getElementById('repo-url').textContent = repo;
+  document.getElementById('add-cydia').href = 'cydia://url/https://cydia.saurik.com/api/share#?source=' + repo;
+  document.getElementById('add-sileo').href = 'sileo://source/' + repo;
+})();
+</script>
+</body>
+</html>

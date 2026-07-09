@@ -3,6 +3,8 @@
 # dependencies
 **/node_modules/
 /node_modules
+**/__pycache__/
+*.py[cod]
 /.pnp
 .pnp.*
 .yarn/*
@@ -48,6 +50,9 @@ next-env.d.ts
 *.json
 .claude
 result/
+/work/
+!/pages-repo/**/*.png
+!/pages-repo/**/*.ico
 # Next.js web project files that must be tracked despite root-level broad ignores
 !/project/*.json
 !/project/**/*.json

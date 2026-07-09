@@ -1,0 +1,18 @@
+Package: com.amg456.rootless
+Version: 18.1.1
+Priority: optional
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Section: Patch
+Maintainer: Local Patch Repo
+Name: AMG Rootless Patch (NoPopup 2099)
+Author: Local Patch Repo
+Filename: ./debs/com.amg456.rootless_18.1.1_nopopup_2099.deb
+Size: 6206410
+MD5sum: 2e98d68a887ed6d8a5a9c266935b66f9
+SHA1: a235aa5179c239adcb38e096f9d1352d5adb6cf2
+SHA256: 82f39a133c9c156509a7cab0f88bca7a9a1d2d1c83da90f2cf4e76216e8e32b1
+Depiction: ./depictions/com.amg456.rootless.html
+Icon: ./CydiaIcon.png
+Description: 授权测试补丁包：去除首页激活弹窗，并将试用过期时间调整为 2099。
+

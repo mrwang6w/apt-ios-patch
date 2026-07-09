@@ -1,0 +1,18 @@
+Origin: iOS Patch Repo
+Label: iOS Patch Repo
+Suite: stable
+Version: 18.1.1
+Codename: ios-patch
+Architectures: iphoneos-arm64
+Components: main
+Description: 自用授权测试源：仅挂载 patched 目录中的补丁 deb。
+Date: Thu, 09 Jul 2026 11:34:02 +0000
+MD5Sum:
+ a9e0c8944d280a3dcd33e473d6022e5f 660 Packages
+ 6d71c73d41b60eee9a0ffa61cc59ba34 526 Packages.gz
+SHA1:
+ 9820d2de2d8b931e02d9b3888d493d00ebf84b62 660 Packages
+ 8987bac37c09611198d94ba74ccff9549a0b94ee 526 Packages.gz
+SHA256:
+ ea289b4efa8e489958aca0cb160f582960500b8343ea730b7ceabe81b6689c85 660 Packages
+ 5049ddacfd5f2f35ceb27e687dd1c45e4a8dfbaf771ac2d887745b6b306fd13a 526 Packages.gz

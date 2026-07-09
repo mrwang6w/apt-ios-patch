@@ -1,0 +1,50 @@
+name: Deploy Pages Repo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'pages-repo/**'
+      - '.github/workflows/deploy-pages-repo.yml'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Verify repo files are real artifacts
+        run: |
+          set -euo pipefail
+          test -f pages-repo/.nojekyll
+          gzip -t pages-repo/Packages.gz
+          if grep -R "git-lfs.github.com/spec" pages-repo; then
+            echo "Git LFS pointer detected under pages-repo" >&2
+            exit 1
+          fi
+          test "$(wc -c < pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099.deb)" = "6206410"
+          echo "82f39a133c9c156509a7cab0f88bca7a9a1d2d1c83da90f2cf4e76216e8e32b1  pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099.deb" | sha256sum -c -
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages-repo
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
