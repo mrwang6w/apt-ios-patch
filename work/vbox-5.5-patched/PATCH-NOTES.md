@@ -3,7 +3,7 @@
 ## Provenance
 
 - Original package: `/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/VBox_5.5「无根」_5.5_com.amg456.VBox1.deb`
-- Package id/version: `com.amg456.VBox1` / `5.5-1`
+- Package id/version: `com.amg456.VBox1` / `5.5-2`
 - Original SHA-256: `2ab876fc64885dbebbb2fc079a9009c7243144c1457ada0c85ecf5c936a3f290`
 - Patch target: `var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib`
 - Original target SHA-256: `e2aa03f6c409e2b564f5698d06e555f6724f6e903e7ecfccd6dabbe5f478f2d6`
@@ -24,14 +24,20 @@ Swift symbols `ActiveHUD.showActivationAlert` and `ActiveHUD.heartbeat_action`.
 | arm64 | `ActiveHUD.showActivationAlert` | `0xBFAC` | `f44fbea9` | `c0035fd6` (`ret`) |
 | arm64e | `ActiveHUD.heartbeat_action` | `0xCAEC` | `7f2303d5` | `ff0f5fd6` (`retab`) |
 | arm64e | `ActiveHUD.showActivationAlert` | `0xCB40` | `7f2303d5` | `ff0f5fd6` (`retab`) |
+| arm64 | `lkclass.getAuthEndTime:` | `0x67CC` | `ff0304d1fa670ba9f85f0ca9f6570da9f44f0ea9fd7b0fa9` | fixed-date tail call |
+| arm64e | `lkclass.getAuthEndTime:` | `0x6A34` | `7f2303d5ff0304d1fa670ba9f85f0ca9f6570da9f44f0ea9` | fixed-date tail call |
+
+Both `getAuthEndTime:` entries now tail-call the existing
+`+[NSString stringWithCharacters:length:]` implementation with the static
+UTF-16 value `2099-10-01 00:00:00`.
 
 The patched dylib was ad-hoc re-signed with `ldid -S` after its two slices
 were recombined.
 
 ## Output
 
-- Patched package: `VBox_5.5_rootless_5.5-1_com.amg456.VBox1_nolicense_ustar.deb`
-- Package SHA-256: `28cfcda362c30a75ab8d37f57710fa4dab85acc656cf729cb4899e4cb222c17f`
+- Patched package: `VBox_5.5_rootless_5.5-2_com.amg456.VBox1_nolicense_2099_ustar.deb`
+- Package SHA-256: `c6b1c102aa7a430b5da2179cd222b05d31e92523a44918b31ffec8789fd0c2bd`
 - Archive members: `debian-binary`, `control.tar.gz`, `data.tar.gz`
 - Both tar members use deterministic GNU USTAR headers with numeric owner/group `0/0`; PAX and AppleDouble metadata are absent.
 

@@ -35,20 +35,20 @@ Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期覆盖具体 NSDictionary 类簇的授权响应状态与 2099 过期时间，并使用无 PAX 扩展头的 USTAR deb 归档。
 
 Package: com.amg456.VBox1
-Version: 5.5-1
+Version: 5.5-2
 Priority: optional
 Depends: firmware (>= 8.0), mobilesubstrate
 Architecture: iphoneos-arm64
 Section: VBox虚拟盒子
 Maintainer: Local Patch Repo
-Name: VBox_5.5「无根」 Patch NoLicense USTAR
+Name: VBox_5.5「无根」 Patch NoLicense 2099 USTAR
 Author: Local Patch Repo
-Filename: ./debs/com.amg456.VBox1_5.5-1_nolicense_ustar.deb
-Size: 6458306
-MD5sum: 04c636ce1d8b58f26e6afa5253950f5a
-SHA1: ded70705772ebe0790f94ed5d994afb610b24024
-SHA256: 28cfcda362c30a75ab8d37f57710fa4dab85acc656cf729cb4899e4cb222c17f
+Filename: ./debs/com.amg456.VBox1_5.5-2_nolicense_2099_ustar.deb
+Size: 6458352
+MD5sum: 7d6e501f12506f2a67c98b3050378a69
+SHA1: 19c9776ff3b1407c32e6d91582003187bf3db70d
+SHA256: c6b1c102aa7a430b5da2179cd222b05d31e92523a44918b31ffec8789fd0c2bd
 Depiction: ./depictions/com.amg456.VBox1.html
 Icon: ./CydiaIcon.png
-Description: 授权测试补丁包：禁用激活弹窗与授权心跳回调，并使用无 PAX 扩展头的 USTAR deb 归档。
+Description: 授权测试补丁包：禁用激活弹窗与授权心跳回调，首页授权时间固定显示为 2099-10-01 00:00:00，并使用无 PAX 扩展头的 USTAR deb 归档。
 

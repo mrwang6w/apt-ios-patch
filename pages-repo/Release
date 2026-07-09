@@ -6,13 +6,13 @@ Codename: ios-patch
 Architectures: iphoneos-arm64
 Components: main
 Description: 自用授权测试源：Pages 挂载已完成目标的最终 patched 补丁 deb，不发布中间态补丁包或原始源全量资源。
-Date: Thu, 09 Jul 2026 21:25:56 +0000
+Date: Thu, 09 Jul 2026 21:43:53 +0000
 MD5Sum:
- 207710acaaa25617c84566f3f8281621 2263 Packages
- 1d33beda5a040e2426871947cbbdd9da 1158 Packages.gz
+ e3581fc149007fbb61e8882b4c394adc 2329 Packages
+ d902718d48001a0bc1956e2310f1f183 1195 Packages.gz
 SHA1:
- e1c93b2cff1f6e13317c442ce7f120a9c51b0e9e 2263 Packages
- ec35c1d591ba3950eee0897fba261b13b3e72af0 1158 Packages.gz
+ d3dfb6d3e8cca3298f2eb3c8a308b13349396526 2329 Packages
+ be5a5327d49d90d3c2bdb60c6dd6ec5ee1c3d9ee 1195 Packages.gz
 SHA256:
- d61f99964ad351b8f36fc6d2e900885435b58b8908a88eb0a195ec2a49838b96 2263 Packages
- 482ba205663b9193bc036d6ac64a5dcc3f3e5d30a0e42e9953ab97fdc118da78 1158 Packages.gz
+ c05defe094c2e8ca3c98da63b154838c073cc8aa542226ad0578e1b939d82d18 2329 Packages
+ 6494e4d8f7666124ee413c57db6f7bbb0ffa5d54be4a8910ba9e10c9514da9cd 1195 Packages.gz
