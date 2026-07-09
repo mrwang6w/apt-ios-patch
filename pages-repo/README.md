@@ -34,7 +34,17 @@
 .github/workflows/deploy-pages-repo.yml
 ```
 
-它会把 `pages-repo/` 作为 Pages artifact 根目录发布，避免把 `downloads/`、`work/` 等分析目录暴露成静态站点。
+它会把 `pages-repo/` 作为 Pages artifact 根目录发布。仓库内前端/展示文件只维护在 `pages-repo/`，但公开访问 URL 仍是：
+
+```text
+https://<user>.github.io/<repo>/
+```
+
+本仓库对应：
+
+```text
+https://myzest.github.io/apt-ios-patch/
+```
 
 ## Git LFS 注意事项
 
@@ -50,8 +60,8 @@ GitHub Pages 不能直接发布 Git LFS 文件。本目录自带 `.gitattributes
 ## 本地校验
 
 ```bash
-gzip -t pages-repo/Packages.gz
 python3 scripts/build_pages_repo.py
+gzip -t pages-repo/Packages.gz
 shasum -a 256 pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 ```
 

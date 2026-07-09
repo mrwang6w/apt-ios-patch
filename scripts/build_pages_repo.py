@@ -2,9 +2,14 @@
 """Build a static GitHub Pages Cydia/Sileo repo from patched deb artifacts.
 
 The published APT metadata intentionally mounts only the patched deb under
-``patched/``.  The front page, however, mirrors the original source's jailbreak
-repo category directory from ``downloads/amg456-repo/manifest.json`` so the UI
-looks and navigates like the upstream source without republishing upstream debs.
+``patched/``. The front page mirrors the original source's jailbreak repo
+category directory from ``downloads/amg456-repo/manifest.json`` so the UI looks
+and navigates like the upstream source without republishing upstream debs.
+
+All display frontend and APT static files are generated under ``pages-repo/``.
+GitHub Pages should publish ``pages-repo/`` as the artifact root, so the public
+URL is mounted at ``https://<user>.github.io/<repo>/`` without a ``/pages-repo/``
+path segment.
 """
 from __future__ import annotations
 
@@ -26,7 +31,6 @@ DOWNLOADS_DIR = ROOT / "downloads" / "amg456-repo"
 SOURCE_MANIFEST = DOWNLOADS_DIR / "manifest.json"
 SOURCE_PACKAGES = DOWNLOADS_DIR / "Packages"
 OUT = ROOT / "pages-repo"
-
 PACKAGE_ID = "com.amg456.rootless"
 DEB_SOURCE = PATCHED_DIR / "纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat_noexit.deb"
 DEB_NAME = "com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb"
@@ -203,6 +207,7 @@ def render_package_rows(
     return "\n".join(sections)
 
 
+
 def build() -> None:
     if not DEB_SOURCE.exists():
         raise FileNotFoundError(DEB_SOURCE)
@@ -284,6 +289,7 @@ def build() -> None:
         ),
         encoding="utf-8",
     )
+
 
     write_png(OUT / "CydiaIcon.png")
     (OUT / "favicon.ico").write_bytes((OUT / "CydiaIcon.png").read_bytes())
@@ -454,7 +460,17 @@ def build() -> None:
 .github/workflows/deploy-pages-repo.yml
 ```
 
-它会把 `pages-repo/` 作为 Pages artifact 根目录发布，避免把 `downloads/`、`work/` 等分析目录暴露成静态站点。
+它会把 `pages-repo/` 作为 Pages artifact 根目录发布。仓库内前端/展示文件只维护在 `pages-repo/`，但公开访问 URL 仍是：
+
+```text
+https://<user>.github.io/<repo>/
+```
+
+本仓库对应：
+
+```text
+https://myzest.github.io/apt-ios-patch/
+```
 
 ## Git LFS 注意事项
 
@@ -470,8 +486,8 @@ GitHub Pages 不能直接发布 Git LFS 文件。本目录自带 `.gitattributes
 ## 本地校验
 
 ```bash
-gzip -t pages-repo/Packages.gz
 python3 scripts/build_pages_repo.py
+gzip -t pages-repo/Packages.gz
 shasum -a 256 pages-repo/debs/{DEB_NAME}
 ```
 

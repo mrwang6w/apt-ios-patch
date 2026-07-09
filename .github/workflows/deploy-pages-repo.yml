@@ -32,6 +32,8 @@ jobs:
         run: |
           set -euo pipefail
           test -f pages-repo/.nojekyll
+          test -s pages-repo/index.html
+          test -s pages-repo/Packages
           gzip -t pages-repo/Packages.gz
           if grep -R "git-lfs.github.com/spec" pages-repo; then
             echo "Git LFS pointer detected under pages-repo" >&2

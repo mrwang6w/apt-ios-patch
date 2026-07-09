@@ -6,7 +6,7 @@ Codename: ios-patch
 Architectures: iphoneos-arm64
 Components: main
 Description: 自用授权测试源：前端还原 AMG 越狱源分类目录，APT 仅挂载 patched 补丁 deb。
-Date: Thu, 09 Jul 2026 12:41:03 +0000
+Date: Thu, 09 Jul 2026 13:09:04 +0000
 MD5Sum:
  05f070173085412b6e1b42ca43caafe5 750 Packages
  742b4bd3b6ad26944bd2fae2a8923fe1 605 Packages.gz

@@ -1499,19 +1499,40 @@ codesign extracted app OK
 
 ## 21. GitHub Pages 静态源同步
 
+因为当前推荐的前端源只挂载 `patched/` 中的最新补丁 deb，心跳补丁完成后同步更新了静态源构建脚本与产物。
 
-因为当前推荐的前端源只挂载 `patched/` 中的最新补丁 deb，心跳补丁完成后同步更新了静态源构建脚本与产物：
+目录约束：所有展示前端与 APT 静态源文件只维护在 `pages-repo/` 目录内，仓库根目录不再复制 `index.html`、`Packages`、`debs/` 等重复产物，避免出现两份 HTML/元数据需要维护。
+
+部署链路：仓库保留单一自定义 workflow：
+
+```text
+/Users/zest/myworks/apt-ios-patch/.github/workflows/deploy-pages-repo.yml
+```
+
+该 workflow 使用 `actions/upload-pages-artifact` 将 `pages-repo/` 作为 Pages artifact 根目录发布。因此源码目录是 `pages-repo/`，但公开 URL 不带 `/pages-repo/` 路径段，最终访问路径是：
+
+```text
+https://myzest.github.io/apt-ios-patch/
+https://myzest.github.io/apt-ios-patch/Packages
+https://myzest.github.io/apt-ios-patch/Packages.gz
+https://myzest.github.io/apt-ios-patch/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
+```
+
+> 如果 GitHub Actions 仍同时出现 GitHub 自动的 `pages build and deployment`，说明仓库 Settings → Pages 还配置在 `Deploy from a branch`。需要切到 `GitHub Actions`，否则 GitHub 会继续用分支根目录触发第二条部署线。
+
+同步更新的关键产物：
 
 ```text
 /Users/zest/myworks/apt-ios-patch/scripts/build_pages_repo.py
+/Users/zest/myworks/apt-ios-patch/.github/workflows/deploy-pages-repo.yml
+/Users/zest/myworks/apt-ios-patch/pages-repo/index.html
 /Users/zest/myworks/apt-ios-patch/pages-repo/Packages
 /Users/zest/myworks/apt-ios-patch/pages-repo/Packages.gz
 /Users/zest/myworks/apt-ios-patch/pages-repo/Release
-/Users/zest/myworks/apt-ios-patch/pages-repo/index.html
-/Users/zest/myworks/apt-ios-patch/pages-repo/README.md
+/Users/zest/myworks/apt-ios-patch/pages-repo/CydiaIcon.png
+/Users/zest/myworks/apt-ios-patch/pages-repo/favicon.ico
 /Users/zest/myworks/apt-ios-patch/pages-repo/depictions/com.amg456.rootless.html
 /Users/zest/myworks/apt-ios-patch/pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
-/Users/zest/myworks/apt-ios-patch/.github/workflows/deploy-pages-repo.yml
 ```
 
 Pages 当前挂载文件：
@@ -1530,7 +1551,7 @@ gzip -t /Users/zest/myworks/apt-ios-patch/pages-repo/Packages.gz
 shasum -a 256 /Users/zest/myworks/apt-ios-patch/pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 ```
 
-GitHub Actions workflow 也同步更新了 size/hash 断言，避免部署 Git LFS pointer 或旧 deb。
+`pages-repo/.gitattributes` 已覆盖 `*.deb` 与 `*.gz` 为普通 Git blob，避免 GitHub Pages 发布 Git LFS pointer。
 
 后续前端页面进一步按原 `AMG官方源™` 越狱源结构做了分类目录还原：
 
@@ -1544,7 +1565,7 @@ Razer雷蛇: 3 packages
 VBox虚拟盒子: 3 packages
 ```
 
-实现边界：`index.html` 展示原源快照中的分类/条目结构，非补丁条目标记为“目录镜像”；APT `Packages` 与 `pages-repo/debs/` 仍只发布 `com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb` 一个补丁包。
+实现边界：`pages-repo/index.html` 展示原源快照中的分类/条目结构，非补丁条目标记为“目录镜像”；APT `pages-repo/Packages` 与 `pages-repo/debs/` 仍只发布 `com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb` 一个补丁包。
 
 ## 22. 当前最新结论
 
@@ -1555,6 +1576,6 @@ VBox虚拟盒子: 3 packages
 3. `startAutoHeartbeat`、timer block、`heartbeat_action` 三处同时直接返回，阻断周期心跳 timer 创建与执行。
 4. `TG@wx_zyyy.dylib` 内 4 处显式 `_exit(0)` 调用均替换为 `nop`，覆盖 `ActiveHUD.ff()` 的 1～2 分钟延迟退出 closure。
 5. arm64 / arm64e 双架构 patch bytes 均已从最终 deb 反解包复验通过。
-6. dylib 与 app 已重签；最终 deb、Pages repo、workflow 校验值均已同步到 noheartbeat_noexit 版本。
+6. dylib 与 app 已重签；最终 deb 与 `pages-repo/` 静态源均已同步到 noheartbeat_noexit 版本。
 
 后续如果真机仍出现延迟闪退，应继续按运行时证据定位其它定时器、后台线程或完整性检测分支；但当前已覆盖本次静态证据中最明确的 `ActiveHUD` 心跳链路。
