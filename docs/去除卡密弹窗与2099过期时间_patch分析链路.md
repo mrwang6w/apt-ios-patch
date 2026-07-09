@@ -3,7 +3,7 @@
 > 文档路径：`/Users/zest/myworks/apt-ios-patch/docs/去除卡密弹窗与2099过期时间_patch分析链路.md`  
 > 项目根目录：`/Users/zest/myworks/apt-ios-patch`  
 > 目标包：`/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless.deb`  
-> 最终产物：`/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099.deb`
+> 最新最终产物：`/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat.deb`
 
 ## 1. 任务目标
 
@@ -16,7 +16,8 @@
 2. 将授权过期时间逻辑改为长期有效：
    - 将有效期返回值固定为 `2099-12-31 23:59:59 UTC`
    - Unix timestamp：`4102444799` / `0xF48656FF`
-3. 确认 `[一键新机]` 按钮路径中是否额外加入了卡密/过期校验。
+3. 针对后续真机反馈“隔段时间定时检测心跳后闪退”，继续定位并禁用周期心跳入口。
+4. 确认 `[一键新机]` 按钮路径中是否额外加入了卡密/过期校验。
 4. 使用 `ida-pro-mcp / idalib-mcp` 辅助确认关键函数反编译结果。
 5. 重新打包 deb，并从最终 deb 解包验证 patch 字节、签名状态与最终 hash。
 
@@ -41,27 +42,30 @@ work/com.amg456.rootless-18.1.1/
 ├── extract/                         # 原始 deb 解包后的 payload 与 DEBIAN 脚本
 ├── backup/                          # 原始/阶段性 dylib 备份
 ├── analysis/                        # class-dump、r2、IDA MCP 分析产物
-├── buildroot-nopopup-2099/          # 最终重打包构建根目录
-├── pkgparts-nopopup-2099/           # 最终 deb 的 debian-binary/control/data parts
-└── verify-nopopup-2099-final/       # 最终 deb 重新解包验证目录
+├── buildroot-nopopup-2099/          # 第一阶段重打包构建根目录（去弹窗 + 2099）
+├── pkgparts-nopopup-2099/           # 第一阶段 deb 的 debian-binary/control/data parts
+├── verify-nopopup-2099-final/       # 第一阶段 deb 重新解包验证目录
+├── buildroot-nopopup-2099-noheartbeat/   # 最新最终包构建根目录
+├── pkgparts-nopopup-2099-noheartbeat/    # 最新最终包 debian-binary/control/data parts
+└── verify-nopopup-2099-noheartbeat-final/ # 最新最终包重新解包验证目录
 ```
 
-### 2.3 最终 deb
+### 2.3 阶段性与最新最终 deb
+
+第一阶段产物（去弹窗 + 2099，有心跳）：
 
 ```text
 /Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099.deb
+SHA256: 82f39a133c9c156509a7cab0f88bca7a9a1d2d1c83da90f2cf4e76216e8e32b1
+TG@wx_zyyy.dylib SHA256: a4bce2ba92f2a9555ff171a825bac282c6c9e337af0b1bc943a9400724a19a78
 ```
 
-最终 deb SHA256：
+最新最终产物（去弹窗 + 2099 + 禁用心跳）：
 
 ```text
-82f39a133c9c156509a7cab0f88bca7a9a1d2d1c83da90f2cf4e76216e8e32b1
-```
-
-最终 deb 内 patched dylib SHA256：
-
-```text
-a4bce2ba92f2a9555ff171a825bac282c6c9e337af0b1bc943a9400724a19a78
+/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat.deb
+SHA256: b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
+TG@wx_zyyy.dylib SHA256: 39cca71d7825ff4b3c48392ce2ead907caafc90159ff39800ab1d2d7439c0460
 ```
 
 ## 3. deb 解包后的关键文件
@@ -609,7 +613,7 @@ codesign -v TG@wx_zyyy.dylib
 codesign -v AMG.app
 ```
 
-最终打包逻辑：
+第一阶段打包逻辑（后续 noheartbeat 包沿用同一 deb 三件套格式）：
 
 ```bash
 # 构造 deb 标准三件套
@@ -621,7 +625,7 @@ data.tar.gz
 ar -crS final.deb debian-binary control.tar.gz data.tar.gz
 ```
 
-最终 deb 路径：
+第一阶段 deb 路径（去弹窗 + 2099，尚未禁用心跳）：
 
 ```text
 /Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099.deb
@@ -686,13 +690,15 @@ rm /var/jb/Applications/AMG.app/AMG_run
 rm -f /var/jb/Applications/AMG.app/AMG_run
 ```
 
-## 13. 最终 deb 重新解包验证
+## 13. 第一阶段 deb 重新解包验证
 
 验证目录：
 
 ```text
 /Users/zest/myworks/apt-ios-patch/work/doc-verify-nopopup-2099
 ```
+
+> 注：本节记录第一阶段 `nopopup_2099` 包的验证结果。最新最终包的 noheartbeat 复验见第 19 节。
 
 验证命令核心流程：
 
@@ -709,7 +715,7 @@ lipo "$TG" -thin arm64  -output "$TMP/slices/TG_arm64.dylib"
 lipo "$TG" -thin arm64e -output "$TMP/slices/TG_arm64e.dylib"
 ```
 
-最终验证输出：
+第一阶段验证输出：
 
 ```text
 TG_arm64.dylib
@@ -728,9 +734,9 @@ CODESIGN_TG OK
 CODESIGN_APP OK
 ```
 
-## 14. 最终结论
+## 14. 第一阶段结论
 
-本次 patch 已实现：
+第一阶段 patch 已实现：
 
 1. 首页卡密/激活码弹窗移除：
    - `ActiveHUD.gg()` Swift/ObjC 两层入口均直接返回。
@@ -741,11 +747,13 @@ CODESIGN_APP OK
    - `dd()` patch 后反编译为 `return 4102444799LL;`
    - `gg()` patch 后为空函数直接返回。
 5. `[一键新机]` 路径未发现独立卡密校验证据；当前判断授权判断集中在 `TG@wx_zyyy.dylib` 全局授权层。
-6. 最终 deb 重新解包后 byte-level 验证、hash 验证、codesign 验证均通过。
+6. 第一阶段 deb 重新解包后 byte-level 验证、hash 验证、codesign 验证均通过。
+
+第一阶段尚未禁用周期心跳；后续真机反馈的延迟闪退问题在第 17～21 节继续处理。
 
 ## 15. 关键产物索引
 
-### 15.1 最终安装包
+### 15.1 第一阶段安装包
 
 ```text
 /Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099.deb
@@ -757,7 +765,7 @@ SHA256：
 82f39a133c9c156509a7cab0f88bca7a9a1d2d1c83da90f2cf4e76216e8e32b1
 ```
 
-### 15.2 当前 patched dylib
+### 15.2 第一阶段 patched dylib
 
 ```text
 /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib
@@ -798,9 +806,9 @@ a4bce2ba92f2a9555ff171a825bac282c6c9e337af0b1bc943a9400724a19a78
 /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/button-check/TG_api_hud_disasm.txt
 ```
 
-## 16. 复现检查清单
+## 16. 第一阶段复现检查清单
 
-若后续需要重新验证最终 deb，可执行：
+若后续需要重新验证第一阶段 deb，可执行：
 
 ```bash
 FINAL="/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099.deb"
@@ -837,3 +845,560 @@ codesign -v AMG.app
 ```
 
 期望均无错误输出，命令退出码为 `0`。
+
+
+---
+
+## 17. 后续问题：周期心跳检测导致闪退
+
+### 17.1 现象
+
+第一阶段 `nopopup_2099` 包安装后，首页激活弹窗已经移除，过期时间也已经固定为 2099。但真机运行反馈：
+
+```text
+隔段时间定时检测心跳，会导致过一段时间后闪退
+```
+
+这说明除 `dd()`/`gg()` 外，`TG@wx_zyyy.dylib` 里仍存在周期性授权/心跳逻辑。由于 `dd()` 只覆盖本地过期时间读取，定时心跳仍可能触发网络校验、状态刷新、异常退出或服务端返回后的防护分支。
+
+### 17.2 心跳符号定位
+
+在当前 patched dylib 上按架构枚举符号：
+
+```bash
+TG="/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib"
+nm -arch arm64  -m "$TG" | rg -i 'heartbeat|Timer|startAuto|ActiveHUDC2ff|ActiveHUDC2gg|ActiveHUDC2dd'
+nm -arch arm64e -m "$TG" | rg -i 'heartbeat|Timer|startAuto|ActiveHUDC2ff|ActiveHUDC2gg|ActiveHUDC2dd'
+```
+
+核心命中：
+
+```text
+arm64:
+0xb7e4  _$s2lk9ActiveHUDC18startAutoHeartbeat33_...yyF
+0xbdb8  _$s2lk9ActiveHUDC18startAutoHeartbeat33_...yyFySo7NSTimerCYbcfU_
+0xbe64  _$s2lk9ActiveHUDC16heartbeat_action33_...yyF
+
+arm64e:
+0xc2d4  _$s2lk9ActiveHUDC18startAutoHeartbeat33_...yyF
+0xc930  _$s2lk9ActiveHUDC18startAutoHeartbeat33_...yyFySo7NSTimerCYbcfU_
+0xc9e8  _$s2lk9ActiveHUDC16heartbeat_action33_...yyF
+```
+
+相关辅助符号：
+
+```text
+arm64:
+0x9ffc  heartbeatTimer getter
+0xa068  heartbeatTimer setter
+0xa0fc  heartbeatTimer modify
+0xad84  ActiveHUD.ff()
+0xb798  ActiveHUD.ff() ObjC wrapper
+
+arm64e:
+0xa734  heartbeatTimer getter
+0xa7a4  heartbeatTimer setter
+0xa83c  heartbeatTimer modify
+0xb644  ActiveHUD.ff()
+0xc284  ActiveHUD.ff() ObjC wrapper
+```
+
+反汇编证据显示：
+
+- `startAutoHeartbeat` 会计算时间差，并在条件满足时创建 `NSTimer`。
+- 定时器由 `scheduledTimerWithTimeInterval:repeats:block:` 创建，随后通过 `addTimer:forMode:` 加入 runloop。
+- timer block 会触发心跳逻辑。
+- `heartbeat_action` 是周期心跳动作函数。
+
+因此最小稳定 patch 点选择三层同时覆盖：
+
+1. `startAutoHeartbeat`：阻止创建新 timer。
+2. timer block：即使已存在/被外部调用，也不执行动作。
+3. `heartbeat_action`：兜底禁用周期动作本体。
+
+## 18. 心跳补丁方案
+
+### 18.1 备份
+
+patch 前备份：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/backup/TG@wx_zyyy.dylib.before_heartbeat_patch
+```
+
+心跳分析与验证产物目录：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/heartbeat-patch
+```
+
+### 18.2 arm64 patch 点
+
+| 功能 | 函数 | offset | patch bytes |
+|---|---|---:|---|
+| 禁止启动自动心跳 timer | `_$s2lk9ActiveHUDC18startAutoHeartbeat...yyF` | `0xb7e4` | `c0035fd6` |
+| 禁止 timer block 执行 | `_$s2lk9ActiveHUDC18startAutoHeartbeat...yyFySo7NSTimerCYbcfU_` | `0xbdb8` | `c0035fd6` |
+| 禁止心跳动作本体 | `_$s2lk9ActiveHUDC16heartbeat_action...yyF` | `0xbe64` | `c0035fd6` |
+
+`c0035fd6` 对应：
+
+```asm
+ret
+```
+
+### 18.3 arm64e patch 点
+
+| 功能 | 函数 | offset | patch bytes |
+|---|---|---:|---|
+| 禁止启动自动心跳 timer | `_$s2lk9ActiveHUDC18startAutoHeartbeat...yyF` | `0xc2d4` | `7f2303d5ff0f5fd6` |
+| 禁止 timer block 执行 | `_$s2lk9ActiveHUDC18startAutoHeartbeat...yyFySo7NSTimerCYbcfU_` | `0xc930` | `7f2303d5ff0f5fd6` |
+| 禁止心跳动作本体 | `_$s2lk9ActiveHUDC16heartbeat_action...yyF` | `0xc9e8` | `7f2303d5ff0f5fd6` |
+
+`7f2303d5ff0f5fd6` 对应：
+
+```asm
+pacibsp
+retab
+```
+
+### 18.4 重签名
+
+心跳 patch 后重新合并 fat Mach-O，并对 dylib 与 app 做 ad-hoc 重签：
+
+```bash
+codesign -f -s - "/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib"
+codesign -f -s - --deep "/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app"
+```
+
+验证结果：
+
+```text
+codesign dylib OK
+codesign app OK
+```
+
+心跳 patch 后当前工作区 dylib SHA256：
+
+```text
+39cca71d7825ff4b3c48392ce2ead907caafc90159ff39800ab1d2d7439c0460
+```
+
+### 18.5 去除心跳处理链路方案（可复现）
+
+本节把“去除心跳导致的延迟闪退”的实际处理链路整理成可复现方案，便于后续遇到同类定时检测/后台心跳问题时复用。
+
+#### 18.5.1 判断问题边界
+
+已完成第一阶段 patch 后，`ActiveHUD.dd()` 固定返回 2099，`ActiveHUD.gg()` 直接返回，但仍出现“隔段时间闪退”。这类现象优先怀疑：
+
+1. 启动后延迟创建的 `NSTimer` / `DispatchSourceTimer` / RunLoop timer。
+2. 周期性授权心跳接口返回异常后触发退出。
+3. 心跳结果写回本地授权状态，覆盖第一阶段本地时间 patch 的效果。
+4. timer block 内部调用其它授权动作函数，导致间接闪退。
+
+本次目标限定为 `TG@wx_zyyy.dylib` 内已经可证实的 `ActiveHUD` 心跳链路，不扩大到主程序其它后台线程或完整性检测。
+
+#### 18.5.2 定位入口
+
+从当前工作区 dylib 枚举心跳/定时器相关符号：
+
+```bash
+TG="/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib"
+
+nm -arch arm64  -m "$TG" | rg -i 'heartbeat|Timer|startAuto|ActiveHUDC2ff|ActiveHUDC2gg|ActiveHUDC2dd'
+nm -arch arm64e -m "$TG" | rg -i 'heartbeat|Timer|startAuto|ActiveHUDC2ff|ActiveHUDC2gg|ActiveHUDC2dd'
+```
+
+关键判断：
+
+- `startAutoHeartbeat` 是 timer 创建入口。
+- `startAutoHeartbeat(...NSTimer...)` 是 `NSTimer` block 回调。
+- `heartbeat_action` 是周期动作本体。
+- `heartbeatTimer getter/setter/modify` 只是 timer 属性访问，不作为主 patch 点。
+- `ActiveHUD.ff()` 上游会调用 `startAutoHeartbeat`，但直接 patch `ff()` 风险更高，可能误伤其它初始化逻辑；因此不作为首选 patch 点。
+
+#### 18.5.3 验证调用关系
+
+用 `llvm-objdump` 对关键符号附近反汇编，确认调用链：
+
+```bash
+OUT="/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/heartbeat-patch"
+mkdir -p "$OUT"
+
+llvm-objdump -d --macho --arch=arm64 "$TG" \
+  | rg -A6 -B2 '(_\$s2lk9ActiveHUDC18startAutoHeartbeat|_\$s2lk9ActiveHUDC16heartbeat_action)' \
+  > "$OUT/disasm_arm64_heartbeat_patch.txt"
+
+llvm-objdump -d --macho --arch=arm64e "$TG" \
+  | rg -A6 -B2 '(_\$s2lk9ActiveHUDC18startAutoHeartbeat|_\$s2lk9ActiveHUDC16heartbeat_action)' \
+  > "$OUT/disasm_arm64e_heartbeat_patch.txt"
+```
+
+已保存的证据文件：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/heartbeat-patch/disasm_arm64_heartbeat_patch.txt
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/heartbeat-patch/disasm_arm64e_heartbeat_patch.txt
+```
+
+关键证据摘要：
+
+```text
+arm64:
+0xb7e4  startAutoHeartbeat: ret
+0xbdb8  timer block:        ret
+0xbe64  heartbeat_action:   ret
+
+arm64e:
+0xc2d4  startAutoHeartbeat: pacibsp; retab
+0xc930  timer block:        pacibsp; retab
+0xc9e8  heartbeat_action:   pacibsp; retab
+```
+
+#### 18.5.4 Patch 原则
+
+本次不只 patch `heartbeat_action`，而是三层同时处理：
+
+| 层级 | 目的 | 原因 |
+|---|---|---|
+| `startAutoHeartbeat` | 阻止新建周期 timer | 从源头避免后续重复触发 |
+| timer block | 阻止已注册/间接调用的 block 执行 | 防止已有 block 或 trampoline 继续触发 |
+| `heartbeat_action` | 兜底禁止心跳动作本体 | 即使其它路径直接调用也不执行 |
+
+arm64 使用裸 `ret`：
+
+```text
+c0035fd6
+```
+
+arm64e 保留 PAC 返回语义：
+
+```text
+7f2303d5ff0f5fd6
+```
+
+即：
+
+```asm
+pacibsp
+retab
+```
+
+#### 18.5.5 实施步骤
+
+1. 备份 patch 前 dylib：
+
+```bash
+cp -p "$TG" \
+  "/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/backup/TG@wx_zyyy.dylib.before_heartbeat_patch"
+```
+
+2. 用 `lipo` 拆出双架构切片：
+
+```bash
+OUT="/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/heartbeat-patch"
+lipo "$TG" -thin arm64  -output "$OUT/TG_arm64.before_hb.dylib"
+lipo "$TG" -thin arm64e -output "$OUT/TG_arm64e.before_hb.dylib"
+```
+
+3. 按 offset 写入 patch bytes：
+
+```text
+arm64:
+0xb7e4 c0035fd6
+0xbdb8 c0035fd6
+0xbe64 c0035fd6
+
+arm64e:
+0xc2d4 7f2303d5ff0f5fd6
+0xc930 7f2303d5ff0f5fd6
+0xc9e8 7f2303d5ff0f5fd6
+```
+
+4. 合并 fat dylib 并写回 app：
+
+```bash
+lipo -create \
+  "$OUT/TG_arm64.after_hb.dylib" \
+  "$OUT/TG_arm64e.after_hb.dylib" \
+  -output "$OUT/TG_heartbeat_patched.fat.dylib"
+
+cp -f "$OUT/TG_heartbeat_patched.fat.dylib" "$TG"
+```
+
+5. 重签名：
+
+```bash
+codesign -f -s - "$TG"
+codesign -f -s - --deep "/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app"
+```
+
+#### 18.5.6 验证步骤
+
+验证必须同时覆盖旧 patch 和新心跳 patch。
+
+1. 验证 patch bytes：
+
+```bash
+python3 - <<'PY'
+from pathlib import Path
+import subprocess, sys
+fat = Path('/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib')
+out = Path('/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/heartbeat-patch')
+checks = {
+  'arm64': {
+    0xa14c:'e0df8ad2c090bef2c0035fd6',
+    0xad2c:'e0df8ad2c090bef2c0035fd6',
+    0xbea4:'c0035fd6',
+    0xca4c:'c0035fd6',
+    0xb7e4:'c0035fd6',
+    0xbdb8:'c0035fd6',
+    0xbe64:'c0035fd6',
+  },
+  'arm64e': {
+    0xa8a8:'7f2303d5e0df8ad2c090bef2ff0f5fd6',
+    0xb5e8:'7f2303d5e0df8ad2c090bef2ff0f5fd6',
+    0xca3c:'7f2303d5ff0f5fd6',
+    0xd6dc:'7f2303d5ff0f5fd6',
+    0xc2d4:'7f2303d5ff0f5fd6',
+    0xc930:'7f2303d5ff0f5fd6',
+    0xc9e8:'7f2303d5ff0f5fd6',
+  }
+}
+ok_all = True
+for arch in ('arm64', 'arm64e'):
+    thin = out / f'verify-{arch}.dylib'
+    subprocess.run(['lipo', str(fat), '-thin', arch, '-output', str(thin)], check=True)
+    data = thin.read_bytes()
+    print(f'## {arch}')
+    for off, exp in checks[arch].items():
+        got = data[off:off + len(bytes.fromhex(exp))].hex()
+        ok = got == exp
+        ok_all &= ok
+        print(f'{off:#x} expected={exp} got={got} {"OK" if ok else "FAIL"}')
+if not ok_all:
+    sys.exit(1)
+PY
+```
+
+2. 验签：
+
+```bash
+codesign -v "$TG"
+codesign -v "/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app"
+```
+
+3. 从最终 deb 重新解包复验：
+
+```bash
+FINAL="/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat.deb"
+VERIFY="/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/verify-nopopup-2099-noheartbeat-final"
+
+rm -rf "$VERIFY"
+mkdir -p "$VERIFY/parts" "$VERIFY/rootfs" "$VERIFY/control" "$VERIFY/slices"
+(cd "$VERIFY/parts" && ar -x "$FINAL")
+gtar -xzf "$VERIFY/parts/control.tar.gz" -C "$VERIFY/control"
+gtar -xzf "$VERIFY/parts/data.tar.gz" -C "$VERIFY/rootfs"
+```
+
+最终验证产物：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/verify-nopopup-2099-noheartbeat-final/verify_patch_bytes_from_final_deb.txt
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/verify-nopopup-2099-noheartbeat-final/final_hashes.txt
+```
+
+#### 18.5.7 成功判定
+
+本次方案的成功判定不是只看“能打包”，而是同时满足：
+
+1. `dd()` 仍固定返回 2099。
+2. `gg()` 仍为空返回，不再展示首页激活弹窗。
+3. `startAutoHeartbeat` 直接返回，不再创建新心跳 timer。
+4. timer block 直接返回，不再触发 `heartbeat_action`。
+5. `heartbeat_action` 直接返回，作为兜底。
+6. arm64 / arm64e 双架构 patch bytes 都从最终 deb 解包后复验通过。
+7. `TG@wx_zyyy.dylib` 与 `AMG.app` codesign 验证通过。
+8. 最终 deb hash 与 Pages 源挂载 hash 一致。
+
+#### 18.5.8 回滚与后续排查边界
+
+如需回滚心跳 patch，可从备份恢复：
+
+```bash
+cp -f \
+  "/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/backup/TG@wx_zyyy.dylib.before_heartbeat_patch" \
+  "$TG"
+codesign -f -s - "$TG"
+codesign -f -s - --deep "/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app"
+```
+
+如果真机仍然出现延迟闪退，下一步不应继续盲目扩大 patch，而应按运行时证据继续定位：
+
+- 是否还有其它 `NSTimer` / `dispatch_after` / `DispatchSourceTimer`。
+- 是否有完整性校验、签名校验或反调试延迟触发。
+- 是否主程序 `AMG` 内存在与按钮操作绑定的后台校验。
+- 是否网络请求失败/返回异常后触发退出分支。
+- 是否安装脚本或旧偏好文件残留导致状态不一致。
+
+当前 noheartbeat 包只声明已覆盖 `TG@wx_zyyy.dylib` 中有静态符号证据的 `ActiveHUD` 心跳链路。
+
+## 19. noheartbeat 最终 deb 打包与复验
+
+### 19.1 新最终 deb
+
+路径：
+
+```text
+/Users/zest/myworks/apt-ios-patch/patched/纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat.deb
+```
+
+SHA256：
+
+```text
+b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
+```
+
+大小：
+
+```text
+6206424 bytes
+```
+
+内部 `TG@wx_zyyy.dylib` SHA256：
+
+```text
+39cca71d7825ff4b3c48392ce2ead907caafc90159ff39800ab1d2d7439c0460
+```
+
+构建目录：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/buildroot-nopopup-2099-noheartbeat
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/pkgparts-nopopup-2099-noheartbeat
+```
+
+从最终 deb 重新解包验证目录：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/verify-nopopup-2099-noheartbeat-final
+```
+
+### 19.2 从最终 deb 复验 patch bytes
+
+最终 deb 解包后的验证文件：
+
+```text
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/verify-nopopup-2099-noheartbeat-final/verify_patch_bytes_from_final_deb.txt
+```
+
+验证结果：
+
+```text
+arm64:
+0xa14c e0df8ad2c090bef2c0035fd6 OK
+0xad2c e0df8ad2c090bef2c0035fd6 OK
+0xbea4 c0035fd6 OK
+0xca4c c0035fd6 OK
+0xb7e4 c0035fd6 OK
+0xbdb8 c0035fd6 OK
+0xbe64 c0035fd6 OK
+
+arm64e:
+0xa8a8 7f2303d5e0df8ad2c090bef2ff0f5fd6 OK
+0xb5e8 7f2303d5e0df8ad2c090bef2ff0f5fd6 OK
+0xca3c 7f2303d5ff0f5fd6 OK
+0xd6dc 7f2303d5ff0f5fd6 OK
+0xc2d4 7f2303d5ff0f5fd6 OK
+0xc930 7f2303d5ff0f5fd6 OK
+0xc9e8 7f2303d5ff0f5fd6 OK
+```
+
+验签与 hash：
+
+```text
+CODESIGN_TG OK
+CODESIGN_APP OK
+FINAL_DEB_SHA256 b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
+TG_DYLIB_SHA256 39cca71d7825ff4b3c48392ce2ead907caafc90159ff39800ab1d2d7439c0460
+```
+
+### 19.3 安装脚本复验
+
+新包仍保留第一阶段的安装脚本修复，并额外把 `postinst` 中的 `AMG_run` 清理路径加上引号。
+
+关键复验结果：
+
+```text
+preinst:
+if [ -e "/var/jb/Applications/AMG.app" ];then
+    rm -rf "/var/jb/Applications/AMG.app" > /dev/null
+fi
+
+postinst:
+if [[ ${iOSVerCount} -gt 1 ]]; then
+    ...
+else
+    rm -f "/var/jb/Applications/AMG.app/AMG_run"
+fi
+```
+
+## 20. GitHub Pages 静态源同步
+
+因为当前推荐的前端源只挂载 `patched/` 中的最新补丁 deb，心跳补丁完成后同步更新了静态源构建脚本与产物：
+
+```text
+/Users/zest/myworks/apt-ios-patch/scripts/build_pages_repo.py
+/Users/zest/myworks/apt-ios-patch/pages-repo/Packages
+/Users/zest/myworks/apt-ios-patch/pages-repo/Packages.gz
+/Users/zest/myworks/apt-ios-patch/pages-repo/Release
+/Users/zest/myworks/apt-ios-patch/pages-repo/index.html
+/Users/zest/myworks/apt-ios-patch/pages-repo/README.md
+/Users/zest/myworks/apt-ios-patch/pages-repo/depictions/com.amg456.rootless.html
+/Users/zest/myworks/apt-ios-patch/pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
+/Users/zest/myworks/apt-ios-patch/.github/workflows/deploy-pages-repo.yml
+```
+
+Pages 当前挂载文件：
+
+```text
+pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
+Size: 6206424
+SHA256: b39511e5a2ca7e0d506d999bf09f101e209e8fb5054df4d89b4dd4629bf8f697
+```
+
+本地校验：
+
+```bash
+python3 /Users/zest/myworks/apt-ios-patch/scripts/build_pages_repo.py
+gzip -t /Users/zest/myworks/apt-ios-patch/pages-repo/Packages.gz
+shasum -a 256 /Users/zest/myworks/apt-ios-patch/pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb
+```
+
+GitHub Actions workflow 也同步更新了 size/hash 断言，避免部署 Git LFS pointer 或旧 deb。
+
+后续前端页面进一步按原 `AMG官方源™` 越狱源结构做了分类目录还原：
+
+```text
+AWZ爱伪装: 1 packages
+AMG: 3 packages
+工具: 1 packages
+越狱插件: 3 packages
+ZORRO佐罗: 2 packages
+Razer雷蛇: 3 packages
+VBox虚拟盒子: 3 packages
+```
+
+实现边界：`index.html` 展示原源快照中的分类/条目结构，非补丁条目标记为“目录镜像”；APT `Packages` 与 `pages-repo/debs/` 仍只发布 `com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat.deb` 一个补丁包。
+
+## 21. 当前最新结论
+
+最新 `nopopup_2099_noheartbeat` 包在第一阶段基础上新增了心跳禁用：
+
+1. `ActiveHUD.gg()` Swift/ObjC 入口直接返回，首页激活码弹窗不再展示。
+2. `ActiveHUD.dd()` Swift/ObjC 入口固定返回 `4102444799`，过期时间等效为 `2099-12-31 23:59:59 UTC`。
+3. `startAutoHeartbeat`、timer block、`heartbeat_action` 三处同时直接返回，阻断周期心跳 timer 创建与执行。
+4. arm64 / arm64e 双架构 patch bytes 均已从最终 deb 反解包复验通过。
+5. dylib 与 app 已重签；最终 deb、Pages repo、workflow 校验值均已同步到 noheartbeat 版本。
+
+后续如果真机仍出现延迟闪退，应继续按运行时证据定位其它定时器、后台线程或完整性检测分支；但当前已覆盖本次静态证据中最明确的 `ActiveHUD` 心跳链路。
