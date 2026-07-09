@@ -12,8 +12,9 @@ This skill is intentionally a portable Agent Skills bundle:
 - Keep only standard `name` and `description` fields in `SKILL.md` frontmatter so both Codex-style skill loaders and Claude Code can parse it.
 - Keep reusable logic in `scripts/` and deeper guidance in `references/`; both platforms can read or execute these files on demand.
 - Do not add Claude-only frontmatter such as `allowed-tools`, `disable-model-invocation`, dynamic shell injection, or subagent fields unless the skill is intentionally forked for Claude Code only.
-- In this repository, Claude Code should discover the skill through `.claude/skills/ios-deb-reverse-patcher`, which is a symlink to the canonical `skills/ios-deb-reverse-patcher` directory.
-- In Codex, use the canonical `skills/ios-deb-reverse-patcher` bundle directly or install/copy it into the active Codex skills directory when global discovery is needed.
+- In this repository, Codex should discover the project-local skill through `.codex/skills/ios-deb-reverse-patcher`, which is a symlink to the canonical `skills/ios-deb-reverse-patcher` directory.
+- In this repository, Claude Code should discover the project-local skill through `.claude/skills/ios-deb-reverse-patcher`, which is also a symlink to the same canonical directory.
+- Do not install this skill into global `$CODEX_HOME/skills` unless explicitly requested; keep project behavior versioned with this repository.
 
 Claude Code direct invocation:
 
@@ -21,10 +22,16 @@ Claude Code direct invocation:
 /ios-deb-reverse-patcher analyze this deb and produce a patch plan
 ```
 
-Codex-style explicit invocation:
+Codex project-local explicit invocation:
 
 ```text
-[$ios-deb-reverse-patcher](skills/ios-deb-reverse-patcher/SKILL.md) analyze this deb and produce a patch plan
+[$ios-deb-reverse-patcher](.codex/skills/ios-deb-reverse-patcher/SKILL.md) analyze this deb and produce a patch plan
+```
+
+Canonical source path:
+
+```text
+skills/ios-deb-reverse-patcher/SKILL.md
 ```
 
 ## Core rule

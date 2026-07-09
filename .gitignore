@@ -52,6 +52,10 @@ next-env.d.ts
 !.claude/skills/
 .claude/skills/*
 !.claude/skills/ios-deb-reverse-patcher
+.codex/*
+!.codex/skills/
+.codex/skills/*
+!.codex/skills/ios-deb-reverse-patcher
 result/
 /work/
 !/pages-repo/**/*.png

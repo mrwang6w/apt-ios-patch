@@ -375,14 +375,16 @@ Keep this repository on a single-source skill model:
 
 ```text
 skills/ios-deb-reverse-patcher/                 # canonical Agent Skills bundle
+.codex/skills/ios-deb-reverse-patcher -> ../../skills/ios-deb-reverse-patcher
 .claude/skills/ios-deb-reverse-patcher -> ../../skills/ios-deb-reverse-patcher
 ```
 
 Rules:
 
 - The canonical skill must remain valid with only `name` and `description` frontmatter in `SKILL.md`.
+- Put Codex project discovery in `.codex/skills/` as a symlink, not as a copied folder.
 - Put Claude Code project discovery in `.claude/skills/` as a symlink, not as a copied folder.
-- Keep `.claude/settings*.json`, local Claude sessions, and unrelated Claude config ignored unless explicitly needed.
+- Keep `.codex/` and `.claude/` local settings, sessions, caches, and unrelated config ignored unless explicitly needed.
 - Avoid Claude-only dynamic context injection in the portable `SKILL.md`; if needed later, create a separate Claude-only wrapper skill.
 - If a platform does not follow symlinks, copy the canonical folder at install time and treat it as generated output; do not manually edit both copies.
-- Test both entry paths by resolving `.claude/skills/ios-deb-reverse-patcher/SKILL.md` and `skills/ios-deb-reverse-patcher/SKILL.md` to the same real path.
+- Test all entry paths by resolving `.codex/skills/ios-deb-reverse-patcher/SKILL.md`, `.claude/skills/ios-deb-reverse-patcher/SKILL.md`, and `skills/ios-deb-reverse-patcher/SKILL.md` to the same real path.
