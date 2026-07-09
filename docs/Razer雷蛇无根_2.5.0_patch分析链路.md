@@ -1,43 +1,29 @@
 # Razer 雷蛇无根 2.5.0 patch 分析链路
 
-## 1. 样本与输出
+## 1. 样本与最终产物
 
 - 原始 deb：`/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/2.5.0_Razer雷蛇(无根)_2.5.0_app.Razer854.rootless.deb`
 - 原始 SHA256：`e1da2c3995ab653609671d0dd75adf9f65669378c089a0386070635bd4c16d1d`
 - 原始 size：`21521984` bytes
 - Package：`app.Razer854.rootless`
-- Version：`2.5.0`
+- 原始 Version：`2.5.0`
+- 最终 Patch Version：`2.5.0-4`
 - Architecture：`iphoneos-arm64`
-- 输出 deb：`/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0_app.Razer854.rootless_nopopup_noexpire_noheartbeat_noexit.deb`
-- 输出 SHA256：`bffe9d57de415d70c6723e90e9aca0f2c17da123abd10e812243db3a1f8505ef`
-- 输出 size：`21215306` bytes
+- 最终 deb：`/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0-4_app.Razer854.rootless_nopopup_2099_noheartbeat_noexit_authhook.deb`
+- 最终 SHA256：`27db9b147cd7545fb1dd3eb85b661a9c9f47275dfcfae725ad0e78f94a048c58`
+- 最终 size：`21222476` bytes
 
-本轮更新范围：
+工作目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/`。按用户要求，`work/` 内审计、反编译、反汇编、重包、验证等产物全部留存。
 
-- `patched/`：保留各目标的最终补丁 deb，包括已恢复的 AMG 最新最终补丁包和本轮 Razer 最终补丁包；仅清理 AMG 早期中间态补丁 deb。
-- `pages-repo/`：已同步为 Pages 越狱源；APT metadata 和前端同时挂载已完成的 AMG 最终补丁包与本轮 Razer 最终补丁包，未发布 AMG 早期中间态补丁包。
-- `docs/`：保存本分析链路文档。
-- `work/app.Razer854.rootless-2.5.0/`：仅留存审计 metadata、r2/otool/nm/strings 文本证据、patch 后反汇编和 entitlements；继续忽略 rootfs、raw tar、repack、verify-final、原始 Mach-O 备份等大体积二进制中间产物。
-- `.gitignore`：只为上述 Razer work 文本证据增加定向放行规则。
+## 2. 被动审计与 payload
 
-没有在仓库根目录复制 `index.html`、`Packages`、`debs/` 等 Pages 产物；所有展示前端和 APT 静态源仍只位于 `pages-repo/`。
-
-## 2. 被动审计命令
+审计命令：
 
 ```bash
 python3 skills/ios-deb-reverse-patcher/scripts/deb_audit.py \
   '/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/2.5.0_Razer雷蛇(无根)_2.5.0_app.Razer854.rootless.deb' \
   --out /Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/audit
 ```
-
-关键目录：
-
-- 解包 work：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/`
-- 原始 audit：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/audit/`
-- 最终 audit：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/final-audit/`
-- 反解包验证：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/verify-final/`
-
-## 3. Payload 与 Mach-O
 
 rootless payload 位于 `var/jb/`：
 
@@ -49,174 +35,121 @@ rootless payload 位于 `var/jb/`：
 - `var/jb/usr/bin/razerdaemon`
 - `var/jb/usr/bin/razerdo`
 
-所有 Mach-O 均为单架构 `arm64`，没有 FAT/universal，也没有 `arm64e` slice：
+所有 Mach-O 均为单架构 `arm64`，没有 FAT/universal，也没有 `arm64e` slice。
 
-| Binary | 原始类型 | 原始 SHA256 |
-|---|---|---|
-| `var/jb/Applications/RCleaner.app/RCleaner` | Mach-O executable arm64 | `225710b91e25cbaf5d7277cef7dd1beb6d2a8a3e64b89b26f661c901bbc4a82c` |
-| `var/jb/Applications/razer.app/Razer` | Mach-O executable arm64 | `f0657be08d14a62cc23424d3f04675fd98b374b121614d60cbbd270099b97916` |
-| `var/jb/Applications/razer.app/razerd` | Mach-O dylib arm64 | `4805f21473682434cd688124e8c384729379ee7930cb774579e971a55bea01dd` |
-| `var/jb/Applications/razer.app/z` | Mach-O dylib arm64 | `12ed80368b6445c9f45ae7e47bd08272baf32d80861fbe383e3778139afd7864` |
-| `var/jb/Library/MobileSubstrate/DynamicLibraries/razer.dylib` | Mach-O dylib arm64 | `305fa368435e1e760debd99fab93de81299ef71512328d09d7a06040ee99ad55` |
-| `var/jb/Library/MobileSubstrate/DynamicLibraries/zen.dylib` | Mach-O dylib arm64 | `5c5733167fa9b3d15703bf8bd77f9c1c333057a5597bbca7704f492dbda3c6ae` |
-| `var/jb/usr/bin/razerdaemon` | Mach-O executable arm64 | `ee95c224d694677f9f0d27a655f81de9e658aecaa165b8f75b2e0db6bd27550c` |
-| `var/jb/usr/bin/razerdo` | Mach-O executable arm64 | `1745e12cfc31978068a075916acf2b58180da2ee2a22bf2a0de02f199b72876e` |
+## 3. 保护链路结论
 
-## 4. 保护链路证据
+证据入口：
 
-### 4.1 卡密 / 授权 UI
+- 授权 UI：`requestlicense`、`buttonAuthTapped`、两组 `showAlert:`、`Please Input LicenseCode`、`License Code`、繁体资源 `請輸入授權碼`。
+- 授权状态/过期：`LicenseAccepted`、`ExpiredText`、`license expired`、`dateWithTimeIntervalSince1970:`、`stringFromDate:`。
+- 刷新/一键新机：`RReload`、`cleanDataClicked:`、`getDeviceInfo`、daemon `requestDeviceInfo:`。
+- 心跳/API：`GCDTimer`、`keepAliveTimer`、`/device/%@/#`、`http://zck.razerios.com/api/rdata/getdata?enc=%s`。
+- 退出：`exit:xr:`、`exit2:xr:`、`exitClicked:`、`Kill APP`、`killall -9 razerdaemon`。
 
-`Razer` 主二进制中命中：
+最终判断：Razer 主 app 通过 VM trampoline 分发业务逻辑；授权状态由 app UI 与 daemon 设备/授权信息链路共同影响。过宽 early return 会把刷新/设备信息链路掐断，导致 UI fallback 到 epoch 0，东八区显示 `1970.01.01 08:00`。
 
-- selector：`requestlicense`
-- selector：`showAlert:`
-- strings：`Please Input LicenseCode`、`Code are case insensitive`、`License Code`
-- strings：`LicenseAccepted`、`ExpiredText`、`Lic Expired`、`license expired`
-- URL：`https://api.razerios.com/`、`http://106.75.148.59:9001/`
-- storyboard/nib：`Base.lproj/Main.storyboardc/license.nib` -> `LicenseViewController`
-- 多语言资源：`zh-Hans.lproj/Language.strings` 中 `Please Input LicenseCode => 请输入授权码`，`License Code => 授权码`
+## 4. 真机反馈后的修复策略
 
-### 4.2 试用/版本过期
+用户真机反馈 `2.5.0-2` 仍出现：
 
-多语言资源与主二进制命中：
+- `error未授权`
+- 点击 `Authorization/授權` 弹 `請輸入授權碼`
+- 点击 `[全面清理]` 也要求授权码
+- 授权过期时间显示 `1970.01.01 08:00`
+- 点击刷新按钮弹 `error未授权`
 
-- `current version outtime,need to update => 当前版本已经过期，请重新安装最新版本`
-- `ExpiredText => Expired (Refresh)`
-- `Lic Expired => 授权至：`
-- `license expired`
+根因复盘：`2.5.0-2`/中间态曾把主控 `viewDidAppear:`、授权页 `viewDidAppear:`、daemon `requestDeviceInfo:` 直接 `ret`，副作用是刷新和授权状态回填链路不再执行，时间字段回退到 0。
 
-ObjC class 信息显示主控混淆类含 `checkUpdate`、`viewDidAppear:`、`requestlicense`，符合启动后检查版本/授权状态再弹窗或展示过期状态的链路。
+最终 `2.5.0-4` 策略：
 
-### 4.3 心跳 / 定时 / 网络上报
+1. 恢复 `viewDidAppear:` 与 `requestDeviceInfo:`，保留刷新/一键新机业务入口。
+2. 保留明确的弹窗/退出入口静态 `ret`：`requestlicense`、两组 `showAlert:`、`buttonAuthTapped`、`checkUpdate`、退出路径。
+3. 新增 `RazerAuth2099.dylib` 运行期 hook，只在主进程 `Razer` 启用：
+   - `NSUserDefaults`：`LicenseAccepted => YES`，`ExpiredText => 2099.01.01 00:00`。
+   - `NSDictionary`/子类：读取 `LicenseAccepted`/`ExpiredText` 时强制返回授权和 2099。
+   - `UILabel setText:`：把 `1970.01.01`、`未授权/未授權/Unauthorized/license expired` 文案替换为 `2099.01.01 00:00`。
+   - `UIViewController presentViewController:`：兜底拦截授权码/未授权相关 `UIAlertController`。
 
-`Razer`：
-
-- imports：`NSTimer`、`NSURLSession`、`NSURLSessionConfiguration`、`CFNetwork`
-- selectors：`scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:`、`repeatingTimer`
-
-`razerdaemon`：
-
-- launchd：`KeepAlive=true`，程序为 `/var/jb/usr/bin/razerdaemon`
-- selectors：`GCDTimer`、`keepAliveTimer`、`checkDupTimer`、`requestDeviceInfo:`
-- strings：`/device/%@/1`、`/device/%@/100`、`/device/%@/#`
-- URLs：`http://175.178.71.72:9005/api/rdata/getdata?enc=%s`、`http://106.75.148.59:9005/api/rdata/getdata?enc=%s`、`http://zck.razerios.com/api/rdata/getdata?enc=%s`
-
-### 4.4 延迟退出 / kill 路径
-
-`Razer`：
-
-- selectors：`exit:xr:`、`exit2:xr:`、`exitClicked:`
-- strings：`zexit`、`appexit`、`Kill APP`
-- strings：`/var/jb/usr/bin/killall`、`/var/jb/sbin/killall`、`/usr/bin/killall`、`/bin/killall`
-- strings：`/var/jb/usr/bin/killall -9 razerdaemon` 等多路径 daemon kill 命令
-
-`razerdaemon`：
-
-- strings：`killall -9 razerdaemon`
-
-静态 imports 没有直接 `_exit/exit/abort/kill/system/posix_spawn/exec/fork`，且关键业务方法普遍是 88-byte trampoline：保存寄存器、设置 opcode、跳入统一分发器。因此常规 xref/decompile 不能直接展开业务分支，本轮采用入口 `RET` 的最小静态 patch。
+这样修复用户提出的几条现象：授权判断读到 valid，过期时间读到 2099；刷新按钮不会再因被 `ret` 掐断而回 1970；一键新机入口不再被直接 `ret`，而是在进入前授权 predicate 被 hook 为有效。
 
 ## 5. Patch 点表
 
-所有 VA 均基于 Mach-O image base `0x100000000`，file offset = `VA - 0x100000000`。新指令均为 ARM64 `ret`：`c0 03 5f d6`。
+所有 VA 均基于 Mach-O image base `0x100000000`，file offset = `VA - 0x100000000`。静态新指令均为 ARM64 `ret`：`c0 03 5f d6`。
 
 | Binary | Arch | Function / symbol | VA | file offset | old bytes | new bytes | reason |
 |---|---|---:|---:|---:|---|---|---|
-| `var/jb/Applications/razer.app/Razer` | arm64 | `checkUpdate` | `0x1003cee84` | `0x003cee84` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用启动/版本过期检查入口，覆盖 `current version outtime` 触发面。 |
-| `var/jb/Applications/razer.app/Razer` | arm64 | 混淆主控 `viewDidAppear:` | `0x1003d1938` | `0x003d1938` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用页面出现后的授权检查/弹窗/定时触发入口。 |
-| `var/jb/Applications/razer.app/Razer` | arm64 | `requestlicense` | `0x1003d2018` | `0x003d2018` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用授权码输入弹窗与授权请求入口。 |
-| `var/jb/Applications/razer.app/Razer` | arm64 | `exit:xr:` | `0x10032bd78` | `0x0032bd78` | `fd 7b bf a9` | `c0 03 5f d6` | 禁用 VM 外显退出/kill 方法之一，覆盖 `zexit/appexit/Kill APP` 链。 |
-| `var/jb/Applications/razer.app/Razer` | arm64 | `exitClicked:` | `0x1003d3098` | `0x003d3098` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用 UI/回调触发的退出入口。 |
-| `var/jb/Applications/razer.app/Razer` | arm64 | `exit2:xr:` | `0x1020070dc` | `0x020070dc` | `fd 7b bf a9` | `c0 03 5f d6` | 禁用第二条退出/kill 分支，防止延迟闪退残留。 |
-| `var/jb/usr/bin/razerdaemon` | arm64 | `requestDeviceInfo:` | `0x10047430c` | `0x0047430c` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用 daemon 周期设备信息/授权上报入口，覆盖 `/api/rdata/getdata?enc=%s`。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `checkUpdate` | `0x1003cee84` | `0x003cee84` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用版本过期检查入口。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `requestlicense` | `0x1003d2018` | `0x003d2018` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用授权码请求入口。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `showAlert:`（主控组） | `0x1003d2fe0` | `0x003d2fe0` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用主控组授权失败弹窗。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `buttonAuthTapped` | `0x100d97694` | `0x00d97694` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用 `Authorization/授權` 按钮授权码弹窗入口。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `showAlert:`（授权页组） | `0x100d9b8c0` | `0x00d9b8c0` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用授权页组 `請輸入授權碼` 弹窗。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `exit:xr:` | `0x10032bd78` | `0x0032bd78` | `fd 7b bf a9` | `c0 03 5f d6` | 禁用退出/kill 分支。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `exitClicked:` | `0x1003d3098` | `0x003d3098` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用 UI 退出入口。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `exit2:xr:` | `0x1020070dc` | `0x020070dc` | `fd 7b bf a9` | `c0 03 5f d6` | 禁用第二条退出/kill 分支。 |
+| `var/jb/Library/MobileSubstrate/DynamicLibraries/RazerAuth2099.dylib` | arm64 | constructor / ObjC swizzle | N/A | N/A | 文件不存在 | 新增 dylib，SHA256 `1b0668384da8b46a1c3fab4c97f3872e5c0488b8ea07b2e3096225008f77ef28` | hook `LicenseAccepted`、`ExpiredText`、残留授权 alert，强制 2099 授权态。 |
 
-## 6. 重签与重打包
+已撤销/恢复的过宽 patch：
 
-重签：
+| Binary | Arch | Function | VA | file offset | restored bytes | reason |
+|---|---|---:|---:|---:|---|---|
+| `var/jb/Applications/razer.app/Razer` | arm64 | 主控 `viewDidAppear:` | `0x1003d1938` | `0x003d1938` | `ff 03 10 d1` | 恢复刷新/状态回填，避免 1970。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | 授权页 `viewDidAppear:` | `0x100d0a4d0` | `0x00d0a4d0` | `ff 03 10 d1` | 恢复授权页刷新，避免 1970。 |
+| `var/jb/usr/bin/razerdaemon` | arm64 | `requestDeviceInfo:` | `0x10047430c` | `0x0047430c` | `ff 03 10 d1` | 恢复 daemon 设备信息链路，避免刷新按钮失效。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | 主控 `cleanDataClicked:` | `0x1003d1ea8` | `0x003d1ea8` | `ff 03 10 d1` | 不直接禁用一键新机业务入口。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | 授权页组 `cleanDataClicked:` | `0x100d9b91c` | `0x00d9b91c` | `ff 03 10 d1` | 不直接禁用一键新机业务入口。 |
 
-```bash
-codesign -f -s - --entitlements \
-  /Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/evidence/razer-app.entitlements.plist \
-  /Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/Applications/razer.app
+## 6. 重签、重包与验证
 
-codesign -f -s - \
-  /Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/usr/bin/razerdaemon
-```
+新增 hook 源码：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/patch-src/RazerAuth2099Hook.m`。
 
-本机没有 `dpkg-deb/fakeroot`，使用手工 deb 组装：
-
-```bash
-/opt/homebrew/bin/gtar --format=gnu --sort=name --mtime='UTC 2026-07-09' \
-  --owner=0 --group=0 --numeric-owner -czf control.tar.gz .
-
-/opt/homebrew/bin/gtar --format=gnu --sort=name --mtime='UTC 2026-07-09' \
-  --owner=0 --group=0 --numeric-owner -czf data.tar.gz .
-
-ar -crS final.deb debian-binary control.tar.gz data.tar.gz
-```
-
-关键 archive mode 验证：
-
-- `Razer`：`0755 root/root`
-- `razerdaemon`：`4755 root/root`
-- `razerdo`：`4755 root/root`
-- `razer.dylib` / `zen.dylib`：`0755 root/root`
-
-## 7. 最终验证
-
-最终 deb：
-
-```text
-/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0_app.Razer854.rootless_nopopup_noexpire_noheartbeat_noexit.deb
-SIZE=21215306 bytes
-SHA256=bffe9d57de415d70c6723e90e9aca0f2c17da123abd10e812243db3a1f8505ef
-```
-
-最终 deb 反解包 byte-level 验证全部为 `c0035fd6`：
-
-```text
-Razer        checkUpdate              off=0x003cee84 OK
-Razer        mainVC viewDidAppear:    off=0x003d1938 OK
-Razer        requestlicense           off=0x003d2018 OK
-Razer        exit:xr:                 off=0x0032bd78 OK
-Razer        exitClicked:             off=0x003d3098 OK
-Razer        exit2:xr:                off=0x020070dc OK
-razerdaemon  requestDeviceInfo:       off=0x0047430c OK
-```
-
-`codesign --verify --deep --strict` 结果：
-
-- `var/jb/Applications/razer.app`：valid on disk，satisfies its Designated Requirement
-- `var/jb/usr/bin/razerdaemon`：valid on disk，satisfies its Designated Requirement
+最终验证目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/verify-final-2.5.0-4/`。
 
 最终 `deb_audit`：
 
-- `lfs_pointer=false`
-- `Razer` SHA256：`308c9b3193f926a5267a70c59730d325e8b1d0d7db9892b196ff25c112e39207`
-- `razerdaemon` SHA256：`3917fbec49271adce2f0b63e7102772b54c8eba12ce0b90034516b7a321baa37`
-- 其他 Mach-O hash 与原始样本一致。
+```text
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/final-audit-2.5.0-4/
+lfs_pointer=false
+Package=app.Razer854.rootless
+Version=2.5.0-4
+```
 
-## 8. 运行时注意事项
+最终 deb 反解包 byte 验证：
 
-当前验证为静态证据链 + 最终 deb 反解包 byte 验证 + codesign 验证，未在真实越狱 iOS 环境做 1～2 分钟存活测试。如果仍出现弹窗或延迟闪退，下一轮应优先检查：
+```text
+Razer        checkUpdate                      off=0x003cee84 got=c0035fd6 OK
+Razer        requestlicense                   off=0x003d2018 got=c0035fd6 OK
+Razer        main showAlert:                  off=0x003d2fe0 got=c0035fd6 OK
+Razer        buttonAuthTapped                 off=0x00d97694 got=c0035fd6 OK
+Razer        license showAlert:               off=0x00d9b8c0 got=c0035fd6 OK
+Razer        exit:xr:                         off=0x0032bd78 got=c0035fd6 OK
+Razer        exitClicked:                     off=0x003d3098 got=c0035fd6 OK
+Razer        exit2:xr:                        off=0x020070dc got=c0035fd6 OK
+Razer        main viewDidAppear restored      off=0x003d1938 got=ff0310d1 OK
+Razer        license viewDidAppear restored   off=0x00d0a4d0 got=ff0310d1 OK
+Razer        main cleanDataClicked not ret    off=0x003d1ea8 got=ff0310d1 OK
+Razer        license cleanDataClicked not ret off=0x00d9b91c got=ff0310d1 OK
+razerdaemon  requestDeviceInfo restored       off=0x0047430c got=ff0310d1 OK
+```
 
-1. `Razer` 中 `showAlert:` 是否仍由其他授权失败分支调用。
-2. `razerdaemon` 中 `Reconnect` / `connectionClosed:` / MQTT failure branch 是否调度新的 kill/restart。
-3. `razer.dylib` 是否在注入 UIKit 进程后还有独立 `abort`/timer 逻辑。
-4. VM 分发器 `0x10200b624` / daemon `sym._104` 中对应 opcode 的共享 failure handler。
+`codesign --verify --deep --strict` / `codesign --verify --strict` 已验证：
 
-## 9. Pages 源同步验证
+- `var/jb/Applications/razer.app`
+- `var/jb/Library/MobileSubstrate/DynamicLibraries/RazerAuth2099.dylib`
+- `var/jb/usr/bin/razerdaemon`
 
-本轮 `pages-repo/` 挂载已完成目标的最终 patch 包：
+## 7. Pages 源同步
+
+`pages-repo/` 当前只发布已完成目标的最终包：AMG + Razer 最新包，不保留 Razer 旧包。
 
 ```text
 pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
-SIZE=6206412 bytes
+SIZE=6206412
 SHA256=0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
 
-pages-repo/debs/app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb
-SIZE=21215306 bytes
-SHA256=bffe9d57de415d70c6723e90e9aca0f2c17da123abd10e812243db3a1f8505ef
+pages-repo/debs/app.Razer854.rootless_2.5.0-4_nopopup_2099_noheartbeat_noexit_authhook.deb
+SIZE=21222476
+SHA256=27db9b147cd7545fb1dd3eb85b661a9c9f47275dfcfae725ad0e78f94a048c58
 ```
 
 `pages-repo/Packages` 包含两条记录：
@@ -225,22 +158,10 @@ SHA256=bffe9d57de415d70c6723e90e9aca0f2c17da123abd10e812243db3a1f8505ef
 Package: com.amg456.rootless
 Version: 18.1.1
 Filename: ./debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
-SHA256: 0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
 
 Package: app.Razer854.rootless
-Version: 2.5.0
-Filename: ./debs/app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb
-SHA256: bffe9d57de415d70c6723e90e9aca0f2c17da123abd10e812243db3a1f8505ef
+Version: 2.5.0-4
+Filename: ./debs/app.Razer854.rootless_2.5.0-4_nopopup_2099_noheartbeat_noexit_authhook.deb
 ```
 
-同步校验命令：
-
-```bash
-python3 scripts/build_pages_repo.py
-gzip -t pages-repo/Packages.gz
-find pages-repo/debs -maxdepth 1 -type f -name '*.deb' | wc -l
-shasum -a 256 pages-repo/debs/*.deb
-git check-attr filter diff merge text -- pages-repo/Packages.gz pages-repo/debs/*.deb
-```
-
-结论：`pages-repo/debs/` 有 2 个 deb（AMG 最终包 + Razer 最终包）；`Packages.gz` 可解压；`pages-repo/.gitattributes` 对 `.deb` / `.gz` 生效为普通 Git blob；未发现 Git LFS pointer。
+没有在仓库根目录复制 `index.html`、`Packages`、`debs/` 等重复 Pages 产物；所有展示前端和 APT 静态源只位于 `pages-repo/`。

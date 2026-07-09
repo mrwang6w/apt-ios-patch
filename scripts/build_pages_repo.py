@@ -51,11 +51,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "app.Razer854.rootless",
-        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0_app.Razer854.rootless_nopopup_noexpire_noheartbeat_noexit.deb",
-        "deb_name": "app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb",
-        "publish_name": "2.5.0_Razer雷蛇(无根) Patch NoExit",
+        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0-4_app.Razer854.rootless_nopopup_2099_noheartbeat_noexit_authhook.deb",
+        "deb_name": "app.Razer854.rootless_2.5.0-4_nopopup_2099_noheartbeat_noexit_authhook.deb",
+        "publish_name": "2.5.0-4_Razer雷蛇(无根) Patch Auth2099 NoExit",
         "publish_section": "Razer雷蛇",
-        "publish_desc": "授权测试补丁包：去除授权码弹窗和版本过期检查，禁用 daemon 设备信息/授权上报，并移除退出/kill 路径。",
+        "publish_desc": "授权测试补丁包：恢复刷新/一键新机业务入口，保留授权弹窗/退出路径静态补丁，并新增运行期授权 hook 强制 LicenseAccepted=YES、ExpiredText=2099.01.01 00:00。",
         "depiction_name": "app.Razer854.rootless.html",
     },
 ]
@@ -193,8 +193,14 @@ def render_package_rows(
             mounted_info = mounted.get(package)
             is_mounted = mounted_info is not None
             name = str(mounted_info["publish_name"]) if is_mounted else item.get("Name", package)
-            version = item.get("Version", "unknown")
-            arch = item.get("Architecture", "iphoneos-arm64")
+            if is_mounted:
+                fields = mounted_info.get("fields", {})
+                assert isinstance(fields, dict)
+                version = str(fields.get("Version", item.get("Version", "unknown")))
+                arch = str(fields.get("Architecture", item.get("Architecture", "iphoneos-arm64")))
+            else:
+                version = item.get("Version", "unknown")
+                arch = item.get("Architecture", "iphoneos-arm64")
             desc = str(mounted_info["publish_desc"]) if is_mounted else "目录镜像：未发布原包 deb，仅保留分类结构。"
             badge = "已挂载 patch" if is_mounted else "目录镜像"
             klass = "package mounted" if is_mounted else "package disabled"
@@ -507,7 +513,7 @@ def build() -> None:
 
 {chr(10).join(f"- `{package_id}` / `{info['publish_name']}` / `debs/{info['deb_name']}` / `{info['size']}` bytes / SHA256 `{info['sha256']}`" for package_id, info in mounted.items())}
 
-> 注意：deb 内部版本仍沿用各自原包版本。如果设备已经安装同版本原包，包管理器可能不提示升级；需要强制升级时应重打 deb 并同步提升 deb control 中的 `Version`。
+> 注意：APT 升级判断以 deb control 中的 `Version` 为准；需要强制覆盖已安装包时，应同步提升 control `Version` 并重新生成 Pages metadata。
 
 ## 前端分类目录
 

@@ -57,3 +57,8 @@ next-env.d.ts
 .codex/skills/*
 !.codex/skills/ios-deb-reverse-patcher
 result/
+
+
+
+
+/work/**/*.txt
