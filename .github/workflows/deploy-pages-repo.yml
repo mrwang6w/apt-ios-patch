@@ -71,7 +71,7 @@ jobs:
               return records
 
           records = parse_packages(packages_bytes.decode("utf-8"))
-          expected_packages = {"com.amg456.rootless", "app.Razer854.rootless"}
+          expected_packages = {"com.amg456.rootless", "app.Razer854.rootless", "com.amg456.VBox1"}
           seen_packages = {record.get("Package") for record in records}
           if seen_packages != expected_packages:
               raise SystemExit(f"unexpected Packages records: {sorted(seen_packages)}")

@@ -58,6 +58,15 @@ PATCHED_PACKAGES = [
         "publish_desc": "授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期覆盖具体 NSDictionary 类簇的授权响应状态与 2099 过期时间，并使用无 PAX 扩展头的 USTAR deb 归档。",
         "depiction_name": "app.Razer854.rootless.html",
     },
+    {
+        "package_id": "com.amg456.VBox1",
+        "source": PATCHED_DIR / "VBox_5.5「无根」_5.5-1_com.amg456.VBox1_nolicense_ustar.deb",
+        "deb_name": "com.amg456.VBox1_5.5-1_nolicense_ustar.deb",
+        "publish_name": "VBox_5.5「无根」 Patch NoLicense USTAR",
+        "publish_section": "VBox虚拟盒子",
+        "publish_desc": "授权测试补丁包：禁用激活弹窗与授权心跳回调，并使用无 PAX 扩展头的 USTAR deb 归档。",
+        "depiction_name": "com.amg456.VBox1.html",
+    },
 ]
 
 

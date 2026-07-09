@@ -3,7 +3,7 @@
 ## Provenance
 
 - Original package: `/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/VBox_5.5「无根」_5.5_com.amg456.VBox1.deb`
-- Package id/version: `com.amg456.VBox1` / `5.5`
+- Package id/version: `com.amg456.VBox1` / `5.5-1`
 - Original SHA-256: `2ab876fc64885dbebbb2fc079a9009c7243144c1457ada0c85ecf5c936a3f290`
 - Patch target: `var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib`
 - Original target SHA-256: `e2aa03f6c409e2b564f5698d06e555f6724f6e903e7ecfccd6dabbe5f478f2d6`
@@ -30,8 +30,8 @@ were recombined.
 
 ## Output
 
-- Patched package: `VBox_5.5_rootless_nolicense_com.amg456.VBox1.deb`
-- Package SHA-256: `0ceb934f9602242b393fcb77f6d146e5e88f6f3d2a2e262f59c7d8a9732e15b7`
+- Patched package: `VBox_5.5_rootless_5.5-1_com.amg456.VBox1_nolicense_ustar.deb`
+- Package SHA-256: `28cfcda362c30a75ab8d37f57710fa4dab85acc656cf729cb4899e4cb222c17f`
 - Archive members: `debian-binary`, `control.tar.gz`, `data.tar.gz`
 - Both tar members use deterministic GNU USTAR headers with numeric owner/group `0/0`; PAX and AppleDouble metadata are absent.
 

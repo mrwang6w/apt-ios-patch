@@ -34,3 +34,21 @@ Depiction: ./depictions/app.Razer854.rootless.html
 Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期覆盖具体 NSDictionary 类簇的授权响应状态与 2099 过期时间，并使用无 PAX 扩展头的 USTAR deb 归档。
 
+Package: com.amg456.VBox1
+Version: 5.5-1
+Priority: optional
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Section: VBox虚拟盒子
+Maintainer: Local Patch Repo
+Name: VBox_5.5「无根」 Patch NoLicense USTAR
+Author: Local Patch Repo
+Filename: ./debs/com.amg456.VBox1_5.5-1_nolicense_ustar.deb
+Size: 6458306
+MD5sum: 04c636ce1d8b58f26e6afa5253950f5a
+SHA1: ded70705772ebe0790f94ed5d994afb610b24024
+SHA256: 28cfcda362c30a75ab8d37f57710fa4dab85acc656cf729cb4899e4cb222c17f
+Depiction: ./depictions/com.amg456.VBox1.html
+Icon: ./CydiaIcon.png
+Description: 授权测试补丁包：禁用激活弹窗与授权心跳回调，并使用无 PAX 扩展头的 USTAR deb 归档。
+

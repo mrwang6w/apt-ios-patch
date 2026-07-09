@@ -6,15 +6,17 @@
 
 - `com.amg456.rootless` / `纯净版18.1.1_AMG奔驰正版[无根] Patch NoExit` / `debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb` / `6206412` bytes / SHA256 `0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866`
 - `app.Razer854.rootless` / `2.5.0-11_Razer雷蛇(无根) Patch AuthState USTAR` / `debs/app.Razer854.rootless_2.5.0-11_authstate_ustar.deb` / `21217862` bytes / SHA256 `53deb601ec0458da67379ddd0390b5f57e06ef7549079756bb3f7c8f351a8e21`
+- `com.amg456.VBox1` / `VBox_5.5「无根」 Patch NoLicense USTAR` / `debs/com.amg456.VBox1_5.5-1_nolicense_ustar.deb` / `6458306` bytes / SHA256 `28cfcda362c30a75ab8d37f57710fa4dab85acc656cf729cb4899e4cb222c17f`
 
 > 注意：APT 升级判断以 deb control 中的 `Version` 为准；需要强制覆盖已安装包时，应同步提升 control `Version` 并重新生成 Pages metadata。
 
 ## 前端分类目录
 
-当前前端展示：`2` packages，当前 Pages 源实际挂载：`2` patched packages。
+当前前端展示：`3` packages，当前 Pages 源实际挂载：`3` patched packages。
 
 - AMG: 1 packages
 - Razer雷蛇: 1 packages
+- VBox虚拟盒子: 1 packages
 
 ## 推荐部署
 
