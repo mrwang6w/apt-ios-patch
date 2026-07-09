@@ -7,11 +7,11 @@
 - 原始 size：`21521984` bytes
 - Package：`app.Razer854.rootless`
 - 原始 Version：`2.5.0`
-- 最终 Patch Version：`2.5.0-4`
+- 最终 Patch Version：`2.5.0-6`
 - Architecture：`iphoneos-arm64`
-- 最终 deb：`/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0-4_app.Razer854.rootless_nopopup_2099_noheartbeat_noexit_authhook.deb`
-- 最终 SHA256：`27db9b147cd7545fb1dd3eb85b661a9c9f47275dfcfae725ad0e78f94a048c58`
-- 最终 size：`21222476` bytes
+- 最终 deb：`/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0-6_app.Razer854.rootless_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb`
+- 最终 SHA256：`fd78918deaf73714a3817c4d83645edd4aa599d6c4cc9d70251533e9f57e44fc`
+- 最终 size：`21221556` bytes
 
 工作目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/`。按用户要求，`work/` 内审计、反编译、反汇编、重包、验证等产物全部留存。
 
@@ -61,17 +61,63 @@ rootless payload 位于 `var/jb/`：
 
 根因复盘：`2.5.0-2`/中间态曾把主控 `viewDidAppear:`、授权页 `viewDidAppear:`、daemon `requestDeviceInfo:` 直接 `ret`，副作用是刷新和授权状态回填链路不再执行，时间字段回退到 0。
 
-最终 `2.5.0-4` 策略：
+`2.5.0-4`/`2.5.0-5`/`2.5.0-6` 策略：
 
 1. 恢复 `viewDidAppear:` 与 `requestDeviceInfo:`，保留刷新/一键新机业务入口。
 2. 保留明确的弹窗/退出入口静态 `ret`：`requestlicense`、两组 `showAlert:`、`buttonAuthTapped`、`checkUpdate`、退出路径。
 3. 新增 `RazerAuth2099.dylib` 运行期 hook，只在主进程 `Razer` 启用：
    - `NSUserDefaults`：`LicenseAccepted => YES`，`ExpiredText => 2099.01.01 00:00`。
-   - `NSDictionary`/子类：读取 `LicenseAccepted`/`ExpiredText` 时强制返回授权和 2099。
+   - `2.5.0-4`/`2.5.0-5` 曾尝试全局 `NSDictionary`/子类兜底；Frida 证明会影响 CoreFoundation / ColorSync，`2.5.0-6` 已移除。
    - `UILabel setText:`：把 `1970.01.01`、`未授权/未授權/Unauthorized/license expired` 文案替换为 `2099.01.01 00:00`。
    - `UIViewController presentViewController:`：兜底拦截授权码/未授权相关 `UIAlertController`。
 
 这样修复用户提出的几条现象：授权判断读到 valid，过期时间读到 2099；刷新按钮不会再因被 `ret` 掐断而回 1970；一键新机入口不再被直接 `ret`，而是在进入前授权 predicate 被 hook 为有效。
+
+
+## 4.1 真机启动闪退复盘与 `2.5.0-6` 修复
+
+用户安装 `2.5.0-4` 后打开即闪退。通过 USB 拉取真机 crash report：
+
+- 设备：`iPhone9,2` / iOS `15.8.8 (19H422)` / `arm64`
+- crash：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/evidence/device-crashreports/Razer-2026-07-10-012825.ips`
+- 摘要：`EXC_CRASH (SIGABRT)`，`abort() called`
+- 关键栈：`RazerAuth2099Init+260 -> _objc_msgSend_uncached -> +[UIView initialize] -> CGColorSpaceExtendedSRGB -> create_sRGBProfile -> std::terminate`
+- 证据摘要留存：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/evidence/startup-crash-2.5.0-4/crash-summary.txt`
+
+根因：`2.5.0-4` 的 `RazerAuth2099Init` 构造函数在 dyld 执行 tweak constructors 阶段直接访问 `UILabel` / `UIViewController` 并 swizzle UIKit 方法，触发 `+[UIView initialize]`，在 iOS 15.8.8 / Dopamine / ElleKit 注入链路中稳定 abort。
+
+`2.5.0-5`/`2.5.0-6` 最小修复：
+
+1. constructor 只做最小 `NSUserDefaults` 授权/过期字段 hook。
+2. `UILabel setText:` 与 `UIViewController presentViewController:` 的 swizzle 改为收到 `UIApplicationDidFinishLaunchingNotification` 后安装，不再用 constructor 或提前 main-queue fallback 触碰 UIKit。
+3. `2.5.0-6` 根据 Frida 证据移除全局 `NSDictionary` swizzle，避免影响 CoreFoundation / ColorSync 内部字典实现。
+4. hook dylib 重新 ad-hoc codesign，最终反解包校验 `codesign -vv` 通过。
+
+
+
+Frida 复核：
+
+- 探针脚本：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/evidence/frida/razer_launch_probe.py`
+- 原始日志：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/evidence/frida/razer-launch-probe-20260710-015021.log`
+- 摘要：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/evidence/frida/razer-launch-probe-summary.txt`
+
+Frida 捕获到旧安装包启动时：
+
+```text
+dlopen path=/var/jb/usr/lib/TweakInject/RazerAuth2099.dylib
++[UIView initialize] -> ColorSync.framework/ColorSync
+objc_exception_throw inside CoreFoundation -[NSDictionary objectForKey:]
+ENTER abort -> pthread_kill -> process-terminated
+```
+
+因此 `2.5.0-6` 不再做全局字典类替换，只保留 `NSUserDefaults` 授权状态和启动后 UI 兜底；复查时已进一步删除源码/dylib 中残留的 `NSDictionary` hook 死代码，最终二进制不再包含 `objectForKeyedSubscript`/`rz2099_objectForKeyedSubscript` 等字典 hook 字符串。
+
+最终 v6 hook 字符串验证包含：
+
+```text
+[RazerAuth2099Hook] enabled: LicenseAccepted=YES ExpiredText=%@; post-launch hooks deferred
+[RazerAuth2099Hook] post-launch hooks installed
+```
 
 ## 5. Patch 点表
 
@@ -87,7 +133,7 @@ rootless payload 位于 `var/jb/`：
 | `var/jb/Applications/razer.app/Razer` | arm64 | `exit:xr:` | `0x10032bd78` | `0x0032bd78` | `fd 7b bf a9` | `c0 03 5f d6` | 禁用退出/kill 分支。 |
 | `var/jb/Applications/razer.app/Razer` | arm64 | `exitClicked:` | `0x1003d3098` | `0x003d3098` | `ff 03 10 d1` | `c0 03 5f d6` | 禁用 UI 退出入口。 |
 | `var/jb/Applications/razer.app/Razer` | arm64 | `exit2:xr:` | `0x1020070dc` | `0x020070dc` | `fd 7b bf a9` | `c0 03 5f d6` | 禁用第二条退出/kill 分支。 |
-| `var/jb/Library/MobileSubstrate/DynamicLibraries/RazerAuth2099.dylib` | arm64 | constructor / ObjC swizzle | N/A | N/A | 文件不存在 | 新增 dylib，SHA256 `1b0668384da8b46a1c3fab4c97f3872e5c0488b8ea07b2e3096225008f77ef28` | hook `LicenseAccepted`、`ExpiredText`、残留授权 alert，强制 2099 授权态。 |
+| `var/jb/Library/MobileSubstrate/DynamicLibraries/RazerAuth2099.dylib` | arm64 | constructor / ObjC swizzle | N/A | N/A | 文件不存在 | 新增 dylib，SHA256 `1d007ad80b156a916c34c81fcdc72ea6742148932ecbdab7ec42cbc948a6f1fe` | hook `LicenseAccepted`、`ExpiredText`、残留授权 alert，强制 2099 授权态；`2.5.0-6` 移除全局 `NSDictionary` swizzle，并将 UIKit swizzle 延后到 app launch 后，避免启动期初始化 `UIView` / ColorSync 字典异常闪退。 |
 
 已撤销/恢复的过宽 patch：
 
@@ -103,15 +149,15 @@ rootless payload 位于 `var/jb/`：
 
 新增 hook 源码：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/patch-src/RazerAuth2099Hook.m`。
 
-最终验证目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/verify-final-2.5.0-4/`。
+最终验证目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/verify-final-2.5.0-6/`。
 
 最终 `deb_audit`：
 
 ```text
-/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/final-audit-2.5.0-4/
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/final-audit-2.5.0-6/
 lfs_pointer=false
 Package=app.Razer854.rootless
-Version=2.5.0-4
+Version=2.5.0-6
 ```
 
 最终 deb 反解包 byte 验证：
@@ -147,9 +193,9 @@ pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 SIZE=6206412
 SHA256=0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
 
-pages-repo/debs/app.Razer854.rootless_2.5.0-4_nopopup_2099_noheartbeat_noexit_authhook.deb
-SIZE=21222476
-SHA256=27db9b147cd7545fb1dd3eb85b661a9c9f47275dfcfae725ad0e78f94a048c58
+pages-repo/debs/app.Razer854.rootless_2.5.0-6_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb
+SIZE=21221556
+SHA256=fd78918deaf73714a3817c4d83645edd4aa599d6c4cc9d70251533e9f57e44fc
 ```
 
 `pages-repo/Packages` 包含两条记录：
@@ -160,8 +206,8 @@ Version: 18.1.1
 Filename: ./debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 
 Package: app.Razer854.rootless
-Version: 2.5.0-4
-Filename: ./debs/app.Razer854.rootless_2.5.0-4_nopopup_2099_noheartbeat_noexit_authhook.deb
+Version: 2.5.0-6
+Filename: ./debs/app.Razer854.rootless_2.5.0-6_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb
 ```
 
 没有在仓库根目录复制 `index.html`、`Packages`、`debs/` 等重复 Pages 产物；所有展示前端和 APT 静态源只位于 `pages-repo/`。

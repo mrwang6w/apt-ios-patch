@@ -5,7 +5,7 @@
 ## 当前挂载包
 
 - `com.amg456.rootless` / `纯净版18.1.1_AMG奔驰正版[无根] Patch NoExit` / `debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb` / `6206412` bytes / SHA256 `0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866`
-- `app.Razer854.rootless` / `2.5.0-4_Razer雷蛇(无根) Patch Auth2099 NoExit` / `debs/app.Razer854.rootless_2.5.0-4_nopopup_2099_noheartbeat_noexit_authhook.deb` / `21222476` bytes / SHA256 `27db9b147cd7545fb1dd3eb85b661a9c9f47275dfcfae725ad0e78f94a048c58`
+- `app.Razer854.rootless` / `2.5.0-6_Razer雷蛇(无根) Patch Auth2099 NoDict DeferUI NoExit` / `debs/app.Razer854.rootless_2.5.0-6_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb` / `21221556` bytes / SHA256 `fd78918deaf73714a3817c4d83645edd4aa599d6c4cc9d70251533e9f57e44fc`
 
 > 注意：APT 升级判断以 deb control 中的 `Version` 为准；需要强制覆盖已安装包时，应同步提升 control `Version` 并重新生成 Pages metadata。
 

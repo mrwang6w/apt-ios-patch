@@ -1,0 +1,25 @@
+{
+  "deb": {
+    "path": "/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0-5_app.Razer854.rootless_nopopup_2099_noheartbeat_noexit_authhook_deferui.deb",
+    "size": 21222374,
+    "sha256": "2f1657e5411aa7798ae1112290aa8673c7e9149fe70e353d3a1e6debf50c2540",
+    "lfs_pointer": false
+  },
+  "control": {
+    "Package": "app.Razer854.rootless",
+    "Name": "2.5.0_Razer雷蛇(无根)",
+    "Version": "2.5.0-5",
+    "Architecture": "iphoneos-arm64",
+    "Section": "Razer雷蛇"
+  },
+  "outputs": [
+    "deb.json",
+    "control.json",
+    "ar-members.txt",
+    "tree.txt",
+    "macho.json",
+    "strings-hints.txt",
+    "rootfs/",
+    "control/"
+  ]
+}

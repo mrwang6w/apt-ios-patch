@@ -51,11 +51,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "app.Razer854.rootless",
-        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0-4_app.Razer854.rootless_nopopup_2099_noheartbeat_noexit_authhook.deb",
-        "deb_name": "app.Razer854.rootless_2.5.0-4_nopopup_2099_noheartbeat_noexit_authhook.deb",
-        "publish_name": "2.5.0-4_Razer雷蛇(无根) Patch Auth2099 NoExit",
+        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0-6_app.Razer854.rootless_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb",
+        "deb_name": "app.Razer854.rootless_2.5.0-6_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb",
+        "publish_name": "2.5.0-6_Razer雷蛇(无根) Patch Auth2099 NoDict DeferUI NoExit",
         "publish_section": "Razer雷蛇",
-        "publish_desc": "授权测试补丁包：恢复刷新/一键新机业务入口，保留授权弹窗/退出路径静态补丁，并新增运行期授权 hook 强制 LicenseAccepted=YES、ExpiredText=2099.01.01 00:00。",
+        "publish_desc": "授权测试补丁包：恢复刷新/一键新机业务入口，保留授权弹窗/退出路径静态补丁；运行期授权 hook 强制 LicenseAccepted=YES、ExpiredText=2099.01.01 00:00，移除全局 NSDictionary swizzle，并延后安装 UIKit hook 修复真机启动闪退。",
         "depiction_name": "app.Razer854.rootless.html",
     },
 ]

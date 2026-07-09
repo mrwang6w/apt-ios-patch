@@ -1,0 +1,189 @@
+{"app_name":"Razer","timestamp":"2026-07-10 01:28:17.00 +0800","app_version":"1.7.2","slice_uuid":"3513bdc3-3f78-36c9-97aa-092e6a72ea48","build_version":"100702","platform":2,"bundleID":"Razer","share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"D097532C-4F08-4922-A0C5-A7EBE6A33FC7","name":"Razer"}
+{
+  "uptime" : 78000,
+  "procLaunch" : "2026-07-10 01:28:16.4698 +0800",
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 1885136980484,
+  "coalitionID" : 4546,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-10 01:28:16.9150 +0800",
+  "incident" : "D097532C-4F08-4922-A0C5-A7EBE6A33FC7",
+  "bug_type" : "309",
+  "pid" : 15378,
+  "procExitAbsTime" : 1885147659480,
+  "cpuType" : "ARM-64",
+  "procName" : "Razer",
+  "procPath" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/Applications\/razer.app\/Razer",
+  "bundleInfo" : {"CFBundleShortVersionString":"1.7.2","CFBundleVersion":"100702","CFBundleIdentifier":"Razer"},
+  "storeInfo" : {"deviceIdentifierForVendor":"7CC75681-96E7-4164-9107-C1985004D8A6"},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "Razer",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000000, 0x0000000000000000","rawCodes":[0,0],"type":"EXC_CRASH","signal":"SIGABRT"},
+  "asi" : {"libsystem_c.dylib":["abort() called"]},
+  "faultingThread" : 0,
+  "threads" : [{"triggered":true,"id":494142,"threadState":{"x":[{"value":0},{"value":0},{"value":0},{"value":0},{"value":6862387879},{"value":6096073488},{"value":110},{"value":2352},{"value":4412933504,"symbolLocation":0,"symbol":"_main_thread"},{"value":6048958269881306391},{"value":512},{"value":6096072256},{"value":4125249589},{"value":0},{"value":16},{"value":0},{"value":328},{"value":1},{"value":0},{"value":6},{"value":259},{"value":4412933728,"symbolLocation":224,"symbol":"_main_thread"},{"value":4412014800,"symbolLocation":0,"symbol":"kRazerFutureText"},{"value":4411983760},{"value":11},{"value":8433960824,"symbolLocation":0,"symbol":"runtimeLock"},{"value":4412933728,"symbolLocation":224,"symbol":"_main_thread"},{"value":10800957600},{"value":10800957936}],"flavor":"ARM_THREAD_STATE64","lr":{"value":7997315140},"cpsr":{"value":1073741824},"fp":{"value":6096073344},"sp":{"value":6096073312},"esr":{"value":1442840704,"description":" Address size fault"},"pc":{"value":7449308092,"matchesCrashFrame":1},"far":{"value":7449308084}},"queue":"com.apple.main-thread","frames":[{"imageOffset":27580,"symbol":"__pthread_kill","symbolLocation":8,"imageIndex":0},{"imageOffset":55364,"symbol":"pthread_kill","symbolLocation":208,"imageIndex":1},{"imageOffset":128684,"symbol":"abort","symbolLocation":124,"imageIndex":2},{"imageOffset":69092,"symbol":"abort_message","symbolLocation":128,"imageIndex":3},{"imageOffset":66208,"symbol":"std::__terminate(void (*)())","symbolLocation":48,"imageIndex":3},{"imageOffset":66088,"symbol":"std::terminate()","symbolLocation":60,"imageIndex":3},{"imageOffset":409768,"symbol":"_dispatch_client_callout","symbolLocation":36,"imageIndex":4},{"imageOffset":23244,"symbol":"_dispatch_once_callout","symbolLocation":28,"imageIndex":4},{"imageOffset":44588,"symbol":"create_sRGBProfile","symbolLocation":60,"imageIndex":5},{"imageOffset":416744,"symbol":"__CGColorSpaceExtendedSRGB_block_invoke","symbolLocation":64,"imageIndex":6},{"imageOffset":409748,"symbol":"_dispatch_client_callout","symbolLocation":16,"imageIndex":4},{"imageOffset":23244,"symbol":"_dispatch_once_callout","symbolLocation":28,"imageIndex":4},{"imageOffset":68212,"symbol":"CGColorSpaceExtendedSRGB","symbolLocation":84,"imageIndex":6},{"imageOffset":13156,"symbol":"CGColorSpaceCreateWithName","symbolLocation":348,"imageIndex":6},{"imageOffset":2080964,"symbol":"+[UIView initialize]","symbolLocation":308,"imageIndex":7},{"imageOffset":75956,"symbol":"CALLING_SOME_+initialize_METHOD","symbolLocation":20,"imageIndex":8},{"imageOffset":34980,"symbol":"initializeNonMetaClass","symbolLocation":724,"imageIndex":8},{"imageOffset":34352,"symbol":"initializeNonMetaClass","symbolLocation":96,"imageIndex":8},{"imageOffset":52116,"symbol":"initializeAndMaybeRelock(objc_class*, objc_object*, mutex_tt<false>&, bool)","symbolLocation":292,"imageIndex":8},{"imageOffset":24880,"symbol":"lookUpImpOrForward","symbolLocation":832,"imageIndex":8},{"imageOffset":8416,"symbol":"_objc_msgSend_uncached","symbolLocation":64,"imageIndex":8},{"imageOffset":20916,"symbol":"RazerAuth2099Init","symbolLocation":260,"imageIndex":9},{"imageOffset":49444,"symbol":"invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const","symbolLocation":152,"imageIndex":10},{"imageOffset":245240,"symbol":"invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const","symbolLocation":160,"imageIndex":10},{"imageOffset":40684,"symbol":"invocation function for block in dyld3::MachOFile::forEachSection(void (dyld3::MachOFile::SectionInfo const&, bool, bool&) block_pointer) const","symbolLocation":520,"imageIndex":10},{"imageOffset":37392,"symbol":"dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void (load_command const*, bool&) block_pointer) const","symbolLocation":160,"imageIndex":10},{"imageOffset":34160,"symbol":"dyld3::MachOFile::forEachSection(void (dyld3::MachOFile::SectionInfo const&, bool, bool&) block_pointer) const","symbolLocation":164,"imageIndex":10},{"imageOffset":244148,"symbol":"dyld3::MachOAnalyzer::forEachInitializerPointerSection(Diagnostics&, void (unsigned int, unsigned int, unsigned char const*, bool&) block_pointer) const","symbolLocation":120,"imageIndex":10},{"imageOffset":86192,"symbol":"dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const","symbolLocation":324,"imageIndex":10},{"imageOffset":73232,"symbol":"dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const","symbolLocation":144,"imageIndex":10},{"imageOffset":56160,"symbol":"dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, dyld3::Array<dyld4::Loader const*>&) const","symbolLocation":212,"imageIndex":10},{"imageOffset":79936,"symbol":"dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const","symbolLocation":120,"imageIndex":10},{"imageOffset":54124,"symbol":"dyld4::APIs::dlopen_from(char const*, int, void*)","symbolLocation":496,"imageIndex":10},{"imageOffset":376960,"symbol":"MACHOMERGER_HOOK__ZN5dyld44APIs11dlopen_fromEPKciPv","symbolLocation":128,"imageIndex":10},{"imageOffset":18544,"symbol":"injection_init","symbolLocation":1960,"imageIndex":11},{"imageOffset":49444,"symbol":"invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const","symbolLocation":152,"imageIndex":10},{"imageOffset":245240,"symbol":"invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const","symbolLocation":160,"imageIndex":10},{"imageOffset":40684,"symbol":"invocation function for block in dyld3::MachOFile::forEachSection(void (dyld3::MachOFile::SectionInfo const&, bool, bool&) block_pointer) const","symbolLocation":520,"imageIndex":10},{"imageOffset":37392,"symbol":"dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void (load_command const*, bool&) block_pointer) const","symbolLocation":160,"imageIndex":10},{"imageOffset":34160,"symbol":"dyld3::MachOFile::forEachSection(void (dyld3::MachOFile::SectionInfo const&, bool, bool&) block_pointer) const","symbolLocation":164,"imageIndex":10},{"imageOffset":244148,"symbol":"dyld3::MachOAnalyzer::forEachInitializerPointerSection(Diagnostics&, void (unsigned int, unsigned int, unsigned char const*, bool&) block_pointer) const","symbolLocation":120,"imageIndex":10},{"imageOffset":86192,"symbol":"dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const","symbolLocation":324,"imageIndex":10},{"imageOffset":73232,"symbol":"dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const","symbolLocation":144,"imageIndex":10},{"imageOffset":56160,"symbol":"dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, dyld3::Array<dyld4::Loader const*>&) const","symbolLocation":212,"imageIndex":10},{"imageOffset":79936,"symbol":"dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const","symbolLocation":120,"imageIndex":10},{"imageOffset":54124,"symbol":"dyld4::APIs::dlopen_from(char const*, int, void*)","symbolLocation":496,"imageIndex":10},{"imageOffset":376960,"symbol":"MACHOMERGER_HOOK__ZN5dyld44APIs11dlopen_fromEPKciPv","symbolLocation":128,"imageIndex":10},{"imageOffset":22592,"symbol":"initializer","symbolLocation":1080,"imageIndex":12},{"imageOffset":49444,"symbol":"invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const","symbolLocation":152,"imageIndex":10},{"imageOffset":245792,"symbol":"invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const","symbolLocation":332,"imageIndex":10},{"imageOffset":40684,"symbol":"invocation function for block in dyld3::MachOFile::forEachSection(void (dyld3::MachOFile::SectionInfo const&, bool, bool&) block_pointer) const","symbolLocation":520,"imageIndex":10},{"imageOffset":37392,"symbol":"dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void (load_command const*, bool&) block_pointer) const","symbolLocation":160,"imageIndex":10},{"imageOffset":34160,"symbol":"dyld3::MachOFile::forEachSection(void (dyld3::MachOFile::SectionInfo const&, bool, bool&) block_pointer) const","symbolLocation":164,"imageIndex":10},{"imageOffset":86244,"symbol":"dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const","symbolLocation":376,"imageIndex":10},{"imageOffset":73232,"symbol":"dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const","symbolLocation":144,"imageIndex":10},{"imageOffset":56160,"symbol":"dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, dyld3::Array<dyld4::Loader const*>&) const","symbolLocation":212,"imageIndex":10},{"imageOffset":79936,"symbol":"dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const","symbolLocation":120,"imageIndex":10},{"imageOffset":198988,"symbol":"dyld4::APIs::runAllInitializersForMain()","symbolLocation":244,"imageIndex":10},{"imageOffset":121948,"symbol":"dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*)","symbolLocation":2620,"imageIndex":10},{"imageOffset":115888,"symbol":"start","symbolLocation":412,"imageIndex":10}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7449280512,
+    "size" : 212992,
+    "uuid" : "a0b29fd9-54cf-3871-a8e2-2b30ffceb58b",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7997259776,
+    "size" : 69632,
+    "uuid" : "a150c45a-fa09-3593-8e64-337bc555c085",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6641803264,
+    "size" : 507904,
+    "uuid" : "f90936ac-0df4-38ae-b3ea-2cd6e5f97e64",
+    "path" : "\/usr\/lib\/system\/libsystem_c.dylib",
+    "name" : "libsystem_c.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6862303232,
+    "size" : 94208,
+    "uuid" : "f92ef016-d0cd-3182-9fc0-1ec48f372556",
+    "path" : "\/usr\/lib\/libc++abi.dylib",
+    "name" : "libc++abi.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6463078400,
+    "size" : 536576,
+    "uuid" : "9ccdbde3-15e1-3a45-b330-4a5e2c3f92bd",
+    "path" : "\/usr\/lib\/system\/libdispatch.dylib",
+    "name" : "libdispatch.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6627237888,
+    "size" : 786432,
+    "uuid" : "2456bf15-5c96-3e7e-9a08-1625fe28ab77",
+    "path" : "\/System\/Library\/PrivateFrameworks\/ColorSync.framework\/ColorSync",
+    "name" : "ColorSync"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6497296384,
+    "size" : 5939200,
+    "uuid" : "c99c6784-000c-3d9a-b7ef-af28a0f1a28a",
+    "path" : "\/System\/Library\/Frameworks\/CoreGraphics.framework\/CoreGraphics",
+    "name" : "CoreGraphics"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6503235584,
+    "size" : 24756224,
+    "uuid" : "9d301877-2593-385c-8f72-f075aa0b48fa",
+    "path" : "\/System\/Library\/PrivateFrameworks\/UIKitCore.framework\/UIKitCore",
+    "name" : "UIKitCore"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6861271040,
+    "size" : 229376,
+    "uuid" : "f1b36686-ed48-35ef-8896-0cea8e9da1c0",
+    "path" : "\/usr\/lib\/libobjc.A.dylib",
+    "name" : "libobjc.A.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4411981824,
+    "size" : 32768,
+    "uuid" : "38c638b7-bed9-3f40-bfdf-d8776d6a46f4",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/usr\/lib\/TweakInject\/RazerAuth2099.dylib",
+    "name" : "RazerAuth2099.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4412456960,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/basebin\/gen\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4411572224,
+    "size" : 32768,
+    "uuid" : "e0e0a791-f4b7-3f23-b87d-9f8f24caff65",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/usr\/lib\/ellekit\/libinjector.dylib",
+    "name" : "libinjector.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4411113472,
+    "size" : 49152,
+    "uuid" : "536ef4ef-4659-3ea3-afd5-1403e1faf347",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/basebin\/systemhook.dylib",
+    "name" : "systemhook.dylib"
+  }
+],
+  "sharedCache" : {
+  "base" : 6462750720,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=658.4M resident=0K(0%) swapped_out_or_unallocated=658.4M(100%)\nWritable regions: Total=532.4M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=532.4M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nActivity Tracing                   256K        1 \nKernel Alloc Once                   32K        1 \nMALLOC                           530.2M       14 \nMALLOC guard page                   64K        4 \nSTACK GUARD                         16K        1 \nStack                             1008K        1 \n__CTF                               756        1 \n__DATA                            16.6M      441 \n__DATA_CONST                      40.1M      455 \n__DATA_DIRTY                      1755K      379 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       186.5M        8 \n__OBJC_RO                         92.1M        1 \n__OBJC_RW                         3520K        1 \n__TEXT                           471.9M      465 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nmapped file                         64K        1 \nshared memory                       32K        2 \n===========                     =======  ======= \nTOTAL                              1.3G     1779 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+    "queue" : "com.apple.main-thread"
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

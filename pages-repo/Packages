@@ -17,20 +17,20 @@ Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，禁用周期心跳检测，并移除延迟退出路径。
 
 Package: app.Razer854.rootless
-Version: 2.5.0-4
+Version: 2.5.0-6
 Priority: optional
 Depends: firmware (>= 8.0), mobilesubstrate
 Architecture: iphoneos-arm64
 Section: Razer雷蛇
 Maintainer: Local Patch Repo
-Name: 2.5.0-4_Razer雷蛇(无根) Patch Auth2099 NoExit
+Name: 2.5.0-6_Razer雷蛇(无根) Patch Auth2099 NoDict DeferUI NoExit
 Author: Local Patch Repo
-Filename: ./debs/app.Razer854.rootless_2.5.0-4_nopopup_2099_noheartbeat_noexit_authhook.deb
-Size: 21222476
-MD5sum: 93f97ff6d7e82e7c3463cc6ba08cd186
-SHA1: e40c806c3ab96422ce2facd503e19d3340fb9923
-SHA256: 27db9b147cd7545fb1dd3eb85b661a9c9f47275dfcfae725ad0e78f94a048c58
+Filename: ./debs/app.Razer854.rootless_2.5.0-6_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb
+Size: 21221556
+MD5sum: a268dfc105ed43073717d6370d917d86
+SHA1: 808ef505c56dc06cf307b5e0baed651a464193d0
+SHA256: fd78918deaf73714a3817c4d83645edd4aa599d6c4cc9d70251533e9f57e44fc
 Depiction: ./depictions/app.Razer854.rootless.html
 Icon: ./CydiaIcon.png
-Description: 授权测试补丁包：恢复刷新/一键新机业务入口，保留授权弹窗/退出路径静态补丁，并新增运行期授权 hook 强制 LicenseAccepted=YES、ExpiredText=2099.01.01 00:00。
+Description: 授权测试补丁包：恢复刷新/一键新机业务入口，保留授权弹窗/退出路径静态补丁；运行期授权 hook 强制 LicenseAccepted=YES、ExpiredText=2099.01.01 00:00，移除全局 NSDictionary swizzle，并延后安装 UIKit hook 修复真机启动闪退。
 
