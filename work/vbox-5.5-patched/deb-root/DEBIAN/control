@@ -1,5 +1,5 @@
 Package: com.amg456.VBox1
-Version: 5.5-2
+Version: 5.5-3
 Priority: optional
 Section: VBox虚拟盒子
 Depends: firmware (>= 8.0), mobilesubstrate

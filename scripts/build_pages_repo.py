@@ -60,11 +60,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "com.amg456.VBox1",
-        "source": PATCHED_DIR / "VBox_5.5「无根」_5.5-2_com.amg456.VBox1_nolicense_2099_ustar.deb",
-        "deb_name": "com.amg456.VBox1_5.5-2_nolicense_2099_ustar.deb",
-        "publish_name": "VBox_5.5「无根」 Patch NoLicense 2099 USTAR",
+        "source": PATCHED_DIR / "VBox_5.5「无根」_5.5-3_com.amg456.VBox1_nolicense_dynamic100y_ustar.deb",
+        "deb_name": "com.amg456.VBox1_5.5-3_nolicense_dynamic100y_ustar.deb",
+        "publish_name": "VBox_5.5「无根」 Patch NoLicense Dynamic 100Y USTAR",
         "publish_section": "VBox虚拟盒子",
-        "publish_desc": "授权测试补丁包：禁用激活弹窗与授权心跳回调，首页授权时间固定显示为 2099-10-01 00:00:00，并使用无 PAX 扩展头的 USTAR deb 归档。",
+        "publish_desc": "授权测试补丁包：禁用激活弹窗与授权心跳回调；首页授权时间动态显示为设备当前时间加 100 年；使用无 PAX 扩展头的 USTAR deb 归档。",
         "depiction_name": "com.amg456.VBox1.html",
     },
 ]

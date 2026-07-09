@@ -3,11 +3,15 @@
 ## Provenance
 
 - Original package: `/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/VBox_5.5「无根」_5.5_com.amg456.VBox1.deb`
-- Package id/version: `com.amg456.VBox1` / `5.5-2`
+- Original package id/version: `com.amg456.VBox1` / `5.5-1`
+- Published patch version: `5.5-3`
 - Original SHA-256: `2ab876fc64885dbebbb2fc079a9009c7243144c1457ada0c85ecf5c936a3f290`
-- Patch target: `var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib`
-- Original target SHA-256: `e2aa03f6c409e2b564f5698d06e555f6724f6e903e7ecfccd6dabbe5f478f2d6`
-- Patched target SHA-256: `09114cdbf547fcf4ee2294af05ae2ee2c46916153d058bf2b099cd1a57cfe498`
+- License target: `var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib`
+- Home-page target: `var/jb/Applications/VBox.app/VBox`
+- Original `VBoc.dylib` SHA-256: `e2aa03f6c409e2b564f5698d06e555f6724f6e903e7ecfccd6dabbe5f478f2d6`
+- Patched `VBoc.dylib` SHA-256: `09114cdbf547fcf4ee2294af05ae2ee2c46916153d058bf2b099cd1a57cfe498`
+- Original `VBox` SHA-256: `ad38cd8e805e9781a2528a239cfbab7aba58f80857fed576cc3c9d03a01e6f31`
+- Patched and signed `VBox` SHA-256: `cd6205753187fb6cbecd11117cfd2945eecff00f5ecc6e150fa3b3aa7f399886`
 
 ## Evidence
 
@@ -16,38 +20,72 @@ activation endpoints `rauti.php?sn=...&km=` and `rauth.php?sn=`, the local
 state path `/var/jb/var/mobile/Library/Preferences/AMG/sa.conf`, and the
 Swift symbols `ActiveHUD.showActivationAlert` and `ActiveHUD.heartbeat_action`.
 
+The home-page authorization time does not come from `VBoc.dylib`'s
+`getAuthEndTime:`. `MainViewController tableView:viewForHeaderInSection:` in
+the main `VBox` executable reads the global `strExpiryTime` ivar, formats it as
+a date, prefixes the result with the authorization-time label, and calls
+`UILabel setText:`. Opaque control flow contains two equivalent formatting
+branches at `0x1005F6ED4` and `0x1005F7FB4`; both must be patched.
+
 ## Binary Changes
 
-| Architecture | Function | Slice VA/offset | Old bytes | New bytes |
+| Architecture | Target | VA / file offset | Old bytes | New bytes |
 | --- | --- | --- | --- | --- |
 | arm64 | `ActiveHUD.heartbeat_action` | `0xBF6C` | `ff8300d1` | `c0035fd6` (`ret`) |
 | arm64 | `ActiveHUD.showActivationAlert` | `0xBFAC` | `f44fbea9` | `c0035fd6` (`ret`) |
 | arm64e | `ActiveHUD.heartbeat_action` | `0xCAEC` | `7f2303d5` | `ff0f5fd6` (`retab`) |
 | arm64e | `ActiveHUD.showActivationAlert` | `0xCB40` | `7f2303d5` | `ff0f5fd6` (`retab`) |
-| arm64 | `lkclass.getAuthEndTime:` | `0x67CC` | `ff0304d1fa670ba9f85f0ca9f6570da9f44f0ea9fd7b0fa9` | fixed-date tail call |
-| arm64e | `lkclass.getAuthEndTime:` | `0x6A34` | `7f2303d5ff0304d1fa670ba9f85f0ca9f6570da9f44f0ea9` | fixed-date tail call |
+| arm64 | Home expiry branch 1 | `0x1005F6ED4` / `0x5F6ED4` | `006969f8481900d001fd41f91f810a94604e40f9481900d0017d41f91b810a94` | `604e40f908409852e882b7720001631e481900d0018141f91f2003d51b810a94` |
+| arm64 | Home expiry branch 2 | `0x1005F7FB4` / `0x5F7FB4` | `006969f8481900b001fd41f9e77c0a94601e40f9481900b0017d41f9e37c0a94` | `601e40f908409852e882b7720001631e481900b0018141f91f2003d5e37c0a94` |
 
-Both `getAuthEndTime:` entries now tail-call the existing
-`+[NSString stringWithCharacters:length:]` implementation with the static
-UTF-16 value `2099-10-01 00:00:00`.
+The two home-page branches now call
+`+[NSDate dateWithTimeIntervalSinceNow:3155673600]`. The interval is 36524
+days, which maps the current validation date `2026-07-10` to the same date and
+time in `2126`. The existing formatter remains responsible for the displayed
+minutes and seconds, so the value is recalculated from device time whenever
+the header is built.
 
-The patched dylib was ad-hoc re-signed with `ldid -S` after its two slices
-were recombined.
+The patched dylib was ad-hoc re-signed with `ldid -S` after its slices were
+recombined. The full `VBox.app` bundle was re-signed with identifier
+`com.google.vbox` while preserving all 23 original entitlements and refreshing
+the sealed-resource manifest; macOS `codesign -v --strict` accepts the result.
 
 ## Output
 
-- Patched package: `VBox_5.5_rootless_5.5-2_com.amg456.VBox1_nolicense_2099_ustar.deb`
-- Package SHA-256: `c6b1c102aa7a430b5da2179cd222b05d31e92523a44918b31ffec8789fd0c2bd`
+- Patched package: `VBox_5.5_rootless_5.5-3_com.amg456.VBox1_nolicense_dynamic100y_ustar.deb`
+- Published package: `patched/VBox_5.5「无根」_5.5-3_com.amg456.VBox1_nolicense_dynamic100y_ustar.deb`
+- Package SHA-256: `a603600908d70daaec328429d6a895c1314710a3e40b01f370ff1636cce75ab4`
+- Package size: `6342954` bytes
 - Archive members: `debian-binary`, `control.tar.gz`, `data.tar.gz`
 - Both tar members use deterministic GNU USTAR headers with numeric owner/group `0/0`; PAX and AppleDouble metadata are absent.
 
 ## Verification
 
-The final package was unpacked with `ar -x`; its `VBoc.dylib` matched the
-patched target SHA-256. `radare2` disassembled all four listed locations as
-the expected `ret` / `retab` instructions. The repository's
-`validate_deb_archive` check also accepted both final tar members.
+The final package was unpacked with `ar -x`; its binaries matched the hashes
+above. `otool -tvV` disassembled both home-page windows as a load of
+`3155673600`, `ucvtf d0, w8`, and
+`+[NSDate dateWithTimeIntervalSinceNow:]`. The four license patch locations
+remain the expected `ret` / `retab` instructions. The repository's
+`validate_deb_archive` check accepted both final tar members.
 
-Runtime validation still requires installing the package on a compatible
-rootless iOS device and confirming that the app launches without the
-activation prompt after a respring.
+`pages-repo/Packages` publishes only VBox `5.5-3` at
+`./debs/com.amg456.VBox1_5.5-3_nolicense_dynamic100y_ustar.deb`; its Size and
+SHA256 fields match the published file. `Packages.gz` also passes `gzip -t`.
+
+Runtime validation still requires installing `5.5-3` on a compatible rootless
+iOS device, respringing, and reopening the home page. The expected value on
+`2026-07-10 HH:mm` is `2126-07-10 HH:mm`.
+
+## Rebuild
+
+```bash
+bash scripts/build_vbox_dynamic100y.sh
+python3 scripts/build_pages_repo.py
+gzip -t pages-repo/Packages.gz
+```
+
+The VBox build script starts from the immutable audited main executable,
+checks the original SHA256 and both old-byte windows, preserves the original
+entitlements during app-bundle ad-hoc signing, creates deterministic
+gzip/USTAR members, and validates the finished deb before copying it to
+`patched/`.
