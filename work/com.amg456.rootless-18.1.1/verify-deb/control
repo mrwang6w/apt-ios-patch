@@ -1,0 +1,11 @@
+Package: com.amg456.rootless
+Version: 18.1.1
+Priority: optional
+Section: AMG
+Maintainer: AMG官方源™
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Name: 纯净版18.1.1_AMG奔驰正版[无根]
+Author: AMG
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+Description: AMG 改串清理,全息备份,模拟定位,脚本调用,智能飞行,防越狱检测,支持iOS8-iOS17全系越狱可用,支持有根和无根,支持隐藏越狱RootHide等所有越狱工具,支持所有可越狱机型。

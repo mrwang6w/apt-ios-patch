@@ -1,0 +1,1995 @@
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/slices/TG_arm64.dylib:
+Contents of (__DATA,__objc_classlist) section
+000000000002de88 0x2f7a0 _OBJC_CLASS_$_iuebfowuenfiwnefpein
+    isa        0x2f778 _OBJC_METACLASS_$_iuebfowuenfiwnefpein
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2e080 __OBJC_CLASS_RO_$_iuebfowuenfiwnefpein
+        flags          0x184 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   16
+        reserved       0x0
+        ivarLayout     0x247c5
+        layout map     0x01 
+        name           0x247b0 iuebfowuenfiwnefpein
+        baseMethods    0x2e038 __OBJC_$_INSTANCE_METHODS_iuebfowuenfiwnefpein
+            entsize 24
+            count   1
+            name    0x24a7a .cxx_destruct
+            types   0x26870 v16@0:8
+            imp     0x5ce0 -[iuebfowuenfiwnefpein .cxx_destruct]
+        baseProtocols  0x0
+        ivars          0x2e058 __OBJC_$_INSTANCE_VARIABLES_iuebfowuenfiwnefpein
+            entsize   32
+            count     1
+            offset    0x2f758 _OBJC_IVAR_$_iuebfowuenfiwnefpein._alertWindow 8
+            name      0x24d36 _alertWindow
+            type      0x263b7 @"UIWindow"
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2dff0 __OBJC_METACLASS_RO_$_iuebfowuenfiwnefpein
+        flags          0x185 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x247b0 iuebfowuenfiwnefpein
+        baseMethods    0x2def8 __OBJC_$_CLASS_METHODS_iuebfowuenfiwnefpein
+            entsize 24
+            count   10
+            name    0x25316 decodeBase64ToData:
+            types   0x26390 @24@0:8@16
+            imp     0x471c +[iuebfowuenfiwnefpein decodeBase64ToData:]
+            name    0x24a88 a1:
+            types   0x26390 @24@0:8@16
+            imp     0x49b8 +[iuebfowuenfiwnefpein a1:]
+            name    0x248b6 a2:
+            types   0x26390 @24@0:8@16
+            imp     0x4a74 +[iuebfowuenfiwnefpein a2:]
+            name    0x24a91 a3:
+            types   0x2639b @24@0:8q16
+            imp     0x4c64 +[iuebfowuenfiwnefpein a3:]
+            name    0x248df a4:
+            types   0x2639b @24@0:8q16
+            imp     0x4f74 +[iuebfowuenfiwnefpein a4:]
+            name    0x24d9d a5
+            types   0x26852 @16@0:8
+            imp     0x5274 +[iuebfowuenfiwnefpein a5]
+            name    0x24eed b1
+            types   0x26852 @16@0:8
+            imp     0x5348 +[iuebfowuenfiwnefpein b1]
+            name    0x24ef0 b2
+            types   0x26852 @16@0:8
+            imp     0x563c +[iuebfowuenfiwnefpein b2]
+            name    0x24ef3 b3
+            types   0x26852 @16@0:8
+            imp     0x58f4 +[iuebfowuenfiwnefpein b3]
+            name    0x24f0e cal:operation:toNum:
+            types   0x263a6 @40@0:8q16@24q32
+            imp     0x5bd0 +[iuebfowuenfiwnefpein cal:operation:toNum:]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000002de90 0x2f7c8 _OBJC_CLASS_$_qywgefwyqbefouwen
+    isa        0x2f818 _OBJC_METACLASS_$_qywgefwyqbefouwen
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2e220 __OBJC_CLASS_RO_$_qywgefwyqbefouwen
+        flags          0x80
+        instanceStart  8
+        instanceSize   9
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x247c7 qywgefwyqbefouwen
+        baseMethods    0x2e130 __OBJC_$_INSTANCE_METHODS_qywgefwyqbefouwen
+            entsize 24
+            count   7
+            name    0x254d0 init
+            types   0x26852 @16@0:8
+            imp     0x6fe8 -[qywgefwyqbefouwen init]
+            name    0x25606 load
+            types   0x26870 v16@0:8
+            imp     0x703c -[qywgefwyqbefouwen load]
+            name    0x26326 unload
+            types   0x26870 v16@0:8
+            imp     0x70ac -[qywgefwyqbefouwen unload]
+            name    0x26266 swizzleSelector:fromClass:toClass:
+            types   0x263c3 v40@0:8:16#24#32
+            imp     0x711c -[qywgefwyqbefouwen swizzleSelector:fromClass:toClass:]
+            name    0x2499a protocolClasses
+            types   0x26852 @16@0:8
+            imp     0x7194 -[qywgefwyqbefouwen protocolClasses]
+            name    0x255f5 isSwizzle
+            types   0x263d4 B16@0:8
+            imp     0x7204 -[qywgefwyqbefouwen isSwizzle]
+            name    0x25fdd setIsSwizzle:
+            types   0x263dc v20@0:8B16
+            imp     0x720c -[qywgefwyqbefouwen setIsSwizzle:]
+        baseProtocols  0x0
+        ivars          0x2e1e0 __OBJC_$_INSTANCE_VARIABLES_qywgefwyqbefouwen
+            entsize   32
+            count     1
+            offset    0x2f75c _OBJC_IVAR_$_qywgefwyqbefouwen._isSwizzle 8
+            name      0x24d4d _isSwizzle
+            type      0x263e7 B
+            alignment 0
+            size      1
+        weakIvarLayout 0x0
+        baseProperties 0x2e208 __OBJC_$_PROP_LIST_qywgefwyqbefouwen
+            entsize    16
+            count      1
+            name       0x255f5 isSwizzle
+            attributes 0x2496f TB,N,V_isSwizzle
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2e0e8 __OBJC_METACLASS_RO_$_qywgefwyqbefouwen
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x247c7 qywgefwyqbefouwen
+        baseMethods    0x2e0c8 __OBJC_$_CLASS_METHODS_qywgefwyqbefouwen
+            entsize 24
+            count   1
+            name    0x2533f defaultConfiguration
+            types   0x26852 @16@0:8
+            imp     0x6f74 +[qywgefwyqbefouwen defaultConfiguration]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000002de98 0x2f7f0 _OBJC_CLASS_$_qliweufhoiqhuefoquewf
+    isa        0x2f840 _OBJC_METACLASS_$_qliweufhoiqhuefoquewf
+    superclass 0x0 _OBJC_CLASS_$_NSURLProtocol
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2ec48 __OBJC_CLASS_RO_$_qliweufhoiqhuefoquewf
+        flags          0x184 RO_HAS_CXX_STRUCTORS
+        instanceStart  16
+        instanceSize   56
+        reserved       0x0
+        ivarLayout     0x24841
+        layout map     0x14 
+        name           0x247d9 qliweufhoiqhuefoquewf
+        baseMethods    0x2e890 __OBJC_$_INSTANCE_METHODS_qliweufhoiqhuefoquewf
+            entsize 24
+            count   26
+            name    0x26106 startLoading
+            types   0x26870 v16@0:8
+            imp     0x776c -[qliweufhoiqhuefoquewf startLoading]
+            name    0x26113 stopLoading
+            types   0x26870 v16@0:8
+            imp     0x7964 -[qliweufhoiqhuefoquewf stopLoading]
+            name    0x24f86 checkIfShouldReplaceResponse
+            types   0x26870 v16@0:8
+            imp     0x7994 -[qliweufhoiqhuefoquewf checkIfShouldReplaceResponse]
+            name    0x24c86 URLSession:task:didCompleteWithError:
+            types   0x26799 v40@0:8@16@24@32
+            imp     0x7a78 -[qliweufhoiqhuefoquewf URLSession:task:didCompleteWithError:]
+            name    0x24c02 URLSession:dataTask:didReceiveData:
+            types   0x26799 v40@0:8@16@24@32
+            imp     0x7dd0 -[qliweufhoiqhuefoquewf URLSession:dataTask:didReceiveData:]
+            name    0x24a40 URLSession:dataTask:didReceiveResponse:completionHandler:
+            types   0x267aa v48@0:8@16@24@32@?40
+            imp     0x7ec4 -[qliweufhoiqhuefoquewf URLSession:dataTask:didReceiveResponse:completionHandler:]
+            name    0x24cac URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:
+            types   0x267bf v56@0:8@16@24@32@40@?48
+            imp     0x8024 -[qliweufhoiqhuefoquewf URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:]
+            name    0x2546a handleResponseData:forURL:
+            types   0x26569 @32@0:8@16@24
+            imp     0x80ac -[qliweufhoiqhuefoquewf handleResponseData:forURL:]
+            name    0x253f5 handleDDDDescCertResponse:
+            types   0x26390 @24@0:8@16
+            imp     0x83ac -[qliweufhoiqhuefoquewf handleDDDDescCertResponse:]
+            name    0x25427 handleGipResponse:
+            types   0x26390 @24@0:8@16
+            imp     0x85b0 -[qliweufhoiqhuefoquewf handleGipResponse:]
+            name    0x2544f handleRegcodeCertResponse:
+            types   0x26390 @24@0:8@16
+            imp     0x8694 -[qliweufhoiqhuefoquewf handleRegcodeCertResponse:]
+            name    0x2543a handleRauthResponse:
+            types   0x26390 @24@0:8@16
+            imp     0x86a4 -[qliweufhoiqhuefoquewf handleRauthResponse:]
+            name    0x25410 handleGenCertResponse:
+            types   0x26390 @24@0:8@16
+            imp     0x86b4 -[qliweufhoiqhuefoquewf handleGenCertResponse:]
+            name    0x253db handleBackupListResponse:
+            types   0x26390 @24@0:8@16
+            imp     0x8800 -[qliweufhoiqhuefoquewf handleBackupListResponse:]
+            name    0x25485 handleSettingResponse:
+            types   0x26390 @24@0:8@16
+            imp     0x88d0 -[qliweufhoiqhuefoquewf handleSettingResponse:]
+            name    0x2527a dataTask
+            types   0x26852 @16@0:8
+            imp     0x88d8 -[qliweufhoiqhuefoquewf dataTask]
+            name    0x25fa4 setDataTask:
+            types   0x2685a v24@0:8@16
+            imp     0x88e8 -[qliweufhoiqhuefoquewf setDataTask:]
+            name    0x25f08 sessionDelegateQueue
+            types   0x26852 @16@0:8
+            imp     0x8928 -[qliweufhoiqhuefoquewf sessionDelegateQueue]
+            name    0x26064 setSessionDelegateQueue:
+            types   0x2685a v24@0:8@16
+            imp     0x8938 -[qliweufhoiqhuefoquewf setSessionDelegateQueue:]
+            name    0x25e7f response
+            types   0x26852 @16@0:8
+            imp     0x8978 -[qliweufhoiqhuefoquewf response]
+            name    0x2602f setResponse:
+            types   0x2685a v24@0:8@16
+            imp     0x8988 -[qliweufhoiqhuefoquewf setResponse:]
+            name    0x25e88 responseData
+            types   0x26852 @16@0:8
+            imp     0x89c8 -[qliweufhoiqhuefoquewf responseData]
+            name    0x2603c setResponseData:
+            types   0x2685a v24@0:8@16
+            imp     0x89d8 -[qliweufhoiqhuefoquewf setResponseData:]
+            name    0x260db shouldReplaceResponse
+            types   0x263d4 B16@0:8
+            imp     0x8a18 -[qliweufhoiqhuefoquewf shouldReplaceResponse]
+            name    0x2607d setShouldReplaceResponse:
+            types   0x263dc v20@0:8B16
+            imp     0x8a28 -[qliweufhoiqhuefoquewf setShouldReplaceResponse:]
+            name    0x24a7a .cxx_destruct
+            types   0x26870 v16@0:8
+            imp     0x8a38 -[qliweufhoiqhuefoquewf .cxx_destruct]
+        baseProtocols  0x2e820 __OBJC_CLASS_PROTOCOLS_$_qliweufhoiqhuefoquewf
+            count    3
+            list[0]  0x2fc88 __OBJC_PROTOCOL_$_NSURLConnectionDelegate
+                isa       0x0
+                name      0x247ef NSURLConnectionDelegate
+                protocols 0x2e5c0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDelegate
+                    count    1
+                    list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+                        isa       0x0
+                        name      0x24807 NSObject
+                        protocols 0x0
+                        instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                            entsize 24
+                            count   19
+                            name    0x255af isEqual:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x24fa3 class
+                            types   0x263f4 #16@0:8
+                            imp     0x0
+                            name    0x25f03 self
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x25d14 performSelector:
+                            types   0x263fc @24@0:8:16
+                            imp     0x0
+                            name    0x25d25 performSelector:withObject:
+                            types   0x26407 @32@0:8:16@24
+                            imp     0x0
+                            name    0x25d41 performSelector:withObject:withObject:
+                            types   0x26415 @40@0:8:16@24@32
+                            imp     0x0
+                            name    0x24b4a isProxy
+                            types   0x263d4 B16@0:8
+                            imp     0x0
+                            name    0x255d5 isKindOfClass:
+                            types   0x26426 B24@0:8#16
+                            imp     0x0
+                            name    0x255e4 isMemberOfClass:
+                            types   0x26426 B24@0:8#16
+                            imp     0x0
+                            name    0x25000 conformsToProtocol:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x25e6b respondsToSelector:
+                            types   0x26431 B24@0:8:16
+                            imp     0x0
+                            name    0x25e9c retain
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x24b84 release
+                            types   0x2643c Vv16@0:8
+                            imp     0x0
+                            name    0x24ee1 autorelease
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x25ea3 retainCount
+                            types   0x26445 Q16@0:8
+                            imp     0x0
+                            name    0x2637c zone
+                            types   0x2644d ^{_NSZone=}16@0:8
+                            imp     0x0
+                            name    0x254b2 hash
+                            types   0x26445 Q16@0:8
+                            imp     0x0
+                            name    0x2625b superclass
+                            types   0x263f4 #16@0:8
+                            imp     0x0
+                            name    0x25370 description
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                        classMethods 0x0
+                        optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                            entsize 24
+                            count   1
+                            name    0x25305 debugDescription
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                        optionalClassMethods 0x0
+                        instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                            entsize    16
+                            count      4
+                            name       0x254b2 hash
+                            attributes 0x24b7f TQ,R
+                            name       0x2625b superclass
+                            attributes 0x24a8c T#,R
+                            name       0x25370 description
+                            attributes 0x24916 T@"NSString",R,C
+                            name       0x25305 debugDescription
+                            attributes 0x248e3 T@"NSString",?,R,C
+                instanceMethods 0x0
+                classMethods 0x0
+                optionalInstanceMethods 0x2e5d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDelegate
+                    entsize 24
+                    count   6
+                    name    0x25073 connection:didFailWithError:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x251fb connectionShouldUseCredentialStorage:
+                    types   0x263e9 B24@0:8@16
+                    imp     0x0
+                    name    0x251a9 connection:willSendRequestForAuthenticationChallenge:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x25014 connection:canAuthenticateAgainstProtectionSpace:
+                    types   0x26494 B32@0:8@16@24
+                    imp     0x0
+                    name    0x25090 connection:didReceiveAuthenticationChallenge:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x25046 connection:didCancelAuthenticationChallenge:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                optionalClassMethods 0x0
+                instanceProperties 0x0
+            list[1]  0x2fce8 __OBJC_PROTOCOL_$_NSURLConnectionDataDelegate
+                isa       0x0
+                name      0x24810 NSURLConnectionDataDelegate
+                protocols 0x2e6a0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDataDelegate
+                    count    1
+                    list[0]  0x2fc88 __OBJC_PROTOCOL_$_NSURLConnectionDelegate
+                        isa       0x0
+                        name      0x247ef NSURLConnectionDelegate
+                        protocols 0x2e5c0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDelegate
+                            count    1
+                            list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+                                isa       0x0
+                                name      0x24807 NSObject
+                                protocols 0x0
+                                instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                                    entsize 24
+                                    count   19
+                                    name    0x255af isEqual:
+                                    types   0x263e9 B24@0:8@16
+                                    imp     0x0
+                                    name    0x24fa3 class
+                                    types   0x263f4 #16@0:8
+                                    imp     0x0
+                                    name    0x25f03 self
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                    name    0x25d14 performSelector:
+                                    types   0x263fc @24@0:8:16
+                                    imp     0x0
+                                    name    0x25d25 performSelector:withObject:
+                                    types   0x26407 @32@0:8:16@24
+                                    imp     0x0
+                                    name    0x25d41 performSelector:withObject:withObject:
+                                    types   0x26415 @40@0:8:16@24@32
+                                    imp     0x0
+                                    name    0x24b4a isProxy
+                                    types   0x263d4 B16@0:8
+                                    imp     0x0
+                                    name    0x255d5 isKindOfClass:
+                                    types   0x26426 B24@0:8#16
+                                    imp     0x0
+                                    name    0x255e4 isMemberOfClass:
+                                    types   0x26426 B24@0:8#16
+                                    imp     0x0
+                                    name    0x25000 conformsToProtocol:
+                                    types   0x263e9 B24@0:8@16
+                                    imp     0x0
+                                    name    0x25e6b respondsToSelector:
+                                    types   0x26431 B24@0:8:16
+                                    imp     0x0
+                                    name    0x25e9c retain
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                    name    0x24b84 release
+                                    types   0x2643c Vv16@0:8
+                                    imp     0x0
+                                    name    0x24ee1 autorelease
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                    name    0x25ea3 retainCount
+                                    types   0x26445 Q16@0:8
+                                    imp     0x0
+                                    name    0x2637c zone
+                                    types   0x2644d ^{_NSZone=}16@0:8
+                                    imp     0x0
+                                    name    0x254b2 hash
+                                    types   0x26445 Q16@0:8
+                                    imp     0x0
+                                    name    0x2625b superclass
+                                    types   0x263f4 #16@0:8
+                                    imp     0x0
+                                    name    0x25370 description
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                classMethods 0x0
+                                optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                                    entsize 24
+                                    count   1
+                                    name    0x25305 debugDescription
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                optionalClassMethods 0x0
+                                instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                                    entsize    16
+                                    count      4
+                                    name       0x254b2 hash
+                                    attributes 0x24b7f TQ,R
+                                    name       0x2625b superclass
+                                    attributes 0x24a8c T#,R
+                                    name       0x25370 description
+                                    attributes 0x24916 T@"NSString",R,C
+                                    name       0x25305 debugDescription
+                                    attributes 0x248e3 T@"NSString",?,R,C
+                        instanceMethods 0x0
+                        classMethods 0x0
+                        optionalInstanceMethods 0x2e5d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDelegate
+                            entsize 24
+                            count   6
+                            name    0x25073 connection:didFailWithError:
+                            types   0x26486 v32@0:8@16@24
+                            imp     0x0
+                            name    0x251fb connectionShouldUseCredentialStorage:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x251a9 connection:willSendRequestForAuthenticationChallenge:
+                            types   0x26486 v32@0:8@16@24
+                            imp     0x0
+                            name    0x25014 connection:canAuthenticateAgainstProtectionSpace:
+                            types   0x26494 B32@0:8@16@24
+                            imp     0x0
+                            name    0x25090 connection:didReceiveAuthenticationChallenge:
+                            types   0x26486 v32@0:8@16@24
+                            imp     0x0
+                            name    0x25046 connection:didCancelAuthenticationChallenge:
+                            types   0x26486 v32@0:8@16@24
+                            imp     0x0
+                        optionalClassMethods 0x0
+                        instanceProperties 0x0
+                instanceMethods 0x0
+                classMethods 0x0
+                optionalInstanceMethods 0x2e6b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDataDelegate
+                    entsize 24
+                    count   7
+                    name    0x2517c connection:willSendRequest:redirectResponse:
+                    types   0x26558 @40@0:8@16@24@32
+                    imp     0x0
+                    name    0x250d9 connection:didReceiveResponse:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x250be connection:didReceiveData:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x25140 connection:needNewBodyStream:
+                    types   0x26569 @32@0:8@16@24
+                    imp     0x0
+                    name    0x250f8 connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:
+                    types   0x26577 v48@0:8@16q24q32q40
+                    imp     0x0
+                    name    0x2515e connection:willCacheResponse:
+                    types   0x26569 @32@0:8@16@24
+                    imp     0x0
+                    name    0x251df connectionDidFinishLoading:
+                    types   0x2685a v24@0:8@16
+                    imp     0x0
+                optionalClassMethods 0x0
+                instanceProperties 0x0
+            list[2]  0x2fd48 __OBJC_PROTOCOL_$_NSURLSessionDelegate
+                isa       0x0
+                name      0x2482c NSURLSessionDelegate
+                protocols 0x2e7a0 __OBJC_$_PROTOCOL_REFS_NSURLSessionDelegate
+                    count    1
+                    list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+                        isa       0x0
+                        name      0x24807 NSObject
+                        protocols 0x0
+                        instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                            entsize 24
+                            count   19
+                            name    0x255af isEqual:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x24fa3 class
+                            types   0x263f4 #16@0:8
+                            imp     0x0
+                            name    0x25f03 self
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x25d14 performSelector:
+                            types   0x263fc @24@0:8:16
+                            imp     0x0
+                            name    0x25d25 performSelector:withObject:
+                            types   0x26407 @32@0:8:16@24
+                            imp     0x0
+                            name    0x25d41 performSelector:withObject:withObject:
+                            types   0x26415 @40@0:8:16@24@32
+                            imp     0x0
+                            name    0x24b4a isProxy
+                            types   0x263d4 B16@0:8
+                            imp     0x0
+                            name    0x255d5 isKindOfClass:
+                            types   0x26426 B24@0:8#16
+                            imp     0x0
+                            name    0x255e4 isMemberOfClass:
+                            types   0x26426 B24@0:8#16
+                            imp     0x0
+                            name    0x25000 conformsToProtocol:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x25e6b respondsToSelector:
+                            types   0x26431 B24@0:8:16
+                            imp     0x0
+                            name    0x25e9c retain
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x24b84 release
+                            types   0x2643c Vv16@0:8
+                            imp     0x0
+                            name    0x24ee1 autorelease
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x25ea3 retainCount
+                            types   0x26445 Q16@0:8
+                            imp     0x0
+                            name    0x2637c zone
+                            types   0x2644d ^{_NSZone=}16@0:8
+                            imp     0x0
+                            name    0x254b2 hash
+                            types   0x26445 Q16@0:8
+                            imp     0x0
+                            name    0x2625b superclass
+                            types   0x263f4 #16@0:8
+                            imp     0x0
+                            name    0x25370 description
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                        classMethods 0x0
+                        optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                            entsize 24
+                            count   1
+                            name    0x25305 debugDescription
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                        optionalClassMethods 0x0
+                        instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                            entsize    16
+                            count      4
+                            name       0x254b2 hash
+                            attributes 0x24b7f TQ,R
+                            name       0x2625b superclass
+                            attributes 0x24a8c T#,R
+                            name       0x25370 description
+                            attributes 0x24916 T@"NSString",R,C
+                            name       0x25305 debugDescription
+                            attributes 0x248e3 T@"NSString",?,R,C
+                instanceMethods 0x0
+                classMethods 0x0
+                optionalInstanceMethods 0x2e7b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLSessionDelegate
+                    entsize 24
+                    count   3
+                    name    0x24c2e URLSession:didBecomeInvalidWithError:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x24c54 URLSession:didReceiveChallenge:completionHandler:
+                    types   0x266f3 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x24cf5 URLSessionDidFinishEventsForBackgroundURLSession:
+                    types   0x2685a v24@0:8@16
+                    imp     0x0
+                optionalClassMethods 0x0
+                instanceProperties 0x0
+        ivars          0x2eb08 __OBJC_$_INSTANCE_VARIABLES_qliweufhoiqhuefoquewf
+            entsize   32
+            count     5
+            offset    0x2f770 _OBJC_IVAR_$_qliweufhoiqhuefoquewf._shouldReplaceResponse 16
+            name      0x24d86 _shouldReplaceResponse
+            type      0x263e7 B
+            alignment 0
+            size      1
+            offset    0x2f760 _OBJC_IVAR_$_qliweufhoiqhuefoquewf._dataTask 24
+            name      0x24d43 _dataTask
+            type      0x267d7 @"NSURLSessionDataTask"
+            alignment 3
+            size      8
+            offset    0x2f764 _OBJC_IVAR_$_qliweufhoiqhuefoquewf._sessionDelegateQueue 32
+            name      0x24d70 _sessionDelegateQueue
+            type      0x267ef @"NSOperationQueue"
+            alignment 3
+            size      8
+            offset    0x2f768 _OBJC_IVAR_$_qliweufhoiqhuefoquewf._response 40
+            name      0x24d58 _response
+            type      0x26803 @"NSURLResponse"
+            alignment 3
+            size      8
+            offset    0x2f76c _OBJC_IVAR_$_qliweufhoiqhuefoquewf._responseData 48
+            name      0x24d62 _responseData
+            type      0x26814 @"NSMutableData"
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0x2ebb0 __OBJC_$_PROP_LIST_qliweufhoiqhuefoquewf
+            entsize    16
+            count      9
+            name       0x2527a dataTask
+            attributes 0x24937 T@"NSURLSessionDataTask",&,N,V_dataTask
+            name       0x25f08 sessionDelegateQueue
+            attributes 0x24a95 T@"NSOperationQueue",&,N,V_sessionDelegateQueue
+            name       0x25e7f response
+            attributes 0x24b01 T@"NSURLResponse",&,N,V_response
+            name       0x25e88 responseData
+            attributes 0x248ba T@"NSMutableData",&,N,V_responseData
+            name       0x260db shouldReplaceResponse
+            attributes 0x24b52 TB,N,V_shouldReplaceResponse
+            name       0x254b2 hash
+            attributes 0x24b7f TQ,R
+            name       0x2625b superclass
+            attributes 0x24a8c T#,R
+            name       0x25370 description
+            attributes 0x24916 T@"NSString",R,C
+            name       0x25305 debugDescription
+            attributes 0x248e3 T@"NSString",?,R,C
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSURLProtocol
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2e848 __OBJC_METACLASS_RO_$_qliweufhoiqhuefoquewf
+        flags          0x185 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x247d9 qliweufhoiqhuefoquewf
+        baseMethods    0x2e268 __OBJC_$_CLASS_METHODS_qliweufhoiqhuefoquewf
+            entsize 24
+            count   5
+            name    0x25606 load
+            types   0x26870 v16@0:8
+            imp     0x7214 +[qliweufhoiqhuefoquewf load]
+            name    0x25ec2 s12934r2347
+            types   0x26870 v16@0:8
+            imp     0x7220 +[qliweufhoiqhuefoquewf s12934r2347]
+            name    0x253c0 equehfwuhef
+            types   0x26870 v16@0:8
+            imp     0x7288 +[qliweufhoiqhuefoquewf equehfwuhef]
+            name    0x24f23 canInitWithRequest:
+            types   0x263e9 B24@0:8@16
+            imp     0x72f0 +[qliweufhoiqhuefoquewf canInitWithRequest:]
+            name    0x24f3e canonicalRequestForRequest:
+            types   0x26390 @24@0:8@16
+            imp     0x74dc +[qliweufhoiqhuefoquewf canonicalRequestForRequest:]
+        baseProtocols  0x2e820 __OBJC_CLASS_PROTOCOLS_$_qliweufhoiqhuefoquewf
+            count    3
+            list[0]  0x2fc88 __OBJC_PROTOCOL_$_NSURLConnectionDelegate
+                isa       0x0
+                name      0x247ef NSURLConnectionDelegate
+                protocols 0x2e5c0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDelegate
+                    count    1
+                    list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+                        isa       0x0
+                        name      0x24807 NSObject
+                        protocols 0x0
+                        instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                            entsize 24
+                            count   19
+                            name    0x255af isEqual:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x24fa3 class
+                            types   0x263f4 #16@0:8
+                            imp     0x0
+                            name    0x25f03 self
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x25d14 performSelector:
+                            types   0x263fc @24@0:8:16
+                            imp     0x0
+                            name    0x25d25 performSelector:withObject:
+                            types   0x26407 @32@0:8:16@24
+                            imp     0x0
+                            name    0x25d41 performSelector:withObject:withObject:
+                            types   0x26415 @40@0:8:16@24@32
+                            imp     0x0
+                            name    0x24b4a isProxy
+                            types   0x263d4 B16@0:8
+                            imp     0x0
+                            name    0x255d5 isKindOfClass:
+                            types   0x26426 B24@0:8#16
+                            imp     0x0
+                            name    0x255e4 isMemberOfClass:
+                            types   0x26426 B24@0:8#16
+                            imp     0x0
+                            name    0x25000 conformsToProtocol:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x25e6b respondsToSelector:
+                            types   0x26431 B24@0:8:16
+                            imp     0x0
+                            name    0x25e9c retain
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x24b84 release
+                            types   0x2643c Vv16@0:8
+                            imp     0x0
+                            name    0x24ee1 autorelease
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x25ea3 retainCount
+                            types   0x26445 Q16@0:8
+                            imp     0x0
+                            name    0x2637c zone
+                            types   0x2644d ^{_NSZone=}16@0:8
+                            imp     0x0
+                            name    0x254b2 hash
+                            types   0x26445 Q16@0:8
+                            imp     0x0
+                            name    0x2625b superclass
+                            types   0x263f4 #16@0:8
+                            imp     0x0
+                            name    0x25370 description
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                        classMethods 0x0
+                        optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                            entsize 24
+                            count   1
+                            name    0x25305 debugDescription
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                        optionalClassMethods 0x0
+                        instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                            entsize    16
+                            count      4
+                            name       0x254b2 hash
+                            attributes 0x24b7f TQ,R
+                            name       0x2625b superclass
+                            attributes 0x24a8c T#,R
+                            name       0x25370 description
+                            attributes 0x24916 T@"NSString",R,C
+                            name       0x25305 debugDescription
+                            attributes 0x248e3 T@"NSString",?,R,C
+                instanceMethods 0x0
+                classMethods 0x0
+                optionalInstanceMethods 0x2e5d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDelegate
+                    entsize 24
+                    count   6
+                    name    0x25073 connection:didFailWithError:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x251fb connectionShouldUseCredentialStorage:
+                    types   0x263e9 B24@0:8@16
+                    imp     0x0
+                    name    0x251a9 connection:willSendRequestForAuthenticationChallenge:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x25014 connection:canAuthenticateAgainstProtectionSpace:
+                    types   0x26494 B32@0:8@16@24
+                    imp     0x0
+                    name    0x25090 connection:didReceiveAuthenticationChallenge:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x25046 connection:didCancelAuthenticationChallenge:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                optionalClassMethods 0x0
+                instanceProperties 0x0
+            list[1]  0x2fce8 __OBJC_PROTOCOL_$_NSURLConnectionDataDelegate
+                isa       0x0
+                name      0x24810 NSURLConnectionDataDelegate
+                protocols 0x2e6a0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDataDelegate
+                    count    1
+                    list[0]  0x2fc88 __OBJC_PROTOCOL_$_NSURLConnectionDelegate
+                        isa       0x0
+                        name      0x247ef NSURLConnectionDelegate
+                        protocols 0x2e5c0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDelegate
+                            count    1
+                            list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+                                isa       0x0
+                                name      0x24807 NSObject
+                                protocols 0x0
+                                instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                                    entsize 24
+                                    count   19
+                                    name    0x255af isEqual:
+                                    types   0x263e9 B24@0:8@16
+                                    imp     0x0
+                                    name    0x24fa3 class
+                                    types   0x263f4 #16@0:8
+                                    imp     0x0
+                                    name    0x25f03 self
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                    name    0x25d14 performSelector:
+                                    types   0x263fc @24@0:8:16
+                                    imp     0x0
+                                    name    0x25d25 performSelector:withObject:
+                                    types   0x26407 @32@0:8:16@24
+                                    imp     0x0
+                                    name    0x25d41 performSelector:withObject:withObject:
+                                    types   0x26415 @40@0:8:16@24@32
+                                    imp     0x0
+                                    name    0x24b4a isProxy
+                                    types   0x263d4 B16@0:8
+                                    imp     0x0
+                                    name    0x255d5 isKindOfClass:
+                                    types   0x26426 B24@0:8#16
+                                    imp     0x0
+                                    name    0x255e4 isMemberOfClass:
+                                    types   0x26426 B24@0:8#16
+                                    imp     0x0
+                                    name    0x25000 conformsToProtocol:
+                                    types   0x263e9 B24@0:8@16
+                                    imp     0x0
+                                    name    0x25e6b respondsToSelector:
+                                    types   0x26431 B24@0:8:16
+                                    imp     0x0
+                                    name    0x25e9c retain
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                    name    0x24b84 release
+                                    types   0x2643c Vv16@0:8
+                                    imp     0x0
+                                    name    0x24ee1 autorelease
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                    name    0x25ea3 retainCount
+                                    types   0x26445 Q16@0:8
+                                    imp     0x0
+                                    name    0x2637c zone
+                                    types   0x2644d ^{_NSZone=}16@0:8
+                                    imp     0x0
+                                    name    0x254b2 hash
+                                    types   0x26445 Q16@0:8
+                                    imp     0x0
+                                    name    0x2625b superclass
+                                    types   0x263f4 #16@0:8
+                                    imp     0x0
+                                    name    0x25370 description
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                classMethods 0x0
+                                optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                                    entsize 24
+                                    count   1
+                                    name    0x25305 debugDescription
+                                    types   0x26852 @16@0:8
+                                    imp     0x0
+                                optionalClassMethods 0x0
+                                instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                                    entsize    16
+                                    count      4
+                                    name       0x254b2 hash
+                                    attributes 0x24b7f TQ,R
+                                    name       0x2625b superclass
+                                    attributes 0x24a8c T#,R
+                                    name       0x25370 description
+                                    attributes 0x24916 T@"NSString",R,C
+                                    name       0x25305 debugDescription
+                                    attributes 0x248e3 T@"NSString",?,R,C
+                        instanceMethods 0x0
+                        classMethods 0x0
+                        optionalInstanceMethods 0x2e5d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDelegate
+                            entsize 24
+                            count   6
+                            name    0x25073 connection:didFailWithError:
+                            types   0x26486 v32@0:8@16@24
+                            imp     0x0
+                            name    0x251fb connectionShouldUseCredentialStorage:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x251a9 connection:willSendRequestForAuthenticationChallenge:
+                            types   0x26486 v32@0:8@16@24
+                            imp     0x0
+                            name    0x25014 connection:canAuthenticateAgainstProtectionSpace:
+                            types   0x26494 B32@0:8@16@24
+                            imp     0x0
+                            name    0x25090 connection:didReceiveAuthenticationChallenge:
+                            types   0x26486 v32@0:8@16@24
+                            imp     0x0
+                            name    0x25046 connection:didCancelAuthenticationChallenge:
+                            types   0x26486 v32@0:8@16@24
+                            imp     0x0
+                        optionalClassMethods 0x0
+                        instanceProperties 0x0
+                instanceMethods 0x0
+                classMethods 0x0
+                optionalInstanceMethods 0x2e6b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDataDelegate
+                    entsize 24
+                    count   7
+                    name    0x2517c connection:willSendRequest:redirectResponse:
+                    types   0x26558 @40@0:8@16@24@32
+                    imp     0x0
+                    name    0x250d9 connection:didReceiveResponse:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x250be connection:didReceiveData:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x25140 connection:needNewBodyStream:
+                    types   0x26569 @32@0:8@16@24
+                    imp     0x0
+                    name    0x250f8 connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:
+                    types   0x26577 v48@0:8@16q24q32q40
+                    imp     0x0
+                    name    0x2515e connection:willCacheResponse:
+                    types   0x26569 @32@0:8@16@24
+                    imp     0x0
+                    name    0x251df connectionDidFinishLoading:
+                    types   0x2685a v24@0:8@16
+                    imp     0x0
+                optionalClassMethods 0x0
+                instanceProperties 0x0
+            list[2]  0x2fd48 __OBJC_PROTOCOL_$_NSURLSessionDelegate
+                isa       0x0
+                name      0x2482c NSURLSessionDelegate
+                protocols 0x2e7a0 __OBJC_$_PROTOCOL_REFS_NSURLSessionDelegate
+                    count    1
+                    list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+                        isa       0x0
+                        name      0x24807 NSObject
+                        protocols 0x0
+                        instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                            entsize 24
+                            count   19
+                            name    0x255af isEqual:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x24fa3 class
+                            types   0x263f4 #16@0:8
+                            imp     0x0
+                            name    0x25f03 self
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x25d14 performSelector:
+                            types   0x263fc @24@0:8:16
+                            imp     0x0
+                            name    0x25d25 performSelector:withObject:
+                            types   0x26407 @32@0:8:16@24
+                            imp     0x0
+                            name    0x25d41 performSelector:withObject:withObject:
+                            types   0x26415 @40@0:8:16@24@32
+                            imp     0x0
+                            name    0x24b4a isProxy
+                            types   0x263d4 B16@0:8
+                            imp     0x0
+                            name    0x255d5 isKindOfClass:
+                            types   0x26426 B24@0:8#16
+                            imp     0x0
+                            name    0x255e4 isMemberOfClass:
+                            types   0x26426 B24@0:8#16
+                            imp     0x0
+                            name    0x25000 conformsToProtocol:
+                            types   0x263e9 B24@0:8@16
+                            imp     0x0
+                            name    0x25e6b respondsToSelector:
+                            types   0x26431 B24@0:8:16
+                            imp     0x0
+                            name    0x25e9c retain
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x24b84 release
+                            types   0x2643c Vv16@0:8
+                            imp     0x0
+                            name    0x24ee1 autorelease
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                            name    0x25ea3 retainCount
+                            types   0x26445 Q16@0:8
+                            imp     0x0
+                            name    0x2637c zone
+                            types   0x2644d ^{_NSZone=}16@0:8
+                            imp     0x0
+                            name    0x254b2 hash
+                            types   0x26445 Q16@0:8
+                            imp     0x0
+                            name    0x2625b superclass
+                            types   0x263f4 #16@0:8
+                            imp     0x0
+                            name    0x25370 description
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                        classMethods 0x0
+                        optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                            entsize 24
+                            count   1
+                            name    0x25305 debugDescription
+                            types   0x26852 @16@0:8
+                            imp     0x0
+                        optionalClassMethods 0x0
+                        instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                            entsize    16
+                            count      4
+                            name       0x254b2 hash
+                            attributes 0x24b7f TQ,R
+                            name       0x2625b superclass
+                            attributes 0x24a8c T#,R
+                            name       0x25370 description
+                            attributes 0x24916 T@"NSString",R,C
+                            name       0x25305 debugDescription
+                            attributes 0x248e3 T@"NSString",?,R,C
+                instanceMethods 0x0
+                classMethods 0x0
+                optionalInstanceMethods 0x2e7b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLSessionDelegate
+                    entsize 24
+                    count   3
+                    name    0x24c2e URLSession:didBecomeInvalidWithError:
+                    types   0x26486 v32@0:8@16@24
+                    imp     0x0
+                    name    0x24c54 URLSession:didReceiveChallenge:completionHandler:
+                    types   0x266f3 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x24cf5 URLSessionDidFinishEventsForBackgroundURLSession:
+                    types   0x2685a v24@0:8@16
+                    imp     0x0
+                optionalClassMethods 0x0
+                instanceProperties 0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000002dea0 0x2fa28 _OBJC_CLASS_$__TtC2lk9ActiveHUD
+    isa        0x2fe10 _OBJC_METACLASS_$__TtC2lk9ActiveHUD
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2f9c9 Swift class
+        flags          0x184 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   80
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x24850 _TtC2lk9ActiveHUD
+        baseMethods    0x2f888 __INSTANCE_METHODS__TtC2lk9ActiveHUD
+            entsize 24
+            count   13
+            name    0x24f5a cc
+            types   0x26852 @16@0:8
+            imp     0x9298 _$s2lk9ActiveHUDC2ccSSSgvgTo
+            name    0x25f9d setCc:
+            types   0x2685a v24@0:8@16
+            imp     0x93bc _$s2lk9ActiveHUDC2ccSSSgvsTo
+            name    0x24da8 aa
+            types   0x26852 @16@0:8
+            imp     0x9720 _$s2lk9ActiveHUDC2aaSSSgvgTo
+            name    0x25f4e setAa:
+            types   0x2685a v24@0:8@16
+            imp     0x9844 _$s2lk9ActiveHUDC2aaSSSgvsTo
+            name    0x24efe bb
+            types   0x26852 @16@0:8
+            imp     0x99fc _$s2lk9ActiveHUDC2bbSSSgvgTo
+            name    0x25f91 setBb:
+            types   0x2685a v24@0:8@16
+            imp     0x9b20 _$s2lk9ActiveHUDC2bbSSSgvsTo
+            name    0x253a8 ee
+            types   0x263d4 B16@0:8
+            imp     0x9cd8 _$s2lk9ActiveHUDC2eeSbvgTo
+            name    0x25fcb setEe:
+            types   0x263dc v20@0:8B16
+            imp     0x9da0 _$s2lk9ActiveHUDC2eeSbvsTo
+            name    0x25302 dd
+            types   0x26868 q16@0:8
+            imp     0xad2c _$s2lk9ActiveHUDC2ddSiyFTo
+            name    0x253cc ff
+            types   0x26870 v16@0:8
+            imp     0xb798 _$s2lk9ActiveHUDC2ffyyFTo
+            name    0x253d8 gg
+            types   0x26870 v16@0:8
+            imp     0xca4c _$s2lk9ActiveHUDC2ggyyFTo
+            name    0x254d0 init
+            types   0x26852 @16@0:8
+            imp     0xf224 _$s2lk9ActiveHUDCACycfcTo
+            name    0x24a7a .cxx_destruct
+            types   0x26870 v16@0:8
+            imp     0xf28c _$s2lk9ActiveHUDCfETo
+        baseProtocols  0x0
+        ivars          0x2edb8 __IVARS__TtC2lk9ActiveHUD
+            entsize   32
+            count     6
+            offset    0x2fda8 _$s2lk9ActiveHUDC11alertWindow33_828156311D720B14CFC96FAB376261B5LLSo8UIWindowCSgvpWvd 8
+            name      0x24e59 alertWindow
+            type      0x26838 
+            alignment 3
+            size      8
+            offset    0x2fdb0 _$s2lk9ActiveHUDC2ccSSSgvpWvd 16
+            name      0x24f5a cc
+            type      0x26879 ?
+            alignment 3
+            size      16
+            offset    0x2fdb8 _$s2lk9ActiveHUDC2aaSSSgvpWvd 32
+            name      0x24da8 aa
+            type      0x26879 ?
+            alignment 3
+            size      16
+            offset    0x2fdc0 _$s2lk9ActiveHUDC2bbSSSgvpWvd 48
+            name      0x24efe bb
+            type      0x26879 ?
+            alignment 3
+            size      16
+            offset    0x2fdc8 _$s2lk9ActiveHUDC2eeSbvpWvd 64
+            name      0x253a8 ee
+            type      0x263e7 B
+            alignment 0
+            size      1
+            offset    0x2fdd0 _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvpWvd 72
+            name      0x254c1 heartbeatTimer
+            type      0x26838 
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0x2ee80 __PROPERTIES__TtC2lk9ActiveHUD
+            entsize    16
+            count      4
+            name       0x24f5a cc
+            attributes 0x24ae0 T@"NSString",N,C
+            name       0x24da8 aa
+            attributes 0x24ae0 T@"NSString",N,C
+            name       0x24efe bb
+            attributes 0x24ae0 T@"NSString",N,C
+            name       0x253a8 ee
+            attributes 0x24991 TB,N,Vee
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2ed70 __METACLASS_DATA__TtC2lk9ActiveHUD
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x24850 _TtC2lk9ActiveHUD
+        baseMethods    0x2f868 __CLASS_METHODS__TtC2lk9ActiveHUD
+            entsize 24
+            count   1
+            name    0x260b4 shared
+            types   0x26852 @16@0:8
+            imp     0x9fc4 _$s2lk9ActiveHUDC6sharedACvgZTo
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x2ed58 __CLASS_PROPERTIES__TtC2lk9ActiveHUD
+            entsize    16
+            count      1
+            name       0x260b4 shared
+            attributes 0x24b30 T@"_TtC2lk9ActiveHUD",N,R
+000000000002dea8 0x2ff78 _$s2lk3APICN
+    isa        0x2ff38 _$s2lk3APICMm
+    superclass 0x0 _OBJC_CLASS_$__TtCs12_SwiftObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2ef11 Swift class
+        flags          0x80
+        instanceStart  16
+        instanceSize   16
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x24862 _TtC2lk3API
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$__TtCs12_SwiftObject
+    superclass 0x0 _OBJC_METACLASS_$__TtCs12_SwiftObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2eec8 __METACLASS_DATA__TtC2lk3API
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x24862 _TtC2lk3API
+        baseMethods    0x2fb88 __CLASS_METHODS__TtC2lk3API
+            entsize 24
+            count   2
+            name    0x25ae0 oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000WithCode:
+            types   0x268ef q24@0:8@16
+            imp     0x12970 _$s2lk3APIC103oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o00004codeSiSS_tFZTo
+            name    0x259a9 oo0o0o00o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o
+            types   0x26868 q16@0:8
+            imp     0x13a14 _$s2lk3APIC102oo0o0o00o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0oSiyFZTo
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000002deb0 0x300f0 _$s2lk10EncryptionCN
+    isa        0x300b0 _$s2lk10EncryptionCMm
+    superclass 0x0 _OBJC_CLASS_$__TtCs12_SwiftObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2efa1 Swift class
+        flags          0x80
+        instanceStart  16
+        instanceSize   16
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x24870 _TtC2lk10Encryption
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$__TtCs12_SwiftObject
+    superclass 0x0 _OBJC_METACLASS_$__TtCs12_SwiftObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x2ef58 __METACLASS_DATA__TtC2lk10Encryption
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x24870 _TtC2lk10Encryption
+        baseMethods    0x2fbc0 __CLASS_METHODS__TtC2lk10Encryption
+            entsize 24
+            count   4
+            name    0x253ab encrypt:
+            types   0x26390 @24@0:8@16
+            imp     0x1aa4c _$s2lk10EncryptionC7encryptyS2SFZTo
+            name    0x2532a decrypt:
+            types   0x26390 @24@0:8@16
+            imp     0x1b164 _$s2lk10EncryptionC7decryptyS2SFZTo
+            name    0x253b4 encryptURL:
+            types   0x26390 @24@0:8@16
+            imp     0x1c0f4 _$s2lk10EncryptionC10encryptURLyS2SFZTo
+            name    0x25333 decryptURL:
+            types   0x26390 @24@0:8@16
+            imp     0x1cffc _$s2lk10EncryptionC10decryptURLyS2SFZTo
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Contents of (__DATA,__objc_classrefs) section
+000000000002f620 0x0 _OBJC_CLASS_$_NSString
+000000000002f628 0x2f7f0 _OBJC_CLASS_$_qliweufhoiqhuefoquewf
+000000000002f630 0x0 _OBJC_CLASS_$_NSMutableArray
+000000000002f638 0x0 _OBJC_CLASS_$_NSNumber
+000000000002f640 0x0 _OBJC_CLASS_$_NSMutableData
+000000000002f648 0x0 _OBJC_CLASS_$_NSMutableString
+000000000002f650 0x0 _OBJC_CLASS_$_NSCharacterSet
+000000000002f658 0x0 _OBJC_CLASS_$_NSDictionary
+000000000002f660 0x0 _OBJC_CLASS_$_NSDate
+000000000002f668 0x2fa28 _OBJC_CLASS_$__TtC2lk9ActiveHUD
+000000000002f670 0x0 _OBJC_CLASS_$_UIApplication
+000000000002f678 0x0 _OBJC_CLASS_$_NSURL
+000000000002f680 0x2f7c8 _OBJC_CLASS_$_qywgefwyqbefouwen
+000000000002f688 0x0 _OBJC_CLASS_$_NSException
+000000000002f690 0x0 _OBJC_CLASS_$_NSArray
+000000000002f698 0x0 _OBJC_CLASS_$_NSURLProtocol
+000000000002f6a0 0x0 _OBJC_CLASS_$_NSURLSessionConfiguration
+000000000002f6a8 0x0 _OBJC_CLASS_$_NSOperationQueue
+000000000002f6b0 0x0 _OBJC_CLASS_$_NSURLSession
+000000000002f6b8 0x0 _OBJC_CLASS_$_NSHTTPURLResponse
+000000000002f6c0 0x2f7a0 _OBJC_CLASS_$_iuebfowuenfiwnefpein
+000000000002f6c8 0x0 _OBJC_CLASS_$_NSJSONSerialization
+000000000002f6d0 0x0 _OBJC_CLASS_$_NSData
+000000000002f6d8 0x0 _OBJC_CLASS_$_NSRegularExpression
+000000000002f6e0 0x0 _OBJC_CLASS_$_NSMutableAttributedString
+000000000002f6e8 0x0 _OBJC_CLASS_$_NSUserDefaults
+000000000002f6f0 0x0 _OBJC_CLASS_$_NSDateFormatter
+000000000002f6f8 0x0 _OBJC_CLASS_$_OS_dispatch_queue
+000000000002f700 0x0 _OBJC_CLASS_$_NSTimer
+000000000002f708 0x0 _OBJC_CLASS_$_NSRunLoop
+000000000002f710 0x0 _OBJC_CLASS_$_UIWindow
+000000000002f718 0x0 _OBJC_CLASS_$_UIAlertController
+000000000002f720 0x0 _OBJC_CLASS_$_UIAlertAction
+000000000002f728 0x0 _OBJC_CLASS_$_UIViewController
+000000000002f730 0x0 _OBJC_CLASS_$_UIColor
+000000000002f738 0x0 _OBJC_CLASS_$_UIScreen
+000000000002f740 0x0 _OBJC_CLASS_$_UITextField
+000000000002f748 0x0 _OBJC_CLASS_$_NSError
+Contents of (__DATA,__objc_superrefs) section
+000000000002f750 0x2f7c8 _OBJC_CLASS_$_qywgefwyqbefouwen
+Contents of (__DATA,__objc_catlist) section
+000000000002dec0 0x2ed18 __OBJC_$_CATEGORY_UILabel_$_EXP
+    name      0x24844 EXP
+    cls       0x0 _OBJC_CLASS_$_UILabel
+    instanceMethods 0x2ec90 __OBJC_$_CATEGORY_INSTANCE_METHODS_UILabel_$_EXP
+        entsize 24
+        count   3
+        name    0x25e53 replaceVersionInString:
+        types   0x26390 @24@0:8@16
+        imp     0x8d78 -[UILabel(EXP) replaceVersionInString:]
+        name    0x262bb swizzled_setText:
+        types   0x2685a v24@0:8@16
+        imp     0x8fc0 -[UILabel(EXP) swizzled_setText:]
+        name    0x2629f swizzled_setAttributedText:
+        types   0x2685a v24@0:8@16
+        imp     0x8ffc -[UILabel(EXP) swizzled_setAttributedText:]
+    classMethods 0x2ece0 __OBJC_$_CATEGORY_CLASS_METHODS_UILabel_$_EXP
+        entsize 24
+        count   2
+        name    0x25606 load
+        types   0x26870 v16@0:8
+        imp     0x8bb0 +[UILabel(EXP) load]
+        name    0x26289 swizzleSetTextMethods
+        types   0x26870 v16@0:8
+        imp     0x8c24 +[UILabel(EXP) swizzleSetTextMethods]
+    protocols 0x0
+    instanceProperties 0x0
+Contents of (__DATA,__objc_protolist) section
+000000000002ded0 0x2fc28 __OBJC_PROTOCOL_$_NSObject
+    isa       0x0
+    name      0x24807 NSObject
+    protocols 0x0
+    instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+        entsize 24
+        count   19
+        name    0x255af isEqual:
+        types   0x263e9 B24@0:8@16
+        imp     0x0
+        name    0x24fa3 class
+        types   0x263f4 #16@0:8
+        imp     0x0
+        name    0x25f03 self
+        types   0x26852 @16@0:8
+        imp     0x0
+        name    0x25d14 performSelector:
+        types   0x263fc @24@0:8:16
+        imp     0x0
+        name    0x25d25 performSelector:withObject:
+        types   0x26407 @32@0:8:16@24
+        imp     0x0
+        name    0x25d41 performSelector:withObject:withObject:
+        types   0x26415 @40@0:8:16@24@32
+        imp     0x0
+        name    0x24b4a isProxy
+        types   0x263d4 B16@0:8
+        imp     0x0
+        name    0x255d5 isKindOfClass:
+        types   0x26426 B24@0:8#16
+        imp     0x0
+        name    0x255e4 isMemberOfClass:
+        types   0x26426 B24@0:8#16
+        imp     0x0
+        name    0x25000 conformsToProtocol:
+        types   0x263e9 B24@0:8@16
+        imp     0x0
+        name    0x25e6b respondsToSelector:
+        types   0x26431 B24@0:8:16
+        imp     0x0
+        name    0x25e9c retain
+        types   0x26852 @16@0:8
+        imp     0x0
+        name    0x24b84 release
+        types   0x2643c Vv16@0:8
+        imp     0x0
+        name    0x24ee1 autorelease
+        types   0x26852 @16@0:8
+        imp     0x0
+        name    0x25ea3 retainCount
+        types   0x26445 Q16@0:8
+        imp     0x0
+        name    0x2637c zone
+        types   0x2644d ^{_NSZone=}16@0:8
+        imp     0x0
+        name    0x254b2 hash
+        types   0x26445 Q16@0:8
+        imp     0x0
+        name    0x2625b superclass
+        types   0x263f4 #16@0:8
+        imp     0x0
+        name    0x25370 description
+        types   0x26852 @16@0:8
+        imp     0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+        entsize 24
+        count   1
+        name    0x25305 debugDescription
+        types   0x26852 @16@0:8
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+        entsize    16
+        count      4
+        name       0x254b2 hash
+        attributes 0x24b7f TQ,R
+        name       0x2625b superclass
+        attributes 0x24a8c T#,R
+        name       0x25370 description
+        attributes 0x24916 T@"NSString",R,C
+        name       0x25305 debugDescription
+        attributes 0x248e3 T@"NSString",?,R,C
+000000000002ded8 0x2fc88 __OBJC_PROTOCOL_$_NSURLConnectionDelegate
+    isa       0x0
+    name      0x247ef NSURLConnectionDelegate
+    protocols 0x2e5c0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDelegate
+        count    1
+        list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+            isa       0x0
+            name      0x24807 NSObject
+            protocols 0x0
+            instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                entsize 24
+                count   19
+                name    0x255af isEqual:
+                types   0x263e9 B24@0:8@16
+                imp     0x0
+                name    0x24fa3 class
+                types   0x263f4 #16@0:8
+                imp     0x0
+                name    0x25f03 self
+                types   0x26852 @16@0:8
+                imp     0x0
+                name    0x25d14 performSelector:
+                types   0x263fc @24@0:8:16
+                imp     0x0
+                name    0x25d25 performSelector:withObject:
+                types   0x26407 @32@0:8:16@24
+                imp     0x0
+                name    0x25d41 performSelector:withObject:withObject:
+                types   0x26415 @40@0:8:16@24@32
+                imp     0x0
+                name    0x24b4a isProxy
+                types   0x263d4 B16@0:8
+                imp     0x0
+                name    0x255d5 isKindOfClass:
+                types   0x26426 B24@0:8#16
+                imp     0x0
+                name    0x255e4 isMemberOfClass:
+                types   0x26426 B24@0:8#16
+                imp     0x0
+                name    0x25000 conformsToProtocol:
+                types   0x263e9 B24@0:8@16
+                imp     0x0
+                name    0x25e6b respondsToSelector:
+                types   0x26431 B24@0:8:16
+                imp     0x0
+                name    0x25e9c retain
+                types   0x26852 @16@0:8
+                imp     0x0
+                name    0x24b84 release
+                types   0x2643c Vv16@0:8
+                imp     0x0
+                name    0x24ee1 autorelease
+                types   0x26852 @16@0:8
+                imp     0x0
+                name    0x25ea3 retainCount
+                types   0x26445 Q16@0:8
+                imp     0x0
+                name    0x2637c zone
+                types   0x2644d ^{_NSZone=}16@0:8
+                imp     0x0
+                name    0x254b2 hash
+                types   0x26445 Q16@0:8
+                imp     0x0
+                name    0x2625b superclass
+                types   0x263f4 #16@0:8
+                imp     0x0
+                name    0x25370 description
+                types   0x26852 @16@0:8
+                imp     0x0
+            classMethods 0x0
+            optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                entsize 24
+                count   1
+                name    0x25305 debugDescription
+                types   0x26852 @16@0:8
+                imp     0x0
+            optionalClassMethods 0x0
+            instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                entsize    16
+                count      4
+                name       0x254b2 hash
+                attributes 0x24b7f TQ,R
+                name       0x2625b superclass
+                attributes 0x24a8c T#,R
+                name       0x25370 description
+                attributes 0x24916 T@"NSString",R,C
+                name       0x25305 debugDescription
+                attributes 0x248e3 T@"NSString",?,R,C
+    instanceMethods 0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x2e5d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDelegate
+        entsize 24
+        count   6
+        name    0x25073 connection:didFailWithError:
+        types   0x26486 v32@0:8@16@24
+        imp     0x0
+        name    0x251fb connectionShouldUseCredentialStorage:
+        types   0x263e9 B24@0:8@16
+        imp     0x0
+        name    0x251a9 connection:willSendRequestForAuthenticationChallenge:
+        types   0x26486 v32@0:8@16@24
+        imp     0x0
+        name    0x25014 connection:canAuthenticateAgainstProtectionSpace:
+        types   0x26494 B32@0:8@16@24
+        imp     0x0
+        name    0x25090 connection:didReceiveAuthenticationChallenge:
+        types   0x26486 v32@0:8@16@24
+        imp     0x0
+        name    0x25046 connection:didCancelAuthenticationChallenge:
+        types   0x26486 v32@0:8@16@24
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x0
+000000000002dee0 0x2fce8 __OBJC_PROTOCOL_$_NSURLConnectionDataDelegate
+    isa       0x0
+    name      0x24810 NSURLConnectionDataDelegate
+    protocols 0x2e6a0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDataDelegate
+        count    1
+        list[0]  0x2fc88 __OBJC_PROTOCOL_$_NSURLConnectionDelegate
+            isa       0x0
+            name      0x247ef NSURLConnectionDelegate
+            protocols 0x2e5c0 __OBJC_$_PROTOCOL_REFS_NSURLConnectionDelegate
+                count    1
+                list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+                    isa       0x0
+                    name      0x24807 NSObject
+                    protocols 0x0
+                    instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                        entsize 24
+                        count   19
+                        name    0x255af isEqual:
+                        types   0x263e9 B24@0:8@16
+                        imp     0x0
+                        name    0x24fa3 class
+                        types   0x263f4 #16@0:8
+                        imp     0x0
+                        name    0x25f03 self
+                        types   0x26852 @16@0:8
+                        imp     0x0
+                        name    0x25d14 performSelector:
+                        types   0x263fc @24@0:8:16
+                        imp     0x0
+                        name    0x25d25 performSelector:withObject:
+                        types   0x26407 @32@0:8:16@24
+                        imp     0x0
+                        name    0x25d41 performSelector:withObject:withObject:
+                        types   0x26415 @40@0:8:16@24@32
+                        imp     0x0
+                        name    0x24b4a isProxy
+                        types   0x263d4 B16@0:8
+                        imp     0x0
+                        name    0x255d5 isKindOfClass:
+                        types   0x26426 B24@0:8#16
+                        imp     0x0
+                        name    0x255e4 isMemberOfClass:
+                        types   0x26426 B24@0:8#16
+                        imp     0x0
+                        name    0x25000 conformsToProtocol:
+                        types   0x263e9 B24@0:8@16
+                        imp     0x0
+                        name    0x25e6b respondsToSelector:
+                        types   0x26431 B24@0:8:16
+                        imp     0x0
+                        name    0x25e9c retain
+                        types   0x26852 @16@0:8
+                        imp     0x0
+                        name    0x24b84 release
+                        types   0x2643c Vv16@0:8
+                        imp     0x0
+                        name    0x24ee1 autorelease
+                        types   0x26852 @16@0:8
+                        imp     0x0
+                        name    0x25ea3 retainCount
+                        types   0x26445 Q16@0:8
+                        imp     0x0
+                        name    0x2637c zone
+                        types   0x2644d ^{_NSZone=}16@0:8
+                        imp     0x0
+                        name    0x254b2 hash
+                        types   0x26445 Q16@0:8
+                        imp     0x0
+                        name    0x2625b superclass
+                        types   0x263f4 #16@0:8
+                        imp     0x0
+                        name    0x25370 description
+                        types   0x26852 @16@0:8
+                        imp     0x0
+                    classMethods 0x0
+                    optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                        entsize 24
+                        count   1
+                        name    0x25305 debugDescription
+                        types   0x26852 @16@0:8
+                        imp     0x0
+                    optionalClassMethods 0x0
+                    instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                        entsize    16
+                        count      4
+                        name       0x254b2 hash
+                        attributes 0x24b7f TQ,R
+                        name       0x2625b superclass
+                        attributes 0x24a8c T#,R
+                        name       0x25370 description
+                        attributes 0x24916 T@"NSString",R,C
+                        name       0x25305 debugDescription
+                        attributes 0x248e3 T@"NSString",?,R,C
+            instanceMethods 0x0
+            classMethods 0x0
+            optionalInstanceMethods 0x2e5d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDelegate
+                entsize 24
+                count   6
+                name    0x25073 connection:didFailWithError:
+                types   0x26486 v32@0:8@16@24
+                imp     0x0
+                name    0x251fb connectionShouldUseCredentialStorage:
+                types   0x263e9 B24@0:8@16
+                imp     0x0
+                name    0x251a9 connection:willSendRequestForAuthenticationChallenge:
+                types   0x26486 v32@0:8@16@24
+                imp     0x0
+                name    0x25014 connection:canAuthenticateAgainstProtectionSpace:
+                types   0x26494 B32@0:8@16@24
+                imp     0x0
+                name    0x25090 connection:didReceiveAuthenticationChallenge:
+                types   0x26486 v32@0:8@16@24
+                imp     0x0
+                name    0x25046 connection:didCancelAuthenticationChallenge:
+                types   0x26486 v32@0:8@16@24
+                imp     0x0
+            optionalClassMethods 0x0
+            instanceProperties 0x0
+    instanceMethods 0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x2e6b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLConnectionDataDelegate
+        entsize 24
+        count   7
+        name    0x2517c connection:willSendRequest:redirectResponse:
+        types   0x26558 @40@0:8@16@24@32
+        imp     0x0
+        name    0x250d9 connection:didReceiveResponse:
+        types   0x26486 v32@0:8@16@24
+        imp     0x0
+        name    0x250be connection:didReceiveData:
+        types   0x26486 v32@0:8@16@24
+        imp     0x0
+        name    0x25140 connection:needNewBodyStream:
+        types   0x26569 @32@0:8@16@24
+        imp     0x0
+        name    0x250f8 connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:
+        types   0x26577 v48@0:8@16q24q32q40
+        imp     0x0
+        name    0x2515e connection:willCacheResponse:
+        types   0x26569 @32@0:8@16@24
+        imp     0x0
+        name    0x251df connectionDidFinishLoading:
+        types   0x2685a v24@0:8@16
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x0
+000000000002dee8 0x2fd48 __OBJC_PROTOCOL_$_NSURLSessionDelegate
+    isa       0x0
+    name      0x2482c NSURLSessionDelegate
+    protocols 0x2e7a0 __OBJC_$_PROTOCOL_REFS_NSURLSessionDelegate
+        count    1
+        list[0]  0x2fc28 __OBJC_PROTOCOL_$_NSObject
+            isa       0x0
+            name      0x24807 NSObject
+            protocols 0x0
+            instanceMethods 0x2e2e8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+                entsize 24
+                count   19
+                name    0x255af isEqual:
+                types   0x263e9 B24@0:8@16
+                imp     0x0
+                name    0x24fa3 class
+                types   0x263f4 #16@0:8
+                imp     0x0
+                name    0x25f03 self
+                types   0x26852 @16@0:8
+                imp     0x0
+                name    0x25d14 performSelector:
+                types   0x263fc @24@0:8:16
+                imp     0x0
+                name    0x25d25 performSelector:withObject:
+                types   0x26407 @32@0:8:16@24
+                imp     0x0
+                name    0x25d41 performSelector:withObject:withObject:
+                types   0x26415 @40@0:8:16@24@32
+                imp     0x0
+                name    0x24b4a isProxy
+                types   0x263d4 B16@0:8
+                imp     0x0
+                name    0x255d5 isKindOfClass:
+                types   0x26426 B24@0:8#16
+                imp     0x0
+                name    0x255e4 isMemberOfClass:
+                types   0x26426 B24@0:8#16
+                imp     0x0
+                name    0x25000 conformsToProtocol:
+                types   0x263e9 B24@0:8@16
+                imp     0x0
+                name    0x25e6b respondsToSelector:
+                types   0x26431 B24@0:8:16
+                imp     0x0
+                name    0x25e9c retain
+                types   0x26852 @16@0:8
+                imp     0x0
+                name    0x24b84 release
+                types   0x2643c Vv16@0:8
+                imp     0x0
+                name    0x24ee1 autorelease
+                types   0x26852 @16@0:8
+                imp     0x0
+                name    0x25ea3 retainCount
+                types   0x26445 Q16@0:8
+                imp     0x0
+                name    0x2637c zone
+                types   0x2644d ^{_NSZone=}16@0:8
+                imp     0x0
+                name    0x254b2 hash
+                types   0x26445 Q16@0:8
+                imp     0x0
+                name    0x2625b superclass
+                types   0x263f4 #16@0:8
+                imp     0x0
+                name    0x25370 description
+                types   0x26852 @16@0:8
+                imp     0x0
+            classMethods 0x0
+            optionalInstanceMethods 0x2e4b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+                entsize 24
+                count   1
+                name    0x25305 debugDescription
+                types   0x26852 @16@0:8
+                imp     0x0
+            optionalClassMethods 0x0
+            instanceProperties 0x2e4d8 __OBJC_$_PROP_LIST_NSObject
+                entsize    16
+                count      4
+                name       0x254b2 hash
+                attributes 0x24b7f TQ,R
+                name       0x2625b superclass
+                attributes 0x24a8c T#,R
+                name       0x25370 description
+                attributes 0x24916 T@"NSString",R,C
+                name       0x25305 debugDescription
+                attributes 0x248e3 T@"NSString",?,R,C
+    instanceMethods 0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x2e7b8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSURLSessionDelegate
+        entsize 24
+        count   3
+        name    0x24c2e URLSession:didBecomeInvalidWithError:
+        types   0x26486 v32@0:8@16@24
+        imp     0x0
+        name    0x24c54 URLSession:didReceiveChallenge:completionHandler:
+        types   0x266f3 v40@0:8@16@24@?32
+        imp     0x0
+        name    0x24cf5 URLSessionDidFinishEventsForBackgroundURLSession:
+        types   0x2685a v24@0:8@16
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x0
+Contents of (__DATA,__objc_selrefs) section
+    0x262cd tableView:didSelectRowAtIndexPath:
+    0x26364 writeToFile:atomically:
+    0x25c8a oo0o0o0ooo0o0o0o0o0o0o0o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000
+    0x257c9 o00o0o0o0o000o0o0o0o0o0o00o0o0o00o0o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00
+    0x25c22 oo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o00o0o00o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00
+    0x25a78 oo0o0o0o0o0o0o0o0o00o000o0o0o00o00o0o0o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00
+    0x25bba oo0o0o0o0o0o0o0o0o0o0o0o000o00o0o0o0o0o0o0o0o0o0o000o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000
+    0x25700 o00o000o00000o0000000o0o0o00o000o0o00o00000000o00000000o0o0ooo0o0ooo000o0o00o0o0o0o0o0o0o00o000o00
+    0x25763 o00o000o0000o0oo0o0o0000000o0o0o00o000o0o00o00000000o00000000o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00o00
+    0x258da oo0o00o0o0o0o000o0o0o0o0o0o00o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o
+    0x25941 oo0o0o000o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o000o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0ooo0o0o0o0o0o0o0o
+    0x25a10 oo0o0o0o0o0o00o00o0o0o0o0o0o0o0o0o0o0o00o0o0ooo0000000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o
+    0x259a9 oo0o0o00o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o
+    0x25872 oo0o000o0o0o0o0o00o0o0o0o0o0o0o0o0o00o00ooo0o0o000o000o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o
+    0x25b51 oo0o0o0o0o0o0o0o0o00o0o00o0o00o00o0o0o0o0o0o0o0o000o000o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o
+    0x25696 o0000o0o0o000o0o00o0o0o0o00o0o0o0o000o0o0o0o0o000o00000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::
+    0x2499a protocolClasses
+    0x26097 setText:
+    0x25f55 setAttributedText:
+    0x24b25 dealloc
+    0x24894 JSONObjectWithData:options:error:
+    0x24890 URL
+    0x249aa URLProtocol:didFailWithError:
+    0x24b8c URLProtocol:didLoadData:
+    0x249d0 URLProtocol:didReceiveResponse:cacheStoragePolicy:
+    0x24bc5 URLProtocol:wasRedirectedToRequest:redirectResponse:
+    0x24a13 URLProtocolDidFinishLoading:
+    0x24d27 URLWithString:
+    0x24a88 a1:
+    0x248b6 a2:
+    0x24a91 a3:
+    0x248df a4:
+    0x24d9d a5
+    0x24dab absoluteString
+    0x24dba actionWithTitle:style:handler:
+    0x24dd9 addAction:
+    0x24de4 addObject:
+    0x24def addTextFieldWithConfigurationHandler:
+    0x24e15 addTimer:forMode:
+    0x24e27 alertControllerWithTitle:message:preferredStyle:
+    0x24ac5 allHeaderFields
+    0x24e65 appendBytes:length:
+    0x24e79 appendData:
+    0x24e85 appendFormat:
+    0x24e93 appendString:
+    0x24ea1 array
+    0x24ea7 arrayWithObjects:count:
+    0x24ebf attributesAtIndex:effectiveRange:
+    0x24eed b1
+    0x24ef0 b2
+    0x24ef3 b3
+    0x248f6 base64EncodedStringWithOptions:
+    0x24f01 bounds
+    0x24f08 bytes
+    0x24f0e cal:operation:toNum:
+    0x24f37 cancel
+    0x24f5a cc
+    0x24f5d cellForRowAtIndexPath:
+    0x24f74 characterAtIndex:
+    0x24f86 checkIfShouldReplaceResponse
+    0x24fa3 class
+    0x24fa9 clearColor
+    0x24fb4 client
+    0x24fbb code
+    0x24fc0 componentsJoinedByString:
+    0x24fda componentsSeparatedByCharactersInSet:
+    0x24af1 containsString:
+    0x25221 copy
+    0x25226 count
+    0x2522c countByEnumeratingWithState:objects:count:
+    0x25257 currentRequest
+    0x25266 currentRunLoop
+    0x25275 data
+    0x2527a dataTask
+    0x25283 dataTaskWithRequest:
+    0x25298 dataTaskWithRequest:completionHandler:
+    0x252bf dataUsingEncoding:
+    0x252d2 dataWithJSONObject:options:error:
+    0x252f4 date
+    0x24927 dateFromString:
+    0x25302 dd
+    0x25316 decodeBase64ToData:
+    0x2533f defaultConfiguration
+    0x25354 defaultSessionConfiguration
+    0x2537c dictionaryWithObjects:forKeys:count:
+    0x253a1 domain
+    0x253a8 ee
+    0x253cc ff
+    0x253db handleBackupListResponse:
+    0x253f5 handleDDDDescCertResponse:
+    0x25410 handleGenCertResponse:
+    0x25427 handleGipResponse:
+    0x2543a handleRauthResponse:
+    0x2544f handleRegcodeCertResponse:
+    0x2546a handleResponseData:forURL:
+    0x25485 handleSettingResponse:
+    0x2549c hasPrefix:
+    0x254a7 hasSuffix:
+    0x254d0 init
+    0x254d5 initWithBase64EncodedString:options:
+    0x254fa initWithCapacity:
+    0x2550c initWithData:encoding:
+    0x25523 initWithDomain:code:userInfo:
+    0x25541 initWithFormat:arguments:
+    0x2555b initWithFrame:
+    0x2495f initWithString:
+    0x2556a initWithURL:statusCode:HTTPVersion:headerFields:
+    0x2559b intValue
+    0x255a4 invalidate
+    0x255b8 isEqualToString:
+    0x255c9 isKeyWindow
+    0x255d5 isKindOfClass:
+    0x255f5 isSwizzle
+    0x255ff length
+    0x25606 load
+    0x2560b loadViewIfNeeded
+    0x2561c mainScreen
+    0x25627 makeKeyAndVisible
+    0x24980 message
+    0x25639 mutableCopy
+    0x25645 numberOfMatchesInString:options:range:
+    0x24b6f numberWithBool:
+    0x2566c numberWithInt:
+    0x2567b numberWithUnsignedInteger:
+    0x25831 objectAtIndexedSubscript:
+    0x2584b objectForKey:
+    0x25859 objectForKeyedSubscript:
+    0x25cf1 openURL:options:completionHandler:
+    0x25d68 performSelectorOnMainThread:withObject:waitUntilDone:
+    0x25d9e presentViewController:animated:completion:
+    0x25dc9 presentedViewController
+    0x25de1 propertyForKey:inRequest:
+    0x25dfb raise:format:
+    0x25e09 rangeOfString:
+    0x25e18 registerClass:
+    0x25e27 regularExpressionWithPattern:options:error:
+    0x25e53 replaceVersionInString:
+    0x249c8 request
+    0x25e6b respondsToSelector:
+    0x25e7f response
+    0x25e88 responseData
+    0x25e95 resume
+    0x25eaf rootViewController
+    0x25ec2 s12934r2347
+    0x25ece scheduledTimerWithTimeInterval:repeats:block:
+    0x25efc scheme
+    0x25f08 sessionDelegateQueue
+    0x25f1d sessionWithConfiguration:delegate:delegateQueue:
+    0x25f4e setAa:
+    0x25f68 setAttributes:range:
+    0x25f7d setBackgroundColor:
+    0x25f91 setBb:
+    0x25fa4 setDataTask:
+    0x25fb1 setDateFormat:
+    0x25fd2 setHidden:
+    0x25fdd setIsSwizzle:
+    0x25feb setLocale:
+    0x24ba5 setMaxConcurrentOperationCount:
+    0x25ff6 setName:
+    0x25fff setObject:forKey:
+    0x24a03 setPlaceholder:
+    0x26011 setProperty:forKey:inRequest:
+    0x2602f setResponse:
+    0x2603c setResponseData:
+    0x2604d setRootViewController:
+    0x26064 setSessionDelegateQueue:
+    0x2607d setShouldReplaceResponse:
+    0x260a0 setTimeZone:
+    0x24bfa setURL:
+    0x24a30 setWindowLevel:
+    0x260b4 shared
+    0x260bb sharedApplication
+    0x260cd sharedSession
+    0x260db shouldReplaceResponse
+    0x260f1 standardUserDefaults
+    0x2611f string
+    0x26126 stringByReplacingCharactersInRange:withString:
+    0x26155 stringByReplacingOccurrencesOfString:withString:
+    0x26186 stringByReplacingOccurrencesOfString:withString:options:range:
+    0x261c5 stringWithCharacters:length:
+    0x261e2 stringWithContentsOfFile:encoding:error:
+    0x2620b stringWithFormat:
+    0x2621d stringWithUTF8String:
+    0x26233 substringFromIndex:
+    0x26247 substringWithRange:
+    0x26266 swizzleSelector:fromClass:toClass:
+    0x26289 swizzleSetTextMethods
+    0x2629f swizzled_setAttributedText:
+    0x262bb swizzled_setText:
+    0x262f0 text
+    0x262f5 textFields
+    0x26300 textLabel
+    0x2630a timeIntervalSince1970
+    0x26320 title
+    0x26326 unload
+    0x2632d unregisterClass:
+    0x2633e view
+    0x26343 whitespaceAndNewlineCharacterSet
+    0x24c26 windows
+Contents of (__DATA,__objc_imageinfo) section
+    version 0
+    flags   0x6030740 Swift 5 or later

@@ -1,0 +1,245 @@
+@protocol NSObject
+
+@required
+
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",?,R,C) debugDescription;
+
+/* required instance methods */
+-[NSObject isEqual:];
+-[NSObject class];
+-[NSObject self];
+-[NSObject performSelector:];
+-[NSObject performSelector:withObject:];
+-[NSObject performSelector:withObject:withObject:];
+-[NSObject isProxy];
+-[NSObject isKindOfClass:];
+-[NSObject isMemberOfClass:];
+-[NSObject conformsToProtocol:];
+-[NSObject respondsToSelector:];
+-[NSObject retain];
+-[NSObject release];
+-[NSObject autorelease];
+-[NSObject retainCount];
+-[NSObject zone];
+-[NSObject hash];
+-[NSObject superclass];
+-[NSObject description];
+
+@optional
+
+/* optional instance methods */
+-[NSObject debugDescription];
+
+@end
+
+@protocol NSURLConnectionDataDelegate <NSURLConnectionDelegate>
+
+@required
+
+@optional
+
+/* optional instance methods */
+-[NSURLConnectionDataDelegate connection:willSendRequest:redirectResponse:];
+-[NSURLConnectionDataDelegate connection:didReceiveResponse:];
+-[NSURLConnectionDataDelegate connection:didReceiveData:];
+-[NSURLConnectionDataDelegate connection:needNewBodyStream:];
+-[NSURLConnectionDataDelegate connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:];
+-[NSURLConnectionDataDelegate connection:willCacheResponse:];
+-[NSURLConnectionDataDelegate connectionDidFinishLoading:];
+
+@end
+
+@protocol NSURLConnectionDelegate <NSObject>
+
+@required
+
+@optional
+
+/* optional instance methods */
+-[NSURLConnectionDelegate connection:didFailWithError:];
+-[NSURLConnectionDelegate connectionShouldUseCredentialStorage:];
+-[NSURLConnectionDelegate connection:willSendRequestForAuthenticationChallenge:];
+-[NSURLConnectionDelegate connection:canAuthenticateAgainstProtectionSpace:];
+-[NSURLConnectionDelegate connection:didReceiveAuthenticationChallenge:];
+-[NSURLConnectionDelegate connection:didCancelAuthenticationChallenge:];
+
+@end
+
+@protocol NSURLSessionDelegate <NSObject>
+
+@required
+
+@optional
+
+/* optional instance methods */
+-[NSURLSessionDelegate URLSession:didBecomeInvalidWithError:];
+-[NSURLSessionDelegate URLSession:didReceiveChallenge:completionHandler:];
+-[NSURLSessionDelegate URLSessionDidFinishEventsForBackgroundURLSession:];
+
+@end
+
+@interface _TtC2lk10Encryption : _TtCs12_SwiftObject
+
+/* class methods */
++[_TtC2lk10Encryption encrypt:];
++[_TtC2lk10Encryption decrypt:];
++[_TtC2lk10Encryption encryptURL:];
++[_TtC2lk10Encryption decryptURL:];
+
+@end
+
+@interface _TtC2lk3API : _TtCs12_SwiftObject
+
+/* class methods */
++[_TtC2lk3API oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000WithCode:];
++[_TtC2lk3API oo0o0o00o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o];
+
+@end
+
+@interface _TtC2lk9ActiveHUD : NSObject {
+    /* instance variables */
+    _$sSo8UIWindowCSg alertWindow;
+    _$sSSSg cc;
+    _$sSSSg aa;
+    _$sSSSg bb;
+    Swift.Bool ee;
+    _$sSo7NSTimerCSg heartbeatTimer;
+}
+
+@property (T@"NSString",N,C) cc;
+@property (T@"NSString",N,C) aa;
+@property (T@"NSString",N,C) bb;
+@property (TB,N,Vee) ee;
+
+/* class methods */
++[_TtC2lk9ActiveHUD shared];
+
+/* instance methods */
+-[_TtC2lk9ActiveHUD cc];
+-[_TtC2lk9ActiveHUD setCc:];
+-[_TtC2lk9ActiveHUD aa];
+-[_TtC2lk9ActiveHUD setAa:];
+-[_TtC2lk9ActiveHUD bb];
+-[_TtC2lk9ActiveHUD setBb:];
+-[_TtC2lk9ActiveHUD ee];
+-[_TtC2lk9ActiveHUD setEe:];
+-[_TtC2lk9ActiveHUD dd];
+-[_TtC2lk9ActiveHUD ff];
+-[_TtC2lk9ActiveHUD gg];
+-[_TtC2lk9ActiveHUD init];
+
+@end
+
+@interface iuebfowuenfiwnefpein : NSObject {
+    /* instance variables */
+    @"UIWindow" _alertWindow;
+}
+
+/* class methods */
++[iuebfowuenfiwnefpein decodeBase64ToData:];
++[iuebfowuenfiwnefpein a1:];
++[iuebfowuenfiwnefpein a2:];
++[iuebfowuenfiwnefpein a3:];
++[iuebfowuenfiwnefpein a4:];
++[iuebfowuenfiwnefpein a5];
++[iuebfowuenfiwnefpein b1];
++[iuebfowuenfiwnefpein b2];
++[iuebfowuenfiwnefpein b3];
++[iuebfowuenfiwnefpein cal:operation:toNum:];
+
+/* instance methods */
+
+@end
+
+@interface qliweufhoiqhuefoquewf : NSURLProtocol <NSURLConnectionDelegate, NSURLConnectionDataDelegate, NSURLSessionDelegate> {
+    /* instance variables */
+    B _shouldReplaceResponse;
+    @"NSURLSessionDataTask" _dataTask;
+    @"NSOperationQueue" _sessionDelegateQueue;
+    @"NSURLResponse" _response;
+    @"NSMutableData" _responseData;
+}
+
+@property (T@"NSURLSessionDataTask",&,N,V_dataTask) dataTask;
+@property (T@"NSOperationQueue",&,N,V_sessionDelegateQueue) sessionDelegateQueue;
+@property (T@"NSURLResponse",&,N,V_response) response;
+@property (T@"NSMutableData",&,N,V_responseData) responseData;
+@property (TB,N,V_shouldReplaceResponse) shouldReplaceResponse;
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",?,R,C) debugDescription;
+
+/* class methods */
++[qliweufhoiqhuefoquewf load];
++[qliweufhoiqhuefoquewf s12934r2347];
++[qliweufhoiqhuefoquewf equehfwuhef];
++[qliweufhoiqhuefoquewf canInitWithRequest:];
++[qliweufhoiqhuefoquewf canonicalRequestForRequest:];
+
+/* instance methods */
+-[qliweufhoiqhuefoquewf startLoading];
+-[qliweufhoiqhuefoquewf stopLoading];
+-[qliweufhoiqhuefoquewf checkIfShouldReplaceResponse];
+-[qliweufhoiqhuefoquewf URLSession:task:didCompleteWithError:];
+-[qliweufhoiqhuefoquewf URLSession:dataTask:didReceiveData:];
+-[qliweufhoiqhuefoquewf URLSession:dataTask:didReceiveResponse:completionHandler:];
+-[qliweufhoiqhuefoquewf URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:];
+-[qliweufhoiqhuefoquewf handleResponseData:forURL:];
+-[qliweufhoiqhuefoquewf handleDDDDescCertResponse:];
+-[qliweufhoiqhuefoquewf handleGipResponse:];
+-[qliweufhoiqhuefoquewf handleRegcodeCertResponse:];
+-[qliweufhoiqhuefoquewf handleRauthResponse:];
+-[qliweufhoiqhuefoquewf handleGenCertResponse:];
+-[qliweufhoiqhuefoquewf handleBackupListResponse:];
+-[qliweufhoiqhuefoquewf handleSettingResponse:];
+-[qliweufhoiqhuefoquewf dataTask];
+-[qliweufhoiqhuefoquewf setDataTask:];
+-[qliweufhoiqhuefoquewf sessionDelegateQueue];
+-[qliweufhoiqhuefoquewf setSessionDelegateQueue:];
+-[qliweufhoiqhuefoquewf response];
+-[qliweufhoiqhuefoquewf setResponse:];
+-[qliweufhoiqhuefoquewf responseData];
+-[qliweufhoiqhuefoquewf setResponseData:];
+-[qliweufhoiqhuefoquewf shouldReplaceResponse];
+-[qliweufhoiqhuefoquewf setShouldReplaceResponse:];
+
+@end
+
+@interface qywgefwyqbefouwen : NSObject {
+    /* instance variables */
+    B _isSwizzle;
+}
+
+@property (TB,N,V_isSwizzle) isSwizzle;
+
+/* class methods */
++[qywgefwyqbefouwen defaultConfiguration];
+
+/* instance methods */
+-[qywgefwyqbefouwen init];
+-[qywgefwyqbefouwen load];
+-[qywgefwyqbefouwen unload];
+-[qywgefwyqbefouwen swizzleSelector:fromClass:toClass:];
+-[qywgefwyqbefouwen protocolClasses];
+-[qywgefwyqbefouwen isSwizzle];
+-[qywgefwyqbefouwen setIsSwizzle:];
+
+@end
+
+@interface UILabel (EXP)
+
+/* class methods */
++[UILabel  load];
++[UILabel  swizzleSetTextMethods];
+
+/* instance methods */
+-[UILabel  replaceVersionInString:];
+-[UILabel  swizzled_setText:];
+-[UILabel  swizzled_setAttributedText:];
+
+@end
+

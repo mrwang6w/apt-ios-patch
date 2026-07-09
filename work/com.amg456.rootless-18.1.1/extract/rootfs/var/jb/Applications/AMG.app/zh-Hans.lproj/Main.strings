@@ -1,0 +1,135 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "3lx-1u-K6d"; */
+"3lx-1u-K6d.text" = "Title";
+
+/* Class = "UITableViewController"; title = "选择目标应用"; ObjectID = "5Nb-nN-cd4"; */
+"5Nb-nN-cd4.title" = "选择目标应用";
+
+/* Class = "UILabel"; text = "伪装 IDFA"; ObjectID = "6H7-IL-IXm"; */
+"6H7-IL-IXm.text" = "伪装 IDFA";
+
+/* Class = "UILabel"; text = "选择地理位置"; ObjectID = "6jd-Ka-9LE"; */
+"6jd-Ka-9LE.text" = "选择地理位置";
+
+/* Class = "UILabel"; text = "反越狱检测"; ObjectID = "7L3-d5-uwp"; */
+"7L3-d5-uwp.text" = "反越狱检测";
+
+/* Class = "UILabel"; text = "清除剪贴版"; ObjectID = "7OJ-4s-1KI"; */
+"7OJ-4s-1KI.text" = "清除剪贴版";
+
+/* Class = "UILabel"; text = " 设备信息"; ObjectID = "7XV-Qz-7KS"; */
+"7XV-Qz-7KS.text" = " 设备信息";
+
+/* Class = "UILabel"; text = "清除应用数据"; ObjectID = "9ql-cD-wM9"; */
+"9ql-cD-wM9.text" = "清除应用数据";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Ajp-vN-mBy"; */
+"Ajp-vN-mBy.text" = "Subtitle";
+
+/* Class = "UITableViewController"; title = "备份记录"; ObjectID = "BkJ-G3-zfq"; */
+"BkJ-G3-zfq.title" = "备份记录";
+
+/* Class = "UILabel"; text = "不伪装"; ObjectID = "D2c-G0-amf"; */
+"D2c-G0-amf.text" = "不伪装";
+
+/* Class = "UILabel"; text = "选择运营商"; ObjectID = "DkU-OR-8Ky"; */
+"DkU-OR-8Ky.text" = "选择运营商";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "DwY-nb-H7Q"; */
+"DwY-nb-H7Q.text" = "Title";
+
+/* Class = "UILabel"; text = "目标应用"; ObjectID = "Fdv-Q6-hqB"; */
+"Fdv-Q6-hqB.text" = "目标应用";
+
+/* Class = "UITableViewSection"; headerTitle = "伪装信息配置"; ObjectID = "Gft-aV-3br"; */
+"Gft-aV-3br.headerTitle" = "伪装信息配置";
+
+/* Class = "UILabel"; text = "备份数据"; ObjectID = "Hqg-Ig-g9y"; */
+"Hqg-Ig-g9y.text" = "备份数据";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "Muq-Ue-wpG"; */
+"Muq-Ue-wpG.text" = "Detail";
+
+/* Class = "UILabel"; text = "Wifi"; ObjectID = "NcC-7n-zr2"; */
+"NcC-7n-zr2.text" = "Wifi";
+
+/* Class = "UITableViewSection"; headerTitle = "数据清除配置"; ObjectID = "Pyo-FU-WDE"; */
+"Pyo-FU-WDE.headerTitle" = "数据清除配置";
+
+/* Class = "UILabel"; text = "2G"; ObjectID = "TpR-nh-5ro"; */
+"TpR-nh-5ro.text" = "2G";
+
+/* Class = "UITableViewController"; title = "设备信息"; ObjectID = "UP6-kI-QdY"; */
+"UP6-kI-QdY.title" = "设备信息";
+
+/* Class = "UITableViewController"; title = "记录详情"; ObjectID = "W1h-ZW-aQn"; */
+"W1h-ZW-aQn.title" = "记录详情";
+
+/* Class = "UILabel"; text = "清除 Keychain"; ObjectID = "W1u-gz-z5X"; */
+"W1u-gz-z5X.text" = "清除 Keychain";
+
+/* Class = "UITableViewController"; title = "网络类型"; ObjectID = "WH0-HE-pli"; */
+"WH0-HE-pli.title" = "网络类型";
+
+/* Class = "UITableViewSection"; headerTitle = "高级选项"; ObjectID = "ZQ8-CA-RVt"; */
+"ZQ8-CA-RVt.headerTitle" = "高级选项";
+
+/* Class = "UILabel"; text = "4G"; ObjectID = "a2t-sf-vPo"; */
+"a2t-sf-vPo.text" = "4G";
+
+/* Class = "UILabel"; text = "关于"; ObjectID = "csY-gC-CdV"; */
+"csY-gC-CdV.text" = "关于";
+
+/* Class = "UILabel"; text = "选择网络类型"; ObjectID = "hXA-FU-5T5"; */
+"hXA-FU-5T5.text" = "选择网络类型";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "hjc-XT-Gq4"; */
+"hjc-XT-Gq4.text" = "Subtitle";
+
+/* Class = "UITableViewController"; title = "选择运营商"; ObjectID = "iG6-Qr-Mjl"; */
+"iG6-Qr-Mjl.title" = "选择运营商";
+
+/* Class = "UILabel"; text = "清除 Cookies"; ObjectID = "iUJ-hF-qmn"; */
+"iUJ-hF-qmn.text" = "清除 Cookies";
+
+/* Class = "UILabel"; text = "3G"; ObjectID = "jCc-tw-OQc"; */
+"jCc-tw-OQc.text" = "3G";
+
+/* Class = "UILabel"; text = "一键新机"; ObjectID = "jkI-Ky-C4q"; */
+"jkI-Ky-C4q.text" = "一键新机";
+
+/* Class = "UIViewController"; title = "选择地理位置"; ObjectID = "jrD-Xg-c9j"; */
+"jrD-Xg-c9j.title" = "选择地理位置";
+
+/* Class = "UILabel"; text = "清除 Cookies"; ObjectID = "kyv-2l-Y9r"; */
+"kyv-2l-Y9r.text" = "清除 Cookies";
+
+/* Class = "UIViewController"; title = "关于"; ObjectID = "l4S-UR-W3L"; */
+"l4S-UR-W3L.title" = "关于";
+
+/* Class = "UITableViewController"; title = "AMG"; ObjectID = "lDk-Dn-MeJ"; */
+"lDk-Dn-MeJ.title" = "AMG";
+
+/* Class = "UILabel"; text = "原始机器"; ObjectID = "lR8-HG-Kau"; */
+"lR8-HG-Kau.text" = "原始机器";
+
+/* Class = "UILabel"; text = "设置"; ObjectID = "lwI-N9-exh"; */
+"lwI-N9-exh.text" = "设置";
+
+/* Class = "UILabel"; text = "随机位置"; ObjectID = "rnk-XJ-Pup"; */
+"rnk-XJ-Pup.text" = "随机位置";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "rxb-J2-esR"; */
+"rxb-J2-esR.text" = "Title";
+
+/* Class = "UILabel"; text = "备份记录"; ObjectID = "tiQ-yZ-I2S"; */
+"tiQ-yZ-I2S.text" = "备份记录";
+
+/* Class = "UINavigationItem"; title = "AMG"; ObjectID = "txP-Ta-w3h"; */
+"txP-Ta-w3h.title" = "AMG";
+
+/* Class = "UILabel"; text = "伪装 IDFV"; ObjectID = "ywa-Lr-94K"; */
+"ywa-Lr-94K.text" = "伪装 IDFV";
+
+/* Class = "UITableViewController"; title = "设置"; ObjectID = "zDg-re-XMD"; */
+"zDg-re-XMD.title" = "设置";

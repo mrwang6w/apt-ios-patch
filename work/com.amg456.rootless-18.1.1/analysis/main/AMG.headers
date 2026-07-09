@@ -1,0 +1,2197 @@
+@protocol GCDWebServerBodyReader <NSObject>
+
+@required
+
+/* required instance methods */
+-[GCDWebServerBodyReader open:];
+-[GCDWebServerBodyReader readData:];
+-[GCDWebServerBodyReader close];
+
+@optional
+
+/* optional instance methods */
+-[GCDWebServerBodyReader asyncReadDataWithCompletion:];
+
+@end
+
+@protocol GCDWebServerBodyWriter <NSObject>
+
+@required
+
+/* required instance methods */
+-[GCDWebServerBodyWriter open:];
+-[GCDWebServerBodyWriter writeData:error:];
+-[GCDWebServerBodyWriter close:];
+
+@optional
+
+@end
+
+@protocol MKAnnotation <NSObject>
+
+@required
+
+@property (T{CLLocationCoordinate2D=dd},R,N) coordinate;
+@property (T@"NSString",R,C,N) title;
+@property (T@"NSString",R,C,N) subtitle;
+
+/* required instance methods */
+-[MKAnnotation coordinate];
+
+@optional
+
+/* optional instance methods */
+-[MKAnnotation setCoordinate:];
+-[MKAnnotation title];
+-[MKAnnotation subtitle];
+
+@end
+
+@protocol MKMapViewDelegate <NSObject>
+
+@required
+
+@optional
+
+/* optional instance methods */
+-[MKMapViewDelegate mapView:regionWillChangeAnimated:];
+-[MKMapViewDelegate mapView:regionDidChangeAnimated:];
+-[MKMapViewDelegate mapViewDidChangeVisibleRegion:];
+-[MKMapViewDelegate mapViewWillStartLoadingMap:];
+-[MKMapViewDelegate mapViewDidFinishLoadingMap:];
+-[MKMapViewDelegate mapViewDidFailLoadingMap:withError:];
+-[MKMapViewDelegate mapViewWillStartRenderingMap:];
+-[MKMapViewDelegate mapViewDidFinishRenderingMap:fullyRendered:];
+-[MKMapViewDelegate mapView:viewForAnnotation:];
+-[MKMapViewDelegate mapView:didAddAnnotationViews:];
+-[MKMapViewDelegate mapView:annotationView:calloutAccessoryControlTapped:];
+-[MKMapViewDelegate mapView:didSelectAnnotationView:];
+-[MKMapViewDelegate mapView:didDeselectAnnotationView:];
+-[MKMapViewDelegate mapViewWillStartLocatingUser:];
+-[MKMapViewDelegate mapViewDidStopLocatingUser:];
+-[MKMapViewDelegate mapView:didUpdateUserLocation:];
+-[MKMapViewDelegate mapView:didFailToLocateUserWithError:];
+-[MKMapViewDelegate mapView:annotationView:didChangeDragState:fromOldState:];
+-[MKMapViewDelegate mapView:didChangeUserTrackingMode:animated:];
+-[MKMapViewDelegate mapView:rendererForOverlay:];
+-[MKMapViewDelegate mapView:didAddOverlayRenderers:];
+-[MKMapViewDelegate mapView:viewForOverlay:];
+-[MKMapViewDelegate mapView:didAddOverlayViews:];
+-[MKMapViewDelegate mapView:clusterAnnotationForMemberAnnotations:];
+
+@end
+
+@protocol NSObject
+
+@required
+
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* required instance methods */
+-[NSObject isEqual:];
+-[NSObject class];
+-[NSObject self];
+-[NSObject performSelector:];
+-[NSObject performSelector:withObject:];
+-[NSObject performSelector:withObject:withObject:];
+-[NSObject isProxy];
+-[NSObject isKindOfClass:];
+-[NSObject isMemberOfClass:];
+-[NSObject conformsToProtocol:];
+-[NSObject respondsToSelector:];
+-[NSObject retain];
+-[NSObject release];
+-[NSObject autorelease];
+-[NSObject retainCount];
+-[NSObject zone];
+-[NSObject hash];
+-[NSObject superclass];
+-[NSObject description];
+
+@optional
+
+/* optional instance methods */
+-[NSObject debugDescription];
+
+@end
+
+@protocol NSObject
+
+@required
+
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* required instance methods */
+-[NSObject isEqual:];
+-[NSObject class];
+-[NSObject self];
+-[NSObject performSelector:];
+-[NSObject performSelector:withObject:];
+-[NSObject performSelector:withObject:withObject:];
+-[NSObject isProxy];
+-[NSObject isKindOfClass:];
+-[NSObject isMemberOfClass:];
+-[NSObject conformsToProtocol:];
+-[NSObject respondsToSelector:];
+-[NSObject retain];
+-[NSObject release];
+-[NSObject autorelease];
+-[NSObject retainCount];
+-[NSObject zone];
+-[NSObject hash];
+-[NSObject superclass];
+-[NSObject description];
+
+@optional
+
+/* optional instance methods */
+-[NSObject debugDescription];
+
+@end
+
+@protocol UIAlertViewDelegate <NSObject>
+
+@required
+
+@optional
+
+/* optional instance methods */
+-[UIAlertViewDelegate alertView:clickedButtonAtIndex:];
+-[UIAlertViewDelegate alertViewCancel:];
+-[UIAlertViewDelegate willPresentAlertView:];
+-[UIAlertViewDelegate didPresentAlertView:];
+-[UIAlertViewDelegate alertView:willDismissWithButtonIndex:];
+-[UIAlertViewDelegate alertView:didDismissWithButtonIndex:];
+-[UIAlertViewDelegate alertViewShouldEnableFirstOtherButton:];
+
+@end
+
+@protocol UIApplicationDelegate <NSObject>
+
+@required
+
+@property (T@"UIWindow",&,N) window;
+
+@optional
+
+/* optional instance methods */
+-[UIApplicationDelegate applicationDidFinishLaunching:];
+-[UIApplicationDelegate application:willFinishLaunchingWithOptions:];
+-[UIApplicationDelegate application:didFinishLaunchingWithOptions:];
+-[UIApplicationDelegate applicationDidBecomeActive:];
+-[UIApplicationDelegate applicationWillResignActive:];
+-[UIApplicationDelegate application:handleOpenURL:];
+-[UIApplicationDelegate application:openURL:sourceApplication:annotation:];
+-[UIApplicationDelegate application:openURL:options:];
+-[UIApplicationDelegate applicationDidReceiveMemoryWarning:];
+-[UIApplicationDelegate applicationWillTerminate:];
+-[UIApplicationDelegate applicationSignificantTimeChange:];
+-[UIApplicationDelegate application:willChangeStatusBarOrientation:duration:];
+-[UIApplicationDelegate application:didChangeStatusBarOrientation:];
+-[UIApplicationDelegate application:willChangeStatusBarFrame:];
+-[UIApplicationDelegate application:didChangeStatusBarFrame:];
+-[UIApplicationDelegate application:didRegisterUserNotificationSettings:];
+-[UIApplicationDelegate application:didRegisterForRemoteNotificationsWithDeviceToken:];
+-[UIApplicationDelegate application:didFailToRegisterForRemoteNotificationsWithError:];
+-[UIApplicationDelegate application:didReceiveRemoteNotification:];
+-[UIApplicationDelegate application:didReceiveLocalNotification:];
+-[UIApplicationDelegate application:handleActionWithIdentifier:forLocalNotification:completionHandler:];
+-[UIApplicationDelegate application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:];
+-[UIApplicationDelegate application:handleActionWithIdentifier:forRemoteNotification:completionHandler:];
+-[UIApplicationDelegate application:handleActionWithIdentifier:forLocalNotification:withResponseInfo:completionHandler:];
+-[UIApplicationDelegate application:didReceiveRemoteNotification:fetchCompletionHandler:];
+-[UIApplicationDelegate application:performFetchWithCompletionHandler:];
+-[UIApplicationDelegate application:performActionForShortcutItem:completionHandler:];
+-[UIApplicationDelegate application:handleEventsForBackgroundURLSession:completionHandler:];
+-[UIApplicationDelegate application:handleWatchKitExtensionRequest:reply:];
+-[UIApplicationDelegate applicationShouldRequestHealthAuthorization:];
+-[UIApplicationDelegate application:handlerForIntent:];
+-[UIApplicationDelegate application:handleIntent:completionHandler:];
+-[UIApplicationDelegate applicationDidEnterBackground:];
+-[UIApplicationDelegate applicationWillEnterForeground:];
+-[UIApplicationDelegate applicationProtectedDataWillBecomeUnavailable:];
+-[UIApplicationDelegate applicationProtectedDataDidBecomeAvailable:];
+-[UIApplicationDelegate application:supportedInterfaceOrientationsForWindow:];
+-[UIApplicationDelegate application:shouldAllowExtensionPointIdentifier:];
+-[UIApplicationDelegate application:viewControllerWithRestorationIdentifierPath:coder:];
+-[UIApplicationDelegate application:shouldSaveSecureApplicationState:];
+-[UIApplicationDelegate application:shouldRestoreSecureApplicationState:];
+-[UIApplicationDelegate application:willEncodeRestorableStateWithCoder:];
+-[UIApplicationDelegate application:didDecodeRestorableStateWithCoder:];
+-[UIApplicationDelegate application:shouldSaveApplicationState:];
+-[UIApplicationDelegate application:shouldRestoreApplicationState:];
+-[UIApplicationDelegate application:willContinueUserActivityWithType:];
+-[UIApplicationDelegate application:continueUserActivity:restorationHandler:];
+-[UIApplicationDelegate application:didFailToContinueUserActivityWithType:error:];
+-[UIApplicationDelegate application:didUpdateUserActivity:];
+-[UIApplicationDelegate application:userDidAcceptCloudKitShareWithMetadata:];
+-[UIApplicationDelegate application:configurationForConnectingSceneSession:options:];
+-[UIApplicationDelegate application:didDiscardSceneSessions:];
+-[UIApplicationDelegate applicationShouldAutomaticallyLocalizeKeyCommands:];
+-[UIApplicationDelegate window];
+-[UIApplicationDelegate setWindow:];
+
+@end
+
+@protocol UIBarPositioningDelegate <NSObject>
+
+@required
+
+@optional
+
+/* optional instance methods */
+-[UIBarPositioningDelegate positionForBar:];
+
+@end
+
+@protocol UISearchBarDelegate <UIBarPositioningDelegate>
+
+@required
+
+@optional
+
+/* optional instance methods */
+-[UISearchBarDelegate searchBarShouldBeginEditing:];
+-[UISearchBarDelegate searchBarTextDidBeginEditing:];
+-[UISearchBarDelegate searchBarShouldEndEditing:];
+-[UISearchBarDelegate searchBarTextDidEndEditing:];
+-[UISearchBarDelegate searchBar:textDidChange:];
+-[UISearchBarDelegate searchBar:shouldChangeTextInRange:replacementText:];
+-[UISearchBarDelegate searchBarSearchButtonClicked:];
+-[UISearchBarDelegate searchBarBookmarkButtonClicked:];
+-[UISearchBarDelegate searchBarCancelButtonClicked:];
+-[UISearchBarDelegate searchBarResultsListButtonClicked:];
+-[UISearchBarDelegate searchBar:selectedScopeButtonIndexDidChange:];
+
+@end
+
+@protocol __ARCLiteKeyedSubscripting__
+
+@required
+
+/* required instance methods */
+-[__ARCLiteKeyedSubscripting__ objectForKeyedSubscript:];
+-[__ARCLiteKeyedSubscripting__ setObject:forKeyedSubscript:];
+
+@optional
+
+@end
+
+@interface AboutViewController : UIViewController
+
+/* instance methods */
+-[AboutViewController viewDidLoad];
+-[AboutViewController didReceiveMemoryWarning];
+
+@end
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    /* instance variables */
+    @"UIWindow" _window;
+}
+
+@property (T@"UIWindow",&,N,V_window) window;
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* instance methods */
+-[AppDelegate application:didFinishLaunchingWithOptions:];
+-[AppDelegate applicationWillResignActive:];
+-[AppDelegate applicationDidEnterBackground:];
+-[AppDelegate applicationWillEnterForeground:];
+-[AppDelegate applicationDidBecomeActive:];
+-[AppDelegate applicationWillTerminate:];
+-[AppDelegate window];
+-[AppDelegate setWindow:];
+
+@end
+
+@interface AppListViewController : UITableViewController {
+    /* instance variables */
+    @"NSMutableArray" _arraySelectAppInfo;
+    @"NSMutableArray" _arrayAppInfo;
+    @"NSMutableDictionary" _dicAppInfo;
+    @"UIBarButtonItem" _selectAllButton;
+}
+
+@property (T@"NSMutableArray",&,N,V_arraySelectAppInfo) arraySelectAppInfo;
+@property (T@"NSMutableArray",&,N,V_arrayAppInfo) arrayAppInfo;
+@property (T@"NSMutableDictionary",&,N,V_dicAppInfo) dicAppInfo;
+@property (T@"UIBarButtonItem",W,N,V_selectAllButton) selectAllButton;
+
+/* instance methods */
+-[AppListViewController selectAll:];
+-[AppListViewController viewDidLoad];
+-[AppListViewController didReceiveMemoryWarning];
+-[AppListViewController numberOfSectionsInTableView:];
+-[AppListViewController tableView:numberOfRowsInSection:];
+-[AppListViewController tableView:cellForRowAtIndexPath:];
+-[AppListViewController tableView:didSelectRowAtIndexPath:];
+-[AppListViewController arraySelectAppInfo];
+-[AppListViewController setArraySelectAppInfo:];
+-[AppListViewController arrayAppInfo];
+-[AppListViewController setArrayAppInfo:];
+-[AppListViewController dicAppInfo];
+-[AppListViewController setDicAppInfo:];
+-[AppListViewController selectAllButton];
+-[AppListViewController setSelectAllButton:];
+
+@end
+
+@interface BackupDetailViewController : UITableViewController {
+    /* instance variables */
+    @"UIWindow" _window;
+}
+
+@property (T@"UIWindow",&,N,V_window) window;
+
+/* instance methods */
+-[BackupDetailViewController viewDidLoad];
+-[BackupDetailViewController didReceiveMemoryWarning];
+-[BackupDetailViewController numberOfSectionsInTableView:];
+-[BackupDetailViewController tableView:numberOfRowsInSection:];
+-[BackupDetailViewController window];
+-[BackupDetailViewController setWindow:];
+
+@end
+
+@interface BackupViewController : UITableViewController {
+    /* instance variables */
+    @"UIToolbar" toolBar;
+    @"NSMutableDictionary" dicHttp;
+    @"NSMutableArray" _arrayBackupList;
+    @"NSMutableDictionary" _dicBackupRowInfo;
+    @"NSString" _strOldBackupName;
+    @"NSMutableDictionary" _dicBackupConfig;
+    @"UIWindow" _window;
+    @"UIBarButtonItem" _rightBarButton;
+    @"UIBarButtonItem" _toolBarOneButton;
+    @"UIBarButtonItem" _toolBarTwoButton;
+    @"UIBarButtonItem" _toolBarThreeButton;
+    @"NSMutableArray" _selectedDataArr;
+    @"NSMutableArray" _dataArr;
+    q _currentRow;
+    @"NSMutableArray" _arrayDisableList;
+}
+
+@property (T@"NSMutableArray",&,N,V_arrayBackupList) arrayBackupList;
+@property (T@"NSMutableDictionary",&,N,V_dicBackupRowInfo) dicBackupRowInfo;
+@property (T@"NSString",&,N,V_strOldBackupName) strOldBackupName;
+@property (T@"NSMutableDictionary",&,N,V_dicBackupConfig) dicBackupConfig;
+@property (T@"UIWindow",&,N,V_window) window;
+@property (T@"UIBarButtonItem",&,N,V_rightBarButton) rightBarButton;
+@property (T@"UIBarButtonItem",&,N,V_toolBarOneButton) toolBarOneButton;
+@property (T@"UIBarButtonItem",&,N,V_toolBarTwoButton) toolBarTwoButton;
+@property (T@"UIBarButtonItem",&,N,V_toolBarThreeButton) toolBarThreeButton;
+@property (T@"NSMutableArray",&,N,V_selectedDataArr) selectedDataArr;
+@property (T@"NSMutableArray",&,N,V_dataArr) dataArr;
+@property (Tq,V_currentRow) currentRow;
+@property (T@"NSMutableArray",&,N,V_arrayDisableList) arrayDisableList;
+
+/* class methods */
++[BackupViewController showInfomation:];
+
+/* instance methods */
+-[BackupViewController dataArr];
+-[BackupViewController selectedDataArr];
+-[BackupViewController hideLoadHUD];
+-[BackupViewController showLoadHUDMsg:];
+-[BackupViewController sortFilePathOfCreationTime:videoMetadataDirPath:];
+-[BackupViewController reloadBackupList];
+-[BackupViewController reloadDataNew:];
+-[BackupViewController editAction:];
+-[BackupViewController nextOrDeleteAction:];
+-[BackupViewController selectAllAction:];
+-[BackupViewController exportRecord:];
+-[BackupViewController viewDidLoad];
+-[BackupViewController isDisableRecord:];
+-[BackupViewController getNextEnabledRecord];
+-[BackupViewController didReceiveMemoryWarning];
+-[BackupViewController numberOfSectionsInTableView:];
+-[BackupViewController tableView:numberOfRowsInSection:];
+-[BackupViewController tableView:cellForRowAtIndexPath:];
+-[BackupViewController tableView:didDeselectRowAtIndexPath:];
+-[BackupViewController setRecord::];
+-[BackupViewController tableView:didSelectRowAtIndexPath:];
+-[BackupViewController tableView:editingStyleForRowAtIndexPath:];
+-[BackupViewController tableView:canEditRowAtIndexPath:];
+-[BackupViewController tableView:commitEditingStyle:forRowAtIndexPath:];
+-[BackupViewController tableView:editActionsForRowAtIndexPath:];
+-[BackupViewController alertView:clickedButtonAtIndex:];
+-[BackupViewController arrayBackupList];
+-[BackupViewController setArrayBackupList:];
+-[BackupViewController dicBackupRowInfo];
+-[BackupViewController setDicBackupRowInfo:];
+-[BackupViewController strOldBackupName];
+-[BackupViewController setStrOldBackupName:];
+-[BackupViewController dicBackupConfig];
+-[BackupViewController setDicBackupConfig:];
+-[BackupViewController window];
+-[BackupViewController setWindow:];
+-[BackupViewController rightBarButton];
+-[BackupViewController setRightBarButton:];
+-[BackupViewController toolBarOneButton];
+-[BackupViewController setToolBarOneButton:];
+-[BackupViewController toolBarTwoButton];
+-[BackupViewController setToolBarTwoButton:];
+-[BackupViewController toolBarThreeButton];
+-[BackupViewController setToolBarThreeButton:];
+-[BackupViewController setSelectedDataArr:];
+-[BackupViewController setDataArr:];
+-[BackupViewController currentRow];
+-[BackupViewController setCurrentRow:];
+-[BackupViewController arrayDisableList];
+-[BackupViewController setArrayDisableList:];
+
+@end
+
+@interface CarrierViewController : UITableViewController {
+    /* instance variables */
+    q _currentIndex;
+    @"NSArray" _arrayCarrierInfo;
+    @"NSMutableDictionary" _dicDeviceInfo;
+    @"NSIndexPath" _lastIndexPath;
+}
+
+@property (Tq,N,V_currentIndex) currentIndex;
+@property (T@"NSArray",&,N,V_arrayCarrierInfo) arrayCarrierInfo;
+@property (T@"NSMutableDictionary",&,N,V_dicDeviceInfo) dicDeviceInfo;
+@property (T@"NSIndexPath",&,N,V_lastIndexPath) lastIndexPath;
+
+/* instance methods */
+-[CarrierViewController viewDidLoad];
+-[CarrierViewController didReceiveMemoryWarning];
+-[CarrierViewController numberOfSectionsInTableView:];
+-[CarrierViewController tableView:numberOfRowsInSection:];
+-[CarrierViewController tableView:accessoryTypeForRowWithIndexPath:];
+-[CarrierViewController tableView:cellForRowAtIndexPath:];
+-[CarrierViewController tableView:didSelectRowAtIndexPath:];
+-[CarrierViewController currentIndex];
+-[CarrierViewController setCurrentIndex:];
+-[CarrierViewController arrayCarrierInfo];
+-[CarrierViewController setArrayCarrierInfo:];
+-[CarrierViewController dicDeviceInfo];
+-[CarrierViewController setDicDeviceInfo:];
+-[CarrierViewController lastIndexPath];
+-[CarrierViewController setLastIndexPath:];
+
+@end
+
+@interface DeviceInfoViewController : UITableViewController {
+    /* instance variables */
+    @"NSMutableDictionary" _dictDeviceInfo;
+}
+
+@property (T@"NSMutableDictionary",&,N,V_dictDeviceInfo) dictDeviceInfo;
+
+/* instance methods */
+-[DeviceInfoViewController viewWillAppear:];
+-[DeviceInfoViewController viewDidLoad];
+-[DeviceInfoViewController didReceiveMemoryWarning];
+-[DeviceInfoViewController numberOfSectionsInTableView:];
+-[DeviceInfoViewController tableView:numberOfRowsInSection:];
+-[DeviceInfoViewController tableView:cellForRowAtIndexPath:];
+-[DeviceInfoViewController dictDeviceInfo];
+-[DeviceInfoViewController setDictDeviceInfo:];
+
+@end
+
+@interface DeviceModelViewController : UITableViewController {
+    /* instance variables */
+    q _currentIndex;
+    @"NSArray" _arrayModel;
+    @"NSMutableDictionary" _dicDeviceInfo;
+}
+
+@property (Tq,N,V_currentIndex) currentIndex;
+@property (T@"NSArray",&,V_arrayModel) arrayModel;
+@property (T@"NSMutableDictionary",&,N,V_dicDeviceInfo) dicDeviceInfo;
+
+/* instance methods */
+-[DeviceModelViewController viewDidLoad];
+-[DeviceModelViewController didReceiveMemoryWarning];
+-[DeviceModelViewController numberOfSectionsInTableView:];
+-[DeviceModelViewController tableView:numberOfRowsInSection:];
+-[DeviceModelViewController tableView:accessoryTypeForRowWithIndexPath:];
+-[DeviceModelViewController tableView:didSelectRowAtIndexPath:];
+-[DeviceModelViewController tableView:cellForRowAtIndexPath:];
+-[DeviceModelViewController currentIndex];
+-[DeviceModelViewController setCurrentIndex:];
+-[DeviceModelViewController arrayModel];
+-[DeviceModelViewController setArrayModel:];
+-[DeviceModelViewController dicDeviceInfo];
+-[DeviceModelViewController setDicDeviceInfo:];
+
+@end
+
+@interface GCDWebServer : NSObject {
+    /* instance variables */
+    @"NSObject<OS_dispatch_queue>" _syncQueue;
+    @"NSObject<OS_dispatch_group>" _sourceGroup;
+    @"NSMutableArray" _handlers;
+    q _activeConnections;
+    B _connected;
+    ^{__CFRunLoopTimer=} _disconnectTimer;
+    @"NSDictionary" _options;
+    @"NSMutableDictionary" _authenticationBasicAccounts;
+    @"NSMutableDictionary" _authenticationDigestAccounts;
+    # _connectionClass;
+    d _disconnectDelay;
+    @"NSObject<OS_dispatch_source>" _source4;
+    @"NSObject<OS_dispatch_source>" _source6;
+    ^{__CFNetService=} _registrationService;
+    ^{__CFNetService=} _resolutionService;
+    ^{_DNSServiceRef_t=} _dnsService;
+    ^{__CFSocket=} _dnsSocket;
+    ^{__CFRunLoopSource=} _dnsSource;
+    @"NSString" _dnsAddress;
+    Q _dnsPort;
+    B _bindToLocalhost;
+    B _suspendInBackground;
+    Q _backgroundTask;
+    B _recording;
+    B _shouldAutomaticallyMapHEADToGET;
+    @"<GCDWebServerDelegate>" _delegate;
+    Q _port;
+    @"NSString" _serverName;
+    @"NSString" _authenticationRealm;
+    q _dispatchQueuePriority;
+}
+
+@property (T@"NSURL",R,N) serverURL;
+@property (T@"NSURL",R,N) bonjourServerURL;
+@property (T@"NSURL",R,N) publicServerURL;
+@property (TB,N,GisRecordingEnabled) recordingEnabled;
+@property (T@"NSMutableArray",R,N,V_handlers) handlers;
+@property (T@"NSString",R,N,V_serverName) serverName;
+@property (T@"NSString",R,N,V_authenticationRealm) authenticationRealm;
+@property (T@"NSMutableDictionary",R,N,V_authenticationBasicAccounts) authenticationBasicAccounts;
+@property (T@"NSMutableDictionary",R,N,V_authenticationDigestAccounts) authenticationDigestAccounts;
+@property (TB,R,N,V_shouldAutomaticallyMapHEADToGET) shouldAutomaticallyMapHEADToGET;
+@property (Tq,R,N,V_dispatchQueuePriority) dispatchQueuePriority;
+@property (T@"<GCDWebServerDelegate>",W,N,V_delegate) delegate;
+@property (TB,R,N,GisRunning) running;
+@property (TQ,R,N,V_port) port;
+@property (T@"NSString",R,N) bonjourName;
+@property (T@"NSString",R,N) bonjourType;
+
+/* class methods */
++[GCDWebServer setLogLevel:];
++[GCDWebServer initialize];
+
+/* instance methods */
+-[GCDWebServer setRecordingEnabled:];
+-[GCDWebServer isRecordingEnabled];
+-[GCDWebServer runTestsWithOptions:inDirectory:];
+-[GCDWebServer logVerbose:];
+-[GCDWebServer logInfo:];
+-[GCDWebServer logWarning:];
+-[GCDWebServer logError:];
+-[GCDWebServer addGETHandlerForPath:staticData:contentType:cacheAge:];
+-[GCDWebServer addGETHandlerForPath:filePath:isAttachment:cacheAge:allowRangeRequests:];
+-[GCDWebServer _responseWithContentsOfDirectory:];
+-[GCDWebServer addGETHandlerForBasePath:directoryPath:indexFilename:cacheAge:allowRangeRequests:];
+-[GCDWebServer addDefaultHandlerForMethod:requestClass:processBlock:];
+-[GCDWebServer addDefaultHandlerForMethod:requestClass:asyncProcessBlock:];
+-[GCDWebServer addHandlerForMethod:path:requestClass:processBlock:];
+-[GCDWebServer addHandlerForMethod:path:requestClass:asyncProcessBlock:];
+-[GCDWebServer addHandlerForMethod:pathRegex:requestClass:processBlock:];
+-[GCDWebServer addHandlerForMethod:pathRegex:requestClass:asyncProcessBlock:];
+-[GCDWebServer serverURL];
+-[GCDWebServer bonjourServerURL];
+-[GCDWebServer publicServerURL];
+-[GCDWebServer start];
+-[GCDWebServer startWithPort:bonjourName:];
+-[GCDWebServer init];
+-[GCDWebServer dealloc];
+-[GCDWebServer _startBackgroundTask];
+-[GCDWebServer _didConnect];
+-[GCDWebServer willStartConnection:];
+-[GCDWebServer _endBackgroundTask];
+-[GCDWebServer _didDisconnect];
+-[GCDWebServer didEndConnection:];
+-[GCDWebServer bonjourName];
+-[GCDWebServer bonjourType];
+-[GCDWebServer addHandlerWithMatchBlock:processBlock:];
+-[GCDWebServer addHandlerWithMatchBlock:asyncProcessBlock:];
+-[GCDWebServer removeAllHandlers];
+-[GCDWebServer _createListeningSocket:localAddress:length:maxPendingConnections:error:];
+-[GCDWebServer _createDispatchSourceWithListeningSocket:isIPv6:];
+-[GCDWebServer _start:];
+-[GCDWebServer _stop];
+-[GCDWebServer _didEnterBackground:];
+-[GCDWebServer _willEnterForeground:];
+-[GCDWebServer startWithOptions:error:];
+-[GCDWebServer isRunning];
+-[GCDWebServer stop];
+-[GCDWebServer delegate];
+-[GCDWebServer setDelegate:];
+-[GCDWebServer port];
+-[GCDWebServer handlers];
+-[GCDWebServer serverName];
+-[GCDWebServer authenticationRealm];
+-[GCDWebServer authenticationBasicAccounts];
+-[GCDWebServer authenticationDigestAccounts];
+-[GCDWebServer shouldAutomaticallyMapHEADToGET];
+-[GCDWebServer dispatchQueuePriority];
+
+@end
+
+@interface GCDWebServerBodyDecoder : NSObject <GCDWebServerBodyWriter> {
+    /* instance variables */
+    @"GCDWebServerRequest" _request;
+    @"<GCDWebServerBodyWriter>" _writer;
+}
+
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* instance methods */
+-[GCDWebServerBodyDecoder initWithRequest:writer:];
+-[GCDWebServerBodyDecoder open:];
+-[GCDWebServerBodyDecoder writeData:error:];
+-[GCDWebServerBodyDecoder close:];
+
+@end
+
+@interface GCDWebServerBodyEncoder : NSObject <GCDWebServerBodyReader> {
+    /* instance variables */
+    @"GCDWebServerResponse" _response;
+    @"<GCDWebServerBodyReader>" _reader;
+}
+
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* instance methods */
+-[GCDWebServerBodyEncoder initWithResponse:reader:];
+-[GCDWebServerBodyEncoder open:];
+-[GCDWebServerBodyEncoder readData:];
+-[GCDWebServerBodyEncoder close];
+
+@end
+
+@interface GCDWebServerConnection : NSObject {
+    /* instance variables */
+    i _socket;
+    B _virtualHEAD;
+    ^{__CFHTTPMessage=} _requestMessage;
+    @"GCDWebServerRequest" _request;
+    @"GCDWebServerHandler" _handler;
+    ^{__CFHTTPMessage=} _responseMessage;
+    @"GCDWebServerResponse" _response;
+    q _statusCode;
+    B _opened;
+    Q _connectionIndex;
+    @"NSString" _requestPath;
+    i _requestFD;
+    @"NSString" _responsePath;
+    i _responseFD;
+    @"GCDWebServer" _server;
+    @"NSData" _localAddressData;
+    @"NSData" _remoteAddressData;
+    Q _totalBytesRead;
+    Q _totalBytesWritten;
+}
+
+@property (T@"GCDWebServer",R,N,V_server) server;
+@property (TB,R,N,GisUsingIPv6) usingIPv6;
+@property (T@"NSData",R,N,V_localAddressData) localAddressData;
+@property (T@"NSString",R,N) localAddressString;
+@property (T@"NSData",R,N,V_remoteAddressData) remoteAddressData;
+@property (T@"NSString",R,N) remoteAddressString;
+@property (TQ,R,N,V_totalBytesRead) totalBytesRead;
+@property (TQ,R,N,V_totalBytesWritten) totalBytesWritten;
+
+/* class methods */
++[GCDWebServerConnection initialize];
+
+/* instance methods */
+-[GCDWebServerConnection open];
+-[GCDWebServerConnection didReadBytes:length:];
+-[GCDWebServerConnection didWriteBytes:length:];
+-[GCDWebServerConnection rewriteRequestURL:withMethod:headers:];
+-[GCDWebServerConnection preflightRequest:];
+-[GCDWebServerConnection processRequest:completion:];
+-[GCDWebServerConnection overrideResponse:forRequest:];
+-[GCDWebServerConnection abortRequest:withStatusCode:];
+-[GCDWebServerConnection close];
+-[GCDWebServerConnection writeData:withCompletionBlock:];
+-[GCDWebServerConnection writeHeadersWithCompletionBlock:];
+-[GCDWebServerConnection writeBodyWithCompletionBlock:];
+-[GCDWebServerConnection readData:withLength:completionBlock:];
+-[GCDWebServerConnection readHeaders:withCompletionBlock:];
+-[GCDWebServerConnection readBodyWithRemainingLength:completionBlock:];
+-[GCDWebServerConnection readNextBodyChunk:completionBlock:];
+-[GCDWebServerConnection isUsingIPv6];
+-[GCDWebServerConnection _initializeResponseHeadersWithStatusCode:];
+-[GCDWebServerConnection _startProcessingRequest];
+-[GCDWebServerConnection _finishProcessingRequest:];
+-[GCDWebServerConnection _readBodyWithLength:initialData:];
+-[GCDWebServerConnection _readChunkedBodyWithInitialData:];
+-[GCDWebServerConnection _readRequestHeaders];
+-[GCDWebServerConnection initWithServer:localAddress:remoteAddress:socket:];
+-[GCDWebServerConnection localAddressString];
+-[GCDWebServerConnection remoteAddressString];
+-[GCDWebServerConnection dealloc];
+-[GCDWebServerConnection server];
+-[GCDWebServerConnection localAddressData];
+-[GCDWebServerConnection remoteAddressData];
+-[GCDWebServerConnection totalBytesRead];
+-[GCDWebServerConnection totalBytesWritten];
+
+@end
+
+@interface GCDWebServerDataResponse : GCDWebServerResponse {
+    /* instance variables */
+    @"NSData" _data;
+    B _done;
+}
+
+@property (T@"NSString",C,D,N) contentType;
+
+/* class methods */
++[GCDWebServerDataResponse responseWithText:];
++[GCDWebServerDataResponse responseWithHTML:];
++[GCDWebServerDataResponse responseWithHTMLTemplate:variables:];
++[GCDWebServerDataResponse responseWithJSONObject:];
++[GCDWebServerDataResponse responseWithJSONObject:contentType:];
++[GCDWebServerDataResponse responseWithData:contentType:];
+
+/* instance methods */
+-[GCDWebServerDataResponse initWithText:];
+-[GCDWebServerDataResponse initWithHTML:];
+-[GCDWebServerDataResponse initWithHTMLTemplate:variables:];
+-[GCDWebServerDataResponse initWithJSONObject:];
+-[GCDWebServerDataResponse initWithJSONObject:contentType:];
+-[GCDWebServerDataResponse initWithData:contentType:];
+-[GCDWebServerDataResponse readData:];
+-[GCDWebServerDataResponse description];
+
+@end
+
+@interface GCDWebServerFileResponse : GCDWebServerResponse {
+    /* instance variables */
+    @"NSString" _path;
+    Q _offset;
+    Q _size;
+    i _file;
+}
+
+@property (T@"NSString",C,D,N) contentType;
+@property (T@"NSDate",&,D,N) lastModifiedDate;
+@property (T@"NSString",C,D,N) eTag;
+
+/* class methods */
++[GCDWebServerFileResponse responseWithFile:];
++[GCDWebServerFileResponse responseWithFile:isAttachment:];
++[GCDWebServerFileResponse responseWithFile:byteRange:];
++[GCDWebServerFileResponse responseWithFile:byteRange:isAttachment:];
+
+/* instance methods */
+-[GCDWebServerFileResponse initWithFile:];
+-[GCDWebServerFileResponse initWithFile:isAttachment:];
+-[GCDWebServerFileResponse initWithFile:byteRange:];
+-[GCDWebServerFileResponse initWithFile:byteRange:isAttachment:mimeTypeOverrides:];
+-[GCDWebServerFileResponse open:];
+-[GCDWebServerFileResponse readData:];
+-[GCDWebServerFileResponse close];
+-[GCDWebServerFileResponse description];
+
+@end
+
+@interface GCDWebServerGZipDecoder : GCDWebServerBodyDecoder {
+    /* instance variables */
+    {z_stream_s="next_in"*"avail_in"I"total_in"Q"next_out"*"avail_out"I"total_out"Q"msg"*"state"^{internal_state}"zalloc"^?"zfree"^?"opaque"^v"data_type"i"adler"Q"reserved"Q} _stream;
+    B _finished;
+}
+
+/* instance methods */
+-[GCDWebServerGZipDecoder open:];
+-[GCDWebServerGZipDecoder writeData:error:];
+-[GCDWebServerGZipDecoder close:];
+
+@end
+
+@interface GCDWebServerGZipEncoder : GCDWebServerBodyEncoder {
+    /* instance variables */
+    {z_stream_s="next_in"*"avail_in"I"total_in"Q"next_out"*"avail_out"I"total_out"Q"msg"*"state"^{internal_state}"zalloc"^?"zfree"^?"opaque"^v"data_type"i"adler"Q"reserved"Q} _stream;
+    B _finished;
+}
+
+/* instance methods */
+-[GCDWebServerGZipEncoder initWithResponse:reader:];
+-[GCDWebServerGZipEncoder open:];
+-[GCDWebServerGZipEncoder readData:];
+-[GCDWebServerGZipEncoder close];
+
+@end
+
+@interface GCDWebServerHandler : NSObject {
+    /* instance variables */
+    @? _matchBlock;
+    @? _asyncProcessBlock;
+}
+
+@property (T@?,R,N,V_matchBlock) matchBlock;
+@property (T@?,R,N,V_asyncProcessBlock) asyncProcessBlock;
+
+/* instance methods */
+-[GCDWebServerHandler initWithMatchBlock:asyncProcessBlock:];
+-[GCDWebServerHandler matchBlock];
+-[GCDWebServerHandler asyncProcessBlock];
+
+@end
+
+@interface GCDWebServerRequest : NSObject <GCDWebServerBodyWriter> {
+    /* instance variables */
+    B _opened;
+    @"NSMutableArray" _decoders;
+    @"<GCDWebServerBodyWriter>" _writer;
+    @"NSMutableDictionary" _attributes;
+    B _acceptsGzipContentEncoding;
+    B _usesChunkedTransferEncoding;
+    @"NSString" _method;
+    @"NSURL" _URL;
+    @"NSDictionary" _headers;
+    @"NSString" _path;
+    @"NSDictionary" _query;
+    @"NSString" _contentType;
+    Q _contentLength;
+    @"NSDate" _ifModifiedSince;
+    @"NSString" _ifNoneMatch;
+    @"NSData" _localAddressData;
+    @"NSData" _remoteAddressData;
+    {_NSRange="location"Q"length"Q} _byteRange;
+}
+
+@property (TB,R,N,V_usesChunkedTransferEncoding) usesChunkedTransferEncoding;
+@property (T@"NSData",&,N,V_localAddressData) localAddressData;
+@property (T@"NSData",&,N,V_remoteAddressData) remoteAddressData;
+@property (T@"NSString",R,N,V_method) method;
+@property (T@"NSURL",R,N,V_URL) URL;
+@property (T@"NSDictionary",R,N,V_headers) headers;
+@property (T@"NSString",R,N,V_path) path;
+@property (T@"NSDictionary",R,N,V_query) query;
+@property (T@"NSString",R,N,V_contentType) contentType;
+@property (TQ,R,N,V_contentLength) contentLength;
+@property (T@"NSDate",R,N,V_ifModifiedSince) ifModifiedSince;
+@property (T@"NSString",R,N,V_ifNoneMatch) ifNoneMatch;
+@property (T{_NSRange=QQ},R,N,V_byteRange) byteRange;
+@property (TB,R,N,V_acceptsGzipContentEncoding) acceptsGzipContentEncoding;
+@property (T@"NSString",R,N) localAddressString;
+@property (T@"NSString",R,N) remoteAddressString;
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* instance methods */
+-[GCDWebServerRequest initWithMethod:url:headers:path:query:];
+-[GCDWebServerRequest hasBody];
+-[GCDWebServerRequest hasByteRange];
+-[GCDWebServerRequest attributeForKey:];
+-[GCDWebServerRequest open:];
+-[GCDWebServerRequest writeData:error:];
+-[GCDWebServerRequest close:];
+-[GCDWebServerRequest prepareForWriting];
+-[GCDWebServerRequest performOpen:];
+-[GCDWebServerRequest performWriteData:error:];
+-[GCDWebServerRequest performClose:];
+-[GCDWebServerRequest setAttribute:forKey:];
+-[GCDWebServerRequest localAddressString];
+-[GCDWebServerRequest remoteAddressString];
+-[GCDWebServerRequest description];
+-[GCDWebServerRequest method];
+-[GCDWebServerRequest URL];
+-[GCDWebServerRequest headers];
+-[GCDWebServerRequest path];
+-[GCDWebServerRequest query];
+-[GCDWebServerRequest contentType];
+-[GCDWebServerRequest contentLength];
+-[GCDWebServerRequest ifModifiedSince];
+-[GCDWebServerRequest ifNoneMatch];
+-[GCDWebServerRequest byteRange];
+-[GCDWebServerRequest acceptsGzipContentEncoding];
+-[GCDWebServerRequest localAddressData];
+-[GCDWebServerRequest setLocalAddressData:];
+-[GCDWebServerRequest remoteAddressData];
+-[GCDWebServerRequest setRemoteAddressData:];
+-[GCDWebServerRequest usesChunkedTransferEncoding];
+
+@end
+
+@interface GCDWebServerResponse : NSObject <GCDWebServerBodyReader> {
+    /* instance variables */
+    B _opened;
+    @"NSMutableArray" _encoders;
+    @"<GCDWebServerBodyReader>" _reader;
+    B _gzipContentEncodingEnabled;
+    @"NSString" _contentType;
+    Q _contentLength;
+    q _statusCode;
+    Q _cacheControlMaxAge;
+    @"NSDate" _lastModifiedDate;
+    @"NSString" _eTag;
+    @"NSDictionary" _additionalHeaders;
+}
+
+@property (T@"NSDictionary",R,N,V_additionalHeaders) additionalHeaders;
+@property (TB,R,N) usesChunkedTransferEncoding;
+@property (T@"NSString",C,N,V_contentType) contentType;
+@property (TQ,N,V_contentLength) contentLength;
+@property (Tq,N,V_statusCode) statusCode;
+@property (TQ,N,V_cacheControlMaxAge) cacheControlMaxAge;
+@property (T@"NSDate",&,N,V_lastModifiedDate) lastModifiedDate;
+@property (T@"NSString",C,N,V_eTag) eTag;
+@property (TB,N,GisGZipContentEncodingEnabled,V_gzipContentEncodingEnabled) gzipContentEncodingEnabled;
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* class methods */
++[GCDWebServerResponse responseWithStatusCode:];
++[GCDWebServerResponse responseWithRedirect:permanent:];
++[GCDWebServerResponse response];
+
+/* instance methods */
+-[GCDWebServerResponse initWithStatusCode:];
+-[GCDWebServerResponse initWithRedirect:permanent:];
+-[GCDWebServerResponse init];
+-[GCDWebServerResponse setValue:forAdditionalHeader:];
+-[GCDWebServerResponse hasBody];
+-[GCDWebServerResponse usesChunkedTransferEncoding];
+-[GCDWebServerResponse open:];
+-[GCDWebServerResponse readData:];
+-[GCDWebServerResponse close];
+-[GCDWebServerResponse prepareForReading];
+-[GCDWebServerResponse performOpen:];
+-[GCDWebServerResponse performReadDataWithCompletion:];
+-[GCDWebServerResponse performClose];
+-[GCDWebServerResponse description];
+-[GCDWebServerResponse contentType];
+-[GCDWebServerResponse setContentType:];
+-[GCDWebServerResponse contentLength];
+-[GCDWebServerResponse setContentLength:];
+-[GCDWebServerResponse statusCode];
+-[GCDWebServerResponse setStatusCode:];
+-[GCDWebServerResponse cacheControlMaxAge];
+-[GCDWebServerResponse setCacheControlMaxAge:];
+-[GCDWebServerResponse lastModifiedDate];
+-[GCDWebServerResponse setLastModifiedDate:];
+-[GCDWebServerResponse eTag];
+-[GCDWebServerResponse setETag:];
+-[GCDWebServerResponse isGZipContentEncodingEnabled];
+-[GCDWebServerResponse setGzipContentEncodingEnabled:];
+-[GCDWebServerResponse additionalHeaders];
+
+@end
+
+@interface HeaderView : UITableViewHeaderFooterView {
+    /* instance variables */
+    @"UILabel" _label;
+}
+
+@property (T@"UILabel",&,N,V_label) label;
+
+/* instance methods */
+-[HeaderView label];
+-[HeaderView setLabel:];
+
+@end
+
+@interface LocationViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate, UISearchBarDelegate> {
+    /* instance variables */
+    @"MKMapView" _mapView;
+    @"MKPointAnnotation" _annotationPoint_new;
+    @"MKPointAnnotation" _annotationPoint_last;
+    @"MKPointAnnotation" _annotationPoint_src;
+    @"NSMutableDictionary" _dicDeviceInfo;
+    @"UISearchBar" _searchBar;
+    @"UIBarButtonItem" _OneButton;
+    @"UIBarButtonItem" _TwoButton;
+}
+
+@property (T@"MKMapView",&,N,V_mapView) mapView;
+@property (T@"MKPointAnnotation",&,N,V_annotationPoint_new) annotationPoint_new;
+@property (T@"MKPointAnnotation",&,N,V_annotationPoint_last) annotationPoint_last;
+@property (T@"MKPointAnnotation",&,N,V_annotationPoint_src) annotationPoint_src;
+@property (T@"NSMutableDictionary",&,N,V_dicDeviceInfo) dicDeviceInfo;
+@property (T@"UISearchBar",&,N,V_searchBar) searchBar;
+@property (T@"UIBarButtonItem",&,N,V_OneButton) OneButton;
+@property (T@"UIBarButtonItem",&,N,V_TwoButton) TwoButton;
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* instance methods */
+-[LocationViewController preferredStatusBarStyle];
+-[LocationViewController AddLocation:];
+-[LocationViewController DelLocation:];
+-[LocationViewController viewDidLoad];
+-[LocationViewController mTapPress:];
+-[LocationViewController mapView:viewForAnnotation:];
+-[LocationViewController dealloc];
+-[LocationViewController viewDidAppear:];
+-[LocationViewController viewWillDisappear:];
+-[LocationViewController setBarButtonItem];
+-[LocationViewController searchBarShouldBeginEditing:];
+-[LocationViewController searchBarTextDidBeginEditing:];
+-[LocationViewController searchBarSearchButtonClicked:];
+-[LocationViewController searchBarCancelButtonClicked:];
+-[LocationViewController searchBarTextDidEndEditing:];
+-[LocationViewController searchBar:textDidChange:];
+-[LocationViewController mapView];
+-[LocationViewController setMapView:];
+-[LocationViewController annotationPoint_new];
+-[LocationViewController setAnnotationPoint_new:];
+-[LocationViewController annotationPoint_last];
+-[LocationViewController setAnnotationPoint_last:];
+-[LocationViewController annotationPoint_src];
+-[LocationViewController setAnnotationPoint_src:];
+-[LocationViewController dicDeviceInfo];
+-[LocationViewController setDicDeviceInfo:];
+-[LocationViewController searchBar];
+-[LocationViewController setSearchBar:];
+-[LocationViewController OneButton];
+-[LocationViewController setOneButton:];
+-[LocationViewController TwoButton];
+-[LocationViewController setTwoButton:];
+
+@end
+
+@interface MBBarProgressView : UIView {
+    /* instance variables */
+    f _progress;
+    @"UIColor" _lineColor;
+    @"UIColor" _progressRemainingColor;
+    @"UIColor" _progressColor;
+}
+
+@property (Tf,N,V_progress) progress;
+@property (T@"UIColor",&,N,V_lineColor) lineColor;
+@property (T@"UIColor",&,N,V_progressRemainingColor) progressRemainingColor;
+@property (T@"UIColor",&,N,V_progressColor) progressColor;
+
+/* instance methods */
+-[MBBarProgressView init];
+-[MBBarProgressView initWithFrame:];
+-[MBBarProgressView dealloc];
+-[MBBarProgressView drawRect:];
+-[MBBarProgressView registerForKVO];
+-[MBBarProgressView unregisterFromKVO];
+-[MBBarProgressView observableKeypaths];
+-[MBBarProgressView observeValueForKeyPath:ofObject:change:context:];
+-[MBBarProgressView progress];
+-[MBBarProgressView setProgress:];
+-[MBBarProgressView lineColor];
+-[MBBarProgressView setLineColor:];
+-[MBBarProgressView progressRemainingColor];
+-[MBBarProgressView setProgressRemainingColor:];
+-[MBBarProgressView progressColor];
+-[MBBarProgressView setProgressColor:];
+
+@end
+
+@interface MBProgressHUD : UIView {
+    /* instance variables */
+    B useAnimation;
+    : methodForExecution;
+    @ targetForExecution;
+    @ objectForExecution;
+    @"UILabel" label;
+    @"UILabel" detailsLabel;
+    B isFinished;
+    {CGAffineTransform="a"d"b"d"c"d"d"d"tx"d"ty"d} rotationTransform;
+    B square;
+    B dimBackground;
+    B taskInProgress;
+    B removeFromSuperViewOnHide;
+    i animationType;
+    f opacity;
+    f xOffset;
+    f yOffset;
+    f margin;
+    f graceTime;
+    f minShowTime;
+    i mode;
+    f progress;
+    @"<MBProgressHUDDelegate>" delegate;
+    @"UIColor" color;
+    @"UIFont" labelFont;
+    @"UIFont" detailsLabelFont;
+    @"UIView" indicator;
+    @"NSTimer" graceTimer;
+    @"NSTimer" minShowTimer;
+    @"UIView" customView;
+    @"NSDate" showStarted;
+    @"NSString" labelText;
+    @"NSString" detailsLabelText;
+    @? completionBlock;
+    {CGSize="width"d"height"d} minSize;
+    {CGSize="width"d"height"d} size;
+}
+
+@property (T@"UIView",&,Vindicator) indicator;
+@property (T@"NSTimer",&,VgraceTimer) graceTimer;
+@property (T@"NSTimer",&,VminShowTimer) minShowTimer;
+@property (T@"NSDate",&,VshowStarted) showStarted;
+@property (T{CGSize=dd},Vsize) size;
+@property (T@?,C,VcompletionBlock) completionBlock;
+@property (Ti,Vmode) mode;
+@property (Ti,VanimationType) animationType;
+@property (T@"UIView",&,VcustomView) customView;
+@property (T@"<MBProgressHUDDelegate>",W,Vdelegate) delegate;
+@property (T@"NSString",C,VlabelText) labelText;
+@property (T@"NSString",C,VdetailsLabelText) detailsLabelText;
+@property (Tf,Vopacity) opacity;
+@property (T@"UIColor",&,Vcolor) color;
+@property (Tf,VxOffset) xOffset;
+@property (Tf,VyOffset) yOffset;
+@property (Tf,Vmargin) margin;
+@property (TB,VdimBackground) dimBackground;
+@property (Tf,VgraceTime) graceTime;
+@property (Tf,VminShowTime) minShowTime;
+@property (TB,VtaskInProgress) taskInProgress;
+@property (TB,VremoveFromSuperViewOnHide) removeFromSuperViewOnHide;
+@property (T@"UIFont",&,VlabelFont) labelFont;
+@property (T@"UIFont",&,VdetailsLabelFont) detailsLabelFont;
+@property (Tf,Vprogress) progress;
+@property (T{CGSize=dd},VminSize) minSize;
+@property (TB,GisSquare,Vsquare) square;
+
+/* class methods */
++[MBProgressHUD showHUDAddedTo:animated:];
++[MBProgressHUD hideHUDForView:animated:];
++[MBProgressHUD hideAllHUDsForView:animated:];
++[MBProgressHUD HUDForView:];
++[MBProgressHUD allHUDsForView:];
+
+/* instance methods */
+-[MBProgressHUD initWithFrame:];
+-[MBProgressHUD initWithView:];
+-[MBProgressHUD initWithWindow:];
+-[MBProgressHUD dealloc];
+-[MBProgressHUD show:];
+-[MBProgressHUD hide:];
+-[MBProgressHUD hide:afterDelay:];
+-[MBProgressHUD hideDelayed:];
+-[MBProgressHUD handleGraceTimer:];
+-[MBProgressHUD handleMinShowTimer:];
+-[MBProgressHUD didMoveToSuperview];
+-[MBProgressHUD showUsingAnimation:];
+-[MBProgressHUD hideUsingAnimation:];
+-[MBProgressHUD animationFinished:finished:context:];
+-[MBProgressHUD done];
+-[MBProgressHUD showWhileExecuting:onTarget:withObject:animated:];
+-[MBProgressHUD showAnimated:whileExecutingBlock:];
+-[MBProgressHUD showAnimated:whileExecutingBlock:completionBlock:];
+-[MBProgressHUD showAnimated:whileExecutingBlock:onQueue:];
+-[MBProgressHUD showAnimated:whileExecutingBlock:onQueue:completionBlock:];
+-[MBProgressHUD launchExecution];
+-[MBProgressHUD cleanUp];
+-[MBProgressHUD setupLabels];
+-[MBProgressHUD updateIndicators];
+-[MBProgressHUD layoutSubviews];
+-[MBProgressHUD drawRect:];
+-[MBProgressHUD registerForKVO];
+-[MBProgressHUD unregisterFromKVO];
+-[MBProgressHUD observableKeypaths];
+-[MBProgressHUD observeValueForKeyPath:ofObject:change:context:];
+-[MBProgressHUD updateUIForKeypath:];
+-[MBProgressHUD registerForNotifications];
+-[MBProgressHUD unregisterFromNotifications];
+-[MBProgressHUD deviceOrientationDidChange:];
+-[MBProgressHUD setTransformForCurrentOrientation:];
+-[MBProgressHUD animationType];
+-[MBProgressHUD setAnimationType:];
+-[MBProgressHUD delegate];
+-[MBProgressHUD setDelegate:];
+-[MBProgressHUD opacity];
+-[MBProgressHUD setOpacity:];
+-[MBProgressHUD color];
+-[MBProgressHUD setColor:];
+-[MBProgressHUD labelFont];
+-[MBProgressHUD setLabelFont:];
+-[MBProgressHUD detailsLabelFont];
+-[MBProgressHUD setDetailsLabelFont:];
+-[MBProgressHUD indicator];
+-[MBProgressHUD setIndicator:];
+-[MBProgressHUD xOffset];
+-[MBProgressHUD setXOffset:];
+-[MBProgressHUD yOffset];
+-[MBProgressHUD setYOffset:];
+-[MBProgressHUD minSize];
+-[MBProgressHUD setMinSize:];
+-[MBProgressHUD isSquare];
+-[MBProgressHUD setSquare:];
+-[MBProgressHUD margin];
+-[MBProgressHUD setMargin:];
+-[MBProgressHUD dimBackground];
+-[MBProgressHUD setDimBackground:];
+-[MBProgressHUD graceTime];
+-[MBProgressHUD setGraceTime:];
+-[MBProgressHUD minShowTime];
+-[MBProgressHUD setMinShowTime:];
+-[MBProgressHUD graceTimer];
+-[MBProgressHUD setGraceTimer:];
+-[MBProgressHUD minShowTimer];
+-[MBProgressHUD setMinShowTimer:];
+-[MBProgressHUD taskInProgress];
+-[MBProgressHUD setTaskInProgress:];
+-[MBProgressHUD removeFromSuperViewOnHide];
+-[MBProgressHUD setRemoveFromSuperViewOnHide:];
+-[MBProgressHUD customView];
+-[MBProgressHUD setCustomView:];
+-[MBProgressHUD showStarted];
+-[MBProgressHUD setShowStarted:];
+-[MBProgressHUD mode];
+-[MBProgressHUD setMode:];
+-[MBProgressHUD labelText];
+-[MBProgressHUD setLabelText:];
+-[MBProgressHUD detailsLabelText];
+-[MBProgressHUD setDetailsLabelText:];
+-[MBProgressHUD progress];
+-[MBProgressHUD setProgress:];
+-[MBProgressHUD size];
+-[MBProgressHUD setSize:];
+-[MBProgressHUD completionBlock];
+-[MBProgressHUD setCompletionBlock:];
+
+@end
+
+@interface MBRoundProgressView : UIView {
+    /* instance variables */
+    B _annular;
+    f _progress;
+    @"UIColor" _progressTintColor;
+    @"UIColor" _backgroundTintColor;
+}
+
+@property (Tf,N,V_progress) progress;
+@property (T@"UIColor",&,N,V_progressTintColor) progressTintColor;
+@property (T@"UIColor",&,N,V_backgroundTintColor) backgroundTintColor;
+@property (TB,N,GisAnnular,V_annular) annular;
+
+/* instance methods */
+-[MBRoundProgressView init];
+-[MBRoundProgressView initWithFrame:];
+-[MBRoundProgressView dealloc];
+-[MBRoundProgressView drawRect:];
+-[MBRoundProgressView registerForKVO];
+-[MBRoundProgressView unregisterFromKVO];
+-[MBRoundProgressView observableKeypaths];
+-[MBRoundProgressView observeValueForKeyPath:ofObject:change:context:];
+-[MBRoundProgressView progress];
+-[MBRoundProgressView setProgress:];
+-[MBRoundProgressView progressTintColor];
+-[MBRoundProgressView setProgressTintColor:];
+-[MBRoundProgressView backgroundTintColor];
+-[MBRoundProgressView setBackgroundTintColor:];
+-[MBRoundProgressView isAnnular];
+-[MBRoundProgressView setAnnular:];
+
+@end
+
+@interface MainViewController : UITableViewController {
+    /* instance variables */
+    @"NSDictionary" _dictData;
+    @"NSArray" _listData;
+    @"NSMutableDictionary" _dictRandomInfo;
+    @"NSString" _strLastIP;
+    @"NSString" _strNewIP;
+}
+
+@property (T@"NSDictionary",&,N,V_dictData) dictData;
+@property (T@"NSArray",&,N,V_listData) listData;
+@property (T@"NSMutableDictionary",&,N,V_dictRandomInfo) dictRandomInfo;
+@property (T@"NSString",&,N,V_strLastIP) strLastIP;
+@property (T@"NSString",&,N,V_strNewIP) strNewIP;
+
+/* class methods */
++[MainViewController dGfLauXabab];
++[MainViewController pGflauxabac];
++[MainViewController ooooo0o00o00o0o0o0o0o000000o0o000o0o0o00oo0oo0o0ooo0oo0000o000o0ooo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0:];
++[MainViewController showMessage:];
++[MainViewController o00o000o0000o0o0o00o0o0o0o0o000000o0o0o0o000o0o000o00000000o0000000o0o0ooo00o0ooo000o0o000o0o0o0o0o0o0o00];
+
+/* instance methods */
+-[MainViewController moveBackupRecords:];
+-[MainViewController getAppConfigThread:];
+-[MainViewController onlineInfo:];
+-[MainViewController hideLoadHUD];
+-[MainViewController showLoadHUDMsg:];
+-[MainViewController oo0o0o0o0o0o0o0o0o0o0o0o000o0o000o0o0o0o0o0o0o00000000000o00000o0o00o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[MainViewController newMachine:];
+-[MainViewController reset:];
+-[MainViewController setToolbarForIP];
+-[MainViewController viewDidAppear:];
+-[MainViewController getNotice:];
+-[MainViewController o00o000o000o0o0o0o00o0o0o00o00000o0o0o0o000o0o0000o00000000o0000000o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00:];
+-[MainViewController o00o000o0000o0o0o00o0o0o0o0o000000o0o0o0o000o0o000o00000000o0000000o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00];
+-[MainViewController viewDidLoad];
+-[MainViewController hbqpeqfgxk];
+-[MainViewController showBackupViewController:];
+-[MainViewController isDisableRecord:];
+-[MainViewController didReceiveMemoryWarning];
+-[MainViewController numberOfSectionsInTableView:];
+-[MainViewController tableView:numberOfRowsInSection:];
+-[MainViewController saveCertificate:privateKey:];
+-[MainViewController o00o000o000000o000000o0o0000oo0o00o00000000o00000000o0o0ooo0o0ooo000o0o00o0o0o0o0o0o0o00o000o:];
+-[MainViewController o00o000o0000o0o00o0o0o0o0o000000o0o0o00o000o0o00o00000000o00000000o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00o:::::];
+-[MainViewController tableView:didSelectRowAtIndexPath:];
+-[MainViewController dictData];
+-[MainViewController setDictData:];
+-[MainViewController listData];
+-[MainViewController setListData:];
+-[MainViewController dictRandomInfo];
+-[MainViewController setDictRandomInfo:];
+-[MainViewController strLastIP];
+-[MainViewController setStrLastIP:];
+-[MainViewController strNewIP];
+-[MainViewController setStrNewIP:];
+
+@end
+
+@interface MyAnnotation : NSObject <MKAnnotation> {
+    /* instance variables */
+    @"NSString" _streetAddress;
+    @"NSString" _city;
+    @"NSString" _state;
+    @"NSString" _zip;
+    {CLLocationCoordinate2D="latitude"d"longitude"d} _coordinate;
+}
+
+@property (T@"NSString",C,N,V_streetAddress) streetAddress;
+@property (T@"NSString",C,N,V_city) city;
+@property (T@"NSString",C,N,V_state) state;
+@property (T@"NSString",C,N,V_zip) zip;
+@property (T{CLLocationCoordinate2D=dd},N,V_coordinate) coordinate;
+@property (T@"NSString",R,C,N) title;
+@property (T@"NSString",R,C,N) subtitle;
+@property (TQ,R) hash;
+@property (T#,R) superclass;
+@property (T@"NSString",R,C) description;
+@property (T@"NSString",R,C) debugDescription;
+
+/* instance methods */
+-[MyAnnotation initWithCoordinate:];
+-[MyAnnotation title];
+-[MyAnnotation subtitle];
+-[MyAnnotation streetAddress];
+-[MyAnnotation setStreetAddress:];
+-[MyAnnotation city];
+-[MyAnnotation setCity:];
+-[MyAnnotation state];
+-[MyAnnotation setState:];
+-[MyAnnotation zip];
+-[MyAnnotation setZip:];
+-[MyAnnotation coordinate];
+-[MyAnnotation setCoordinate:];
+
+@end
+
+@interface NetworkTypeViewController : UITableViewController {
+    /* instance variables */
+    @"NSMutableDictionary" _dicDeviceInfo;
+    @"NSIndexPath" _lastIndexPath;
+}
+
+@property (T@"NSMutableDictionary",&,N,V_dicDeviceInfo) dicDeviceInfo;
+@property (T@"NSIndexPath",&,N,V_lastIndexPath) lastIndexPath;
+
+/* instance methods */
+-[NetworkTypeViewController viewDidLoad];
+-[NetworkTypeViewController didReceiveMemoryWarning];
+-[NetworkTypeViewController numberOfSectionsInTableView:];
+-[NetworkTypeViewController tableView:numberOfRowsInSection:];
+-[NetworkTypeViewController tableView:didSelectRowAtIndexPath:];
+-[NetworkTypeViewController dicDeviceInfo];
+-[NetworkTypeViewController setDicDeviceInfo:];
+-[NetworkTypeViewController lastIndexPath];
+-[NetworkTypeViewController setLastIndexPath:];
+
+@end
+
+@interface RandomCarrierViewController : UITableViewController {
+    /* instance variables */
+    q _currentIndex;
+    @"NSDictionary" _randomConfigDic;
+    @"NSArray" _arrayCarrier;
+    @"NSMutableArray" _selectCarrier;
+    @"NSMutableArray" _addCarrier;
+    @"NSMutableDictionary" _iggConfigDic;
+    ^B _clearedCarrier;
+}
+
+@property (Tq,N,V_currentIndex) currentIndex;
+@property (T@"NSDictionary",&,N,V_randomConfigDic) randomConfigDic;
+@property (T@"NSArray",&,V_arrayCarrier) arrayCarrier;
+@property (T@"NSMutableArray",&,V_selectCarrier) selectCarrier;
+@property (T@"NSMutableArray",&,V_addCarrier) addCarrier;
+@property (T@"NSMutableDictionary",&,N,V_iggConfigDic) iggConfigDic;
+@property (T^B,V_clearedCarrier) clearedCarrier;
+
+/* instance methods */
+-[RandomCarrierViewController clearRandomCarrier:];
+-[RandomCarrierViewController viewDidLoad];
+-[RandomCarrierViewController numberOfSectionsInTableView:];
+-[RandomCarrierViewController tableView:numberOfRowsInSection:];
+-[RandomCarrierViewController tableView:cellForRowAtIndexPath:];
+-[RandomCarrierViewController tableView:didSelectRowAtIndexPath:];
+-[RandomCarrierViewController currentIndex];
+-[RandomCarrierViewController setCurrentIndex:];
+-[RandomCarrierViewController randomConfigDic];
+-[RandomCarrierViewController setRandomConfigDic:];
+-[RandomCarrierViewController arrayCarrier];
+-[RandomCarrierViewController setArrayCarrier:];
+-[RandomCarrierViewController selectCarrier];
+-[RandomCarrierViewController setSelectCarrier:];
+-[RandomCarrierViewController addCarrier];
+-[RandomCarrierViewController setAddCarrier:];
+-[RandomCarrierViewController iggConfigDic];
+-[RandomCarrierViewController setIggConfigDic:];
+-[RandomCarrierViewController clearedCarrier];
+-[RandomCarrierViewController setClearedCarrier:];
+
+@end
+
+@interface RandomDeviceModelViewController : UITableViewController {
+    /* instance variables */
+    q _currentIndex;
+    @"NSDictionary" _randomConfigDic;
+    @"NSArray" _arrayModel;
+    @"NSMutableArray" _selectModel;
+    @"NSMutableArray" _addModel;
+    @"NSMutableDictionary" _iggConfigDic;
+}
+
+@property (Tq,N,V_currentIndex) currentIndex;
+@property (T@"NSDictionary",&,N,V_randomConfigDic) randomConfigDic;
+@property (T@"NSArray",&,V_arrayModel) arrayModel;
+@property (T@"NSMutableArray",&,V_selectModel) selectModel;
+@property (T@"NSMutableArray",&,V_addModel) addModel;
+@property (T@"NSMutableDictionary",&,N,V_iggConfigDic) iggConfigDic;
+
+/* instance methods */
+-[RandomDeviceModelViewController clearRandomModel:];
+-[RandomDeviceModelViewController viewDidLoad];
+-[RandomDeviceModelViewController numberOfSectionsInTableView:];
+-[RandomDeviceModelViewController tableView:numberOfRowsInSection:];
+-[RandomDeviceModelViewController tableView:cellForRowAtIndexPath:];
+-[RandomDeviceModelViewController tableView:didSelectRowAtIndexPath:];
+-[RandomDeviceModelViewController currentIndex];
+-[RandomDeviceModelViewController setCurrentIndex:];
+-[RandomDeviceModelViewController randomConfigDic];
+-[RandomDeviceModelViewController setRandomConfigDic:];
+-[RandomDeviceModelViewController arrayModel];
+-[RandomDeviceModelViewController setArrayModel:];
+-[RandomDeviceModelViewController selectModel];
+-[RandomDeviceModelViewController setSelectModel:];
+-[RandomDeviceModelViewController addModel];
+-[RandomDeviceModelViewController setAddModel:];
+-[RandomDeviceModelViewController iggConfigDic];
+-[RandomDeviceModelViewController setIggConfigDic:];
+
+@end
+
+@interface RandomNetworkTypeViewController : UITableViewController {
+    /* instance variables */
+    q _currentIndex;
+    @"NSDictionary" _randomConfigDic;
+    @"NSArray" _arrayNetworkType;
+    @"NSMutableArray" _selectNetworkType;
+    @"NSMutableArray" _addNetworkType;
+    @"NSMutableDictionary" _iggConfigDic;
+}
+
+@property (Tq,N,V_currentIndex) currentIndex;
+@property (T@"NSDictionary",&,N,V_randomConfigDic) randomConfigDic;
+@property (T@"NSArray",&,V_arrayNetworkType) arrayNetworkType;
+@property (T@"NSMutableArray",&,V_selectNetworkType) selectNetworkType;
+@property (T@"NSMutableArray",&,V_addNetworkType) addNetworkType;
+@property (T@"NSMutableDictionary",&,N,V_iggConfigDic) iggConfigDic;
+
+/* instance methods */
+-[RandomNetworkTypeViewController clearRandomNetworkType:];
+-[RandomNetworkTypeViewController viewDidLoad];
+-[RandomNetworkTypeViewController numberOfSectionsInTableView:];
+-[RandomNetworkTypeViewController tableView:numberOfRowsInSection:];
+-[RandomNetworkTypeViewController tableView:cellForRowAtIndexPath:];
+-[RandomNetworkTypeViewController tableView:didSelectRowAtIndexPath:];
+-[RandomNetworkTypeViewController currentIndex];
+-[RandomNetworkTypeViewController setCurrentIndex:];
+-[RandomNetworkTypeViewController randomConfigDic];
+-[RandomNetworkTypeViewController setRandomConfigDic:];
+-[RandomNetworkTypeViewController arrayNetworkType];
+-[RandomNetworkTypeViewController setArrayNetworkType:];
+-[RandomNetworkTypeViewController selectNetworkType];
+-[RandomNetworkTypeViewController setSelectNetworkType:];
+-[RandomNetworkTypeViewController addNetworkType];
+-[RandomNetworkTypeViewController setAddNetworkType:];
+-[RandomNetworkTypeViewController iggConfigDic];
+-[RandomNetworkTypeViewController setIggConfigDic:];
+
+@end
+
+@interface RandomParameterViewController : UITableViewController {
+    /* instance variables */
+    @"NSMutableArray" _addModel;
+    @"NSMutableArray" _addSystemVersion;
+    @"NSMutableArray" _addCarrier;
+    @"NSMutableArray" _addNetworkType;
+    @"NSMutableDictionary" _iggConfigDic;
+    @"UILabel" _labelDeviceModel;
+    @"UILabel" _labelSystemVersion;
+    @"UILabel" _labelCarrier;
+    @"UILabel" _labelNetworkType;
+}
+
+@property (T@"NSMutableArray",&,V_addModel) addModel;
+@property (T@"NSMutableArray",&,V_addSystemVersion) addSystemVersion;
+@property (T@"NSMutableArray",&,V_addCarrier) addCarrier;
+@property (T@"NSMutableArray",&,V_addNetworkType) addNetworkType;
+@property (T@"NSMutableDictionary",&,N,V_iggConfigDic) iggConfigDic;
+@property (T@"UILabel",W,N,V_labelDeviceModel) labelDeviceModel;
+@property (T@"UILabel",W,N,V_labelSystemVersion) labelSystemVersion;
+@property (T@"UILabel",W,N,V_labelCarrier) labelCarrier;
+@property (T@"UILabel",W,N,V_labelNetworkType) labelNetworkType;
+
+/* instance methods */
+-[RandomParameterViewController showRandomDeviceCount];
+-[RandomParameterViewController showRandomSystemVersionCount];
+-[RandomParameterViewController showRandomCarrierCount];
+-[RandomParameterViewController showRandomNetworkTypeCount];
+-[RandomParameterViewController viewDidLoad];
+-[RandomParameterViewController viewDidAppear:];
+-[RandomParameterViewController numberOfSectionsInTableView:];
+-[RandomParameterViewController tableView:numberOfRowsInSection:];
+-[RandomParameterViewController addModel];
+-[RandomParameterViewController setAddModel:];
+-[RandomParameterViewController addSystemVersion];
+-[RandomParameterViewController setAddSystemVersion:];
+-[RandomParameterViewController addCarrier];
+-[RandomParameterViewController setAddCarrier:];
+-[RandomParameterViewController addNetworkType];
+-[RandomParameterViewController setAddNetworkType:];
+-[RandomParameterViewController iggConfigDic];
+-[RandomParameterViewController setIggConfigDic:];
+-[RandomParameterViewController labelDeviceModel];
+-[RandomParameterViewController setLabelDeviceModel:];
+-[RandomParameterViewController labelSystemVersion];
+-[RandomParameterViewController setLabelSystemVersion:];
+-[RandomParameterViewController labelCarrier];
+-[RandomParameterViewController setLabelCarrier:];
+-[RandomParameterViewController labelNetworkType];
+-[RandomParameterViewController setLabelNetworkType:];
+
+@end
+
+@interface RandomSystemVersionViewController : UITableViewController {
+    /* instance variables */
+    q _currentIndex;
+    @"NSDictionary" _randomConfigDic;
+    @"NSArray" _arraySystemVersion;
+    @"NSMutableArray" _selectSystemVersion;
+    @"NSMutableArray" _addSystemVersion;
+    @"NSMutableDictionary" _iggConfigDic;
+}
+
+@property (Tq,N,V_currentIndex) currentIndex;
+@property (T@"NSDictionary",&,N,V_randomConfigDic) randomConfigDic;
+@property (T@"NSArray",&,V_arraySystemVersion) arraySystemVersion;
+@property (T@"NSMutableArray",&,V_selectSystemVersion) selectSystemVersion;
+@property (T@"NSMutableArray",&,V_addSystemVersion) addSystemVersion;
+@property (T@"NSMutableDictionary",&,N,V_iggConfigDic) iggConfigDic;
+
+/* instance methods */
+-[RandomSystemVersionViewController clearRandomSystemVersion:];
+-[RandomSystemVersionViewController viewDidLoad];
+-[RandomSystemVersionViewController numberOfSectionsInTableView:];
+-[RandomSystemVersionViewController tableView:numberOfRowsInSection:];
+-[RandomSystemVersionViewController tableView:cellForRowAtIndexPath:];
+-[RandomSystemVersionViewController tableView:didSelectRowAtIndexPath:];
+-[RandomSystemVersionViewController currentIndex];
+-[RandomSystemVersionViewController setCurrentIndex:];
+-[RandomSystemVersionViewController randomConfigDic];
+-[RandomSystemVersionViewController setRandomConfigDic:];
+-[RandomSystemVersionViewController arraySystemVersion];
+-[RandomSystemVersionViewController setArraySystemVersion:];
+-[RandomSystemVersionViewController selectSystemVersion];
+-[RandomSystemVersionViewController setSelectSystemVersion:];
+-[RandomSystemVersionViewController addSystemVersion];
+-[RandomSystemVersionViewController setAddSystemVersion:];
+-[RandomSystemVersionViewController iggConfigDic];
+-[RandomSystemVersionViewController setIggConfigDic:];
+
+@end
+
+@interface ScriptInstructionViewController : UIViewController
+
+/* instance methods */
+-[ScriptInstructionViewController viewDidLoad];
+
+@end
+
+@interface SettingViewController : UITableViewController {
+    /* instance variables */
+    @"UISwitch" _clearAppDataSwitch;
+    @"UISwitch" _clearKeychainSwitch;
+    @"UISwitch" _clearPasteboardSwitch;
+    @"UISwitch" _clearCookiesSwitch;
+    @"UISwitch" _randomIDFASwitch;
+    @"UISwitch" _randomIDFVSwitch;
+    @"UISwitch" _fakeDeviceTokenSwitch;
+    @"UISwitch" _antiJailCheckSwitch;
+    @"UISwitch" _backupSwitch;
+    @"UISwitch" _fakeLocationSwitch;
+    @"UISwitch" _randomLocationSwitch;
+    @"UISwitch" _randomLocationOffsetSwitch;
+    @"UISwitch" _forceClearSwitch;
+    @"UISwitch" _machineNewAirplaneModeSwitch;
+    @"UISwitch" _backupToggleAirplaneModeSwitch;
+    @"UISwitch" _fakeModeliPadSwitch;
+    @"UISwitch" _fakeSystemVerSwitch;
+    @"UISwitch" _backupKeychainSwitch;
+    @"UISwitch" _recoveryKeychainSwitch;
+    @"UISwitch" _randomSystemVerSwitch;
+    @"UISwitch" _fakeDeviceModelSwitch;
+    @"UISwitch" _fakeMacAddressSwitch;
+    @"UISwitch" _fakeWifiSwitch;
+    @"UISwitch" _fakeNameSwitch;
+    @"UISwitch" _fakeSystemUptimeSwitch;
+    @"UISwitch" _fakeUserAgentSwitch;
+    @"UISwitch" _fakeHardwareIDSwitch;
+    @"UISwitch" _antiVPNCheckSwitch;
+    @"UISwitch" _antiHttpProxyCheckSwitch;
+    @"UISwitch" _checkAppLastVersionSwitch;
+    @"UISwitch" _fakeBrightnessSwitch;
+    @"UISwitch" _cleanAppStoreInfoSwitch;
+    @"UISwitch" _fakeNetworkInterfaceIpSwitch;
+    @"UISwitch" _antiJailCheckDeepSwitch;
+    @"UISwitch" _autoGetWanIpSwitch;
+    @"UISwitch" _fakeDiskAndMemorySwitch;
+    @"UISwitch" _fakeBatteryAndOutputVolumeSwitch;
+    @"UISwitch" _getLocationWithIPSwitch;
+    @"UISwitch" _oldKeychainSystemSwitch;
+    @"NSMutableDictionary" _dicConfigInfo;
+}
+
+@property (T@"UISwitch",W,N,V_clearAppDataSwitch) clearAppDataSwitch;
+@property (T@"UISwitch",W,N,V_clearKeychainSwitch) clearKeychainSwitch;
+@property (T@"UISwitch",W,N,V_clearPasteboardSwitch) clearPasteboardSwitch;
+@property (T@"UISwitch",W,N,V_clearCookiesSwitch) clearCookiesSwitch;
+@property (T@"UISwitch",W,N,V_randomIDFASwitch) randomIDFASwitch;
+@property (T@"UISwitch",W,N,V_randomIDFVSwitch) randomIDFVSwitch;
+@property (T@"UISwitch",W,N,V_fakeDeviceTokenSwitch) fakeDeviceTokenSwitch;
+@property (T@"UISwitch",W,N,V_antiJailCheckSwitch) antiJailCheckSwitch;
+@property (T@"UISwitch",W,N,V_backupSwitch) backupSwitch;
+@property (T@"UISwitch",W,N,V_fakeLocationSwitch) fakeLocationSwitch;
+@property (T@"UISwitch",W,N,V_randomLocationSwitch) randomLocationSwitch;
+@property (T@"UISwitch",W,N,V_randomLocationOffsetSwitch) randomLocationOffsetSwitch;
+@property (T@"UISwitch",W,N,V_forceClearSwitch) forceClearSwitch;
+@property (T@"UISwitch",W,N,V_machineNewAirplaneModeSwitch) machineNewAirplaneModeSwitch;
+@property (T@"UISwitch",W,N,V_backupToggleAirplaneModeSwitch) backupToggleAirplaneModeSwitch;
+@property (T@"UISwitch",W,N,V_fakeModeliPadSwitch) fakeModeliPadSwitch;
+@property (T@"UISwitch",W,N,V_fakeSystemVerSwitch) fakeSystemVerSwitch;
+@property (T@"UISwitch",W,N,V_backupKeychainSwitch) backupKeychainSwitch;
+@property (T@"UISwitch",W,N,V_recoveryKeychainSwitch) recoveryKeychainSwitch;
+@property (T@"UISwitch",W,N,V_randomSystemVerSwitch) randomSystemVerSwitch;
+@property (T@"UISwitch",W,N,V_fakeDeviceModelSwitch) fakeDeviceModelSwitch;
+@property (T@"UISwitch",W,N,V_fakeMacAddressSwitch) fakeMacAddressSwitch;
+@property (T@"UISwitch",W,N,V_fakeWifiSwitch) fakeWifiSwitch;
+@property (T@"UISwitch",W,N,V_fakeNameSwitch) fakeNameSwitch;
+@property (T@"UISwitch",W,N,V_fakeSystemUptimeSwitch) fakeSystemUptimeSwitch;
+@property (T@"UISwitch",W,N,V_fakeUserAgentSwitch) fakeUserAgentSwitch;
+@property (T@"UISwitch",W,N,V_fakeHardwareIDSwitch) fakeHardwareIDSwitch;
+@property (T@"UISwitch",W,N,V_antiVPNCheckSwitch) antiVPNCheckSwitch;
+@property (T@"UISwitch",W,N,V_antiHttpProxyCheckSwitch) antiHttpProxyCheckSwitch;
+@property (T@"UISwitch",W,N,V_checkAppLastVersionSwitch) checkAppLastVersionSwitch;
+@property (T@"UISwitch",W,N,V_fakeBrightnessSwitch) fakeBrightnessSwitch;
+@property (T@"UISwitch",W,N,V_cleanAppStoreInfoSwitch) cleanAppStoreInfoSwitch;
+@property (T@"UISwitch",W,N,V_fakeNetworkInterfaceIpSwitch) fakeNetworkInterfaceIpSwitch;
+@property (T@"UISwitch",W,N,V_antiJailCheckDeepSwitch) antiJailCheckDeepSwitch;
+@property (T@"UISwitch",W,N,V_autoGetWanIpSwitch) autoGetWanIpSwitch;
+@property (T@"UISwitch",W,N,V_fakeDiskAndMemorySwitch) fakeDiskAndMemorySwitch;
+@property (T@"UISwitch",W,N,V_fakeBatteryAndOutputVolumeSwitch) fakeBatteryAndOutputVolumeSwitch;
+@property (T@"UISwitch",W,N,V_getLocationWithIPSwitch) getLocationWithIPSwitch;
+@property (T@"UISwitch",W,N,V_oldKeychainSystemSwitch) oldKeychainSystemSwitch;
+@property (T@"NSMutableDictionary",&,N,V_dicConfigInfo) dicConfigInfo;
+
+/* instance methods */
+-[SettingViewController clearAppDataValueChanged:];
+-[SettingViewController clearKeychainlueChanged:];
+-[SettingViewController clearPasteboardValueChanged:];
+-[SettingViewController clearCookiesChanged:];
+-[SettingViewController IDFAValueChanged:];
+-[SettingViewController IDFVValueChanged:];
+-[SettingViewController fakeDeviceTokenValueChanged:];
+-[SettingViewController antiJailCheckValueChanged:];
+-[SettingViewController BackupData:];
+-[SettingViewController fakeLocation:];
+-[SettingViewController randomLocation:];
+-[SettingViewController randomLocationOffset:];
+-[SettingViewController forceClear:];
+-[SettingViewController machineNewAirplaneMode:];
+-[SettingViewController backupToggleAirplaneMode:];
+-[SettingViewController fakeModeliPadValueChanged:];
+-[SettingViewController fakeSystemVerValueChanged:];
+-[SettingViewController backupKeychain:];
+-[SettingViewController recoveryKeychain:];
+-[SettingViewController randomSystemVer:];
+-[SettingViewController fakeDeviceModel:];
+-[SettingViewController fakeMacAddress:];
+-[SettingViewController fakeWifi:];
+-[SettingViewController fakeName:];
+-[SettingViewController fakeSystemUptime:];
+-[SettingViewController fakeUserAgent:];
+-[SettingViewController fakeHardwareID:];
+-[SettingViewController antiVPNCheck:];
+-[SettingViewController antiHTTPProxyCheck:];
+-[SettingViewController checkAppLastVersion:];
+-[SettingViewController fakeBrightness:];
+-[SettingViewController cleanAppStoreInfo:];
+-[SettingViewController fakeNetworkInterfaceIp:];
+-[SettingViewController antiJailCheckDeep:];
+-[SettingViewController autoGetWanIp:];
+-[SettingViewController fakeDiskAndMemory:];
+-[SettingViewController fakeBatteryAndOutputVolume:];
+-[SettingViewController getLocationWithIP:];
+-[SettingViewController oldKeychainSystem:];
+-[SettingViewController writeImportAMGKeychainValue:];
+-[SettingViewController viewDidLoad];
+-[SettingViewController didReceiveMemoryWarning];
+-[SettingViewController numberOfSectionsInTableView:];
+-[SettingViewController tableView:numberOfRowsInSection:];
+-[SettingViewController tableView:didSelectRowAtIndexPath:];
+-[SettingViewController clearAppDataSwitch];
+-[SettingViewController setClearAppDataSwitch:];
+-[SettingViewController clearKeychainSwitch];
+-[SettingViewController setClearKeychainSwitch:];
+-[SettingViewController clearPasteboardSwitch];
+-[SettingViewController setClearPasteboardSwitch:];
+-[SettingViewController clearCookiesSwitch];
+-[SettingViewController setClearCookiesSwitch:];
+-[SettingViewController randomIDFASwitch];
+-[SettingViewController setRandomIDFASwitch:];
+-[SettingViewController randomIDFVSwitch];
+-[SettingViewController setRandomIDFVSwitch:];
+-[SettingViewController fakeDeviceTokenSwitch];
+-[SettingViewController setFakeDeviceTokenSwitch:];
+-[SettingViewController antiJailCheckSwitch];
+-[SettingViewController setAntiJailCheckSwitch:];
+-[SettingViewController backupSwitch];
+-[SettingViewController setBackupSwitch:];
+-[SettingViewController fakeLocationSwitch];
+-[SettingViewController setFakeLocationSwitch:];
+-[SettingViewController randomLocationSwitch];
+-[SettingViewController setRandomLocationSwitch:];
+-[SettingViewController randomLocationOffsetSwitch];
+-[SettingViewController setRandomLocationOffsetSwitch:];
+-[SettingViewController forceClearSwitch];
+-[SettingViewController setForceClearSwitch:];
+-[SettingViewController machineNewAirplaneModeSwitch];
+-[SettingViewController setMachineNewAirplaneModeSwitch:];
+-[SettingViewController backupToggleAirplaneModeSwitch];
+-[SettingViewController setBackupToggleAirplaneModeSwitch:];
+-[SettingViewController fakeModeliPadSwitch];
+-[SettingViewController setFakeModeliPadSwitch:];
+-[SettingViewController fakeSystemVerSwitch];
+-[SettingViewController setFakeSystemVerSwitch:];
+-[SettingViewController backupKeychainSwitch];
+-[SettingViewController setBackupKeychainSwitch:];
+-[SettingViewController recoveryKeychainSwitch];
+-[SettingViewController setRecoveryKeychainSwitch:];
+-[SettingViewController randomSystemVerSwitch];
+-[SettingViewController setRandomSystemVerSwitch:];
+-[SettingViewController fakeDeviceModelSwitch];
+-[SettingViewController setFakeDeviceModelSwitch:];
+-[SettingViewController fakeMacAddressSwitch];
+-[SettingViewController setFakeMacAddressSwitch:];
+-[SettingViewController fakeWifiSwitch];
+-[SettingViewController setFakeWifiSwitch:];
+-[SettingViewController fakeNameSwitch];
+-[SettingViewController setFakeNameSwitch:];
+-[SettingViewController fakeSystemUptimeSwitch];
+-[SettingViewController setFakeSystemUptimeSwitch:];
+-[SettingViewController fakeUserAgentSwitch];
+-[SettingViewController setFakeUserAgentSwitch:];
+-[SettingViewController fakeHardwareIDSwitch];
+-[SettingViewController setFakeHardwareIDSwitch:];
+-[SettingViewController antiVPNCheckSwitch];
+-[SettingViewController setAntiVPNCheckSwitch:];
+-[SettingViewController antiHttpProxyCheckSwitch];
+-[SettingViewController setAntiHttpProxyCheckSwitch:];
+-[SettingViewController checkAppLastVersionSwitch];
+-[SettingViewController setCheckAppLastVersionSwitch:];
+-[SettingViewController fakeBrightnessSwitch];
+-[SettingViewController setFakeBrightnessSwitch:];
+-[SettingViewController cleanAppStoreInfoSwitch];
+-[SettingViewController setCleanAppStoreInfoSwitch:];
+-[SettingViewController fakeNetworkInterfaceIpSwitch];
+-[SettingViewController setFakeNetworkInterfaceIpSwitch:];
+-[SettingViewController antiJailCheckDeepSwitch];
+-[SettingViewController setAntiJailCheckDeepSwitch:];
+-[SettingViewController autoGetWanIpSwitch];
+-[SettingViewController setAutoGetWanIpSwitch:];
+-[SettingViewController fakeDiskAndMemorySwitch];
+-[SettingViewController setFakeDiskAndMemorySwitch:];
+-[SettingViewController fakeBatteryAndOutputVolumeSwitch];
+-[SettingViewController setFakeBatteryAndOutputVolumeSwitch:];
+-[SettingViewController getLocationWithIPSwitch];
+-[SettingViewController setGetLocationWithIPSwitch:];
+-[SettingViewController oldKeychainSystemSwitch];
+-[SettingViewController setOldKeychainSystemSwitch:];
+-[SettingViewController dicConfigInfo];
+-[SettingViewController setDicConfigInfo:];
+
+@end
+
+@interface SettingsManager : NSObject {
+    /* instance variables */
+    {xxConfig="strConfigPath"@"NSString""strFakerFile"@"NSString""strSrcFile"@"NSString""strSelectAppFile"@"NSString""strConfigInfoFile"@"NSString""strBackupPath"@"NSString""strIfaddrsFile"@"NSString""strVerifyFile"@"NSString""strMultiSelect"@"NSString""strAuthAddressFile"@"NSString""strAddressInfoFile"@"NSString""strAMGTarPath"@"NSString"} globaConfig;
+    @"NSMutableArray" arrayAllInstallApp;
+    @"NSMutableArray" arraySelectBundleId;
+    @"NSString" strExpiryTime;
+    @"NSString" _username;
+    @"NSString" _email;
+}
+
+@property (T@"NSString",&,N,V_username) username;
+@property (T@"NSString",&,N,V_email) email;
+
+/* class methods */
++[SettingsManager sharedInstance];
+
+/* instance methods */
+-[SettingsManager init];
+-[SettingsManager saveSettingsWithUsername:email:];
+-[SettingsManager getSettings];
+-[SettingsManager oo0o0o00o0o0o0o0o0o0o0o0o0o0o000o0o0o0o0o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o000o0o0o0o00];
+-[SettingsManager username];
+-[SettingsManager setUsername:];
+-[SettingsManager email];
+-[SettingsManager setEmail:];
+
+@end
+
+@interface SystemVersionViewController : UITableViewController {
+    /* instance variables */
+    q _currentIndex;
+    @"NSArray" _arraySystemVersion;
+    @"NSMutableDictionary" _dicDeviceInfo;
+}
+
+@property (Tq,N,V_currentIndex) currentIndex;
+@property (T@"NSArray",&,V_arraySystemVersion) arraySystemVersion;
+@property (T@"NSMutableDictionary",&,N,V_dicDeviceInfo) dicDeviceInfo;
+
+/* instance methods */
+-[SystemVersionViewController viewDidLoad];
+-[SystemVersionViewController didReceiveMemoryWarning];
+-[SystemVersionViewController numberOfSectionsInTableView:];
+-[SystemVersionViewController tableView:numberOfRowsInSection:];
+-[SystemVersionViewController tableView:accessoryTypeForRowWithIndexPath:];
+-[SystemVersionViewController tableView:didSelectRowAtIndexPath:];
+-[SystemVersionViewController tableView:cellForRowAtIndexPath:];
+-[SystemVersionViewController currentIndex];
+-[SystemVersionViewController setCurrentIndex:];
+-[SystemVersionViewController arraySystemVersion];
+-[SystemVersionViewController setArraySystemVersion:];
+-[SystemVersionViewController dicDeviceInfo];
+-[SystemVersionViewController setDicDeviceInfo:];
+
+@end
+
+@interface ToolsViewController : UITableViewController {
+    /* instance variables */
+    @"UISwitch" _importKeychainSwitch;
+    @"UISwitch" _importAMGKeychainSwitch;
+    @"UISwitch" _exportAMGKeychainSwitch;
+    @"UILabel" _importOtherPath;
+    @"UILabel" _importAWZPath;
+    @"UILabel" _importAMGPath;
+    @"UILabel" _exportAMGPath;
+    @"NSMutableDictionary" _dicConfigInfo;
+}
+
+@property (T@"UISwitch",W,N,V_importKeychainSwitch) importKeychainSwitch;
+@property (T@"UISwitch",W,N,V_importAMGKeychainSwitch) importAMGKeychainSwitch;
+@property (T@"UISwitch",W,N,V_exportAMGKeychainSwitch) exportAMGKeychainSwitch;
+@property (T@"UILabel",W,N,V_importOtherPath) importOtherPath;
+@property (T@"UILabel",W,N,V_importAWZPath) importAWZPath;
+@property (T@"UILabel",W,N,V_importAMGPath) importAMGPath;
+@property (T@"UILabel",W,N,V_exportAMGPath) exportAMGPath;
+@property (T@"NSMutableDictionary",&,N,V_dicConfigInfo) dicConfigInfo;
+
+/* instance methods */
+-[ToolsViewController hideLoadHUD];
+-[ToolsViewController showLoadHUDMsg:];
+-[ToolsViewController importKeychainValueChanged:];
+-[ToolsViewController importAMGKeychainValueChanged:];
+-[ToolsViewController exportAMGKeychainValueChanged:];
+-[ToolsViewController viewDidLoad];
+-[ToolsViewController didReceiveMemoryWarning];
+-[ToolsViewController numberOfSectionsInTableView:];
+-[ToolsViewController tableView:numberOfRowsInSection:];
+-[ToolsViewController tableView:didSelectRowAtIndexPath:];
+-[ToolsViewController importKeychainSwitch];
+-[ToolsViewController setImportKeychainSwitch:];
+-[ToolsViewController importAMGKeychainSwitch];
+-[ToolsViewController setImportAMGKeychainSwitch:];
+-[ToolsViewController exportAMGKeychainSwitch];
+-[ToolsViewController setExportAMGKeychainSwitch:];
+-[ToolsViewController importOtherPath];
+-[ToolsViewController setImportOtherPath:];
+-[ToolsViewController importAWZPath];
+-[ToolsViewController setImportAWZPath:];
+-[ToolsViewController importAMGPath];
+-[ToolsViewController setImportAMGPath:];
+-[ToolsViewController exportAMGPath];
+-[ToolsViewController setExportAMGPath:];
+-[ToolsViewController dicConfigInfo];
+-[ToolsViewController setDicConfigInfo:];
+
+@end
+
+@interface ViewController : UIViewController
+
+/* instance methods */
+-[ViewController viewDidLoad];
+-[ViewController didReceiveMemoryWarning];
+
+@end
+
+@interface oo000o0o00o0o0o0o0o0o0o0o0o0o0o0oo0o0o0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 : NSObject
+
+/* instance methods */
+-[oo000o0o00o0o0o0o0o0o0o0o0o0o0o0oo0o0o0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o000o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo000o0o00o0o0o0o0o0o0o0o0o0o0o0oo0o0o0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o0o0o0o0o0o00000o0o0o0o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:::];
+-[oo000o0o00o0o0o0o0o0o0o0o0o0o0o0oo0o0o0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo00o0o0o00o0o0o0o0o0o0o0o0o0o0o0o0000o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::::];
+-[oo000o0o00o0o0o0o0o0o0o0o0o0o0o0oo0o0o0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 ooo0oo0o0o0o0o0o0o0o0o00000o0ooooo0o0o00oo0oo0o0o0oo0o00000o00o0ooo0o0o0o0ooo0o0o0o0o0ooo00o0o0o0o0o0oo:::];
+
+@end
+
+@interface oo000o0o0o0o000o0o0o0o0o00o0o0o0o00o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 : NSObject
+
+/* instance methods */
+-[oo000o0o0o0o000o0o0o0o0o00o0o0o0o00o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o000o0o0o0000o0o00o0o0o0o0o00o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
+-[oo000o0o0o0o000o0o0o0o0o00o0o0o0o00o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o0o0o0o0o000o0o00o0o0o0o00o0o0o000o0000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
+-[oo000o0o0o0o000o0o0o0o0o00o0o0o0o00o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 backupAppGroup:];
+-[oo000o0o0o0o000o0o0o0o0o00o0o0o0o00o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 recoverAppGroup:];
+-[oo000o0o0o0o000o0o0o0o0o00o0o0o0o00o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 backupAppGroupWhatsApp:];
+-[oo000o0o0o0o000o0o0o0o0o00o0o0o0o00o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 recoverAppGroupWhatsApp:];
+-[oo000o0o0o0o000o0o0o0o0o00o0o0o0o00o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 recoverAppGroupDir::];
+
+@end
+
+@interface oo0o0000o000o0o0o0o0o0o0o0o0o000o0o0o0o0o00o00o000o0000000o00000o0o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00 : NSObject
+
+/* class methods */
++[oo0o0000o000o0o0o0o0o0o0o0o0o000o0o0o0o0o00o00o000o0000000o00000o0o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00 o000o000o000o0o0o0o0o0o0o0o0o000o0o0o0o0000o0o000o0000000o00000o0o0o0ooo0o0ooo0000o0o000o0o0o0o0o0o0o00:];
++[oo0o0000o000o0o0o0o0o0o0o0o0o000o0o0o0o0o00o00o000o0000000o00000o0o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00 sharedInstance];
+
+/* instance methods */
+-[oo0o0000o000o0o0o0o0o0o0o0o0o000o0o0o0o0o00o00o000o0000000o00000o0o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00 setAppWirelessDataOption:forBundleIdentifier:completionHandler:];
+-[oo0o0000o000o0o0o0o0o0o0o0o0o000o0o0o0o0o00o00o000o0000000o00000o0o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00 setAppCellularDataEnabled:forBundleIdentifier:completionHandler:];
+-[oo0o0000o000o0o0o0o0o0o0o0o0o000o0o0o0o0o00o00o000o0000000o00000o0o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00 setUsagePoliciesForBundle:cellular:wifi:];
+
+@end
+
+@interface oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o : NSObject
+
+/* instance methods */
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o00000o0o0o0o0o00o0o0o0o];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o00o0o0o0o0o0o0o];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o oo0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o00o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o00o0o0o0o0o0o00];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genRandomIp];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genRandomIp2];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genRandomIp3];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genRandomIpv6];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genRandomIpv62];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genRandomReservedIp];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genRandomDNSIp1];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genRandomDNSIp2];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genNetworkInterfaceInfo];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genDiskSpace];
+-[oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o00000o0o0o genMemorySize];
+
+@end
+
+@interface oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o : NSObject {
+    /* instance variables */
+    {AMGConfig="strConfigPath"@"NSString""strFakerFile"@"NSString""strSrcFile"@"NSString""strSelectAppFile"@"NSString""strConfigInfoFile"@"NSString""strBackupPath"@"NSString""strIfaddrsFile"@"NSString""strVerifyFile"@"NSString""strMultiSelect"@"NSString""strAuthAddressFile"@"NSString""strAddressInfoFile"@"NSString""strAMGTarPath"@"NSString"} globaConfig;
+    {AMGConfig="strConfigPath"@"NSString""strFakerFile"@"NSString""strSrcFile"@"NSString""strSelectAppFile"@"NSString""strConfigInfoFile"@"NSString""strBackupPath"@"NSString""strIfaddrsFile"@"NSString""strVerifyFile"@"NSString""strMultiSelect"@"NSString""strAuthAddressFile"@"NSString""strAddressInfoFile"@"NSString""strAMGTarPath"@"NSString"} globaConfig2;
+    @"NSMutableArray" arrayAllInstallApp;
+    @"NSMutableArray" arraySelectBundleId;
+    @"NSString" strExpiryTime;
+}
+
+/* class methods */
++[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o sharedInstance];
++[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o copyFolderAtPath:toPath:error:];
++[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o moveContentsOfFolderAtPath:toFolderAtPath:error:];
++[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o moveContentsOfDirectory:toDirectory:];
++[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o isSymbolicLink:];
+
+/* instance methods */
+-[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o initUniqueInstance];
+-[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o00o0o000o00000o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o];
+-[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o00o0o00oo000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o];
+-[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o refreshInstallAppAndSelected];
+-[oo0o0o0o00o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o000o0o0o0o oo0o0o00o0o0o0o0o0o0o0o0o0o0o000o0o0o0o0o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o000o0o0o0o00];
+
+@end
+
+@interface oo0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000 : NSObject
+
+/* instance methods */
+-[oo0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000 oo0o0o0o0o0o0o0o0o0o0o0o000o00o0o0o0o0o0o0o0o0o0o000o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000];
+-[oo0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000 oo0o0o0o0o0o0o0o0o00o000o0o0o00o00o0o0o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000 oo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o00o0o00o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000 o00o0o0o0o000o0o0o0o0o0o00o0o0o00o0o0o0o0o00o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000 oo0o0o0ooo0o0o0o0o0o0o0o00o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000];
+
+@end
+
+@interface oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 : NSObject
+
+/* class methods */
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo000o0o0o0o00o0o0o0o000o0o0o00o00o0o0o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo000o0o00o0o0o0o0o0o0o0o0o00o0o00o0o0o0o000o0o00000000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo000o0o00o0o0o0o0o0o0o0o0o00o0o00o0o0o0o000o0o00000000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0000o0o0o0o0o0o0o0o0o0o0o0o00o0o00o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 o00000o00o0o00o0o0o0o0o0o0o0o00o0o0o0o00o000o0o0o0o00o00o00o00o0ooo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0::];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 o00000o00o0o0o00o0o0o0o0o0o0o00o0o0o0o00oo0oo0o0o0o0o000o00o00o0ooo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0::];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 o00oo0o00o0o0o0o0o00o00000o0o0o00o0o0o00oo0oo0o0ooo0oo00000o00o0ooo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0:compareVersionNumberB:];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 o000o0o00o0o0o0o00o0o00000o0o00o0o0o0o00oo0oo0o0ooo0o000000o00o0ooo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0:];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 jsonStrToDict:];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 httpGetFile::];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 getLocationInfo::];
++[oo0o0o0o0o0o0o0o00o000o0o0o0o0o0o0o00o00o0o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 copyFolder::];
+
+@end
+
+@interface oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 : NSObject
+
+/* instance methods */
+-[oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 oo0o0o0o0o0o0o0o0o00o0o00o0o00o00o0o0o0o0o0o0o0o000o000o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o];
+-[oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 oo0o000o0o0o0o0o00o0o0o0o0o0o0o0o0o00o00ooo0o0o000o000o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o];
+-[oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 oo0o0o00o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o];
+-[oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 oo0o0o0o0o0o00o00o0o0o0o0o0o0o0o0o0o0o00o0o0ooo0000000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o];
+-[oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 oo0o0o000o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o000o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0ooo0o0o0o0o0o0o0o];
+-[oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 oo0o00o0o0o0o000o0o0o0o0o0o00o0o0o0o0o0o0o0o0o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o0o];
+-[oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 o00o000o0000o0oo0o0o0000000o0o0o00o000o0o00o00000000o00000000o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00o00];
+-[oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000 o00o000o00000o0000000o0o0o00o000o0o00o00000000o00000000o0o0ooo0o0ooo000o0o00o0o0o0o0o0o0o00o000o00];
+
+@end
+
+@interface oo0o0o0o0o0o0o0o0o0o0o000o0o00o0o0o0o0o0o0o0o000o0000000o00000o000o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 : NSObject
+
+/* class methods */
++[oo0o0o0o0o0o0o0o0o0o0o000o0o00o0o0o0o0o0o0o0o000o0000000o00000o000o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o0o0o0o0o0o00oo0o00o0o0o0o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
++[oo0o0o0o0o0o0o0o0o0o0o000o0o00o0o0o0o0o0o0o0o000o0000000o00000o000o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o0o0o0o0o0o000ooo0o00o0o0o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo000o0o0o0o0o0o0o0o0o0o00:];
++[oo0o0o0o0o0o0o0o0o0o0o000o0o00o0o0o0o0o0o0o0o000o0000000o00000o000o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o0o0o0o0o0o000o0o00o0o0ooooo0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
+
+@end
+
+@interface oo0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o00o0o0o00o000o0000000o00000o0o0o0ooo0o0ooo0o0o000o0o0o0o000o0o0o00 : NSObject
+
+/* class methods */
++[oo0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o00o0o0o00o000o0000000o00000o0o0o0ooo0o0ooo0o0o000o0o0o0o000o0o0o00 ooooo0o00o00o0o0o0o0o000000o0o000o0o0o00oo0oo0o0ooo0oo0000o000o0ooo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0:];
+
+/* instance methods */
+-[oo0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o00o0o0o00o000o0000000o00000o0o0o0ooo0o0ooo0o0o000o0o0o0o000o0o0o00 oo0o0o0o0o0o0o0o0o0000o0o0o0o0o0o0o0o0o00o0o00000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::];
+-[oo0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o00o0o0o00o000o0000000o00000o0o0o0ooo0o0ooo0o0o000o0o0o0o000o0o0o00 oo0o0000o0o0o00o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:::];
+-[oo0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o00o0o0o00o000o0000000o00000o0o0o0ooo0o0ooo0o0o000o0o0o0o000o0o0o00 importBackupData:::];
+-[oo0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o00o0o0o00o000o0000000o00000o0o0o0ooo0o0ooo0o0o000o0o0o0o000o0o0o00 exportBackupData:::];
+-[oo0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o00o0o0o00o000o0000000o00000o0o0o0ooo0o0ooo0o0o000o0o0o0o000o0o0o00 oo0o0o0o0o000o00o0o0000o0o0o0o0o0o0o0o0o0o0o000o0o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::];
+-[oo0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o00o0o0o00o000o0000000o00000o0o0o0ooo0o0ooo0o0o000o0o0o0o000o0o0o00 oo0o000o00o0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00000000o00000o0o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00:::];
+
+@end
+
+@interface oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 : NSObject
+
+/* class methods */
++[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 oo0o000o000o0o0o0o0o0o0o0o0o0o0o00oo0o0o0o0o0o000o0000000o00000o0o0o0o0oo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::];
++[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 o0000o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::];
++[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 o0000o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
++[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o0o0o0o0000000o0o00o0oo0o0o0o0o0o0o000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::];
++[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0o00000o0000000o00000o0o0o00ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::];
+
+/* instance methods */
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 oo0o0o00o0o0o0o00o0o0o0o0o0o0o0o0o0o0o00o0o000o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 o0000o0o0o000o0o00o0o0o0o00o0o0o0o000o0o0o0o0o000o00000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 o00000o0o0o000o00o0o0o0o0o0o0o0o0o000o0o0o0o00o000o000000oo00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00::];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 o00000o0o0o000o00o0o0o0o0o0o0o0o0o000o0o0o0o00o000o000000oo00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 o0000o0o0o0000o0o0000o0o0o0o0o0o0oo00o0o0o0o0o000o0000000oo00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o000::::];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 o000oo0o0o000o00o000o000o0o0o0o0oo000o0o0o0o0o000o0000000oo00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o000o000o00oo0o0o0o0o000o0000000o00000o0o0o00ooo0o0oo00o0o0o0o0o0o0o0o0o0o0o00 o00000o00o00o0o0o0o0o0o0o0o0o00o0o0o0o00o000o0o0o00o0o00000o00o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0];
+
+@end
+
+@interface oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o : NSObject {
+    /* instance variables */
+    Q _locationIndex;
+}
+
+@property (TQ,V_locationIndex) locationIndex;
+
+/* instance methods */
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0ooooo0o0o0o0o];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o00o000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o randomStringWithLength:];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o o00o000o0000o0o0o00o0o0o0o0o00000o0o0o0o000o0o000o00000000o0000000o0o0ooo0o0ooo000o0o000o0o0o0o0o0o0o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o genRandomNameForName];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o genRandomNameForIphone];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o genRandomNameForNumber];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o genRandomNameForString];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o genRandomNameForString5];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o genRandomNameForString7];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0000o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o000o00000000o00000o0o0o0ooo0o0ooo0o0o0o000o0o0o0o0o0oo0o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o000o00000000o00000o0o0o0ooo0o0oo00o0o0o0o0o0o0o0o0o0oo0o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o000o00000000o00000o0o0o0ooo000ooo0o0o0o0o0o0o0o0o0o0o0oo00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o genRandomSSIDForString];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o genRandomSSIDForRouteName];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0000o0000000o0000000o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0oo0o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0000o0000000000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0oo0o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0o000000000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0oo0o0o00];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o getBuildVersion:];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o locationIndex];
+-[oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o0000o000o0o0o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o000o setLocationIndex:];
+
+@end
+
+@interface oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 : NSObject
+
+/* instance methods */
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 ooo0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o00o0o00000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0oo0o0o0o0o0o0o000o0o0o0o0o0o0o0o0o0o000o00000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 o00o0o0o0o0o0o0oo0o0o00o0o0o0o0o0o0o0o0o0o0o0o000o00000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00:];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 ooo0o0o0o0o0o0o0o0o0o0o0o0o000o0o0o00o0o000o0o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o0oo000o0o0o000o0o0o0o0o0o0o0o0o0o000o00000000o00000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo000o0o0o0o0o0o0o0o0o0o0o00o0o00o0o0o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0ooo0o0o0o0o0o0o00];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 oo0o0o0o0o0o00o0o0o0o000o0o0o0o00o00o0o0o0o0o0o000o0000000o00000o0o0o0ooo0o0ooo0o0o0o0o000o0o0o0o0o0o00];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 cleanAppGroupFile:];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 clearAppGroup:];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 ooooo00o00o0o0o00o0o0o00000o0ooooo0o0o00oo0oo0o0ooo0o000000o00o0ooo0o0o0o0o0o0o0o0o0o0o0o00o0o0o0o0o0o0:];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 clearSafari];
+-[oo0oo0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o000o00o000o0000000o000000o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0o00 clearSafariAllData];
+
+@end
+

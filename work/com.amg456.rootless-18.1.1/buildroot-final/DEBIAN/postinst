@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#get iOS version
+get_ios_ver()
+{
+	OSVERLINE=`grep -n 'ProductVersion' /System/Library/CoreServices/SystemVersion.plist | sed 's/:.*//'`
+	((OSVERLINE+=1))
+	OSVER=`cat /System/Library/CoreServices/SystemVersion.plist | sed -n "${OSVERLINE}p" | sed 's/^.*<string>//' | sed 's/<\/string>.*//'`
+	echo ${OSVER}
+}
+
+echo "Set permission..."
+chown -R root:wheel "/var/jb/Applications/AMG.app"
+chmod u+s "/var/jb/Applications/AMG.app/AMG"
+
+iOSVer=`get_ios_ver`
+iOSVerArray=(${iOSVer//./ })
+iOSVerCount=${#iOSVerArray[*]}
+if [[ ${iOSVerCount} > 1 ]]; then
+	if [[ ${iOSVerArray[0]} == 8 || ${iOSVerArray[0]} == 9 ]]; then
+		echo "Set AMG run file..."
+		mv /Applications/AMG.app/AMG /Applications/AMG.app/AMG_
+		mv /Applications/AMG.app/AMG_run /Applications/AMG.app/AMG
+	else
+		rm /var/jb/Applications/AMG.app/AMG_run
+	fi
+fi
+
+echo "Clean icon cache..."
+#su -c /usr/bin/uicache mobile > /dev/null
+
+declare -a cydia
+cydia=($CYDIA)
+
+if [[ ${CYDIA+@} ]]; then
+        eval "echo 'finish:respring' >&${cydia[0]}"
+else
+        echo "Please respring your device after this!"
+fi
+
+exit 0
+
