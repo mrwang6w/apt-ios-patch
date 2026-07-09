@@ -1,0 +1,1093 @@
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/Applications/RCleaner.app/RCleaner:
+Contents of (__DATA,__objc_classlist) section
+0000000100016480 0x100017468 _OBJC_CLASS_$_ViewController
+    isa        0x100017490 
+    superclass 0x0 _OBJC_CLASS_$_UIViewController
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100016608 __OBJC_CLASS_RO_$_ViewController
+        flags          0x194 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   16
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x100013176  ViewController
+        baseMethods    0x100016500 
+            entsize 24
+            count   8
+            name    0x100012dfd  viewDidLoad
+            types   0x1000131dd  v16@0:8
+            imp     0x1000045e0 -
+            name    0x100012b06  firclicked:
+            types   0x1000131e5  v24@0:8@16
+            imp     0x100004a80 -
+            name    0x100011f71  CleanClicked:
+            types   0x1000131e5  v24@0:8@16
+            imp     0x100005088 -
+            name    0x100012d6f  setupSegmentedControlFromPlist
+            types   0x1000131dd  v16@0:8
+            imp     0x1000053d8 -
+            name    0x100012da0  sgServerChanged:
+            types   0x1000131e5  v24@0:8@16
+            imp     0x100005434 -
+            name    0x100012d8e  sgServer
+            types   0x1000131f0  @16@0:8
+            imp     0x100005490 -
+            name    0x100012d4d  setSgServer:
+            types   0x1000131e5  v24@0:8@16
+            imp     0x1000054ec -
+            name    0x100011f28  .cxx_destruct
+            types   0x1000131dd  v16@0:8
+            imp     0x100005548 -
+        baseProtocols  0x0
+        ivars          0x1000165c8 
+            entsize   32
+            count     1
+            offset    0x100017460  8
+            name      0x100011fee  _sgServer
+            type      0x1000131f8  @"UISegmentedControl"
+            alignment 3
+            size      8
+        weakIvarLayout 0x100013185 
+        layout map     0x01 
+        baseProperties 0x1000165f0 
+            entsize    16
+            count      1
+            name       0x100012d97  sgServer
+            attributes 0x100011f98  T@"UISegmentedControl",W,N,V_sgServer
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_UIViewController
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x1000164b8 
+        flags          0x195 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x100013176  ViewController
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+0000000100016488 0x1000174e0 _OBJC_CLASS_$_AppDelegate
+    isa        0x1000174b8 
+    superclass 0x0 _OBJC_CLASS_$_UIResponder
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100017188 __OBJC_CLASS_RO_$_AppDelegate
+        flags          0x194 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   16
+        reserved       0x0
+        ivarLayout     0x1000131b2
+        layout map     0x01 
+        name           0x100013187 AppDelegate
+        baseMethods    0x1000170a0 
+            entsize 24
+            count   4
+            name    0x10001222e application:didFinishLaunchingWithOptions:
+            types   0x1000132c6 B32@0:8@16@24
+            imp     0x100007c24 -
+            name    0x100012e09 window
+            types   0x100013221 @16@0:8
+            imp     0x100007c2c -
+            name    0x100012d64 setWindow:
+            types   0x1000132bb v24@0:8@16
+            imp     0x100007c3c -
+            name    0x100011f43 .cxx_destruct
+            types   0x100013b3a v16@0:8
+            imp     0x100007c50 -
+        baseProtocols  0x100017040 __OBJC_CLASS_PROTOCOLS_$_AppDelegate
+            count    1
+            list[0]  0x100017910 
+                isa       0x0
+                name      0x100013193 UIApplicationDelegate
+                protocols 0x100016928 
+                    count    1
+                    list[0]  0x1000178b0 
+                        isa       0x0
+                        name      0x1000131a9 NSObject
+                        protocols 0x0
+                        instanceMethods 0x100016650 
+                            entsize 24
+                            count   19
+                            name    0x100012b7b isEqual:
+                            types   0x10001320e B24@0:8@16
+                            imp     0x0
+                            name    0x100012a81 class
+                            types   0x100013219 #16@0:8
+                            imp     0x0
+                            name    0x100012d00 self
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                            name    0x100012c19 performSelector:
+                            types   0x100013229 @24@0:8:16
+                            imp     0x0
+                            name    0x100012c2a performSelector:withObject:
+                            types   0x100013234 @32@0:8:16@24
+                            imp     0x0
+                            name    0x100012c46 performSelector:withObject:withObject:
+                            types   0x100013242 @40@0:8:16@24@32
+                            imp     0x0
+                            name    0x100011f36 isProxy
+                            types   0x100013253 B16@0:8
+                            imp     0x0
+                            name    0x100012b84 isKindOfClass:
+                            types   0x10001325b B24@0:8#16
+                            imp     0x0
+                            name    0x100012b93 isMemberOfClass:
+                            types   0x10001325b B24@0:8#16
+                            imp     0x0
+                            name    0x100012a87 conformsToProtocol:
+                            types   0x10001320e B24@0:8@16
+                            imp     0x0
+                            name    0x100012cc4 respondsToSelector:
+                            types   0x100013266 B24@0:8:16
+                            imp     0x0
+                            name    0x100012cd8 retain
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                            name    0x100011f7f release
+                            types   0x100013271 Vv16@0:8
+                            imp     0x0
+                            name    0x100012a75 autorelease
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                            name    0x100012cdf retainCount
+                            types   0x10001327a Q16@0:8
+                            imp     0x0
+                            name    0x100012e28 zone
+                            types   0x100013282 ^{_NSZone=}16@0:8
+                            imp     0x0
+                            name    0x100012b31 hash
+                            types   0x10001327a Q16@0:8
+                            imp     0x0
+                            name    0x100012df2 superclass
+                            types   0x100013219 #16@0:8
+                            imp     0x0
+                            name    0x100012abb description
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                        classMethods 0x0
+                        optionalInstanceMethods 0x100016820 
+                            entsize 24
+                            count   1
+                            name    0x100012a9b debugDescription
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                        optionalClassMethods 0x0
+                        instanceProperties 0x100016840 
+                            entsize    16
+                            count      4
+                            name       0x100012b31 hash
+                            attributes 0x100011fe9 TQ,R
+                            name       0x100012df2 superclass
+                            attributes 0x100011f3e T#,R
+                            name       0x100012abb description
+                            attributes 0x100011f87 T@"NSString",R,C
+                            name       0x100012a9b debugDescription
+                            attributes 0x100011f87 T@"NSString",R,C
+                instanceMethods 0x0
+                classMethods 0x0
+                optionalInstanceMethods 0x100016940 
+                    entsize 24
+                    count   55
+                    name    0x10001291e applicationDidFinishLaunching:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x1000128b7 application:willFinishLaunchingWithOptions:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x10001222e application:didFinishLaunchingWithOptions:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000128e3 applicationDidBecomeActive:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012a3e applicationWillResignActive:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x10001254e application:handleOpenURL:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000125d6 application:openURL:sourceApplication:annotation:
+                    types   0x1000132d4 B48@0:8@16@24@32@40
+                    imp     0x0
+                    name    0x1000125b9 application:openURL:options:
+                    types   0x1000132e8 B40@0:8@16@24@32
+                    imp     0x0
+                    name    0x10001293d applicationDidReceiveMemoryWarning:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012a5b applicationWillTerminate:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012a1c applicationSignificantTimeChange:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012824 application:willChangeStatusBarOrientation:duration:
+                    types   0x1000132f9 v40@0:8@16q24d32
+                    imp     0x0
+                    name    0x100012138 application:didChangeStatusBarOrientation:
+                    types   0x10001330a v32@0:8@16q24
+                    imp     0x0
+                    name    0x1000127fe application:willChangeStatusBarFrame:
+                    types   0x100013318 v56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24
+                    imp     0x0
+                    name    0x100012113 application:didChangeStatusBarFrame:
+                    types   0x100013318 v56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24
+                    imp     0x0
+                    name    0x10001232b application:didRegisterUserNotificationSettings:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x1000122ed application:didRegisterForRemoteNotificationsWithDeviceToken:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x1000121f0 application:didFailToRegisterForRemoteNotificationsWithError:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x100012282 application:didReceiveRemoteNotification:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x100012259 application:didReceiveLocalNotification:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x10001237f application:handleActionWithIdentifier:forLocalNotification:completionHandler:
+                    types   0x100013353 v48@0:8@16@24@32@?40
+                    imp     0x0
+                    name    0x10001247e application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:
+                    types   0x100013368 v56@0:8@16@24@32@40@?48
+                    imp     0x0
+                    name    0x10001242e application:handleActionWithIdentifier:forRemoteNotification:completionHandler:
+                    types   0x100013353 v48@0:8@16@24@32@?40
+                    imp     0x0
+                    name    0x1000123ce application:handleActionWithIdentifier:forLocalNotification:withResponseInfo:completionHandler:
+                    types   0x100013368 v56@0:8@16@24@32@40@?48
+                    imp     0x0
+                    name    0x1000122ac application:didReceiveRemoteNotification:fetchCompletionHandler:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x100012644 application:performFetchWithCompletionHandler:
+                    types   0x100013392 v32@0:8@16@?24
+                    imp     0x0
+                    name    0x100012608 application:performActionForShortcutItem:completionHandler:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x1000124df application:handleEventsForBackgroundURLSession:completionHandler:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x100012569 application:handleWatchKitExtensionRequest:reply:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x1000129ef applicationShouldRequestHealthAuthorization:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x10001259b application:handlerForIntent:
+                    types   0x1000133a1 @32@0:8@16@24
+                    imp     0x0
+                    name    0x100012522 application:handleIntent:completionHandler:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x1000128ff applicationDidEnterBackground:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100011f51 applicationWillEnterForeground:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x10001298d applicationProtectedDataWillBecomeUnavailable:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012961 applicationProtectedDataDidBecomeAvailable:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012756 application:supportedInterfaceOrientationsForWindow:
+                    types   0x1000133af Q32@0:8@16@24
+                    imp     0x0
+                    name    0x100012673 application:shouldAllowExtensionPointIdentifier:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000127bf application:viewControllerWithRestorationIdentifierPath:coder:
+                    types   0x1000133bd @40@0:8@16@24@32
+                    imp     0x0
+                    name    0x100012728 application:shouldSaveSecureApplicationState:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000126cf application:shouldRestoreSecureApplicationState:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x100012887 application:willEncodeRestorableStateWithCoder:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x100012163 application:didDecodeRestorableStateWithCoder:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x100012700 application:shouldSaveApplicationState:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000126a4 application:shouldRestoreApplicationState:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x100012859 application:willContinueUserActivityWithType:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000120de application:continueUserActivity:restorationHandler:
+                    types   0x1000133ce B40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x1000121b7 application:didFailToContinueUserActivityWithType:error:
+                    types   0x1000133e0 v40@0:8@16@24@32
+                    imp     0x0
+                    name    0x10001235c application:didUpdateUserActivity:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x10001278b application:userDidAcceptCloudKitShareWithMetadata:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x1000120a2 application:configurationForConnectingSceneSession:options:
+                    types   0x1000133bd @40@0:8@16@24@32
+                    imp     0x0
+                    name    0x100012192 application:didDiscardSceneSessions:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x1000129bc applicationShouldAutomaticallyLocalizeKeyCommands:
+                    types   0x10001320e B24@0:8@16
+                    imp     0x0
+                    name    0x100012e09 window
+                    types   0x100013221 @16@0:8
+                    imp     0x0
+                    name    0x100012d64 setWindow:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                optionalClassMethods 0x0
+                instanceProperties 0x100016e70 
+                    entsize    16
+                    count      1
+                    name       0x100012e09 window
+                    attributes 0x100011fbe T@"UIWindow",&,N
+        ivars          0x100017108 
+            entsize   32
+            count     1
+            offset    0x100017464  8
+            name      0x100011f20 _window
+            type      0x100013b42 @"UIWindow"
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0x100017130 
+            entsize    16
+            count      5
+            name       0x100012e09 window
+            attributes 0x100011fcf T@"UIWindow",&,N,V_window
+            name       0x100012b31 hash
+            attributes 0x100011fe9 TQ,R
+            name       0x100012df2 superclass
+            attributes 0x100011f3e T#,R
+            name       0x100012abb description
+            attributes 0x100011f87 T@"NSString",R,C
+            name       0x100012a9b debugDescription
+            attributes 0x100011f87 T@"NSString",R,C
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_UIResponder
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100017058 
+        flags          0x195 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x100013187 AppDelegate
+        baseMethods    0x0
+        baseProtocols  0x100017040 __OBJC_CLASS_PROTOCOLS_$_AppDelegate
+            count    1
+            list[0]  0x100017910 
+                isa       0x0
+                name      0x100013193 UIApplicationDelegate
+                protocols 0x100016928 
+                    count    1
+                    list[0]  0x1000178b0 
+                        isa       0x0
+                        name      0x1000131a9 NSObject
+                        protocols 0x0
+                        instanceMethods 0x100016650 
+                            entsize 24
+                            count   19
+                            name    0x100012b7b isEqual:
+                            types   0x10001320e B24@0:8@16
+                            imp     0x0
+                            name    0x100012a81 class
+                            types   0x100013219 #16@0:8
+                            imp     0x0
+                            name    0x100012d00 self
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                            name    0x100012c19 performSelector:
+                            types   0x100013229 @24@0:8:16
+                            imp     0x0
+                            name    0x100012c2a performSelector:withObject:
+                            types   0x100013234 @32@0:8:16@24
+                            imp     0x0
+                            name    0x100012c46 performSelector:withObject:withObject:
+                            types   0x100013242 @40@0:8:16@24@32
+                            imp     0x0
+                            name    0x100011f36 isProxy
+                            types   0x100013253 B16@0:8
+                            imp     0x0
+                            name    0x100012b84 isKindOfClass:
+                            types   0x10001325b B24@0:8#16
+                            imp     0x0
+                            name    0x100012b93 isMemberOfClass:
+                            types   0x10001325b B24@0:8#16
+                            imp     0x0
+                            name    0x100012a87 conformsToProtocol:
+                            types   0x10001320e B24@0:8@16
+                            imp     0x0
+                            name    0x100012cc4 respondsToSelector:
+                            types   0x100013266 B24@0:8:16
+                            imp     0x0
+                            name    0x100012cd8 retain
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                            name    0x100011f7f release
+                            types   0x100013271 Vv16@0:8
+                            imp     0x0
+                            name    0x100012a75 autorelease
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                            name    0x100012cdf retainCount
+                            types   0x10001327a Q16@0:8
+                            imp     0x0
+                            name    0x100012e28 zone
+                            types   0x100013282 ^{_NSZone=}16@0:8
+                            imp     0x0
+                            name    0x100012b31 hash
+                            types   0x10001327a Q16@0:8
+                            imp     0x0
+                            name    0x100012df2 superclass
+                            types   0x100013219 #16@0:8
+                            imp     0x0
+                            name    0x100012abb description
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                        classMethods 0x0
+                        optionalInstanceMethods 0x100016820 
+                            entsize 24
+                            count   1
+                            name    0x100012a9b debugDescription
+                            types   0x100013221 @16@0:8
+                            imp     0x0
+                        optionalClassMethods 0x0
+                        instanceProperties 0x100016840 
+                            entsize    16
+                            count      4
+                            name       0x100012b31 hash
+                            attributes 0x100011fe9 TQ,R
+                            name       0x100012df2 superclass
+                            attributes 0x100011f3e T#,R
+                            name       0x100012abb description
+                            attributes 0x100011f87 T@"NSString",R,C
+                            name       0x100012a9b debugDescription
+                            attributes 0x100011f87 T@"NSString",R,C
+                instanceMethods 0x0
+                classMethods 0x0
+                optionalInstanceMethods 0x100016940 
+                    entsize 24
+                    count   55
+                    name    0x10001291e applicationDidFinishLaunching:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x1000128b7 application:willFinishLaunchingWithOptions:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x10001222e application:didFinishLaunchingWithOptions:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000128e3 applicationDidBecomeActive:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012a3e applicationWillResignActive:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x10001254e application:handleOpenURL:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000125d6 application:openURL:sourceApplication:annotation:
+                    types   0x1000132d4 B48@0:8@16@24@32@40
+                    imp     0x0
+                    name    0x1000125b9 application:openURL:options:
+                    types   0x1000132e8 B40@0:8@16@24@32
+                    imp     0x0
+                    name    0x10001293d applicationDidReceiveMemoryWarning:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012a5b applicationWillTerminate:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012a1c applicationSignificantTimeChange:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012824 application:willChangeStatusBarOrientation:duration:
+                    types   0x1000132f9 v40@0:8@16q24d32
+                    imp     0x0
+                    name    0x100012138 application:didChangeStatusBarOrientation:
+                    types   0x10001330a v32@0:8@16q24
+                    imp     0x0
+                    name    0x1000127fe application:willChangeStatusBarFrame:
+                    types   0x100013318 v56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24
+                    imp     0x0
+                    name    0x100012113 application:didChangeStatusBarFrame:
+                    types   0x100013318 v56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24
+                    imp     0x0
+                    name    0x10001232b application:didRegisterUserNotificationSettings:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x1000122ed application:didRegisterForRemoteNotificationsWithDeviceToken:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x1000121f0 application:didFailToRegisterForRemoteNotificationsWithError:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x100012282 application:didReceiveRemoteNotification:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x100012259 application:didReceiveLocalNotification:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x10001237f application:handleActionWithIdentifier:forLocalNotification:completionHandler:
+                    types   0x100013353 v48@0:8@16@24@32@?40
+                    imp     0x0
+                    name    0x10001247e application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:
+                    types   0x100013368 v56@0:8@16@24@32@40@?48
+                    imp     0x0
+                    name    0x10001242e application:handleActionWithIdentifier:forRemoteNotification:completionHandler:
+                    types   0x100013353 v48@0:8@16@24@32@?40
+                    imp     0x0
+                    name    0x1000123ce application:handleActionWithIdentifier:forLocalNotification:withResponseInfo:completionHandler:
+                    types   0x100013368 v56@0:8@16@24@32@40@?48
+                    imp     0x0
+                    name    0x1000122ac application:didReceiveRemoteNotification:fetchCompletionHandler:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x100012644 application:performFetchWithCompletionHandler:
+                    types   0x100013392 v32@0:8@16@?24
+                    imp     0x0
+                    name    0x100012608 application:performActionForShortcutItem:completionHandler:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x1000124df application:handleEventsForBackgroundURLSession:completionHandler:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x100012569 application:handleWatchKitExtensionRequest:reply:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x1000129ef applicationShouldRequestHealthAuthorization:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x10001259b application:handlerForIntent:
+                    types   0x1000133a1 @32@0:8@16@24
+                    imp     0x0
+                    name    0x100012522 application:handleIntent:completionHandler:
+                    types   0x100013380 v40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x1000128ff applicationDidEnterBackground:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100011f51 applicationWillEnterForeground:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x10001298d applicationProtectedDataWillBecomeUnavailable:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012961 applicationProtectedDataDidBecomeAvailable:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                    name    0x100012756 application:supportedInterfaceOrientationsForWindow:
+                    types   0x1000133af Q32@0:8@16@24
+                    imp     0x0
+                    name    0x100012673 application:shouldAllowExtensionPointIdentifier:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000127bf application:viewControllerWithRestorationIdentifierPath:coder:
+                    types   0x1000133bd @40@0:8@16@24@32
+                    imp     0x0
+                    name    0x100012728 application:shouldSaveSecureApplicationState:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000126cf application:shouldRestoreSecureApplicationState:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x100012887 application:willEncodeRestorableStateWithCoder:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x100012163 application:didDecodeRestorableStateWithCoder:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x100012700 application:shouldSaveApplicationState:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000126a4 application:shouldRestoreApplicationState:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x100012859 application:willContinueUserActivityWithType:
+                    types   0x1000132c6 B32@0:8@16@24
+                    imp     0x0
+                    name    0x1000120de application:continueUserActivity:restorationHandler:
+                    types   0x1000133ce B40@0:8@16@24@?32
+                    imp     0x0
+                    name    0x1000121b7 application:didFailToContinueUserActivityWithType:error:
+                    types   0x1000133e0 v40@0:8@16@24@32
+                    imp     0x0
+                    name    0x10001235c application:didUpdateUserActivity:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x10001278b application:userDidAcceptCloudKitShareWithMetadata:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x1000120a2 application:configurationForConnectingSceneSession:options:
+                    types   0x1000133bd @40@0:8@16@24@32
+                    imp     0x0
+                    name    0x100012192 application:didDiscardSceneSessions:
+                    types   0x100013345 v32@0:8@16@24
+                    imp     0x0
+                    name    0x1000129bc applicationShouldAutomaticallyLocalizeKeyCommands:
+                    types   0x10001320e B24@0:8@16
+                    imp     0x0
+                    name    0x100012e09 window
+                    types   0x100013221 @16@0:8
+                    imp     0x0
+                    name    0x100012d64 setWindow:
+                    types   0x1000132bb v24@0:8@16
+                    imp     0x0
+                optionalClassMethods 0x0
+                instanceProperties 0x100016e70 
+                    entsize    16
+                    count      1
+                    name       0x100012e09 window
+                    attributes 0x100011fbe T@"UIWindow",&,N
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Contents of (__DATA,__objc_classrefs) section
+0000000100017418 0x0 _OBJC_CLASS_$_NSString
+0000000100017420 0x0 _OBJC_CLASS_$_NSFileManager
+0000000100017428 0x0 _OBJC_CLASS_$_UIAlertController
+0000000100017430 0x0 _OBJC_CLASS_$_UIAlertAction
+0000000100017438 0x0 _OBJC_CLASS_$_NSDictionary
+0000000100017440 0x0 _OBJC_CLASS_$_NSMutableDictionary
+0000000100017448 0x0 _OBJC_CLASS_$_NSNumber
+0000000100017450 0x1000174e0 _OBJC_CLASS_$_AppDelegate
+Contents of (__DATA,__objc_superrefs) section
+0000000100017458 0x100017468 _OBJC_CLASS_$_ViewController
+Contents of (__DATA,__objc_protolist) section
+0000000100016498 0x1000178b0 
+    isa       0x0
+    name      0x1000131a9 NSObject
+    protocols 0x0
+    instanceMethods 0x100016650 
+        entsize 24
+        count   19
+        name    0x100012b7b isEqual:
+        types   0x10001320e B24@0:8@16
+        imp     0x0
+        name    0x100012a81 class
+        types   0x100013219 #16@0:8
+        imp     0x0
+        name    0x100012d00 self
+        types   0x100013221 @16@0:8
+        imp     0x0
+        name    0x100012c19 performSelector:
+        types   0x100013229 @24@0:8:16
+        imp     0x0
+        name    0x100012c2a performSelector:withObject:
+        types   0x100013234 @32@0:8:16@24
+        imp     0x0
+        name    0x100012c46 performSelector:withObject:withObject:
+        types   0x100013242 @40@0:8:16@24@32
+        imp     0x0
+        name    0x100011f36 isProxy
+        types   0x100013253 B16@0:8
+        imp     0x0
+        name    0x100012b84 isKindOfClass:
+        types   0x10001325b B24@0:8#16
+        imp     0x0
+        name    0x100012b93 isMemberOfClass:
+        types   0x10001325b B24@0:8#16
+        imp     0x0
+        name    0x100012a87 conformsToProtocol:
+        types   0x10001320e B24@0:8@16
+        imp     0x0
+        name    0x100012cc4 respondsToSelector:
+        types   0x100013266 B24@0:8:16
+        imp     0x0
+        name    0x100012cd8 retain
+        types   0x100013221 @16@0:8
+        imp     0x0
+        name    0x100011f7f release
+        types   0x100013271 Vv16@0:8
+        imp     0x0
+        name    0x100012a75 autorelease
+        types   0x100013221 @16@0:8
+        imp     0x0
+        name    0x100012cdf retainCount
+        types   0x10001327a Q16@0:8
+        imp     0x0
+        name    0x100012e28 zone
+        types   0x100013282 ^{_NSZone=}16@0:8
+        imp     0x0
+        name    0x100012b31 hash
+        types   0x10001327a Q16@0:8
+        imp     0x0
+        name    0x100012df2 superclass
+        types   0x100013219 #16@0:8
+        imp     0x0
+        name    0x100012abb description
+        types   0x100013221 @16@0:8
+        imp     0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x100016820 
+        entsize 24
+        count   1
+        name    0x100012a9b debugDescription
+        types   0x100013221 @16@0:8
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x100016840 
+        entsize    16
+        count      4
+        name       0x100012b31 hash
+        attributes 0x100011fe9 TQ,R
+        name       0x100012df2 superclass
+        attributes 0x100011f3e T#,R
+        name       0x100012abb description
+        attributes 0x100011f87 T@"NSString",R,C
+        name       0x100012a9b debugDescription
+        attributes 0x100011f87 T@"NSString",R,C
+00000001000164a0 0x100017910 
+    isa       0x0
+    name      0x100013193 UIApplicationDelegate
+    protocols 0x100016928 
+        count    1
+        list[0]  0x1000178b0 
+            isa       0x0
+            name      0x1000131a9 NSObject
+            protocols 0x0
+            instanceMethods 0x100016650 
+                entsize 24
+                count   19
+                name    0x100012b7b isEqual:
+                types   0x10001320e B24@0:8@16
+                imp     0x0
+                name    0x100012a81 class
+                types   0x100013219 #16@0:8
+                imp     0x0
+                name    0x100012d00 self
+                types   0x100013221 @16@0:8
+                imp     0x0
+                name    0x100012c19 performSelector:
+                types   0x100013229 @24@0:8:16
+                imp     0x0
+                name    0x100012c2a performSelector:withObject:
+                types   0x100013234 @32@0:8:16@24
+                imp     0x0
+                name    0x100012c46 performSelector:withObject:withObject:
+                types   0x100013242 @40@0:8:16@24@32
+                imp     0x0
+                name    0x100011f36 isProxy
+                types   0x100013253 B16@0:8
+                imp     0x0
+                name    0x100012b84 isKindOfClass:
+                types   0x10001325b B24@0:8#16
+                imp     0x0
+                name    0x100012b93 isMemberOfClass:
+                types   0x10001325b B24@0:8#16
+                imp     0x0
+                name    0x100012a87 conformsToProtocol:
+                types   0x10001320e B24@0:8@16
+                imp     0x0
+                name    0x100012cc4 respondsToSelector:
+                types   0x100013266 B24@0:8:16
+                imp     0x0
+                name    0x100012cd8 retain
+                types   0x100013221 @16@0:8
+                imp     0x0
+                name    0x100011f7f release
+                types   0x100013271 Vv16@0:8
+                imp     0x0
+                name    0x100012a75 autorelease
+                types   0x100013221 @16@0:8
+                imp     0x0
+                name    0x100012cdf retainCount
+                types   0x10001327a Q16@0:8
+                imp     0x0
+                name    0x100012e28 zone
+                types   0x100013282 ^{_NSZone=}16@0:8
+                imp     0x0
+                name    0x100012b31 hash
+                types   0x10001327a Q16@0:8
+                imp     0x0
+                name    0x100012df2 superclass
+                types   0x100013219 #16@0:8
+                imp     0x0
+                name    0x100012abb description
+                types   0x100013221 @16@0:8
+                imp     0x0
+            classMethods 0x0
+            optionalInstanceMethods 0x100016820 
+                entsize 24
+                count   1
+                name    0x100012a9b debugDescription
+                types   0x100013221 @16@0:8
+                imp     0x0
+            optionalClassMethods 0x0
+            instanceProperties 0x100016840 
+                entsize    16
+                count      4
+                name       0x100012b31 hash
+                attributes 0x100011fe9 TQ,R
+                name       0x100012df2 superclass
+                attributes 0x100011f3e T#,R
+                name       0x100012abb description
+                attributes 0x100011f87 T@"NSString",R,C
+                name       0x100012a9b debugDescription
+                attributes 0x100011f87 T@"NSString",R,C
+    instanceMethods 0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x100016940 
+        entsize 24
+        count   55
+        name    0x10001291e applicationDidFinishLaunching:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x1000128b7 application:willFinishLaunchingWithOptions:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x10001222e application:didFinishLaunchingWithOptions:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x1000128e3 applicationDidBecomeActive:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x100012a3e applicationWillResignActive:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x10001254e application:handleOpenURL:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x1000125d6 application:openURL:sourceApplication:annotation:
+        types   0x1000132d4 B48@0:8@16@24@32@40
+        imp     0x0
+        name    0x1000125b9 application:openURL:options:
+        types   0x1000132e8 B40@0:8@16@24@32
+        imp     0x0
+        name    0x10001293d applicationDidReceiveMemoryWarning:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x100012a5b applicationWillTerminate:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x100012a1c applicationSignificantTimeChange:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x100012824 application:willChangeStatusBarOrientation:duration:
+        types   0x1000132f9 v40@0:8@16q24d32
+        imp     0x0
+        name    0x100012138 application:didChangeStatusBarOrientation:
+        types   0x10001330a v32@0:8@16q24
+        imp     0x0
+        name    0x1000127fe application:willChangeStatusBarFrame:
+        types   0x100013318 v56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24
+        imp     0x0
+        name    0x100012113 application:didChangeStatusBarFrame:
+        types   0x100013318 v56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24
+        imp     0x0
+        name    0x10001232b application:didRegisterUserNotificationSettings:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x1000122ed application:didRegisterForRemoteNotificationsWithDeviceToken:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x1000121f0 application:didFailToRegisterForRemoteNotificationsWithError:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x100012282 application:didReceiveRemoteNotification:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x100012259 application:didReceiveLocalNotification:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x10001237f application:handleActionWithIdentifier:forLocalNotification:completionHandler:
+        types   0x100013353 v48@0:8@16@24@32@?40
+        imp     0x0
+        name    0x10001247e application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:
+        types   0x100013368 v56@0:8@16@24@32@40@?48
+        imp     0x0
+        name    0x10001242e application:handleActionWithIdentifier:forRemoteNotification:completionHandler:
+        types   0x100013353 v48@0:8@16@24@32@?40
+        imp     0x0
+        name    0x1000123ce application:handleActionWithIdentifier:forLocalNotification:withResponseInfo:completionHandler:
+        types   0x100013368 v56@0:8@16@24@32@40@?48
+        imp     0x0
+        name    0x1000122ac application:didReceiveRemoteNotification:fetchCompletionHandler:
+        types   0x100013380 v40@0:8@16@24@?32
+        imp     0x0
+        name    0x100012644 application:performFetchWithCompletionHandler:
+        types   0x100013392 v32@0:8@16@?24
+        imp     0x0
+        name    0x100012608 application:performActionForShortcutItem:completionHandler:
+        types   0x100013380 v40@0:8@16@24@?32
+        imp     0x0
+        name    0x1000124df application:handleEventsForBackgroundURLSession:completionHandler:
+        types   0x100013380 v40@0:8@16@24@?32
+        imp     0x0
+        name    0x100012569 application:handleWatchKitExtensionRequest:reply:
+        types   0x100013380 v40@0:8@16@24@?32
+        imp     0x0
+        name    0x1000129ef applicationShouldRequestHealthAuthorization:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x10001259b application:handlerForIntent:
+        types   0x1000133a1 @32@0:8@16@24
+        imp     0x0
+        name    0x100012522 application:handleIntent:completionHandler:
+        types   0x100013380 v40@0:8@16@24@?32
+        imp     0x0
+        name    0x1000128ff applicationDidEnterBackground:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x100011f51 applicationWillEnterForeground:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x10001298d applicationProtectedDataWillBecomeUnavailable:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x100012961 applicationProtectedDataDidBecomeAvailable:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+        name    0x100012756 application:supportedInterfaceOrientationsForWindow:
+        types   0x1000133af Q32@0:8@16@24
+        imp     0x0
+        name    0x100012673 application:shouldAllowExtensionPointIdentifier:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x1000127bf application:viewControllerWithRestorationIdentifierPath:coder:
+        types   0x1000133bd @40@0:8@16@24@32
+        imp     0x0
+        name    0x100012728 application:shouldSaveSecureApplicationState:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x1000126cf application:shouldRestoreSecureApplicationState:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x100012887 application:willEncodeRestorableStateWithCoder:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x100012163 application:didDecodeRestorableStateWithCoder:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x100012700 application:shouldSaveApplicationState:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x1000126a4 application:shouldRestoreApplicationState:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x100012859 application:willContinueUserActivityWithType:
+        types   0x1000132c6 B32@0:8@16@24
+        imp     0x0
+        name    0x1000120de application:continueUserActivity:restorationHandler:
+        types   0x1000133ce B40@0:8@16@24@?32
+        imp     0x0
+        name    0x1000121b7 application:didFailToContinueUserActivityWithType:error:
+        types   0x1000133e0 v40@0:8@16@24@32
+        imp     0x0
+        name    0x10001235c application:didUpdateUserActivity:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x10001278b application:userDidAcceptCloudKitShareWithMetadata:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x1000120a2 application:configurationForConnectingSceneSession:options:
+        types   0x1000133bd @40@0:8@16@24@32
+        imp     0x0
+        name    0x100012192 application:didDiscardSceneSessions:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+        name    0x1000129bc applicationShouldAutomaticallyLocalizeKeyCommands:
+        types   0x10001320e B24@0:8@16
+        imp     0x0
+        name    0x100012e09 window
+        types   0x100013221 @16@0:8
+        imp     0x0
+        name    0x100012d64 setWindow:
+        types   0x1000132bb v24@0:8@16
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x100016e70 
+        entsize    16
+        count      1
+        name       0x100012e09 window
+        attributes 0x100011fbe T@"UIWindow",&,N
+00000001000164a8 0x100017a18 
+    isa       0x0
+    name      0x1000131c0 __ARCLiteKeyedSubscripting__
+    protocols 0x0
+    instanceMethods 0x100017280 
+        entsize 24
+        count   2
+        name    0x100012c00 objectForKeyedSubscript:
+        types   0x100013b52 @24@0:8@16
+        imp     0x0
+        name    0x100012d17 setObject:forKeyedSubscript:
+        types   0x100013345 v32@0:8@16@24
+        imp     0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x0
+Contents of (__DATA,__objc_selrefs) section
+    0x100011ff8  actionWithTitle:style:handler:
+    0x100012017  addAction:
+    0x100012022 addEntriesFromDictionary:
+    0x10001203c  alertControllerWithTitle:message:preferredStyle:
+    0x10001206e alloc
+    0x100012074 allocBatch:withEntity:count:
+    0x100012091 allocWithEntity:
+    0x100012a81 class
+    0x100012aac  defaultManager
+    0x100012ac7  dictionary
+    0x100012ad2  dictionaryWithContentsOfFile:
+    0x100012af0 fastIndexForKnownKey:
+    0x100012b12 getCString:maxLength:encoding:
+    0x100012b36 indexForKey:
+    0x100012b43 init
+    0x100012b48 initWithBytes:length:encoding:
+    0x100012b67 initialize
+    0x100012b72  intValue
+    0x100012b84 isKindOfClass:
+    0x100012ba4 keyEnumerator
+    0x100012bb2 lengthOfBytesUsingEncoding:
+    0x100012bd4 nextObject
+    0x100012bdf  numberWithInteger:
+    0x100012bf2  objectForKey:
+    0x100012c6d  presentViewController:animated:completion:
+    0x100011f7f release
+    0x100012c98  removeItemAtPath:error:
+    0x100012cb0 removeObjectForKey:
+    0x100012ceb  selectedSegmentIndex
+    0x100012d00 self
+    0x100012d05  setObject:forKey:
+    0x100012d17 setObject:forKeyedSubscript:
+    0x100012d34  setSelectedSegmentIndex:
+    0x100012d5a  setTitle:
+    0x100012d6f  setupSegmentedControlFromPlist
+    0x100012d8e  sgServer
+    0x100012db1  stringByAppendingString:
+    0x100012dca  stringWithFormat:
+    0x100012ddc  stringWithUTF8String:
+    0x100012dfd  viewDidLoad
+    0x100012e10  writeToFile:atomically:
+Contents of (__DATA,__objc_imageinfo) section
+    version 0
+    flags   0x40

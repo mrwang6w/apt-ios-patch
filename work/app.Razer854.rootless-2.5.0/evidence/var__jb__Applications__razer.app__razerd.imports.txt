@@ -1,0 +1,105 @@
+00000000000084cc (__TEXT,__text) non-external +[GetIPManager load]
+00000000000084fc (__TEXT,__text) non-external +[GetIPManager startIntercepting]
+0000000000008550 (__TEXT,__text) non-external +[GetIPManager stopIntercepting]
+0000000000008fa8 (__TEXT,__text) non-external +[Hook load]
+00000000000085a4 (__TEXT,__text) non-external +[NSJSONSerialization(Hook) load]
+0000000000008614 (__TEXT,__text) non-external +[NSJSONSerialization(Hook) xk_JSONObjectWithData:options:error:]
+000000000000ad78 (__TEXT,__text) non-external +[NSURL(hook) hook_URLWithString:]
+000000000000aa14 (__TEXT,__text) non-external +[NSURL(hook) load]
+0000000000005144 (__TEXT,__text) non-external +[SimpleGetIPInterceptor canInitWithRequest:]
+0000000000005e54 (__TEXT,__text) non-external +[SimpleGetIPInterceptor canonicalRequestForRequest:]
+000000000000588c (__TEXT,__text) non-external +[SimpleGetIPInterceptor load]
+00000000000058bc (__TEXT,__text) non-external +[SimpleGetIPInterceptor sss]
+0000000000004618 (__TEXT,__text) non-external +[xq sss:]
+0000000000008494 (__TEXT,__text) non-external -[SimpleGetIPInterceptor .cxx_destruct]
+0000000000008434 (__TEXT,__text) non-external -[SimpleGetIPInterceptor dataTask]
+00000000000061f8 (__TEXT,__text) non-external -[SimpleGetIPInterceptor returnMockResponse]
+0000000000008458 (__TEXT,__text) non-external -[SimpleGetIPInterceptor setDataTask:]
+0000000000005eb0 (__TEXT,__text) non-external -[SimpleGetIPInterceptor startLoading]
+0000000000006194 (__TEXT,__text) non-external -[SimpleGetIPInterceptor stopLoading]
+                 (undefined) external _NSClassFromString (from Foundation)
+                 (undefined) external _NSLocalizedDescriptionKey (from Foundation)
+                 (undefined) external _NSSelectorFromString (from Foundation)
+000000000000c938 (__DATA,__objc_data) external _OBJC_CLASS_$_GetIPManager
+000000000000c988 (__DATA,__objc_data) external _OBJC_CLASS_$_Hook
+                 (undefined) external _OBJC_CLASS_$_NSDate (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSDictionary (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSError (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSHTTPURLResponse (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSJSONSerialization (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSMutableString (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSMutableURLRequest (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSNumber (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSObject (from libobjc)
+                 (undefined) external _OBJC_CLASS_$_NSString (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSURL (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSURLProtocol (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSURLSession (from Foundation)
+000000000000c8e8 (__DATA,__objc_data) external _OBJC_CLASS_$_SimpleGetIPInterceptor
+000000000000c898 (__DATA,__objc_data) external _OBJC_CLASS_$_xq
+000000000000c868 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_SimpleGetIPInterceptor._dataTask
+000000000000c910 (__DATA,__objc_data) external _OBJC_METACLASS_$_GetIPManager
+000000000000c960 (__DATA,__objc_data) external _OBJC_METACLASS_$_Hook
+                 (undefined) external _OBJC_METACLASS_$_NSObject (from libobjc)
+                 (undefined) external _OBJC_METACLASS_$_NSURLProtocol (from Foundation)
+000000000000c8c0 (__DATA,__objc_data) external _OBJC_METACLASS_$_SimpleGetIPInterceptor
+000000000000c870 (__DATA,__objc_data) external _OBJC_METACLASS_$_xq
+000000000000a548 (__TEXT,__text) non-external _SerialNumber
+000000000000d958 (__DATA,__bss) non-external _SerialNumber.$MGCopyAnswer
+000000000000d928 (__DATA,__bss) non-external _TTTT
+                 (undefined) external __NSConcreteGlobalBlock (from libSystem)
+000000000000c4c0 (__DATA,__objc_const) non-external __OBJC_$_CATEGORY_CLASS_METHODS_NSJSONSerialization_$_Hook
+000000000000c5e8 (__DATA,__objc_const) non-external __OBJC_$_CATEGORY_CLASS_METHODS_NSURL_$_hook
+000000000000c4f8 (__DATA,__objc_const) non-external __OBJC_$_CATEGORY_NSJSONSerialization_$_Hook
+000000000000c620 (__DATA,__objc_const) non-external __OBJC_$_CATEGORY_NSURL_$_hook
+000000000000c3e0 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_GetIPManager
+000000000000c538 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_Hook
+000000000000c210 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_SimpleGetIPInterceptor
+000000000000c160 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_xq
+000000000000c2c0 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_SimpleGetIPInterceptor
+000000000000c358 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_SimpleGetIPInterceptor
+000000000000c380 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_SimpleGetIPInterceptor
+000000000000c478 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_GetIPManager
+000000000000c5a0 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_Hook
+000000000000c398 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_SimpleGetIPInterceptor
+000000000000c1c8 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_xq
+000000000000c430 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_GetIPManager
+000000000000c558 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_Hook
+000000000000c278 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_SimpleGetIPInterceptor
+000000000000c180 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_xq
+0000000000005068 (__TEXT,__text) non-external ___10+[xq sss:]_block_invoke
+0000000000005d70 (__TEXT,__text) non-external ___29+[SimpleGetIPInterceptor sss]_block_invoke
+                 (undefined) external ___CFConstantStringClassReference (from CoreFoundation)
+000000000000c0a0 (__DATA,__const) non-external (was a private external) ___block_descriptor_32_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
+000000000000c0c0 (__DATA,__const) non-external ___block_literal_global
+000000000000c0e0 (__DATA,__const) non-external ___block_literal_global
+                 (undefined) external ___stack_chk_fail (from libSystem)
+                 (undefined) external ___stack_chk_guard (from libSystem)
+000000000000c9b0 (__DATA,__data) non-external __dyld_private
+                 (undefined) external __objc_empty_cache (from libobjc)
+                 (undefined) external _class_getClassMethod (from libobjc)
+                 (undefined) external _class_getInstanceMethod (from libobjc)
+                 (undefined) external _dlopen (from libSystem)
+                 (undefined) external _dlsym (from libSystem)
+000000000000a9b0 (__TEXT,__text) external _hookNSStringUTF8String
+0000000000008fbc (__TEXT,__text) external _hookedUTF8String
+000000000000d908 (__DATA,__common) external _km
+                 (undefined) external _method_exchangeImplementations (from libobjc)
+                 (undefined) external _method_getImplementation (from libobjc)
+                 (undefined) external _method_setImplementation (from libobjc)
+                 (undefined) external _objc_alloc (from libobjc)
+                 (undefined) external _objc_autoreleaseReturnValue (from libobjc)
+                 (undefined) external _objc_msgSend (from libobjc)
+                 (undefined) external _objc_release (from libobjc)
+                 (undefined) external _objc_retain (from libobjc)
+                 (undefined) external _objc_retainAutoreleasedReturnValue (from libobjc)
+                 (undefined) external _objc_storeStrong (from libobjc)
+000000000000d950 (__DATA,__bss) non-external _originalUTF8String
+0000000000004c0c (__TEXT,__text) non-external _sn
+000000000000d910 (__DATA,__bss) non-external _sn.$MGCopyAnswer
+0000000000009944 (__TEXT,__text) external _stringWithFormat
+000000000000ba10 (__TEXT,__const) external _urlVersionNumber
+000000000000b9f0 (__TEXT,__const) external _urlVersionString
+000000000000d900 (__DATA,__common) external _v
+000000000000d920 (__DATA,__bss) non-external _yyy
+                 (undefined) external dyld_stub_binder (from libSystem)

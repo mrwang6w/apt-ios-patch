@@ -1,0 +1,58 @@
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/Library/MobileSubstrate/DynamicLibraries/zen.dylib:
+Contents of (__DATA,__objc_classrefs) section
+0000000000008320 0x0 _OBJC_CLASS_$_NSString
+0000000000008328 0x0 _OBJC_CLASS_$_NSArray
+0000000000008330 0x0 _OBJC_CLASS_$_NSRegularExpression
+0000000000008338 0x0 _OBJC_CLASS_$_NSMutableAttributedString
+Contents of (__DATA,__objc_catlist) section
+0000000000008198 0x8238 __OBJC_$_CATEGORY_UILabel_$_EXP
+    name      0x49f8 EXP
+    cls       0x0 _OBJC_CLASS_$_UILabel
+    instanceMethods 0x81b0 __OBJC_$_CATEGORY_INSTANCE_METHODS_UILabel_$_EXP
+        entsize 24
+        count   3
+        name    0x4afb replaceVersionInString:
+        types   0x4c44 @24@0:8@16
+        imp     0x41c8 -[UILabel(EXP) replaceVersionInString:]
+        name    0x4bed swizzled_setText:
+        types   0x4c4f v24@0:8@16
+        imp     0x4424 -[UILabel(EXP) swizzled_setText:]
+        name    0x4bd1 swizzled_setAttributedText:
+        types   0x4c4f v24@0:8@16
+        imp     0x4460 -[UILabel(EXP) swizzled_setAttributedText:]
+    classMethods 0x8200 __OBJC_$_CATEGORY_CLASS_METHODS_UILabel_$_EXP
+        entsize 24
+        count   2
+        name    0x4aa3 load
+        types   0x4c5a v16@0:8
+        imp     0x4000 +[UILabel(EXP) load]
+        name    0x4bbb swizzleSetTextMethods
+        types   0x4c5a v16@0:8
+        imp     0x4074 +[UILabel(EXP) swizzleSetTextMethods]
+    protocols 0x0
+    instanceProperties 0x0
+Contents of (__DATA,__objc_selrefs) section
+    0x4b3b setText:
+    0x4b13 setAttributedText:
+    0x4a0c arrayWithObjects:count:
+    0x4a24 attributesAtIndex:effectiveRange:
+    0x4a46 class
+    0x4a4c copy
+    0x4a51 countByEnumeratingWithState:objects:count:
+    0x49fc initWithString:
+    0x4a7c isEqualToString:
+    0x4a8d isKindOfClass:
+    0x4a9c length
+    0x4aa8 numberOfMatchesInString:options:range:
+    0x4acf regularExpressionWithPattern:options:error:
+    0x4afb replaceVersionInString:
+    0x4b26 setAttributes:range:
+    0x4b44 string
+    0x4b4b stringByReplacingOccurrencesOfString:withString:
+    0x4b7c stringByReplacingOccurrencesOfString:withString:options:range:
+    0x4bbb swizzleSetTextMethods
+    0x4bd1 swizzled_setAttributedText:
+    0x4bed swizzled_setText:
+Contents of (__DATA,__objc_imageinfo) section
+    version 0
+    flags   0x40

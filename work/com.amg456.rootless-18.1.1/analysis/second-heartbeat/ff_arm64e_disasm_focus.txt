@@ -1,0 +1,456 @@
+7751-    b624:	28 01 00 b0	adrp	x8, 37 ; 0x30000
+7752-    b628:	08 e1 43 f9	ldr	x8, [x8, #0x7c0] ; literal pool symbol address: _objc_release
+7753-    b62c:	00 01 3f d6	blr	x8
+7754-    b630:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+7755-    b634:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+7756-    b638:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+7757-    b63c:	ff c3 00 91	add	sp, sp, #0x30
+7758-    b640:	ff 0f 5f d6	retab
+7759:_$s2lk9ActiveHUDC2ffyyF:
+7760-    b644:	7f 23 03 d5	pacibsp
+7761-    b648:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+7762-    b64c:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+7763-    b650:	fd 43 00 91	add	x29, sp, #0x10
+7764-    b654:	ff 03 08 d1	sub	sp, sp, #0x200
+7765-    b658:	a8 e3 01 d1	sub	x8, x29, #0x78
+7766-    b65c:	14 01 10 f8	stur	x20, [x8, #-0x100]
+7767-    b660:	30 00 00 b0	adrp	x16, 5 ; 0x10000
+7768-    b664:	10 32 1e 91	add	x16, x16, #0x78c
+7769-    b668:	11 e1 81 d2	mov	x17, #0xf08
+7770-    b66c:	30 02 c1 da	pacia	x16, x17
+7771-    b670:	a8 c3 01 d1	sub	x8, x29, #0x70
+7772-    b674:	10 01 10 f8	stur	x16, [x8, #-0x100]
+7773-    b678:	10 00 00 b0	adrp	x16, 1 ; 0xc000
+7774-    b67c:	10 c2 08 91	add	x16, x16, #0x230
+7775-    b680:	11 e1 81 d2	mov	x17, #0xf08
+7776-    b684:	30 02 c1 da	pacia	x16, x17
+7777-    b688:	a8 a3 01 d1	sub	x8, x29, #0x68
+7778-    b68c:	10 01 10 f8	stur	x16, [x8, #-0x100]
+7779-    b690:	10 00 00 b0	adrp	x16, 1 ; 0xc000
+7780-    b694:	10 d2 06 91	add	x16, x16, #0x1b4
+7781-    b698:	11 e1 81 d2	mov	x17, #0xf08
+7782-    b69c:	30 02 c1 da	pacia	x16, x17
+7783-    b6a0:	a8 83 01 d1	sub	x8, x29, #0x60
+7784-    b6a4:	10 01 10 f8	stur	x16, [x8, #-0x100]
+7785-    b6a8:	30 00 00 b0	adrp	x16, 5 ; 0x10000
+7786-    b6ac:	10 62 1b 91	add	x16, x16, #0x6d8
+7787-    b6b0:	11 e1 81 d2	mov	x17, #0xf08
+7788-    b6b4:	30 02 c1 da	pacia	x16, x17
+7789-    b6b8:	a8 63 01 d1	sub	x8, x29, #0x58
+7790-    b6bc:	10 01 10 f8	stur	x16, [x8, #-0x100]
+7791-    b6c0:	bf 83 1e f8	stur	xzr, [x29, #-0x18]
+7792-    b6c4:	bf 03 1e f8	stur	xzr, [x29, #-0x20]
+7793-    b6c8:	00 00 80 d2	mov	x0, #0x0
+7794-    b6cc:	a8 c3 00 d1	sub	x8, x29, #0x30
+7795-    b6d0:	00 01 10 f8	stur	x0, [x8, #-0x100]
+7796-    b6d4:	b7 59 00 94	bl	0x21db0 ; symbol stub for: _$s8Dispatch0A13WorkItemFlagsVMa
+7797-    b6d8:	e9 03 00 aa	mov	x9, x0
+7798-    b6dc:	a8 c3 00 d1	sub	x8, x29, #0x30
+7799-    b6e0:	00 01 50 f8	ldur	x0, [x8, #-0x100]
+7800-    b6e4:	a8 43 01 d1	sub	x8, x29, #0x50
+7801-    b6e8:	09 01 10 f8	stur	x9, [x8, #-0x100]
+7802-    b6ec:	28 21 00 f1	subs	x8, x9, #0x8
+7803-    b6f0:	30 81 5f f8	ldur	x16, [x9, #-0x8]
+7804-    b6f4:	a9 23 01 d1	sub	x9, x29, #0x48
+7805-    b6f8:	30 01 10 f8	stur	x16, [x9, #-0x100]
+7806-    b6fc:	a9 03 01 d1	sub	x9, x29, #0x40
+7807-    b700:	28 01 10 f8	stur	x8, [x9, #-0x100]
+7808-    b704:	f1 03 08 aa	mov	x17, x8
+7809-    b708:	f1 c7 e5 f2	movk	x17, #0x2e3f, lsl #48
+7810-    b70c:	30 1a c1 da	autda	x16, x17
+7811-    b710:	08 22 40 f9	ldr	x8, [x16, #0x40]
+7812-    b714:	08 fd 40 d3	lsr	x8, x8, #0
+7813-    b718:	08 3d 00 91	add	x8, x8, #0xf
+7814-    b71c:	09 ed 7c 92	and	x9, x8, #0xfffffffffffffff0
+7815-    b720:	e8 03 00 91	mov	x8, sp
+7816-    b724:	01 01 09 eb	subs	x1, x8, x9
+7817-    b728:	a8 e3 00 d1	sub	x8, x29, #0x38
+7818-    b72c:	01 01 10 f8	stur	x1, [x8, #-0x100]
+7819-    b730:	3f 00 00 91	mov	sp, x1
+7820-    b734:	a7 59 00 94	bl	0x21dd0 ; symbol stub for: _$s8Dispatch0A3QoSVMa
+7821-    b738:	e9 03 00 aa	mov	x9, x0
+7822-    b73c:	a8 c3 00 d1	sub	x8, x29, #0x30
+7823-    b740:	00 01 50 f8	ldur	x0, [x8, #-0x100]
+7824-    b744:	a8 a3 00 d1	sub	x8, x29, #0x28
+7825-    b748:	09 01 10 f8	stur	x9, [x8, #-0x100]
+7826-    b74c:	28 21 00 f1	subs	x8, x9, #0x8
+7827-    b750:	30 81 5f f8	ldur	x16, [x9, #-0x8]
+7828-    b754:	a9 83 00 d1	sub	x9, x29, #0x20
+7829-    b758:	30 01 10 f8	stur	x16, [x9, #-0x100]
+7830-    b75c:	a9 63 00 d1	sub	x9, x29, #0x18
+7831-    b760:	28 01 10 f8	stur	x8, [x9, #-0x100]
+7832-    b764:	f1 03 08 aa	mov	x17, x8
+7833-    b768:	f1 c7 e5 f2	movk	x17, #0x2e3f, lsl #48
+7834-    b76c:	30 1a c1 da	autda	x16, x17
+7835-    b770:	08 22 40 f9	ldr	x8, [x16, #0x40]
+7836-    b774:	08 fd 40 d3	lsr	x8, x8, #0
+7837-    b778:	08 3d 00 91	add	x8, x8, #0xf
+7838-    b77c:	09 ed 7c 92	and	x9, x8, #0xfffffffffffffff0
+7839-    b780:	e8 03 00 91	mov	x8, sp
+--
+8321-    bf08:	10 9f e0 f2	movk	x16, #0x4f8, lsl #48
+8322-    bf0c:	10 09 3f d7	blraa	x8, x16
+8323-    bf10:	01 00 00 14	b	0xbf14
+8324-    bf14:	01 00 00 14	b	0xbf18
+8325-    bf18:	bf 43 00 d1	sub	sp, x29, #0x10
+8326-    bf1c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+8327-    bf20:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+8328-    bf24:	ff 0f 5f d6	retab
+8329:_$s2lk9ActiveHUDC2ffyyFyycfU_:
+8330-    bf28:	7f 23 03 d5	pacibsp
+8331-    bf2c:	ff 43 02 d1	sub	sp, sp, #0x90
+8332-    bf30:	f4 4f 07 a9	stp	x20, x19, [sp, #0x70]
+8333-    bf34:	fd 7b 08 a9	stp	x29, x30, [sp, #0x80]
+8334-    bf38:	fd 03 02 91	add	x29, sp, #0x80
+8335-    bf3c:	f4 03 00 aa	mov	x20, x0
+8336-    bf40:	bf 83 1e f8	stur	xzr, [x29, #-0x18]
+8337-    bf44:	e0 03 14 aa	mov	x0, x20
+8338-    bf48:	a0 83 1e f8	stur	x0, [x29, #-0x18]
+8339-    bf4c:	88 02 40 f9	ldr	x8, [x20]
+8340-    bf50:	29 01 00 b0	adrp	x9, 37 ; 0x30000
+8341-    bf54:	29 69 44 f9	ldr	x9, [x9, #0x8d0] ; literal pool symbol address: _swift_isaMask
+8342-    bf58:	29 01 40 f9	ldr	x9, [x9]
+8343-    bf5c:	08 01 09 8a	and	x8, x8, x9
+8344-    bf60:	e8 47 c1 da	xpacd	x8
+8345-    bf64:	09 61 02 91	add	x9, x8, #0x98
+8346-    bf68:	08 4d 40 f9	ldr	x8, [x8, #0x98]
+8347-    bf6c:	f1 03 09 aa	mov	x17, x9
+8348-    bf70:	31 bb e7 f2	movk	x17, #0x3dd9, lsl #48
+8349-    bf74:	11 09 3f d7	blraa	x8, x17
+8350-    bf78:	a0 83 1c f8	stur	x0, [x29, #-0x38]
+8351-    bf7c:	a1 03 1d f8	stur	x1, [x29, #-0x30]
+8352-    bf80:	bf 83 1d f8	stur	xzr, [x29, #-0x28]
+8353-    bf84:	bf 03 1e f8	stur	xzr, [x29, #-0x20]
+8354-    bf88:	a8 03 5d f8	ldur	x8, [x29, #-0x30]
+8355-    bf8c:	08 01 00 b4	cbz	x8, 0xbfac
+8356-    bf90:	01 00 00 14	b	0xbf94
+8357-    bf94:	a0 e3 00 d1	sub	x0, x29, #0x38
+8358-    bf98:	e1 e3 00 91	add	x1, sp, #0x38
+8359-    bf9c:	75 13 00 94	bl	_$sSSSgWOc
+8360-    bfa0:	a8 03 5e f8	ldur	x8, [x29, #-0x20]
+8361-    bfa4:	a8 03 00 b4	cbz	x8, 0xc018
+8362-    bfa8:	04 00 00 14	b	0xbfb8
+8363-    bfac:	a8 03 5e f8	ldur	x8, [x29, #-0x20]
+8364-    bfb0:	a8 04 00 b4	cbz	x8, 0xc044
+8365-    bfb4:	29 00 00 14	b	0xc058
+8366-    bfb8:	a8 e3 00 d1	sub	x8, x29, #0x38
+8367-    bfbc:	e8 0b 00 f9	str	x8, [sp, #0x10]
+8368-    bfc0:	a0 83 dd 3c	ldur	q0, [x29, #-0x28]
+8369-    bfc4:	e8 83 00 91	add	x8, sp, #0x20
+8370-    bfc8:	e8 03 00 f9	str	x8, [sp]
+8371-    bfcc:	e0 0b 80 3d	str	q0, [sp, #0x20]
+8372-    bfd0:	e8 e3 00 91	add	x8, sp, #0x38
+8373-    bfd4:	e8 07 00 f9	str	x8, [sp, #0x8]
+8374-    bfd8:	e0 1f 40 f9	ldr	x0, [sp, #0x38]
+8375-    bfdc:	e1 23 40 f9	ldr	x1, [sp, #0x40]
+8376-    bfe0:	e2 13 40 f9	ldr	x2, [sp, #0x20]
+8377-    bfe4:	e3 17 40 f9	ldr	x3, [sp, #0x28]
+8378-    bfe8:	ee 57 00 94	bl	0x21fa0 ; symbol stub for: _$sSS2eeoiySbSS_SStFZ
+8379-    bfec:	e8 03 00 aa	mov	x8, x0
+8380-    bff0:	e0 03 40 f9	ldr	x0, [sp]
+8381-    bff4:	e8 1b 00 b9	str	w8, [sp, #0x18]
+8382-    bff8:	ab 13 00 94	bl	_$sSSSgWOh
+8383-    bffc:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+8384-    c000:	a9 13 00 94	bl	_$sSSSgWOh
+8385-    c004:	e0 0b 40 f9	ldr	x0, [sp, #0x10]
+8386-    c008:	a7 13 00 94	bl	_$sSSSgWOh
+8387-    c00c:	e0 1b 40 b9	ldr	w0, [sp, #0x18]
+8388-    c010:	e0 1f 00 b9	str	w0, [sp, #0x1c]
+8389-    c014:	04 00 00 14	b	0xc024
+8390-    c018:	e0 e3 00 91	add	x0, sp, #0x38
+8391-    c01c:	a2 13 00 94	bl	_$sSSSgWOh
+8392-    c020:	04 00 00 14	b	0xc030
+8393-    c024:	e8 1f 40 b9	ldr	w8, [sp, #0x1c]
+8394-    c028:	a8 01 00 37	tbnz	w8, #0x0, 0xc05c
+8395-    c02c:	0e 00 00 14	b	0xc064
+8396-    c030:	a0 e3 00 d1	sub	x0, x29, #0x38
+8397-    c034:	5f 13 00 94	bl	_$sSSSg_AAtWOh
+8398-    c038:	08 00 80 52	mov	w8, #0x0
+8399-    c03c:	e8 1f 00 b9	str	w8, [sp, #0x1c]
+8400-    c040:	f9 ff ff 17	b	0xc024
+8401-    c044:	a0 e3 00 d1	sub	x0, x29, #0x38
+8402-    c048:	97 13 00 94	bl	_$sSSSgWOh
+8403-    c04c:	28 00 80 52	mov	w8, #0x1
+8404-    c050:	e8 1f 00 b9	str	w8, [sp, #0x1c]
+8405-    c054:	f4 ff ff 17	b	0xc024
+8406-    c058:	f6 ff ff 17	b	0xc030
+8407-    c05c:	00 00 80 52	mov	w0, #0x0
+8408-    c060:	60 59 00 94	bl	0x225e0 ; symbol stub for: _exit
+8409-    c064:	fd 7b 48 a9	ldp	x29, x30, [sp, #0x80]
+--
+8478-    c15c:	e2 03 00 aa	mov	x2, x0
+8479-    c160:	a0 03 5e f8	ldur	x0, [x29, #-0x20]
+8480-    c164:	f4 03 03 aa	mov	x20, x3
+8481-    c168:	2a 58 00 94	bl	0x22210 ; symbol stub for: _$ss10SetAlgebraPyxqd__ncSTRd__7ElementQyd__ACRtzlufCTj
+8482-    c16c:	fd 7b 45 a9	ldp	x29, x30, [sp, #0x50]
+8483-    c170:	f4 4f 44 a9	ldp	x20, x19, [sp, #0x40]
+8484-    c174:	ff 83 01 91	add	sp, sp, #0x60
+8485-    c178:	ff 0f 5f d6	retab
+8486:_$s2lk9ActiveHUDC2ffyyFyycfU0_:
+8487-    c17c:	7f 23 03 d5	pacibsp
+8488-    c180:	ff c3 00 d1	sub	sp, sp, #0x30
+8489-    c184:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+8490-    c188:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+8491-    c18c:	fd 83 00 91	add	x29, sp, #0x20
+8492-    c190:	f4 03 00 aa	mov	x20, x0
+8493-    c194:	ff 07 00 f9	str	xzr, [sp, #0x8]
+8494-    c198:	e0 03 14 aa	mov	x0, x20
+8495-    c19c:	e0 07 00 f9	str	x0, [sp, #0x8]
+8496-    c1a0:	4d 00 00 94	bl	_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyF
+8497-    c1a4:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+8498-    c1a8:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+8499-    c1ac:	ff c3 00 91	add	sp, sp, #0x30
+8500-    c1b0:	ff 0f 5f d6	retab
+8501:_$s2lk9ActiveHUDC2ffyyFyyScMYccfU1_:
+8502-    c1b4:	7f 23 03 d5	pacibsp
+8503-    c1b8:	ff c3 00 d1	sub	sp, sp, #0x30
+8504-    c1bc:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+8505-    c1c0:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+8506-    c1c4:	fd 83 00 91	add	x29, sp, #0x20
+8507-    c1c8:	20 f9 ff 97	bl	_$s2lk9ActiveHUDC6sharedACvau
+8508-    c1cc:	14 00 40 f9	ldr	x20, [x0]
+8509-    c1d0:	f4 07 00 f9	str	x20, [sp, #0x8]
+8510-    c1d4:	e0 03 14 aa	mov	x0, x20
+8511-    c1d8:	28 01 00 90	adrp	x8, 36 ; 0x30000
+8512-    c1dc:	08 e5 43 f9	ldr	x8, [x8, #0x7c8] ; literal pool symbol address: _objc_retain
+8513-    c1e0:	00 01 3f d6	blr	x8
+8514-    c1e4:	88 02 40 f9	ldr	x8, [x20]
+8515-    c1e8:	29 01 00 90	adrp	x9, 36 ; 0x30000
+8516-    c1ec:	29 69 44 f9	ldr	x9, [x9, #0x8d0] ; literal pool symbol address: _swift_isaMask
+8517-    c1f0:	29 01 40 f9	ldr	x9, [x9]
+8518-    c1f4:	08 01 09 8a	and	x8, x8, x9
+8519-    c1f8:	e8 47 c1 da	xpacd	x8
+8520-    c1fc:	09 c1 04 91	add	x9, x8, #0x130
+8521-    c200:	08 99 40 f9	ldr	x8, [x8, #0x130]
+8522-    c204:	f1 03 09 aa	mov	x17, x9
+8523-    c208:	11 05 e9 f2	movk	x17, #0x4828, lsl #48
+8524-    c20c:	11 09 3f d7	blraa	x8, x17
+8525-    c210:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+8526-    c214:	28 01 00 90	adrp	x8, 36 ; 0x30000
+8527-    c218:	08 e1 43 f9	ldr	x8, [x8, #0x7c0] ; literal pool symbol address: _objc_release
+8528-    c21c:	00 01 3f d6	blr	x8
+8529-    c220:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+8530-    c224:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+8531-    c228:	ff c3 00 91	add	sp, sp, #0x30
+8532-    c22c:	ff 0f 5f d6	retab
+8533:_$s2lk9ActiveHUDC2ffyyFyyScMYccfU2_:
+8534-    c230:	7f 23 03 d5	pacibsp
+8535-    c234:	ff c3 00 d1	sub	sp, sp, #0x30
+8536-    c238:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+8537-    c23c:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+8538-    c240:	fd 83 00 91	add	x29, sp, #0x20
+8539-    c244:	01 f9 ff 97	bl	_$s2lk9ActiveHUDC6sharedACvau
+8540-    c248:	14 00 40 f9	ldr	x20, [x0]
+8541-    c24c:	f4 07 00 f9	str	x20, [sp, #0x8]
+8542-    c250:	e0 03 14 aa	mov	x0, x20
+8543-    c254:	28 01 00 90	adrp	x8, 36 ; 0x30000
+8544-    c258:	08 e5 43 f9	ldr	x8, [x8, #0x7c8] ; literal pool symbol address: _objc_retain
+8545-    c25c:	00 01 3f d6	blr	x8
+8546-    c260:	33 05 00 94	bl	_$s2lk9ActiveHUDC2hh33_828156311D720B14CFC96FAB376261B5LLyyF
+8547-    c264:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+8548-    c268:	28 01 00 90	adrp	x8, 36 ; 0x30000
+8549-    c26c:	08 e1 43 f9	ldr	x8, [x8, #0x7c0] ; literal pool symbol address: _objc_release
+8550-    c270:	00 01 3f d6	blr	x8
+8551-    c274:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+8552-    c278:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+8553-    c27c:	ff c3 00 91	add	sp, sp, #0x30
+8554-    c280:	ff 0f 5f d6	retab
+8555-_$s2lk9ActiveHUDC2ffyyFTo:
+8556-    c284:	7f 23 03 d5	pacibsp
+8557-    c288:	ff c3 00 d1	sub	sp, sp, #0x30
+8558-    c28c:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+8559-    c290:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+8560-    c294:	fd 83 00 91	add	x29, sp, #0x20
+8561-    c298:	f4 03 00 aa	mov	x20, x0
+8562-    c29c:	f4 07 00 f9	str	x20, [sp, #0x8]
+8563-    c2a0:	e0 03 14 aa	mov	x0, x20
+8564-    c2a4:	28 01 00 90	adrp	x8, 36 ; 0x30000
+8565-    c2a8:	08 e5 43 f9	ldr	x8, [x8, #0x7c8] ; literal pool symbol address: _objc_retain
+8566-    c2ac:	00 01 3f d6	blr	x8
+8567-    c2b0:	e5 fc ff 97	bl	_$s2lk9ActiveHUDC2ffyyF
+8568-    c2b4:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+8569-    c2b8:	28 01 00 90	adrp	x8, 36 ; 0x30000
+8570-    c2bc:	08 e1 43 f9	ldr	x8, [x8, #0x7c0] ; literal pool symbol address: _objc_release
+8571-    c2c0:	00 01 3f d6	blr	x8
+8572-    c2c4:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+8573-    c2c8:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+8574-    c2cc:	ff c3 00 91	add	sp, sp, #0x30
+8575-    c2d0:	ff 0f 5f d6	retab
+8576-_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyF:
+8577-    c2d4:	7f 23 03 d5	pacibsp
+8578-    c2d8:	ff 0f 5f d6	retab
+8579-    c2dc:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+8580-    c2e0:	fd 43 00 91	add	x29, sp, #0x10
+8581-    c2e4:	ff 03 05 d1	sub	sp, sp, #0x140
+8582-    c2e8:	b4 03 12 f8	stur	x20, [x29, #-0xe0]
+8583-    c2ec:	c8 00 00 d0	adrp	x8, 26 ; 0x26000
+8584-    c2f0:	08 b9 13 91	add	x8, x8, #0x4ee ; literal pool for: "Fatal error"
+8585-    c2f4:	a8 83 12 f8	stur	x8, [x29, #-0xd8]
+8586-    c2f8:	c8 00 00 d0	adrp	x8, 26 ; 0x26000
+8587-    c2fc:	08 01 13 91	add	x8, x8, #0x4c0 ; literal pool for: "Not enough bits to represent the passed value"
+8588-    c300:	a8 03 13 f8	stur	x8, [x29, #-0xd0]
+8589-    c304:	c8 00 00 d0	adrp	x8, 26 ; 0x26000
+8590-    c308:	08 41 12 91	add	x8, x8, #0x490 ; literal pool for: "Swift/arm64e-apple-ios.swiftinterface"
+8591-    c30c:	a8 83 13 f8	stur	x8, [x29, #-0xc8]
+8592-    c310:	c8 00 00 d0	adrp	x8, 26 ; 0x26000
+8593-    c314:	08 01 11 91	add	x8, x8, #0x440 ; literal pool for: "Double value cannot be converted to Int because it is either infinite or NaN"
+8594-    c318:	a8 03 14 f8	stur	x8, [x29, #-0xc0]
+8595-    c31c:	c8 00 00 d0	adrp	x8, 26 ; 0x26000
+8596-    c320:	08 01 14 91	add	x8, x8, #0x500 ; literal pool for: "Double value cannot be converted to Int because the result would be less than Int.min"
+8597-    c324:	a8 83 14 f8	stur	x8, [x29, #-0xb8]
+8598-    c328:	c8 00 00 d0	adrp	x8, 26 ; 0x26000
+8599-    c32c:	08 81 15 91	add	x8, x8, #0x560 ; literal pool for: "Double value cannot be converted to Int because the result would be greater than Int.max"
+8600-    c330:	a8 03 15 f8	stur	x8, [x29, #-0xb0]
+8601-    c334:	30 00 00 90	adrp	x16, 4 ; 0x10000
+8602-    c338:	10 d2 21 91	add	x16, x16, #0x874
+8603-    c33c:	11 87 90 d2	mov	x17, #0x8438
+8604-    c340:	30 02 c1 da	pacia	x16, x17
+8605-    c344:	b0 83 15 f8	stur	x16, [x29, #-0xa8]
+8606-    c348:	c8 00 00 d0	adrp	x8, 26 ; 0x26000
+8607-    c34c:	08 81 17 91	add	x8, x8, #0x5e0 ; literal pool for: "Unexpectedly found nil while unwrapping an Optional value"
+8608-    c350:	a8 03 16 f8	stur	x8, [x29, #-0xa0]
+8609-    c354:	c8 00 00 d0	adrp	x8, 26 ; 0x26000
+8610-    c358:	08 01 17 91	add	x8, x8, #0x5c0 ; literal pool for: "lk/ActiveHUD.swift"
+8611-    c35c:	a8 83 16 f8	stur	x8, [x29, #-0x98]
+8612-    c360:	bf 83 1e f8	stur	xzr, [x29, #-0x18]
+8613-    c364:	bf 03 1e f8	stur	xzr, [x29, #-0x20]
+--
+12964-   106b8:	08 03 80 52	mov	w8, #0x18
+12965-   106bc:	e1 03 08 aa	mov	x1, x8
+12966-   106c0:	e8 00 80 52	mov	w8, #0x7
+12967-   106c4:	e2 03 08 aa	mov	x2, x8
+12968-   106c8:	8e 48 00 94	bl	0x22900 ; symbol stub for: _swift_deallocObject
+12969-   106cc:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+12970-   106d0:	ff 83 00 91	add	sp, sp, #0x20
+12971-   106d4:	ff 0f 5f d6	retab
+12972:_$s2lk9ActiveHUDC2ffyyFyycfU0_TA:
+12973-   106d8:	80 0a 40 f9	ldr	x0, [x20, #0x10]
+12974:   106dc:	a8 ee ff 17	b	_$s2lk9ActiveHUDC2ffyyFyycfU0_
+12975-_block_copy_helper.6:
+12976-   106e0:	7f 23 03 d5	pacibsp
+12977-   106e4:	ff c3 00 d1	sub	sp, sp, #0x30
+12978-   106e8:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+12979-   106ec:	fd 83 00 91	add	x29, sp, #0x20
+12980-   106f0:	e0 07 00 f9	str	x0, [sp, #0x8]
+12981-   106f4:	28 10 40 f9	ldr	x8, [x1, #0x20]
+12982-   106f8:	e8 0b 00 f9	str	x8, [sp, #0x10]
+12983-   106fc:	20 14 40 f9	ldr	x0, [x1, #0x28]
+12984-   10700:	a0 83 1f f8	stur	x0, [x29, #-0x8]
+12985-   10704:	bb 48 00 94	bl	0x229f0 ; symbol stub for: _swift_retain
+12986-   10708:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+12987-   1070c:	e9 0b 40 f9	ldr	x9, [sp, #0x10]
+12988-   10710:	a8 83 5f f8	ldur	x8, [x29, #-0x8]
+12989-   10714:	09 10 00 f9	str	x9, [x0, #0x20]
+12990-   10718:	08 14 00 f9	str	x8, [x0, #0x28]
+12991-   1071c:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+12992-   10720:	ff c3 00 91	add	sp, sp, #0x30
+12993-   10724:	ff 0f 5f d6	retab
+12994-_block_destroy_helper.7:
+12995-   10728:	7f 23 03 d5	pacibsp
+12996-   1072c:	fd 7b bf a9	stp	x29, x30, [sp, #-0x10]!
+12997-   10730:	fd 03 00 91	mov	x29, sp
+12998-   10734:	00 14 40 f9	ldr	x0, [x0, #0x28]
+12999-   10738:	aa 48 00 94	bl	0x229e0 ; symbol stub for: _swift_release
+13000-   1073c:	fd 7b c1 a8	ldp	x29, x30, [sp], #0x10
+13001-   10740:	ff 0f 5f d6	retab
+13002-   10744:	7f 23 03 d5	pacibsp
+13003-   10748:	ff 83 00 d1	sub	sp, sp, #0x20
+13004-   1074c:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+13005-   10750:	fd 43 00 91	add	x29, sp, #0x10
+13006-   10754:	f4 07 00 f9	str	x20, [sp, #0x8]
+13007-   10758:	80 0a 40 f9	ldr	x0, [x20, #0x10]
+13008-   1075c:	08 01 00 90	adrp	x8, 32 ; 0x30000
+13009-   10760:	08 e1 43 f9	ldr	x8, [x8, #0x7c0] ; literal pool symbol address: _objc_release
+13010-   10764:	00 01 3f d6	blr	x8
+13011-   10768:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+13012-   1076c:	08 03 80 52	mov	w8, #0x18
+13013-   10770:	e1 03 08 aa	mov	x1, x8
+13014-   10774:	e8 00 80 52	mov	w8, #0x7
+13015-   10778:	e2 03 08 aa	mov	x2, x8
+13016-   1077c:	61 48 00 94	bl	0x22900 ; symbol stub for: _swift_deallocObject
+13017-   10780:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+13018-   10784:	ff 83 00 91	add	sp, sp, #0x20
+13019-   10788:	ff 0f 5f d6	retab
+13020:_$s2lk9ActiveHUDC2ffyyFyycfU_TA:
+13021-   1078c:	80 0a 40 f9	ldr	x0, [x20, #0x10]
+13022:   10790:	e6 ed ff 17	b	_$s2lk9ActiveHUDC2ffyyFyycfU_
+13023-_block_copy_helper.12:
+13024-   10794:	7f 23 03 d5	pacibsp
+13025-   10798:	ff c3 00 d1	sub	sp, sp, #0x30
+13026-   1079c:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+13027-   107a0:	fd 83 00 91	add	x29, sp, #0x20
+13028-   107a4:	e0 07 00 f9	str	x0, [sp, #0x8]
+13029-   107a8:	28 10 40 f9	ldr	x8, [x1, #0x20]
+13030-   107ac:	e8 0b 00 f9	str	x8, [sp, #0x10]
+13031-   107b0:	20 14 40 f9	ldr	x0, [x1, #0x28]
+13032-   107b4:	a0 83 1f f8	stur	x0, [x29, #-0x8]
+13033-   107b8:	8e 48 00 94	bl	0x229f0 ; symbol stub for: _swift_retain
+13034-   107bc:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+13035-   107c0:	e9 0b 40 f9	ldr	x9, [sp, #0x10]
+13036-   107c4:	a8 83 5f f8	ldur	x8, [x29, #-0x8]
+13037-   107c8:	09 10 00 f9	str	x9, [x0, #0x20]
+13038-   107cc:	08 14 00 f9	str	x8, [x0, #0x28]
+13039-   107d0:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+13040-   107d4:	ff c3 00 91	add	sp, sp, #0x30
+13041-   107d8:	ff 0f 5f d6	retab
+13042-_block_destroy_helper.13:
+13043-   107dc:	7f 23 03 d5	pacibsp
+13044-   107e0:	fd 7b bf a9	stp	x29, x30, [sp, #-0x10]!
+13045-   107e4:	fd 03 00 91	mov	x29, sp
+13046-   107e8:	00 14 40 f9	ldr	x0, [x0, #0x28]
+13047-   107ec:	7d 48 00 94	bl	0x229e0 ; symbol stub for: _swift_release
+13048-   107f0:	fd 7b c1 a8	ldp	x29, x30, [sp], #0x10
+13049-   107f4:	ff 0f 5f d6	retab
+13050-_$sSo8UIWindowCSgWOh:
+13051-_$s2lk9ActiveHUDCSgWOh:
+13052-_$sSo7NSTimerCSgWOh:
+13053-   107f8:	7f 23 03 d5	pacibsp
+13054-   107fc:	ff 83 00 d1	sub	sp, sp, #0x20
+13055-   10800:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+13056-   10804:	fd 43 00 91	add	x29, sp, #0x10
+13057-   10808:	e0 07 00 f9	str	x0, [sp, #0x8]
+13058-   1080c:	00 00 40 f9	ldr	x0, [x0]
+13059-   10810:	08 01 00 90	adrp	x8, 32 ; 0x30000
+13060-   10814:	08 e1 43 f9	ldr	x8, [x8, #0x7c0] ; literal pool symbol address: _objc_release
+13061-   10818:	00 01 3f d6	blr	x8
+13062-   1081c:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+13063-   10820:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+13064-   10824:	ff 83 00 91	add	sp, sp, #0x20
+13065-   10828:	ff 0f 5f d6	retab
+13066-   1082c:	7f 23 03 d5	pacibsp
+13067-   10830:	ff 83 00 d1	sub	sp, sp, #0x20
+13068-   10834:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+13069-   10838:	fd 43 00 91	add	x29, sp, #0x10
+13070-   1083c:	f4 07 00 f9	str	x20, [sp, #0x8]
+13071-   10840:	80 0a 40 f9	ldr	x0, [x20, #0x10]
+13072-   10844:	08 01 00 90	adrp	x8, 32 ; 0x30000
+13073-   10848:	08 e1 43 f9	ldr	x8, [x8, #0x7c0] ; literal pool symbol address: _objc_release
+13074-   1084c:	00 01 3f d6	blr	x8
+13075-   10850:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+13076-   10854:	08 03 80 52	mov	w8, #0x18
+13077-   10858:	e1 03 08 aa	mov	x1, x8
+13078-   1085c:	e8 00 80 52	mov	w8, #0x7
+13079-   10860:	e2 03 08 aa	mov	x2, x8
+13080-   10864:	27 48 00 94	bl	0x22900 ; symbol stub for: _swift_deallocObject
+13081-   10868:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+13082-   1086c:	ff 83 00 91	add	sp, sp, #0x20
+13083-   10870:	ff 0f 5f d6	retab
+13084-_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_TA:
+13085-   10874:	81 0a 40 f9	ldr	x1, [x20, #0x10]
+13086-   10878:	2e f0 ff 17	b	_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_
+13087-_block_copy_helper.18:
+13088-   1087c:	7f 23 03 d5	pacibsp
+13089-   10880:	ff c3 00 d1	sub	sp, sp, #0x30
+13090-   10884:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+13091-   10888:	fd 83 00 91	add	x29, sp, #0x20
+13092-   1088c:	e0 07 00 f9	str	x0, [sp, #0x8]
+13093-   10890:	28 10 40 f9	ldr	x8, [x1, #0x20]
+13094-   10894:	e8 0b 00 f9	str	x8, [sp, #0x10]
+13095-   10898:	20 14 40 f9	ldr	x0, [x1, #0x28]
+13096-   1089c:	a0 83 1f f8	stur	x0, [x29, #-0x8]
+13097-   108a0:	54 48 00 94	bl	0x229f0 ; symbol stub for: _swift_retain
+13098-   108a4:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+13099-   108a8:	e9 0b 40 f9	ldr	x9, [sp, #0x10]
+13100-   108ac:	a8 83 5f f8	ldur	x8, [x29, #-0x8]
+13101-   108b0:	09 10 00 f9	str	x9, [x0, #0x20]
+13102-   108b4:	08 14 00 f9	str	x8, [x0, #0x28]

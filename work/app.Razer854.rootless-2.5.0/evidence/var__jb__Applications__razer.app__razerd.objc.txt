@@ -1,0 +1,306 @@
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/Applications/razer.app/razerd:
+Contents of (__DATA,__objc_classlist) section
+000000000000c100 0xc898 _OBJC_CLASS_$_xq
+    isa        0xc870 _OBJC_METACLASS_$_xq
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc1c8 __OBJC_CLASS_RO_$_xq
+        flags          0x80
+        instanceStart  8
+        instanceSize   8
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xbeee xq
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc180 __OBJC_METACLASS_RO_$_xq
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xbeee xq
+        baseMethods    0xc160 __OBJC_$_CLASS_METHODS_xq
+            entsize 24
+            count   1
+            name    0xbaa9 sss:
+            types   0xbf21 v24@0:8@16
+            imp     0x4618 +[xq sss:]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000000c108 0xc8e8 _OBJC_CLASS_$_SimpleGetIPInterceptor
+    isa        0xc8c0 _OBJC_METACLASS_$_SimpleGetIPInterceptor
+    superclass 0x0 _OBJC_CLASS_$_NSURLProtocol
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc398 __OBJC_CLASS_RO_$_SimpleGetIPInterceptor
+        flags          0x184 RO_HAS_CXX_STRUCTORS
+        instanceStart  16
+        instanceSize   24
+        reserved       0x0
+        ivarLayout     0xbf08
+        layout map     0x01 
+        name           0xbef1 SimpleGetIPInterceptor
+        baseMethods    0xc2c0 __OBJC_$_INSTANCE_METHODS_SimpleGetIPInterceptor
+            entsize 24
+            count   6
+            name    0xbcea startLoading
+            types   0xbf37 v16@0:8
+            imp     0x5eb0 -[SimpleGetIPInterceptor startLoading]
+            name    0xbcf7 stopLoading
+            types   0xbf37 v16@0:8
+            imp     0x6194 -[SimpleGetIPInterceptor stopLoading]
+            name    0xbb41 returnMockResponse
+            types   0xbf37 v16@0:8
+            imp     0x61f8 -[SimpleGetIPInterceptor returnMockResponse]
+            name    0xbb54 dataTask
+            types   0xbf4a @16@0:8
+            imp     0x8434 -[SimpleGetIPInterceptor dataTask]
+            name    0xbb64 setDataTask:
+            types   0xbf21 v24@0:8@16
+            imp     0x8458 -[SimpleGetIPInterceptor setDataTask:]
+            name    0xbd03 .cxx_destruct
+            types   0xbf37 v16@0:8
+            imp     0x8494 -[SimpleGetIPInterceptor .cxx_destruct]
+        baseProtocols  0x0
+        ivars          0xc358 __OBJC_$_INSTANCE_VARIABLES_SimpleGetIPInterceptor
+            entsize   32
+            count     1
+            offset    0xc868 _OBJC_IVAR_$_SimpleGetIPInterceptor._dataTask 16
+            name      0xbd11 _dataTask
+            type      0xbf52 @"NSURLSessionDataTask"
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0xc380 __OBJC_$_PROP_LIST_SimpleGetIPInterceptor
+            entsize    16
+            count      1
+            name       0xbb54 dataTask
+            attributes 0xbd1b T@"NSURLSessionDataTask",&,N,V_dataTask
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSURLProtocol
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc278 __OBJC_METACLASS_RO_$_SimpleGetIPInterceptor
+        flags          0x185 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xbef1 SimpleGetIPInterceptor
+        baseMethods    0xc210 __OBJC_$_CLASS_METHODS_SimpleGetIPInterceptor
+            entsize 24
+            count   4
+            name    0xbcb5 canInitWithRequest:
+            types   0xbf2c B24@0:8@16
+            imp     0x5144 +[SimpleGetIPInterceptor canInitWithRequest:]
+            name    0xbcc9 load
+            types   0xbf37 v16@0:8
+            imp     0x588c +[SimpleGetIPInterceptor load]
+            name    0xbae1 sss
+            types   0xbf37 v16@0:8
+            imp     0x58bc +[SimpleGetIPInterceptor sss]
+            name    0xbcce canonicalRequestForRequest:
+            types   0xbf3f @24@0:8@16
+            imp     0x5e54 +[SimpleGetIPInterceptor canonicalRequestForRequest:]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000000c110 0xc938 _OBJC_CLASS_$_GetIPManager
+    isa        0xc910 _OBJC_METACLASS_$_GetIPManager
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc478 __OBJC_CLASS_RO_$_GetIPManager
+        flags          0x80
+        instanceStart  8
+        instanceSize   8
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xbf0a GetIPManager
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc430 __OBJC_METACLASS_RO_$_GetIPManager
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xbf0a GetIPManager
+        baseMethods    0xc3e0 __OBJC_$_CLASS_METHODS_GetIPManager
+            entsize 24
+            count   3
+            name    0xbcc9 load
+            types   0xbf37 v16@0:8
+            imp     0x84cc +[GetIPManager load]
+            name    0xbd43 startIntercepting
+            types   0xbf37 v16@0:8
+            imp     0x84fc +[GetIPManager startIntercepting]
+            name    0xbd7b stopIntercepting
+            types   0xbf37 v16@0:8
+            imp     0x8550 +[GetIPManager stopIntercepting]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000000c118 0xc988 _OBJC_CLASS_$_Hook
+    isa        0xc960 _OBJC_METACLASS_$_Hook
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc5a0 __OBJC_CLASS_RO_$_Hook
+        flags          0x80
+        instanceStart  8
+        instanceSize   8
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xbf17 Hook
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc558 __OBJC_METACLASS_RO_$_Hook
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xbf17 Hook
+        baseMethods    0xc538 __OBJC_$_CLASS_METHODS_Hook
+            entsize 24
+            count   1
+            name    0xbcc9 load
+            types   0xbf37 v16@0:8
+            imp     0x8fa8 +[Hook load]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Contents of (__DATA,__objc_classrefs) section
+000000000000c800 0x0 _OBJC_CLASS_$_NSString
+000000000000c808 0x0 _OBJC_CLASS_$_NSURL
+000000000000c810 0x0 _OBJC_CLASS_$_NSMutableURLRequest
+000000000000c818 0x0 _OBJC_CLASS_$_NSURLSession
+000000000000c820 0x0 _OBJC_CLASS_$_NSURLProtocol
+000000000000c828 0x0 _OBJC_CLASS_$_NSNumber
+000000000000c830 0x0 _OBJC_CLASS_$_NSError
+000000000000c838 0x0 _OBJC_CLASS_$_NSDictionary
+000000000000c840 0x0 _OBJC_CLASS_$_NSHTTPURLResponse
+000000000000c848 0xc8e8 _OBJC_CLASS_$_SimpleGetIPInterceptor
+000000000000c850 0x0 _OBJC_CLASS_$_NSMutableString
+000000000000c858 0xc898 _OBJC_CLASS_$_xq
+000000000000c860 0x0 _OBJC_CLASS_$_NSDate
+Contents of (__DATA,__objc_catlist) section
+000000000000c138 0xc4f8 __OBJC_$_CATEGORY_NSJSONSerialization_$_Hook
+    name      0xbf17 Hook
+    cls       0x0 _OBJC_CLASS_$_NSJSONSerialization
+    instanceMethods 0x0
+    classMethods 0xc4c0 __OBJC_$_CATEGORY_CLASS_METHODS_NSJSONSerialization_$_Hook
+        entsize 24
+        count   2
+        name    0xbcc9 load
+        types   0xbf37 v16@0:8
+        imp     0x85a4 +[NSJSONSerialization(Hook) load]
+        name    0xbdae xk_JSONObjectWithData:options:error:
+        types   0xbf6a @40@0:8@16Q24^@32
+        imp     0x8614 +[NSJSONSerialization(Hook) xk_JSONObjectWithData:options:error:]
+    protocols 0x0
+    instanceProperties 0x0
+000000000000c140 0xc620 __OBJC_$_CATEGORY_NSURL_$_hook
+    name      0xbf1c hook
+    cls       0x0 _OBJC_CLASS_$_NSURL
+    instanceMethods 0x0
+    classMethods 0xc5e8 __OBJC_$_CATEGORY_CLASS_METHODS_NSURL_$_hook
+        entsize 24
+        count   2
+        name    0xbcc9 load
+        types   0xbf37 v16@0:8
+        imp     0xaa14 +[NSURL(hook) load]
+        name    0xbeab hook_URLWithString:
+        types   0xbf3f @24@0:8@16
+        imp     0xad78 +[NSURL(hook) hook_URLWithString:]
+    protocols 0x0
+    instanceProperties 0x0
+Contents of (__DATA,__objc_selrefs) section
+    0xbd8c JSONObjectWithData:options:error:
+    0xbaae URL
+    0xbbcf URLProtocol:didFailWithError:
+    0xbc7f URLProtocol:didLoadData:
+    0xbc4c URLProtocol:didReceiveResponse:cacheStoragePolicy:
+    0xbc98 URLProtocolDidFinishLoading:
+    0xba28 URLWithString:
+    0xbea0 UTF8String
+    0xbab2 absoluteString
+    0xbb5d cancel
+    0xbd55 class
+    0xbbc8 client
+    0xbe63 componentsSeparatedByString:
+    0xbad1 containsString:
+    0xbe80 count
+    0xbb54 dataTask
+    0xba7b dataTaskWithRequest:completionHandler:
+    0xbb71 dataUsingEncoding:
+    0xbe34 date
+    0xbb84 dictionaryWithObjects:forKeys:count:
+    0xbba9 errorWithDomain:code:userInfo:
+    0xbeab hook_URLWithString:
+    0xba64 initWithData:encoding:
+    0xba18 initWithFormat:
+    0xbde9 initWithFormat:arguments:
+    0xbc1b initWithURL:statusCode:HTTPVersion:headerFields:
+    0xbbed length
+    0xbac1 lowercaseString
+    0xbb07 mutableCopy
+    0xbb13 numberWithBool:
+    0xbe4f numberWithLongLong:
+    0xbbf4 numberWithUnsignedInteger:
+    0xbe86 objectAtIndexedSubscript:
+    0xbae5 propertyForKey:inRequest:
+    0xbd5b registerClass:
+    0xbaff request
+    0xba37 requestWithURL:
+    0xbaa2 resume
+    0xbb41 returnMockResponse
+    0xbb64 setDataTask:
+    0xba47 setHTTPMethod:
+    0xbb23 setProperty:forKey:inRequest:
+    0xba56 sharedSession
+    0xbae1 sss
+    0xbaa9 sss:
+    0xbd43 startIntercepting
+    0xbe03 stringByReplacingOccurrencesOfString:withString:
+    0xbc0f stringValue
+    0xbdd3 stringWithUTF8String:
+    0xbe39 timeIntervalSince1970
+    0xbd6a unregisterClass:
+    0xbdae xk_JSONObjectWithData:options:error:
+Contents of (__DATA,__objc_imageinfo) section
+    version 0
+    flags   0x40

@@ -1,0 +1,6 @@
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/Applications/razer.app/razerd:
+	@rpath/url (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/Foundation.framework/Foundation (compatibility version 300.0.0, current version 1953.255.0)
+	@rpath/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)
+	@rpath/libSystem.B.dylib (compatibility version 1.0.0, current version 1319.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation (compatibility version 150.0.0, current version 1953.255.0)

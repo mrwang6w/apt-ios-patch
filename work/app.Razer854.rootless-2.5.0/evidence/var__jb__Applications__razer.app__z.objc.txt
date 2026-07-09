@@ -1,0 +1,97 @@
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/Applications/razer.app/z:
+Contents of (__DATA,__objc_classlist) section
+00000000000f43e0 0xf4658 _OBJC_CLASS_$_SGNetworkConfigurationModifier
+    isa        0xf4630 _OBJC_METACLASS_$_SGNetworkConfigurationModifier
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xf44c0 __OBJC_CLASS_RO_$_SGNetworkConfigurationModifier
+        flags          0x80
+        instanceStart  8
+        instanceSize   8
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xf3a9c SGNetworkConfigurationModifier
+        baseMethods    0xf4470 __OBJC_$_INSTANCE_METHODS_SGNetworkConfigurationModifier
+            entsize 24
+            count   3
+            name    0xf3844 setAppWirelessDataOption:forBundleIdentifier:completionHandler:
+            types   0xf3ace v40@0:8@16@24@32
+            imp     0x351c8 -[SGNetworkConfigurationModifier setAppWirelessDataOption:forBundleIdentifier:completionHandler:]
+            name    0xf3893 setAppCellularDataEnabled:forBundleIdentifier:completionHandler:
+            types   0xf3ace v40@0:8@16@24@32
+            imp     0x3537c -[SGNetworkConfigurationModifier setAppCellularDataEnabled:forBundleIdentifier:completionHandler:]
+            name    0xf38e3 setUsagePoliciesForBundle:cellular:wifi:
+            types   0xf3adf v32@0:8@16B24B28
+            imp     0x35538 -[SGNetworkConfigurationModifier setUsagePoliciesForBundle:cellular:wifi:]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xf4428 __OBJC_METACLASS_RO_$_SGNetworkConfigurationModifier
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0xf3a9c SGNetworkConfigurationModifier
+        baseMethods    0xf43f0 __OBJC_$_CLASS_METHODS_SGNetworkConfigurationModifier
+            entsize 24
+            count   2
+            name    0xf390c resolveNetworkProblmeForAppWithBundleId:
+            types   0xf3abb v24@0:8@16
+            imp     0x6b94 +[SGNetworkConfigurationModifier resolveNetworkProblmeForAppWithBundleId:]
+            name    0xf38d4 sharedInstance
+            types   0xf3ac6 @16@0:8
+            imp     0x356cc +[SGNetworkConfigurationModifier sharedInstance]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Contents of (__DATA,__objc_classrefs) section
+00000000000f45f0 0x0 _OBJC_CLASS_$_NSBundle
+00000000000f45f8 0x0 _OBJC_CLASS_$_NSNumber
+00000000000f4600 0x0 _OBJC_CLASS_$_NSDictionary
+00000000000f4608 0xf4658 _OBJC_CLASS_$_SGNetworkConfigurationModifier
+00000000000f4610 0x0 _OBJC_CLASS_$_NSMutableDictionary
+00000000000f4618 0x0 _OBJC_CLASS_$_NSFileManager
+00000000000f4620 0x0 _OBJC_CLASS_$_NSUUID
+00000000000f4628 0x0 _OBJC_CLASS_$_NSString
+Contents of (__DATA,__objc_selrefs) section
+    0xf381c bundleWithPath:
+    0xf382c load
+    0xf3831 numberWithInteger:
+    0xf3844 setAppWirelessDataOption:forBundleIdentifier:completionHandler:
+    0xf3884 numberWithInt:
+    0xf3893 setAppCellularDataEnabled:forBundleIdentifier:completionHandler:
+    0xf38d4 sharedInstance
+    0xf38e3 setUsagePoliciesForBundle:cellular:wifi:
+    0xf3935 mainBundle
+    0xf3940 bundleIdentifier
+    0xf3951 initWithContentsOfFile:
+    0xf3969 objectForKeyedSubscript:
+    0xf3982 intValue
+    0xf398b dictionaryWithObjects:forKeys:count:
+    0xf390c resolveNetworkProblmeForAppWithBundleId:
+    0xf39b0 objectForKey:
+    0xf39be removeObjectForKey:
+    0xf39d2 writeToFile:atomically:
+    0xf39ea class
+    0xf39f0 init
+    0xf39f5 UUID
+    0xf39fa UUIDString
+    0xf3a05 setObject:forKey:
+    0xf3a17 isEqualToString:
+    0xf3a28 fileExistsAtPath:
+    0xf3a3a isKindOfClass:
+    0xf3a49 stringWithFormat:
+    0xf3a5b stringByReplacingOccurrencesOfString:withString:
+    0xf3a8c lowercaseString
+Contents of (__DATA,__objc_imageinfo) section
+    version 0
+    flags   0x40

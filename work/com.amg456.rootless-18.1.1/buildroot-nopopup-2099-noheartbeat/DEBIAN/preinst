@@ -1,0 +1,23 @@
+#!/bin/bash
+echo "Remove old files..."
+if [ -e "/var/jb/Applications/AMG.app" ];then
+	rm -rf "/var/jb/Applications/AMG.app" > /dev/null
+fi
+
+if [ -f "/var/jb/Library/MobileSubstrate/DynamicLibraries/amg.dylib" ];then
+	rm -f "/var/jb/Library/MobileSubstrate/DynamicLibraries/amg.dylib" > /dev/null
+fi
+
+if [ -f "/var/jb/Library/MobileSubstrate/DynamicLibraries/amg.plist" ];then
+	rm -f "/var/jb/Library/MobileSubstrate/DynamicLibraries/amg.plist" > /dev/null
+fi
+
+if [ -f "/var/jb/var/mobile/Library/Preferences/AMG/aa.plist" ];then
+        rm -f "/var/jb/var/mobile/Library/Preferences/AMG/aa.plist" > /dev/null
+fi
+
+if [ -f "/var/mobile/Media/AMG/preferences/aa.plist" ];then
+        rm -f "/var/mobile/Media/AMG/preferences/aa.plist" > /dev/null
+fi
+
+exit 0

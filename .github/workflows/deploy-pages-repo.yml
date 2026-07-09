@@ -39,8 +39,14 @@ jobs:
             echo "Git LFS pointer detected under pages-repo" >&2
             exit 1
           fi
+          deb_count="$(find pages-repo/debs -maxdepth 1 -type f -name '*.deb' | wc -l | tr -d '[:space:]')"
+          test "$deb_count" = "2"
           test "$(stat -c%s pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb)" = "6206412"
           echo "0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866  pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb" | sha256sum -c -
+          test "$(stat -c%s pages-repo/debs/app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb)" = "21215306"
+          echo "bffe9d57de415d70c6723e90e9aca0f2c17da123abd10e812243db3a1f8505ef  pages-repo/debs/app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb" | sha256sum -c -
+          gzip -dc pages-repo/Packages.gz | grep -q '^Package: com.amg456.rootless$'
+          gzip -dc pages-repo/Packages.gz | grep -q '^Package: app.Razer854.rootless$'
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

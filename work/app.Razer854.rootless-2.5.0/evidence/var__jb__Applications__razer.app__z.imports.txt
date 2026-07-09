@@ -1,0 +1,158 @@
+0000000000006b94 (__TEXT,__text) non-external +[SGNetworkConfigurationModifier resolveNetworkProblmeForAppWithBundleId:]
+00000000000356cc (__TEXT,__text) non-external +[SGNetworkConfigurationModifier sharedInstance]
+000000000003537c (__TEXT,__text) non-external -[SGNetworkConfigurationModifier setAppCellularDataEnabled:forBundleIdentifier:completionHandler:]
+00000000000351c8 (__TEXT,__text) non-external -[SGNetworkConfigurationModifier setAppWirelessDataOption:forBundleIdentifier:completionHandler:]
+0000000000035538 (__TEXT,__text) non-external -[SGNetworkConfigurationModifier setUsagePoliciesForBundle:cellular:wifi:]
+00000000000f3c44 (__TEXT,__gcc_except_tab) non-external GCC_except_table0
+00000000000f3d94 (__TEXT,__gcc_except_tab) non-external GCC_except_table12
+00000000000f3db8 (__TEXT,__gcc_except_tab) non-external GCC_except_table13
+00000000000f3dd0 (__TEXT,__gcc_except_tab) non-external GCC_except_table14
+00000000000f3df4 (__TEXT,__gcc_except_tab) non-external GCC_except_table15
+00000000000f3e0c (__TEXT,__gcc_except_tab) non-external GCC_except_table16
+00000000000f3ed0 (__TEXT,__gcc_except_tab) non-external GCC_except_table17
+00000000000f3d70 (__TEXT,__gcc_except_tab) non-external GCC_except_table8
+00000000000f4690 (__DATA,__data) non-external (was a private external) _/var/folders/fg/4r6mylgj3wd2sykj2bw3xkv80000gn/T/SGNetworkConfigurationModifier_a29eab
+00000000000fcb7c (__DATA,__data) non-external (was a private external) _/var/folders/fg/4r6mylgj3wd2sykj2bw3xkv80000gn/T/SGNetworkConfigurationModifier_a29eabantif5
+00000000000fcc04 (__DATA,__data) non-external (was a private external) _/var/folders/fg/4r6mylgj3wd2sykj2bw3xkv80000gn/T/donkeyzorro_131e07
+000000000010ccd8 (__DATA,__data) non-external (was a private external) _/var/folders/fg/4r6mylgj3wd2sykj2bw3xkv80000gn/T/donkeyzorro_131e07antif5
+000000000010cf74 (__DATA,__data) non-external (was a private external) _/var/folders/fg/4r6mylgj3wd2sykj2bw3xkv80000gn/T/os_version_check_50b64a
+0000000000116ee0 (__DATA,__data) non-external (was a private external) _/var/folders/fg/4r6mylgj3wd2sykj2bw3xkv80000gn/T/os_version_check_50b64aantif5
+0000000000117030 (__DATA,__bss) non-external _AvailabilityVersionCheck
+0000000000117010 (__DATA,__bss) non-external _CompatibilityDispatchOnceCounter
+00000000000e34f8 (__TEXT,__text) non-external _ConstructVersion
+0000000000117028 (__DATA,__bss) non-external _DispatchOnceCounter
+0000000000117018 (__DATA,__bss) non-external _GlobalMajor
+000000000011701c (__DATA,__bss) non-external _GlobalMinor
+0000000000117020 (__DATA,__bss) non-external _GlobalSubminor
+                 (undefined) external _NSClassFromString (from Foundation)
+                 (undefined) external _NSLog (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSBundle (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSDictionary (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSFileManager (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSMutableDictionary (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSNumber (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSObject (from libobjc)
+                 (undefined) external _OBJC_CLASS_$_NSString (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSUUID (from Foundation)
+00000000000f4658 (__DATA,__objc_data) external _OBJC_CLASS_$_SGNetworkConfigurationModifier
+                 (undefined) external _OBJC_METACLASS_$_NSObject (from libobjc)
+00000000000f4630 (__DATA,__objc_data) external _OBJC_METACLASS_$_SGNetworkConfigurationModifier
+00000000000f43f0 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_SGNetworkConfigurationModifier
+00000000000f4470 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_SGNetworkConfigurationModifier
+00000000000f44c0 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_SGNetworkConfigurationModifier
+00000000000f4428 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_SGNetworkConfigurationModifier
+                 (undefined) external __Unwind_Resume (from libSystem)
+0000000000038f6c (__TEXT,__text) external __Z13upr32fadsfasfii
+0000000000038690 (__TEXT,__text) external __Z14resemeymeofadfv
+0000000000038af0 (__TEXT,__text) external __Z4initv
+0000000000052600 (__TEXT,__text) external __Z8gecrifdfi
+00000000000387a4 (__TEXT,__text) non-external __ZL12CHLoadClass_P19CHClassDeclaration_P10objc_class
+0000000000116f58 (__DATA,__bss) non-external __ZL13NSDictionary$
+0000000000116f70 (__DATA,__bss) non-external __ZL14NSFileManager$
+0000000000035a78 (__TEXT,__text) non-external __ZL16CHConstructor135v
+0000000000116f88 (__DATA,__bss) non-external __ZL16__NSDictionaryM$
+000000000007a41c (__TEXT,__text) non-external __ZL17get_priority_listPi
+0000000000116fa8 (__DATA,__bss) non-external __ZL38$NSFileManager_fileExistsAtPath$_super
+00000000000916d8 (__TEXT,__text) non-external __ZL39$NSFileManager_fileExistsAtPath$_methodP13NSFileManagerP13objc_selectorP8NSString
+0000000000091ac4 (__TEXT,__text) non-external __ZL40$NSFileManager_fileExistsAtPath$_closureP13NSFileManagerP13objc_selectorP8NSString
+0000000000116fb0 (__DATA,__bss) non-external __ZL40$__NSDictionaryM_setObject$forKey$_super
+0000000000091d40 (__TEXT,__text) non-external __ZL41$__NSDictionaryM_setObject$forKey$_methodP15__NSDictionaryMP13objc_selectorP11objc_objectPU19objcproto9NSCopying11objc_object
+0000000000092ccc (__TEXT,__text) non-external __ZL42$__NSDictionaryM_setObject$forKey$_closureP15__NSDictionaryMP13objc_selectorP11objc_objectPU19objcproto9NSCopying11objc_object
+0000000000116fa0 (__DATA,__bss) non-external __ZL43$NSDictionary_writeToFile$atomically$_super
+0000000000090fc4 (__TEXT,__text) non-external __ZL44$NSDictionary_writeToFile$atomically$_methodP12NSDictionaryP13objc_selectorP8NSStringb
+0000000000091410 (__TEXT,__text) non-external __ZL45$NSDictionary_writeToFile$atomically$_closureP12NSDictionaryP13objc_selectorP8NSStringb
+00000000000a08a8 (__TEXT,__text) non-external __ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE13__get_pointerEv
+00000000000a849c (__TEXT,__text) non-external __ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE18__get_long_pointerEv
+00000000000a85a4 (__TEXT,__text) non-external __ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE19__get_short_pointerEv
+00000000000a06d8 (__TEXT,__text) non-external __ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE4dataEv
+00000000000385ac (__TEXT,__text) non-external __ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5c_strEv
+00000000000a834c (__TEXT,__text) non-external __ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9__is_longEv
+00000000000a86a8 (__TEXT,__text) non-external __ZNKSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstEv
+00000000000a87c4 (__TEXT,__text) non-external __ZNKSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getEv
+00000000000933d8 (__TEXT,__text) non-external (was a private external) __ZNSt3__111char_traitsIcE6lengthEPKc
+                 (undefined) external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEPKcm (from libc++)
+0000000000093ce8 (__TEXT,__text) non-external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__zeroEv
+                 (undefined) external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6assignEPKc (from libc++)
+000000000003834c (__TEXT,__text) non-external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC1Ev
+0000000000038204 (__TEXT,__text) non-external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC1INS_9nullptr_tEEEPKc
+0000000000093b90 (__TEXT,__text) non-external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2Ev
+00000000000930bc (__TEXT,__text) non-external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2INS_9nullptr_tEEEPKc
+                 (undefined) external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev (from libc++)
+0000000000038464 (__TEXT,__text) non-external __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEaSEPKc
+00000000000a888c (__TEXT,__text) non-external __ZNSt3__114pointer_traitsIPKcE10pointer_toERS1_
+0000000000093ab0 (__TEXT,__text) non-external __ZNSt3__116__non_trivial_ifILb1ENS_9allocatorIcEEEC2Ev
+00000000000a0530 (__TEXT,__text) non-external __ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstEv
+000000000009327c (__TEXT,__text) non-external __ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_EC1INS_18__default_init_tagESA_EEOT_OT0_
+00000000000934c8 (__TEXT,__text) non-external __ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_EC2INS_18__default_init_tagESA_EEOT_OT0_
+00000000000a0620 (__TEXT,__text) non-external __ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getEv
+0000000000093780 (__TEXT,__text) non-external __ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EEC2ENS_18__default_init_tagE
+000000000009388c (__TEXT,__text) non-external __ZNSt3__122__compressed_pair_elemINS_9allocatorIcEELi1ELb1EEC2ENS_18__default_init_tagE
+00000000000939bc (__TEXT,__text) non-external __ZNSt3__19allocatorIcEC2Ev
+00000000000a07f0 (__TEXT,__text) non-external __ZNSt3__1L12__to_addressIKcEEPT_S3_
+00000000000936c4 (__TEXT,__text) non-external __ZNSt3__1L7forwardINS_18__default_init_tagEEEOT_RNS_16remove_referenceIS2_E4typeE
+00000000000a89a0 (__TEXT,__text) non-external __ZNSt3__1L9addressofIKcEEPT_RS2_
+                 (undefined) external __ZSt9terminatev (from libc++)
+                 (undefined) external ___CFConstantStringClassReference (from CoreFoundation)
+0000000000038a4c (__TEXT,__text) non-external (was a private external) ___clang_call_terminate
+                 (undefined) external ___cxa_begin_catch (from libc++)
+                 (undefined) external ___gxx_personality_v0 (from libc++)
+00000000000a9018 (__TEXT,__text) external ___isOSVersionAtLeast
+00000000000cd784 (__TEXT,__text) external ___isPlatformVersionAtLeast
+                 (undefined) external ___progname (from libSystem)
+                 (undefined) external ___stack_chk_fail (from libSystem)
+                 (undefined) external ___stack_chk_guard (from libSystem)
+00000000000f4680 (__DATA,__data) non-external __dyld_private
+00000000000e36f8 (__TEXT,__text) non-external __initializeAvailabilityCheck
+                 (undefined) external __objc_empty_cache (from libobjc)
+00000000000f469f (__DATA,__data) non-external (was a private external) __zywa_file_
+00000000000fcbe0 (__DATA,__data) non-external (was a private external) __zywa_mount_
+00000000000fcbf8 (__DATA,__data) non-external (was a private external) __zywa_rootdir_
+00000000000fcbd8 (__DATA,__data) non-external (was a private external) __zywa_shell_
+00000000000fcbd0 (__DATA,__data) non-external (was a private external) __zywa_user_
+0000000000117078 (__DATA,__common) external _bDic
+                 (undefined) external _bzero (from libSystem)
+                 (undefined) external _class_addMethod (from libobjc)
+                 (undefined) external _class_getInstanceMethod (from libobjc)
+                 (undefined) external _class_getMethodImplementation (from libobjc)
+                 (undefined) external _class_getSuperclass (from libobjc)
+00000000000cd698 (__TEXT,__text) non-external _compatibilityInitializeAvailabilityCheck
+                 (undefined) external _dispatch_once_f (from libSystem)
+                 (undefined) external _dlclose (from libSystem)
+                 (undefined) external _dlopen (from libSystem)
+                 (undefined) external _dlsym (from libSystem)
+                 (undefined) external _fclose (from libSystem)
+                 (undefined) external _fopen (from libSystem)
+                 (undefined) external _fread (from libSystem)
+                 (undefined) external _free (from libSystem)
+                 (undefined) external _fseek (from libSystem)
+                 (undefined) external _ftell (from libSystem)
+                 (undefined) external _getpid (from libSystem)
+00000000000a8a60 (__TEXT,__text) non-external _ijm-obf-fun-decode_0E3BAE9C474641CD936457E3D9ED5520
+00000000000f33dc (__TEXT,__text) non-external _ijm-obf-fun-decode_26B6A0D9095C4AEFBD0F42CE5615F5E1
+0000000000035940 (__TEXT,__text) non-external _ijm-obf-fun-decode_906C363382B043C3A03DFE8E7F41F421
+00000000000e33fc (__TEXT,__text) non-external _initializeAvailabilityCheck
+                 (undefined) external _kCFAllocatorDefault (from CoreFoundation)
+                 (undefined) external _malloc (from libSystem)
+                 (undefined) external _memcpy (from libSystem)
+                 (undefined) external _memorystatus_control (from libSystem)
+                 (undefined) external _method_getImplementation (from libobjc)
+                 (undefined) external _method_getTypeEncoding (from libobjc)
+                 (undefined) external _method_setImplementation (from libobjc)
+0000000000117070 (__DATA,__common) external _myDictionary
+                 (undefined) external _objc_alloc (from libobjc)
+                 (undefined) external _objc_autoreleasePoolPop (from libobjc)
+                 (undefined) external _objc_autoreleasePoolPush (from libobjc)
+                 (undefined) external _objc_getClass (from libobjc)
+                 (undefined) external _objc_msgSend (from libobjc)
+                 (undefined) external _objc_release (from libobjc)
+                 (undefined) external _objc_retain (from libobjc)
+                 (undefined) external _objc_retainAutoreleaseReturnValue (from libobjc)
+                 (undefined) external _objc_retainAutoreleasedReturnValue (from libobjc)
+                 (undefined) external _objc_storeStrong (from libobjc)
+                 (undefined) external _objc_unsafeClaimAutoreleasedReturnValue (from libobjc)
+                 (undefined) external _object_getClass (from libobjc)
+                 (undefined) external _rewind (from libSystem)
+                 (undefined) external _sscanf (from libSystem)
+                 (undefined) external _strcmp (from libSystem)
+                 (undefined) external _strlen (from libSystem)
+                 (undefined) external dyld_stub_binder (from libSystem)

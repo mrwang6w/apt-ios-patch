@@ -1,0 +1,7 @@
+setHTTPMethod:
+errorWithDomain:code:userInfo:
+initWithURL:statusCode:HTTPVersion:headerFields:
+T@"NSURLSessionDataTask",&,N,V_dataTask
+registerClass:
+unregisterClass:
+@"NSURLSessionDataTask"

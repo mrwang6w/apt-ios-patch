@@ -1,0 +1,58 @@
+0000000000004000 (__TEXT,__text) non-external +[UILabel(EXP) load]
+0000000000004074 (__TEXT,__text) non-external +[UILabel(EXP) swizzleSetTextMethods]
+00000000000041c8 (__TEXT,__text) non-external -[UILabel(EXP) replaceVersionInString:]
+0000000000004460 (__TEXT,__text) non-external -[UILabel(EXP) swizzled_setAttributedText:]
+0000000000004424 (__TEXT,__text) non-external -[UILabel(EXP) swizzled_setText:]
+                 (undefined) external _NSLog (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSArray (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSMutableAttributedString (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSRegularExpression (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSString (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_UILabel (from UIKit)
+                 (undefined) external __NSConcreteStackBlock (from libSystem)
+0000000000008200 (__DATA,__objc_const) non-external __OBJC_$_CATEGORY_CLASS_METHODS_UILabel_$_EXP
+00000000000081b0 (__DATA,__objc_const) non-external __OBJC_$_CATEGORY_INSTANCE_METHODS_UILabel_$_EXP
+0000000000008238 (__DATA,__objc_const) non-external __OBJC_$_CATEGORY_UILabel_$_EXP
+000000000000406c (__TEXT,__text) non-external ___20+[UILabel(EXP) load]_block_invoke
+                 (undefined) external ___CFConstantStringClassReference (from CoreFoundation)
+0000000000008098 (__DATA,__const) non-external (was a private external) ___block_descriptor_40_e5_v8?0l
+                 (undefined) external ___stack_chk_fail (from libSystem)
+                 (undefined) external ___stack_chk_guard (from libSystem)
+0000000000008340 (__DATA,__data) non-external __dyld_private
+                 (undefined) external _class_addMethod (from libobjc)
+                 (undefined) external _class_getInstanceMethod (from libobjc)
+                 (undefined) external _class_replaceMethod (from libobjc)
+                 (undefined) external _dispatch_once (from libSystem)
+00000000000049c0 (__TEXT,__const) external _lkVersionNumber
+00000000000049a0 (__TEXT,__const) external _lkVersionString
+0000000000008348 (__DATA,__bss) non-external _load.onceToken
+                 (undefined) external _method_exchangeImplementations (from libobjc)
+                 (undefined) external _method_getImplementation (from libobjc)
+                 (undefined) external _method_getTypeEncoding (from libobjc)
+                 (undefined) external _objc_alloc (from libobjc)
+                 (undefined) external _objc_autoreleaseReturnValue (from libobjc)
+                 (undefined) external _objc_enumerationMutation (from libobjc)
+                 (undefined) external _objc_msgSend (from libobjc)
+0000000000004740 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$arrayWithObjects:count:
+0000000000004760 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$attributesAtIndex:effectiveRange:
+0000000000004780 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$class
+00000000000047a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$copy
+00000000000047c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$countByEnumeratingWithState:objects:count:
+00000000000047e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$initWithString:
+0000000000004800 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isEqualToString:
+0000000000004820 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isKindOfClass:
+0000000000004840 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$length
+0000000000004860 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$numberOfMatchesInString:options:range:
+0000000000004880 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$regularExpressionWithPattern:options:error:
+00000000000048a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$replaceVersionInString:
+00000000000048c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setAttributes:range:
+00000000000048e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$string
+0000000000004900 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringByReplacingOccurrencesOfString:withString:
+0000000000004920 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringByReplacingOccurrencesOfString:withString:options:range:
+0000000000004940 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$swizzleSetTextMethods
+0000000000004960 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$swizzled_setAttributedText:
+0000000000004980 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$swizzled_setText:
+                 (undefined) external _objc_release (from libobjc)
+                 (undefined) external _objc_retain (from libobjc)
+                 (undefined) external _objc_retainAutoreleasedReturnValue (from libobjc)
+                 (undefined) external dyld_stub_binder (from libSystem)

@@ -1,0 +1,62 @@
+## arm64
+    b6c4:	e0 03 14 aa	mov	x0, x20
+    b6c8:	e0 07 00 f9	str	x0, [sp, #0x8]
+    b6cc:	46 00 00 94	bl	_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyF
+    b6d0:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    b6d4:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    b6d8:	ff c3 00 91	add	sp, sp, #0x30
+    b6dc:	c0 03 5f d6	ret
+_$s2lk9ActiveHUDC2ffyyFyyScMYccfU1_:
+    b6e0:	ff c3 00 d1	sub	sp, sp, #0x30
+--
+    b7dc:	ff c3 00 91	add	sp, sp, #0x30
+    b7e0:	c0 03 5f d6	ret
+_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyF:
+    b7e4:	c0 03 5f d6	ret
+    b7e8:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    b7ec:	fd 43 00 91	add	x29, sp, #0x10
+    b7f0:	ff c3 04 d1	sub	sp, sp, #0x130
+    b7f4:	b4 03 13 f8	stur	x20, [x29, #-0xd0]
+    b7f8:	c8 00 00 90	adrp	x8, 24 ; 0x23000
+--
+    bdb0:	c0 03 5f d6	ret
+    bdb4:	20 00 20 d4	brk	#0x1
+_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_:
+    bdb8:	c0 03 5f d6	ret
+    bdbc:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    bdc0:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    bdc4:	fd 83 00 91	add	x29, sp, #0x20
+    bdc8:	f4 03 01 aa	mov	x20, x1
+    bdcc:	ff 07 00 f9	str	xzr, [sp, #0x8]
+--
+    bdd8:	e1 03 14 aa	mov	x1, x20
+    bddc:	e1 03 00 f9	str	x1, [sp]
+    bde0:	21 00 00 94	bl	_$s2lk9ActiveHUDC16heartbeat_action33_828156311D720B14CFC96FAB376261B5LLyyF
+    bde4:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    bde8:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    bdec:	ff c3 00 91	add	sp, sp, #0x30
+    bdf0:	c0 03 5f d6	ret
+_$sSo13UIAlertActionCIegg_ABIeyBy_TR:
+_$sSo11UITextFieldCIegg_ABIeyBy_TR:
+--
+    be5c:	ff 03 01 91	add	sp, sp, #0x40
+    be60:	c0 03 5f d6	ret
+_$s2lk9ActiveHUDC16heartbeat_action33_828156311D720B14CFC96FAB376261B5LLyyF:
+    be64:	c0 03 5f d6	ret
+    be68:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    be6c:	fd 43 00 91	add	x29, sp, #0x10
+    be70:	ff 07 00 f9	str	xzr, [sp, #0x8]
+    be74:	e8 03 14 aa	mov	x8, x20
+    be78:	e8 07 00 f9	str	x8, [sp, #0x8]
+--
+    f64c:	ff 83 00 91	add	sp, sp, #0x20
+    f650:	c0 03 5f d6	ret
+_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_TA:
+    f654:	81 0a 40 f9	ldr	x1, [x20, #0x10]
+    f658:	d8 f1 ff 17	b	_$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_
+_block_copy_helper.16:
+    f65c:	ff c3 00 d1	sub	sp, sp, #0x30
+    f660:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    f664:	fd 83 00 91	add	x29, sp, #0x20
+    f668:	e0 07 00 f9	str	x0, [sp, #0x8]
+    f66c:	28 10 40 f9	ldr	x8, [x1, #0x20]

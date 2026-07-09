@@ -16,3 +16,21 @@ Depiction: ./depictions/com.amg456.rootless.html
 Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，禁用周期心跳检测，并移除延迟退出路径。
 
+Package: app.Razer854.rootless
+Version: 2.5.0
+Priority: optional
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Section: Razer雷蛇
+Maintainer: Local Patch Repo
+Name: 2.5.0_Razer雷蛇(无根) Patch NoExit
+Author: Local Patch Repo
+Filename: ./debs/app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb
+Size: 21215306
+MD5sum: ab0f8c39dd1e618f4e5801fe3e58b2a7
+SHA1: 00b249b1d229707f7ce40db3fd12025598cf5daf
+SHA256: bffe9d57de415d70c6723e90e9aca0f2c17da123abd10e812243db3a1f8505ef
+Depiction: ./depictions/app.Razer854.rootless.html
+Icon: ./CydiaIcon.png
+Description: 授权测试补丁包：去除授权码弹窗和版本过期检查，禁用 daemon 设备信息/授权上报，并移除退出/kill 路径。
+

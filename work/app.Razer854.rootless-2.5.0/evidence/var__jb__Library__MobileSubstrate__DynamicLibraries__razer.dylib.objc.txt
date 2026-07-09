@@ -1,0 +1,1071 @@
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/Library/MobileSubstrate/DynamicLibraries/razer.dylib:
+Contents of (__DATA,__objc_classlist) section
+000000000026d2a0 0x26eca0 _OBJC_CLASS_$_bfenc
+    isa        0x26ecc8 
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x26d438 __OBJC_CLASS_RO_$_bfenc
+        flags          0x80
+        instanceStart  8
+        instanceSize   4180
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x269cf8  
+        baseMethods    0x26d348 
+            entsize 24
+            count   4
+            name    0x26803f  init
+            types   0x269d9b  @16@0:8
+            imp     0x6100 -
+            name    0x267eaf  
+            types   0x269da3  v32@0:8^i16^i24
+            imp     0x63ac -
+            name    0x267ec2  
+            types   0x269da3  v32@0:8^i16^i24
+            imp     0x6464 -
+            name    0x266f3c  
+            types   0x269db3  i20@0:8i16
+            imp     0x64c0 -
+        baseProtocols  0x0
+        ivars          0x26d3b0 
+            entsize   32
+            count     4
+            offset    0x26ec90  8
+            name      0x0 + 0x266e40 __objc_empty_cache N
+            type      0x269dbe  S
+            alignment 1
+            size      2
+            offset    0x26ec94  10
+            name      0x0 + 0x267b7e _OBJC_METACLASS_$_NSObject bz
+            type      0x0 + 0x269dbe __objc_empty_cache S
+            alignment 1
+            size      2
+            offset    0x26ec98  12
+            name      0x0 + 0x266f3a _OBJC_METACLASS_$_NSObject P
+            type      0x0 + 0x269dc0 _OBJC_METACLASS_$_NSObject [18i]
+            alignment 2
+            size      72
+            offset    0x26ec9c  84
+            name      0x266e4b  S
+            type      0x269dc6  [4[256i]]
+            alignment 2
+            size      4096
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x26d300 
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x269cf8  
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000026d2a8 0x26ed18 _OBJC_CLASS_$_Main
+    isa        0x26ecf0 
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x26e2a8 __OBJC_CLASS_RO_$_Main
+        flags          0x80
+        instanceStart  8
+        instanceSize   8
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x269d5a  Main
+        baseMethods    0x26e1f8 
+            entsize 24
+            count   7
+            name    0x267f06  
+            types   0x26aac5  ^v16@0:8
+            imp     0x1b261c -
+            name    0x267ef7  
+            types   0x26aac5  ^v16@0:8
+            imp     0x1b3c58 -
+            name    0x267ee8  
+            types   0x26aac5  ^v16@0:8
+            imp     0x1b456c -
+            name    0x267ed9  
+            types   0x26aac5  ^v16@0:8
+            imp     0x1b4ea0 -
+            name    0x267f23  
+            types   0x26aac5  ^v16@0:8
+            imp     0x1b585c -
+            name    0x267f15  
+            types   0x26aac5  ^v16@0:8
+            imp     0x1b6360 -
+            name    0x267ecc  
+            types   0x26aac5  ^v16@0:8
+            imp     0x1b6d38 -
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x26e1b0 
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x269d5a  Main
+        baseMethods    0x26e190 
+            entsize 24
+            count   1
+            name    0x266f31  EnterFun
+            types   0x26aabd  v16@0:8
+            imp     0x1c2b0c +
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000026d2b0 0x26ed40 _OBJC_CLASS_$_RazerTweak
+    isa        0x26ed68 
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x26e358 __OBJC_CLASS_RO_$_RazerTweak
+        flags          0x80
+        instanceStart  8
+        instanceSize   8
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x269d5f RazerTweak
+        baseMethods    0x26e338 
+            entsize 24
+            count   1
+            name    0x268044 init
+            types   0x26aace @16@0:8
+            imp     0x23572c -
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x26e2f0 
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x269d5f RazerTweak
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000026d2b8 0x26edb8 _OBJC_CLASS_$_Aerson2
+    isa        0x26ed90 
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x26e408 __OBJC_CLASS_RO_$_Aerson2
+        flags          0x80
+        instanceStart  8
+        instanceSize   8
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x269d6a  Aerson2
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x26e3c0 
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x269d6a  Aerson2
+        baseMethods    0x26e3a0 
+            entsize 24
+            count   1
+            name    0x26825e  load
+            types   0x26aad6  v16@0:8
+            imp     0x241c38 +
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Contents of (__DATA,__objc_classrefs) section
+000000000026ebb0 0x0 _OBJC_CLASS_$_NSMutableData
+000000000026ebb8 0x0 _OBJC_CLASS_$_NSString
+000000000026ebc0 0x0 _OBJC_CLASS_$_NSNumber
+000000000026ebc8 0x0 _OBJC_CLASS_$_NSMutableArray
+000000000026ebd0 0x0 _OBJC_CLASS_$_NSArray
+000000000026ebd8 0x0 _OBJC_CLASS_$_NSDictionary
+000000000026ebe0 0x0 _OBJC_CLASS_$_NSData
+000000000026ebe8 0x0 _OBJC_CLASS_$_NSKeyedUnarchiver
+000000000026ebf0 0x0 _OBJC_CLASS_$_NSBundle
+000000000026ebf8 0x0 _OBJC_CLASS_$_NSThread
+000000000026ec00 0x0 _OBJC_CLASS_$_NSUUID
+000000000026ec08 0x0 _OBJC_CLASS_$_NSMutableDictionary
+000000000026ec10 0x0 _OBJC_CLASS_$_CLLocation
+000000000026ec18 0x0 _OBJC_CLASS_$_LSApplicationProxy
+000000000026ec20 0x0 _OBJC_CLASS_$_NSDate
+000000000026ec28 0x0 _OBJC_CLASS_$_UIApplication
+000000000026ec30 0x0 _OBJC_CLASS_$_UIResponder
+000000000026ec38 0x0 _OBJC_CLASS_$_NSProcessInfo
+000000000026ec40 0x0 _OBJC_CLASS_$_NSFileManager
+000000000026ec48 0x0 _OBJC_CLASS_$_UIDevice
+000000000026ec50 0x0 _OBJC_CLASS_$_NSDateFormatter
+000000000026ec58 0x0 _OBJC_CLASS_$_NSMutableString
+000000000026ec60 0x0 _OBJC_CLASS_$_NSRegularExpression
+000000000026ec68 0x0 _OBJC_CLASS_$_NSMethodSignature
+000000000026ec70 0x0 _OBJC_CLASS_$_NSURL
+000000000026ec78 0x26ed18 _OBJC_CLASS_$_Main
+Contents of (__DATA,__objc_superrefs) section
+000000000026ec80 0x26eca0 _OBJC_CLASS_$_bfenc
+000000000026ec88 0x26ed40 _OBJC_CLASS_$_RazerTweak
+Contents of (__DATA,__objc_protolist) section
+000000000026d2d0 0x26f180 
+    isa       0x0
+    name      0x269d14  NSObject
+    protocols 0x0
+    instanceMethods 0x26d480 
+        entsize 24
+        count   19
+        name    0x2681af  isEqual:
+        types   0x269dd0  B24@0:8@16
+        imp     0x0
+        name    0x267c08  class
+        types   0x269ddb  #16@0:8
+        imp     0x0
+        name    0x26889d  self
+        types   0x269de3  @16@0:8
+        imp     0x0
+        name    0x268742  performSelector:
+        types   0x269deb  @24@0:8:16
+        imp     0x0
+        name    0x268753  performSelector:withObject:
+        types   0x269df6  @32@0:8:16@24
+        imp     0x0
+        name    0x26876f  performSelector:withObject:withObject:
+        types   0x269e04  @40@0:8:16@24@32
+        imp     0x0
+        name    0x266ead  isProxy
+        types   0x269e15  B16@0:8
+        imp     0x0
+        name    0x2681c9  isKindOfClass:
+        types   0x269e1d  B24@0:8#16
+        imp     0x0
+        name    0x2681d8  isMemberOfClass:
+        types   0x269e1d  B24@0:8#16
+        imp     0x0
+        name    0x267c34  conformsToProtocol:
+        types   0x269dd0  B24@0:8@16
+        imp     0x0
+        name    0x268870  respondsToSelector:
+        types   0x269e28  B24@0:8:16
+        imp     0x0
+        name    0x268884  retain
+        types   0x269de3  @16@0:8
+        imp     0x0
+        name    0x267012  release
+        types   0x269e33  Vv16@0:8
+        imp     0x0
+        name    0x267b1f  autorelease
+        types   0x269de3  @16@0:8
+        imp     0x0
+        name    0x26888b  retainCount
+        types   0x269e3c  Q16@0:8
+        imp     0x0
+        name    0x268c32  zone
+        types   0x269e44  ^{_NSZone=}16@0:8
+        imp     0x0
+        name    0x268006  hash
+        types   0x269e3c  Q16@0:8
+        imp     0x0
+        name    0x268a23  superclass
+        types   0x269ddb  #16@0:8
+        imp     0x0
+        name    0x267de0  description
+        types   0x269de3  @16@0:8
+        imp     0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x26d650 
+        entsize 24
+        count   1
+        name    0x267d98  debugDescription
+        types   0x269de3  @16@0:8
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x26d670 
+        entsize    16
+        count      4
+        name       0x268001  hash
+        attributes 0x266f80  TQ,R
+        name       0x268a18  superclass
+        attributes 0x266e4d  T#,R
+        name       0x267dec  description
+        attributes 0x266f4f  T@"NSString",R,C
+        name       0x267da9  debugDescription
+        attributes 0x266f4f  T@"NSString",R,C
+000000000026d2d8 0x26f1e0 
+    isa       0x0
+    name      0x269cfe  UIApplicationDelegate
+    protocols 0x26d758 
+        count    1
+        list[0]  0x26f180 
+            isa       0x0
+            name      0x269d14  NSObject
+            protocols 0x0
+            instanceMethods 0x26d480 
+                entsize 24
+                count   19
+                name    0x2681af  isEqual:
+                types   0x269dd0  B24@0:8@16
+                imp     0x0
+                name    0x267c08  class
+                types   0x269ddb  #16@0:8
+                imp     0x0
+                name    0x26889d  self
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x268742  performSelector:
+                types   0x269deb  @24@0:8:16
+                imp     0x0
+                name    0x268753  performSelector:withObject:
+                types   0x269df6  @32@0:8:16@24
+                imp     0x0
+                name    0x26876f  performSelector:withObject:withObject:
+                types   0x269e04  @40@0:8:16@24@32
+                imp     0x0
+                name    0x266ead  isProxy
+                types   0x269e15  B16@0:8
+                imp     0x0
+                name    0x2681c9  isKindOfClass:
+                types   0x269e1d  B24@0:8#16
+                imp     0x0
+                name    0x2681d8  isMemberOfClass:
+                types   0x269e1d  B24@0:8#16
+                imp     0x0
+                name    0x267c34  conformsToProtocol:
+                types   0x269dd0  B24@0:8@16
+                imp     0x0
+                name    0x268870  respondsToSelector:
+                types   0x269e28  B24@0:8:16
+                imp     0x0
+                name    0x268884  retain
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x267012  release
+                types   0x269e33  Vv16@0:8
+                imp     0x0
+                name    0x267b1f  autorelease
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x26888b  retainCount
+                types   0x269e3c  Q16@0:8
+                imp     0x0
+                name    0x268c32  zone
+                types   0x269e44  ^{_NSZone=}16@0:8
+                imp     0x0
+                name    0x268006  hash
+                types   0x269e3c  Q16@0:8
+                imp     0x0
+                name    0x268a23  superclass
+                types   0x269ddb  #16@0:8
+                imp     0x0
+                name    0x267de0  description
+                types   0x269de3  @16@0:8
+                imp     0x0
+            classMethods 0x0
+            optionalInstanceMethods 0x26d650 
+                entsize 24
+                count   1
+                name    0x267d98  debugDescription
+                types   0x269de3  @16@0:8
+                imp     0x0
+            optionalClassMethods 0x0
+            instanceProperties 0x26d670 
+                entsize    16
+                count      4
+                name       0x268001  hash
+                attributes 0x266f80  TQ,R
+                name       0x268a18  superclass
+                attributes 0x266e4d  T#,R
+                name       0x267dec  description
+                attributes 0x266f4f  T@"NSString",R,C
+                name       0x267da9  debugDescription
+                attributes 0x266f4f  T@"NSString",R,C
+    instanceMethods 0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x26d770 
+        entsize 24
+        count   55
+        name    0x267915  applicationDidFinishLaunching:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x2678ae  application:willFinishLaunchingWithOptions:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x267225  application:didFinishLaunchingWithOptions:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x2678da  applicationDidBecomeActive:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x267a6a  applicationWillResignActive:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x267545  application:handleOpenURL:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x2675cd  application:openURL:sourceApplication:annotation:
+        types   0x269e96  B48@0:8@16@24@32@40
+        imp     0x0
+        name    0x2675b0  application:openURL:options:
+        types   0x269eaa  B40@0:8@16@24@32
+        imp     0x0
+        name    0x267934  applicationDidReceiveMemoryWarning:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x267a87  applicationWillTerminate:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x267a48  applicationSignificantTimeChange:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x26781b  application:willChangeStatusBarOrientation:duration:
+        types   0x269ebb  v40@0:8@16q24d32
+        imp     0x0
+        name    0x26712f  application:didChangeStatusBarOrientation:
+        types   0x269ecc  v32@0:8@16q24
+        imp     0x0
+        name    0x2677f5  application:willChangeStatusBarFrame:
+        types   0x269eda  v56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24
+        imp     0x0
+        name    0x26710a  application:didChangeStatusBarFrame:
+        types   0x269eda  v56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24
+        imp     0x0
+        name    0x267322  application:didRegisterUserNotificationSettings:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x2672e4  application:didRegisterForRemoteNotificationsWithDeviceToken:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x2671e7  application:didFailToRegisterForRemoteNotificationsWithError:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x267279  application:didReceiveRemoteNotification:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x267250  application:didReceiveLocalNotification:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x267376  application:handleActionWithIdentifier:forLocalNotification:completionHandler:
+        types   0x269f15  v48@0:8@16@24@32@?40
+        imp     0x0
+        name    0x267475  application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:
+        types   0x269f2a  v56@0:8@16@24@32@40@?48
+        imp     0x0
+        name    0x267425  application:handleActionWithIdentifier:forRemoteNotification:completionHandler:
+        types   0x269f15  v48@0:8@16@24@32@?40
+        imp     0x0
+        name    0x2673c5  application:handleActionWithIdentifier:forLocalNotification:withResponseInfo:completionHandler:
+        types   0x269f2a  v56@0:8@16@24@32@40@?48
+        imp     0x0
+        name    0x2672a3  application:didReceiveRemoteNotification:fetchCompletionHandler:
+        types   0x269f42  v40@0:8@16@24@?32
+        imp     0x0
+        name    0x26763b  application:performFetchWithCompletionHandler:
+        types   0x269f54  v32@0:8@16@?24
+        imp     0x0
+        name    0x2675ff  application:performActionForShortcutItem:completionHandler:
+        types   0x269f42  v40@0:8@16@24@?32
+        imp     0x0
+        name    0x2674d6  application:handleEventsForBackgroundURLSession:completionHandler:
+        types   0x269f42  v40@0:8@16@24@?32
+        imp     0x0
+        name    0x267560  application:handleWatchKitExtensionRequest:reply:
+        types   0x269f42  v40@0:8@16@24@?32
+        imp     0x0
+        name    0x267a1b  applicationShouldRequestHealthAuthorization:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x267592  application:handlerForIntent:
+        types   0x269f63  @32@0:8@16@24
+        imp     0x0
+        name    0x267519  application:handleIntent:completionHandler:
+        types   0x269f42  v40@0:8@16@24@?32
+        imp     0x0
+        name    0x2678f6  applicationDidEnterBackground:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x266f60  applicationWillEnterForeground:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x26799a  applicationProtectedDataWillBecomeUnavailable:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x26796e  applicationProtectedDataDidBecomeAvailable:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x26774d  application:supportedInterfaceOrientationsForWindow:
+        types   0x269f71  Q32@0:8@16@24
+        imp     0x0
+        name    0x26766a  application:shouldAllowExtensionPointIdentifier:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x2677b6  application:viewControllerWithRestorationIdentifierPath:coder:
+        types   0x269f7f  @40@0:8@16@24@32
+        imp     0x0
+        name    0x26771f  application:shouldSaveSecureApplicationState:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x2676c6  application:shouldRestoreSecureApplicationState:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x26787e  application:willEncodeRestorableStateWithCoder:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x26715a  application:didDecodeRestorableStateWithCoder:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x2676f7  application:shouldSaveApplicationState:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x26769b  application:shouldRestoreApplicationState:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x267850  application:willContinueUserActivityWithType:
+        types   0x269e88  B32@0:8@16@24
+        imp     0x0
+        name    0x2670d5  application:continueUserActivity:restorationHandler:
+        types   0x269f90  B40@0:8@16@24@?32
+        imp     0x0
+        name    0x2671ae  application:didFailToContinueUserActivityWithType:error:
+        types   0x269fa2  v40@0:8@16@24@32
+        imp     0x0
+        name    0x267353  application:didUpdateUserActivity:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x267782  application:userDidAcceptCloudKitShareWithMetadata:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x267099  application:configurationForConnectingSceneSession:options:
+        types   0x269f7f  @40@0:8@16@24@32
+        imp     0x0
+        name    0x267189  application:didDiscardSceneSessions:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x2679e8  applicationShouldAutomaticallyLocalizeKeyCommands:
+        types   0x269dd0  B24@0:8@16
+        imp     0x0
+        name    0x268bd1  window
+        types   0x269de3  @16@0:8
+        imp     0x0
+        name    0x268934  setWindow:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x26dca0 
+        entsize    16
+        count      1
+        name       0x268bca  window
+        attributes 0x266e5a  T@"UIWindow",&,N
+000000000026d2e0 0x26f240 
+    isa       0x0
+    name      0x269d1d  UNUserNotificationCenterDelegate
+    protocols 0x26de70 
+        count    1
+        list[0]  0x26f180 
+            isa       0x0
+            name      0x269d14  NSObject
+            protocols 0x0
+            instanceMethods 0x26d480 
+                entsize 24
+                count   19
+                name    0x2681af  isEqual:
+                types   0x269dd0  B24@0:8@16
+                imp     0x0
+                name    0x267c08  class
+                types   0x269ddb  #16@0:8
+                imp     0x0
+                name    0x26889d  self
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x268742  performSelector:
+                types   0x269deb  @24@0:8:16
+                imp     0x0
+                name    0x268753  performSelector:withObject:
+                types   0x269df6  @32@0:8:16@24
+                imp     0x0
+                name    0x26876f  performSelector:withObject:withObject:
+                types   0x269e04  @40@0:8:16@24@32
+                imp     0x0
+                name    0x266ead  isProxy
+                types   0x269e15  B16@0:8
+                imp     0x0
+                name    0x2681c9  isKindOfClass:
+                types   0x269e1d  B24@0:8#16
+                imp     0x0
+                name    0x2681d8  isMemberOfClass:
+                types   0x269e1d  B24@0:8#16
+                imp     0x0
+                name    0x267c34  conformsToProtocol:
+                types   0x269dd0  B24@0:8@16
+                imp     0x0
+                name    0x268870  respondsToSelector:
+                types   0x269e28  B24@0:8:16
+                imp     0x0
+                name    0x268884  retain
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x267012  release
+                types   0x269e33  Vv16@0:8
+                imp     0x0
+                name    0x267b1f  autorelease
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x26888b  retainCount
+                types   0x269e3c  Q16@0:8
+                imp     0x0
+                name    0x268c32  zone
+                types   0x269e44  ^{_NSZone=}16@0:8
+                imp     0x0
+                name    0x268006  hash
+                types   0x269e3c  Q16@0:8
+                imp     0x0
+                name    0x268a23  superclass
+                types   0x269ddb  #16@0:8
+                imp     0x0
+                name    0x267de0  description
+                types   0x269de3  @16@0:8
+                imp     0x0
+            classMethods 0x0
+            optionalInstanceMethods 0x26d650 
+                entsize 24
+                count   1
+                name    0x267d98  debugDescription
+                types   0x269de3  @16@0:8
+                imp     0x0
+            optionalClassMethods 0x0
+            instanceProperties 0x26d670 
+                entsize    16
+                count      4
+                name       0x268001  hash
+                attributes 0x266f80  TQ,R
+                name       0x268a18  superclass
+                attributes 0x266e4d  T#,R
+                name       0x267dec  description
+                attributes 0x266f4f  T@"NSString",R,C
+                name       0x267da9  debugDescription
+                attributes 0x266f4f  T@"NSString",R,C
+    instanceMethods 0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x26de88 
+        entsize 24
+        count   3
+        name    0x268b60  userNotificationCenter:willPresentNotification:withCompletionHandler:
+        types   0x269f42  v40@0:8@16@24@?32
+        imp     0x0
+        name    0x268adf  userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:
+        types   0x269f42  v40@0:8@16@24@?32
+        imp     0x0
+        name    0x268b2c  userNotificationCenter:openSettingsForNotification:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x0
+000000000026d2e8 0x26f2a0 
+    isa       0x0
+    name      0x269d3f  CLLocationManagerDelegate
+    protocols 0x26def0 
+        count    1
+        list[0]  0x26f180 
+            isa       0x0
+            name      0x269d14  NSObject
+            protocols 0x0
+            instanceMethods 0x26d480 
+                entsize 24
+                count   19
+                name    0x2681af  isEqual:
+                types   0x269dd0  B24@0:8@16
+                imp     0x0
+                name    0x267c08  class
+                types   0x269ddb  #16@0:8
+                imp     0x0
+                name    0x26889d  self
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x268742  performSelector:
+                types   0x269deb  @24@0:8:16
+                imp     0x0
+                name    0x268753  performSelector:withObject:
+                types   0x269df6  @32@0:8:16@24
+                imp     0x0
+                name    0x26876f  performSelector:withObject:withObject:
+                types   0x269e04  @40@0:8:16@24@32
+                imp     0x0
+                name    0x266ead  isProxy
+                types   0x269e15  B16@0:8
+                imp     0x0
+                name    0x2681c9  isKindOfClass:
+                types   0x269e1d  B24@0:8#16
+                imp     0x0
+                name    0x2681d8  isMemberOfClass:
+                types   0x269e1d  B24@0:8#16
+                imp     0x0
+                name    0x267c34  conformsToProtocol:
+                types   0x269dd0  B24@0:8@16
+                imp     0x0
+                name    0x268870  respondsToSelector:
+                types   0x269e28  B24@0:8:16
+                imp     0x0
+                name    0x268884  retain
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x267012  release
+                types   0x269e33  Vv16@0:8
+                imp     0x0
+                name    0x267b1f  autorelease
+                types   0x269de3  @16@0:8
+                imp     0x0
+                name    0x26888b  retainCount
+                types   0x269e3c  Q16@0:8
+                imp     0x0
+                name    0x268c32  zone
+                types   0x269e44  ^{_NSZone=}16@0:8
+                imp     0x0
+                name    0x268006  hash
+                types   0x269e3c  Q16@0:8
+                imp     0x0
+                name    0x268a23  superclass
+                types   0x269ddb  #16@0:8
+                imp     0x0
+                name    0x267de0  description
+                types   0x269de3  @16@0:8
+                imp     0x0
+            classMethods 0x0
+            optionalInstanceMethods 0x26d650 
+                entsize 24
+                count   1
+                name    0x267d98  debugDescription
+                types   0x269de3  @16@0:8
+                imp     0x0
+            optionalClassMethods 0x0
+            instanceProperties 0x26d670 
+                entsize    16
+                count      4
+                name       0x268001  hash
+                attributes 0x266f80  TQ,R
+                name       0x268a18  superclass
+                attributes 0x266e4d  T#,R
+                name       0x267dec  description
+                attributes 0x266f4f  T@"NSString",R,C
+                name       0x267da9  debugDescription
+                attributes 0x266f4f  T@"NSString",R,C
+    instanceMethods 0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x26df08 
+        entsize 24
+        count   20
+        name    0x26845c  locationManager:didUpdateToLocation:fromLocation:
+        types   0x269fa2  v40@0:8@16@24@32
+        imp     0x0
+        name    0x268438  locationManager:didUpdateLocations:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x268416  locationManager:didUpdateHeading:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x268590  locationManagerShouldDisplayHeadingCalibration:
+        types   0x269dd0  B24@0:8@16
+        imp     0x0
+        name    0x2682ae  locationManager:didDetermineState:forRegion:
+        types   0x26a7bf  v40@0:8@16q24@32
+        imp     0x0
+        name    0x268389  locationManager:didRangeBeacons:inRegion:
+        types   0x269fa2  v40@0:8@16@24@32
+        imp     0x0
+        name    0x2684de  locationManager:rangingBeaconsDidFailForRegion:withError:
+        types   0x269fa2  v40@0:8@16@24@32
+        imp     0x0
+        name    0x2683b3  locationManager:didRangeBeacons:satisfyingConstraint:
+        types   0x269fa2  v40@0:8@16@24@32
+        imp     0x0
+        name    0x2682fa  locationManager:didFailRangingBeaconsForConstraint:error:
+        types   0x269fa2  v40@0:8@16@24@32
+        imp     0x0
+        name    0x266fbf  locationManager:didEnterRegion:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x2682db  locationManager:didExitRegion:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x268334  locationManager:didFailWithError:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x2684a8  locationManager:monitoringDidFailForRegion:withError:
+        types   0x269fa2  v40@0:8@16@24@32
+        imp     0x0
+        name    0x268280  locationManager:didChangeAuthorizationStatus:
+        types   0x26a7d0  v28@0:8@16i24
+        imp     0x0
+        name    0x268518  locationManagerDidChangeAuthorization:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x2683e9  locationManager:didStartMonitoringForRegion:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x26853f  locationManagerDidPauseLocationUpdates:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x268567  locationManagerDidResumeLocationUpdates:
+        types   0x269e7d  v24@0:8@16
+        imp     0x0
+        name    0x268356  locationManager:didFinishDeferredUpdatesWithError:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+        name    0x26848e  locationManager:didVisit:
+        types   0x269f07  v32@0:8@16@24
+        imp     0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x0
+000000000026d2f0 0x284448 
+    isa       0x0
+    name      0x269d7e __ARCLiteKeyedSubscripting__
+    protocols 0x0
+    instanceMethods 0x26e500 
+        entsize 24
+        count   2
+        name    0x2686e8 objectForKeyedSubscript:
+        types   0x26aae2 @24@0:8@16
+        imp     0x0
+        name    0x268906 setObject:forKeyedSubscript:
+        types   0x26aaed v32@0:8@16@24
+        imp     0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x0
+Contents of (__DATA,__objc_selrefs) section
+    0x266e42  EnterFun
+    0x266f3c  
+    0x266e7b  URLWithString:
+    0x266f95  UTF8String
+    0x266e9a  _deviceInfoForKey:
+    0x266fb0  absoluteString
+    0x266eb5  activeProcessorCount
+    0x266fdf addEntriesFromDictionary:
+    0x266eda  addObject:
+    0x266ffd  addObjectsFromArray:
+    0x266ef5  advertisingIdentifier
+    0x266f3f  allApplications
+    0x26701a  allInstalledApplications
+    0x266e52  allKeys
+    0x266f2b  alloc
+    0x267035 allocBatch:withEntity:count:
+    0x267052 allocWithEntity:
+    0x267063  allowsVOIP
+    0x26706e  altitude
+    0x267077  appendBytes:length:
+    0x26708b  appendFormat:
+    0x2672e4  application:didRegisterForRemoteNotificationsWithDeviceToken:
+    0x267915  applicationDidFinishLaunching:
+    0x267958  applicationIdentifier
+    0x2679c9  applicationProxyForIdentifier:
+    0x267aa1 arg1:arg2:
+    0x267aac  array
+    0x266e6b  arrayWithArray:
+    0x267ab2  arrayWithObjects:
+    0x267ac4  arrayWithObjects:count:
+    0x267adc  attributesOfFileSystemForPath:error:
+    0x267b01  attributesOfItemAtPath:error:
+    0x267b2b  batteryLevel
+    0x267b38  batteryState
+    0x267b45  boolValue
+    0x267b4f  bounds
+    0x267b56  bundleExecutable
+    0x267b67  bundleIdentifier
+    0x267b78  bytes
+    0x267b81  cStringUsingEncoding:
+    0x267b97  callStackReturnAddresses
+    0x267bb0  canOpenURL:
+    0x267bbc  canSendAttachments
+    0x267bcf  canSendSubject
+    0x267bde  canSendText
+    0x267bea  carrierName
+    0x267bf6  characterAtIndex:
+    0x267c08  class
+    0x267c0e  compare:
+    0x267c17  componentsSeparatedByString:
+    0x266f85  containsObject:
+    0x266e8a  containsString:
+    0x267c48  contentsOfDirectoryAtPath:error:
+    0x267c69  coordinate
+    0x267c74  copy
+    0x267c79  count
+    0x267c7f  countByEnumeratingWithState:objects:count:
+    0x267caa  course
+    0x267cb1  currentDevice
+    0x267cbf  currentRadioAccessTechnology
+    0x267cdc  data
+    0x267ce1  dataUsingEncoding:
+    0x267cf4  dataWithBytes:length:
+    0x267d0a  dataWithBytesNoCopy:length:
+    0x267d26  dataWithCapacity:
+    0x267d38  dataWithContentsOfFile:options:error:
+    0x267d5e  dataWithContentsOfURL:
+    0x267d75  date
+    0x266fa0  dateFromString:
+    0x267d7a  dateWithTimeIntervalSinceNow:
+    0x267d98  debugDescription
+    0x267dba  defaultCStringEncoding
+    0x267dd1  defaultManager
+    0x267de0  description
+    0x267df8  deviceIdentifierForAdvertising
+    0x267e17  deviceIdentifierForVendor
+    0x267e31  deviceInfoForKey:
+    0x267e43  dictionary
+    0x267e4e  dictionaryWithObjects:forKeys:count:
+    0x267e73  dictionaryWithObjectsAndKeys:
+    0x267e91  displayIdentifier
+    0x267ea3  doubleValue
+    0x267eaf  
+    0x267eb6  environment
+    0x267ecc  
+    0x267ed9  
+    0x267ee8  
+    0x267ef7  
+    0x267f06  
+    0x267f15  
+    0x267f23  
+    0x267f31 fastIndexForKnownKey:
+    0x267f47  fileExistsAtPath:
+    0x267f59  fileExistsAtPath:isDirectory:
+    0x267f77  fileSystemAttributesAtPath:
+    0x267f93  firstMatchInString:options:range:
+    0x267fb5  firstObject
+    0x267fc1  floatValue
+    0x267fcc  getCString:maxLength:encoding:
+    0x267feb  hasPrefix:
+    0x267ff6  hasSuffix:
+    0x26800b  horizontalAccuracy
+    0x26801e  identifierForVendor
+    0x268032 indexForKey:
+    0x26803f  init
+    0x268049  initWithArray:
+    0x268058  initWithBase64EncodedString:options:
+    0x26807e initWithBytes:length:encoding:
+    0x26809d  initWithContentsOfFile:
+    0x2680b5  initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:speed:timestamp:
+    0x26810d  initWithData:encoding:
+    0x268124  initWithDictionary:
+    0x268138  initWithObjects:
+    0x268149  initWithUTF8String:
+    0x26815d  initWithUUIDString:
+    0x268171 initialize
+    0x26817c  intValue
+    0x268185  integerValue
+    0x268192  isAdvertisingTrackingEnabled
+    0x2681b8  isEqualToString:
+    0x2681c9  isKindOfClass:
+    0x2681e9  isOperatingSystemAtLeastVersion:
+    0x26820a  isSubclassOfClass:
+    0x26821d  isoCountryCode
+    0x26822c keyEnumerator
+    0x26823a  length
+    0x268242 lengthOfBytesUsingEncoding:
+    0x268268  localizedModel
+    0x268277  location
+    0x268438  locationManager:didUpdateLocations:
+    0x26845c  locationManager:didUpdateToLocation:fromLocation:
+    0x2685c0  longLongValue
+    0x266eca  lowercaseString
+    0x2685ce  mainBundle
+    0x2685d9  matchesInString:options:range:
+    0x2685f8 messageName
+    0x268604  mobileCountryCode
+    0x268616  mobileNetworkCode
+    0x268628  model
+    0x26862e  mutableCopy
+    0x26863a  name
+    0x26863f  nativeBounds
+    0x266ff9  new
+    0x26864c  newWithContentsOf:immutable:
+    0x26866a nextObject
+    0x268675  numberOfRanges
+    0x266ee5  numberWithBool:
+    0x268684  numberWithInt:
+    0x268693  numberWithLongLong:
+    0x2686a7  objectAtIndexedSubscript:
+    0x2686c1  objectForKey:
+    0x2686cf  objectForKeyedSubscript:
+    0x268701  operatingSystemVersion
+    0x268718  operatingSystemVersionString
+    0x268735  outputVolume
+    0x268796  physicalMemory
+    0x2687a5  processInfo
+    0x2687b1  processorCount
+    0x2687c0  pushRegistry:didUpdatePushCredentials:forType:
+    0x2687ef  rangeAtIndex:
+    0x2687fd  rangeOfString:
+    0x26880c  regularExpressionWithPattern:options:error:
+    0x267012  release
+    0x268838  removeObject:
+    0x268846  removeObjectForKey:
+    0x26885a  removeObjectsForKeys:
+    0x268870  respondsToSelector:
+    0x268897  scale
+    0x2688a2 self
+    0x2688a7  setAirplaneModeWithoutMirroring:
+    0x2688c8  setDateFormat:
+    0x2688d7  setObject:forKey:
+    0x2688e9  setObject:forKeyedSubscript:
+    0x268923  setValue:forKey:
+    0x26893f  signatureWithObjCTypes:
+    0x268957  size
+    0x26895c  speed
+    0x266f0b  stringByAppendingPathComponent:
+    0x268962  stringByAppendingString:
+    0x26897b  stringByReplacingOccurrencesOfString:withString:
+    0x2689ac  stringWithCString:encoding:
+    0x2689c8  stringWithCapacity:
+    0x2689dc  stringWithFormat:
+    0x2689ee  stringWithUTF8String:
+    0x268a04  substringWithRange:
+    0x268a2e  switcherContentController:deletedItem:
+    0x268a55  systemName
+    0x268a60  systemUptime
+    0x268a6d  systemVersion
+    0x268a7b  timeIntervalSince1970
+    0x268a91  timestamp
+    0x268a9b  unarchiveObjectWithData:
+    0x268ab4  unsignedIntegerValue
+    0x268ac9  unsignedLongLongValue
+    0x267033  v
+    0x268ba6  value
+    0x268bac  valueForKey:
+    0x268bb9  verticalAccuracy
+    0x268bd8  writeToFile:atomically:
+    0x268bf0  writeToFile:atomically:encoding:error:
+    0x268c17  writeToFile:options:error:
+Contents of (__DATA,__objc_imageinfo) section
+    version 0
+    flags   0x40

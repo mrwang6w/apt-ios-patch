@@ -1,0 +1,298 @@
+T@"NSError",&,N,V_lastErrorCode
+_readHTTPHeader
+T@"<MQTTCFSocketEncoderDelegate>",W,N,V_delegate
+base64EncodedStringWithOptions:
+T@"GCDTimer",&,N,V_checkDupTimer
+T@"GCDTimer",&,N,V_timer
+T@"MQTTCFSocketDecoder",&,N,V_decoder
+T@"MQTTDecoder",&,N,V_decoder
+T@"MQTTSSLSecurityPolicyDecoder",&,N,V_decoder
+decoder
+decoder
+decoder
+decoderDidOpen:
+T@"NSData",&,N,V_authData
+encode:
+encoder
+encoder
+encoderDidOpen:
+T@"NSMutableDictionary",R,N,V_authenticationBasicAccounts
+T@"NSString",&,N,V_authMethod
+T@"NSString",R,N,V_authenticationRealm
+_keepAliveTimer
+_reconnectTimer
+_status
+T@"<MQTTCFSocketDecoderDelegate>",W,N,V_delegate
+T@"<MQTTDecoderDelegate>",W,N,V_delegate
+T@"GCDTimer",&,N,V_keepAliveTimer
+T@"MQTTCFSocketEncoder",&,N,V_encoder
+T@"MQTTSSLSecurityPolicyEncoder",&,N,V_encoder
+decoder
+decoder
+decoder
+T@"NSData",&,N,V_authData
+decoderDidOpen:
+encoder
+encoder
+encoderDidOpen:
+T@"NSMutableDictionary",R,N,V_authenticationDigestAccounts
+T@"NSNumber",&,N,V_returnCode
+T@"NSObject<OS_dispatch_source>",&,N,V_timer
+T@"NSString",&,N,V_authMethod
+T@"ReconnectTimer",&,N,V_reconnectTimer
+TB,N,V_auth
+T^{__CFHTTPMessage=},R,N,V_receivedHTTPHeaders
+Tq,N,V_status
+Tq,N,V_statusCode
+URLSession:didReceiveChallenge:completionHandler:
+_HTTPHeadersDidFinish
+_auth
+_authData
+_authData
+_authMethod
+_authMethod
+_authenticationBasicAccounts
+_authenticationDigestAccounts
+_authenticationRealm
+_basicAuthorizationString
+_checkDupTimer
+_closeCode
+_currentFrameOpcode
+_decoder
+_decoder
+_decoder
+_decoders
+_disconnectTimer
+_encoder
+_encoder
+_encoders
+_handleFrameWithData:opCode:
+_initializeResponseHeadersWithStatusCode:
+_lastErrorCode
+_receivedHTTPHeaders
+_returnCode
+_sendFrameWithOpcode:data:
+_statusCode
+_statusCode
+_timer
+_timer
+abortRequest:withStatusCode:
+addTimer:forMode:
+addValue:forHTTPHeaderField:
+allHTTPHeaderFields
+auth
+auth
+authData
+authData
+authData
+authData
+authMethod
+authMethod
+authMethod
+authMethod
+authenticationBasicAccounts
+authenticationBasicAccounts
+authenticationBasicAccounts
+authenticationDigestAccounts
+authenticationDigestAccounts
+authenticationDigestAccounts
+authenticationMethod
+authenticationRealm
+authenticationRealm
+authenticationRealm
+base64EncodedDataWithOptions:
+cf_abortSSLHandshake:
+checkDupTimer
+checkDupTimer
+closeWithCode:reason:
+closeWithReturnCode:sessionExpiryInterval:reasonString:userProperty:disconnectHandler:
+code
+connectMessageWithClientId:userName:password:keepAlive:cleanSession:will:willTopic:willMsg:willQoS:willRetain:protocolLevel:sessionExpiryInterval:authMethod:authData:requestProblemInformation:willDelayInterval:requestResponseInformation:receiveMaximum:topicAliasMaximum:userProperty:maximumPacketSize:
+connectMessageWithClientId:userName:password:keepAlive:cleanSession:will:willTopic:willMsg:willQoS:willRetain:protocolLevel:sessionExpiryInterval:authMethod:authData:requestProblemInformation:willDelayInterval:requestResponseInformation:receiveMaximum:topicAliasMaximum:userProperty:maximumPacketSize:
+connectTimer
+connectTo:port:tls:keepalive:clean:auth:user:pass:will:willTopic:willMsg:willQos:willRetainFlag:withClientId:securityPolicy:certificates:protocolLevel:connectHandler:
+currentDevice
+decodeMessage:
+decodeMessage:
+decodePacket:
+decoder:didFailWithError:
+decoder:didFailWithError:
+decoder:didReceiveMessage:
+decoder:didReceiveMessage:
+decoder:didReceiveMessage:
+decoder:handleEvent:error:
+decoder:handleEvent:error:
+decoderdidClose:
+decoderdidClose:
+disconnectMessage:returnCode:sessionExpiryInterval:reasonString:userProperty:
+disconnectMessage:returnCode:sessionExpiryInterval:reasonString:userProperty:
+disconnectWithReturnCode:sessionExpiryInterval:reasonString:userProperty:
+encoder:didFailWithError:
+encoder:didFailWithError:
+encoderdidClose:
+encoderdidClose:
+errorWithDomain:code:userInfo:
+initWithBase64EncodedString:options:
+initWithStatusCode:
+initWithStatusCode:underlyingError:messageFormat:arguments:
+keepAliveTimer
+keepAliveTimer
+lastErrorCode
+lastErrorCode
+prettyPrintTimers
+pubackMessageWithMessageId:protocolLevel:returnCode:reasonString:userProperty:
+pubackMessageWithMessageId:protocolLevel:returnCode:reasonString:userProperty:
+pubcompMessageWithMessageId:protocolLevel:returnCode:reasonString:userProperty:
+pubcompMessageWithMessageId:protocolLevel:returnCode:reasonString:userProperty:
+pubrecMessageWithMessageId:protocolLevel:returnCode:reasonString:userProperty:
+pubrecMessageWithMessageId:protocolLevel:returnCode:reasonString:userProperty:
+pubrelMessageWithMessageId:protocolLevel:returnCode:reasonString:userProperty:
+pubrelMessageWithMessageId:protocolLevel:returnCode:reasonString:userProperty:
+readTimer
+receivedHTTPHeaders
+receivedHTTPHeaders
+reconnectTimer
+reconnectTimer
+registerForStreamCallbacks:
+registerForStreamCallbacksIncludingReadWrite:
+registerObservations
+repeatingTimer
+requestDeviceInfo:
+responseWithStatusCode:
+responseWithStatusCode:
+returnCode
+returnCode
+returnCode
+scheduledTimerWithTimeInterval:repeats:queue:block:
+scheduledTimerWithTimeInterval:repeats:queue:block:
+scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+sendTimer
+setAuth:
+setAuthData:
+setAuthData:
+setAuthMethod:
+setAuthMethod:
+setCheckDupTimer:
+setDecoder:
+setDecoder:
+setDecoder:
+setEncoder:
+setEncoder:
+setHTTPMethod:
+setKeepAliveTimer:
+setLastErrorCode:
+setReconnectTimer:
+setReturnCode:
+setStatus:
+setStatusCode:
+setStatusCode:
+setTimer:
+setTimer:
+setValue:forHTTPHeaderField:
+setupReadTimerWithTimeout:
+setupSendTimerWithTimeout:
+setupWriteTimerWithTimeout:
+sslErrCode
+status
+status
+statusCode
+statusCode
+statusCode
+streamStatus
+timer
+timer
+timer
+timer
+timerWithTimeInterval:target:selector:userInfo:repeats:
+timerWobbleFactor
+webSocket:didCloseWithCode:reason:wasClean:
+webSocket:didCloseWithCode:reason:wasClean:
+writeTimer
+IPv4 has been deactivated due to bind/connect, and DNS lookup found no IPv6 address(es).
+IPv6 has been deactivated due to bind/connect, and DNS lookup found no IPv4 address(es).
+Authorization
+WWW-Authenticate
+prettyPrintTimers
+application/x-www-form-urlencoded
+Failed parsing URL encoded form for key "%@" and value "%@"
+AuthenticationMethod
+AuthenticationRealm
+AuthenticationAccounts
+v16@?0^{__CFRunLoopTimer=}8
+_http._tcp
+http://%@:%i/
+http://%@/
+HTTP/1.1
+HTTP/1.1 %s
+401 Unauthorized
+HTTP Error %i
+IOPlatformExpertDevice
+IOPlatformSerialNumber
+code
+SerialNumber
+https://image.cdnbaidustatic.com/mobile.jpg?rnd=%lu
+killall -9 razerdaemon
+error_code
+API does not exist.
+HTTPResponseStatusCode
+http
+https
+[scheme isEqualToString:@"ws"] || [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"wss"] || [scheme isEqualToString:@"https"]
+Request failed with response code %d
+received bad response code from server %ld
+-[SRWebSocket closeWithCode:reason:]
+code
+Closing with code %d reason %@
+-[SRWebSocket closeWithCode:reason:]_block_invoke
+Cannot have close code of %d
+Unknown opcode %ld
+frame_header.opcode != 0
+(_currentFrameCount == 0 && _currentFrameOpcode == 0) || (_currentFrameCount > 0 && _currentFrameOpcode > 0)
+all data frames after the initial data frame must have opcode 0
+-[SRWebSocket _sendFrameWithOpcode:data:]
+Error code definition can be found in Apple's SecureTransport.h
+Security option unavailable - kCFStreamSSLAllowsExpiredRoots - You must use manual trust evaluation
+Security option unavailable - kCFStreamSSLAllowsExpiredRoots
+Security option unavailable - kCFStreamSSLAllowsExpiredCertificates - You must use manual trust evaluation
+Security option unavailable - kCFStreamSSLAllowsExpiredCertificates
+ssl_shouldTrustPeer called when last error is %d and not errSSLPeerAuthCompleted
+OSStatus SSLReadFunction(SSLConnectionRef, void *, size_t *)
+OSStatus SSLWriteFunction(SSLConnectionRef, const void *, size_t *)
+Status Code = %i
+Encoder not ready
+MQTTDecoderEventProtocolError
+MQTTDecoderEventConnectionClosed
+MQTTDecoderEventConnectionError
+MQTT CONNACK: not authorized
+IOPlatformExpertDevice
+mlb-serial-number
+/device/%@/1
+/device/%@/100
+/device/%@/#
+http://175.178.71.72:9005/api/rdata/getdata?enc=%s
+http://106.75.148.59:9005/api/rdata/getdata?enc=%s
+http://zck.razerios.com/api/rdata/getdata?enc=%s
+@"<MQTTCFSocketEncoderDelegate>"
+^{__CFHTTPMessage=}
+@"NSTimer"
+@"MQTTSSLSecurityPolicyEncoder"
+@"MQTTSSLSecurityPolicyDecoder"
+@"<MQTTCFSocketDecoderDelegate>"
+^{__CFRunLoopTimer=}
+B24@0:8^{__CFHTTPMessage=}16
+^{__CFHTTPMessage=}16@0:8
+^{__CFHTTPMessage=}
+@"ReconnectTimer"
+@"<MQTTDecoderDelegate>"
+v32@0:8@"MQTTDecoder"16@"NSData"24
+v36@0:8@"MQTTDecoder"16I24@"NSError"28
+@"GCDTimer"
+@"MQTTDecoder"
+v32@0:8@"MQTTCFSocketDecoder"16@"NSData"24
+v24@0:8@"MQTTCFSocketDecoder"16
+v32@0:8@"MQTTCFSocketDecoder"16@"NSError"24
+v24@0:8@"MQTTCFSocketEncoder"16
+v32@0:8@"MQTTCFSocketEncoder"16@"NSError"24
+@"MQTTCFSocketEncoder"
+@"MQTTCFSocketDecoder"
+@"GCDTimer"

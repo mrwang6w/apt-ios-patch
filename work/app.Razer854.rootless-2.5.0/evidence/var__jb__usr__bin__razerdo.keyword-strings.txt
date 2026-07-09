@@ -1,0 +1,28 @@
+https://mesu.apple.com/assets/tvOS14DeveloperSeed
+serialnumber
+SerialNumber
+checkencode
+Failed to create symbolic link at "%@" to "%@" - symlink() error code: %d
+Child process exited badly
+Child process exited with signal %d
+Child process exited with status %d
+Failed to decode PPMd
+The %s is encoded with many filters, but currently not supported
+LZMA codec is unsupported
+Unexpected codec ID: %lX
+Crypto codec not supported yet (ID: 0x%lX)
+Unknown codec ID: %lX
+__archive_read_register_format
+Internal error: No format->read_data function registered
+Current client reader does not support seeking a device
+No formats registered
+ZIP bad Authentication code
+Can't allocate data for uudecode
+device
+resdevice
+Unable to initialize PPMd range decoder
+Invalid prefix code in bitstream
+base64EncodedStringWithOptions:
+code
+currentDevice
+errorWithDomain:code:userInfo:

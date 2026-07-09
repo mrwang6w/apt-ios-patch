@@ -1,0 +1,17 @@
+alertControllerWithTitle:message:preferredStyle:
+application:didChangeStatusBarFrame:
+application:didChangeStatusBarOrientation:
+application:didDecodeRestorableStateWithCoder:
+application:didFailToRegisterForRemoteNotificationsWithError:
+application:didRegisterForRemoteNotificationsWithDeviceToken:
+application:didRegisterUserNotificationSettings:
+application:handleEventsForBackgroundURLSession:completionHandler:
+application:viewControllerWithRestorationIdentifierPath:coder:
+application:willChangeStatusBarFrame:
+application:willChangeStatusBarOrientation:duration:
+application:willEncodeRestorableStateWithCoder:
+applicationShouldRequestHealthAuthorization:
+v16@?0@"UIAlertAction"8
+@"UIViewController"40@0:8@"UIApplication"16@"NSArray"24@"NSCoder"32
+B32@0:8@"UIApplication"16@"NSCoder"24
+v32@0:8@"UIApplication"16@"NSCoder"24

@@ -1,0 +1,230 @@
+D var/
+D var/jb/
+D var/jb/Applications/
+D var/jb/Applications/RCleaner.app/
+F var/jb/Applications/RCleaner.app/AppIcon20x20@2x.png 1403
+F var/jb/Applications/RCleaner.app/AppIcon20x20@3x.png 2185
+F var/jb/Applications/RCleaner.app/AppIcon29x29@2x.png 2128
+F var/jb/Applications/RCleaner.app/AppIcon29x29@3x.png 3398
+F var/jb/Applications/RCleaner.app/AppIcon38x38@2x.png 2945
+F var/jb/Applications/RCleaner.app/AppIcon38x38@3x.png 4373
+F var/jb/Applications/RCleaner.app/AppIcon40x40@2x.png 3078
+F var/jb/Applications/RCleaner.app/AppIcon40x40@3x.png 4643
+F var/jb/Applications/RCleaner.app/AppIcon60x60@2x.png 4643
+F var/jb/Applications/RCleaner.app/AppIcon60x60@3x.png 6933
+F var/jb/Applications/RCleaner.app/AppIcon64x64@2x.png 4956
+F var/jb/Applications/RCleaner.app/AppIcon64x64@3x.png 7433
+F var/jb/Applications/RCleaner.app/AppIcon68x68@2x.png 5282
+F var/jb/Applications/RCleaner.app/AppIcon76x76@2x.png 5849
+F var/jb/Applications/RCleaner.app/AppIcon76x76@2x~ipad.png 5849
+F var/jb/Applications/RCleaner.app/AppIcon83.5x83.5@2x.png 6414
+F var/jb/Applications/RCleaner.app/Assets.car 162968
+D var/jb/Applications/RCleaner.app/Base.lproj/
+D var/jb/Applications/RCleaner.app/Base.lproj/LaunchScreen.storyboardc/
+F var/jb/Applications/RCleaner.app/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib 1859
+F var/jb/Applications/RCleaner.app/Base.lproj/LaunchScreen.storyboardc/Info.plist 258
+F var/jb/Applications/RCleaner.app/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib 896
+D var/jb/Applications/RCleaner.app/Base.lproj/Main.storyboardc/
+F var/jb/Applications/RCleaner.app/Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib 6816
+F var/jb/Applications/RCleaner.app/Base.lproj/Main.storyboardc/Info.plist 276
+F var/jb/Applications/RCleaner.app/Base.lproj/Main.storyboardc/UINavigationController-4SK-GW-D1g.nib 1790
+F var/jb/Applications/RCleaner.app/Info.plist 1523
+F var/jb/Applications/RCleaner.app/PkgInfo 8
+F var/jb/Applications/RCleaner.app/RCleaner 168624
+D var/jb/Applications/RCleaner.app/_CodeSignature/
+F var/jb/Applications/RCleaner.app/_CodeSignature/CodeResources 9443
+F var/jb/Applications/RCleaner.app/embedded.mobileprovision 20417
+D var/jb/Applications/razer.app/
+F var/jb/Applications/razer.app/AppIcon20x20@2x.png 1014
+F var/jb/Applications/razer.app/AppIcon20x20@3x.png 1311
+F var/jb/Applications/razer.app/AppIcon29x29@2x.png 1251
+F var/jb/Applications/razer.app/AppIcon29x29@3x.png 1858
+F var/jb/Applications/razer.app/AppIcon38x38@2x.png 1659
+F var/jb/Applications/razer.app/AppIcon38x38@3x.png 2470
+F var/jb/Applications/razer.app/AppIcon40x40@2x.png 1740
+F var/jb/Applications/razer.app/AppIcon40x40@3x.png 2516
+F var/jb/Applications/razer.app/AppIcon60x60@2x.png 2516
+F var/jb/Applications/razer.app/AppIcon60x60@3x.png 3666
+F var/jb/Applications/razer.app/AppIcon64x64@2x.png 2687
+F var/jb/Applications/razer.app/AppIcon64x64@3x.png 3947
+F var/jb/Applications/razer.app/AppIcon68x68@2x.png 2835
+F var/jb/Applications/razer.app/AppIcon76x76@2x.png 3168
+F var/jb/Applications/razer.app/AppIcon76x76@2x~ipad.png 3249
+F var/jb/Applications/razer.app/AppIcon83.5x83.5@2x.png 3426
+F var/jb/Applications/razer.app/Assets.car 124280
+D var/jb/Applications/razer.app/Base.lproj/
+D var/jb/Applications/razer.app/Base.lproj/LaunchScreen.storyboardc/
+F var/jb/Applications/razer.app/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib 2236
+F var/jb/Applications/razer.app/Base.lproj/LaunchScreen.storyboardc/Info.plist 258
+F var/jb/Applications/razer.app/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib 896
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/0EK-TV-S80-view-En5-H1-lil.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/0EK-TV-S80-view-En5-H1-lil.nib/objects-11.0+.nib 3477
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/0EK-TV-S80-view-En5-H1-lil.nib/runtime.nib 3477
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/1wA-Yf-Orn-view-qm3-8J-w2S.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/1wA-Yf-Orn-view-qm3-8J-w2S.nib/objects-11.0+.nib 6185
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/1wA-Yf-Orn-view-qm3-8J-w2S.nib/runtime.nib 6185
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib/objects-11.0+.nib 15231
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib/runtime.nib 15231
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/Info.plist 563
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/Ngl-1E-6ys-view-HDp-Op-1Fr.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/Ngl-1E-6ys-view-HDp-Op-1Fr.nib/objects-11.0+.nib 1848
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/Ngl-1E-6ys-view-HDp-Op-1Fr.nib/runtime.nib 1848
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/SiteViewController.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/SiteViewController.nib/objects-11.0+.nib 988
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/SiteViewController.nib/runtime.nib 988
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/UINavigationController-r02-DM-2J4.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/UINavigationController-r02-DM-2J4.nib/objects-11.0+.nib 2398
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/UINavigationController-r02-DM-2J4.nib/runtime.nib 2398
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/a1w-sI-3Wx-view-Mub-xr-sC1.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/a1w-sI-3Wx-view-Mub-xr-sC1.nib/objects-11.0+.nib 4818
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/a1w-sI-3Wx-view-Mub-xr-sC1.nib/runtime.nib 4818
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/applist.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/applist.nib/objects-11.0+.nib 1524
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/applist.nib/runtime.nib 1524
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/biy-98-AKQ-view-itQ-y6-lPd.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/biy-98-AKQ-view-itQ-y6-lPd.nib/objects-11.0+.nib 1848
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/biy-98-AKQ-view-itQ-y6-lPd.nib/runtime.nib 1848
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/cea-OT-uD0-view-mFz-az-Ei1.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/cea-OT-uD0-view-mFz-az-Ei1.nib/objects-11.0+.nib 5972
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/cea-OT-uD0-view-mFz-az-Ei1.nib/runtime.nib 5972
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/dNT-lc-BGg-view-1lH-bl-PFt.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/dNT-lc-BGg-view-1lH-bl-PFt.nib/objects-11.0+.nib 10333
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/dNT-lc-BGg-view-1lH-bl-PFt.nib/runtime.nib 10453
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/export.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/export.nib/objects-11.0+.nib 1595
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/export.nib/runtime.nib 1595
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/exportqrcode.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/exportqrcode.nib/objects-11.0+.nib 1099
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/exportqrcode.nib/runtime.nib 1099
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/feedback.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/feedback.nib/objects-11.0+.nib 1519
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/feedback.nib/runtime.nib 1519
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/g8v-4u-wli-view-hDc-kL-nNI.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/g8v-4u-wli-view-hDc-kL-nNI.nib/objects-11.0+.nib 1824
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/g8v-4u-wli-view-hDc-kL-nNI.nib/runtime.nib 1961
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/history.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/history.nib/objects-11.0+.nib 1521
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/history.nib/runtime.nib 1521
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/history2.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/history2.nib/objects-11.0+.nib 1128
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/history2.nib/runtime.nib 1128
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/lFU-QO-4Em-view-5Nz-m8-UUD.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/lFU-QO-4Em-view-5Nz-m8-UUD.nib/objects-11.0+.nib 8088
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/lFU-QO-4Em-view-5Nz-m8-UUD.nib/runtime.nib 8208
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/license.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/license.nib/objects-11.0+.nib 1775
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/license.nib/runtime.nib 1775
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/map.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/map.nib/objects-11.0+.nib 2043
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/map.nib/runtime.nib 2043
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/mapsetting.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/mapsetting.nib/objects-11.0+.nib 1739
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/mapsetting.nib/runtime.nib 1739
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/p0T-zE-v2F-view-SyF-8i-XFa.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/p0T-zE-v2F-view-SyF-8i-XFa.nib/objects-11.0+.nib 4308
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/p0T-zE-v2F-view-SyF-8i-XFa.nib/runtime.nib 4308
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/sf4-ok-3qz-view-Y2x-po-AZS.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/sf4-ok-3qz-view-Y2x-po-AZS.nib/objects-11.0+.nib 3081
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/sf4-ok-3qz-view-Y2x-po-AZS.nib/runtime.nib 3081
+D var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/version.nib/
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/version.nib/objects-11.0+.nib 965
+F var/jb/Applications/razer.app/Base.lproj/Main.storyboardc/version.nib/runtime.nib 965
+F var/jb/Applications/razer.app/BlackApplicationCell.nib 4450
+D var/jb/Applications/razer.app/DDYQRCode.bundle/
+F var/jb/Applications/razer.app/DDYQRCode.bundle/LightOff.png 1002
+F var/jb/Applications/razer.app/DDYQRCode.bundle/LightOn.png 1635
+F var/jb/Applications/razer.app/DDYQRCode.bundle/ScanGrid.png 22868
+F var/jb/Applications/razer.app/DDYQRCode.bundle/ScanLine.png 763
+F var/jb/Applications/razer.app/DDYQRCode.bundle/ScanSuccess.caf 129556
+D var/jb/Applications/razer.app/DDYQRCode.bundle/en.lproj/
+F var/jb/Applications/razer.app/DDYQRCode.bundle/en.lproj/DDYQRCode.strings 201
+D var/jb/Applications/razer.app/DDYQRCode.bundle/zh-Hans.lproj/
+F var/jb/Applications/razer.app/DDYQRCode.bundle/zh-Hans.lproj/DDYQRCode.strings 220
+D var/jb/Applications/razer.app/GCDWebUploader.bundle/
+D var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Info.plist 126
+D var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/
+D var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/css/
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/css/bootstrap-theme.css 14936
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/css/bootstrap.css 121220
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/css/index.css 2696
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/css/jquery.fileupload.css 655
+D var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/en.lproj/
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/en.lproj/Localizable.strings 168
+D var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/fonts/
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/fonts/glyphicons-halflings-regular.eot 20335
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/fonts/glyphicons-halflings-regular.svg 62927
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/fonts/glyphicons-halflings-regular.ttf 41280
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/fonts/glyphicons-halflings-regular.woff 23320
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/index.html 7938
+D var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/bootstrap.min.js 29110
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/html5shiv.min.js 2429
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/index.js 9581
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/jquery.fileupload.js 61692
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/jquery.iframe-transport.js 10612
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/jquery.jeditable.js 24496
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/jquery.min.js 96381
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/jquery.ui.widget.js 15085
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/respond.min.js 4377
+F var/jb/Applications/razer.app/GCDWebUploader.bundle/Contents/Resources/js/tmpl.min.js 977
+F var/jb/Applications/razer.app/Info.plist 1842
+F var/jb/Applications/razer.app/PkgInfo 8
+F var/jb/Applications/razer.app/Razer 39449424
+D var/jb/Applications/razer.app/_CodeSignature/
+F var/jb/Applications/razer.app/_CodeSignature/CodeResources 49255
+F var/jb/Applications/razer.app/btn_checked.png 3754
+F var/jb/Applications/razer.app/btn_checked@2x.png 4073
+F var/jb/Applications/razer.app/btn_unchecked.png 3918
+F var/jb/Applications/razer.app/btn_unchecked@2x.png 4702
+F var/jb/Applications/razer.app/embedded.mobileprovision 20532
+D var/jb/Applications/razer.app/en.lproj/
+F var/jb/Applications/razer.app/en.lproj/InfoPlist.strings 90
+F var/jb/Applications/razer.app/en.lproj/Language.strings 4198
+F var/jb/Applications/razer.app/en.lproj/Setting.strings 2782
+F var/jb/Applications/razer.app/iconinfo@2x.png 3884
+F var/jb/Applications/razer.app/iconinfo@3x.png 3330
+F var/jb/Applications/razer.app/iconrefresh@2x.png 5674
+F var/jb/Applications/razer.app/iconrefresh@3x.png 3470
+F var/jb/Applications/razer.app/info@2x.png 1361
+F var/jb/Applications/razer.app/info@3x.png 1528
+F var/jb/Applications/razer.app/infoblue@2x.png 2676
+F var/jb/Applications/razer.app/infoblue@3x.png 2583
+F var/jb/Applications/razer.app/license.html 4287
+F var/jb/Applications/razer.app/map@2x.png 2747
+F var/jb/Applications/razer.app/map@3x.png 3142
+F var/jb/Applications/razer.app/mappin@2x.png 1695
+F var/jb/Applications/razer.app/mappin@3x.png 1340
+F var/jb/Applications/razer.app/nav_back_btn.png 2930
+F var/jb/Applications/razer.app/nav_back_btn@2x.png 3043
+F var/jb/Applications/razer.app/razerd 79040
+F var/jb/Applications/razer.app/set.bundle 10405
+F var/jb/Applications/razer.app/set2.bundle 214964
+F var/jb/Applications/razer.app/setting.json 57600
+D var/jb/Applications/razer.app/th.lproj/
+F var/jb/Applications/razer.app/th.lproj/Language.strings 2784
+F var/jb/Applications/razer.app/th.lproj/Setting.strings 1167
+F var/jb/Applications/razer.app/z 1173872
+D var/jb/Applications/razer.app/zh-Hans.lproj/
+F var/jb/Applications/razer.app/zh-Hans.lproj/InfoPlist.strings 90
+F var/jb/Applications/razer.app/zh-Hans.lproj/Language.strings 1609
+F var/jb/Applications/razer.app/zh-Hans.lproj/Setting.strings 1032
+D var/jb/Applications/razer.app/zh-Hant.lproj/
+F var/jb/Applications/razer.app/zh-Hant.lproj/InfoPlist.strings 90
+F var/jb/Applications/razer.app/zh-Hant.lproj/Language.strings 3400
+F var/jb/Applications/razer.app/zh-Hant.lproj/Setting.strings 2747
+D var/jb/Library/
+D var/jb/Library/LaunchDaemons/
+F var/jb/Library/LaunchDaemons/com.razer.startup.plist 501
+D var/jb/Library/MobileSubstrate/
+D var/jb/Library/MobileSubstrate/DynamicLibraries/
+F var/jb/Library/MobileSubstrate/DynamicLibraries/razer.dylib 2925776
+F var/jb/Library/MobileSubstrate/DynamicLibraries/razer.plist 87
+F var/jb/Library/MobileSubstrate/DynamicLibraries/zen.dylib 55248
+F var/jb/Library/MobileSubstrate/DynamicLibraries/zen.plist 87
+D var/jb/usr/
+D var/jb/usr/bin/
+F var/jb/usr/bin/razerdaemon 6747808
+F var/jb/usr/bin/razerdo 513568

@@ -1,0 +1,117 @@
+7354-    afec:	14 01 50 f8	ldur	x20, [x8, #-0x100]
+7355-    aff0:	a8 63 01 d1	sub	x8, x29, #0x58
+7356-    aff4:	00 01 10 f8	stur	x0, [x8, #-0x100]
+7357-    aff8:	a0 83 54 f8	ldur	x0, [x29, #-0xb8]
+7358-    affc:	d0 53 00 94	bl	0x1ff3c ; symbol stub for: _swift_release
+7359-    b000:	a8 63 01 d1	sub	x8, x29, #0x58
+7360-    b004:	01 01 50 f8	ldur	x1, [x8, #-0x100]
+7361-    b008:	a0 83 51 f8	ldur	x0, [x29, #-0xe8]
+7362:    b00c:	1f 52 00 94	bl	0x1f888 ; symbol stub for: _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline7executeyAC0D4TimeV_AC0D8WorkItemCtF
+7363-    b010:	a8 63 01 d1	sub	x8, x29, #0x58
+7364-    b014:	00 01 50 f8	ldur	x0, [x8, #-0x100]
+7365-    b018:	c9 53 00 94	bl	0x1ff3c ; symbol stub for: _swift_release
+7366-    b01c:	a8 43 01 d1	sub	x8, x29, #0x50
+7367-    b020:	00 01 50 f8	ldur	x0, [x8, #-0x100]
+7368-    b024:	08 01 00 b0	adrp	x8, 33 ; 0x2c000
+7369-    b028:	08 0d 40 f9	ldr	x8, [x8, #0x18] ; literal pool symbol address: _objc_release
+7370-    b02c:	00 01 3f d6	blr	x8
+7371-    b030:	a0 83 51 f8	ldur	x0, [x29, #-0xe8]
+7372-    b034:	a1 03 50 f8	ldur	x1, [x29, #-0x100]
+7373-    b038:	a8 23 01 d1	sub	x8, x29, #0x48
+7374-    b03c:	08 01 50 f8	ldur	x8, [x8, #-0x100]
+--
+7476-    b1d4:	14 01 50 f8	ldur	x20, [x8, #-0x100]
+7477-    b1d8:	a8 23 02 d1	sub	x8, x29, #0x88
+7478-    b1dc:	00 01 10 f8	stur	x0, [x8, #-0x100]
+7479-    b1e0:	a0 83 57 f8	ldur	x0, [x29, #-0x88]
+7480-    b1e4:	56 53 00 94	bl	0x1ff3c ; symbol stub for: _swift_release
+7481-    b1e8:	a8 23 02 d1	sub	x8, x29, #0x88
+7482-    b1ec:	01 01 50 f8	ldur	x1, [x8, #-0x100]
+7483-    b1f0:	a0 83 51 f8	ldur	x0, [x29, #-0xe8]
+7484:    b1f4:	a5 51 00 94	bl	0x1f888 ; symbol stub for: _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline7executeyAC0D4TimeV_AC0D8WorkItemCtF
+7485-    b1f8:	a8 23 02 d1	sub	x8, x29, #0x88
+7486-    b1fc:	00 01 50 f8	ldur	x0, [x8, #-0x100]
+7487-    b200:	4f 53 00 94	bl	0x1ff3c ; symbol stub for: _swift_release
+7488-    b204:	a8 03 02 d1	sub	x8, x29, #0x80
+7489-    b208:	00 01 50 f8	ldur	x0, [x8, #-0x100]
+7490-    b20c:	08 01 00 b0	adrp	x8, 33 ; 0x2c000
+7491-    b210:	08 0d 40 f9	ldr	x8, [x8, #0x18] ; literal pool symbol address: _objc_release
+7492-    b214:	00 01 3f d6	blr	x8
+7493-    b218:	a0 83 51 f8	ldur	x0, [x29, #-0xe8]
+7494-    b21c:	a1 03 50 f8	ldur	x1, [x29, #-0x100]
+7495-    b220:	a8 e3 01 d1	sub	x8, x29, #0x78
+7496-    b224:	08 01 50 f8	ldur	x8, [x8, #-0x100]
+--
+7737-    b5e0:	00 01 3f d6	blr	x8
+7738-    b5e4:	e0 07 40 f9	ldr	x0, [sp, #0x8]
+7739-    b5e8:	55 52 00 94	bl	0x1ff3c ; symbol stub for: _swift_release
+7740-    b5ec:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+7741-    b5f0:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+7742-    b5f4:	ff c3 00 91	add	sp, sp, #0x30
+7743-    b5f8:	c0 03 5f d6	ret
+7744-_$sSo17OS_dispatch_queueC8DispatchE5async5group3qos5flags7executeySo0a1_b1_F0CSg_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA0_:
+7745:_$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA0_:
+7746-_$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfcfA_:
+7747-    b5fc:	fd 7b bf a9	stp	x29, x30, [sp, #-0x10]!
+7748-    b600:	fd 03 00 91	mov	x29, sp
+7749-    b604:	08 50 00 94	bl	0x1f624 ; symbol stub for: _$s8Dispatch0A3QoSV11unspecifiedACvgZ
+7750-    b608:	fd 7b c1 a8	ldp	x29, x30, [sp], #0x10
+7751-    b60c:	c0 03 5f d6	ret
+7752-_$sSo17OS_dispatch_queueC8DispatchE5async5group3qos5flags7executeySo0a1_b1_F0CSg_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA1_:
+7753:_$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA1_:
+7754-_$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfcfA0_:
+7755-    b610:	ff 83 01 d1	sub	sp, sp, #0x60
+7756-    b614:	f4 4f 04 a9	stp	x20, x19, [sp, #0x40]
+7757-    b618:	fd 7b 05 a9	stp	x29, x30, [sp, #0x50]
+7758-    b61c:	fd 43 01 91	add	x29, sp, #0x50
+7759-    b620:	e8 0b 00 f9	str	x8, [sp, #0x10]
+7760-    b624:	00 00 80 d2	mov	x0, #0x0
+7761-    b628:	e0 03 00 f9	str	x0, [sp]
+7762-    b62c:	3f 13 00 94	bl	_$sSa22_allocateUninitializedySayxG_SpyxGtSiFZ8Dispatch0C13WorkItemFlagsV_Tt0gq5
+7763-    b630:	e1 03 00 aa	mov	x1, x0
+7764-    b634:	e0 03 40 f9	ldr	x0, [sp]
+7765-    b638:	e1 07 00 f9	str	x1, [sp, #0x8]
+--
+10309-    dd94:	68 de 40 f9	ldr	x8, [x19, #0x1b8]
+10310-    dd98:	19 f6 ff 97	bl	_$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfcfA_
+10311-    dd9c:	68 ce 40 f9	ldr	x8, [x19, #0x198]
+10312-    dda0:	1c f6 ff 97	bl	_$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfcfA0_
+10313-    dda4:	63 06 40 f9	ldr	x3, [x19, #0x8]
+10314-    dda8:	62 ce 40 f9	ldr	x2, [x19, #0x198]
+10315-    ddac:	61 de 40 f9	ldr	x1, [x19, #0x1b8]
+10316-    ddb0:	60 f6 40 f9	ldr	x0, [x19, #0x1e8]
+10317:    ddb4:	b2 46 00 94	bl	0x1f87c ; symbol stub for: _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtF
+10318-    ddb8:	60 06 40 f9	ldr	x0, [x19, #0x8]
+10319-    ddbc:	58 47 00 94	bl	0x1fb1c ; symbol stub for: __Block_release
+10320-    ddc0:	60 0a 40 f9	ldr	x0, [x19, #0x10]
+10321-    ddc4:	e8 00 00 f0	adrp	x8, 31 ; 0x2c000
+10322-    ddc8:	08 0d 40 f9	ldr	x8, [x8, #0x18] ; literal pool symbol address: _objc_release
+10323-    ddcc:	00 01 3f d6	blr	x8
+10324-    ddd0:	68 ca 40 f9	ldr	x8, [x19, #0x190]
+10325-    ddd4:	60 ce 40 f9	ldr	x0, [x19, #0x198]
+10326-    ddd8:	61 c6 40 f9	ldr	x1, [x19, #0x188]
+10327-    dddc:	08 05 40 f9	ldr	x8, [x8, #0x8]
+10328-    dde0:	00 01 3f d6	blr	x8
+10329-    dde4:	68 da 40 f9	ldr	x8, [x19, #0x1b0]
+--
+11536-    f094:	02 01 50 f8	ldur	x2, [x8, #-0x100]
+11537-    f098:	6f 41 00 94	bl	0x1f654 ; symbol stub for: _$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfC
+11538-    f09c:	a8 e3 00 d1	sub	x8, x29, #0x38
+11539-    f0a0:	14 01 50 f8	ldur	x20, [x8, #-0x100]
+11540-    f0a4:	e1 03 00 aa	mov	x1, x0
+11541-    f0a8:	a0 83 51 f8	ldur	x0, [x29, #-0xe8]
+11542-    f0ac:	a8 03 01 d1	sub	x8, x29, #0x40
+11543-    f0b0:	01 01 10 f8	stur	x1, [x8, #-0x100]
+11544:    f0b4:	f5 41 00 94	bl	0x1f888 ; symbol stub for: _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline7executeyAC0D4TimeV_AC0D8WorkItemCtF
+11545-    f0b8:	a8 03 01 d1	sub	x8, x29, #0x40
+11546-    f0bc:	00 01 50 f8	ldur	x0, [x8, #-0x100]
+11547-    f0c0:	9f 43 00 94	bl	0x1ff3c ; symbol stub for: _swift_release
+11548-    f0c4:	a8 e3 00 d1	sub	x8, x29, #0x38
+11549-    f0c8:	00 01 50 f8	ldur	x0, [x8, #-0x100]
+11550-    f0cc:	e8 00 00 b0	adrp	x8, 29 ; 0x2c000
+11551-    f0d0:	08 0d 40 f9	ldr	x8, [x8, #0x18] ; literal pool symbol address: _objc_release
+11552-    f0d4:	00 01 3f d6	blr	x8
+11553-    f0d8:	a0 83 51 f8	ldur	x0, [x29, #-0xe8]
+11554-    f0dc:	a1 03 50 f8	ldur	x1, [x29, #-0x100]
+11555-    f0e0:	a8 c3 00 d1	sub	x8, x29, #0x30
+11556-    f0e4:	08 01 50 f8	ldur	x8, [x8, #-0x100]

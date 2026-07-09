@@ -1,0 +1,266 @@
+┌ 88: sym.func.1003cf768 (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003cf768      ff0310d1       sub sp, sp, 0x400
+│           0x1003cf76c      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003cf770      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003cf774      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003cf778      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003cf77c      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003cf780      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003cf784      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003cf788      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003cf78c      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003cf790      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003cf794      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003cf798      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003cf79c      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003cf7a0      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003cf7a4      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003cf7a8      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003cf7ac      631d0094       bl sym.func.1003d6d38
+│           0x1003cf7b0      e30300aa       mov x3, x0
+│           0x1003cf7b4      5e1d0094       bl sym.func.1003d6d2c
+│           0x1003cf7b8      420180d2       mov x2, 0xa
+└       ┌─< 0x1003cf7bc      9aef7014       b sym.func.10200b624
+┌ 88: sym.func.1003d1938 (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d1938      ff0310d1       sub sp, sp, 0x400
+│           0x1003d193c      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d1940      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d1944      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d1948      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d194c      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d1950      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d1954      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d1958      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d195c      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d1960      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d1964      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d1968      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d196c      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d1970      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d1974      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d1978      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d197c      ef140094       bl sym.func.1003d6d38
+│           0x1003d1980      e30300aa       mov x3, x0
+│           0x1003d1984      ea140094       bl sym.func.1003d6d2c
+│           0x1003d1988      c20480d2       mov x2, 0x26               ; '&'
+└       ┌─< 0x1003d198c      26e77014       b sym.func.10200b624
+┌ 88: sym.func.1003d1994 (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d1994      ff0310d1       sub sp, sp, 0x400
+│           0x1003d1998      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d199c      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d19a0      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d19a4      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d19a8      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d19ac      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d19b0      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d19b4      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d19b8      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d19bc      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d19c0      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d19c4      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d19c8      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d19cc      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d19d0      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d19d4      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d19d8      d8140094       bl sym.func.1003d6d38
+│           0x1003d19dc      e30300aa       mov x3, x0
+│           0x1003d19e0      d3140094       bl sym.func.1003d6d2c
+│           0x1003d19e4      e20480d2       mov x2, 0x27               ; '\''
+└       ┌─< 0x1003d19e8      0fe77014       b sym.func.10200b624
+┌ 88: sym.func.1003d2fe0 (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d2fe0      ff0310d1       sub sp, sp, 0x400
+│           0x1003d2fe4      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d2fe8      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d2fec      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d2ff0      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d2ff4      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d2ff8      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d2ffc      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d3000      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d3004      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d3008      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d300c      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d3010      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d3014      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d3018      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d301c      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d3020      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d3024      450f0094       bl sym.func.1003d6d38
+│           0x1003d3028      e30300aa       mov x3, x0
+│           0x1003d302c      400f0094       bl sym.func.1003d6d2c
+│           0x1003d3030      020a80d2       mov x2, 0x50               ; 'P'
+└       ┌─< 0x1003d3034      7ce17014       b sym.func.10200b624
+            ;-- func.1003d2018:
+┌ 88: method..requestlicense (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d2018      ff0310d1       sub sp, sp, 0x400
+│           0x1003d201c      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d2020      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d2024      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d2028      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d202c      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d2030      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d2034      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d2038      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d203c      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d2040      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d2044      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d2048      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d204c      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d2050      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d2054      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d2058      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d205c      37130094       bl sym.func.1003d6d38
+│           0x1003d2060      e30300aa       mov x3, x0
+│           0x1003d2064      32130094       bl sym.func.1003d6d2c
+│           0x1003d2068      020680d2       mov x2, 0x30               ; '0'
+└       ┌─< 0x1003d206c      6ee57014       b sym.func.10200b624
+┌ 88: sym.func.1003d22f4 (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d22f4      ff0310d1       sub sp, sp, 0x400
+│           0x1003d22f8      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d22fc      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d2300      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d2304      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d2308      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d230c      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d2310      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d2314      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d2318      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d231c      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d2320      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d2324      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d2328      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d232c      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d2330      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d2334      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d2338      80120094       bl sym.func.1003d6d38
+│           0x1003d233c      e30300aa       mov x3, x0
+│           0x1003d2340      7b120094       bl sym.func.1003d6d2c
+│           0x1003d2344      e20680d2       mov x2, 0x37               ; '7'
+└       ┌─< 0x1003d2348      b7e47014       b sym.func.10200b624
+┌ 88: sym.func.1003d2350 (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d2350      ff0310d1       sub sp, sp, 0x400
+│           0x1003d2354      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d2358      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d235c      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d2360      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d2364      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d2368      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d236c      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d2370      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d2374      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d2378      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d237c      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d2380      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d2384      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d2388      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d238c      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d2390      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d2394      69120094       bl sym.func.1003d6d38
+│           0x1003d2398      e30300aa       mov x3, x0
+│           0x1003d239c      64120094       bl sym.func.1003d6d2c
+│           0x1003d23a0      020780d2       mov x2, 0x38               ; '8'
+└       ┌─< 0x1003d23a4      a0e47014       b sym.func.10200b624
+┌ 88: sym.func.1003d2ba0 (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d2ba0      ff0310d1       sub sp, sp, 0x400
+│           0x1003d2ba4      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d2ba8      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d2bac      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d2bb0      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d2bb4      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d2bb8      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d2bbc      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d2bc0      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d2bc4      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d2bc8      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d2bcc      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d2bd0      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d2bd4      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d2bd8      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d2bdc      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d2be0      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d2be4      55100094       bl sym.func.1003d6d38
+│           0x1003d2be8      e30300aa       mov x3, x0
+│           0x1003d2bec      50100094       bl sym.func.1003d6d2c
+│           0x1003d2bf0      c20880d2       mov x2, 0x46               ; 'F'
+└       ┌─< 0x1003d2bf4      8ce27014       b sym.func.10200b624
+┌ 88: sym.func.1003d2bfc (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d2bfc      ff0310d1       sub sp, sp, 0x400
+│           0x1003d2c00      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d2c04      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d2c08      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d2c0c      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d2c10      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d2c14      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d2c18      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d2c1c      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d2c20      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d2c24      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d2c28      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d2c2c      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d2c30      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d2c34      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d2c38      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d2c3c      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d2c40      3e100094       bl sym.func.1003d6d38
+│           0x1003d2c44      e30300aa       mov x3, x0
+│           0x1003d2c48      39100094       bl sym.func.1003d6d2c
+│           0x1003d2c4c      e20880d2       mov x2, 0x47               ; 'G'
+└       ┌─< 0x1003d2c50      75e27014       b sym.func.10200b624
+┌ 88: sym.func.1003d2f84 (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d2f84      ff0310d1       sub sp, sp, 0x400
+│           0x1003d2f88      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d2f8c      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d2f90      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d2f94      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d2f98      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d2f9c      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d2fa0      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d2fa4      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d2fa8      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d2fac      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d2fb0      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d2fb4      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d2fb8      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d2fbc      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d2fc0      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d2fc4      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d2fc8      5c0f0094       bl sym.func.1003d6d38
+│           0x1003d2fcc      e30300aa       mov x3, x0
+│           0x1003d2fd0      570f0094       bl sym.func.1003d6d2c
+│           0x1003d2fd4      e20980d2       mov x2, 0x4f               ; 'O'
+└       ┌─< 0x1003d2fd8      93e17014       b sym.func.10200b624
+            ;-- func.1003d3098:
+┌ 88: method..exitClicked: (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x1003d3098      ff0310d1       sub sp, sp, 0x400
+│           0x1003d309c      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x1003d30a0      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x1003d30a4      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x1003d30a8      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x1003d30ac      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x1003d30b0      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x1003d30b4      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x1003d30b8      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x1003d30bc      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x1003d30c0      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x1003d30c4      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x1003d30c8      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x1003d30cc      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x1003d30d0      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x1003d30d4      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x1003d30d8      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x1003d30dc      170f0094       bl sym.func.1003d6d38
+│           0x1003d30e0      e30300aa       mov x3, x0
+│           0x1003d30e4      120f0094       bl sym.func.1003d6d2c
+│           0x1003d30e8      420a80d2       mov x2, 0x52               ; 'R'
+└       ┌─< 0x1003d30ec      4ee17014       b sym.func.10200b624

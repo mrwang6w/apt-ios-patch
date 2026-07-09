@@ -57,11 +57,3 @@ next-env.d.ts
 .codex/skills/*
 !.codex/skills/ios-deb-reverse-patcher
 result/
-/work/
-!/pages-repo/**/*.png
-!/pages-repo/**/*.ico
-# Next.js web project files that must be tracked despite root-level broad ignores
-!/project/*.json
-!/project/**/*.json
-!/project/public/**/*.png
-!/project/public/**/*.webp

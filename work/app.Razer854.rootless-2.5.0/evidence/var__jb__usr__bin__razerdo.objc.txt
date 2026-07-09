@@ -1,0 +1,840 @@
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/pkgroot/var/jb/usr/bin/razerdo:
+Contents of (__DATA,__objc_classlist) section
+0000000100071600 0x100072d60
+    isa        0x100072d88
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100071a28
+        flags          0x194 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   72
+        reserved       0x0
+        ivarLayout     0x100067571
+        layout map     0x1a 
+        name           0x100067561 
+        baseMethods    0x100071690
+            entsize 24
+            count   12
+            name    0x1000667f0 initWithArchiveStruct:
+            types   0x1000675d2 @24@0:8^{archive_entry=}16
+            imp     0x1000077fc
+            name    0x100066129 birthtime
+            types   0x1000675ed q16@0:8
+            imp     0x100007878
+            name    0x100065d65 gid
+            types   0x1000675f5 I16@0:8
+            imp     0x1000078b8
+            name    0x100065e20 uid
+            types   0x1000675f5 I16@0:8
+            imp     0x1000078f8
+            name    0x10006678c hardlink
+            types   0x1000675fd @16@0:8
+            imp     0x100007938
+            name    0x100066ac7 pathname
+            types   0x1000675fd @16@0:8
+            imp     0x1000079a8
+            name    0x100066d52 size
+            types   0x1000675ed q16@0:8
+            imp     0x100007a18
+            name    0x100065fad symlink
+            types   0x1000675fd @16@0:8
+            imp     0x100007a58
+            name    0x1000665e3 description
+            types   0x1000675fd @16@0:8
+            imp     0x100007ac8
+            name    0x100065ec2 dealloc
+            types   0x100067605 v16@0:8
+            imp     0x100007b8c
+            name    0x100066645 entry
+            types   0x10006760d ^{archive_entry=}16@0:8
+            imp     0x100007bd4
+            name    0x100065e2f .cxx_destruct
+            types   0x100067605 v16@0:8
+            imp     0x100007bdc
+        baseProtocols  0x0
+        ivars          0x1000717b8
+            entsize   32
+            count     15
+            offset    0x100072cf0 8
+            name      0x0 + 0x100066d09 _OBJC_CLASS_$_NSObject setbirthtime
+            type      0x0 + 0x100067625 __objc_empty_cache B
+            alignment 0
+            size      1
+            offset    0x100072cf4 9
+            name      0x0 + 0x100066d16 _OBJC_METACLASS_$_NSObject setgid
+            type      0x0 + 0x100067625 _OBJC_METACLASS_$_NSObject B
+            alignment 0
+            size      1
+            offset    0x100072cf8 10
+            name      0x100066d1d sethardlink
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072cfc 11
+            name      0x100066d29 setpathname
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d00 12
+            name      0x0 + 0x100065f34 __objc_empty_cache setsize
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d04 13
+            name      0x100066d35 setsymlink
+            type      0x0 + 0x100067625 __objc_empty_cache B
+            alignment 0
+            size      1
+            offset    0x100072d08 14
+            name      0x100066d40 setuid
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d0c 16
+            name      0x100066129 birthtime
+            type      0x100067627 q
+            alignment 3
+            size      8
+            offset    0x100072d10 24
+            name      0x100065d65 gid
+            type      0x100067629 I
+            alignment 2
+            size      4
+            offset    0x100072d14 28
+            name      0x100065e20 uid
+            type      0x100067629 I
+            alignment 2
+            size      4
+            offset    0x100072d18 32
+            name      0x10006678c hardlink
+            type      0x10006762b @"NSString"
+            alignment 3
+            size      8
+            offset    0x100072d1c 40
+            name      0x100066ac7 pathname
+            type      0x10006762b @"NSString"
+            alignment 3
+            size      8
+            offset    0x100072d20 48
+            name      0x100066d52 size
+            type      0x100067627 q
+            alignment 3
+            size      8
+            offset    0x100072d24 56
+            name      0x100065fad symlink
+            type      0x10006762b @"NSString"
+            alignment 3
+            size      8
+            offset    0x100072d28 64
+            name      0x100065dd5 _entry
+            type      0x100067637 ^{archive_entry=}
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0x1000719a0
+            entsize    16
+            count      8
+            name       0x100066129 birthtime
+            attributes 0x100065eca Tq,R,N
+            name       0x100065d65 gid
+            attributes 0x100065ebb TI,R,N
+            name       0x100065e20 uid
+            attributes 0x100065ebb TI,R,N
+            name       0x10006678c hardlink
+            attributes 0x100065e4d T@"NSString",R,N
+            name       0x100066ac7 pathname
+            attributes 0x100065e4d T@"NSString",R,N
+            name       0x100066d52 size
+            attributes 0x100065eca Tq,R,N
+            name       0x100065fad symlink
+            attributes 0x100065e4d T@"NSString",R,N
+            name       0x100066645 entry
+            attributes 0x100065d46 T^{archive_entry=},R,N,V_entry
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100071648
+        flags          0x195 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x100067561 
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+0000000100071608 0x100072db0
+    isa        0x100072dd8
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100071e20
+        flags          0x194 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   24
+        reserved       0x0
+        ivarLayout     0x100067586
+        layout map     0x11 
+        name           0x100067574 
+        baseMethods    0x100071ad8
+            entsize 24
+            count   18
+            name    0x100066729 flagValue
+            types   0x100067649 i16@0:8
+            imp     0x10001261c
+            name    0x100065ed1 keepACL
+            types   0x100067651 B16@0:8
+            imp     0x100012710
+            name    0x100066bb2 setKeepACL:
+            types   0x100067659 v20@0:8B16
+            imp     0x10001271c
+            name    0x10006694d keepFFlags
+            types   0x100067651 B16@0:8
+            imp     0x100012724
+            name    0x100066bbe setKeepFFlags:
+            types   0x100067659 v20@0:8B16
+            imp     0x100012730
+            name    0x100066958 keepOwner
+            types   0x100067651 B16@0:8
+            imp     0x100012738
+            name    0x100066bea setKeepOwner:
+            types   0x100067659 v20@0:8B16
+            imp     0x100012744
+            name    0x100065d84 keepPermissions
+            types   0x100067651 B16@0:8
+            imp     0x10001274c
+            name    0x100066bf8 setKeepPermissions:
+            types   0x100067659 v20@0:8B16
+            imp     0x100012758
+            name    0x100066962 keepTime
+            types   0x100067651 B16@0:8
+            imp     0x100012760
+            name    0x100066c20 setKeepTime:
+            types   0x100067659 v20@0:8B16
+            imp     0x10001276c
+            name    0x100066ee8 unlinkBeforeCreate
+            types   0x100067651 B16@0:8
+            imp     0x100012774
+            name    0x100066cd8 setUnlinkBeforeCreate:
+            types   0x100067659 v20@0:8B16
+            imp     0x100012780
+            name    0x10006696b keepXattrs
+            types   0x100067651 B16@0:8
+            imp     0x100012788
+            name    0x100066c3a setKeepXattrs:
+            types   0x100067659 v20@0:8B16
+            imp     0x100012794
+            name    0x100066aae passphrase
+            types   0x1000675fd @16@0:8
+            imp     0x10001279c
+            name    0x100066ca7 setPassphrase:
+            types   0x100067664 v24@0:8@16
+            imp     0x1000127a4
+            name    0x100065e2f .cxx_destruct
+            types   0x100067605 v16@0:8
+            imp     0x1000127b0
+        baseProtocols  0x0
+        ivars          0x100071c90
+            entsize   32
+            count     8
+            offset    0x100072d2c 8
+            name      0x100065e17 _keepACL
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d30 9
+            name      0x100065fb5 _keepFFlags
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d34 10
+            name      0x100065e24 _keepOwner
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d38 11
+            name      0x100066001 _keepPermissions
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d3c 12
+            name      0x100066012 _keepTime
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d40 13
+            name      0x100066049 _unlinkBeforeCreate
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d44 14
+            name      0x10006601c _keepXattrs
+            type      0x100067625 B
+            alignment 0
+            size      1
+            offset    0x100072d48 16
+            name      0x100066028 _passphrase
+            type      0x10006762b @"NSString"
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0x100071d98
+            entsize    16
+            count      8
+            name       0x100065ed1 keepACL
+            attributes 0x100065cb8 TB,V_keepACL
+            name       0x10006694d keepFFlags
+            attributes 0x100065c7a TB,V_keepFFlags
+            name       0x100066958 keepOwner
+            attributes 0x100065e6e TB,V_keepOwner
+            name       0x100065d84 keepPermissions
+            attributes 0x100065cd5 TB,V_keepPermissions
+            name       0x100066962 keepTime
+            attributes 0x100065e9d TB,V_keepTime
+            name       0x100066ee8 unlinkBeforeCreate
+            attributes 0x100065d2a TB,V_unlinkBeforeCreate
+            name       0x10006696b keepXattrs
+            attributes 0x100065e3d TB,V_keepXattrs
+            name       0x100066aae passphrase
+            attributes 0x100065c8a T@"NSString",&,N,V_passphrase
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100071a90
+        flags          0x195 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x100067574 
+        baseMethods    0x100071a70
+            entsize 24
+            count   1
+            name    0x1000665c7 defaultFlags
+            types   0x1000675fd @16@0:8
+            imp     0x10001255c
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+0000000100071610 0x100072e68
+    isa        0x100072e90
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x1000722e0
+        flags          0x194 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   24
+        reserved       0x0
+        ivarLayout     0x100067595
+        layout map     0x01 
+        name           0x100067588 
+        baseMethods    0x100072158
+            entsize 24
+            count   13
+            name    0x10006736b writeSymlinkFileAtPath:withFileName:compressionLevel:password:AES:
+            types   0x100067876 B48@0:8@16@24i32@36B44
+            imp     0x100015a00
+            name    0x1000667bd init
+            types   0x1000675fd @16@0:8
+            imp     0x100015c94
+            name    0x1000668a3 initWithPath:
+            types   0x10006788d @24@0:8@16
+            imp     0x100015ca4
+            name    0x100066a98 open
+            types   0x100067651 B16@0:8
+            imp     0x100015d24
+            name    0x100066a9d openForAppending
+            types   0x100067651 B16@0:8
+            imp     0x100015dcc
+            name    0x10006730d writeFolderAtPath:withFolderName:withPassword:
+            types   0x1000676c1 B40@0:8@16@24@32
+            imp     0x100015e74
+            name    0x100067263 writeFile:withPassword:
+            types   0x10006769b B32@0:8@16@24
+            imp     0x1000160d4
+            name    0x1000672b7 writeFileAtPath:withFileName:withPassword:
+            types   0x1000676c1 B40@0:8@16@24@32
+            imp     0x1000160e8
+            name    0x10006727b writeFileAtPath:withFileName:compressionLevel:password:AES:
+            types   0x100067876 B48@0:8@16@24i32@36B44
+            imp     0x100016100
+            name    0x100067242 writeData:filename:withPassword:
+            types   0x1000676c1 B40@0:8@16@24@32
+            imp     0x1000162f8
+            name    0x100067210 writeData:filename:compressionLevel:password:AES:
+            types   0x100067876 B48@0:8@16@24i32@36B44
+            imp     0x100016310
+            name    0x10006615b close
+            types   0x100067651 B16@0:8
+            imp     0x100016478
+            name    0x100065e2f .cxx_destruct
+            types   0x100067605 v16@0:8
+            imp     0x100016a68
+        baseProtocols  0x0
+        ivars          0x100072298
+            entsize   32
+            count     2
+            offset    0x100072d4c 8
+            name      0x100066034 _path
+            type      0x10006762b @"NSString"
+            alignment 3
+            size      8
+            offset    0x100072d50 16
+            name      0x10006605d _zip
+            type      0x100067898 ^v
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100072110
+        flags          0x195 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x100067588 
+        baseMethods    0x100071e68
+            entsize 24
+            count   28
+            name    0x1000668ef isFilePasswordProtectedAtPath:
+            types   0x10006766f B24@0:8@16
+            imp     0x1000127bc
+            name    0x10006691d isPasswordValidForArchiveAtPath:password:error:
+            types   0x10006767a B40@0:8@16@24^@32
+            imp     0x1000128b8
+            name    0x100066ad0 payloadSizeForArchiveAtPath:error:
+            types   0x10006768c @32@0:8@16^@24
+            imp     0x100012c80
+            name    0x100066f34 unzipFileAtPath:toDestination:
+            types   0x10006769b B32@0:8@16@24
+            imp     0x100012f3c
+            name    0x100066f7b unzipFileAtPath:toDestination:overwrite:password:error:
+            types   0x1000676a9 B52@0:8@16@24B32@36^@44
+            imp     0x100012f4c
+            name    0x100066f53 unzipFileAtPath:toDestination:delegate:
+            types   0x1000676c1 B40@0:8@16@24@32
+            imp     0x100012f88
+            name    0x100066feb unzipFileAtPath:toDestination:overwrite:password:error:delegate:
+            types   0x1000676d2 B60@0:8@16@24B32@36^@44@52
+            imp     0x100012fc4
+            name    0x10006702c unzipFileAtPath:toDestination:overwrite:password:progressHandler:completionHandler:
+            types   0x1000676ed B60@0:8@16@24B32@36@?44@?52
+            imp     0x100013004
+            name    0x1000671cf unzipFileAtPath:toDestination:progressHandler:completionHandler:
+            types   0x100067709 B48@0:8@16@24@?32@?40
+            imp     0x100013044
+            name    0x100067105 unzipFileAtPath:toDestination:preserveAttributes:overwrite:password:error:delegate:
+            types   0x10006771f B64@0:8@16@24B32B36@40^@48@56
+            imp     0x100013080
+            name    0x100067159 unzipFileAtPath:toDestination:preserveAttributes:overwrite:password:error:delegate:progressHandler:completionHandler:
+            types   0x10006773d B80@0:8@16@24B32B36@40^@48@56@?64@?72
+            imp     0x1000130b0
+            name    0x100067080 unzipFileAtPath:toDestination:preserveAttributes:overwrite:nestedZipLevel:password:error:delegate:progressHandler:completionHandler:
+            types   0x100067763 B88@0:8@16@24B32B36q40@48^@56@64@?72@?80
+            imp     0x1000130f4
+            name    0x10006649d createZipFileAtPath:withFilesAtPaths:
+            types   0x10006769b B32@0:8@16@24
+            imp     0x100014b9c
+            name    0x10006625b createZipFileAtPath:withContentsOfDirectory:
+            types   0x10006769b B32@0:8@16@24
+            imp     0x100014bb4
+            name    0x100066288 createZipFileAtPath:withContentsOfDirectory:keepParentDirectory:
+            types   0x10006778c B36@0:8@16@24B32
+            imp     0x100014bcc
+            name    0x1000664c3 createZipFileAtPath:withFilesAtPaths:withPassword:
+            types   0x1000676c1 B40@0:8@16@24@32
+            imp     0x100014be4
+            name    0x1000664f6 createZipFileAtPath:withFilesAtPaths:withPassword:progressHandler:
+            types   0x10006779d B48@0:8@16@24@32@?40
+            imp     0x100014bf4
+            name    0x100066463 createZipFileAtPath:withContentsOfDirectory:withPassword:
+            types   0x1000676c1 B40@0:8@16@24@32
+            imp     0x100014e14
+            name    0x1000663b4 createZipFileAtPath:withContentsOfDirectory:keepParentDirectory:withPassword:
+            types   0x1000677b2 B44@0:8@16@24B32@36
+            imp     0x100014e30
+            name    0x100066402 createZipFileAtPath:withContentsOfDirectory:keepParentDirectory:withPassword:andProgressHandler:
+            types   0x1000677c6 B52@0:8@16@24B32@36@?44
+            imp     0x100014e48
+            name    0x1000662c9 createZipFileAtPath:withContentsOfDirectory:keepParentDirectory:compressionLevel:password:AES:progressHandler:
+            types   0x1000677de B60@0:8@16@24B32i36@40B48@?52
+            imp     0x100014e80
+            name    0x100065cea createZipFileAtPath:withFilesAtPaths:withPassword:keepSymlinks:
+            types   0x1000677fc B44@0:8@16@24@32B40
+            imp     0x1000152f0
+            name    0x100066338 createZipFileAtPath:withContentsOfDirectory:keepParentDirectory:compressionLevel:password:AES:progressHandler:keepSymlinks:
+            types   0x100067810 B64@0:8@16@24B32i36@40B48@?52B60
+            imp     0x100015534
+            name    0x100065f3c _filenameStringWithCString:version_made_by:general_purpose_flag:size:
+            types   0x100067831 @36@0:8r*16S24S28S32
+            imp     0x100016514
+            name    0x10006752d zipInfo:setAttributesOfItemAtPath:
+            types   0x100067846 v32@0:8^{?=I{tm=iiiiiiiiiq*}SI}16@24
+            imp     0x100016644
+            name    0x100067550 zipInfo:setDate:
+            types   0x100067846 v32@0:8^{?=I{tm=iiiiiiiiiq*}SI}16@24
+            imp     0x1000167b8
+            name    0x100065dec _gregorian
+            types   0x1000675fd @16@0:8
+            imp     0x1000168dc
+            name    0x100065f1e _dateWithMSDOSFormat:
+            types   0x10006786b @20@0:8I16
+            imp     0x100016960
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+0000000100071618 0x100072eb8
+    isa        0x100072ee0
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x100072508
+        flags          0x194 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   24
+        reserved       0x0
+        ivarLayout     0x100067595
+        layout map     0x01 
+        name           0x10006759e 
+        baseMethods    0x100072410
+            entsize 24
+            count   7
+            name    0x1000667d9 initWithArchiveAtPath:
+            types   0x10006788d @24@0:8@16
+            imp     0x10001bc74
+            name    0x100066b48 resetArchiveStruct
+            types   0x100067651 B16@0:8
+            imp     0x10001bd54
+            name    0x1000666a3 extractArchiveToDirectory:withOptions:
+            types   0x10006769b B32@0:8@16@24
+            imp     0x10001bdc0
+            name    0x1000660e4 archiveEntries
+            types   0x1000675fd @16@0:8
+            imp     0x10001c064
+            name    0x1000661a1 copyDataFromReadArchive:toWriteArchive:
+            types   0x10006789b B32@0:8^{archive=}16^{archive=}24
+            imp     0x10001c138
+            name    0x100065ec2 dealloc
+            types   0x100067605 v16@0:8
+            imp     0x10001c1c0
+            name    0x100065e2f .cxx_destruct
+            types   0x100067605 v16@0:8
+            imp     0x10001c214
+        baseProtocols  0x0
+        ivars          0x1000724c0
+            entsize   32
+            count     2
+            offset    0x100072d54 8
+            name      0x100066034 _path
+            type      0x10006762b @"NSString"
+            alignment 3
+            size      8
+            offset    0x100072d58 16
+            name      0x100065f0d _archive
+            type      0x1000678bd ^{archive=}
+            alignment 3
+            size      8
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0x1000723c8
+        flags          0x195 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x10006759e 
+        baseMethods    0x0
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Contents of (__DATA,__objc_classrefs) section
+0000000100072c18 0x0 _OBJC_CLASS_$_NSString
+0000000100072c20 0x0 _OBJC_CLASS_$_NSMutableDictionary
+0000000100072c28 0x0 _OBJC_CLASS_$_NSNumber
+0000000100072c30 0x0 _OBJC_CLASS_$_NSFileManager
+0000000100072c38 0x0 _OBJC_CLASS_$_UIDevice
+0000000100072c40 0x0 _OBJC_CLASS_$_NSDictionary
+0000000100072c48 0x0 _OBJC_CLASS_$_NSMutableData
+0000000100072c50 0x0 _OBJC_CLASS_$_NSData
+0000000100072c58 0x0 _OBJC_CLASS_$_NSUUID
+0000000100072c60 0x100072e68
+0000000100072c68 0x100072eb8
+0000000100072c70 0x100072db0
+0000000100072c78 0x0 _OBJC_CLASS_$_NSArray
+0000000100072c80 0x0 _OBJC_CLASS_$_NSError
+0000000100072c88 0x0 _OBJC_CLASS_$_NSMutableArray
+0000000100072c90 0x0 _OBJC_CLASS_$_NSMutableString
+0000000100072c98 0x0 _OBJC_CLASS_$_NSAssertionHandler
+0000000100072ca0 0x0 _OBJC_CLASS_$_NSDate
+0000000100072ca8 0x0 _OBJC_CLASS_$_NSCalendar
+0000000100072cb0 0x0 _OBJC_CLASS_$_NSDateComponents
+0000000100072cb8 0x0 _OBJC_CLASS_$_NSException
+0000000100072cc0 0x0 _OBJC_CLASS_$_NSCharacterSet
+0000000100072cc8 0x0 _OBJC_CLASS_$_NSURL
+0000000100072cd0 0x100072d60
+Contents of (__DATA,__objc_superrefs) section
+0000000100072cd8 0x100072d60
+0000000100072ce0 0x100072e68
+0000000100072ce8 0x100072eb8
+Contents of (__DATA,__objc_catlist) section
+0000000100071628 0x100072328
+    name      0x100067588 
+    cls       0x0 _OBJC_CLASS_$_NSData
+    instanceMethods 0x100072e00
+        entsize 24
+        count   4
+        name    0x100065cc5 aes256_encrypt:
+        types   0x10006788d @24@0:8@16
+        imp     0x10001a5f4
+        name    0x100065ca8 aes256_decrypt:
+        types   0x10006788d @24@0:8@16
+        imp     0x10001a71c
+        name    0x100065dbe _base64RFC4648
+        types   0x1000675fd @16@0:8
+        imp     0x100016a74
+        name    0x100065fa2 _hexString
+        types   0x1000675fd @16@0:8
+        imp     0x100016b18
+    classMethods 0x0
+    protocols 0x0
+    instanceProperties 0x0
+0000000100071630 0x100072388
+    name      0x100067588 
+    cls       0x0 _OBJC_CLASS_$_NSString
+    instanceMethods 0x100072368
+        entsize 24
+        count   1
+        name    0x10006603a _sanitizedPath
+        types   0x1000675fd @16@0:8
+        imp     0x100016c0c
+    classMethods 0x0
+    protocols 0x0
+    instanceProperties 0x0
+Contents of (__DATA,__objc_protolist) section
+0000000100071638 0x100073728
+    isa       0x0
+    name      0x1000675b5 
+    protocols 0x0
+    instanceMethods 0x100072600
+        entsize 24
+        count   2
+        name    0x100066a7a objectForKeyedSubscript:
+        types   0x10006788d @24@0:8@16
+        imp     0x0
+        name    0x100066c8a setObject:forKeyedSubscript:
+        types   0x1000678cd v32@0:8@16@24
+        imp     0x0
+    classMethods 0x0
+    optionalInstanceMethods 0x0
+    optionalClassMethods 0x0
+    instanceProperties 0x0
+Contents of (__DATA,__objc_selrefs) section
+    0x100065d69 URLPathAllowedCharacterSet
+    0x100065ed9 URLWithString:
+    0x100065d94 UTF8String
+    0x100065ef8 UUID
+    0x100065da3 UUIDString
+    0x100065f1e _dateWithMSDOSFormat:
+    0x100065f3c _filenameStringWithCString:version_made_by:general_purpose_flag:size:
+    0x100065dec _gregorian
+    0x100065fa2 _hexString
+    0x10006603a _sanitizedPath
+    0x100066062 absoluteString
+    0x100066071 addEntriesFromDictionary:
+    0x10006608b addObject:
+    0x100065e5e aes256_decrypt:
+    0x100066096 allObjects
+    0x1000660a2 alloc
+    0x1000660a8 allocBatch:withEntity:count:
+    0x1000660c5 allocWithEntity:
+    0x1000660d6 appendString:
+    0x1000660f3 arrayWithObjects:count:
+    0x10006610b attributesOfItemAtPath:error:
+    0x100065e7d base64EncodedStringWithOptions:
+    0x100066133 bytes
+    0x100066139 cStringUsingEncoding:
+    0x10006614f class
+    0x100066155 close
+    0x100066161 code
+    0x100066166 components:fromDate:
+    0x10006617b contentsOfDirectoryAtPath:error:
+    0x10006619c copy
+    0x1000661a1 copyDataFromReadArchive:toWriteArchive:
+    0x1000661c9 copyItemAtPath:toPath:error:
+    0x1000661e6 count
+    0x1000661ec countByEnumeratingWithState:objects:count:
+    0x100066217 createDirectoryAtPath:withIntermediateDirectories:attributes:error:
+    0x1000662c9 createZipFileAtPath:withContentsOfDirectory:keepParentDirectory:compressionLevel:password:AES:progressHandler:
+    0x1000663b4 createZipFileAtPath:withContentsOfDirectory:keepParentDirectory:withPassword:
+    0x100066402 createZipFileAtPath:withContentsOfDirectory:keepParentDirectory:withPassword:andProgressHandler:
+    0x100066463 createZipFileAtPath:withContentsOfDirectory:withPassword:
+    0x1000664c3 createZipFileAtPath:withFilesAtPaths:withPassword:
+    0x1000664f6 createZipFileAtPath:withFilesAtPaths:withPassword:progressHandler:
+    0x100066539 currentDevice
+    0x100066547 currentHandler
+    0x100066556 dataWithBytes:length:
+    0x10006656c dataWithBytesNoCopy:length:
+    0x100066588 dataWithContentsOfFile:options:error:
+    0x100065eab dataWithLength:
+    0x1000665ae date
+    0x1000665b3 dateFromComponents:
+    0x100065d42 day
+    0x100065ec2 dealloc
+    0x1000665d4 defaultManager
+    0x1000665ef dictionaryWithObjects:forKeys:count:
+    0x100066614 dictionaryWithObjectsAndKeys:
+    0x100066632 domain
+    0x100066639 doubleValue
+    0x10006664b enumeratorAtPath:
+    0x10006665d errorWithDomain:code:userInfo:
+    0x10006667c extractArchiveToDirectory:withOptions:
+    0x1000666ca fastIndexForKnownKey:
+    0x1000666e0 fileExistsAtPath:
+    0x1000666f2 fileExistsAtPath:isDirectory:
+    0x100066710 fileSystemRepresentation
+    0x100066729 flagValue
+    0x100066733 getCString:maxLength:encoding:
+    0x100065d65 gid
+    0x100066752 handleFailureInMethod:object:file:lineNumber:description:
+    0x100066795 hasPrefix:
+    0x1000667a0 hasSuffix:
+    0x1000667ab hour
+    0x1000667b0 indexForKey:
+    0x1000667bd init
+    0x1000667c2 initWithArchiveAtPath:
+    0x1000667f0 initWithArchiveStruct:
+    0x100066808 initWithBytes:length:encoding:
+    0x100066827 initWithBytesNoCopy:length:encoding:freeWhenDone:
+    0x100066859 initWithCString:encoding:
+    0x100066873 initWithCalendarIdentifier:
+    0x10006688f initWithDictionary:
+    0x1000668b1 initWithPath:
+    0x1000668bf initWithUTF8String:
+    0x1000668d3 initialize
+    0x1000668de isEqualToString:
+    0x10006690e isKindOfClass:
+    0x100065ed1 keepACL
+    0x10006694d keepFFlags
+    0x100066958 keepOwner
+    0x100065d84 keepPermissions
+    0x100066962 keepTime
+    0x10006696b keepXattrs
+    0x100066976 keyEnumerator
+    0x100066984 lastPathComponent
+    0x100066996 length
+    0x10006699e lengthOfBytesUsingEncoding:
+    0x1000669bf localizedDescription
+    0x100065ee8 lowercaseString
+    0x1000669d4 minute
+    0x1000669db month
+    0x1000669e1 moveItemAtPath:toPath:error:
+    0x1000669fe mutableBytes
+    0x100065d9f new
+    0x100066a0b nextObject
+    0x100065efd numberWithBool:
+    0x100066a16 numberWithInt:
+    0x100066a25 numberWithInteger:
+    0x100065dae numberWithLong:
+    0x100066a38 numberWithUnsignedLong:
+    0x100066a50 numberWithUnsignedLongLong:
+    0x100066a6c objectForKey:
+    0x100066a93 open
+    0x100066aae passphrase
+    0x100066ab9 pathExtension
+    0x100066ac7 pathname
+    0x100066af3 raise:format:arguments:
+    0x100065f16 release
+    0x100066b0b removeItemAtPath:error:
+    0x100066b23 removeLastObject
+    0x100066b34 removeObjectForKey:
+    0x100066b48 resetArchiveStruct
+    0x100066b5b respondsToSelector:
+    0x100066b6f second
+    0x100066b76 self
+    0x100066b7b setAttributes:ofItemAtPath:error:
+    0x100065dcd setDay:
+    0x100066b9d setHour:
+    0x100066ba6 setKeepACL:
+    0x100066bcd setKeepFFlags:
+    0x100066bdc setKeepOwner:
+    0x100066c0c setKeepPermissions:
+    0x100066c2d setKeepTime:
+    0x100066c49 setKeepXattrs:
+    0x100066c58 setLength:
+    0x100066c63 setMinute:
+    0x100066c6e setMonth:
+    0x100066c78 setObject:forKey:
+    0x100066c8a setObject:forKeyedSubscript:
+    0x100066cb6 setSecond:
+    0x100066cc1 setUnlinkBeforeCreate:
+    0x100066cef setValue:forKey:
+    0x100066d00 setYear:
+    0x100066d47 shortValue
+    0x100066d52 size
+    0x100065ddc standardizedURL
+    0x100066d57 string
+    0x100066d5e stringByAddingPercentEncodingWithAllowedCharacters:
+    0x100065f82 stringByAppendingPathComponent:
+    0x100066d92 stringByAppendingString:
+    0x100066dab stringByDeletingLastPathComponent
+    0x100065df7 stringByRemovingPercentEncoding
+    0x100066dcd stringByReplacingOccurrencesOfString:withString:
+    0x100066dfe stringEncodingForData:encodingOptions:convertedString:usedLossyConversion:
+    0x100066e49 stringValue
+    0x100066e55 stringWithCString:encoding:
+    0x100066e71 stringWithContentsOfFile:usedEncoding:error:
+    0x100066e9e stringWithFormat:
+    0x100066eb0 stringWithUTF8String:
+    0x100066ec6 substringFromIndex:
+    0x100066eda systemVersion
+    0x100065e20 uid
+    0x100066ee8 unlinkBeforeCreate
+    0x100066efb unsignedIntValue
+    0x100066f0c unsignedLongLongValue
+    0x100066f22 unsignedLongValue
+    0x100066f53 unzipFileAtPath:toDestination:delegate:
+    0x100066fb3 unzipFileAtPath:toDestination:overwrite:password:error:
+    0x100067080 unzipFileAtPath:toDestination:preserveAttributes:overwrite:nestedZipLevel:password:error:delegate:progressHandler:completionHandler:
+    0x100067159 unzipFileAtPath:toDestination:preserveAttributes:overwrite:password:error:delegate:progressHandler:completionHandler:
+    0x100067210 writeData:filename:compressionLevel:password:AES:
+    0x100067263 writeFile:withPassword:
+    0x10006727b writeFileAtPath:withFileName:compressionLevel:password:AES:
+    0x1000672e2 writeFileAtPath:withFileName:withPassword:
+    0x10006733c writeFolderAtPath:withFolderName:withPassword:
+    0x10006736b writeSymlinkFileAtPath:withFileName:compressionLevel:password:AES:
+    0x1000673ae writeToFile:atomically:
+    0x1000673c6 writeToFile:options:error:
+    0x1000673e1 year
+    0x1000673e6 zipArchiveDidUnzipArchiveAtPath:zipInfo:unzippedPath:
+    0x10006741c zipArchiveDidUnzipFileAtIndex:totalFiles:archivePath:fileInfo:
+    0x10006745b zipArchiveDidUnzipFileAtIndex:totalFiles:archivePath:unzippedFilePath:
+    0x1000674a2 zipArchiveProgressEvent:total:
+    0x1000674c1 zipArchiveShouldUnzipFileAtIndex:totalFiles:archivePath:fileInfo:
+    0x100067503 zipArchiveWillUnzipArchiveAtPath:zipInfo:
+    0x100065fc1 zipArchiveWillUnzipFileAtIndex:totalFiles:archivePath:fileInfo:
+    0x10006752d zipInfo:setAttributesOfItemAtPath:
+    0x100067550 zipInfo:setDate:
+Contents of (__DATA,__objc_imageinfo) section
+    version 0
+    flags   0x40

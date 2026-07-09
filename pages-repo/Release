@@ -1,18 +1,18 @@
 Origin: AMG官方源™ Patch Repo
 Label: AMG官方源™
 Suite: stable
-Version: 18.1.1
+Version: multi
 Codename: ios-patch
 Architectures: iphoneos-arm64
 Components: main
-Description: 自用授权测试源：前端还原 AMG 越狱源分类目录，APT 仅挂载 patched 补丁 deb。
-Date: Thu, 09 Jul 2026 13:09:04 +0000
+Description: 自用授权测试源：Pages 挂载已完成目标的最终 patched 补丁 deb，不发布中间态补丁包或原始源全量资源。
+Date: Thu, 09 Jul 2026 15:15:35 +0000
 MD5Sum:
- 05f070173085412b6e1b42ca43caafe5 750 Packages
- 742b4bd3b6ad26944bd2fae2a8923fe1 605 Packages.gz
+ 587a36a66bac8e5aee70536637190622 1498 Packages
+ 16957030df05c3f865c5ace12d9d3ce0 858 Packages.gz
 SHA1:
- d99528945facd94d2063384f2121364c833dc21b 750 Packages
- 28f548678b88e1c8e4b4025bfb578b4bfe244b3e 605 Packages.gz
+ 28f2c3c679b80fec0186d8a0cf583e90e4637178 1498 Packages
+ 49bad7fa2cfc9c34041925d3f5e890616a0b9651 858 Packages.gz
 SHA256:
- d751c88e2e472ead257cf9c1edd659b6a2b79be0d686dcc10a0336319cea229b 750 Packages
- 5f97f83dc6e9efdf05a8643eba9035a8b49eccb5ce126ab7c159cd24472ee380 605 Packages.gz
+ 928df09f16bf28c52fe22a60b0aaeb89fa06c8a6644cc240c14187d9a9408ec1 1498 Packages
+ 6eda88879707ce772b8219155a796d86565c606e7af37aaaa476a755cc5b219e 858 Packages.gz

@@ -1,0 +1,24 @@
+## arm64
+0xa14c expected=e0df8ad2c090bef2c0035fd6 got=e0df8ad2c090bef2c0035fd6 OK
+0xad2c expected=e0df8ad2c090bef2c0035fd6 got=e0df8ad2c090bef2c0035fd6 OK
+0xbea4 expected=c0035fd6 got=c0035fd6 OK
+0xca4c expected=c0035fd6 got=c0035fd6 OK
+0xb7e4 expected=c0035fd6 got=c0035fd6 OK
+0xbdb8 expected=c0035fd6 got=c0035fd6 OK
+0xbe64 expected=c0035fd6 got=c0035fd6 OK
+0xb5a0 expected=1f2003d5 got=1f2003d5 OK
+0xc9d0 expected=1f2003d5 got=1f2003d5 OK
+0xeb60 expected=1f2003d5 got=1f2003d5 OK
+0xf128 expected=1f2003d5 got=1f2003d5 OK
+## arm64e
+0xa8a8 expected=7f2303d5e0df8ad2c090bef2ff0f5fd6 got=7f2303d5e0df8ad2c090bef2ff0f5fd6 OK
+0xb5e8 expected=7f2303d5e0df8ad2c090bef2ff0f5fd6 got=7f2303d5e0df8ad2c090bef2ff0f5fd6 OK
+0xca3c expected=7f2303d5ff0f5fd6 got=7f2303d5ff0f5fd6 OK
+0xd6dc expected=7f2303d5ff0f5fd6 got=7f2303d5ff0f5fd6 OK
+0xc2d4 expected=7f2303d5ff0f5fd6 got=7f2303d5ff0f5fd6 OK
+0xc930 expected=7f2303d5ff0f5fd6 got=7f2303d5ff0f5fd6 OK
+0xc9e8 expected=7f2303d5ff0f5fd6 got=7f2303d5ff0f5fd6 OK
+0xc060 expected=1f2003d5 got=1f2003d5 OK
+0xd65c expected=1f2003d5 got=1f2003d5 OK
+0xfc08 expected=1f2003d5 got=1f2003d5 OK
+0x102d4 expected=1f2003d5 got=1f2003d5 OK

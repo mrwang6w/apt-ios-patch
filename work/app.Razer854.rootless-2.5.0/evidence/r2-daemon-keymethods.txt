@@ -1,0 +1,125 @@
+            ;-- func.100398214:
+┌ 88: method..main (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x100398214      ff0310d1       sub sp, sp, 0x400
+│           0x100398218      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x10039821c      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x100398220      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x100398224      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x100398228      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x10039822c      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x100398230      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x100398234      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x100398238      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x10039823c      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x100398240      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x100398244      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x100398248      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x10039824c      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x100398250      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x100398254      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x100398258      46000094       bl sym._41
+│           0x10039825c      e30300aa       mov x3, x0
+│           0x100398260      41000094       bl sym._40
+│           0x100398264      620f80d2       mov x2, 0x7b               ; '{'
+└       ┌─< 0x100398268      15170414       b sym._104
+            ;-- func.10047430c:
+┌ 88: method..requestDeviceInfo: (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x10047430c      ff0310d1       sub sp, sp, 0x400
+│           0x100474310      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x100474314      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x100474318      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x10047431c      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x100474320      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x100474324      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x100474328      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x10047432c      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x100474330      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x100474334      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x100474338      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x10047433c      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x100474340      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x100474344      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x100474348      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x10047434c      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x100474350      a3030094       bl sym._35
+│           0x100474354      e30300aa       mov x3, x0
+│           0x100474358      9e030094       bl sym._34
+│           0x10047435c      c20280d2       mov x2, 0x16
+└       ┌─< 0x100474360      d7a60014       b sym._104
+            ;-- func.100354e10:
+┌ 88: method.class..scheduledTimerWithTimeInterval:repeats:queue:block: (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x100354e10      ff0310d1       sub sp, sp, 0x400
+│           0x100354e14      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x100354e18      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x100354e1c      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x100354e20      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x100354e24      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x100354e28      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x100354e2c      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x100354e30      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x100354e34      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x100354e38      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x100354e3c      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x100354e40      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x100354e44      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x100354e48      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x100354e4c      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x100354e50      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x100354e54      b2000094       bl sym._59
+│           0x100354e58      e30300aa       mov x3, x0
+│           0x100354e5c      ad000094       bl sym._58
+│           0x100354e60      020080d2       mov x2, 0
+└       ┌─< 0x100354e64      16240514       b sym._104
+            ;-- func.100448f80:
+┌ 88: method..keepAliveTimer (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x100448f80      ff0310d1       sub sp, sp, 0x400
+│           0x100448f84      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x100448f88      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x100448f8c      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x100448f90      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x100448f94      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x100448f98      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x100448f9c      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x100448fa0      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x100448fa4      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x100448fa8      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x100448fac      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x100448fb0      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x100448fb4      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x100448fb8      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x100448fbc      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x100448fc0      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x100448fc4      25030094       bl sym._89
+│           0x100448fc8      e30300aa       mov x3, x0
+│           0x100448fcc      20030094       bl sym._88
+│           0x100448fd0      a20f80d2       mov x2, 0x7d               ; '}'
+└       ┌─< 0x100448fd4      ba530114       b sym._104
+            ;-- func.100449038:
+┌ 88: method..checkDupTimer (int64_t arg1, int64_t arg2, int64_t arg3, int64_t arg4, int64_t arg5, int64_t arg6, int64_t arg7, int64_t arg8);
+│ `- args(x0, x1, x2, x3, x4, x5, x6, x7)
+│           0x100449038      ff0310d1       sub sp, sp, 0x400
+│           0x10044903c      e00700a9       stp x0, x1, [sp]           ; arg2
+│           0x100449040      e20f01a9       stp x2, x3, [sp, 0x10]     ; arg4
+│           0x100449044      e41702a9       stp x4, x5, [sp, 0x20]     ; arg6
+│           0x100449048      e61f03a9       stp x6, x7, [sp, 0x30]     ; arg8
+│           0x10044904c      e82704a9       stp x8, x9, [sp, 0x40]
+│           0x100449050      ea2f05a9       stp x10, x11, [sp, 0x50]
+│           0x100449054      ec3706a9       stp x12, x13, [sp, 0x60]
+│           0x100449058      ee3f07a9       stp x14, x15, [sp, 0x70]
+│           0x10044905c      f04708a9       stp x16, x17, [sp, 0x80]
+│           0x100449060      f24f09a9       stp x18, x19, [sp, 0x90]
+│           0x100449064      f4570aa9       stp x20, x21, [sp, 0xa0]
+│           0x100449068      f65f0ba9       stp x22, x23, [sp, 0xb0]
+│           0x10044906c      f8670ca9       stp x24, x25, [sp, 0xc0]
+│           0x100449070      fa6f0da9       stp x26, x27, [sp, 0xd0]
+│           0x100449074      fc770ea9       stp x28, x29, [sp, 0xe0]
+│           0x100449078      fe470fa9       stp x30, x17, [sp, 0xf0]
+│           0x10044907c      f7020094       bl sym._89
+│           0x100449080      e30300aa       mov x3, x0
+│           0x100449084      f2020094       bl sym._88
+│           0x100449088      e20f80d2       mov x2, 0x7f               ; '\x7f'
+└       ┌─< 0x10044908c      8c530114       b sym._104

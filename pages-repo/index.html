@@ -9,7 +9,7 @@
   <meta name="HandheldFriendly" content="true" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="robots" content="noindex,nofollow" />
-  <meta name="description" content="自用授权测试源：前端还原 AMG 越狱源分类目录，APT 仅挂载 patched 补丁 deb。" />
+  <meta name="description" content="自用授权测试源：Pages 挂载已完成目标的最终 patched 补丁 deb，不发布中间态补丁包或原始源全量资源。" />
   <link rel="apple-touch-icon" href="./CydiaIcon.png" />
   <link rel="shortcut icon" href="./favicon.ico" />
   <style>
@@ -78,50 +78,25 @@
   </fieldset>
 
   <block>
-    <p><strong>16</strong> packages in original directory.</p>
-    <p><strong>1</strong> patched package mounted in this repo.</p>
+    <p><strong>2</strong> package shown in current directory.</p>
+    <p><strong>2</strong> patched packages mounted in this repo.</p>
     <p>Last upstream snapshot: <strong>2026-07-08 19:44:22</strong></p>
   </block>
 
   <div class="notice">
-    前端按原 AMG 越狱源分类目录还原；APT <code>Packages</code> 只发布 <code>com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb</code>，不会镜像原始源其它 deb。
+    当前 Pages 源展示并发布已完成目标的最终 patched 补丁包：<code>com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb, app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb</code>，旧 Pages 包和原始源其它 deb 均不发布。
   </div>
 
   <label class="source"><p>Sections</p></label>
   <fieldset class="sections">
 <a href="#section-0">
   <span class="repo-icon folder">▸</span>
-  <div class="row-main"><label><p>AWZ爱伪装</p></label><p class="sub">1 packages · 已挂载 0</p></div>
+  <div class="row-main"><label><p>AMG</p></label><p class="sub">1 packages · 已挂载 1</p></div>
   <span class="chevron">›</span>
 </a>
 <a href="#section-1">
   <span class="repo-icon folder">▸</span>
-  <div class="row-main"><label><p>AMG</p></label><p class="sub">3 packages · 已挂载 1</p></div>
-  <span class="chevron">›</span>
-</a>
-<a href="#section-2">
-  <span class="repo-icon folder">▸</span>
-  <div class="row-main"><label><p>工具</p></label><p class="sub">1 packages · 已挂载 0</p></div>
-  <span class="chevron">›</span>
-</a>
-<a href="#section-3">
-  <span class="repo-icon folder">▸</span>
-  <div class="row-main"><label><p>越狱插件</p></label><p class="sub">3 packages · 已挂载 0</p></div>
-  <span class="chevron">›</span>
-</a>
-<a href="#section-4">
-  <span class="repo-icon folder">▸</span>
-  <div class="row-main"><label><p>ZORRO佐罗</p></label><p class="sub">2 packages · 已挂载 0</p></div>
-  <span class="chevron">›</span>
-</a>
-<a href="#section-5">
-  <span class="repo-icon folder">▸</span>
-  <div class="row-main"><label><p>Razer雷蛇</p></label><p class="sub">3 packages · 已挂载 0</p></div>
-  <span class="chevron">›</span>
-</a>
-<a href="#section-6">
-  <span class="repo-icon folder">▸</span>
-  <div class="row-main"><label><p>VBox虚拟盒子</p></label><p class="sub">3 packages · 已挂载 0</p></div>
+  <div class="row-main"><label><p>Razer雷蛇</p></label><p class="sub">1 packages · 已挂载 1</p></div>
   <span class="chevron">›</span>
 </a>
   </fieldset>
@@ -132,23 +107,10 @@
       <img class="icon" src="./CydiaIcon.png" style="width:38px;height:38px;" alt="source icon" />
       <div class="row-main"><label><p id="source-name">AMG官方源™</p></label><p class="sub">AMG唯一正版官方源</p></div>
     </a>
-    <div class="source-description"><p>自用授权测试源：前端还原 AMG 越狱源分类目录，APT 仅挂载 patched 补丁 deb。</p></div>
+    <div class="source-description"><p>自用授权测试源：Pages 挂载已完成目标的最终 patched 补丁 deb，不发布中间态补丁包或原始源全量资源。</p></div>
   </fieldset>
 
-<label class="section-title" id="section-0"><p>AWZ爱伪装</p></label>
-<fieldset class="packages">
-<a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>AWZ爱伪装_修复(有根)</p></label>
-    <p class="sub"><code>app.awz4854.rootful</code> · 15.0.1 · iphoneos-arm</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a>
-</fieldset>
-<label class="section-title" id="section-1"><p>AMG</p></label>
+<label class="section-title" id="section-0"><p>AMG</p></label>
 <fieldset class="packages">
 <a class="package mounted" href="./debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb">
   <span class="repo-icon">✓</span>
@@ -159,152 +121,19 @@
     <p class="hash">SHA256: <code>0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866</code></p><p class="sub">Size: 6206412 bytes</p>
   </div>
   <span class="badge">已挂载 patch</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>纯净版18.1.1_AMG奔驰正版[有根]</p></label>
-    <p class="sub"><code>com.amg456.rootful</code> · 18.1.1 · iphoneos-arm</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>纯净版18.1.1_AMG奔驰正版[隐根]</p></label>
-    <p class="sub"><code>com.amg456.roothide</code> · 18.1.1 · iphoneos-arm64e</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
 </a>
 </fieldset>
-<label class="section-title" id="section-2"><p>工具</p></label>
+<label class="section-title" id="section-1"><p>Razer雷蛇</p></label>
 <fieldset class="packages">
-<a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
+<a class="package mounted" href="./debs/app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb">
+  <span class="repo-icon">✓</span>
   <div class="row-main">
-    <label><p>Filza File 文件管理器【正版】</p></label>
-    <p class="sub"><code>apt.cydiakk.filza</code> · 4.0.1-3 · iphoneos-arm</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a>
-</fieldset>
-<label class="section-title" id="section-3"><p>越狱插件</p></label>
-<fieldset class="packages">
-<a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>连个锤子-越狱联网一键修复</p></label>
-    <p class="sub"><code>com.ssoes.renet</code> · 1.2.1 · iphoneos-arm</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>连个锤子-联网修复-Rootless</p></label>
-    <p class="sub"><code>com.ssoes.Renet.rootless</code> · 1.2.2 · iphoneos-arm64</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>连个锤子-联网修复-Roohide</p></label>
-    <p class="sub"><code>com.ssoes.Renet.Roohide</code> · 1.2.2 · iphoneos-arm64e</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a>
-</fieldset>
-<label class="section-title" id="section-4"><p>ZORRO佐罗</p></label>
-<fieldset class="packages">
-<a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>18.1.1_ZORRO佐罗(无根)</p></label>
-    <p class="sub"><code>app.zorrom4854.rootless</code> · 18.1.1 · iphoneos-arm64</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>18.1.1_ZORRO佐罗(有根)</p></label>
-    <p class="sub"><code>app.zorrom4854.rootful</code> · 18.1.1 · iphoneos-arm</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a>
-</fieldset>
-<label class="section-title" id="section-5"><p>Razer雷蛇</p></label>
-<fieldset class="packages">
-<a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>2.5.0_Razer雷蛇(无根)</p></label>
+    <label><p>2.5.0_Razer雷蛇(无根) Patch NoExit</p></label>
     <p class="sub"><code>app.Razer854.rootless</code> · 2.5.0 · iphoneos-arm64</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
+    <p class="desc">授权测试补丁包：去除授权码弹窗和版本过期检查，禁用 daemon 设备信息/授权上报，并移除退出/kill 路径。</p>
+    <p class="hash">SHA256: <code>bffe9d57de415d70c6723e90e9aca0f2c17da123abd10e812243db3a1f8505ef</code></p><p class="sub">Size: 21215306 bytes</p>
   </div>
-  <span class="badge">目录镜像</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>2.5.0_Razer雷蛇(有根)</p></label>
-    <p class="sub"><code>app.Razer854.rootful</code> · 2.5.0 · iphoneos-arm</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>2.5.0_Razer雷蛇(隐根)</p></label>
-    <p class="sub"><code>app.Razer854.roothide</code> · 2.5.0 · iphoneos-arm64e</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a>
-</fieldset>
-<label class="section-title" id="section-6"><p>VBox虚拟盒子</p></label>
-<fieldset class="packages">
-<a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>VBox_5.5「RootHide」</p></label>
-    <p class="sub"><code>com.amg456.VBox2</code> · 5.5 · iphoneos-arm64e</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>VBox_5.5「有根」</p></label>
-    <p class="sub"><code>com.amg456.VBox</code> · 5.5 · iphoneos-arm</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
-</a><a class="package disabled" href="#not-published">
-  <span class="repo-icon">·</span>
-  <div class="row-main">
-    <label><p>VBox_5.5「无根」</p></label>
-    <p class="sub"><code>com.amg456.VBox1</code> · 5.5 · iphoneos-arm64</p>
-    <p class="desc">目录镜像：未发布原包 deb，仅保留分类结构。</p>
-    
-  </div>
-  <span class="badge">目录镜像</span>
+  <span class="badge">已挂载 patch</span>
 </a>
 </fieldset>
 

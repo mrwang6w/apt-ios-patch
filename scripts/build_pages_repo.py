@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Build a static GitHub Pages Cydia/Sileo repo from patched deb artifacts.
 
-The published APT metadata intentionally mounts only the patched deb under
-``patched/``. The front page mirrors the original source's jailbreak repo
-category directory from ``downloads/amg456-repo/manifest.json`` so the UI looks
-and navigates like the upstream source without republishing upstream debs.
+The published APT metadata intentionally mounts one final patched deb per
+completed target from ``patched/``. Intermediate patch artifacts are kept out of
+the Pages repo.
 
 All display frontend and APT static files are generated under ``pages-repo/``.
 GitHub Pages should publish ``pages-repo/`` as the artifact root, so the public
@@ -31,20 +30,35 @@ DOWNLOADS_DIR = ROOT / "downloads" / "amg456-repo"
 SOURCE_MANIFEST = DOWNLOADS_DIR / "manifest.json"
 SOURCE_PACKAGES = DOWNLOADS_DIR / "Packages"
 OUT = ROOT / "pages-repo"
-PACKAGE_ID = "com.amg456.rootless"
-DEB_SOURCE = PATCHED_DIR / "纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat_noexit.deb"
-DEB_NAME = "com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb"
 
 ORIGINAL_REPO_NAME = "AMG官方源™"
 ORIGINAL_REPO_DESC = "AMG唯一正版官方源"
 REPO_NAME = "AMG官方源™ Patch Repo"
-REPO_DESC = "自用授权测试源：前端还原 AMG 越狱源分类目录，APT 仅挂载 patched 补丁 deb。"
-PUBLISH_NAME = "纯净版18.1.1_AMG奔驰正版[无根] Patch NoExit"
+REPO_DESC = "自用授权测试源：Pages 挂载已完成目标的最终 patched 补丁 deb，不发布中间态补丁包或原始源全量资源。"
 PUBLISH_MAINTAINER = "Local Patch Repo"
 PUBLISH_AUTHOR = "Local Patch Repo"
-PUBLISH_SECTION = "AMG"
-PUBLISH_DESC = "授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，禁用周期心跳检测，并移除延迟退出路径。"
 SOURCE_LAST_UPDATED = "2026-07-08 19:44:22"
+
+PATCHED_PACKAGES = [
+    {
+        "package_id": "com.amg456.rootless",
+        "source": PATCHED_DIR / "纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless_nopopup_2099_noheartbeat_noexit.deb",
+        "deb_name": "com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb",
+        "publish_name": "纯净版18.1.1_AMG奔驰正版[无根] Patch NoExit",
+        "publish_section": "AMG",
+        "publish_desc": "授权测试补丁包：去除首页激活弹窗，将试用过期时间调整为 2099，禁用周期心跳检测，并移除延迟退出路径。",
+        "depiction_name": "com.amg456.rootless.html",
+    },
+    {
+        "package_id": "app.Razer854.rootless",
+        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0_app.Razer854.rootless_nopopup_noexpire_noheartbeat_noexit.deb",
+        "deb_name": "app.Razer854.rootless_2.5.0_nopopup_noexpire_noheartbeat_noexit.deb",
+        "publish_name": "2.5.0_Razer雷蛇(无根) Patch NoExit",
+        "publish_section": "Razer雷蛇",
+        "publish_desc": "授权测试补丁包：去除授权码弹窗和版本过期检查，禁用 daemon 设备信息/授权上报，并移除退出/kill 路径。",
+        "depiction_name": "app.Razer854.rootless.html",
+    },
+]
 
 
 def h(value: object) -> str:
@@ -153,8 +167,9 @@ def write_png(path: Path) -> None:
 
 def render_section_nav(grouped: OrderedDict[str, list[dict[str, str]]]) -> str:
     rows = []
+    mounted_ids = {str(pkg["package_id"]) for pkg in PATCHED_PACKAGES}
     for idx, (section, items) in enumerate(grouped.items()):
-        mounted = sum(1 for item in items if item.get("Package") == PACKAGE_ID)
+        mounted = sum(1 for item in items if item.get("Package") in mounted_ids)
         rows.append(
             f'''<a href="#section-{idx}">
   <span class="repo-icon folder">▸</span>
@@ -168,24 +183,28 @@ def render_section_nav(grouped: OrderedDict[str, list[dict[str, str]]]) -> str:
 def render_package_rows(
     grouped: OrderedDict[str, list[dict[str, str]]],
     *,
-    deb_name: str,
-    deb_sha256: str,
-    deb_size: int,
+    mounted: dict[str, dict[str, object]],
 ) -> str:
     sections = []
     for idx, (section, items) in enumerate(grouped.items()):
         rows = []
         for item in items:
-            is_mounted = item.get("Package") == PACKAGE_ID
-            name = PUBLISH_NAME if is_mounted else item.get("Name", item.get("Package", "unknown"))
+            package = item.get("Package", "unknown")
+            mounted_info = mounted.get(package)
+            is_mounted = mounted_info is not None
+            name = str(mounted_info["publish_name"]) if is_mounted else item.get("Name", package)
             version = item.get("Version", "unknown")
             arch = item.get("Architecture", "iphoneos-arm64")
-            package = item.get("Package", "unknown")
-            desc = PUBLISH_DESC if is_mounted else "目录镜像：未发布原包 deb，仅保留分类结构。"
+            desc = str(mounted_info["publish_desc"]) if is_mounted else "目录镜像：未发布原包 deb，仅保留分类结构。"
             badge = "已挂载 patch" if is_mounted else "目录镜像"
             klass = "package mounted" if is_mounted else "package disabled"
-            href = f"./debs/{deb_name}" if is_mounted else "#not-published"
-            extra = f"<p class=\"hash\">SHA256: <code>{h(deb_sha256)}</code></p><p class=\"sub\">Size: {deb_size} bytes</p>" if is_mounted else ""
+            href = f"./debs/{mounted_info['deb_name']}" if is_mounted else "#not-published"
+            extra = (
+                f"<p class=\"hash\">SHA256: <code>{h(mounted_info['sha256'])}</code></p>"
+                f"<p class=\"sub\">Size: {mounted_info['size']} bytes</p>"
+                if is_mounted
+                else ""
+            )
             rows.append(
                 f'''<a class="{klass}" href="{h(href)}">
   <span class="repo-icon">{("✓" if is_mounted else "·")}</span>
@@ -207,62 +226,108 @@ def render_package_rows(
     return "\n".join(sections)
 
 
+def build_package_record(config: dict[str, object], deb_out: Path, fields: dict[str, str], deb_sha256: str) -> str:
+    package_id = str(config["package_id"])
+    package_lines = []
+    for key in ["Package", "Version", "Priority", "Depends", "Architecture"]:
+        if key in fields:
+            package_lines.append(f"{key}: {fields[key]}")
+    if "Package" not in fields:
+        package_lines.insert(0, f"Package: {package_id}")
+    package_lines.extend(
+        [
+            f"Section: {config['publish_section']}",
+            f"Maintainer: {PUBLISH_MAINTAINER}",
+            f"Name: {config['publish_name']}",
+            f"Author: {PUBLISH_AUTHOR}",
+            f"Filename: ./debs/{config['deb_name']}",
+            f"Size: {deb_out.stat().st_size}",
+            f"MD5sum: {digest(deb_out, 'md5')}",
+            f"SHA1: {digest(deb_out, 'sha1')}",
+            f"SHA256: {deb_sha256}",
+            f"Depiction: ./depictions/{config['depiction_name']}",
+            "Icon: ./CydiaIcon.png",
+        ]
+    )
+    package_lines.append(f"Description: {config['publish_desc']}")
+    return "\n".join(package_lines)
+
+
+def render_depiction(config: dict[str, object], fields: dict[str, str], deb_sha256: str) -> str:
+    return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{h(config['publish_name'])}</title><style>body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:24px;line-height:1.6;color:#1f2937;background:#FFF5EE}}code{{word-break:break-all;background:#f3f4f6;padding:2px 5px;border-radius:5px}}.card{{background:#fff;border:1px solid #fed7aa;border-radius:14px;padding:16px;max-width:720px;margin:auto}}</style></head><body><div class="card"><h1>{h(config['publish_name'])}</h1><p>{h(config['publish_desc'])}</p><ul><li>Package: <code>{h(fields.get('Package', config['package_id']))}</code></li><li>Section: <code>{h(config['publish_section'])}</code></li><li>Version: <code>{h(fields.get('Version', 'unknown'))}</code></li><li>SHA256: <code>{h(deb_sha256)}</code></li></ul><p>仅供自用/授权测试环境；前端和 APT 均只挂载已完成目标的最终 patched 补丁包。</p></div></body></html>\n'''
+
+
+def select_mounted_source_entries(source_packages: list[dict[str, str]], mounted: dict[str, dict[str, object]]) -> list[dict[str, str]]:
+    """Return source rows for mounted packages only, preserving publish order."""
+    by_package = {pkg.get("Package"): pkg for pkg in source_packages}
+    selected: list[dict[str, str]] = []
+    for package_id, info in mounted.items():
+        if package_id in by_package:
+            selected.append(dict(by_package[package_id]))
+            continue
+        fields = info["fields"]
+        assert isinstance(fields, dict)
+        selected.append(
+            {
+                "Section": str(info["publish_section"]),
+                "Package": package_id,
+                "Name": str(info["publish_name"]),
+                "Version": str(fields.get("Version", "unknown")),
+                "Architecture": str(fields.get("Architecture", "iphoneos-arm64")),
+            }
+        )
+    return selected
+
+
 
 def build() -> None:
-    if not DEB_SOURCE.exists():
-        raise FileNotFoundError(DEB_SOURCE)
-    if looks_like_lfs_pointer(DEB_SOURCE):
-        raise RuntimeError(f"{DEB_SOURCE} is a Git LFS pointer; run `git lfs pull` before rebuilding pages-repo")
+    for config in PATCHED_PACKAGES:
+        source = Path(config["source"])
+        if not source.exists():
+            raise FileNotFoundError(source)
+        if looks_like_lfs_pointer(source):
+            raise RuntimeError(f"{source} is a Git LFS pointer; run `git lfs pull` before rebuilding pages-repo")
     if OUT.exists():
         shutil.rmtree(OUT)
     (OUT / "debs").mkdir(parents=True)
     (OUT / "depictions").mkdir(parents=True)
 
-    deb_out = OUT / "debs" / DEB_NAME
-    shutil.copy2(DEB_SOURCE, deb_out)
-    fields = extract_control(deb_out, OUT / ".tmp-control")
-    shutil.rmtree(OUT / ".tmp-control")
+    mounted: dict[str, dict[str, object]] = {}
+    package_records: list[str] = []
+    for config in PATCHED_PACKAGES:
+        source = Path(config["source"])
+        deb_out = OUT / "debs" / str(config["deb_name"])
+        shutil.copy2(source, deb_out)
+        fields = extract_control(deb_out, OUT / ".tmp-control")
+        shutil.rmtree(OUT / ".tmp-control")
+        package_id = fields.get("Package", str(config["package_id"]))
+        deb_sha256 = digest(deb_out, "sha256")
+        info = {**config, "fields": fields, "size": deb_out.stat().st_size, "sha256": deb_sha256}
+        mounted[package_id] = info
+        package_records.append(build_package_record(config, deb_out, fields, deb_sha256))
 
-    source_packages = load_source_packages()
-    grouped = group_by_section(source_packages or [{"Section": PUBLISH_SECTION, "Package": PACKAGE_ID, "Name": PUBLISH_NAME, "Version": fields.get("Version", "unknown"), "Architecture": fields.get("Architecture", "iphoneos-arm64")}])
-    total_source_packages = sum(len(items) for items in grouped.values())
-    mounted_count = 1
+    source_packages = select_mounted_source_entries(load_source_packages(), mounted)
+    grouped = group_by_section(source_packages)
+    total_display_packages = sum(len(items) for items in grouped.values())
+    mounted_count = len(mounted)
 
-    filename = f"./debs/{DEB_NAME}"
-    size = deb_out.stat().st_size
-    deb_sha256 = digest(deb_out, "sha256")
-    package_lines = []
-    for key in ["Package", "Version", "Priority", "Depends", "Architecture"]:
-        if key in fields:
-            package_lines.append(f"{key}: {fields[key]}")
-    package_lines.extend(
-        [
-            f"Section: {PUBLISH_SECTION}",
-            f"Maintainer: {PUBLISH_MAINTAINER}",
-            f"Name: {PUBLISH_NAME}",
-            f"Author: {PUBLISH_AUTHOR}",
-            f"Filename: {filename}",
-            f"Size: {size}",
-            f"MD5sum: {digest(deb_out, 'md5')}",
-            f"SHA1: {digest(deb_out, 'sha1')}",
-            f"SHA256: {deb_sha256}",
-            "Depiction: ./depictions/com.amg456.rootless.html",
-            "Icon: ./CydiaIcon.png",
-        ]
-    )
-    package_lines.append(f"Description: {PUBLISH_DESC}")
-    packages = "\n".join(package_lines) + "\n\n"
+    packages = "\n\n".join(package_records) + "\n\n"
     (OUT / "Packages").write_text(packages, encoding="utf-8")
     with gzip.GzipFile(filename=str(OUT / "Packages.gz"), mode="wb", mtime=0) as gz:
         gz.write(packages.encode("utf-8"))
 
     pkg_path = OUT / "Packages"
     pkg_gz_path = OUT / "Packages.gz"
+    release_version = (
+        str(next(iter(mounted.values()))["fields"].get("Version", "unknown"))
+        if len(mounted) == 1
+        else "multi"
+    )
     release_base = [
         f"Origin: {REPO_NAME}",
         f"Label: {ORIGINAL_REPO_NAME}",
         "Suite: stable",
-        f"Version: {fields.get('Version', '1.0')}",
+        f"Version: {release_version}",
         "Codename: ios-patch",
         "Architectures: iphoneos-arm64",
         "Components: main",
@@ -295,7 +360,8 @@ def build() -> None:
     (OUT / "favicon.ico").write_bytes((OUT / "CydiaIcon.png").read_bytes())
 
     section_nav = render_section_nav(grouped)
-    package_rows = render_package_rows(grouped, deb_name=DEB_NAME, deb_sha256=deb_sha256, deb_size=size)
+    package_rows = render_package_rows(grouped, mounted=mounted)
+    mounted_deb_names = ", ".join(str(info["deb_name"]) for info in mounted.values())
 
     (OUT / "index.html").write_text(
         f'''<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -378,13 +444,13 @@ def build() -> None:
   </fieldset>
 
   <block>
-    <p><strong>{total_source_packages}</strong> packages in original directory.</p>
-    <p><strong>{mounted_count}</strong> patched package mounted in this repo.</p>
+    <p><strong>{total_display_packages}</strong> package shown in current directory.</p>
+    <p><strong>{mounted_count}</strong> patched packages mounted in this repo.</p>
     <p>Last upstream snapshot: <strong>{h(SOURCE_LAST_UPDATED)}</strong></p>
   </block>
 
   <div class="notice">
-    前端按原 AMG 越狱源分类目录还原；APT <code>Packages</code> 只发布 <code>{h(DEB_NAME)}</code>，不会镜像原始源其它 deb。
+    当前 Pages 源展示并发布已完成目标的最终 patched 补丁包：<code>{h(mounted_deb_names)}</code>，旧 Pages 包和原始源其它 deb 均不发布。
   </div>
 
   <label class="source"><p>Sections</p></label>
@@ -423,32 +489,29 @@ def build() -> None:
         encoding="utf-8",
     )
 
-    (OUT / "depictions" / "com.amg456.rootless.html").write_text(
-        f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{h(PUBLISH_NAME)}</title><style>body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:24px;line-height:1.6;color:#1f2937;background:#FFF5EE}}code{{word-break:break-all;background:#f3f4f6;padding:2px 5px;border-radius:5px}}.card{{background:#fff;border:1px solid #fed7aa;border-radius:14px;padding:16px;max-width:720px;margin:auto}}</style></head><body><div class="card"><h1>{h(PUBLISH_NAME)}</h1><p>{h(PUBLISH_DESC)}</p><ul><li>Package: <code>{h(fields.get('Package', PACKAGE_ID))}</code></li><li>Section: <code>{h(PUBLISH_SECTION)}</code></li><li>Version: <code>{h(fields.get('Version', 'unknown'))}</code></li><li>SHA256: <code>{h(deb_sha256)}</code></li></ul><p>仅供自用/授权测试环境；前端分类目录来自原源快照，APT 实际只挂载本补丁包。</p></div></body></html>\n''',
-        encoding="utf-8",
-    )
+    for info in mounted.values():
+        fields = info["fields"]
+        assert isinstance(fields, dict)
+        (OUT / "depictions" / str(info["depiction_name"])).write_text(
+            render_depiction(info, fields, str(info["sha256"])),
+            encoding="utf-8",
+        )
 
     category_lines = "\n".join(f"- {section}: {len(items)} packages" for section, items in grouped.items())
     (OUT / "README.md").write_text(
         f'''# {REPO_NAME}
 
-这是一个可部署到 GitHub Pages 的静态 Cydia/Sileo 源目录。前端页面按原 `AMG官方源™` 的越狱源分类目录做静态还原，但 APT 元数据只挂载 `patched/` 中生成的补丁 deb，不镜像原始源全量资源。
+这是一个可部署到 GitHub Pages 的静态 Cydia/Sileo 源目录。前端页面和 APT 元数据挂载已完成目标的最终 patched 补丁 deb；中间态补丁包和原始源全量资源不会被 Pages 发布。
 
 ## 当前挂载包
 
-- Package: `{fields.get('Package', PACKAGE_ID)}`
-- Name: `{PUBLISH_NAME}`
-- Section: `{PUBLISH_SECTION}`
-- Version: `{fields.get('Version', 'unknown')}`
-- File: `debs/{DEB_NAME}`
-- Size: `{size}` bytes
-- SHA256: `{deb_sha256}`
+{chr(10).join(f"- `{package_id}` / `{info['publish_name']}` / `debs/{info['deb_name']}` / `{info['size']}` bytes / SHA256 `{info['sha256']}`" for package_id, info in mounted.items())}
 
-> 注意：deb 内部版本仍是 `{fields.get('Version', 'unknown')}`。如果设备已经安装同版本原包，包管理器可能不提示升级；需要强制升级时应重打 deb 并同步提升 deb control 中的 `Version`。
+> 注意：deb 内部版本仍沿用各自原包版本。如果设备已经安装同版本原包，包管理器可能不提示升级；需要强制升级时应重打 deb 并同步提升 deb control 中的 `Version`。
 
 ## 前端分类目录
 
-原源快照统计：`{total_source_packages}` packages，当前 Pages 源实际挂载：`{mounted_count}` patched package。
+当前前端展示：`{total_display_packages}` packages，当前 Pages 源实际挂载：`{mounted_count}` patched packages。
 
 {category_lines}
 
@@ -488,23 +551,24 @@ GitHub Pages 不能直接发布 Git LFS 文件。本目录自带 `.gitattributes
 ```bash
 python3 scripts/build_pages_repo.py
 gzip -t pages-repo/Packages.gz
-shasum -a 256 pages-repo/debs/{DEB_NAME}
+shasum -a 256 pages-repo/debs/*.deb
 ```
 
 部署后校验：
 
 ```bash
 curl -fsSL https://<user>.github.io/<repo>/Packages.gz | gzip -t
-curl -fsSL https://<user>.github.io/<repo>/Packages.gz | gzip -dc | grep -A20 '^Package: {fields.get('Package', PACKAGE_ID)}'
-curl -fsSLO https://<user>.github.io/<repo>/debs/{DEB_NAME}
-shasum -a 256 {DEB_NAME}
+curl -fsSL https://<user>.github.io/<repo>/Packages.gz | gzip -dc
+curl -fsSLO https://<user>.github.io/<repo>/debs/<deb-name>
+shasum -a 256 <deb-name>
 ```
 ''',
         encoding="utf-8",
     )
 
     print(f"Built {OUT}")
-    print(f"deb sha256: {deb_sha256}")
+    for package_id, info in mounted.items():
+        print(f"{package_id} sha256: {info['sha256']}")
     print(f"source categories: {len(grouped)}")
 
 

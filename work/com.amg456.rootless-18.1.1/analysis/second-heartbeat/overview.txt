@@ -1,0 +1,518 @@
+--- files ---
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib: Mach-O universal binary with 2 architectures: [arm64:Mach-O 64-bit dynamically linked shared library arm64] [arm64e:Mach-O 64-bit dynamically linked shared library arm64e]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib (for architecture arm64):	Mach-O 64-bit dynamically linked shared library arm64
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib (for architecture arm64e):	Mach-O 64-bit dynamically linked shared library arm64e
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/AMG:              Mach-O 64-bit executable arm64
+--- lipo ---
+Architectures in the fat file: /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib are: arm64 arm64e 
+Non-fat file: /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/AMG is architecture: arm64
+--- hashes ---
+39cca71d7825ff4b3c48392ce2ead907caafc90159ff39800ab1d2d7439c0460  /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/TG@wx_zyyy.dylib
+8a46ded71fbc17a13de1f681b805f04d44abe97d0d805464ecd8dfa91eb176f4  /Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/extract/rootfs/var/jb/Applications/AMG.app/AMG
+--- imports/timer/exit selectors TG nm arm64 ---
+0000000000008ffc (__TEXT,__text) non-external -[UILabel(EXP) swizzled_setAttributedText:]
+0000000000007dd0 (__TEXT,__text) non-external -[qliweufhoiqhuefoquewf URLSession:dataTask:didReceiveData:]
+00000000000083ac (__TEXT,__text) non-external -[qliweufhoiqhuefoquewf handleDDDDescCertResponse:]
+0000000000014e8c (__TEXT,__text) non-external (was a private external) _$s10Foundation4DataV5write2to7optionsyAA3URLV_So20NSDataWritingOptionsVtKFfA0_
+0000000000013d34 (__TEXT,__text) non-external (was a private external) _$s10Foundation4DataVSgSo13NSURLResponseCSgs5Error_pSgIeghggg_So6NSDataCSgAGSo7NSErrorCSgIeyBhyyy_TR
+000000000002fdd8 (__DATA,__data) non-external (was a private external) _$s10Foundation4DateVSgMd
+000000000001cffc (__TEXT,__text) non-external _$s2lk10EncryptionC10decryptURLyS2SFZTo
+0000000000017390 (__TEXT,__text) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGvau
+00000000000173e0 (__TEXT,__text) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGvgZ
+0000000000030be0 (__DATA,__bss) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGvpZ
+0000000000015d80 (__TEXT,__text) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLL_WZ
+0000000000030c10 (__DATA,__bss) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLL_Wz
+000000000001908c (__TEXT,__text) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGSgvau
+0000000000019098 (__TEXT,__text) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGSgvgZ
+0000000000030bf8 (__DATA,__bss) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGSgvpZ
+00000000000190ec (__TEXT,__text) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGSgvsZ
+000000000000fdf0 (__TEXT,__text) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLL_WZ
+0000000000018ff4 (__TEXT,__text) non-external _$s2lk10EncryptionC18baseSpecialMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGvau
+0000000000019f08 (__TEXT,__text) non-external _$s2lk10EncryptionC18getCurrentMappings33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JG3odd_AF4evenAF7specialtyFZ
+0000000000013e98 (__TEXT,__text) non-external _$s2lk3APIC13liyqwefyefeff33_253B51BB5721CEE3D3BC36C40D9BFD69LLSSSgyFZ
+0000000000010bd8 (__TEXT,__text) non-external _$s2lk3APIC14dddddddddddd_s33_253B51BB5721CEE3D3BC36C40D9BFD69LLyS2SFZ
+000000000002ff60 (__DATA,__data) non-external _$s2lk3APICMf
+000000000002ff38 (__DATA,__data) non-external (was a private external) _$s2lk3APICMm
+000000000002ff78 (__DATA,__data) non-external (was a private external) _$s2lk3APICN
+000000000000a0fc (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvM
+000000000000927c (__TEXT,__text) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvM.resume.0
+0000000000026d9c (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvMTq
+0000000000009ffc (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvg
+0000000000026d8c (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvgTq
+000000000002fdd0 (__DATA,__data) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvpWvd
+000000000000a068 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvs
+0000000000026d94 (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvsTq
+000000000000be64 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC16heartbeat_action33_828156311D720B14CFC96FAB376261B5LLyyF
+0000000000026dbc (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC16heartbeat_action33_828156311D720B14CFC96FAB376261B5LLyyFTq
+0000000000026ddc (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC18dismissAlertWindow33_828156311D720B14CFC96FAB376261B5LLyyFTq
+000000000000b7e4 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyF
+0000000000026db4 (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFTq
+000000000000bdb8 (__TEXT,__text) non-external _$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_
+000000000000f654 (__TEXT,__text) non-external _$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_TA
+000000000000a14c (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC2ddSiyF
+000000000000ad2c (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ddSiyFTo
+0000000000026da4 (__TEXT,__constg_swiftt) non-external (was a private external) _$s2lk9ActiveHUDC2ddSiyFTq
+000000000000ad84 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC2ffyyF
+000000000000b798 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFTo
+0000000000026dac (__TEXT,__constg_swiftt) non-external (was a private external) _$s2lk9ActiveHUDC2ffyyFTq
+000000000000b6e0 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyyScMYccfU1_
+000000000000b748 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyyScMYccfU2_
+000000000000b6ac (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyycfU0_
+000000000000f4d4 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyycfU0_TA
+000000000000b47c (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyycfU_
+000000000000f57c (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyycfU_TA
+000000000000bea4 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC2ggyyF
+000000000000ca4c (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFTo
+0000000000026dc4 (__TEXT,__constg_swiftt) non-external (was a private external) _$s2lk9ActiveHUDC2ggyyFTq
+000000000000c080 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_
+000000000000f6f4 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_TA
+000000000000c9d4 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo11UITextFieldCcfU1_
+000000000000c9b8 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo13UIAlertActionCcfU0_
+000000000000c52c (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo13UIAlertActionCcfU_
+0000000000010688 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo13UIAlertActionCcfU_TA
+000000000000e61c (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC2ggyySSSgF
+0000000000026de4 (__TEXT,__constg_swiftt) non-external (was a private external) _$s2lk9ActiveHUDC2ggyySSSgFTq
+000000000000e870 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyySSSgFyyScMYccfU_
+000000000000faa4 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyySSSgFyyScMYccfU_TA
+0000000000026dd4 (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC2mm33_828156311D720B14CFC96FAB376261B5LLyySo16UIViewControllerCFTq
+000000000002fe58 (__DATA,__data) non-external (was a private external) _$s8Dispatch0A13WorkItemFlagsVACs10SetAlgebraAAWL
+0000000000010418 (__TEXT,__text) non-external (was a private external) _$s8Dispatch0A13WorkItemFlagsVACs10SetAlgebraAAWl
+                 (undefined) external _$s8Dispatch0A13WorkItemFlagsVMa (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A13WorkItemFlagsVMn (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A13WorkItemFlagsVs10SetAlgebraAAMc (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A3QoSV11unspecifiedACvgZ (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A3QoSVMa (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A4TimeV3nowACyFZ (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A4TimeVMa (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfC (from libswiftDispatch)
+000000000000b610 (__TEXT,__text) non-external (was a private external) _$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfcfA0_
+000000000000b5fc (__TEXT,__text) non-external (was a private external) _$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfcfA_
+                 (undefined) external _$s8Dispatch0A8WorkItemCMa (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch1poiyAA0A4TimeVAD_SdtF (from libswiftDispatch)
+000000000002ff28 (__DATA,__data) non-external (was a private external) _$sS2iSZsWL
+000000000002fff8 (__DATA,__data) non-external (was a private external) _$sS2us17FixedWidthIntegersWL
+000000000002ff08 (__DATA,__data) non-external (was a private external) _$sSDyS2SGMd
+                 (undefined) external _$sSS10FoundationE14contentsOfFile8encodingS2Sh_SSAAE8EncodingVtKcfC (from libswiftFoundation)
+                 (undefined) external _$sSS5index_8offsetBySS5IndexVAD_SitF (from libswiftCore)
+0000000000010328 (__TEXT,__text) non-external (was a private external) _$sSa22_allocateUninitializedySayxG_SpyxGtSiFZ8Dispatch0C13WorkItemFlagsV_Tt0gq5
+                 (undefined) external _$sSa28_allocateBufferUninitialized15minimumCapacitys06_ArrayB0VyxGSi_tFZ (from libswiftCore)
+000000000002fe70 (__DATA,__data) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGML
+0000000000022250 (__TEXT,__const) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGMR
+00000000000104f0 (__TEXT,__text) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGMa
+000000000002fe60 (__DATA,__data) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGMd
+000000000002fe68 (__DATA,__data) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGSayxGSTsWL
+0000000000010484 (__TEXT,__text) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGSayxGSTsWl
+000000000002ff20 (__DATA,__data) non-external (was a private external) _$sSnySiGML
+000000000002ff10 (__DATA,__data) non-external (was a private external) _$sSnySiGMd
+000000000002ff18 (__DATA,__data) non-external (was a private external) _$sSnySiGSnyxGSlsSxRzSZ6StrideRpzrlWL
+000000000000bdf4 (__TEXT,__text) non-external (was a private external) _$sSo11UITextFieldCIegg_ABIeyBy_TR
+000000000000bdf4 (__TEXT,__text) non-external (was a private external) _$sSo13UIAlertActionCIegg_ABIeyBy_TR
+000000000000fffc (__TEXT,__text) non-external (was a private external) _$sSo13UIAlertActionCMa
+000000000000ff08 (__TEXT,__text) non-external (was a private external) _$sSo13UIWindowLevelaSHSCSH13_rawHashValue4seedS2i_tFTW
+000000000000ff50 (__TEXT,__text) non-external (was a private external) _$sSo13UIWindowLevelaSQSCSQ2eeoiySbx_xtFZTW
+                 (undefined) external _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtF (from libswiftDispatch)
+000000000000b5fc (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA0_
+000000000000b610 (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA1_
+                 (undefined) external _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline7executeyAC0D4TimeV_AC0D8WorkItemCtF (from libswiftDispatch)
+                 (undefined) external _$sSo17OS_dispatch_queueC8DispatchE4mainABvgZ (from libswiftDispatch)
+                 (undefined) external _$sSo17OS_dispatch_queueC8DispatchE5async5group3qos5flags7executeySo0a1_b1_F0CSg_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtF (from libswiftDispatch)
+000000000000b5fc (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueC8DispatchE5async5group3qos5flags7executeySo0a1_b1_F0CSg_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA0_
+000000000000b610 (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueC8DispatchE5async5group3qos5flags7executeySo0a1_b1_F0CSg_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA1_
+000000000002fde8 (__DATA,__data) non-external (was a private external) _$sSo17OS_dispatch_queueCML
+000000000000f378 (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueCMa
+000000000000ff9c (__TEXT,__text) non-external (was a private external) _$sSo17UIAlertControllerCMa
+000000000002ffe0 (__DATA,__data) non-external (was a private external) _$sSo20NSJSONReadingOptionsVABSQSCWL
+000000000002ffd8 (__DATA,__data) non-external (was a private external) _$sSo20NSJSONReadingOptionsVABSYSCWL
+000000000002ff00 (__DATA,__data) non-external (was a private external) _$sSo20NSJSONReadingOptionsVABs10SetAlgebraSCWL
+000000000002ffe8 (__DATA,__data) non-external (was a private external) _$sSo20NSJSONReadingOptionsVABs25ExpressibleByArrayLiteralSCWL
+000000000002fff0 (__DATA,__data) non-external (was a private external) _$sSo20NSJSONReadingOptionsVABs9OptionSetSCWL
+000000000002ffd0 (__DATA,__data) non-external (was a private external) _$sSo20NSJSONReadingOptionsVML
+0000000000015128 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONReadingOptionsVs10SetAlgebraSCsACP19symmetricDifferenceyxxnFTW
+0000000000015450 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONReadingOptionsVs10SetAlgebraSCsACP23formSymmetricDifferenceyyxnFTW
+0000000000015164 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONReadingOptionsVs10SetAlgebraSCsACP6insertySb8inserted_7ElementQz17memberAfterInserttAHnFTW
+000000000001bff4 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONWritingOptionsVMa
+000000000001d1bc (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONWritingOptionsVs10SetAlgebraSCsACP19symmetricDifferenceyxxnFTW
+000000000001d33c (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONWritingOptionsVs10SetAlgebraSCsACP23formSymmetricDifferenceyyxnFTW
+000000000001d1f8 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONWritingOptionsVs10SetAlgebraSCsACP6insertySb8inserted_7ElementQz17memberAfterInserttAHnFTW
+                 (undefined) external _$sSo21OS_dispatch_semaphoreC8DispatchE4waityyF (from libswiftDispatch)
+                 (undefined) external _$sSo21OS_dispatch_semaphoreC8DispatchE6signalSiyF (from libswiftDispatch)
+000000000000bdf4 (__TEXT,__text) non-external (was a private external) _$sSo7NSTimerCIeghg_ABIeyBhy_TR
+000000000000f5e0 (__TEXT,__text) non-external (was a private external) _$sSo7NSTimerCSgWOh
+00000000000146e8 (__TEXT,__text) non-external (was a private external) _$sSy10FoundationE20replacingOccurrences2of4with7options5rangeSSqd___qd_0_So22NSStringCompareOptionsVSnySS5IndexVGSgtSyRd__SyRd_0_r0_lFfA1_
+0000000000014e74 (__TEXT,__text) non-external (was a private external) _$sSy10FoundationE4data5using20allowLossyConversionAA4DataVSgSSAAE8EncodingV_SbtFfA0_
+                 (undefined) external _$ss10SetAlgebraP19symmetricDifferenceyxxnFTq (from libswiftCore)
+                 (undefined) external _$ss10SetAlgebraP23formSymmetricDifferenceyyxnFTq (from libswiftCore)
+                 (undefined) external _$ss10SetAlgebraP6insertySb8inserted_7ElementQz17memberAfterInserttAFnFTq (from libswiftCore)
+00000000000226e0 (__TEXT,__const) non-external (was a private external) _$ss16IndexingIteratorVySay10Foundation12URLQueryItemVGGMR
+0000000000030098 (__DATA,__data) non-external (was a private external) _$ss16IndexingIteratorVySay10Foundation12URLQueryItemVGGMd
+000000000000f920 (__TEXT,__text) non-external (was a private external) _$ss16IndexingIteratorVySay10Foundation12URLQueryItemVGGWOh
+0000000000022410 (__TEXT,__const) non-external (was a private external) _$ss16IndexingIteratorVySnySiGGMR
+000000000002ff30 (__DATA,__data) non-external (was a private external) _$ss16IndexingIteratorVySnySiGGMd
+                 (undefined) external _$ss18EnumeratedSequenceV8IteratorV4nextSi6offset_7ElementQz7elementtSgyF (from libswiftCore)
+00000000000226a8 (__TEXT,__const) non-external (was a private external) _$ss18EnumeratedSequenceVySaySJGGMR
+0000000000030058 (__DATA,__data) non-external (was a private external) _$ss18EnumeratedSequenceVySaySJGGMd
+00000000000151b0 (__TEXT,__text) non-external (was a private external) _$ss9OptionSetPs7ElementQzRszs17FixedWidthInteger8RawValueRpzrlE6insertySb8inserted_x17memberAfterInserttxF
+                 (undefined) external _$ss9OptionSetPsE19symmetricDifferenceyxxF (from libswiftCore)
+                 (undefined) external _$ss9OptionSetPss17FixedWidthInteger8RawValueRpzrlE23formSymmetricDifferenceyyxF (from libswiftCore)
+                 (undefined) external _NSInternalInconsistencyException (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSException (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSTimer (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_OS_dispatch_queue (from libSystem)
+                 (undefined) external _OBJC_CLASS_$_UIApplication (from UIKit)
+                 (undefined) external _OBJC_EHTYPE_$_NSException (from CoreFoundation)
+00000000000302f8 (__DATA,__s_async_hook) non-external (was a private external) _Swift56ConcurrencyOverrides
+000000000002dff0 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_iuebfowuenfiwnefpein
+000000000001d684 (__TEXT,__text) non-external __ZL16addImageCallbackPK11mach_headerl
+000000000001d678 (__TEXT,__text) non-external __ZL24registerAddImageCallbackPv
+000000000001e9e4 (__TEXT,__text) non-external __ZL31task_future_wait_resume_adapterPN5swift12AsyncContextE
+000000000001eafc (__TEXT,__text) non-external __ZL33task_wait_throwing_resume_adapterPN5swift12AsyncContextE
+000000000001e44c (__TEXT,__text) non-external __ZN12_GLOBAL__N_116addImageCallbackEPK11mach_header
+000000000001e610 (__TEXT,__text) non-external __ZN12_GLOBAL__N_116addImageCallbackEPK11mach_headerl
+000000000001ddec (__TEXT,__text) non-external __ZN12_GLOBAL__N_124searchInConformanceCacheEPKN5swift14TargetMetadataINS0_9InProcessEEEPKNS0_24TargetProtocolDescriptorIS2_EE
+000000000001ef84 (__TEXT,__text) non-external (was a private external) __ZN5swift16adoptTaskVoucherEPNS_9AsyncTaskE
+000000000001efb0 (__TEXT,__text) non-external (was a private external) __ZN5swift18restoreTaskVoucherEPNS_9AsyncTaskE
+000000000001f1a4 (__TEXT,__text) non-external __ZN5swift18restoreTaskVoucherEPNS_9AsyncTaskE.cold.1
+000000000001eddc (__TEXT,__text) non-external (was a private external) __ZN5swift31swift_task_escalateBackdeploy56EPNS_9AsyncTaskENS_11JobPriorityE
+000000000001ef30 (__TEXT,__text) non-external __ZN5swift31swift_task_escalateBackdeploy56EPNS_9AsyncTaskENS_11JobPriorityE.cold.1
+000000000001e8fc (__TEXT,__text) non-external (was a private external) __ZN5swift38swift56override_swift_task_future_waitEPNS_11OpaqueValueEPNS_12AsyncContextEPNS_9AsyncTaskEPU14swiftasynccallFvU19swift_async_contextS3_ES3_PU14swiftasynccallFvS1_U19swift_async_contextS3_S5_S7_S3_E
+000000000001eb0c (__TEXT,__text) non-external (was a private external) __ZN5swift40swift56override_swift_task_create_commonEmPNS_16TaskOptionRecordEPKNS_14TargetMetadataINS_9InProcessEEEPU14swiftasynccallFvU19swift_async_contextPNS_12AsyncContextEEPvmPU9swiftcallFNS_19AsyncTaskAndContextEmS1_S6_SA_SB_mE
+000000000001f340 (__TEXT,__text) non-external (was a private external) __ZN5swift45swift_task_exitThreadLocalContextBackdeploy56EPc
+000000000001f400 (__TEXT,__text) non-external __ZN5swift45swift_task_exitThreadLocalContextBackdeploy56EPc.cold.1
+000000000001f2f8 (__TEXT,__text) non-external (was a private external) __ZN5swift46swift_task_enterThreadLocalContextBackdeploy56EPc
+000000000001f3e8 (__TEXT,__text) non-external __ZN5swift46swift_task_enterThreadLocalContextBackdeploy56EPc.cold.1
+000000000001e9ec (__TEXT,__text) non-external (was a private external) __ZN5swift47swift56override_swift_task_future_wait_throwingEPNS_11OpaqueValueEPNS_12AsyncContextEPNS_9AsyncTaskEPU14swiftasynccallFvU19swift_async_contextS3_U13swift_contextPvES3_PU14swiftasynccallFvS1_U19swift_async_contextS3_S5_S8_S3_E
+000000000001dd8c (__TEXT,__text) non-external __ZN5swift4LazyIN12_GLOBAL__N_116ConformanceStateEE19defaultInitCallbackEPv
+000000000001e6b8 (__TEXT,__text) non-external (was a private external) __ZN5swift9AsyncTask10waitFutureEPS0_PNS_12AsyncContextEPU14swiftasynccallFvU19swift_async_contextS3_ES3_PNS_11OpaqueValueE
+000000000001eb1c (__TEXT,__text) non-external (was a private external) __ZN5swift9AsyncTask18flagAsRunning_slowEv
+000000000001ec7c (__TEXT,__text) non-external (was a private external) __ZN5swift9AsyncTask20flagAsSuspended_slowEv
+000000000001ee5c (__TEXT,__text) non-external __ZN5swiftL25waitForStatusRecordUnlockEPNS_9AsyncTaskERNS_16ActiveTaskStatusE
+0000000000030ff8 (__DATA,__bss) non-external __ZZZN5swift31swift_task_escalateBackdeploy56EPNS_9AsyncTaskENS_11JobPriorityEENK3$_0clEvE7TheLazy
+000000000001ee2c (__TEXT,__text) non-external __ZZZN5swift31swift_task_escalateBackdeploy56EPNS_9AsyncTaskENS_11JobPriorityEENK3$_0clEvENUlPvE_8__invokeES4_
+0000000000031060 (__DATA,__bss) non-external __ZZZN5swift45swift_task_exitThreadLocalContextBackdeploy56EPcENK3$_0clEvE7TheLazy
+000000000001f3b8 (__TEXT,__text) non-external __ZZZN5swift45swift_task_exitThreadLocalContextBackdeploy56EPcENK3$_0clEvENUlPvE_8__invokeES2_
+0000000000031050 (__DATA,__bss) non-external __ZZZN5swift46swift_task_enterThreadLocalContextBackdeploy56EPcENK3$_0clEvE7TheLazy
+000000000001f388 (__TEXT,__text) non-external __ZZZN5swift46swift_task_enterThreadLocalContextBackdeploy56EPcENK3$_0clEvENUlPvE_8__invokeES2_
+                 (undefined) external __dyld_get_image_vmaddr_slide (from libSystem)
+                 (undefined) external __dyld_register_func_for_add_image (from libSystem)
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftDispatch (from libswiftDispatch)
+000000000002cce8 (__DATA,__const) non-external (was a private external) __swift_FORCE_LOAD_$_swiftDispatch_$_lk
+                 (undefined) external _abort (from libSystem)
+000000000002cff8 (__DATA,__const) non-external _block_descriptor
+                 (undefined) external _class_addMethod (from libobjc)
+0000000000008b08 (__TEXT,__text) external _dddddddddddd
+                 (undefined) external _dispatch_once (from libSystem)
+                 (undefined) external _dispatch_once_f (from libSystem)
+                 (undefined) external _dispatch_semaphore_create (from libSystem)
+                 (undefined) external _dladdr (from libSystem)
+                 (undefined) external _exit (from libSystem)
+0000000000030538 (__DATA,__thread_vars) non-external _isInsideClockGettimeHook
+0000000000030550 (__DATA,__thread_bss) non-external _isInsideClockGettimeHook$tlv$init
+0000000000020ba0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$URLProtocol:didLoadData:
+0000000000020d20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addAction:
+0000000000020d40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addObject:
+0000000000020d60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addTextFieldWithConfigurationHandler:
+0000000000020d80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addTimer:forMode:
+0000000000020e00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$appendData:
+0000000000020ea0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$attributesAtIndex:effectiveRange:
+00000000000212c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dd
+00000000000213a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$ff
+00000000000213e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$handleDDDDescCertResponse:
+00000000000214e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$hasSuffix:
+00000000000218c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$performSelectorOnMainThread:withObject:waitUntilDone:
+0000000000021ac0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$scheduledTimerWithTimeInterval:repeats:block:
+0000000000021c00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setHidden:
+0000000000021f40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringWithContentsOfFile:encoding:error:
+0000000000006dd4 (__TEXT,__text) non-external _perform_rebinding_with_section
+                 (undefined) external _pthread_getspecific (from libSystem)
+                 (undefined) external _pthread_mutex_init (from libSystem)
+                 (undefined) external _pthread_mutex_lock (from libSystem)
+                 (undefined) external _pthread_mutex_unlock (from libSystem)
+                 (undefined) external _pthread_setspecific (from libSystem)
+000000000002699c (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic Say_____G 8Dispatch0A13WorkItemFlagsV
+0000000000026a30 (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic So21OS_dispatch_semaphoreC
+000000000002698e (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic So7NSTimerCSg
+0000000000026b1c (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic _____ySaySJGG s18EnumeratedSequenceV
+0000000000026b5c (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic _____ySay_____GG s16IndexingIteratorV 10Foundation12URLQueryItemV
+0000000000026a66 (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic _____ySnySiGG s16IndexingIteratorV
+0000000000008aa0 (__TEXT,__text) external _uuuuuddddd
+00000000000306b8 (__DATA,__bss) non-external _uuuuuddddd.$MGCopyAnswer
+--- imports/timer/exit selectors TG nm arm64e ---
+000000000000884c (__TEXT,__text) non-external -[qliweufhoiqhuefoquewf handleDDDDescCertResponse:]
+0000000000008ddc (__TEXT,__text) non-external -[qliweufhoiqhuefoquewf setDataTask:]
+0000000000035dd0 (__DATA,__bss) non-external _$oo0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000_oo0o0o0o0o0o0o0o0o0o0o0o000o00o0o0o0o0o0o0o0o0o0o000o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0000_super
+0000000000035dd8 (__DATA,__bss) non-external _$oo0o0o0o0o0o0o0o0o00o0o00o00o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0o0ooo0o0ooo0o0o0o0o0o0o0o0o0o0o0000_o00o000o00000o0000000o0o0o00o000o0o00o00000000o00000000o0o0ooo0o0ooo000o0o00o0o0o0o0o0o0o00o000o00_super
+0000000000016654 (__TEXT,__text) non-external (was a private external) _$s10Foundation4DataV5write2to7optionsyAA3URLV_So20NSDataWritingOptionsVtKFfA0_
+00000000000153f8 (__TEXT,__text) non-external (was a private external) _$s10Foundation4DataVSgSo13NSURLResponseCSgs5Error_pSgIeghggg_So6NSDataCSgAGSo7NSErrorCSgIeyBhyyy_TR
+0000000000011dd8 (__TEXT,__text) non-external (was a private external) _$s12CoreGraphics7CGFloatVACSQAAWl
+0000000000018cc4 (__TEXT,__text) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGvau
+0000000000018d24 (__TEXT,__text) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGvgZ
+0000000000036360 (__DATA,__bss) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGvpZ
+00000000000176ac (__TEXT,__text) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLL_WZ
+0000000000036390 (__DATA,__bss) non-external _$s2lk10EncryptionC14baseOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLL_Wz
+000000000001aa04 (__TEXT,__text) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGSgvau
+000000000001aa10 (__TEXT,__text) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGSgvgZ
+0000000000036378 (__DATA,__bss) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGSgvpZ
+000000000001aa68 (__TEXT,__text) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JGSgvsZ
+0000000000011088 (__TEXT,__text) non-external _$s2lk10EncryptionC16cachedOddMapping33_13EB7EB12F37ACE47A0604EF63D7DC7DLL_WZ
+000000000001b8f0 (__TEXT,__text) non-external _$s2lk10EncryptionC18getCurrentMappings33_13EB7EB12F37ACE47A0604EF63D7DC7DLLSDyS2JG3odd_AF4evenAF7specialtyFZ
+0000000000015564 (__TEXT,__text) non-external _$s2lk3APIC13liyqwefyefeff33_253B51BB5721CEE3D3BC36C40D9BFD69LLSSSgyFZ
+0000000000011ed0 (__TEXT,__text) non-external _$s2lk3APIC14dddddddddddd_s33_253B51BB5721CEE3D3BC36C40D9BFD69LLyS2SFZ
+000000000000a83c (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvM
+0000000000009894 (__TEXT,__text) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvM.resume.0
+000000000002928c (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvMTq
+000000000000a734 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvg
+000000000002927c (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvgTq
+0000000000035590 (__DATA,__data) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvpWvd
+000000000000a7a4 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvs
+0000000000029284 (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC14heartbeatTimer33_828156311D720B14CFC96FAB376261B5LLSo7NSTimerCSgvsTq
+000000000000c9e8 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC16heartbeat_action33_828156311D720B14CFC96FAB376261B5LLyyF
+00000000000292ac (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC16heartbeat_action33_828156311D720B14CFC96FAB376261B5LLyyFTq
+000000000000c2d4 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyF
+00000000000292a4 (__TEXT,__constg_swiftt) non-external _$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFTq
+000000000000c930 (__TEXT,__text) non-external _$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_
+0000000000010874 (__TEXT,__text) non-external _$s2lk9ActiveHUDC18startAutoHeartbeat33_828156311D720B14CFC96FAB376261B5LLyyFySo7NSTimerCYbcfU_TA
+000000000000a8a8 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC2ddSiyF
+000000000000b5e8 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ddSiyFTo
+0000000000029294 (__TEXT,__constg_swiftt) non-external (was a private external) _$s2lk9ActiveHUDC2ddSiyFTq
+000000000000b644 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC2ffyyF
+000000000000c284 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFTo
+000000000002929c (__TEXT,__constg_swiftt) non-external (was a private external) _$s2lk9ActiveHUDC2ffyyFTq
+000000000000c1b4 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyyScMYccfU1_
+000000000000c230 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyyScMYccfU2_
+000000000000c17c (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyycfU0_
+00000000000106d8 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyycfU0_TA
+000000000000bf28 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyycfU_
+000000000001078c (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ffyyFyycfU_TA
+000000000000ca3c (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC2ggyyF
+000000000000d6dc (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFTo
+00000000000292b4 (__TEXT,__constg_swiftt) non-external (was a private external) _$s2lk9ActiveHUDC2ggyyFTq
+000000000000cc94 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_
+0000000000010920 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_TA
+000000000000d660 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo11UITextFieldCcfU1_
+000000000000d640 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo13UIAlertActionCcfU0_
+000000000000d184 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo13UIAlertActionCcfU_
+0000000000011944 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo13UIAlertActionCcfU_TA
+000000000000f5b8 (__TEXT,__text) non-external (was a private external) _$s2lk9ActiveHUDC2ggyySSSgF
+00000000000292d4 (__TEXT,__constg_swiftt) non-external (was a private external) _$s2lk9ActiveHUDC2ggyySSSgFTq
+000000000000f8a4 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyySSSgFyyScMYccfU_
+0000000000010d00 (__TEXT,__text) non-external _$s2lk9ActiveHUDC2ggyySSSgFyyScMYccfU_TA
+0000000000035610 (__DATA,__data) non-external (was a private external) _$s8Dispatch0A13WorkItemFlagsVACs10SetAlgebraAAWL
+000000000001172c (__TEXT,__text) non-external (was a private external) _$s8Dispatch0A13WorkItemFlagsVACs10SetAlgebraAAWl
+                 (undefined) external _$s8Dispatch0A13WorkItemFlagsVMa (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A13WorkItemFlagsVMn (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A13WorkItemFlagsVs10SetAlgebraAAMc (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A3QoSV11unspecifiedACvgZ (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A3QoSVMa (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A4TimeV3nowACyFZ (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A4TimeVMa (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfC (from libswiftDispatch)
+000000000000c0dc (__TEXT,__text) non-external (was a private external) _$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfcfA0_
+000000000000c0c4 (__TEXT,__text) non-external (was a private external) _$s8Dispatch0A8WorkItemC3qos5flags5blockAcA0A3QoSV_AA0abC5FlagsVyyXBtcfcfA_
+                 (undefined) external _$s8Dispatch0A8WorkItemCMa (from libswiftDispatch)
+                 (undefined) external _$s8Dispatch1poiyAA0A4TimeVAD_SdtF (from libswiftDispatch)
+                 (undefined) external _$sSS10FoundationE14contentsOfFile8encodingS2Sh_SSAAE8EncodingVtKcfC (from libswiftFoundation)
+                 (undefined) external _$sSS5index_8offsetBySS5IndexVAD_SitF (from libswiftCore)
+0000000000011618 (__TEXT,__text) non-external (was a private external) _$sSa22_allocateUninitializedySayxG_SpyxGtSiFZ8Dispatch0C13WorkItemFlagsV_Tt0gq5
+                 (undefined) external _$sSa28_allocateBufferUninitialized15minimumCapacitys06_ArrayB0VyxGSi_tFZ (from libswiftCore)
+0000000000024740 (__TEXT,__const) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGMR
+0000000000035618 (__DATA,__data) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGMd
+0000000000035620 (__DATA,__data) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGSayxGSTsWL
+00000000000117ac (__TEXT,__text) non-external (was a private external) _$sSay8Dispatch0A13WorkItemFlagsVGSayxGSTsWl
+000000000000c970 (__TEXT,__text) non-external (was a private external) _$sSo11UITextFieldCIegg_ABIeyBy_TR
+000000000000c970 (__TEXT,__text) non-external (was a private external) _$sSo13UIAlertActionCIegg_ABIeyBy_TR
+                 (undefined) external _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtF (from libswiftDispatch)
+000000000000c0c4 (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA0_
+000000000000c0dc (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline3qos5flags7executeyAC0D4TimeV_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA1_
+                 (undefined) external _$sSo17OS_dispatch_queueC8DispatchE10asyncAfter8deadline7executeyAC0D4TimeV_AC0D8WorkItemCtF (from libswiftDispatch)
+                 (undefined) external _$sSo17OS_dispatch_queueC8DispatchE4mainABvgZ (from libswiftDispatch)
+                 (undefined) external _$sSo17OS_dispatch_queueC8DispatchE5async5group3qos5flags7executeySo0a1_b1_F0CSg_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtF (from libswiftDispatch)
+000000000000c0c4 (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueC8DispatchE5async5group3qos5flags7executeySo0a1_b1_F0CSg_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA0_
+000000000000c0dc (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueC8DispatchE5async5group3qos5flags7executeySo0a1_b1_F0CSg_AC0D3QoSVAC0D13WorkItemFlagsVyyXBtFfA1_
+00000000000355a8 (__DATA,__data) non-external (was a private external) _$sSo17OS_dispatch_queueCML
+0000000000010564 (__TEXT,__text) non-external (was a private external) _$sSo17OS_dispatch_queueCMa
+0000000000016dd4 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONReadingOptionsVSQSCSQ2eeoiySbx_xtFZTW
+0000000000016910 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONReadingOptionsVs10SetAlgebraSCsACP19symmetricDifferenceyxxnFTW
+0000000000016cb4 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONReadingOptionsVs10SetAlgebraSCsACP23formSymmetricDifferenceyyxnFTW
+0000000000016950 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONReadingOptionsVs10SetAlgebraSCsACP6insertySb8inserted_7ElementQz17memberAfterInserttAHnFTW
+000000000001ef1c (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONWritingOptionsVs10SetAlgebraSCsACP19symmetricDifferenceyxxnFTW
+000000000001f0b4 (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONWritingOptionsVs10SetAlgebraSCsACP23formSymmetricDifferenceyyxnFTW
+000000000001ef5c (__TEXT,__text) non-external (was a private external) _$sSo20NSJSONWritingOptionsVs10SetAlgebraSCsACP6insertySb8inserted_7ElementQz17memberAfterInserttAHnFTW
+                 (undefined) external _$sSo21OS_dispatch_semaphoreC8DispatchE4waityyF (from libswiftDispatch)
+                 (undefined) external _$sSo21OS_dispatch_semaphoreC8DispatchE6signalSiyF (from libswiftDispatch)
+000000000000c970 (__TEXT,__text) non-external (was a private external) _$sSo7NSTimerCIeghg_ABIeyBhy_TR
+00000000000107f8 (__TEXT,__text) non-external (was a private external) _$sSo7NSTimerCSgWOh
+0000000000015e44 (__TEXT,__text) non-external (was a private external) _$sSy10FoundationE20replacingOccurrences2of4with7options5rangeSSqd___qd_0_So22NSStringCompareOptionsVSnySS5IndexVGSgtSyRd__SyRd_0_r0_lFfA1_
+000000000001663c (__TEXT,__text) non-external (was a private external) _$sSy10FoundationE4data5using20allowLossyConversionAA4DataVSgSSAAE8EncodingV_SbtFfA0_
+                 (undefined) external _$ss10SetAlgebraP19symmetricDifferenceyxxnFTq (from libswiftCore)
+                 (undefined) external _$ss10SetAlgebraP23formSymmetricDifferenceyyxnFTq (from libswiftCore)
+                 (undefined) external _$ss10SetAlgebraP6insertySb8inserted_7ElementQz17memberAfterInserttAFnFTq (from libswiftCore)
+0000000000024bd0 (__TEXT,__const) non-external (was a private external) _$ss16IndexingIteratorVySay10Foundation12URLQueryItemVGGMR
+0000000000035828 (__DATA,__data) non-external (was a private external) _$ss16IndexingIteratorVySay10Foundation12URLQueryItemVGGMd
+0000000000010b60 (__TEXT,__text) non-external (was a private external) _$ss16IndexingIteratorVySay10Foundation12URLQueryItemVGGWOh
+0000000000024900 (__TEXT,__const) non-external (was a private external) _$ss16IndexingIteratorVySnySiGGMR
+00000000000356d0 (__DATA,__data) non-external (was a private external) _$ss16IndexingIteratorVySnySiGGMd
+                 (undefined) external _$ss18EnumeratedSequenceV8IteratorV4nextSi6offset_7ElementQz7elementtSgyF (from libswiftCore)
+0000000000024b98 (__TEXT,__const) non-external (was a private external) _$ss18EnumeratedSequenceVySaySJGGMR
+00000000000357f0 (__DATA,__data) non-external (was a private external) _$ss18EnumeratedSequenceVySaySJGGMd
+00000000000169a0 (__TEXT,__text) non-external (was a private external) _$ss9OptionSetPs7ElementQzRszs17FixedWidthInteger8RawValueRpzrlE6insertySb8inserted_x17memberAfterInserttxF
+                 (undefined) external _$ss9OptionSetPsE19symmetricDifferenceyxxF (from libswiftCore)
+                 (undefined) external _$ss9OptionSetPss17FixedWidthInteger8RawValueRpzrlE23formSymmetricDifferenceyyxF (from libswiftCore)
+                 (undefined) external _NSInternalInconsistencyException (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSException (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSTimer (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_OS_dispatch_queue (from libSystem)
+                 (undefined) external _OBJC_CLASS_$_UIApplication (from UIKit)
+                 (undefined) external _OBJC_EHTYPE_$_NSException (from CoreFoundation)
+0000000000035a80 (__DATA,__s_async_hook) non-external (was a private external) _Swift56ConcurrencyOverrides
+000000000001f474 (__TEXT,__text) non-external __ZL16addImageCallbackPK11mach_headerl
+000000000001f460 (__TEXT,__text) non-external __ZL24registerAddImageCallbackPv
+0000000000020e94 (__TEXT,__text) non-external __ZL31task_future_wait_resume_adapterPN5swift12AsyncContextE
+000000000002106c (__TEXT,__text) non-external __ZL33task_wait_throwing_resume_adapterPN5swift12AsyncContextE
+0000000000020818 (__TEXT,__text) non-external __ZN12_GLOBAL__N_116addImageCallbackEPK11mach_header
+00000000000209e4 (__TEXT,__text) non-external __ZN12_GLOBAL__N_116addImageCallbackEPK11mach_headerl
+00000000000215d4 (__TEXT,__text) non-external (was a private external) __ZN5swift16adoptTaskVoucherEPNS_9AsyncTaskE
+0000000000021614 (__TEXT,__text) non-external (was a private external) __ZN5swift18restoreTaskVoucherEPNS_9AsyncTaskE
+0000000000021830 (__TEXT,__text) non-external __ZN5swift18restoreTaskVoucherEPNS_9AsyncTaskE.cold.1
+00000000000213c8 (__TEXT,__text) non-external (was a private external) __ZN5swift31swift_task_escalateBackdeploy56EPNS_9AsyncTaskENS_11JobPriorityE
+0000000000021574 (__TEXT,__text) non-external __ZN5swift31swift_task_escalateBackdeploy56EPNS_9AsyncTaskENS_11JobPriorityE.cold.1
+0000000000020d34 (__TEXT,__text) non-external (was a private external) __ZN5swift38swift56override_swift_task_future_waitEPNS_11OpaqueValueEPNS_12AsyncContextEPNS_9AsyncTaskEPU14swiftasynccallFvU19swift_async_contextS3_ES3_PU14swiftasynccallFvS1_U19swift_async_contextS3_S5_S7_S3_E
+00000000000210e0 (__TEXT,__text) non-external (was a private external) __ZN5swift40swift56override_swift_task_create_commonEmPNS_16TaskOptionRecordEPKNS_14TargetMetadataINS_9InProcessEEEPU14swiftasynccallFvU19swift_async_contextPNS_12AsyncContextEEPvmPU9swiftcallFNS_19AsyncTaskAndContextEmS1_S6_SA_SB_mE
+0000000000021a18 (__TEXT,__text) non-external (was a private external) __ZN5swift45swift_task_exitThreadLocalContextBackdeploy56EPc
+0000000000021af4 (__TEXT,__text) non-external __ZN5swift45swift_task_exitThreadLocalContextBackdeploy56EPc.cold.1
+00000000000219bc (__TEXT,__text) non-external (was a private external) __ZN5swift46swift_task_enterThreadLocalContextBackdeploy56EPc
+0000000000021adc (__TEXT,__text) non-external __ZN5swift46swift_task_enterThreadLocalContextBackdeploy56EPc.cold.1
+0000000000020ee4 (__TEXT,__text) non-external (was a private external) __ZN5swift47swift56override_swift_task_future_wait_throwingEPNS_11OpaqueValueEPNS_12AsyncContextEPNS_9AsyncTaskEPU14swiftasynccallFvU19swift_async_contextS3_U13swift_contextPvES3_PU14swiftasynccallFvS1_U19swift_async_contextS3_S5_S8_S3_E
+0000000000020ad0 (__TEXT,__text) non-external (was a private external) __ZN5swift9AsyncTask10waitFutureEPS0_PNS_12AsyncContextEPU14swiftasynccallFvU19swift_async_contextS3_ES3_PNS_11OpaqueValueE
+00000000000210f0 (__TEXT,__text) non-external (was a private external) __ZN5swift9AsyncTask18flagAsRunning_slowEv
+000000000002125c (__TEXT,__text) non-external (was a private external) __ZN5swift9AsyncTask20flagAsSuspended_slowEv
+0000000000021460 (__TEXT,__text) non-external __ZN5swiftL25waitForStatusRecordUnlockEPNS_9AsyncTaskERNS_16ActiveTaskStatusE
+0000000000036778 (__DATA,__bss) non-external __ZZZN5swift31swift_task_escalateBackdeploy56EPNS_9AsyncTaskENS_11JobPriorityEENK3$_0clEvE7TheLazy
+000000000002142c (__TEXT,__text) non-external __ZZZN5swift31swift_task_escalateBackdeploy56EPNS_9AsyncTaskENS_11JobPriorityEENK3$_0clEvENUlPvE_8__invokeES4_
+00000000000367e0 (__DATA,__bss) non-external __ZZZN5swift45swift_task_exitThreadLocalContextBackdeploy56EPcENK3$_0clEvE7TheLazy
+0000000000021aa8 (__TEXT,__text) non-external __ZZZN5swift45swift_task_exitThreadLocalContextBackdeploy56EPcENK3$_0clEvENUlPvE_8__invokeES2_
+00000000000367d0 (__DATA,__bss) non-external __ZZZN5swift46swift_task_enterThreadLocalContextBackdeploy56EPcENK3$_0clEvE7TheLazy
+0000000000021a74 (__TEXT,__text) non-external __ZZZN5swift46swift_task_enterThreadLocalContextBackdeploy56EPcENK3$_0clEvENUlPvE_8__invokeES2_
+                 (undefined) external __dyld_get_image_vmaddr_slide (from libSystem)
+                 (undefined) external __dyld_register_func_for_add_image (from libSystem)
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftDispatch (from libswiftDispatch)
+0000000000030e60 (__DATA_CONST,__const) non-external (was a private external) __swift_FORCE_LOAD_$_swiftDispatch_$_lk
+                 (undefined) external _abort (from libSystem)
+0000000000030ff8 (__DATA_CONST,__const) non-external _block_descriptor.80
+                 (undefined) external _class_addMethod (from libobjc)
+0000000000009068 (__TEXT,__text) external _dddddddddddd
+                 (undefined) external _dispatch_once (from libSystem)
+                 (undefined) external _dispatch_once_f (from libSystem)
+                 (undefined) external _dispatch_semaphore_create (from libSystem)
+                 (undefined) external _dladdr (from libSystem)
+                 (undefined) external _exit (from libSystem)
+0000000000035cc0 (__DATA,__thread_vars) non-external _isInsideClockGettimeHook
+0000000000035cd8 (__DATA,__thread_bss) non-external _isInsideClockGettimeHook$tlv$init
+0000000000022ae0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$URLProtocol:didLoadData:
+0000000000022c60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addAction:
+0000000000022c80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addObject:
+0000000000022ca0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addTextFieldWithConfigurationHandler:
+0000000000022cc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addTimer:forMode:
+0000000000022d40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$appendData:
+0000000000022de0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$attributesAtIndex:effectiveRange:
+0000000000023200 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dd
+00000000000232e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$ff
+0000000000023320 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$handleDDDDescCertResponse:
+0000000000023420 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$hasSuffix:
+0000000000023800 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$performSelectorOnMainThread:withObject:waitUntilDone:
+0000000000023a00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$scheduledTimerWithTimeInterval:repeats:block:
+0000000000023b40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setHidden:
+0000000000023e80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringWithContentsOfFile:encoding:error:
+0000000000006dd8 (__TEXT,__text) non-external _prepend_rebindings
+                 (undefined) external _pthread_getspecific (from libSystem)
+                 (undefined) external _pthread_mutex_init (from libSystem)
+                 (undefined) external _pthread_mutex_lock (from libSystem)
+                 (undefined) external _pthread_mutex_unlock (from libSystem)
+                 (undefined) external _pthread_setspecific (from libSystem)
+0000000000028ffc (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic SDyS2JG
+0000000000028e8c (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic Say_____G 8Dispatch0A13WorkItemFlagsV
+0000000000028f20 (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic So21OS_dispatch_semaphoreC
+0000000000028e7e (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic So7NSTimerCSg
+0000000000028ff0 (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic _____yS2J_G SD8IteratorV
+000000000002900c (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic _____ySaySJGG s18EnumeratedSequenceV
+000000000002904c (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic _____ySay_____GG s16IndexingIteratorV 10Foundation12URLQueryItemV
+0000000000028f56 (__TEXT,__swift5_typeref) non-external (was a private external) _symbolic _____ySnySiGG s16IndexingIteratorV
+0000000000008fec (__TEXT,__text) external _uuuuuddddd
+0000000000035e38 (__DATA,__bss) non-external _uuuuuddddd.$MGCopyAnswer
+--- imports/timer/exit selectors AMG nm arm64 ---
+0000000100866118 (__TEXT,__text) external _BN_BLINDING_is_current_thread
+0000000100865b20 (__TEXT,__text) external _BN_BLINDING_set_current_thread
+                 (undefined) external _CFRunLoopAddTimer (from CoreFoundation)
+                 (undefined) external _CFRunLoopTimerCreateWithHandler (from CoreFoundation)
+                 (undefined) external _CFRunLoopTimerInvalidate (from CoreFoundation)
+00000001008f3724 (__TEXT,__text) external _CRYPTO_THREAD_cleanup_local
+00000001008f3748 (__TEXT,__text) external _CRYPTO_THREAD_compare_id
+00000001008f3744 (__TEXT,__text) external _CRYPTO_THREAD_get_current_id
+00000001008f36fc (__TEXT,__text) external _CRYPTO_THREAD_get_local
+00000001008f36e0 (__TEXT,__text) external _CRYPTO_THREAD_init_local
+00000001008f3680 (__TEXT,__text) external _CRYPTO_THREAD_lock_free
+00000001008f35cc (__TEXT,__text) external _CRYPTO_THREAD_lock_new
+00000001008f362c (__TEXT,__text) external _CRYPTO_THREAD_read_lock
+00000001008f36c4 (__TEXT,__text) external _CRYPTO_THREAD_run_once
+00000001008f3704 (__TEXT,__text) external _CRYPTO_THREAD_set_local
+00000001008f3664 (__TEXT,__text) external _CRYPTO_THREAD_unlock
+00000001008f3648 (__TEXT,__text) external _CRYPTO_THREAD_write_lock
+000000010085bfcc (__TEXT,__text) external _ERR_load_ASYNC_strings
+                 (undefined) external _OBJC_CLASS_$_NSThread (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSTimer (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_UIApplication (from UIKit)
+                 (undefined) external _UIApplicationDidEnterBackgroundNotification (from UIKit)
+                 (undefined) external _UIApplicationMain (from UIKit)
+                 (undefined) external _UIApplicationWillEnterForegroundNotification (from UIKit)
+                 (undefined) external __dispatch_main_q (from libSystem)
+                 (undefined) external __dispatch_source_type_read (from libSystem)
+                 (undefined) external _abort (from libSystem)
+000000010085beac (__TEXT,__text) external _async_deinit
+000000010085bed8 (__TEXT,__text) external _async_delete_thread_state
+000000010085be4c (__TEXT,__text) external _async_init
+000000010085be48 (__TEXT,__text) external _async_local_cleanup
+                 (undefined) external _atexit (from libSystem)
+                 (undefined) external _dispatch_async (from libSystem)
+                 (undefined) external _dispatch_data_apply (from libSystem)
+                 (undefined) external _dispatch_data_create (from libSystem)
+                 (undefined) external _dispatch_data_get_size (from libSystem)
+                 (undefined) external _dispatch_get_global_queue (from libSystem)
+                 (undefined) external _dispatch_group_create (from libSystem)
+                 (undefined) external _dispatch_group_enter (from libSystem)
+                 (undefined) external _dispatch_group_leave (from libSystem)
+                 (undefined) external _dispatch_group_wait (from libSystem)
+                 (undefined) external _dispatch_once (from libSystem)
+                 (undefined) external _dispatch_queue_create (from libSystem)
+                 (undefined) external _dispatch_read (from libSystem)
+                 (undefined) external _dispatch_resume (from libSystem)
+                 (undefined) external _dispatch_semaphore_create (from libSystem)
+                 (undefined) external _dispatch_semaphore_signal (from libSystem)
+                 (undefined) external _dispatch_semaphore_wait (from libSystem)
+                 (undefined) external _dispatch_source_cancel (from libSystem)
+                 (undefined) external _dispatch_source_create (from libSystem)
+                 (undefined) external _dispatch_source_set_cancel_handler (from libSystem)
+                 (undefined) external _dispatch_source_set_event_handler (from libSystem)
+                 (undefined) external _dispatch_sync (from libSystem)
+                 (undefined) external _dispatch_time (from libSystem)
+                 (undefined) external _dispatch_write (from libSystem)
+00000001008d7c3c (__TEXT,__text) external _drbg_delete_thread_state
+00000001008aee74 (__TEXT,__text) external _err_delete_thread_state
+                 (undefined) external _exit (from libSystem)
+                 (undefined) external _kill (from libSystem)
+00000001008c3120 (__TEXT,__text) external _ossl_init_thread_start
+                 (undefined) external _pthread_atfork (from libSystem)
+                 (undefined) external _pthread_equal (from libSystem)
+                 (undefined) external _pthread_getspecific (from libSystem)
+                 (undefined) external _pthread_key_create (from libSystem)
+                 (undefined) external _pthread_key_delete (from libSystem)
+                 (undefined) external _pthread_mutex_lock (from libSystem)
+                 (undefined) external _pthread_mutex_unlock (from libSystem)
+                 (undefined) external _pthread_once (from libSystem)
+                 (undefined) external _pthread_rwlock_destroy (from libSystem)
+                 (undefined) external _pthread_rwlock_init (from libSystem)
+                 (undefined) external _pthread_rwlock_rdlock (from libSystem)
+                 (undefined) external _pthread_rwlock_unlock (from libSystem)
+                 (undefined) external _pthread_rwlock_wrlock (from libSystem)
+                 (undefined) external _pthread_self (from libSystem)
+                 (undefined) external _pthread_setspecific (from libSystem)
+                 (undefined) external _signal (from libSystem)
+                 (undefined) external _sleep (from libSystem)

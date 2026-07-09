@@ -1,0 +1,34 @@
+            ;-- func.1003cee84:
+            0x1003cee84      c0035fd6       ret
+            0x1003cee88      e00700a9       stp x0, x1, [sp]
+            0x1003cee8c      e20f01a9       stp x2, x3, [sp, 0x10]
+            0x1003cee90      e41702a9       stp x4, x5, [sp, 0x20]
+            ;-- func.1003d1938:
+            0x1003d1938      c0035fd6       ret
+            0x1003d193c      e00700a9       stp x0, x1, [sp]
+            0x1003d1940      e20f01a9       stp x2, x3, [sp, 0x10]
+            0x1003d1944      e41702a9       stp x4, x5, [sp, 0x20]
+            ;-- method..requestlicense:
+            ;-- func.1003d2018:
+            0x1003d2018      c0035fd6       ret
+            0x1003d201c      e00700a9       stp x0, x1, [sp]
+            0x1003d2020      e20f01a9       stp x2, x3, [sp, 0x10]
+            0x1003d2024      e41702a9       stp x4, x5, [sp, 0x20]
+            ;-- method..exit:xr::
+            ;-- func.10032bd78:
+            0x10032bd78      c0035fd6       ret
+            0x10032bd7c      fd030091       mov x29, sp
+            0x10032bd80      ff0303d1       sub sp, sp, 0xc0
+            0x10032bd84      a08315f8       stur x0, [x29, -0xa8]
+            ;-- method..exitClicked::
+            ;-- func.1003d3098:
+            0x1003d3098      c0035fd6       ret
+            0x1003d309c      e00700a9       stp x0, x1, [sp]
+            0x1003d30a0      e20f01a9       stp x2, x3, [sp, 0x10]
+            0x1003d30a4      e41702a9       stp x4, x5, [sp, 0x20]
+            ;-- method..exit2:xr::
+            ;-- func.1020070dc:
+            0x1020070dc      c0035fd6       ret
+            0x1020070e0      fd030091       mov x29, sp
+            0x1020070e4      ff0303d1       sub sp, sp, 0xc0
+            0x1020070e8      a08314f8       stur x0, [x29, -0xb8]

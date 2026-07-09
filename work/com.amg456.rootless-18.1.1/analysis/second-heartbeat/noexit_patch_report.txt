@@ -1,0 +1,10 @@
+## arm64
+0xb5a0 ActiveHUD.ff delayed exit closure expected_old=aa510094 got=aa510094 patch=1f2003d5 OK
+0xc9d0 ActiveHUD.gg exit button closure expected_old=9e4c0094 got=9e4c0094 patch=1f2003d5 OK
+0xeb60 ActiveHUD.gg(String?) exit path expected_old=3a440094 got=3a440094 patch=1f2003d5 OK
+0xf128 ActiveHUD.zz(String?) delayed exit closure expected_old=c8420094 got=c8420094 patch=1f2003d5 OK
+## arm64e
+0xc060 ActiveHUD.ff delayed exit closure expected_old=60590094 got=60590094 patch=1f2003d5 OK
+0xd65c ActiveHUD.gg exit button closure expected_old=e1530094 got=e1530094 patch=1f2003d5 OK
+0xfc08 ActiveHUD.gg(String?) exit path expected_old=764a0094 got=764a0094 patch=1f2003d5 OK
+0x102d4 ActiveHUD.zz(String?) delayed exit closure expected_old=c3480094 got=c3480094 patch=1f2003d5 OK

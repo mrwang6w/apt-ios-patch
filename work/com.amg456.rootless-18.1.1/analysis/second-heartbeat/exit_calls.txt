@@ -1,0 +1,95 @@
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7715-    b58c:	28 00 80 52	mov	w8, #0x1
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7716-    b590:	e8 1f 00 b9	str	w8, [sp, #0x1c]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7717-    b594:	f4 ff ff 17	b	0xb564
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7718-    b598:	f6 ff ff 17	b	0xb570
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7719-    b59c:	00 00 80 52	mov	w0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt:7720:    b5a0:	aa 51 00 94	bl	0x1fc48 ; symbol stub for: _exit
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7721-    b5a4:	fd 7b 48 a9	ldp	x29, x30, [sp, #0x80]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7722-    b5a8:	f4 4f 47 a9	ldp	x20, x19, [sp, #0x70]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7723-    b5ac:	ff 43 02 91	add	sp, sp, #0x90
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7724-    b5b0:	c0 03 5f d6	ret
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-7725-_$sIeg_IeyB_TR:
+--
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9032-    c9bc:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9033-    c9c0:	fd 43 00 91	add	x29, sp, #0x10
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9034-    c9c4:	ff 07 00 f9	str	xzr, [sp, #0x8]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9035-    c9c8:	e0 07 00 f9	str	x0, [sp, #0x8]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9036-    c9cc:	00 00 80 52	mov	w0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt:9037:    c9d0:	9e 4c 00 94	bl	0x1fc48 ; symbol stub for: _exit
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9038-_$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo11UITextFieldCcfU1_:
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9039-    c9d4:	ff 03 01 d1	sub	sp, sp, #0x40
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9040-    c9d8:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9041-    c9dc:	fd c3 00 91	add	x29, sp, #0x30
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-9042-    c9e0:	e0 0b 00 f9	str	x0, [sp, #0x10]
+--
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11197-    eb4c:	a9 13 00 d1	sub	x9, x29, #0x4
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11198-    eb50:	28 01 10 b8	stur	w8, [x9, #-0x100]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11199-    eb54:	f1 ff ff 17	b	0xeb18
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11200-    eb58:	f4 ff ff 17	b	0xeb28
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11201-    eb5c:	00 00 80 52	mov	w0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt:11202:    eb60:	3a 44 00 94	bl	0x1fc48 ; symbol stub for: _exit
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11203-    eb64:	00 00 80 d2	mov	x0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11204-    eb68:	a8 e3 00 d1	sub	x8, x29, #0x38
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11205-    eb6c:	00 01 10 f8	stur	x0, [x8, #-0x100]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11206-    eb70:	02 02 00 94	bl	_$sSo17OS_dispatch_queueCMa
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11207-    eb74:	f4 03 00 aa	mov	x20, x0
+--
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11569-    f118:	c0 03 5f d6	ret
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11570-_$s2lk9ActiveHUDC2zzyySSSgFyyScMYccfU_yycfU0_:
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11571-    f11c:	fd 7b bf a9	stp	x29, x30, [sp, #-0x10]!
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11572-    f120:	fd 03 00 91	mov	x29, sp
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11573-    f124:	00 00 80 52	mov	w0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt:11574:    f128:	c8 42 00 94	bl	0x1fc48 ; symbol stub for: _exit
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11575-_$s2lk9ActiveHUDCACycfc:
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11576-    f12c:	ff 03 01 d1	sub	sp, sp, #0x40
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11577-    f130:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11578-    f134:	fd c3 00 91	add	x29, sp, #0x30
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64_full_disasm.txt-11579-    f138:	bf 83 1f f8	stur	xzr, [x29, #-0x8]
+--
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8403-    c04c:	28 00 80 52	mov	w8, #0x1
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8404-    c050:	e8 1f 00 b9	str	w8, [sp, #0x1c]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8405-    c054:	f4 ff ff 17	b	0xc024
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8406-    c058:	f6 ff ff 17	b	0xc030
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8407-    c05c:	00 00 80 52	mov	w0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt:8408:    c060:	60 59 00 94	bl	0x225e0 ; symbol stub for: _exit
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8409-    c064:	fd 7b 48 a9	ldp	x29, x30, [sp, #0x80]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8410-    c068:	f4 4f 47 a9	ldp	x20, x19, [sp, #0x70]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8411-    c06c:	ff 43 02 91	add	sp, sp, #0x90
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8412-    c070:	ff 0f 5f d6	retab
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-8413-_$sIeg_IeyB_TR:
+--
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9835-    d648:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9836-    d64c:	fd 43 00 91	add	x29, sp, #0x10
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9837-    d650:	ff 07 00 f9	str	xzr, [sp, #0x8]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9838-    d654:	e0 07 00 f9	str	x0, [sp, #0x8]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9839-    d658:	00 00 80 52	mov	w0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt:9840:    d65c:	e1 53 00 94	bl	0x225e0 ; symbol stub for: _exit
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9841-_$s2lk9ActiveHUDC2ggyyFyyScMYccfU_ySo11UITextFieldCcfU1_:
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9842-    d660:	7f 23 03 d5	pacibsp
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9843-    d664:	ff 03 01 d1	sub	sp, sp, #0x40
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9844-    d668:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-9845-    d66c:	fd c3 00 91	add	x29, sp, #0x30
+--
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12263-    fbf4:	a9 73 00 d1	sub	x9, x29, #0x1c
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12264-    fbf8:	28 01 10 b8	stur	w8, [x9, #-0x100]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12265-    fbfc:	f1 ff ff 17	b	0xfbc0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12266-    fc00:	f4 ff ff 17	b	0xfbd0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12267-    fc04:	00 00 80 52	mov	w0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt:12268:    fc08:	76 4a 00 94	bl	0x225e0 ; symbol stub for: _exit
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12269-    fc0c:	00 00 80 d2	mov	x0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12270-    fc10:	a8 43 01 d1	sub	x8, x29, #0x50
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12271-    fc14:	00 01 10 f8	stur	x0, [x8, #-0x100]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12272-    fc18:	53 02 00 94	bl	_$sSo17OS_dispatch_queueCMa
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12273-    fc1c:	f4 03 00 aa	mov	x20, x0
+--
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12700-_$s2lk9ActiveHUDC2zzyySSSgFyyScMYccfU_yycfU0_:
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12701-   102c4:	7f 23 03 d5	pacibsp
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12702-   102c8:	fd 7b bf a9	stp	x29, x30, [sp, #-0x10]!
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12703-   102cc:	fd 03 00 91	mov	x29, sp
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12704-   102d0:	00 00 80 52	mov	w0, #0x0
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt:12705:   102d4:	c3 48 00 94	bl	0x225e0 ; symbol stub for: _exit
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12706-_$s2lk9ActiveHUDCACycfc:
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12707-   102d8:	7f 23 03 d5	pacibsp
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12708-   102dc:	ff 03 01 d1	sub	sp, sp, #0x40
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12709-   102e0:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+/Users/zest/myworks/apt-ios-patch/work/com.amg456.rootless-18.1.1/analysis/second-heartbeat/TG_arm64e_full_disasm.txt-12710-   102e4:	fd c3 00 91	add	x29, sp, #0x30
