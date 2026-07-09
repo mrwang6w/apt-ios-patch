@@ -1,0 +1,19 @@
+#!/bin/bash
+echo "Remove old files..."
+if [ -f "/Applications/VBox.app" ];then
+	rm -rf /Applications/VBox.app > /dev/null
+fi
+
+if [ -f "/Library/MobileSubstrate/DynamicLibraries/VBox.dylib" ];then
+	rm /Library/MobileSubstrate/DynamicLibraries/VBox.dylib > /dev/null
+fi
+
+if [ -f "/Library/MobileSubstrate/DynamicLibraries/VBox.plist" ];then
+	rm /Library/MobileSubstrate/DynamicLibraries/VBox.plist > /dev/null
+fi
+
+if [ -f "/var/jb/var/mobile/Library/Preferences/VBox/vv.plist" ];then
+        rm /var/jb/var/mobile/Library/Preferences/VBox/vv.plist > /dev/null
+fi
+
+exit 0

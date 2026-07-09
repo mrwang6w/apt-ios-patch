@@ -12,6 +12,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tarfile
@@ -79,6 +80,12 @@ def safe_extract_tar(tar_path: Path, dest: Path) -> None:
             tf.extractall(dest, filter="data")
         except TypeError:
             tf.extractall(dest)
+
+    # Debian control files are occasionally archived with mode 000. The
+    # extracted copy is an audit artifact, so make regular files readable.
+    for path in dest.rglob("*"):
+        if path.is_file() and not path.is_symlink():
+            path.chmod(path.stat().st_mode | stat.S_IRUSR)
 
 
 def extract_deb(deb: Path, out: Path) -> tuple[Path, Path, list[str]]:

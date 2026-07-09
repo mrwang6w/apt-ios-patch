@@ -1,0 +1,9 @@
+Package: com.amg456.VBox1
+Version: 5.5
+Priority: optional
+Section: VBox虚拟盒子
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Name: VBox_5.5「无根」
+Author: VBox
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png

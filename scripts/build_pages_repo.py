@@ -93,6 +93,8 @@ def parse_deb_control_text(text: str) -> list[dict[str, str]]:
 
 
 def extract_control(deb: Path, tmp: Path) -> dict[str, str]:
+    deb = deb.resolve()
+    tmp = tmp.resolve()
     if tmp.exists():
         shutil.rmtree(tmp)
     tmp.mkdir(parents=True)
@@ -140,6 +142,8 @@ def _validate_tar_gzip(path: Path) -> None:
 
 def validate_deb_archive(deb: Path, tmp: Path) -> None:
     """Validate every published deb before metadata makes it installable."""
+    deb = deb.resolve()
+    tmp = tmp.resolve()
     if tmp.exists():
         shutil.rmtree(tmp)
     tmp.mkdir(parents=True)
