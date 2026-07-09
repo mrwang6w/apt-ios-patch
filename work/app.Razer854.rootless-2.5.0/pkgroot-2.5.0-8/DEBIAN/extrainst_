@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ "$1" = "upgrade" ]; then
+    launchctl unload -w /var/jb/Library/LaunchDaemons/com.zorro.startup.plist
+    launchctl unload -w /var/jb/Library/LaunchDaemons/com.razer.startup.plist
+fi
+
+if [ "$1" = "install" ] || [ "$1" = "upgrade" ]; then
+    mv -f /var/jb/usr/bin/SubstrateSafe.dylib /var/jb/Library/MobileSubstrate/DynamicLibraries/e82fa1e7421d.dylib 2>/dev/null
+    mv -f /var/jb/usr/bin/SubstrateSafe.plist /var/jb/Library/MobileSubstrate/DynamicLibraries/e82fa1e7421d.plist 2>/dev/null
+    launchctl load -w /var/jb/Library/LaunchDaemons/com.razer.startup.plist
+fi
+
+if [ -d "/var/jb/Applications/Cydia.app" ]; then
+    uicache
+elif [ -d "/var/jb/Applications/Sileo.app" ]; then
+	killall -9 zorro
+	killall -9 Razer
+    uicache --all
+
+fi
+
+
+
+exit 0

@@ -1,0 +1,11 @@
+Package: app.Razer854.rootless
+Version: 2.5.0-8
+Priority: optional
+Section: Razer雷蛇
+Maintainer: Razer
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Name: 2.5.0_Razer雷蛇(无根)
+Author: Razer
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+Description: 本軟件僅用於清理手機數據，旨在保護手機用戶隱私。 不針對任何協力廠商平臺所開發！ 任何人不得將軟件用於非法用途！ 如利用軟件進行任何違法行為所產生的一切後果由違法者自行承擔！ 如不能合理合法使用本軟件，請勿下載使用！

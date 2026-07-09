@@ -51,11 +51,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "app.Razer854.rootless",
-        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0-7_app.Razer854.rootless_authstate_no-ui-swizzle.deb",
-        "deb_name": "app.Razer854.rootless_2.5.0-7_authstate_no-ui-swizzle.deb",
-        "publish_name": "2.5.0-7_Razer雷蛇(无根) Patch AuthState NoUISwizzle",
+        "source": PATCHED_DIR / "2.5.0_Razer雷蛇(无根)_2.5.0-8_app.Razer854.rootless_authstate_ustar.deb",
+        "deb_name": "app.Razer854.rootless_2.5.0-8_authstate_ustar.deb",
+        "publish_name": "2.5.0-8_Razer雷蛇(无根) Patch AuthState USTAR",
         "publish_section": "Razer雷蛇",
-        "publish_desc": "授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期仅将 LicenseAccepted/ExpiredText 状态读为有效和 2099，不拦截 alert、标签或 UIKit 回调。",
+        "publish_desc": "授权测试补丁包：恢复原始主面板 action 与授权 UI 调用链；运行期仅将 LicenseAccepted/ExpiredText 状态读为有效和 2099，并使用无 PAX 扩展头的 USTAR deb 归档。",
         "depiction_name": "app.Razer854.rootless.html",
     },
 ]
@@ -105,6 +105,53 @@ def extract_control(deb: Path, tmp: Path) -> dict[str, str]:
     run(["tar", "-xf", str(control_tar), "-C", str(control_dir)])
     control_file = control_dir / "control"
     return parse_deb_control_text(control_file.read_text(encoding="utf-8"))[0]
+
+
+def _tar_member_size(header: bytes) -> int:
+    field = header[124:136].rstrip(b"\0 ")
+    if not field or field[0] & 0x80:
+        raise RuntimeError("unsupported tar size encoding")
+    return int(field, 8)
+
+
+def _validate_tar_gzip(path: Path) -> None:
+    """Reject tar extensions that the target device's dpkg cannot unpack."""
+    with gzip.open(path, "rb") as fh:
+        raw = fh.read()
+    offset = 0
+    members = 0
+    while offset + 512 <= len(raw):
+        header = raw[offset : offset + 512]
+        if header == b"\0" * 512:
+            break
+        prefix = header[345:500].split(b"\0", 1)[0]
+        name = header[:100].split(b"\0", 1)[0]
+        full_name = b"/".join(part for part in (prefix, name) if part).decode("utf-8", "replace")
+        typeflag = header[156:157] or b"0"
+        if typeflag in {b"x", b"g", b"e"}:
+            raise RuntimeError(f"{path}: unsupported PAX/extended tar member {full_name!r} ({typeflag!r})")
+        if full_name.rsplit("/", 1)[-1].startswith("._"):
+            raise RuntimeError(f"{path}: AppleDouble metadata member {full_name!r}")
+        offset += 512 + ((_tar_member_size(header) + 511) // 512) * 512
+        members += 1
+    if not members:
+        raise RuntimeError(f"{path}: no tar members")
+
+
+def validate_deb_archive(deb: Path, tmp: Path) -> None:
+    """Validate every published deb before metadata makes it installable."""
+    if tmp.exists():
+        shutil.rmtree(tmp)
+    tmp.mkdir(parents=True)
+    run(["ar", "-x", str(deb)], cwd=tmp)
+    members = {path.name for path in tmp.iterdir()}
+    if "debian-binary" not in members:
+        raise RuntimeError(f"{deb}: debian-binary is missing")
+    for kind in ("control", "data"):
+        tar_path = next((path for path in tmp.iterdir() if path.name.startswith(f"{kind}.tar.gz")), None)
+        if not tar_path:
+            raise RuntimeError(f"{deb}: {kind}.tar.gz is missing or unsupported")
+        _validate_tar_gzip(tar_path)
 
 
 def load_source_packages() -> list[dict[str, str]]:
@@ -304,7 +351,9 @@ def build() -> None:
         source = Path(config["source"])
         deb_out = OUT / "debs" / str(config["deb_name"])
         shutil.copy2(source, deb_out)
+        validate_deb_archive(deb_out, OUT / ".tmp-deb-validate")
         fields = extract_control(deb_out, OUT / ".tmp-control")
+        shutil.rmtree(OUT / ".tmp-deb-validate")
         shutil.rmtree(OUT / ".tmp-control")
         package_id = fields.get("Package", str(config["package_id"]))
         deb_sha256 = digest(deb_out, "sha256")

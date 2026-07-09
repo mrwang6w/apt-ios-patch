@@ -1,0 +1,1 @@
+[2026-07-10T03:08:14] {'type': 'error', 'description': "ReferenceError: 'ObjC' is not defined", 'stack': "ReferenceError: 'ObjC' is not defined\n    at <eval> (/script1.js:39)", 'fileName': '/script1.js', 'lineNumber': 39, 'columnNumber': 1}

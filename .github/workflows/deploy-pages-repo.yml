@@ -93,6 +93,36 @@ jobs:
               sha256 = hashlib.sha256(deb_path.read_bytes()).hexdigest()
               if sha256 != record.get("SHA256"):
                   raise SystemExit(f"SHA256 mismatch for {deb_path}: Packages={record.get('SHA256')} actual={sha256}")
+              import subprocess
+              import tempfile
+              with tempfile.TemporaryDirectory() as tmp:
+                  subprocess.run(["ar", "-x", str(deb_path.resolve())], cwd=tmp, check=True)
+                  for kind in ("control", "data"):
+                      tar_path = next((p for p in Path(tmp).iterdir() if p.name == f"{kind}.tar.gz"), None)
+                      if not tar_path:
+                          raise SystemExit(f"{deb_path}: {kind}.tar.gz is missing or unsupported")
+                      raw = gzip.decompress(tar_path.read_bytes())
+                      offset = 0
+                      members = 0
+                      while offset + 512 <= len(raw):
+                          header = raw[offset : offset + 512]
+                          if header == b"\0" * 512:
+                              break
+                          prefix = header[345:500].split(b"\0", 1)[0]
+                          name = header[:100].split(b"\0", 1)[0]
+                          full_name = b"/".join(part for part in (prefix, name) if part).decode("utf-8", "replace")
+                          typeflag = header[156:157] or b"0"
+                          if typeflag in {b"x", b"g", b"e"}:
+                              raise SystemExit(f"{deb_path}: unsupported PAX/extended tar member {full_name!r} ({typeflag!r})")
+                          if full_name.rsplit("/", 1)[-1].startswith("._"):
+                              raise SystemExit(f"{deb_path}: AppleDouble metadata member {full_name!r}")
+                          field = header[124:136].rstrip(b"\0 ")
+                          if not field or field[0] & 0x80:
+                              raise SystemExit(f"{deb_path}: unsupported tar size encoding in {full_name!r}")
+                          offset += 512 + ((int(field, 8) + 511) // 512) * 512
+                          members += 1
+                      if not members:
+                          raise SystemExit(f"{deb_path}: {kind}.tar.gz has no members")
               print(f"{deb_path}: OK")
           PY
       - name: Setup Pages
