@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
+	launchctl unload -w /var/jb/Library/LaunchDaemons/com.zorro.startup.plist
+    launchctl unload -w /var/jb/Library/LaunchDaemons/com.razer.startup.plist
+fi
+
+exit 0

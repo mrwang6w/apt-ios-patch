@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/var/jb/usr/bin/razerdo rm /tmp/ls.dat
+exit 0

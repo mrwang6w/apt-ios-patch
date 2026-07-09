@@ -1,7 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <objc/runtime.h>
-#import <objc/message.h>
 
 static BOOL gRazerAuthHookEnabled = NO;
 static NSString * const kRazerFutureText = @"2099.01.01 00:00";
@@ -15,16 +13,11 @@ static BOOL RZIsTargetProcess(void) {
     return [bid isEqualToString:@"Razer"] || [exe isEqualToString:@"Razer"] || [pathExe isEqualToString:@"Razer"];
 }
 
-static BOOL RZKeyEquals(id key, NSString *s) {
-    return [key isKindOfClass:[NSString class]] && [(NSString *)key isEqualToString:s];
-}
-
 static id RZForcedObjectForKey(id key, id originalValue) {
     if (!gRazerAuthHookEnabled || ![key isKindOfClass:[NSString class]]) return originalValue;
     NSString *k = (NSString *)key;
     if ([k isEqualToString:@"LicenseAccepted"]) return @YES;
     if ([k isEqualToString:@"ExpiredText"]) return kRazerFutureText;
-    // Conservative aliases for expiry predicates seen in similar Razer/Zorro builds.
     NSString *lower = [k lowercaseString];
     if (([lower containsString:@"expire"] || [lower containsString:@"expiry"] || [lower containsString:@"deadline"] || [lower containsString:@"endtime"]) &&
         ([lower containsString:@"time"] || [lower containsString:@"date"] || [lower containsString:@"stamp"])) {
@@ -33,76 +26,33 @@ static id RZForcedObjectForKey(id key, id originalValue) {
     return originalValue;
 }
 
-static BOOL RZLooksLikeAuthAlertText(NSString *s) {
-    if (![s isKindOfClass:[NSString class]] || s.length == 0) return NO;
-    NSArray<NSString *> *needles = @[
-        @"未授权", @"未授權", @"Unauthorized", @"unauthorized",
-        @"请输入授权码", @"請輸入授權碼", @"Please Input LicenseCode", @"LicenseCode",
-        @"license expired", @"授權碼", @"授权码"
-    ];
-    for (NSString *n in needles) {
-        if ([s rangeOfString:n options:NSCaseInsensitiveSearch].location != NSNotFound) return YES;
-    }
-    return NO;
-}
-
-static NSString *RZSanitizedText(NSString *text) {
-    if (![text isKindOfClass:[NSString class]]) return text;
-    if ([text containsString:@"1970.01.01"] || [text containsString:@"1970-01-01"]) return kRazerFutureText;
-    if ([text rangeOfString:@"未授权"].location != NSNotFound || [text rangeOfString:@"未授權"].location != NSNotFound ||
-        [text rangeOfString:@"Unauthorized" options:NSCaseInsensitiveSearch].location != NSNotFound ||
-        [text rangeOfString:@"license expired" options:NSCaseInsensitiveSearch].location != NSNotFound) {
-        return kRazerFutureText;
-    }
-    return text;
-}
-
 @interface NSUserDefaults (RazerAuth2099Hook)
 @end
 @implementation NSUserDefaults (RazerAuth2099Hook)
-- (id)rz2099_objectForKey:(NSString *)defaultName { return RZForcedObjectForKey(defaultName, [self rz2099_objectForKey:defaultName]); }
-- (NSString *)rz2099_stringForKey:(NSString *)defaultName {
-    id v = RZForcedObjectForKey(defaultName, nil);
-    if (v) return [v isKindOfClass:[NSString class]] ? v : [v stringValue];
-    return [self rz2099_stringForKey:defaultName];
+- (id)rz2099_objectForKey:(NSString *)key { return RZForcedObjectForKey(key, [self rz2099_objectForKey:key]); }
+- (NSString *)rz2099_stringForKey:(NSString *)key {
+    id value = RZForcedObjectForKey(key, nil);
+    return value ? ([value isKindOfClass:[NSString class]] ? value : [value stringValue]) : [self rz2099_stringForKey:key];
 }
-- (BOOL)rz2099_boolForKey:(NSString *)defaultName {
-    if (RZKeyEquals(defaultName, @"LicenseAccepted")) return YES;
-    return [self rz2099_boolForKey:defaultName];
+- (BOOL)rz2099_boolForKey:(NSString *)key {
+    id value = RZForcedObjectForKey(key, nil);
+    return value ? [value boolValue] : [self rz2099_boolForKey:key];
 }
-- (NSInteger)rz2099_integerForKey:(NSString *)defaultName {
-    if (RZKeyEquals(defaultName, @"LicenseAccepted")) return 1;
-    id v = RZForcedObjectForKey(defaultName, nil);
-    if (v) return [v integerValue];
-    return [self rz2099_integerForKey:defaultName];
+- (NSInteger)rz2099_integerForKey:(NSString *)key {
+    id value = RZForcedObjectForKey(key, nil);
+    return value ? [value integerValue] : [self rz2099_integerForKey:key];
 }
-- (double)rz2099_doubleForKey:(NSString *)defaultName {
-    if (RZKeyEquals(defaultName, @"LicenseAccepted")) return 1.0;
-    id v = RZForcedObjectForKey(defaultName, nil);
-    if (v) return [v doubleValue];
-    return [self rz2099_doubleForKey:defaultName];
+- (double)rz2099_doubleForKey:(NSString *)key {
+    id value = RZForcedObjectForKey(key, nil);
+    return value ? [value doubleValue] : [self rz2099_doubleForKey:key];
 }
 @end
 
-@interface UILabel (RazerAuth2099Hook)
+@interface NSDictionary (RazerAuth2099Hook)
 @end
-@implementation UILabel (RazerAuth2099Hook)
-- (void)rz2099_setText:(NSString *)text { [self rz2099_setText:RZSanitizedText(text)]; }
-@end
-
-@interface UIViewController (RazerAuth2099Hook)
-@end
-@implementation UIViewController (RazerAuth2099Hook)
-- (void)rz2099_presentViewController:(UIViewController *)vc animated:(BOOL)flag completion:(void (^)(void))completion {
-    if (gRazerAuthHookEnabled && [vc isKindOfClass:[UIAlertController class]]) {
-        UIAlertController *alert = (UIAlertController *)vc;
-        if (RZLooksLikeAuthAlertText(alert.title) || RZLooksLikeAuthAlertText(alert.message)) {
-            if (completion) completion();
-            return;
-        }
-    }
-    [self rz2099_presentViewController:vc animated:flag completion:completion];
-}
+@implementation NSDictionary (RazerAuth2099Hook)
+- (id)rz2099_objectForKey:(id)key { return RZForcedObjectForKey(key, [self rz2099_objectForKey:key]); }
+- (id)rz2099_objectForKeyedSubscript:(id)key { return RZForcedObjectForKey(key, [self rz2099_objectForKeyedSubscript:key]); }
 @end
 
 static void RZExchange(Class cls, SEL original, SEL replacement) {
@@ -111,15 +61,16 @@ static void RZExchange(Class cls, SEL original, SEL replacement) {
     if (m1 && m2) method_exchangeImplementations(m1, m2);
 }
 
-static void RZInstallUIKitHooks(void) {
-    static BOOL installed = NO;
-    if (installed) return;
-    installed = YES;
-    Class label = NSClassFromString(@"UILabel");
-    Class vc = NSClassFromString(@"UIViewController");
-    if (label) RZExchange(label, @selector(setText:), @selector(rz2099_setText:));
-    if (vc) RZExchange(vc, @selector(presentViewController:animated:completion:), @selector(rz2099_presentViewController:animated:completion:));
-    NSLog(@"[RazerAuth2099Hook] post-launch hooks installed");
+static void RZInstallAuthorizationStateHooks(void) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // Run after UIApplication finishes launching. This keeps CoreFoundation and
+        // ColorSync initialization outside the dictionary-method exchange window.
+        Class dict = objc_getClass("NSDictionary");
+        RZExchange(dict, @selector(objectForKey:), @selector(rz2099_objectForKey:));
+        RZExchange(dict, @selector(objectForKeyedSubscript:), @selector(rz2099_objectForKeyedSubscript:));
+        NSLog(@"[RazerAuth2099Hook] authorization state hooks installed");
+    });
 }
 
 __attribute__((constructor)) static void RazerAuth2099Init(void) {
@@ -127,24 +78,19 @@ __attribute__((constructor)) static void RazerAuth2099Init(void) {
         gRazerAuthHookEnabled = RZIsTargetProcess();
         if (!gRazerAuthHookEnabled) return;
 
-        // Keep constructor work minimal. 2.5.0-4 touched UILabel/UIViewController
-        // here, which initialized UIView while dyld was still running tweak constructors on
-        // iOS 15.8.8 and reproducibly aborted in ColorSync/CGColorSpace initialization.
-        // UI swizzles are installed only after app launch. Avoid broad NSDictionary swizzling:
-        // Frida showed ColorSync/CoreFoundation throwing inside -[NSDictionary objectForKey:]
-        // during UIView initialization when dictionary classes are globally exchanged.
-        RZExchange(objc_getClass("NSUserDefaults"), @selector(objectForKey:), @selector(rz2099_objectForKey:));
-        RZExchange(objc_getClass("NSUserDefaults"), @selector(stringForKey:), @selector(rz2099_stringForKey:));
-        RZExchange(objc_getClass("NSUserDefaults"), @selector(boolForKey:), @selector(rz2099_boolForKey:));
-        RZExchange(objc_getClass("NSUserDefaults"), @selector(integerForKey:), @selector(rz2099_integerForKey:));
-        RZExchange(objc_getClass("NSUserDefaults"), @selector(doubleForKey:), @selector(rz2099_doubleForKey:));
+        Class defaults = objc_getClass("NSUserDefaults");
+        RZExchange(defaults, @selector(objectForKey:), @selector(rz2099_objectForKey:));
+        RZExchange(defaults, @selector(stringForKey:), @selector(rz2099_stringForKey:));
+        RZExchange(defaults, @selector(boolForKey:), @selector(rz2099_boolForKey:));
+        RZExchange(defaults, @selector(integerForKey:), @selector(rz2099_integerForKey:));
+        RZExchange(defaults, @selector(doubleForKey:), @selector(rz2099_doubleForKey:));
 
         [[NSNotificationCenter defaultCenter] addObserverForName:@"UIApplicationDidFinishLaunchingNotification"
                                                           object:nil
                                                            queue:[NSOperationQueue mainQueue]
                                                       usingBlock:^(__unused NSNotification *note) {
-            RZInstallUIKitHooks();
+            RZInstallAuthorizationStateHooks();
         }];
-        NSLog(@"[RazerAuth2099Hook] enabled: LicenseAccepted=YES ExpiredText=%@; post-launch hooks deferred", kRazerFutureText);
+        NSLog(@"[RazerAuth2099Hook] enabled: LicenseAccepted=YES ExpiredText=%@; UI remains untouched", kRazerFutureText);
     }
 }

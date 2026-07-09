@@ -7,11 +7,11 @@
 - 原始 size：`21521984` bytes
 - Package：`app.Razer854.rootless`
 - 原始 Version：`2.5.0`
-- 最终 Patch Version：`2.5.0-6`
+- 最终 Patch Version：`2.5.0-7`
 - Architecture：`iphoneos-arm64`
-- 最终 deb：`/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0-6_app.Razer854.rootless_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb`
-- 最终 SHA256：`fd78918deaf73714a3817c4d83645edd4aa599d6c4cc9d70251533e9f57e44fc`
-- 最终 size：`21221556` bytes
+- 最终 deb：`/Users/zest/myworks/apt-ios-patch/patched/2.5.0_Razer雷蛇(无根)_2.5.0-7_app.Razer854.rootless_authstate_no-ui-swizzle.deb`
+- 最终 SHA256：`9400c27cea19bdb1454c6e5095b2fc495626bd6fc199a827ffddf2dd1ee4a6b5`
+- 最终 size：`21239876` bytes
 
 工作目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/`。按用户要求，`work/` 内审计、反编译、反汇编、重包、验证等产物全部留存。
 
@@ -121,6 +121,27 @@ ENTER abort -> pthread_kill -> process-terminated
 
 ## 5. Patch 点表
 
+### 5.1 v7 主面板 action 修复
+
+真机反馈 v6 虽隐藏了所有授权码弹窗，但 `[全面清理]`、`[历史记录]` 等主面板 action 无法完成。原因不是 `cleanDataClicked:` 仍被 patch，而是补丁错误地在 UI 层同时做了两件事：
+
+1. 直接把 `requestlicense`、两组 `showAlert:` 和 `buttonAuthTapped` 函数首指令改为 `ret`。
+2. 全局 hook `UIViewController presentViewController:animated:completion:`，命中未授权文本即直接返回。
+
+这两个位置只能隐藏失败结果，不能让 VM dispatcher 中的授权 predicate 通过；并且吞掉原始 `presentViewController:` 会破坏业务 action 依赖的完成时序。
+
+v7 恢复上述四处 VM trampoline prologue `ff 03 10 d1`，移除 `UILabel setText:` 和 `UIViewController presentViewController:` swizzle。新的 `RazerAuth2099.dylib` 不链接 UIKit，在 `UIApplicationDidFinishLaunchingNotification` 后仅对 `NSDictionary`/`NSUserDefaults` 的 `LicenseAccepted`、`ExpiredText`（及明确时间型 expiry key）读取返回有效值。业务 selector、alert 和 completion 保持原始实现。
+
+| Binary | Arch | Function / symbol | VA | file offset | old bytes | new bytes | reason |
+|---|---|---:|---:|---:|---|---|---|
+| `var/jb/Applications/razer.app/Razer` | arm64 | `requestlicense` | `0x1003d2018` | `0x003d2018` | `c0 03 5f d6` (v6) | `ff 03 10 d1` | 恢复原始授权 UI/业务调用，不在函数入口吞调用。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `showAlert:`（主控组） | `0x1003d2fe0` | `0x003d2fe0` | `c0 03 5f d6` (v6) | `ff 03 10 d1` | 恢复主控 action 的原始失败处理与 completion 时序。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `buttonAuthTapped` | `0x100d97694` | `0x00d97694` | `c0 03 5f d6` (v6) | `ff 03 10 d1` | 恢复授权按钮原始调用链。 |
+| `var/jb/Applications/razer.app/Razer` | arm64 | `showAlert:`（授权页组） | `0x100d9b8c0` | `0x00d9b8c0` | `c0 03 5f d6` (v6) | `ff 03 10 d1` | 不再以 alert 层作为授权绕过点。 |
+| `var/jb/Library/MobileSubstrate/DynamicLibraries/RazerAuth2099.dylib` | arm64 | post-launch auth state hook | N/A | N/A | v6 UIKit UI swizzle | v7 `NSDictionary`/`NSUserDefaults` scoped read override | 强制授权 state，而不拦截 UI 或业务回调。 |
+
+v7 反解包验证：`Package=app.Razer854.rootless`、`Version=2.5.0-7`、三段 deb member 正常；上述四个 offset 均为 `ff0310d1`。`codesign --verify --deep --strict razer.app` 与 `codesign --verify --strict RazerAuth2099.dylib` 均通过。hook 的 `otool -L` 只有 Foundation/CoreFoundation/libobjc/libSystem，不含 UIKit；字符串检查不含 `presentViewController:`、`UILabel`、`UIViewController` 或 `setText:`。
+
 所有 VA 均基于 Mach-O image base `0x100000000`，file offset = `VA - 0x100000000`。静态新指令均为 ARM64 `ret`：`c0 03 5f d6`。
 
 | Binary | Arch | Function / symbol | VA | file offset | old bytes | new bytes | reason |
@@ -149,25 +170,25 @@ ENTER abort -> pthread_kill -> process-terminated
 
 新增 hook 源码：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/patch-src/RazerAuth2099Hook.m`。
 
-最终验证目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/verify-final-2.5.0-6/`。
+当前最终验证目录：`/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/verify-final-2.5.0-7-build6/`。
 
 最终 `deb_audit`：
 
 ```text
-/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/final-audit-2.5.0-6/
+/Users/zest/myworks/apt-ios-patch/work/app.Razer854.rootless-2.5.0/final-audit-2.5.0-7/
 lfs_pointer=false
 Package=app.Razer854.rootless
-Version=2.5.0-6
+Version=2.5.0-7
 ```
 
 最终 deb 反解包 byte 验证：
 
 ```text
 Razer        checkUpdate                      off=0x003cee84 got=c0035fd6 OK
-Razer        requestlicense                   off=0x003d2018 got=c0035fd6 OK
-Razer        main showAlert:                  off=0x003d2fe0 got=c0035fd6 OK
-Razer        buttonAuthTapped                 off=0x00d97694 got=c0035fd6 OK
-Razer        license showAlert:               off=0x00d9b8c0 got=c0035fd6 OK
+Razer        requestlicense restored          off=0x003d2018 got=ff0310d1 OK
+Razer        main showAlert restored          off=0x003d2fe0 got=ff0310d1 OK
+Razer        buttonAuthTapped restored        off=0x00d97694 got=ff0310d1 OK
+Razer        license showAlert restored       off=0x00d9b8c0 got=ff0310d1 OK
 Razer        exit:xr:                         off=0x0032bd78 got=c0035fd6 OK
 Razer        exitClicked:                     off=0x003d3098 got=c0035fd6 OK
 Razer        exit2:xr:                        off=0x020070dc got=c0035fd6 OK
@@ -193,9 +214,9 @@ pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 SIZE=6206412
 SHA256=0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866
 
-pages-repo/debs/app.Razer854.rootless_2.5.0-6_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb
-SIZE=21221556
-SHA256=fd78918deaf73714a3817c4d83645edd4aa599d6c4cc9d70251533e9f57e44fc
+pages-repo/debs/app.Razer854.rootless_2.5.0-7_authstate_no-ui-swizzle.deb
+SIZE=21239876
+SHA256=9400c27cea19bdb1454c6e5095b2fc495626bd6fc199a827ffddf2dd1ee4a6b5
 ```
 
 `pages-repo/Packages` 包含两条记录：
@@ -206,8 +227,8 @@ Version: 18.1.1
 Filename: ./debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
 
 Package: app.Razer854.rootless
-Version: 2.5.0-6
-Filename: ./debs/app.Razer854.rootless_2.5.0-6_nopopup_2099_noheartbeat_noexit_authhook_nodict_deferui.deb
+Version: 2.5.0-7
+Filename: ./debs/app.Razer854.rootless_2.5.0-7_authstate_no-ui-swizzle.deb
 ```
 
 没有在仓库根目录复制 `index.html`、`Packages`、`debs/` 等重复 Pages 产物；所有展示前端和 APT 静态源只位于 `pages-repo/`。
