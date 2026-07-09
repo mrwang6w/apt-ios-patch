@@ -47,6 +47,18 @@ const classGetInstanceMethod = new NativeFunction(
   Module.findGlobalExportByName('class_getInstanceMethod'), 'pointer', ['pointer', 'pointer']);
 const methodGetImplementation = new NativeFunction(
   Module.findGlobalExportByName('method_getImplementation'), 'pointer', ['pointer']);
+const classGetClassMethod = new NativeFunction(
+  Module.findGlobalExportByName('class_getClassMethod'), 'pointer', ['pointer', 'pointer']);
+const actionClass = objcGetClass(Memory.allocUtf8String('UIAlertAction'));
+const actionTitleSelector = selRegisterName(Memory.allocUtf8String('title'));
+const actionTitleMethod = actionClass.isNull() ? ptr(0) : classGetInstanceMethod(actionClass, actionTitleSelector);
+const actionTitleImplementation = actionTitleMethod.isNull() ? ptr(0) : methodGetImplementation(actionTitleMethod);
+const actionTitle = actionTitleImplementation.isNull()
+  ? null : new NativeFunction(actionTitleImplementation, 'pointer', ['pointer', 'pointer']);
+function actionTitleText(pointer) {
+  if (!actionTitle || !pointer || pointer.isNull()) return '<no-title>';
+  try { return cfString(actionTitle(pointer, actionTitleSelector)); } catch (_) { return '<title-unreadable>'; }
+}
 function hookTargetMethod(className, selector) {
   const classPtr = objcGetClass(Memory.allocUtf8String(className));
   const selectorPtr = selRegisterName(Memory.allocUtf8String(selector));
@@ -64,14 +76,18 @@ function hookTargetMethod(className, selector) {
     Interceptor.attach(implementation, {
       onEnter(args) {
         if (!inApp(this.returnAddress)) return;
-        const key = /ForKey|Subscript/.test(selector) ? cfString(args[2]) : '';
-        const keyPointer = /ForKey|Subscript/.test(selector) ? ptrValue(args[2]) : '';
+        const keyArg = selector === 'setObject:forKey:' || selector === 'setValue:forKey:' ? args[3] : args[2];
+        const key = /ForKey|Subscript/.test(selector) ? cfString(keyArg) : '';
+        const keyPointer = /ForKey|Subscript/.test(selector) ? ptrValue(keyArg) : '';
         if (key && !/(license|auth|expire|expiry|deadline|endtime|time|date|valid)/i.test(key) &&
             key !== '<non-utf8>' && key !== '<unreadable>') return;
         this.watch = true;
         this.key = key;
         this.keyPointer = keyPointer;
-        emit('ENTER class=' + className + ' sel=' + selector + ' key=' + key + ' keyptr=' + keyPointer + ' caller=' + this.returnAddress);
+        const payload = selector === 'setMessage:' ? ' message=' + cfString(args[2])
+          : selector === 'addAction:' ? ' actionTitle=' + actionTitleText(args[2])
+          : /setObject:forKey:|setValue:forKey:/.test(selector) ? ' setValue=' + safeObjectDescription(args[2]) : '';
+        emit('ENTER class=' + className + ' sel=' + selector + ' key=' + key + ' keyptr=' + keyPointer + payload + ' caller=' + this.returnAddress);
       },
       onLeave(retval) {
         if (!this.watch) return;
@@ -84,15 +100,54 @@ function hookTargetMethod(className, selector) {
   } catch (error) { emit('HOOK error class=' + className + ' sel=' + selector + ' error=' + error); }
 }
 
+function safeObjectDescription(pointer) {
+  if (!pointer || pointer.isNull()) return '<null>';
+  const textValue = cfString(pointer);
+  if (textValue !== '<unreadable>' && textValue !== '<non-utf8>' && textValue !== '<null-or-no-cfstring>') {
+    return textValue;
+  }
+  return ptrValue(pointer);
+}
+
 for (const className of [
   'NSUserDefaults', 'NSDictionary', '__NSDictionaryI', '__NSDictionaryM',
-  '__NSSingleEntryDictionaryI', '__NSDictionary0', '__NSDictionary1', 'UIAlertController'
+  '__NSSingleEntryDictionaryI', '__NSDictionary0', '__NSDictionary1',
+  'UIAlertController', 'UIAlertAction'
 ]) {
   for (const selector of [
     'objectForKey:', 'objectForKeyedSubscript:', 'boolForKey:', 'stringForKey:',
-    'integerForKey:', 'doubleForKey:', 'setMessage:', 'addAction:'
+    'integerForKey:', 'doubleForKey:', 'setObject:forKey:', 'setValue:forKey:',
+    'setMessage:', 'addAction:', 'title'
   ]) hookTargetMethod(className, selector);
 }
+
+function hookClassMethod(className, selector) {
+  const classPtr = objcGetClass(Memory.allocUtf8String(className));
+  const selectorPtr = selRegisterName(Memory.allocUtf8String(selector));
+  if (classPtr.isNull() || selectorPtr.isNull()) return;
+  const method = classGetClassMethod(classPtr, selectorPtr);
+  if (method.isNull()) return;
+  const implementation = methodGetImplementation(method);
+  try {
+    Interceptor.attach(implementation, {
+      onEnter(args) {
+        if (!inApp(this.returnAddress)) return;
+        this.watch = true;
+        this.argument = safeObjectDescription(args[2]);
+        emit('ENTER class+' + className + ' sel=' + selector + ' arg=' + this.argument + ' caller=' + this.returnAddress);
+      },
+      onLeave(retval) {
+        if (!this.watch) return;
+        emit('LEAVE class+' + className + ' sel=' + selector + ' arg=' + this.argument + ' ret=' + safeObjectDescription(retval));
+      }
+    });
+    emit('HOOK class+' + className + ' sel=' + selector + ' imp=' + implementation);
+  } catch (error) { emit('HOOK class+ error class=' + className + ' sel=' + selector + ' error=' + error); }
+}
+hookClassMethod('UIAlertAction', 'actionWithTitle:style:handler:');
+hookClassMethod('AppDelegate', 'RR:');
+hookClassMethod('AppDelegate', 'RRSet:value:');
+hookClassMethod('AppDelegate', 'RReload');
 
 // Hook the known VM entry offsets independently of ObjC bridge availability.
 for (const [label, offset] of [
@@ -107,6 +162,18 @@ for (const [label, offset] of [
     } });
   } catch (error) { emit('METHOD ' + label + ' hook-error=' + error); }
 }
+const seenModules = new Set();
+function emitAuthModules() {
+  Process.enumerateModules().forEach(function (module) {
+    if (/RazerAuth2099|TweakInject/i.test(module.name + ' ' + module.path) && !seenModules.has(module.path)) {
+      seenModules.add(module.path);
+      emit('MODULE name=' + module.name + ' base=' + module.base + ' path=' + module.path);
+    }
+  });
+}
+emitAuthModules();
+const moduleTimer = setInterval(emitAuthModules, 500);
+setTimeout(function () { clearInterval(moduleTimer); }, 15000);
 emit('ready base=' + app.base + ' size=' + app.size);
 '''
 

@@ -1,0 +1,74 @@
+[2026-07-10T04:24:31] METHOD missing class=NSUserDefaults sel=objectForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSUserDefaults sel=objectForKeyedSubscript:
+[2026-07-10T04:24:31] METHOD missing class=NSUserDefaults sel=boolForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSUserDefaults sel=stringForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSUserDefaults sel=integerForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSUserDefaults sel=doubleForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSUserDefaults sel=setMessage:
+[2026-07-10T04:24:31] METHOD missing class=NSUserDefaults sel=addAction:
+[2026-07-10T04:24:31] HOOK class=NSDictionary sel=objectForKey: imp=0x18184e15c
+[2026-07-10T04:24:31] HOOK class=NSDictionary sel=objectForKeyedSubscript: imp=0x18171d6d8
+[2026-07-10T04:24:31] METHOD missing class=NSDictionary sel=boolForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSDictionary sel=stringForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSDictionary sel=integerForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSDictionary sel=doubleForKey:
+[2026-07-10T04:24:31] METHOD missing class=NSDictionary sel=setMessage:
+[2026-07-10T04:24:31] METHOD missing class=NSDictionary sel=addAction:
+[2026-07-10T04:24:31] HOOK class=__NSDictionaryI sel=objectForKey: imp=0x18171cf60
+[2026-07-10T04:24:31] HOOK class=__NSDictionaryI sel=objectForKeyedSubscript: imp=0x181727650
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryI sel=boolForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryI sel=stringForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryI sel=integerForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryI sel=doubleForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryI sel=setMessage:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryI sel=addAction:
+[2026-07-10T04:24:31] HOOK class=__NSDictionaryM sel=objectForKey: imp=0x1816c39dc
+[2026-07-10T04:24:31] HOOK class=__NSDictionaryM sel=objectForKeyedSubscript: imp=0x1816d33f4
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryM sel=boolForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryM sel=stringForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryM sel=integerForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryM sel=doubleForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryM sel=setMessage:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionaryM sel=addAction:
+[2026-07-10T04:24:31] HOOK class=__NSSingleEntryDictionaryI sel=objectForKey: imp=0x18175b18c
+[2026-07-10T04:24:31] HOOK class=__NSSingleEntryDictionaryI sel=objectForKeyedSubscript: imp=0x18171d6d8
+[2026-07-10T04:24:31] METHOD missing class=__NSSingleEntryDictionaryI sel=boolForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSSingleEntryDictionaryI sel=stringForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSSingleEntryDictionaryI sel=integerForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSSingleEntryDictionaryI sel=doubleForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSSingleEntryDictionaryI sel=setMessage:
+[2026-07-10T04:24:31] METHOD missing class=__NSSingleEntryDictionaryI sel=addAction:
+[2026-07-10T04:24:31] HOOK class=__NSDictionary0 sel=objectForKey: imp=0x1817245d8
+[2026-07-10T04:24:31] HOOK class=__NSDictionary0 sel=objectForKeyedSubscript: imp=0x18171d6d8
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionary0 sel=boolForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionary0 sel=stringForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionary0 sel=integerForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionary0 sel=doubleForKey:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionary0 sel=setMessage:
+[2026-07-10T04:24:31] METHOD missing class=__NSDictionary0 sel=addAction:
+[2026-07-10T04:24:31] METHOD missing-class-or-selector class=__NSDictionary1 sel=objectForKey:
+[2026-07-10T04:24:31] METHOD missing-class-or-selector class=__NSDictionary1 sel=objectForKeyedSubscript:
+[2026-07-10T04:24:31] METHOD missing-class-or-selector class=__NSDictionary1 sel=boolForKey:
+[2026-07-10T04:24:31] METHOD missing-class-or-selector class=__NSDictionary1 sel=stringForKey:
+[2026-07-10T04:24:31] METHOD missing-class-or-selector class=__NSDictionary1 sel=integerForKey:
+[2026-07-10T04:24:31] METHOD missing-class-or-selector class=__NSDictionary1 sel=doubleForKey:
+[2026-07-10T04:24:31] METHOD missing-class-or-selector class=__NSDictionary1 sel=setMessage:
+[2026-07-10T04:24:31] METHOD missing-class-or-selector class=__NSDictionary1 sel=addAction:
+[2026-07-10T04:24:31] METHOD missing class=UIAlertController sel=objectForKey:
+[2026-07-10T04:24:31] METHOD missing class=UIAlertController sel=objectForKeyedSubscript:
+[2026-07-10T04:24:31] METHOD missing class=UIAlertController sel=boolForKey:
+[2026-07-10T04:24:31] METHOD missing class=UIAlertController sel=stringForKey:
+[2026-07-10T04:24:31] METHOD missing class=UIAlertController sel=integerForKey:
+[2026-07-10T04:24:31] METHOD missing class=UIAlertController sel=doubleForKey:
+[2026-07-10T04:24:31] HOOK class=UIAlertController sel=setMessage: imp=0x183aef9d0
+[2026-07-10T04:24:31] HOOK class=UIAlertController sel=addAction: imp=0x183db222c
+[2026-07-10T04:24:31] ready base=0x104a88000 size=33931264
+[2026-07-10T04:24:43] ENTER class=UIAlertController sel=addAction: key= keyptr= caller=0x106a9833c
+[2026-07-10T04:24:43] LEAVE class=UIAlertController sel=addAction: key= keyptr= value=<unreadable> (0x2812fd440)
+[2026-07-10T04:24:43] ENTER class=UIAlertController sel=addAction: key= keyptr= caller=0x106a9833c
+[2026-07-10T04:24:43] LEAVE class=UIAlertController sel=addAction: key= keyptr= value=<unreadable> (0x2812fdd40)
+[2026-07-10T04:24:45] METHOD buttonAuthTapped entered caller=0x183e90748
+[2026-07-10T04:24:45] ENTER class=UIAlertController sel=addAction: key= keyptr= caller=0x106a9833c
+[2026-07-10T04:24:45] LEAVE class=UIAlertController sel=addAction: key= keyptr= value=<unreadable> (0x2812f4ea0)
+[2026-07-10T04:24:45] ENTER class=UIAlertController sel=addAction: key= keyptr= caller=0x106a9833c
+[2026-07-10T04:24:45] LEAVE class=UIAlertController sel=addAction: key= keyptr= value=<unreadable> (0x2812f9950)
