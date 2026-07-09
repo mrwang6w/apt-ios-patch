@@ -1,0 +1,4 @@
+interface:
+  display_name: "iOS Deb Reverse Patcher"
+  short_description: "越狱源 deb 包分析、逆向、解密与补丁发布标准化流程"
+  default_prompt: "Use $ios-deb-reverse-patcher to analyze and patch an iOS jailbreak repo deb package."

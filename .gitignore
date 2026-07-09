@@ -48,7 +48,10 @@ next-env.d.ts
 *.png
 *.webp
 *.json
-.claude
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/ios-deb-reverse-patcher
 result/
 /work/
 !/pages-repo/**/*.png
