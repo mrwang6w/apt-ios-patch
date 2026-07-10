@@ -71,3 +71,22 @@ Depiction: ./depictions/app.awz4854.rootful.html
 Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：移除后加卡密网络层与安装阶段 aloader 注入调用；双架构固定共享授权状态为有效，并使用无 PAX 扩展头的 USTAR deb 归档。
 
+Package: com.xxdevice.CTWPro.Rootless560
+Version: 5.6.0-1
+Priority: standard
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Conflicts: app.weiphone.ALS, app.weiphone.AWZ, app.weiphone.NZT, app.weiphone.LRN, app.weiphone.IGG
+Architecture: iphoneos-arm64
+Section: CTW Pro
+Maintainer: Local Patch Repo
+Name: CTW Pro企业级(无根版) 5.6.0-1 Patch NoLicense USTAR
+Author: Local Patch Repo
+Filename: ./debs/com.xxdevice.CTWPro.Rootless560_5.6.0-1_nolicense_ustar.deb
+Size: 21959938
+MD5sum: eac452964f165fc0493a32e886764165
+SHA1: 8cdedaf3137b6436d6b5a3b7e5abd03a4d1ef7ca
+SHA256: 3bff4426fde21b807d491d39c6b09eaa99ae5c770dbce113b65516862a9e8225
+Depiction: ./depictions/com.xxdevice.CTWPro.Rootless560.html
+Icon: ./CydiaIcon.png
+Description: 授权测试补丁包：解除后加 extend.bin 卡密网络层的强制装载，移除其 constructor、NSURLSession、swizzle 与 exit/_exit/kill interpose；保留原业务与 entitlements，并使用无 PAX 扩展头的 USTAR deb 归档。
+

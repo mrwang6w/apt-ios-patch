@@ -97,6 +97,15 @@ PATCHED_PACKAGES = [
         "publish_desc": "授权测试补丁包：移除后加卡密网络层与安装阶段 aloader 注入调用；双架构固定共享授权状态为有效，并使用无 PAX 扩展头的 USTAR deb 归档。",
         "depiction_name": "app.awz4854.rootful.html",
     },
+    {
+        "package_id": "com.xxdevice.CTWPro.Rootless560",
+        "source": PATCHED_DIR / "CTW_Pro企业级(无根版)_5.6.0-1_com.xxdevice.CTWPro.Rootless560_nolicense_ustar.deb",
+        "deb_name": "com.xxdevice.CTWPro.Rootless560_5.6.0-1_nolicense_ustar.deb",
+        "publish_name": "CTW Pro企业级(无根版) 5.6.0-1 Patch NoLicense USTAR",
+        "publish_section": "CTW Pro",
+        "publish_desc": "授权测试补丁包：解除后加 extend.bin 卡密网络层的强制装载，移除其 constructor、NSURLSession、swizzle 与 exit/_exit/kill interpose；保留原业务与 entitlements，并使用无 PAX 扩展头的 USTAR deb 归档。",
+        "depiction_name": "com.xxdevice.CTWPro.Rootless560.html",
+    },
 ]
 
 
