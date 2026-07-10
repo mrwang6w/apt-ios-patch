@@ -21,6 +21,10 @@
 17. Global review loop after every modification
 18. Case pattern distilled from this project
 19. Codex and Claude Code compatibility
+20. Trigger-surface enumeration
+21. Reachability and confidence grading
+22. Cross-binary state ownership and temporal fingerprints
+23. Narrow intervention and runtime falsification
 
 ## 1. Intake checklist
 
@@ -148,8 +152,13 @@ Evidence:
 - Block/selector invoked by the timer.
 - Failure branch after network/license response.
 - Delayed `_exit(0)` or crash closure.
+- Independent trigger surfaces such as `NSURLProtocol`/`SBURLProtocol`, normal
+  HTTP traffic, lifecycle hooks, background threads, or app launch callbacks.
 
-Patch scheduler and callback when needed. If the app still exits after 1-2 minutes, search separately for delayed exit closures; heartbeat disabling alone may not cover an already scheduled exit path.
+Patch the proven scheduler first. Add a callback or closure fallback when work
+may already be queued or an alternate caller can reach it. If the app still
+exits after 1-2 minutes, search separately for delayed exit closures; disabling
+the named heartbeat alone may not cover an independent `dispatch_after` path.
 
 ## 6. Network/license pattern
 
@@ -297,6 +306,10 @@ If the app still exits after 1-2 minutes:
 2. Check whether a delayed exit was scheduled before the heartbeat patch took effect.
 3. Inspect both main executable and injected dylibs; do not assume the behavior lives in only one binary.
 4. Repack, reinstall, and retest from a clean app launch after each narrow patch.
+5. Generate the ordinary traffic that reached the proven trigger. Test a
+   periodic path for at least two periods; test a one-shot path for its delay
+   plus margin. Include foreground, background, and foreground return when
+   lifecycle behavior is relevant.
 
 ## 14. Patch verification anti-regression checklist
 
@@ -305,6 +318,9 @@ Before calling a patch complete, run a review pass:
 ```text
 [ ] Did I patch the binary that is actually packaged in the final deb?
 [ ] Did I patch every required architecture slice?
+[ ] Did I prove the trigger, scheduler, callback/closure, state read, branch, and terminal effect for every claimed root cause?
+[ ] Did I separate confirmed paths from plausible but incomplete and static-only paths?
+[ ] Did I test independent protocol, thread, lifecycle, and ordinary-network trigger surfaces?
 [ ] Did I re-extract the final deb and verify bytes from the repacked artifact?
 [ ] Did codesign run after the last byte change?
 [ ] Did CodeResources or app bundle metadata change consistently?
@@ -388,3 +404,123 @@ Rules:
 - Avoid Claude-only dynamic context injection in the portable `SKILL.md`; if needed later, create a separate Claude-only wrapper skill.
 - If a platform does not follow symlinks, copy the canonical folder at install time and treat it as generated output; do not manually edit both copies.
 - Test all entry paths by resolving `.codex/skills/ios-deb-reverse-patcher/SKILL.md`, `.claude/skills/ios-deb-reverse-patcher/SKILL.md`, and `skills/ios-deb-reverse-patcher/SKILL.md` to the same real path.
+
+## 20. Trigger-surface enumeration
+
+Do not let a symbol such as `heartbeat_action` define the investigation scope.
+Enumerate every surface that can start equivalent work:
+
+- App launch, foreground/background transitions, and controller lifecycle.
+- `NSTimer`, GCD timers, `dispatch_after`, selectors, operations, and threads.
+- `NSURLProtocol` subclasses or other request interceptors reached by ordinary
+  HTTP/HTTPS traffic.
+- Network completions, retry handlers, observers, notifications, and storage
+  callbacks.
+- Injected tweak constructors and cross-dylib calls.
+
+For every candidate path, write one chain:
+
+```text
+trigger
+-> scheduler or direct call
+-> callback / block / closure
+-> state read or re-read
+-> decisive branch
+-> visible mutation, alert, crash, or process termination
+```
+
+Trace forward from normal-use triggers and backward from `_exit`, `abort`,
+`kill`, exception throws, and crash closures. A complete chain requires both
+directions to meet. A familiar function name or an imported termination symbol
+is only a search seed.
+
+## 21. Reachability and confidence grading
+
+Grade findings before planning patches:
+
+```text
+Confirmed / high confidence
+  Normal-use trigger is reachable in the current runtime binary, every edge to
+  the decisive branch is resolved, and the final effect is explicit.
+
+Plausible / medium risk
+  Relevant timer, sleep, state check, or exit exists, but at least one caller,
+  branch condition, callback edge, or runtime trigger is not closed.
+
+Static-only or unrelated / low confidence
+  Dead code, decoy code, unused imports, or opaque branches have no demonstrated
+  normal-use path; manual-only actions cannot explain an automatic symptom.
+```
+
+Require these questions to be answered for a confirmed delayed-exit path:
+
+1. What normal event reaches the scheduler?
+2. What exact delay or period is scheduled?
+3. Which callback or closure is retained and invoked?
+4. Which state is read at execution time?
+5. Can the decisive branch be true in the observed state?
+6. Which terminal effect executes?
+
+Report medium-risk findings separately instead of folding them into the root
+cause. Do not patch them merely because they contain the same delay or sink.
+
+## 22. Cross-binary state ownership and temporal fingerprints
+
+Treat display text, authorization state, and enforcement as separate ownership
+questions. The UI string may live in the main executable while the state writer
+and delayed enforcement live in injected dylibs.
+
+Build a state map:
+
+```text
+network/parser writer
+-> in-memory property or global
+-> persistent file / defaults / keychain
+-> immediate reader
+-> UI formatter
+-> delayed reader
+-> enforcement consumer
+```
+
+Check whether delayed closures read the state again. Bypassing an early check
+does not help when a later closure reloads the same property, defaults key, or
+configuration file and makes a new decision.
+
+Use the observed timing as a fingerprint:
+
+- Match 60-second symptoms against `60.0` doubles, nanosecond conversions,
+  `sleep(60)`, timer intervals, and `dispatch_after` deadlines.
+- Account for retry count multiplied by interval and chained delays.
+- Distinguish periodic work from a one-shot closure scheduled during startup or
+  ordinary network activity.
+- Decode constants from both architectures; do not infer a delay solely from a
+  nearby string or function name.
+
+Timing narrows the search but is not proof. Two unrelated paths can share the
+same interval, especially in networking libraries and progress UI code.
+
+## 23. Narrow intervention and runtime falsification
+
+Choose the narrowest boundary that removes the proven effect while preserving
+unrelated behavior:
+
+1. Prefer disabling the specific failure scheduler over an entire protocol or
+   networking framework.
+2. Disable the corresponding callback or closure as a fallback when another
+   caller can reach it or work may already be queued.
+3. Keep the terminal sink patch as the last option when the upstream boundary
+   is shared or unsafe to bypass.
+4. Do not patch plausible but incomplete paths in the same iteration.
+
+Validate by falsifying the original hypothesis, not only by observing that the
+app launches:
+
+- Reset to the state that previously triggered the path.
+- Generate the same ordinary traffic or lifecycle event.
+- Wait for at least two periodic intervals or the one-shot delay plus margin.
+- Exercise foreground/background return when relevant.
+- Confirm unrelated networking, UI updates, and core app actions still work.
+
+If the symptom remains, return to the earliest uncertain edge in the chain.
+Do not broaden into all timers or all termination calls until the original
+trigger, callback identity, state value, and branch outcome have been rechecked.

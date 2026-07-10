@@ -3,7 +3,7 @@
 ## Provenance
 
 - Original package: `/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/VBox_5.5「无根」_5.5_com.amg456.VBox1.deb`
-- Original package id/version: `com.amg456.VBox1` / `5.5-1`
+- Original package id/version: `com.amg456.VBox1` / `5.5`
 - Published patch version: `5.5-4`
 - Original SHA-256: `2ab876fc64885dbebbb2fc079a9009c7243144c1457ada0c85ecf5c936a3f290`
 - License target: `var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib`

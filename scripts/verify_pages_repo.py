@@ -224,6 +224,16 @@ def verify() -> None:
 
     for record in records:
         config = expected_configs[record["Package"]]
+        source = Path(config["source"])
+        require_file(source)
+        source_size = str(source.stat().st_size)
+        source_sha256 = digest(source, "sha256")
+        if source_size != record.get("Size") or source_sha256 != record.get("SHA256"):
+            raise RuntimeError(
+                f"{record['Package']}: configured patched source differs from Pages deb: "
+                f"source={source_sha256}/{source_size} "
+                f"pages={record.get('SHA256')}/{record.get('Size')}"
+            )
         expected_metadata = {
             "Section": str(config["publish_section"]),
             "Maintainer": PUBLISH_MAINTAINER,

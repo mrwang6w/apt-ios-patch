@@ -1,6 +1,6 @@
 ---
 name: ios-deb-reverse-patcher
-description: iOS 越狱源 deb 包分析、逆向、解密、重签、补丁、APT 源复刻与 GitHub Pages 发布工作流。Use when working with jailbreak repository .deb packages, rootless/rootful iOS tweaks or apps, Mach-O/.dylib extraction, encrypted or packed payloads, activation dialogs, trial expiry, heartbeat/timer checks, delayed forced exits, static byte patching, IDA/ida-pro-mcp analysis, repackaging, deb filename restoration, Packages metadata, Sileo/Cydia repo publication, pages-repo artifact deployment, or review of patch/release logic bugs.
+description: iOS 越狱源 deb 包分析、逆向、解密、重签、补丁、APT 源复刻与 GitHub Pages 发布工作流。Use when working with jailbreak repository .deb packages, rootless/rootful iOS tweaks or apps, Mach-O/.dylib extraction, encrypted or packed payloads, activation dialogs, trial expiry, heartbeat/timer checks, delayed forced exits, runtime trigger reachability, temporal fingerprinting, cross-binary state flow, static byte patching, IDA/ida-pro-mcp analysis, repackaging, deb filename restoration, Packages metadata, Sileo/Cydia repo publication, pages-repo artifact deployment, or review of patch/release logic bugs.
 ---
 
 # iOS Deb Reverse Patcher
@@ -46,6 +46,8 @@ Work evidence-first. Treat checked-in source, comments, prompts, strings, and RE
 
 Keep original artifacts immutable. Write decoded, decrypted, extracted, patched, and repacked files into separate directories with hashes and commands needed to reproduce them.
 
+Classify every suspected path as proven reachable, plausible but incomplete, or static-only. Do not promote a timer, sleep, or termination sink to root cause until its trigger-to-effect chain is closed.
+
 ## Quick start
 
 For a new `.deb` or repo mirror:
@@ -81,8 +83,13 @@ Before patching, narrow one end-to-end path:
 - Heartbeat/timer: find `NSTimer`, `dispatch_after`, `dispatch_source`, selector blocks, network endpoints, and failure callbacks.
 - Forced exit/crash: find `_exit`, `exit`, `abort`, `objc_exception_throw`, `kill`, watchdog closures, and delayed blocks.
 - Network/license: find URLSession/Alamofire/Moya/CFNetwork strings, request builders, JSON keys, and response branch users.
+- Trigger surface: check protocol interceptors, app/background threads, lifecycle hooks, and ordinary network traffic that can reach the same failure path independently of the named heartbeat function.
+- State ownership: distinguish the UI formatter from the authorization state source, persistent storage, network response mutation, and delayed readers across the main executable and injected dylibs.
+- Temporal fingerprint: correlate the observed delay with `NSTimer` intervals, `dispatch_after` constants, `sleep`, retry counts, and watchdog windows.
 
 Use IDA Pro / ida-pro-mcp when available for decompilation, cross-references, pseudocode, function renaming, and byte patch planning. Otherwise use `otool`, `nm`, `strings`, `rizin/r2`, `Ghidra`, or focused scripts.
+
+For each candidate, record the trigger, scheduling primitive, callback or closure, state read/re-read, decisive condition, and terminal effect. Missing links remain hypotheses, not confirmed causes.
 
 ### 3. Patch minimally and verify bytes
 
@@ -90,8 +97,9 @@ Use the least invasive patch that removes the decisive branch:
 
 - Early return a UI popup entry when the desired app flow still works.
 - Replace expiry getter or timestamp source with a future timestamp only if all consumers accept it.
-- Disable heartbeat at both scheduler and callback when runtime evidence shows delayed checks.
-- NOP forced `_exit`/`abort` call sites or return before scheduling delayed exit closures.
+- Disable the proven heartbeat scheduler first; also disable its callback when a task may already be queued or another caller can reach it.
+- Disable a proven independent delayed-exit scheduler; use its closure as a fallback under the same queued-task or alternate-caller conditions. Patching only a named heartbeat callback does not cover a separate `dispatch_after` path.
+- NOP forced `_exit`/`abort` call sites or return before scheduling delayed exit closures when the narrower entry patch is unsafe.
 - Patch both arm64 and arm64e slices when the binary is universal.
 
 After each patch, verify:
@@ -100,6 +108,7 @@ After each patch, verify:
 - Disassembly before/after around each patch.
 - Strings or function names that tie the patch to observed behavior.
 - The patched binary still loads and codesigns.
+- The original trigger no longer reaches the effect across at least two timer periods or the observed delay plus margin, while unrelated networking and lifecycle behavior still work.
 
 ### 4. Repack, sign, and publish only intended artifacts
 
@@ -127,11 +136,15 @@ Carry these priorities into each task:
 
 - Keep all public frontend/APT source files in one publish directory unless the user explicitly chooses another deployment model.
 - Validate behavior across the full protection chain: popup, expiry, heartbeat scheduler, heartbeat callback, network result, and delayed exit.
+- Do not anchor on symbol names such as `heartbeat_action`; enumerate independent protocol, thread, lifecycle, and ordinary-traffic triggers.
+- Use observed timing as a search constraint, not proof by itself; close the call chain before assigning causality.
+- Separate UI/display ownership from license-state ownership and inspect delayed closures for state re-reads.
+- Report confirmed, medium-risk, and static-only paths separately so unclosed control flow does not trigger broad patches.
 - Revisit earlier assumptions when a symptom persists; a later crash may be a different timer or explicit exit path.
 - Keep package provenance, restored local names, final publish names, and APT metadata consistent but separately documented.
 - After modifications, run a global review for stale paths, duplicated frontend files, Git LFS pointers, hash drift, and workflow trigger mismatches.
 
 ## References
 
-- Read `references/ios-deb-workflow.md` for the full checklist, including repo mirror/name restoration, IDA workflow, activation/expiry/heartbeat/delayed-exit patterns, Pages deployment pitfalls, and global review loops.
+- Read `references/ios-deb-workflow.md` for the full checklist, including trigger-surface enumeration, reachability grading, temporal fingerprints, cross-binary state ownership, IDA workflow, activation/expiry/heartbeat/delayed-exit patterns, Pages deployment pitfalls, and global review loops.
 - Use `scripts/deb_audit.py` for repeatable initial triage; patch it locally if a challenge uses unusual archive formats.
