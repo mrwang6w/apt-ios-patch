@@ -26,6 +26,7 @@ from scripts.build_pages_repo import (  # noqa: E402
 
 PAGES_ROOT = ROOT / "pages-repo"
 LFS_POINTER_PREFIX = b"version https://git-lfs.github.com/spec/"
+LFS_POINTER_VERSION = "version https://git-lfs.github.com/spec/v1"
 RELEASE_ALGORITHMS = {"MD5Sum": "md5", "SHA1": "sha1", "SHA256": "sha256"}
 
 
@@ -40,6 +41,36 @@ def digest(path: Path, algorithm: str) -> str:
 def require_file(path: Path) -> None:
     if not path.is_file() or path.stat().st_size == 0:
         raise RuntimeError(f"required Pages file is missing or empty: {path}")
+
+
+def configured_source_identity(path: Path) -> tuple[str, str]:
+    """Return logical SHA256 and size for a real deb or its Git LFS pointer."""
+    require_file(path)
+    with path.open("rb") as fh:
+        head = fh.read(256)
+    if not head.startswith(LFS_POINTER_PREFIX):
+        return digest(path, "sha256"), str(path.stat().st_size)
+
+    try:
+        lines = head.decode("ascii").splitlines()
+    except UnicodeDecodeError as exc:
+        raise RuntimeError(f"malformed Git LFS pointer: {path}") from exc
+    if len(lines) != 3 or lines[0] != LFS_POINTER_VERSION:
+        raise RuntimeError(f"malformed Git LFS pointer: {path}")
+    if not lines[1].startswith("oid sha256:") or not lines[2].startswith("size "):
+        raise RuntimeError(f"malformed Git LFS pointer: {path}")
+
+    source_sha256 = lines[1].removeprefix("oid sha256:").lower()
+    if len(source_sha256) != 64:
+        raise RuntimeError(f"invalid Git LFS SHA256 in {path}")
+    try:
+        bytes.fromhex(source_sha256)
+        source_size = int(lines[2].removeprefix("size "))
+    except ValueError as exc:
+        raise RuntimeError(f"malformed Git LFS pointer: {path}") from exc
+    if source_size <= 0:
+        raise RuntimeError(f"invalid Git LFS size in {path}: {source_size}")
+    return source_sha256, str(source_size)
 
 
 def referenced_file(value: str, directory: str, suffix: str) -> Path:
@@ -225,9 +256,7 @@ def verify() -> None:
     for record in records:
         config = expected_configs[record["Package"]]
         source = Path(config["source"])
-        require_file(source)
-        source_size = str(source.stat().st_size)
-        source_sha256 = digest(source, "sha256")
+        source_sha256, source_size = configured_source_identity(source)
         if source_size != record.get("Size") or source_sha256 != record.get("SHA256"):
             raise RuntimeError(
                 f"{record['Package']}: configured patched source differs from Pages deb: "
