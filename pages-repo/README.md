@@ -6,7 +6,7 @@
 
 - `com.amg456.rootless` / `纯净版18.1.1_AMG奔驰正版[无根] Patch NoExit` / `debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb` / `6206412` bytes / SHA256 `0695c1eb4a3bc7e928c76bf22256d5298be784bf0aa854b2addaef924a8a2866`
 - `app.Razer854.rootless` / `2.5.0-11_Razer雷蛇(无根) Patch AuthState USTAR` / `debs/app.Razer854.rootless_2.5.0-11_authstate_ustar.deb` / `21217862` bytes / SHA256 `53deb601ec0458da67379ddd0390b5f57e06ef7549079756bb3f7c8f351a8e21`
-- `com.amg456.VBox1` / `VBox_5.5「无根」 Patch NoLicense Dynamic 100Y USTAR` / `debs/com.amg456.VBox1_5.5-3_nolicense_dynamic100y_ustar.deb` / `6342954` bytes / SHA256 `a603600908d70daaec328429d6a895c1314710a3e40b01f370ff1636cce75ab4`
+- `com.amg456.VBox1` / `VBox_5.5「无根」 Patch NoLicense NoHeartbeat NoDelayedExit Dynamic 100Y USTAR` / `debs/com.amg456.VBox1_5.5-4_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb` / `6343758` bytes / SHA256 `9a9cabe9045455331176f0ee2242ed14e74cb86577829d0b3b7ce1b0e7e2ca38`
 - `app.awz4854.rootful` / `AWZ爱伪装_修复(有根) 15.0.1-1 Patch NoLicense USTAR` / `debs/app.awz4854.rootful_15.0.1-1_nolicense_ustar.deb` / `13030492` bytes / SHA256 `3564d982efc5a79e82a818a4a487372fb9133df7c2c31cbd59366d937b379fd7`
 
 > 注意：APT 升级判断以 deb control 中的 `Version` 为准；需要强制覆盖已安装包时，应同步提升 control `Version` 并重新生成 Pages metadata。

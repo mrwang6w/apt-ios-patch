@@ -5,16 +5,24 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 WORK="$ROOT/work/vbox-5.5-dynamic100y"
 DEB_ROOT="$ROOT/work/vbox-5.5-patched/deb-root"
 ORIGINAL_VBOX="$ROOT/work/vbox-5.5-audit/rootfs/var/jb/Applications/VBox.app/VBox"
+ORIGINAL_VBOC="$ROOT/work/vbox-5.5-audit/rootfs/var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib"
 PATCHED_APP="$DEB_ROOT/var/jb/Applications/VBox.app"
 PATCHED_VBOX="$DEB_ROOT/var/jb/Applications/VBox.app/VBox"
+PATCHED_VBOC="$DEB_ROOT/var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib"
 ENTITLEMENTS="$ROOT/work/vbox-5.5-patched/VBox.entitlements.plist"
-OUTPUT_NAME="VBox_5.5_rootless_5.5-3_com.amg456.VBox1_nolicense_dynamic100y_ustar.deb"
-PUBLISHED_NAME="VBox_5.5「无根」_5.5-3_com.amg456.VBox1_nolicense_dynamic100y_ustar.deb"
+OUTPUT_NAME="VBox_5.5_rootless_5.5-4_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
+PUBLISHED_NAME="VBox_5.5「无根」_5.5-4_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
 
-if ! grep -qx 'Version: 5.5-3' "$DEB_ROOT/DEBIAN/control"; then
+if ! grep -qx 'Version: 5.5-4' "$DEB_ROOT/DEBIAN/control"; then
   echo "unexpected VBox control version" >&2
   exit 1
 fi
+
+python3 "$ROOT/scripts/patch_vbox_vboc.py" "$ORIGINAL_VBOC" "$PATCHED_VBOC"
+codesign --force --sign - --timestamp=none --identifier vb1.dylib "$PATCHED_VBOC"
+codesign -v --strict "$PATCHED_VBOC"
+python3 "$ROOT/scripts/patch_vbox_vboc.py" --verify "$PATCHED_VBOC"
+cp "$PATCHED_VBOC" "$ROOT/work/vbox-5.5-patched/VBoc.dylib"
 
 python3 "$ROOT/scripts/patch_vbox_dynamic_expiry.py" "$ORIGINAL_VBOX" "$PATCHED_VBOX"
 codesign --force --sign - --timestamp=none --identifier com.google.vbox \
@@ -53,13 +61,25 @@ cp "$WORK/$OUTPUT_NAME" "$ROOT/patched/$PUBLISHED_NAME"
 for dir in \
   "$ROOT/work/vbox-5.5-patched/deb-stage" \
   "$ROOT/work/vbox-5.5-patched/archive-validator" \
-  "$ROOT/work/vbox-5.5-patched/final-verify"; do
+  "$ROOT/work/vbox-5.5-patched/final-verify" \
+  "$ROOT/work/vbox-5.5-patched/relative-control" \
+  "$ROOT/work/vbox-5.5-patched/relative-validator"; do
   cp "$WORK/package/debian-binary" "$WORK/package/control.tar.gz" \
     "$WORK/package/data.tar.gz" "$dir/"
 done
 gtar -xzf "$WORK/package/control.tar.gz" \
   -C "$ROOT/work/vbox-5.5-patched/deb-stage/control" --strip-components=1
+gtar -xzf "$WORK/package/control.tar.gz" \
+  -C "$ROOT/work/vbox-5.5-patched/relative-control/control" --strip-components=1
+rm -rf "$ROOT/work/vbox-5.5-patched/final-verify/var"
 gtar -xzf "$WORK/package/data.tar.gz" \
   -C "$ROOT/work/vbox-5.5-patched/final-verify"
+FINAL_VBOC="$ROOT/work/vbox-5.5-patched/final-verify/var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib"
+python3 "$ROOT/scripts/patch_vbox_vboc.py" --verify "$FINAL_VBOC"
+codesign -v --strict "$FINAL_VBOC"
+lipo "$FINAL_VBOC" -thin arm64 \
+  -output "$ROOT/work/vbox-5.5-patched/final-verify/arm64.dylib"
+lipo "$FINAL_VBOC" -thin arm64e \
+  -output "$ROOT/work/vbox-5.5-patched/final-verify/arm64e.dylib"
 shasum -a 256 "$WORK/$OUTPUT_NAME" "$ROOT/patched/$PUBLISHED_NAME"
 rm -rf "$WORK/package" "$WORK/verify"
