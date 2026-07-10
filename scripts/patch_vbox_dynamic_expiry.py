@@ -63,11 +63,33 @@ def patch(source: Path, output: Path) -> None:
     print(f"unsigned binary SHA256: {sha256(data)}")
 
 
+def verify_patched(path: Path) -> None:
+    data = path.read_bytes()
+    for offset, (_old, new) in PATCHES.items():
+        actual = data[offset : offset + len(new)]
+        if actual != new:
+            raise SystemExit(
+                f"patched-byte mismatch at file offset 0x{offset:X}: "
+                f"got {actual.hex()}, expected {new.hex()}"
+            )
+        print(f"verified dynamic-expiry patch @ 0x{offset:X}: {actual.hex()}")
+    print(f"verified patched binary: {path}")
+    print(f"patched binary SHA256: {sha256(data)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("source", type=Path)
-    parser.add_argument("output", type=Path)
+    parser.add_argument("--verify", type=Path, metavar="PATCHED")
+    parser.add_argument("source", nargs="?", type=Path)
+    parser.add_argument("output", nargs="?", type=Path)
     args = parser.parse_args()
+    if args.verify is not None:
+        if args.source is not None or args.output is not None:
+            parser.error("--verify cannot be combined with source/output")
+        verify_patched(args.verify)
+        return
+    if args.source is None or args.output is None:
+        parser.error("source and output are required unless --verify is used")
     patch(args.source, args.output)
 
 

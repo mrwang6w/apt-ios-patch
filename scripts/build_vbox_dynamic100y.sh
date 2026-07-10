@@ -10,10 +10,10 @@ PATCHED_APP="$DEB_ROOT/var/jb/Applications/VBox.app"
 PATCHED_VBOX="$DEB_ROOT/var/jb/Applications/VBox.app/VBox"
 PATCHED_VBOC="$DEB_ROOT/var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib"
 ENTITLEMENTS="$ROOT/work/vbox-5.5-patched/VBox.entitlements.plist"
-OUTPUT_NAME="VBox_5.5_rootless_5.5-4_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
-PUBLISHED_NAME="VBox_5.5「无根」_5.5-4_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
+OUTPUT_NAME="VBox_5.5_rootless_5.5-5_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
+PUBLISHED_NAME="VBox_5.5「无根」_5.5-5_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
 
-if ! grep -qx 'Version: 5.5-4' "$DEB_ROOT/DEBIAN/control"; then
+if ! grep -qx 'Version: 5.5-5' "$DEB_ROOT/DEBIAN/control"; then
   echo "unexpected VBox control version" >&2
   exit 1
 fi
@@ -75,8 +75,11 @@ rm -rf "$ROOT/work/vbox-5.5-patched/final-verify/var"
 gtar -xzf "$WORK/package/data.tar.gz" \
   -C "$ROOT/work/vbox-5.5-patched/final-verify"
 FINAL_VBOC="$ROOT/work/vbox-5.5-patched/final-verify/var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib"
+FINAL_VBOX="$ROOT/work/vbox-5.5-patched/final-verify/var/jb/Applications/VBox.app/VBox"
 python3 "$ROOT/scripts/patch_vbox_vboc.py" --verify "$FINAL_VBOC"
+python3 "$ROOT/scripts/patch_vbox_dynamic_expiry.py" --verify "$FINAL_VBOX"
 codesign -v --strict "$FINAL_VBOC"
+codesign -v --strict "$ROOT/work/vbox-5.5-patched/final-verify/var/jb/Applications/VBox.app"
 lipo "$FINAL_VBOC" -thin arm64 \
   -output "$ROOT/work/vbox-5.5-patched/final-verify/arm64.dylib"
 lipo "$FINAL_VBOC" -thin arm64e \
