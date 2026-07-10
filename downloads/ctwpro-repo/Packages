@@ -1,0 +1,60 @@
+Package: com.xxdevice.CTWPro.Roothide560
+Version: 5.6.0
+Priority: standard
+Section: [CTW Pro]
+Maintainer: CTW
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Conflicts: app.weiphone.ALS, app.weiphone.AWZ, app.weiphone.NZT, app.weiphone.LRN, app.weiphone.IGG
+Architecture: iphoneos-arm64e
+Filename: ./debs/44.deb
+Size: 22232966
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: CTW Pro企业级(Roothide版)
+Author: CTW
+Depiction: https://apt.ctwpro.com/index.php?pid=44
+SileoDepiction: https://apt.ctwpro.com/sileo/44
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: 1915758257c4b7c804a4e249c1684dbf
+SHA1: 2a649ca99cbfca0949732769d4c530bd9f3352af
+SHA256: 22651219441ff08425252190e8ce3b9fa7818e167706e8bb16911d12de641fd3
+
+Package: com.xxdevice.CTWPro.Rootfull560
+Version: 5.6.0
+Priority: standard
+Section: [CTW Pro]
+Maintainer: CTW
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Conflicts: app.weiphone.ALS, app.weiphone.AWZ, app.weiphone.NZT, app.weiphone.LRN, app.weiphone.IGG
+Architecture: iphoneos-arm
+Filename: ./debs/43.deb
+Size: 30559580
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: CTW Pro企业级(有根版)
+Author: CTW
+Depiction: https://apt.ctwpro.com/index.php?pid=43
+SileoDepiction: https://apt.ctwpro.com/sileo/43
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: ef61318a55cec76f70cc23fb70a13442
+SHA1: 4f10f04c5eb72eb5c7b4c970be9f1c3e1f7f6ee8
+SHA256: c1908dde2c72cfd69261f02ad85181094888df00f5846642b63e45c1c76704d6
+
+Package: com.xxdevice.CTWPro.Rootless560
+Version: 5.6.0
+Priority: standard
+Section: [CTW Pro]
+Maintainer: CTW
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Conflicts: app.weiphone.ALS, app.weiphone.AWZ, app.weiphone.NZT, app.weiphone.LRN, app.weiphone.IGG
+Architecture: iphoneos-arm64
+Filename: ./debs/42.deb
+Size: 22252632
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: CTW Pro企业级(无根版)
+Author: CTW
+Depiction: https://apt.ctwpro.com/index.php?pid=42
+SileoDepiction: https://apt.ctwpro.com/sileo/42
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: bd5524d0505ce1e77c5ff344f4d161e2
+SHA1: d733bde751909d4a960d4ae7efa6bdda8b37ef90
+SHA256: f10c545f65c81bc4d69afd5335c7fcd19d00ab3ca8b74d1227820996ebca54ef
+

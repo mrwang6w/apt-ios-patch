@@ -1,0 +1,4 @@
+old	new	package	name	version	source_filename
+44.deb	CTW_Pro企业级(Roothide版)_5.6.0_com.xxdevice.CTWPro.Roothide560.deb	com.xxdevice.CTWPro.Roothide560	CTW Pro企业级(Roothide版)	5.6.0	./debs/44.deb
+43.deb	CTW_Pro企业级(有根版)_5.6.0_com.xxdevice.CTWPro.Rootfull560.deb	com.xxdevice.CTWPro.Rootfull560	CTW Pro企业级(有根版)	5.6.0	./debs/43.deb
+42.deb	CTW_Pro企业级(无根版)_5.6.0_com.xxdevice.CTWPro.Rootless560.deb	com.xxdevice.CTWPro.Rootless560	CTW Pro企业级(无根版)	5.6.0	./debs/42.deb

@@ -1,0 +1,9 @@
+-rw-r--r--@ 1 zest  staff    15K Jul 10 10:25 AFC2_iOS11~17_系统路径_1.4.0_com.awz.afc2forios12.deb
+-rw-r--r--@ 1 zest  staff    14M Jul 10 10:23 ALS爱立思_25.1「推荐」_25.1_com.awzapp.als25.1.deb
+-rw-r--r--@ 1 zest  staff    14M Jul 10 10:21 AWZ爱伪装_25.1「推荐」_25.1_top.awzapp.awz.deb
+-rw-r--r--@ 1 zest  staff    17M Jul 10 10:23 AXJ爱新机_25.1「推荐」_25.1_com.awzapp.axj.deb
+-rw-r--r--@ 1 zest  staff   7.9M Jul 10 10:24 IGG一键新机_19.5「推荐」_19.5-5_app.zorrov.igg195.deb
+-rw-r--r--@ 1 zest  staff   640B Jul 10 10:25 OpenSSH_8.4-2_awz.openssh.deb
+-rw-r--r--@ 1 zest  staff   7.3M Jul 10 10:25 YOY最新一键新机(无根)_19.8-6_com.awzapp.yoy-rootless.deb
+-rw-r--r--@ 1 zest  staff   8.4M Jul 10 10:24 YOY最新一键新机(有根)_19.5-6_top.awzapp.yoy-rootfull1956.deb
+-rw-r--r--@ 1 zest  staff   295K Jul 10 10:25 连个锤子-联网修复-Rootless_1.2.2_com.awzapp.Renet.rootless.deb

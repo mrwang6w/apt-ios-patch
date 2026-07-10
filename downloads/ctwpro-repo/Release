@@ -1,0 +1,8 @@
+Origin: CTW Pro官方源
+Label: CTW Pro官方源
+Suite: stable
+Version: 6.5
+Codename: com.apt.ctwpro.com.
+Architectures: iphoneos-arm iphoneos-arm64
+Components: main
+Description: 全新iOS一键清理软件,支持iOS10-17全系列越狱,支持有根，无根越狱。内核级屏蔽越狱,深层机器参数修改,脚本调用,温度监控。

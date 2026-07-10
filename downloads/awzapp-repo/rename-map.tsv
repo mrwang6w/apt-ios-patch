@@ -1,0 +1,10 @@
+old	new	package	name	version	source_filename
+69.deb	AWZ爱伪装_25.1「推荐」_25.1_top.awzapp.awz.deb	top.awzapp.awz	AWZ爱伪装_25.1「推荐」	25.1	./debs/69.deb
+68.deb	AXJ爱新机_25.1「推荐」_25.1_com.awzapp.axj.deb	com.awzapp.axj	AXJ爱新机_25.1「推荐」	25.1	./debs/68.deb
+67.deb	ALS爱立思_25.1「推荐」_25.1_com.awzapp.als25.1.deb	com.awzapp.als25.1	ALS爱立思_25.1「推荐」	25.1	./debs/67.deb
+66.deb	IGG一键新机_19.5「推荐」_19.5-5_app.zorrov.igg195.deb	app.zorrov.igg195	IGG一键新机_19.5「推荐」	19.5-5	./debs/66.deb
+65.deb	YOY最新一键新机(有根)_19.5-6_top.awzapp.yoy-rootfull1956.deb	top.awzapp.yoy-rootfull1956	YOY最新一键新机(有根)	19.5-6	./debs/65.deb
+64.deb	YOY最新一键新机(无根)_19.8-6_com.awzapp.yoy-rootless.deb	com.awzapp.yoy-rootless	YOY最新一键新机(无根)	19.8-6	./debs/64.deb
+48.deb	连个锤子-联网修复-Rootless_1.2.2_com.awzapp.Renet.rootless.deb	com.awzapp.Renet.rootless	连个锤子-联网修复-Rootless	1.2.2	./debs/48.deb
+28.deb	OpenSSH_8.4-2_awz.openssh.deb	awz.openssh.	OpenSSH	8.4-2	./debs/28.deb
+27.deb	AFC2_iOS11~17_系统路径_1.4.0_com.awz.afc2forios12.deb	com.awz.afc2forios12	AFC2 iOS11~17 系统路径	1.4.0	./debs/27.deb

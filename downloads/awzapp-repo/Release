@@ -1,0 +1,8 @@
+Origin: AWZ爱伪装系列官方源™
+Label: AWZ爱伪装系列官方源™
+Suite: stable
+Version: 6.5
+Codename: com.apt.awzapp.com.
+Architectures: iphoneos-arm iphoneos-arm64
+Components: main
+Description: AWZ爱伪装是知名iOS端隐私保护插件，拥有一键清理、全息备份、位置修改强大功能，后续推出了YOY、ALS、AXJ、iGG系列隐私保护工具

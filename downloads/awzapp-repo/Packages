@@ -1,0 +1,171 @@
+Package: top.awzapp.awz
+Version: 25.1
+Priority: standard
+Section: [AWZ /YOY/ iGG / AXJ/ ALS]
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.weiphone.ALS, app.weiphone.IGG, app.weiphone.NZT, app.weiphone.LRN, app.weiphone.HBS, app.weiphone.YOY
+Architecture: iphoneos-arm
+Filename: ./debs/69.deb
+Size: 15001458
+Name: AWZ爱伪装_25.1「推荐」
+Author: awz
+Depiction: https://apt.awzapp.com/index.php?pid=69
+SileoDepiction: https://apt.awzapp.com/sileo/69
+Icon: file:///Applications/AWZ.app/AWZAppIcon60x60@2x.png
+MD5sum: 85a34cb50b00d3b24d572b6a1f20fdb3
+SHA1: 5305eff8baac72f282dba34cd4d3690baa8b30d3
+SHA256: 2c84a405c3e2aa280d7d45fbfba8cba661e60d16bfeff4569246ac564bbdbcce
+
+Package: com.awzapp.axj
+Version: 25.1
+Priority: standard
+Section: [AWZ /YOY/ iGG / AXJ/ ALS]
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.weiphone.als, app.weiphone.igg, app.weiphone.nzt, app.weiphone.lrn, app.weiphone.awz, app.weiphone.hbs
+Architecture: iphoneos-arm
+Filename: ./debs/68.deb
+Size: 17318678
+Name: AXJ爱新机_25.1「推荐」
+Author: axj
+Depiction: https://apt.awzapp.com/index.php?pid=68
+SileoDepiction: https://apt.awzapp.com/sileo/68
+Icon: file:///Applications/YOY.app/AppIcon60x60@2x.png
+MD5sum: 5b4870e5cead79f89b47bdcb58c304bf
+SHA1: e6654d0b164f125c4bf213ee2f1471d99b531ffb
+SHA256: 44188ee37cd8c8283e3adaf73bc38b08a653eae3fc5a239284660b9fbd8bd726
+
+Package: com.awzapp.als25.1
+Version: 25.1
+Priority: standard
+Section: [AWZ /YOY/ iGG / AXJ/ ALS]
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.weiphone.AWZ, app.weiphone.IGG, app.weiphone.NZT, app.weiphone.LRN, app.weiphone.HBS, app.weiphone.YOY
+Architecture: iphoneos-arm
+Filename: ./debs/67.deb
+Size: 14827320
+Name: ALS爱立思_25.1「推荐」
+Author: als
+Depiction: https://apt.awzapp.com/index.php?pid=67
+SileoDepiction: https://apt.awzapp.com/sileo/67
+Icon: file:///Applications/ALS.app/AppIcon60x60@2x.png
+MD5sum: 6641dec8b64df27c6c4de46d7834ad09
+SHA1: f3d4e82deb858ba7900defc6c8a7cf0598944f0a
+SHA256: 2479c119851fd5e0685d4f9fc5b6c3adb05feaee5232f3afcd02b8d08c87b064
+
+Package: app.zorrov.igg195
+Version: 19.5-5
+Priority: standard
+Section: [AWZ /YOY/ iGG / AXJ/ ALS]
+Maintainer: iggvip
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.weiphone.als, app.weiphone.awz, app.weiphone.nzt, app.weiphone.lrn, app.weiphone.hbs, app.weiphone.yoy
+Architecture: iphoneos-arm
+Filename: ./debs/66.deb
+Size: 8239124
+Installed-Size: 12384
+Name: IGG一键新机_19.5「推荐」
+Author: igg
+Depiction: https://apt.awzapp.com/index.php?pid=66
+SileoDepiction: https://apt.awzapp.com/sileo/66
+Icon: file:///Applications/IGG.app/IGGAppIcon60x60@2x.png
+MD5sum: 89b4775877cbc6675b6d5ffb973d7282
+SHA1: db741f88255e48607d436150a55dc10e38e686e4
+SHA256: c7d2956174d407ade4e87e06e77ad86a72b74627c4dd4918d624a6ce7f8a5835
+
+Package: top.awzapp.yoy-rootfull1956
+Version: 19.5-6
+Priority: standard
+Section: [AWZ /YOY/ iGG / AXJ/ ALS]
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.weiphone.als, app.weiphone.igg, app.weiphone.nzt, app.weiphone.lrn, app.weiphone.awz, app.weiphone.hbs
+Architecture: iphoneos-arm
+Filename: ./debs/65.deb
+Size: 8768444
+Installed-Size: 15192
+Name: YOY最新一键新机(有根)
+Author: yoy
+Depiction: https://apt.awzapp.com/index.php?pid=65
+SileoDepiction: https://apt.awzapp.com/sileo/65
+Icon: file:///Applications/YOY.app/YOYAppIcon60x60@2x.png
+MD5sum: a39db42089bf05b850d1d22e8b3ea868
+SHA1: e3b0ca3f6c65804d3b92c19a8e36fc256ea90949
+SHA256: ddfbd5637616b5552f447f9c13d5be34f01c33e101b25f374cf4eba1016872df
+
+Package: com.awzapp.yoy-rootless
+Version: 19.8-6
+Priority: standard
+Section: [AWZ /YOY/ iGG / AXJ/ ALS]
+Maintainer: yoy
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.weiphone.als, app.weiphone.awz, app.weiphone.nzt, app.weiphone.lrn, app.weiphone.hbs, app.weiphone.igg
+Architecture: iphoneos-arm64
+Filename: ./debs/64.deb
+Size: 7660704
+Name: YOY最新一键新机(无根)
+Author: yoy
+Depiction: https://apt.awzapp.com/index.php?pid=64
+SileoDepiction: https://apt.awzapp.com/sileo/64
+Icon: file:///var/jb/Applications/YOY.app/YOYAppIcon60x60@2x.png
+MD5sum: 152765487d0b285b327861aadac8b266
+SHA1: 4a755303782a5809f3262ad630d5fa2c6c8d9e68
+SHA256: da1d49dd68dc943efa53db55c179d99c757dae651155de7fb6e23b67aded60c6
+
+Package: com.awzapp.Renet.rootless
+Version: 1.2.2
+Priority: optional
+Section: [环境依赖安装]
+Depends: firmware (>= 5.1.1)
+Architecture: iphoneos-arm64
+Filename: ./debs/48.deb
+Size: 301728
+Name: 连个锤子-联网修复-Rootless
+Author: awzapp.com
+Depiction: https://apt.awzapp.com/index.php?pid=48
+SileoDepiction: https://apt.awzapp.com/sileo/48
+MD5sum: 5884025e2eab3eeb8a4f4722191505fe
+SHA1: 29918b7d41039e59508712311df59b6b70954dca
+SHA256: aeae43bf1c169bb6d734a48f1b7fa1e60ab4936f7dfb437b1b48b0dd14e37511
+
+Package: awz.openssh.
+Version: 8.4-2
+Priority: important
+Section: [环境依赖安装]
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: libssl1.1.1, openssh-server, openssh-client, openssh-global-listener
+Architecture: iphoneos-arm
+Filename: ./debs/28.deb
+Size: 640
+Installed-Size: 8
+Name: OpenSSH
+Author: awzapp.com
+Depiction: https://apt.awzapp.com/index.php?pid=28
+SileoDepiction: https://apt.awzapp.com/sileo/28
+MD5sum: 66d1ed2fd3453daca12696dbe71d92c7
+SHA1: 12a9842f34aa0555f658687cf69249b140f1acd4
+SHA256: 19f9014fe0b01eaba64ddd87177abeb8e12e48b8c22490b3fd5c8acb327947bf
+
+Package: com.awz.afc2forios12
+Version: 1.4.0
+Section: [环境依赖安装]
+Maintainer: Saurik, Cannathea
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: cy+cpu.arm64, mobilesubstrate, firmware (>= 11.0)
+Conflicts: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
+Replaces: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
+Architecture: iphoneos-arm
+Filename: ./debs/27.deb
+Size: 15144
+Installed-Size: 140
+Description: 激活PC端所有路径访问权限
+ 兼容支持iOS12 [unc0ver越狱]请安装ldid插件
+ XinaA15越狱除外安装即可生效
+Name: AFC2 iOS11~17 系统路径
+Author: Saurik, Cannathea
+Sponsor: azcydia.com
+Depiction: https://apt.awzapp.com/index.php?pid=27
+SileoDepiction: https://apt.awzapp.com/sileo/27
+Icon: https://apt.wxhbts.pro/icon/%E5%BF%85%E5%A4%87%E6%8F%92%E4%BB%B6.png
+MD5sum: 3a39330d2af47b4b11ac2e5e78e0be07
+SHA1: 7d5a66636f1e6b31742e7093ca491263a36f6e68
+SHA256: 9bca0c7fdc4fbcf5bb3cfcac60c33ce350e6f66cb41b343d6df63ac9f66fb097
+
