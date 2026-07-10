@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [[ $1 == remove || $1 == purge ]]; then
+    if [ -f "/usr/lib/TweakInject/AWZ.dylib" ]; then
+      rm /usr/lib/TweakInject/AWZ.dylib
+    fi
+    if [ -f "/usr/lib/TweakInject/AWZ.plist" ]; then
+      rm /usr/lib/TweakInject/AWZ.plist
+    fi    
+    if [ -f "/Library/LaunchDaemons/dhpdaemon.plist" ]; then
+      launchctl unload /Library/LaunchDaemons/dhpdaemon.plist
+    fi
+fi
+
+exit 0

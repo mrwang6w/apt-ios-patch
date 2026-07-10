@@ -6,6 +6,8 @@ on:
     branches: [ main ]
     paths:
       - 'pages-repo/**'
+      - 'scripts/build_pages_repo.py'
+      - 'scripts/verify_pages_repo.py'
       - '.github/workflows/deploy-pages-repo.yml'
 
 permissions:
@@ -29,102 +31,7 @@ jobs:
         with:
           lfs: false
       - name: Verify repo files are real artifacts
-        run: |
-          set -euo pipefail
-          test -f pages-repo/.nojekyll
-          test -s pages-repo/index.html
-          test -s pages-repo/Packages
-          python3 - <<'PY'
-          import gzip
-          import hashlib
-          from pathlib import Path
-
-          root = Path("pages-repo")
-          packages_path = root / "Packages"
-          packages_gz_path = root / "Packages.gz"
-
-          with gzip.open(packages_gz_path, "rb") as fh:
-              gz_packages = fh.read()
-          packages_bytes = packages_path.read_bytes()
-          if gz_packages != packages_bytes:
-              raise SystemExit("Packages.gz does not decompress to pages-repo/Packages")
-
-          for path in root.rglob("*"):
-              if path.is_file() and path.read_bytes()[:128].startswith(b"version https://git-lfs.github.com/spec/"):
-                  raise SystemExit(f"Git LFS pointer detected under pages-repo: {path}")
-
-          def parse_packages(text: str) -> list[dict[str, str]]:
-              records: list[dict[str, str]] = []
-              for block in text.strip().split("\n\n"):
-                  fields: dict[str, str] = {}
-                  current = None
-                  for line in block.splitlines():
-                      if line.startswith((" ", "\t")) and current:
-                          fields[current] += "\n" + line
-                          continue
-                      key, sep, value = line.partition(":")
-                      if sep:
-                          current = key
-                          fields[key] = value.strip()
-                  if fields:
-                      records.append(fields)
-              return records
-
-          records = parse_packages(packages_bytes.decode("utf-8"))
-          expected_packages = {"com.amg456.rootless", "app.Razer854.rootless", "com.amg456.VBox1"}
-          seen_packages = {record.get("Package") for record in records}
-          if seen_packages != expected_packages:
-              raise SystemExit(f"unexpected Packages records: {sorted(seen_packages)}")
-
-          deb_files = sorted((root / "debs").glob("*.deb"))
-          if len(deb_files) != len(records):
-              raise SystemExit(f"expected {len(records)} debs, found {len(deb_files)}")
-
-          for record in records:
-              filename = record.get("Filename", "")
-              if not filename.startswith("./debs/") or "/../" in filename or filename.endswith("/"):
-                  raise SystemExit(f"unsafe Filename in Packages: {filename!r}")
-              deb_path = root / filename.removeprefix("./")
-              if not deb_path.is_file():
-                  raise SystemExit(f"deb referenced by Packages is missing: {deb_path}")
-              size = deb_path.stat().st_size
-              if str(size) != record.get("Size"):
-                  raise SystemExit(f"Size mismatch for {deb_path}: Packages={record.get('Size')} actual={size}")
-              sha256 = hashlib.sha256(deb_path.read_bytes()).hexdigest()
-              if sha256 != record.get("SHA256"):
-                  raise SystemExit(f"SHA256 mismatch for {deb_path}: Packages={record.get('SHA256')} actual={sha256}")
-              import subprocess
-              import tempfile
-              with tempfile.TemporaryDirectory() as tmp:
-                  subprocess.run(["ar", "-x", str(deb_path.resolve())], cwd=tmp, check=True)
-                  for kind in ("control", "data"):
-                      tar_path = next((p for p in Path(tmp).iterdir() if p.name == f"{kind}.tar.gz"), None)
-                      if not tar_path:
-                          raise SystemExit(f"{deb_path}: {kind}.tar.gz is missing or unsupported")
-                      raw = gzip.decompress(tar_path.read_bytes())
-                      offset = 0
-                      members = 0
-                      while offset + 512 <= len(raw):
-                          header = raw[offset : offset + 512]
-                          if header == b"\0" * 512:
-                              break
-                          prefix = header[345:500].split(b"\0", 1)[0]
-                          name = header[:100].split(b"\0", 1)[0]
-                          full_name = b"/".join(part for part in (prefix, name) if part).decode("utf-8", "replace")
-                          typeflag = header[156:157] or b"0"
-                          if typeflag in {b"x", b"g", b"e"}:
-                              raise SystemExit(f"{deb_path}: unsupported PAX/extended tar member {full_name!r} ({typeflag!r})")
-                          if full_name.rsplit("/", 1)[-1].startswith("._"):
-                              raise SystemExit(f"{deb_path}: AppleDouble metadata member {full_name!r}")
-                          field = header[124:136].rstrip(b"\0 ")
-                          if not field or field[0] & 0x80:
-                              raise SystemExit(f"{deb_path}: unsupported tar size encoding in {full_name!r}")
-                          offset += 512 + ((int(field, 8) + 511) // 512) * 512
-                          members += 1
-                      if not members:
-                          raise SystemExit(f"{deb_path}: {kind}.tar.gz has no members")
-              print(f"{deb_path}: OK")
-          PY
+        run: python3 scripts/verify_pages_repo.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

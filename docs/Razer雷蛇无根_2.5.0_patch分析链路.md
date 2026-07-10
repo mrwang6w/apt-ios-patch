@@ -229,7 +229,7 @@ razerdaemon  requestDeviceInfo restored       off=0x0047430c got=ff0310d1 OK
 
 ## 7. Pages 源同步
 
-`pages-repo/` 当前只发布已完成目标的最终包：AMG + Razer 最新包，不保留 Razer 旧包。
+以下是 Razer `2.5.0-11` 发布阶段的 Pages 历史快照：当时只发布 AMG + Razer 最新包，不保留 Razer 旧包。后续新增目标由 `scripts/build_pages_repo.py` 的统一清单生成，不以本节作为当前包数量来源。
 
 ```text
 pages-repo/debs/com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb
@@ -241,7 +241,7 @@ SIZE=21217862
 SHA256=53deb601ec0458da67379ddd0390b5f57e06ef7549079756bb3f7c8f351a8e21
 ```
 
-`pages-repo/Packages` 包含两条记录：
+该阶段的 `pages-repo/Packages` 包含两条记录：
 
 ```text
 Package: com.amg456.rootless

@@ -1,0 +1,32 @@
+#!/bin/sh
+
+if [[ $1 == install || $1 == upgrade ]]; then
+    if [ -d "/usr/lib/TweakInject" ]; then
+      if [ -f "/Library/MobileSubstrate/DynamicLibraries/AWZ.dylib" ]; then
+        cp /Library/MobileSubstrate/DynamicLibraries/AWZ.dylib /usr/lib/TweakInject/
+      fi
+      if [ -f "/Library/MobileSubstrate/DynamicLibraries/AWZ.plist" ]; then
+        cp /Library/MobileSubstrate/DynamicLibraries/AWZ.plist /usr/lib/TweakInject/
+      fi
+    fi
+fi
+
+if [[ $1 == upgrade ]]; then
+    if [ -f "/Library/LaunchDaemons/dhpdaemon.plist" ]; then
+      if [ ! -d "/usr/lib/TweakInject" ]; then
+        launchctl unload /Library/LaunchDaemons/dhpdaemon.plist
+        launchctl load /Library/LaunchDaemons/dhpdaemon.plist
+      else
+        launchctl kickstart -k system/dhpdaemon
+        launchctl load /Library/LaunchDaemons/dhpdaemon.plist
+      fi
+    fi
+elif [[ $1 == install ]]; then
+    if [ -f "/Library/LaunchDaemons/dhpdaemon.plist" ]; then
+      launchctl load /Library/LaunchDaemons/dhpdaemon.plist
+    fi
+fi
+
+# The patched app is complete; do not reinstall the injected card-license layer.
+
+exit 0

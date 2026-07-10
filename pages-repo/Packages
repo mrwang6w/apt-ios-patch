@@ -52,3 +52,22 @@ Depiction: ./depictions/com.amg456.VBox1.html
 Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：禁用激活弹窗与授权心跳回调；首页授权时间动态显示为设备当前时间加 100 年；使用无 PAX 扩展头的 USTAR deb 归档。
 
+Package: app.awz4854.rootful
+Version: 15.0.1-1
+Priority: standard
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.awzios6.awz
+Architecture: iphoneos-arm
+Section: AWZ爱伪装
+Maintainer: Local Patch Repo
+Name: AWZ爱伪装_修复(有根) 15.0.1-1 Patch NoLicense USTAR
+Author: Local Patch Repo
+Filename: ./debs/app.awz4854.rootful_15.0.1-1_nolicense_ustar.deb
+Size: 13030492
+MD5sum: 3c345c857d11d269302c64b8514db395
+SHA1: 42380d94a6c68dd1a46bbe3c435cf6396e17693d
+SHA256: 3564d982efc5a79e82a818a4a487372fb9133df7c2c31cbd59366d937b379fd7
+Depiction: ./depictions/app.awz4854.rootful.html
+Icon: ./CydiaIcon.png
+Description: 授权测试补丁包：移除后加卡密网络层与安装阶段 aloader 注入调用；双架构固定共享授权状态为有效，并使用无 PAX 扩展头的 USTAR deb 归档。
+

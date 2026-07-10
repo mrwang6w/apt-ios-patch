@@ -1,0 +1,10 @@
+Package: app.awz4854.rootful
+Version: 15.0.1
+Priority: standard
+Section: AWZ爱伪装
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.awzios6.awz
+Architecture: iphoneos-arm
+Name: AWZ爱伪装_修复(有根)
+Author: awz
+Icon: file:///Applications/AWZ.app/AWZAppIcon60x60@2x.png

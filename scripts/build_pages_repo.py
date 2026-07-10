@@ -16,6 +16,7 @@ import gzip
 import hashlib
 import html
 import json
+import os
 import shutil
 import subprocess
 import zlib
@@ -38,6 +39,26 @@ REPO_DESC = "自用授权测试源：Pages 挂载已完成目标的最终 patche
 PUBLISH_MAINTAINER = "Local Patch Repo"
 PUBLISH_AUTHOR = "Local Patch Repo"
 SOURCE_LAST_UPDATED = "2026-07-08 19:44:22"
+DEFAULT_SOURCE_DATE_EPOCH = 1783511062
+
+CONTROL_PASSTHROUGH_FIELDS = (
+    "Package",
+    "Version",
+    "Essential",
+    "Installed-Size",
+    "Priority",
+    "Pre-Depends",
+    "Depends",
+    "Recommends",
+    "Suggests",
+    "Breaks",
+    "Conflicts",
+    "Provides",
+    "Replaces",
+    "Enhances",
+    "Architecture",
+    "Multi-Arch",
+)
 
 PATCHED_PACKAGES = [
     {
@@ -66,6 +87,15 @@ PATCHED_PACKAGES = [
         "publish_section": "VBox虚拟盒子",
         "publish_desc": "授权测试补丁包：禁用激活弹窗与授权心跳回调；首页授权时间动态显示为设备当前时间加 100 年；使用无 PAX 扩展头的 USTAR deb 归档。",
         "depiction_name": "com.amg456.VBox1.html",
+    },
+    {
+        "package_id": "app.awz4854.rootful",
+        "source": PATCHED_DIR / "AWZ爱伪装_修复(有根)_15.0.1-1_app.awz4854.rootful_nolicense_ustar.deb",
+        "deb_name": "app.awz4854.rootful_15.0.1-1_nolicense_ustar.deb",
+        "publish_name": "AWZ爱伪装_修复(有根) 15.0.1-1 Patch NoLicense USTAR",
+        "publish_section": "AWZ爱伪装",
+        "publish_desc": "授权测试补丁包：移除后加卡密网络层与安装阶段 aloader 注入调用；双架构固定共享授权状态为有效，并使用无 PAX 扩展头的 USTAR deb 归档。",
+        "depiction_name": "app.awz4854.rootful.html",
     },
 ]
 
@@ -115,7 +145,10 @@ def extract_control(deb: Path, tmp: Path) -> dict[str, str]:
     control_dir.mkdir()
     run(["tar", "-xf", str(control_tar), "-C", str(control_dir)])
     control_file = control_dir / "control"
-    return parse_deb_control_text(control_file.read_text(encoding="utf-8"))[0]
+    records = parse_deb_control_text(control_file.read_text(encoding="utf-8"))
+    if len(records) != 1:
+        raise RuntimeError(f"{deb}: expected one control record, found {len(records)}")
+    return records[0]
 
 
 def _tar_member_size(header: bytes) -> int:
@@ -197,6 +230,17 @@ def looks_like_lfs_pointer(path: Path) -> bool:
     with path.open("rb") as f:
         head = f.read(256)
     return head.startswith(b"version https://git-lfs.github.com/spec/")
+
+
+def release_datetime() -> datetime:
+    raw_epoch = os.environ.get("SOURCE_DATE_EPOCH", str(DEFAULT_SOURCE_DATE_EPOCH))
+    try:
+        epoch = int(raw_epoch)
+    except ValueError as exc:
+        raise RuntimeError(f"invalid SOURCE_DATE_EPOCH: {raw_epoch!r}") from exc
+    if epoch < 0:
+        raise RuntimeError(f"SOURCE_DATE_EPOCH must be non-negative: {epoch}")
+    return datetime.fromtimestamp(epoch, timezone.utc)
 
 
 def write_png(path: Path) -> None:
@@ -293,13 +337,10 @@ def render_package_rows(
 
 
 def build_package_record(config: dict[str, object], deb_out: Path, fields: dict[str, str], deb_sha256: str) -> str:
-    package_id = str(config["package_id"])
     package_lines = []
-    for key in ["Package", "Version", "Priority", "Depends", "Architecture"]:
+    for key in CONTROL_PASSTHROUGH_FIELDS:
         if key in fields:
             package_lines.append(f"{key}: {fields[key]}")
-    if "Package" not in fields:
-        package_lines.insert(0, f"Package: {package_id}")
     package_lines.extend(
         [
             f"Section: {config['publish_section']}",
@@ -328,90 +369,87 @@ def select_mounted_source_entries(source_packages: list[dict[str, str]], mounted
     by_package = {pkg.get("Package"): pkg for pkg in source_packages}
     selected: list[dict[str, str]] = []
     for package_id, info in mounted.items():
-        if package_id in by_package:
-            selected.append(dict(by_package[package_id]))
-            continue
         fields = info["fields"]
         assert isinstance(fields, dict)
-        selected.append(
+        entry = dict(by_package.get(package_id, {}))
+        entry.update(
             {
                 "Section": str(info["publish_section"]),
                 "Package": package_id,
                 "Name": str(info["publish_name"]),
-                "Version": str(fields.get("Version", "unknown")),
-                "Architecture": str(fields.get("Architecture", "iphoneos-arm64")),
+                "Version": str(fields["Version"]),
+                "Architecture": str(fields["Architecture"]),
             }
         )
+        selected.append(entry)
     return selected
 
 
-
-def build() -> None:
+def validate_package_configs() -> None:
+    required = {
+        "package_id",
+        "source",
+        "deb_name",
+        "publish_name",
+        "publish_section",
+        "publish_desc",
+        "depiction_name",
+    }
+    package_ids: set[str] = set()
+    deb_names: set[str] = set()
+    depiction_names: set[str] = set()
     for config in PATCHED_PACKAGES:
+        missing = sorted(required - config.keys())
+        if missing:
+            raise RuntimeError(f"patched package config is missing fields: {missing}")
+
+        package_id = str(config["package_id"])
+        if not package_id or package_id in package_ids:
+            raise RuntimeError(f"invalid or duplicate package_id: {package_id!r}")
+        package_ids.add(package_id)
+
+        for key, suffix, seen in (
+            ("deb_name", ".deb", deb_names),
+            ("depiction_name", ".html", depiction_names),
+        ):
+            name = str(config[key])
+            if not name.endswith(suffix) or Path(name).name != name or "/" in name or "\\" in name:
+                raise RuntimeError(f"unsafe {key} for {package_id}: {name!r}")
+            if name in seen:
+                raise RuntimeError(f"duplicate {key}: {name!r}")
+            seen.add(name)
+
         source = Path(config["source"])
-        if not source.exists():
+        if not source.is_file():
             raise FileNotFoundError(source)
         if looks_like_lfs_pointer(source):
             raise RuntimeError(f"{source} is a Git LFS pointer; run `git lfs pull` before rebuilding pages-repo")
+
+
+def replace_output_tree(staging: Path) -> None:
+    backup = OUT.with_name(f".{OUT.name}.previous")
+    if backup.exists():
+        if OUT.exists():
+            shutil.rmtree(backup)
+        else:
+            backup.rename(OUT)
+
     if OUT.exists():
-        shutil.rmtree(OUT)
-    (OUT / "debs").mkdir(parents=True)
-    (OUT / "depictions").mkdir(parents=True)
+        OUT.rename(backup)
+    try:
+        staging.rename(OUT)
+    except BaseException:
+        if backup.exists() and not OUT.exists():
+            backup.rename(OUT)
+        raise
+    if backup.exists():
+        shutil.rmtree(backup)
 
-    mounted: dict[str, dict[str, object]] = {}
-    package_records: list[str] = []
-    for config in PATCHED_PACKAGES:
-        source = Path(config["source"])
-        deb_out = OUT / "debs" / str(config["deb_name"])
-        shutil.copy2(source, deb_out)
-        validate_deb_archive(deb_out, OUT / ".tmp-deb-validate")
-        fields = extract_control(deb_out, OUT / ".tmp-control")
-        shutil.rmtree(OUT / ".tmp-deb-validate")
-        shutil.rmtree(OUT / ".tmp-control")
-        package_id = fields.get("Package", str(config["package_id"]))
-        deb_sha256 = digest(deb_out, "sha256")
-        info = {**config, "fields": fields, "size": deb_out.stat().st_size, "sha256": deb_sha256}
-        mounted[package_id] = info
-        package_records.append(build_package_record(config, deb_out, fields, deb_sha256))
 
-    source_packages = select_mounted_source_entries(load_source_packages(), mounted)
-    grouped = group_by_section(source_packages)
-    total_display_packages = sum(len(items) for items in grouped.values())
-    mounted_count = len(mounted)
-
-    packages = "\n\n".join(package_records) + "\n\n"
-    (OUT / "Packages").write_text(packages, encoding="utf-8")
-    with gzip.GzipFile(filename=str(OUT / "Packages.gz"), mode="wb", mtime=0) as gz:
-        gz.write(packages.encode("utf-8"))
-
-    pkg_path = OUT / "Packages"
-    pkg_gz_path = OUT / "Packages.gz"
-    release_version = (
-        str(next(iter(mounted.values()))["fields"].get("Version", "unknown"))
-        if len(mounted) == 1
-        else "multi"
-    )
-    release_base = [
-        f"Origin: {REPO_NAME}",
-        f"Label: {ORIGINAL_REPO_NAME}",
-        "Suite: stable",
-        f"Version: {release_version}",
-        "Codename: ios-patch",
-        "Architectures: iphoneos-arm64",
-        "Components: main",
-        f"Description: {REPO_DESC}",
-        f"Date: {datetime.now(timezone.utc).strftime('%a, %d %b %Y %H:%M:%S %z')}",
-    ]
-    release_hashes: list[str] = []
-    for title, algo in [("MD5Sum", "md5"), ("SHA1", "sha1"), ("SHA256", "sha256")]:
-        release_hashes.append(f"{title}:")
-        for rel, path in [("Packages", pkg_path), ("Packages.gz", pkg_gz_path)]:
-            release_hashes.append(f" {digest(path, algo)} {path.stat().st_size} {rel}")
-    release = "\n".join(release_base + release_hashes) + "\n"
-    (OUT / "Release").write_text(release, encoding="utf-8")
-
-    (OUT / ".nojekyll").write_text("", encoding="utf-8")
-    (OUT / ".gitattributes").write_text(
+def _build_output(out: Path) -> tuple[dict[str, dict[str, object]], int]:
+    (out / "debs").mkdir(parents=True)
+    (out / "depictions").mkdir(parents=True)
+    (out / ".gitattributes").write_text(
         "\n".join(
             [
                 "# GitHub Pages 不能发布 Git LFS pointer；本目录内压缩包和 deb 必须作为普通 blob 提交。",
@@ -424,14 +462,86 @@ def build() -> None:
     )
 
 
-    write_png(OUT / "CydiaIcon.png")
-    (OUT / "favicon.ico").write_bytes((OUT / "CydiaIcon.png").read_bytes())
+    mounted: dict[str, dict[str, object]] = {}
+    package_records: list[str] = []
+    for config in PATCHED_PACKAGES:
+        source = Path(config["source"])
+        deb_out = out / "debs" / str(config["deb_name"])
+        shutil.copy2(source, deb_out)
+        validate_deb_archive(deb_out, out / ".tmp-deb-validate")
+        fields = extract_control(deb_out, out / ".tmp-control")
+        shutil.rmtree(out / ".tmp-deb-validate")
+        shutil.rmtree(out / ".tmp-control")
+
+        missing_control = sorted({"Package", "Version", "Architecture"} - fields.keys())
+        if missing_control:
+            raise RuntimeError(f"{source}: control is missing required fields: {missing_control}")
+        package_id = fields["Package"]
+        expected_package_id = str(config["package_id"])
+        if package_id != expected_package_id:
+            raise RuntimeError(
+                f"{source}: Package mismatch: control={package_id!r}, config={expected_package_id!r}"
+            )
+        if package_id in mounted:
+            raise RuntimeError(f"duplicate mounted package: {package_id}")
+        deb_sha256 = digest(deb_out, "sha256")
+        info = {**config, "fields": fields, "size": deb_out.stat().st_size, "sha256": deb_sha256}
+        mounted[package_id] = info
+        package_records.append(build_package_record(config, deb_out, fields, deb_sha256))
+
+    source_packages = select_mounted_source_entries(load_source_packages(), mounted)
+    grouped = group_by_section(source_packages)
+    total_display_packages = sum(len(items) for items in grouped.values())
+    mounted_count = len(mounted)
+
+    packages = "\n\n".join(package_records) + "\n\n"
+    (out / "Packages").write_text(packages, encoding="utf-8")
+    with gzip.GzipFile(filename=str(out / "Packages.gz"), mode="wb", mtime=0) as gz:
+        gz.write(packages.encode("utf-8"))
+
+    pkg_path = out / "Packages"
+    pkg_gz_path = out / "Packages.gz"
+    if len(mounted) == 1:
+        only_fields = next(iter(mounted.values()))["fields"]
+        assert isinstance(only_fields, dict)
+        release_version = str(only_fields["Version"])
+    else:
+        release_version = "multi"
+    release_architectures: list[str] = []
+    for info in mounted.values():
+        fields = info["fields"]
+        assert isinstance(fields, dict)
+        architecture = str(fields.get("Architecture", "iphoneos-arm64"))
+        if architecture not in release_architectures:
+            release_architectures.append(architecture)
+    release_base = [
+        f"Origin: {REPO_NAME}",
+        f"Label: {ORIGINAL_REPO_NAME}",
+        "Suite: stable",
+        f"Version: {release_version}",
+        "Codename: ios-patch",
+        f"Architectures: {' '.join(release_architectures)}",
+        "Components: main",
+        f"Description: {REPO_DESC}",
+        f"Date: {release_datetime().strftime('%a, %d %b %Y %H:%M:%S %z')}",
+    ]
+    release_hashes: list[str] = []
+    for title, algo in [("MD5Sum", "md5"), ("SHA1", "sha1"), ("SHA256", "sha256")]:
+        release_hashes.append(f"{title}:")
+        for rel, path in [("Packages", pkg_path), ("Packages.gz", pkg_gz_path)]:
+            release_hashes.append(f" {digest(path, algo)} {path.stat().st_size} {rel}")
+    release = "\n".join(release_base + release_hashes) + "\n"
+    (out / "Release").write_text(release, encoding="utf-8")
+
+    (out / ".nojekyll").write_text("", encoding="utf-8")
+    write_png(out / "CydiaIcon.png")
+    (out / "favicon.ico").write_bytes((out / "CydiaIcon.png").read_bytes())
 
     section_nav = render_section_nav(grouped)
     package_rows = render_package_rows(grouped, mounted=mounted)
     mounted_deb_names = ", ".join(str(info["deb_name"]) for info in mounted.values())
 
-    (OUT / "index.html").write_text(
+    (out / "index.html").write_text(
         f'''<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
 <head>
@@ -503,7 +613,7 @@ def build() -> None:
   <fieldset>
     <div class="row">
       <img class="icon" src="./CydiaIcon.png" style="width:64px;height:64px;vertical-align:top;" alt="repo icon" />
-      <div class="hero-title"><div class="name">{h(ORIGINAL_REPO_NAME)}</div><div class="root">rootless patch</div></div>
+      <div class="hero-title"><div class="name">{h(ORIGINAL_REPO_NAME)}</div><div class="root">rootful / rootless patch</div></div>
     </div>
     <div class="row" style="display:block;">
       <p>Add this URL via Cydia<sup><small>™</small></sup>:</p>
@@ -560,13 +670,13 @@ def build() -> None:
     for info in mounted.values():
         fields = info["fields"]
         assert isinstance(fields, dict)
-        (OUT / "depictions" / str(info["depiction_name"])).write_text(
+        (out / "depictions" / str(info["depiction_name"])).write_text(
             render_depiction(info, fields, str(info["sha256"])),
             encoding="utf-8",
         )
 
     category_lines = "\n".join(f"- {section}: {len(items)} packages" for section, items in grouped.items())
-    (OUT / "README.md").write_text(
+    (out / "README.md").write_text(
         f'''# {REPO_NAME}
 
 这是一个可部署到 GitHub Pages 的静态 Cydia/Sileo 源目录。前端页面和 APT 元数据挂载已完成目标的最终 patched 补丁 deb；中间态补丁包和原始源全量资源不会被 Pages 发布。
@@ -618,6 +728,7 @@ GitHub Pages 不能直接发布 Git LFS 文件。本目录自带 `.gitattributes
 
 ```bash
 python3 scripts/build_pages_repo.py
+python3 scripts/verify_pages_repo.py
 gzip -t pages-repo/Packages.gz
 shasum -a 256 pages-repo/debs/*.deb
 ```
@@ -634,10 +745,26 @@ shasum -a 256 <deb-name>
         encoding="utf-8",
     )
 
+    return mounted, len(grouped)
+
+
+def build() -> None:
+    validate_package_configs()
+    staging = OUT.with_name(f".{OUT.name}.build")
+    if staging.exists():
+        shutil.rmtree(staging)
+    try:
+        mounted, category_count = _build_output(staging)
+        replace_output_tree(staging)
+    except BaseException:
+        if staging.exists():
+            shutil.rmtree(staging)
+        raise
+
     print(f"Built {OUT}")
     for package_id, info in mounted.items():
         print(f"{package_id} sha256: {info['sha256']}")
-    print(f"source categories: {len(grouped)}")
+    print(f"source categories: {category_count}")
 
 
 if __name__ == "__main__":

@@ -69,7 +69,7 @@
   <fieldset>
     <div class="row">
       <img class="icon" src="./CydiaIcon.png" style="width:64px;height:64px;vertical-align:top;" alt="repo icon" />
-      <div class="hero-title"><div class="name">AMG官方源™</div><div class="root">rootless patch</div></div>
+      <div class="hero-title"><div class="name">AMG官方源™</div><div class="root">rootful / rootless patch</div></div>
     </div>
     <div class="row" style="display:block;">
       <p>Add this URL via Cydia<sup><small>™</small></sup>:</p>
@@ -78,13 +78,13 @@
   </fieldset>
 
   <block>
-    <p><strong>3</strong> package shown in current directory.</p>
-    <p><strong>3</strong> patched packages mounted in this repo.</p>
+    <p><strong>4</strong> package shown in current directory.</p>
+    <p><strong>4</strong> patched packages mounted in this repo.</p>
     <p>Last upstream snapshot: <strong>2026-07-08 19:44:22</strong></p>
   </block>
 
   <div class="notice">
-    当前 Pages 源展示并发布已完成目标的最终 patched 补丁包：<code>com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb, app.Razer854.rootless_2.5.0-11_authstate_ustar.deb, com.amg456.VBox1_5.5-3_nolicense_dynamic100y_ustar.deb</code>，旧 Pages 包和原始源其它 deb 均不发布。
+    当前 Pages 源展示并发布已完成目标的最终 patched 补丁包：<code>com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb, app.Razer854.rootless_2.5.0-11_authstate_ustar.deb, com.amg456.VBox1_5.5-3_nolicense_dynamic100y_ustar.deb, app.awz4854.rootful_15.0.1-1_nolicense_ustar.deb</code>，旧 Pages 包和原始源其它 deb 均不发布。
   </div>
 
   <label class="source"><p>Sections</p></label>
@@ -102,6 +102,11 @@
 <a href="#section-2">
   <span class="repo-icon folder">▸</span>
   <div class="row-main"><label><p>VBox虚拟盒子</p></label><p class="sub">1 packages · 已挂载 1</p></div>
+  <span class="chevron">›</span>
+</a>
+<a href="#section-3">
+  <span class="repo-icon folder">▸</span>
+  <div class="row-main"><label><p>AWZ爱伪装</p></label><p class="sub">1 packages · 已挂载 1</p></div>
   <span class="chevron">›</span>
 </a>
   </fieldset>
@@ -150,6 +155,19 @@
     <p class="sub"><code>com.amg456.VBox1</code> · 5.5-3 · iphoneos-arm64</p>
     <p class="desc">授权测试补丁包：禁用激活弹窗与授权心跳回调；首页授权时间动态显示为设备当前时间加 100 年；使用无 PAX 扩展头的 USTAR deb 归档。</p>
     <p class="hash">SHA256: <code>a603600908d70daaec328429d6a895c1314710a3e40b01f370ff1636cce75ab4</code></p><p class="sub">Size: 6342954 bytes</p>
+  </div>
+  <span class="badge">已挂载 patch</span>
+</a>
+</fieldset>
+<label class="section-title" id="section-3"><p>AWZ爱伪装</p></label>
+<fieldset class="packages">
+<a class="package mounted" href="./debs/app.awz4854.rootful_15.0.1-1_nolicense_ustar.deb">
+  <span class="repo-icon">✓</span>
+  <div class="row-main">
+    <label><p>AWZ爱伪装_修复(有根) 15.0.1-1 Patch NoLicense USTAR</p></label>
+    <p class="sub"><code>app.awz4854.rootful</code> · 15.0.1-1 · iphoneos-arm</p>
+    <p class="desc">授权测试补丁包：移除后加卡密网络层与安装阶段 aloader 注入调用；双架构固定共享授权状态为有效，并使用无 PAX 扩展头的 USTAR deb 归档。</p>
+    <p class="hash">SHA256: <code>3564d982efc5a79e82a818a4a487372fb9133df7c2c31cbd59366d937b379fd7</code></p><p class="sub">Size: 13030492 bytes</p>
   </div>
   <span class="badge">已挂载 patch</span>
 </a>

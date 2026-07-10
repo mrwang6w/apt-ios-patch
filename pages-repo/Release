@@ -3,16 +3,16 @@ Label: AMG官方源™
 Suite: stable
 Version: multi
 Codename: ios-patch
-Architectures: iphoneos-arm64
+Architectures: iphoneos-arm64 iphoneos-arm
 Components: main
 Description: 自用授权测试源：Pages 挂载已完成目标的最终 patched 补丁 deb，不发布中间态补丁包或原始源全量资源。
-Date: Thu, 09 Jul 2026 23:31:07 +0000
+Date: Wed, 08 Jul 2026 11:44:22 +0000
 MD5Sum:
- b7311fa213ace394c2edd5c3e432cdf7 2350 Packages
- f2f1901f62082d18b88ff9eb1f39fe2a 1217 Packages.gz
+ 0eb586057c394c7b7b362d64d5fdd7dc 3175 Packages
+ 0b8d6291529a92b3b191654ffe8badd1 1539 Packages.gz
 SHA1:
- 3b4390ccf183ff6c61d6bf963b522d8a97a63a8d 2350 Packages
- fa138da616c258ffa9b68e3500f0f9f8b371704b 1217 Packages.gz
+ bf9315a034e3b103a0b8e90480a9a487648ca4e0 3175 Packages
+ 9c1087299e231b66c4142bf2fb20b5db66f76e5d 1539 Packages.gz
 SHA256:
- 904d8366a52933c1791cf3cb4603067bb6e68b03c20dc9d383060f09ae870376 2350 Packages
- f66655732a1235f905c16eebf92694c774fbaf52806d44a2c607826361cca91e 1217 Packages.gz
+ b6b9882b867dc0987c76215e7bec90b70e8062e2f4ef1137dc312a3ce321ee83 3175 Packages
+ c15f1f9690baa436f0f0a22195e5547de749afd7720754e8e0e3579a4d0b6165 1539 Packages.gz

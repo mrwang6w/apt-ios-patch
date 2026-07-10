@@ -1565,7 +1565,7 @@ Razer雷蛇: 3 packages
 VBox虚拟盒子: 3 packages
 ```
 
-实现边界：`pages-repo/index.html` 展示原源快照中的分类/条目结构，非补丁条目标记为“目录镜像”；APT `pages-repo/Packages` 与 `pages-repo/debs/` 仍只发布 `com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb` 一个补丁包。
+该阶段实现边界（历史快照）：`pages-repo/index.html` 当时展示原源快照中的分类/条目结构，非补丁条目标记为“目录镜像”；APT `pages-repo/Packages` 与 `pages-repo/debs/` 当时只发布 `com.amg456.rootless_18.1.1_nopopup_2099_noheartbeat_noexit.deb` 一个补丁包。当前发布集合以 `scripts/build_pages_repo.py` 为唯一来源。
 
 ## 22. 当前最新结论
 
