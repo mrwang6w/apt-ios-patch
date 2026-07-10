@@ -1,0 +1,59 @@
+{"deb": "/Users/zest/myworks/apt-ios-patch/patched/CTW_Pro\u4f01\u4e1a\u7ea7(\u65e0\u6839\u7248)_5.6.0-2_com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb", "size": 21969380, "sha256": "a6d792dd1003ad4ffc32e3646a4f7d6fd1f948ef7f42a5f8db0e5df8881d1020"}
+uploaded 524288/21969380
+uploaded 1048576/21969380
+uploaded 1572864/21969380
+uploaded 2097152/21969380
+uploaded 2621440/21969380
+uploaded 3145728/21969380
+uploaded 3670016/21969380
+uploaded 4194304/21969380
+uploaded 4718592/21969380
+uploaded 5242880/21969380
+uploaded 5767168/21969380
+uploaded 6291456/21969380
+uploaded 6815744/21969380
+uploaded 7340032/21969380
+uploaded 7864320/21969380
+uploaded 8388608/21969380
+uploaded 8912896/21969380
+uploaded 9437184/21969380
+uploaded 9961472/21969380
+uploaded 10485760/21969380
+uploaded 11010048/21969380
+uploaded 11534336/21969380
+uploaded 12058624/21969380
+uploaded 12582912/21969380
+uploaded 13107200/21969380
+uploaded 13631488/21969380
+uploaded 14155776/21969380
+uploaded 14680064/21969380
+uploaded 15204352/21969380
+uploaded 15728640/21969380
+uploaded 16252928/21969380
+uploaded 16777216/21969380
+uploaded 17301504/21969380
+uploaded 17825792/21969380
+uploaded 18350080/21969380
+uploaded 18874368/21969380
+uploaded 19398656/21969380
+uploaded 19922944/21969380
+uploaded 20447232/21969380
+uploaded 20971520/21969380
+uploaded 21495808/21969380
+uploaded 21969380/21969380
+{"remote_hash_result": {"result": 0, "pid": 9288, "waited": 9288, "status": 0}, "remote_hash_log": "a6d792dd1003ad4ffc32e3646a4f7d6fd1f948ef7f42a5f8db0e5df8881d1020  /var/mobile/CTWPro.Rootless560_5.6.0-2.deb\n"}
+{"install_spawn": {"result": 0, "pid": 9289, "waited": 9289, "status": 0}}
+-- install log --
+dpkg: 警告: 在解析文件 '/var/jb/Library/dpkg/status' 第 153 行附近，软件包 'com.amg456.vbox1' 时：缺失 'Description' 字段
+dpkg: 警告: 在解析文件 '/var/jb/Library/dpkg/status' 第 153 行附近，软件包 'com.amg456.vbox1' 时：缺失 'Maintainer' 字段
+dpkg: 警告: 在解析文件 '/var/jb/Library/dpkg/status' 第 221 行附近，软件包 'com.xxdevice.ctwpro.rootless560' 时：缺失 'Description' 字段
+dpkg: 警告: 在解析文件 '/var/jb/Library/dpkg/tmp.ci/control' 第 12 行附近，软件包 'com.xxdevice.ctwpro.rootless560' 时：缺失 'Description' 字段
+(正在读取数据库 ... 系统当前共安装有 9469 个文件和目录。)
+准备解压 .../CTWPro.Rootless560_5.6.0-2.deb  ...
+正在解压 com.xxdevice.ctwpro.rootless560 (5.6.0-2) 并覆盖 (5.6.0-2) ...
+正在设置 com.xxdevice.ctwpro.rootless560 (5.6.0-2) ...
+正在处理用于 apt.cydiakk.shadow-rootless (3.7.6) 的触发器 ...
+正在处理用于 uikittools (2.1.7) 的触发器 ...
+正在处理用于 org.coolstar.sileo (2.5) 的触发器 ...
+{"query_result": {"result": 0, "pid": 9326, "waited": 9326, "status": 0}, "query_log": "dpkg-query: \u8b66\u544a: \u5728\u89e3\u6790\u6587\u4ef6 '/var/jb/Library/dpkg/status' \u7b2c 153 \u884c\u9644\u8fd1\uff0c\u8f6f\u4ef6\u5305 'com.amg456.vbox1' \u65f6\uff1a\u7f3a\u5931 'Description' \u5b57\u6bb5\ndpkg-query: \u8b66\u544a: \u5728\u89e3\u6790\u6587\u4ef6 '/var/jb/Library/dpkg/status' \u7b2c 153 \u884c\u9644\u8fd1\uff0c\u8f6f\u4ef6\u5305 'com.amg456.vbox1' \u65f6\uff1a\u7f3a\u5931 'Maintainer' \u5b57\u6bb5\ndpkg-query: \u8b66\u544a: \u5728\u89e3\u6790\u6587\u4ef6 '/var/jb/Library/dpkg/status' \u7b2c 221 \u884c\u9644\u8fd1\uff0c\u8f6f\u4ef6\u5305 'com.xxdevice.ctwpro.rootless560' \u65f6\uff1a\u7f3a\u5931 'Description' \u5b57\u6bb5\ncom.xxdevice.ctwpro.rootless560 5.6.0-2 iphoneos-arm64\n"}
+{"uicache_result": {"result": 0, "pid": 9327, "waited": 9327, "status": 0}}

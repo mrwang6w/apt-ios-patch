@@ -1,0 +1,89 @@
+{
+  "deb": {
+    "path": "/Users/zest/myworks/apt-ios-patch/downloads/ctwpro-repo/debs/CTW_Pro(无根版)_5.6.0_com.xxdevice.CTWPro.Rootless560.deb",
+    "size": 22252632,
+    "sha256": "f10c545f65c81bc4d69afd5335c7fcd19d00ab3ca8b74d1227820996ebca54ef",
+    "lfs_pointer": false
+  },
+  "control": {
+    "Package": "com.xxdevice.CTWPro.Rootless560",
+    "Name": "CTW Pro企业级(无根版)",
+    "Version": "5.6.0",
+    "Architecture": "iphoneos-arm64",
+    "Section": "[CTW Pro]"
+  },
+  "outputs": [
+    "deb.json",
+    "control.json",
+    "ar-members.txt",
+    "tree.txt",
+    "macho.json",
+    "strings-hints.txt",
+    "rootfs/",
+    "control/"
+  ]
+}
+/Users/zest/myworks/apt-ios-patch/work/ctwpro-rootless-5.6.0/evidence/CTWPro.entitlements.plist: OK
+patched: /Users/zest/myworks/apt-ios-patch/work/ctwpro-rootless-5.6.0/build-deep/root/var/jb/Applications/CTW Pro.app/CTW Pro
+unsigned SHA256: 962f20d5ff0218acf9c8ecdc001ee72f4f347f1986111f8f7956e601d711c89e
+arm64 load command: file_off=0x1440 LC_LOAD_DYLIB retained
+arm64 load path: file_off=0x1458 @executable_path/extend.bin -> @executable_path/fix.dylib
+verified: /Users/zest/myworks/apt-ios-patch/work/ctwpro-rootless-5.6.0/build-deep/root/var/jb/Applications/CTW Pro.app/CTW Pro
+SHA256: 0fffec34f7f614772e4e2d225ef19a158e65c03f2ccfeea87c58f32cdfb76433
+entitlements verified: 38 keys
+fix.dylib runtime markers verified
+built: /Users/zest/myworks/apt-ios-patch/work/ctwpro-rootless-5.6.0/build-deep/CTW_Pro企业级(无根版)_5.6.0-2_com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb (21969380 bytes)
+verified: /Users/zest/myworks/apt-ios-patch/work/ctwpro-rootless-5.6.0/verify-final-5.6.0-2/rootfs/var/jb/Applications/CTW Pro.app/CTW Pro
+SHA256: 0fffec34f7f614772e4e2d225ef19a158e65c03f2ccfeea87c58f32cdfb76433
+{
+  "deb": {
+    "path": "/Users/zest/myworks/apt-ios-patch/work/ctwpro-rootless-5.6.0/build-deep/CTW_Pro企业级(无根版)_5.6.0-2_com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb",
+    "size": 21969380,
+    "sha256": "a6d792dd1003ad4ffc32e3646a4f7d6fd1f948ef7f42a5f8db0e5df8881d1020",
+    "lfs_pointer": false
+  },
+  "control": {
+    "Package": "com.xxdevice.CTWPro.Rootless560",
+    "Name": "CTW Pro企业级(无根版)",
+    "Version": "5.6.0-2",
+    "Architecture": "iphoneos-arm64",
+    "Section": "[CTW Pro]"
+  },
+  "outputs": [
+    "deb.json",
+    "control.json",
+    "ar-members.txt",
+    "tree.txt",
+    "macho.json",
+    "strings-hints.txt",
+    "rootfs/",
+    "control/"
+  ]
+}
+{
+  "deb": {
+    "path": "/Users/zest/myworks/apt-ios-patch/patched/CTW_Pro企业级(无根版)_5.6.0-2_com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb",
+    "size": 21969380,
+    "sha256": "a6d792dd1003ad4ffc32e3646a4f7d6fd1f948ef7f42a5f8db0e5df8881d1020",
+    "lfs_pointer": false
+  },
+  "control": {
+    "Package": "com.xxdevice.CTWPro.Rootless560",
+    "Name": "CTW Pro企业级(无根版)",
+    "Version": "5.6.0-2",
+    "Architecture": "iphoneos-arm64",
+    "Section": "[CTW Pro]"
+  },
+  "outputs": [
+    "deb.json",
+    "control.json",
+    "ar-members.txt",
+    "tree.txt",
+    "macho.json",
+    "strings-hints.txt",
+    "rootfs/",
+    "control/"
+  ]
+}
+a6d792dd1003ad4ffc32e3646a4f7d6fd1f948ef7f42a5f8db0e5df8881d1020  /Users/zest/myworks/apt-ios-patch/patched/CTW_Pro企业级(无根版)_5.6.0-2_com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb
+size=21969380 bytes

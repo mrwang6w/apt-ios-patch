@@ -1,0 +1,7 @@
+ctwsrv [(9216, 'ctwsrv')]
+query {"result": 0, "pid": 9252, "waited": 9252, "status": 0} "dpkg-query: 警告: 在解析文件 '/var/jb/Library/dpkg/status' 第 153 行附近，软件包 'com.amg456.vbox1' 时：缺失 'Description' 字段\ndpkg-query: 警告: 在解析文件 '/var/jb/Library/dpkg/status' 第 153 行附近，软件包 'com.amg456.vbox1' 时：缺失 'Maintainer' 字段\ndpkg-query: 警告: 在解析文件 '/var/jb/Library/dpkg/status' 第 221 行附近，软件包 'com.xxdevice.ctwpro.rootless560' 时：缺失 'Description' 字段\nii  com.xxdevice.ctwpro.rootless560 5.6.0-2 iphoneos-arm64\n"
+hash {"result": 0, "pid": 9253, "waited": 9253, "status": 0} '55ec7231f6680eb955989029379a15979bf33949679209ea70160f264c13e3de  /var/jb/Applications/CTW Pro.app/CTW Pro\n88837a2d85b56f8e3953b660b9dd111d35492477aba557d6f5baa76a8c692f25  /var/jb/Applications/CTW Pro.app/fix.dylib\n'
+uicache {"result": 0, "pid": 9254, "waited": 9254, "status": 0} ''
+-- local hashes --
+55ec7231f6680eb955989029379a15979bf33949679209ea70160f264c13e3de  work/ctwpro-rootless-5.6.0/verify-final-5.6.0-2/rootfs/var/jb/Applications/CTW Pro.app/CTW Pro
+88837a2d85b56f8e3953b660b9dd111d35492477aba557d6f5baa76a8c692f25  work/ctwpro-rootless-5.6.0/verify-final-5.6.0-2/rootfs/var/jb/Applications/CTW Pro.app/fix.dylib

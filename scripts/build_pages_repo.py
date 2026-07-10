@@ -99,11 +99,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "com.xxdevice.CTWPro.Rootless560",
-        "source": PATCHED_DIR / "CTW_Pro企业级(无根版)_5.6.0-1_com.xxdevice.CTWPro.Rootless560_nolicense_ustar.deb",
-        "deb_name": "com.xxdevice.CTWPro.Rootless560_5.6.0-1_nolicense_ustar.deb",
-        "publish_name": "CTW Pro企业级(无根版) 5.6.0-1 Patch NoLicense USTAR",
+        "source": PATCHED_DIR / "CTW_Pro企业级(无根版)_5.6.0-2_com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb",
+        "deb_name": "com.xxdevice.CTWPro.Rootless560_5.6.0-2_deep_nolicense_ustar.deb",
+        "publish_name": "CTW Pro企业级(无根版) 5.6.0-2 Deep NoLicense USTAR",
         "publish_section": "CTW Pro",
-        "publish_desc": "授权测试补丁包：解除后加 extend.bin 卡密网络层的强制装载，移除其 constructor、NSURLSession、swizzle 与 exit/_exit/kill interpose；保留原业务与 entitlements，并使用无 PAX 扩展头的 USTAR deb 归档。",
+        "publish_desc": "授权测试补丁包：移除后加 extend.bin 网络层，并由本地 fix.dylib 覆盖主程序捐赠码输入/扫码、提交 delegate、自动响应后弹窗、节点适配状态、定时权限 UI 与 lockUI 消费者；保留核心改机函数和原 38 项 entitlements，使用无 PAX 扩展头的 USTAR deb 归档。",
         "depiction_name": "com.xxdevice.CTWPro.Rootless560.html",
     },
 ]

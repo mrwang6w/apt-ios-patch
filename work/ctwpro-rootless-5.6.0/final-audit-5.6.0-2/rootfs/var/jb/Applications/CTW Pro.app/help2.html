@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP API 使用说明</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTTP API 使用说明</h1>
+    <p>1.所有接口返回值都是json格式,例如{"version":"1.0.1","code":0},code字段不为0则调用出错,返回数据请自行调用查看.</p>
+    <p>2.端口固定为8080,请先排除本地端口占用,导致http服务无法开启.</p>
+    <p>3.setcurrentrecordparam使用前先设置参数在/var/mobile/ctwparams.txt文件中</p>
+    <p>4.需要ID的接口可以修改记录名后使用getbakidfromname接口获取ID后再调用.</p>
+
+    <h2>接口列表</h2>
+    <p>以客户端的IP为准,这里使用127.0.0.1举例</p>
+    <ul>
+        <li>获取版本号：通过请求 http://127.0.0.1:8080/version 来获取客户端的版本号。</li>
+        <li>一键新机：通过请求 http://127.0.0.1:8080/newrecord 来清空所有记录并新建一条记录。</li>
+        <li>下一条记录：通过请求 http://127.0.0.1:8080/nextrecord 来获取下一条记录。</li>
+        <li>清除所有记录：通过请求 http://127.0.0.1:8080/deleteallrecords 来清空所有记录。</li>
+        <li>生效指定记录：通过请求 http://127.0.0.1:8080/activerecord?ID=XXX 来生效指定的记录，其中 XXX 为记录的 ID。</li>
+        <li>生效第一条：通过请求 http://127.0.0.1:8080/activefirstrecord 来生效第一条记录。</li>
+        <li>生效最后一条：通过请求 http://127.0.0.1:8080/activelastrecord 来生效最后一条记录。</li>
+        <li>删除指定记录：通过请求 http://127.0.0.1:8080/deleterecord?ID=XXX 来删除指定的记录，其中 XXX 为记录的 ID。</li>
+        <li>直接导入记录：通过请求 http://127.0.0.1:8080/importdirect 来导入记录。</li>
+        <li>导出指定记录：通过请求 http://127.0.0.1:8080/exportrecord?ID=XXX 来导出指定的记录，其中 XXX 为记录的 ID。</li>
+<li>导出所有记录：通过请求 http://127.0.0.1:8080/exportallrecords 来导出所有记录。</li>
+<li>重命名当前记录：通过请求 http://127.0.0.1:8080/renamecurrentrecord?name=XXX 来重命名当前记录为 XXX。注:中文请使用URL编码。</li>
+<li>记录名查ID：通过请求 http://127.0.0.1:8080/getbakidfromname?name=XXX 来查找记录名为 XXX 的记录的 ID。</li>
+<li>获取当前记录参数：通过请求 http://127.0.0.1:8080/getcurrentrecordparam 来获取当前记录的参数。</li>
+<li>设置当前记录参数：需要先将参数设置在 /var/mobile/ctwparams.txt 文件中，然后通过请求 http://127.0.0.1:8080/setcurrentrecordparam 来设置当前记录的参数。1.5.2以后不在支持,请查看帮助文档中通过客户识别码下发自定义参数的描述。</li>
+<li>启用禁用APP：通过请求 http://127.0.0.1:8080/enablerecordapp 设置参数bid=bundle id，参数enable=1或0,来启用或禁用当前记录的 APP。</li>
+<li>获取所有记录名列表(JSON)：通过请求 http://127.0.0.1:8080/getallrecordsname 来获取所有记录的名称列表。返回JSON格式: {"code":0,"data":{"records":[{"id":"备份ID","name":"备份名称","selected":true/false}],"count":数量}}</li>
+<li>修改GPS定位：通过请求 http://127.0.0.1:8080/relocationwithbid 来修改GPS定位。设置参数x,y,z,r,bid - 经纬度,海拔,随机范围,bundle id</li>
+<li>下载二维码分享的配置：通过请求 http://127.0.0.1:8080/loadcloudconfig?device_id= 下载二维码分享的配置,参数为分享的设备ID。</li>
+</ul>
+
+</body>
+</html>

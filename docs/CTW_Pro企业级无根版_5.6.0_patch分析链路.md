@@ -1,11 +1,11 @@
-# CTW Pro 企业级无根版 5.6.0 去卡密 Patch 分析链路
+# CTW Pro 企业级无根版 5.6.0 深度去授权 Patch 分析链路
 
 ## 1. 输入与目标
 
 原始 deb：
 
 ```text
-/Users/zest/myworks/apt-ios-patch/downloads/ctwpro-repo/debs/CTW_Pro企业级(无根版)_5.6.0_com.xxdevice.CTWPro.Rootless560.deb
+/Users/zest/myworks/apt-ios-patch/downloads/ctwpro-repo/debs/CTW_Pro(无根版)_5.6.0_com.xxdevice.CTWPro.Rootless560.deb
 Size:   22,252,632 bytes
 SHA256: f10c545f65c81bc4d69afd5335c7fcd19d00ab3ca8b74d1227820996ebca54ef
 ```
@@ -19,12 +19,13 @@ Architecture: iphoneos-arm64
 Rootless:     var/jb/
 ```
 
-目标是移除后加卡密网络验证层，不扩大修改到 CTW Pro 原业务、daemon、
-MobileSubstrate tweak 或其他静态可疑退出路径。
+目标不是隐藏弹窗，而是闭合主程序内完整的“捐赠码”链：输入/扫码入口、提交
+delegate、响应后的自动弹窗、状态消费者、节点适配、定时复查和锁 UI；同时移除
+后加 `extend.bin` 网络层，不修改实际改机实现。
 
-## 2. Payload 映射
+## 2. Payload 与临时版边界
 
-审计识别出五个 Mach-O：
+主要 Mach-O：
 
 | 路径 | 架构 | 原始 SHA256 |
 | --- | --- | --- |
@@ -34,12 +35,18 @@ MobileSubstrate tweak 或其他静态可疑退出路径。
 | `var/jb/Library/MobileSubstrate/DynamicLibraries/ctwsup.dylib` | arm64 + arm64e | `2ee8a33a594f46fbe4b98a49c7571bcb1a0c2445c6347be7f780536ded6a86e8` |
 | `var/jb/usr/bin/ctwsrv` | armv7 + arm64 | `c6f0b9465fd2b76fff2e8783ce97209aad20ef238e230e18da3a3652e8ab9701` |
 
-## 3. 后加授权层证据
+`5.6.0-1` 只把 `@executable_path/extend.bin` 改成不存在的弱依赖
+`@executable_path/.nolicense`，并删除 `extend.bin`。真机证明确认主程序自身仍会：
 
-### 3.1 装载边界
+- 显示“正在适配网络节点...”和周期性的“测试权限:(null)”。
+- 打开“输入捐赠码”弹窗，支持 `recharge:`、扫码和确认提交。
+- 继续执行节点检测、`/getlocation` 和 `lockUI:` 消费者。
 
-主程序使用 iOS 15.0 SDK / clang 711 构建，`extend.bin` 使用 iOS 16.4 SDK /
-clang 1267 构建。主程序最后新增的 dylib load command 是：
+因此 `5.6.0-1` 是临时版，不能视为完整去授权版本。
+
+## 3. 后加 extend.bin
+
+原主程序最后一个依赖命令为：
 
 ```text
 Load command 47
@@ -48,166 +55,215 @@ Load command 47
          name @executable_path/extend.bin (offset 24)
 ```
 
-`extend.bin` 没有导出符号，也没有自有 ObjC 类；主程序没有需要从它解析的
-业务符号。它的作用边界是加载时 initializer、method swizzling 和 dyld
-interpose，而不是正常链接库 API。
+`extend.bin` 的 initializer 位于 `0x4D88`，0.5 秒后进入网络/swizzle 初始化；其
+`__DATA,__interpose` 覆盖 `SecKeyCreateEncryptedData`、`exit`、`_exit` 和
+`kill`。它没有主程序必须解析的导出业务 API，因此删除整个模块比局部 NOP 其
+网络或退出分支更稳定。
 
-### 3.2 加载时触发链
+## 4. 主程序运行时证据
 
-`extend.bin` 的 `__TEXT,__init_offsets` 首项为 `0x4D88`。该 initializer：
-
-```text
-dyld load extend.bin
--> initializer 0x4D88
--> [NSBundle mainBundle].bundleIdentifier
--> 命中目标包标识分支
--> 0x4F14（RSA / 请求材料初始化）
--> dispatch_time(..., 500000000 ns)
--> dispatch_after(...)
--> block 0x20330（invoke 0x5470）
--> 0x5494（NSURLSession / method swizzling）
--> 安装后续异常与终止处理
-```
-
-关键静态证据：
-
-- `0x4E28` 调用 `0x4F14`。
-- `0x4E30..0x4E38` 构造 `500,000,000` 纳秒，即 0.5 秒。
-- `0x4E68` 调用 `dispatch_after`。
-- block fixup `0x20340` 指向 invoke `0x5470`，其 `0x5484` 调用 `0x5494`。
-- `dataTaskWithRequest:completionHandler:` selector 引用位于 `0x24040`，代码引用
-  位于 `0x5D3C/0x5D40/0x6348/0x634C`。
-- `dataTaskWithURL:completionHandler:` selector 引用位于 `0x24048`，代码引用
-  位于 `0x5E38/0x5E3C/0x63A4/0x63A8`。
-
-### 3.3 终止与全局拦截能力
-
-`extend.bin` 导入 `dispatch_after`、`sleep`、`kill`、`exit`、`_exit`、`abort`、
-`method_setImplementation`、RSA Security API 和 `NSURLSession`。
-
-它的 `__DATA,__interpose` 将四个替换入口对应到：
+Frida 17 使用原生 ObjC/CoreFoundation C API；稳定证据保存在：
 
 ```text
-0x4000 -> SecKeyCreateEncryptedData
-0x405C -> exit
-0x4120 -> _exit
-0x416C -> kill
+work/ctwpro-rootless-5.6.0/evidence/frida/ctw-donation-probe-v11.jsonl
+work/ctwpro-rootless-5.6.0/evidence/frida/ctw-deep-5.6.0-2-runtime-v3.jsonl
+work/ctwpro-rootless-5.6.0/evidence/frida/ctw-deep-5.6.0-2-runtime-v4-unattended.jsonl
 ```
 
-因此单独 NOP 一个网络失败分支或一个终止 call site 不能覆盖该层的 constructor、
-swizzle、延时任务和 interpose。解除整个后加模块的装载是更窄的稳定边界。
+主程序通过 `class_replaceMethod` 动态恢复 `ViewController` 业务实现。原始关键
+IMP：
 
-## 4. 补丁设计
+| selector | 主程序偏移 | 作用 |
+| --- | ---: | --- |
+| `showQRCodeView:` | `0x4dccb0` | 捐赠二维码入口 |
+| `scanQRCode:` | `0x4e1c8c` | 扫码入口 |
+| `qrCodeScannerDidScanResult:` | `0x4e2530` | 扫码结果消费者 |
+| `Jvgn...DwaNkQ` | `0x4e6700` | 响应完成后的自动捐赠弹窗消费者 |
+| `viewDidLoad` | `0x5025c0` | 启动 UI 与节点适配 |
+| `alertView:clickedButtonAtIndex:` | `0x50c684` | “退出/确认”提交 delegate |
+| `updateUITimer` | `0x515af0` | 约 2 秒一次的状态/UI 消费者 |
+| `lockUI:` | `0x557560` | 锁定核心控件 |
+| `recharge:` | `0x557bc0` | 捐赠码手动入口 |
 
-保留 Mach-O load-command 表大小不变，把必需依赖改成不存在的弱依赖，并从
-app payload 删除 `extend.bin`：
+捐赠弹窗实测：
 
-| 架构 | 位置 | 旧值 | 新值 | 作用 |
-| --- | --- | --- | --- | --- |
-| arm64 | file `0x1440` | `0c000000` (`LC_LOAD_DYLIB`) | `18000080` (`LC_LOAD_WEAK_DYLIB`) | 缺失模块不再阻止主程序启动 |
-| arm64 | file `0x1458` | `@executable_path/extend.bin` | `@executable_path/.nolicense` | 解除对实际授权模块的引用 |
+```text
+title:  输入捐赠码
+cancel: 退出
+other:  确认
+submit index: 1
+```
 
-两个路径均为 27 字节，整个 56 字节 command 保持等长。最终 `otool` 结果：
+启动链实测：
+
+```text
+viewDidLoad
+-> writeCTWCacheEnv (caller +0x504b64)
+-> UILabel “正在适配网络节点...” (caller +0x504be8)
+-> /upload3
+-> /api/checkNews, /api/getuiconfig, /api/announcement
+-> /upload?data=...
+-> updateUITimer / isInNetwork
+-> /getlocation
+```
+
+当前 `api.ctwvip.xyz` 对这些请求统一返回 `HTTP 502 Bad Gateway`。原包仍把失败
+结果送入授权/UI 消费者，形成卡节点、捐赠弹窗和无效权限文本。
+
+## 5. 5.6.0-2 补丁设计
+
+### 5.1 强加载本地修复模块
+
+保持 56 字节 load command 长度和强依赖语义，只替换路径：
+
+| 架构 | 文件偏移 | 旧值 | 新值 |
+| --- | ---: | --- | --- |
+| arm64 | `0x1440` | `LC_LOAD_DYLIB` | `LC_LOAD_DYLIB` |
+| arm64 | `0x1458` | `@executable_path/extend.bin` | `@executable_path/fix.dylib` |
+
+最终结果：
 
 ```text
 Load command 47
-          cmd LC_LOAD_WEAK_DYLIB
+          cmd LC_LOAD_DYLIB
       cmdsize 56
-         name @executable_path/.nolicense (offset 24)
+         name @executable_path/fix.dylib (offset 24)
 ```
 
-没有修改 `0CTW.dylib`、`ctwsup.dylib`、`ctwsrv` 或原业务函数。
+包内删除 `extend.bin`，新增并单独签名 `fix.dylib`。
 
-## 5. 重签与重包
+### 5.2 动态 IMP 覆盖
 
-构建脚本：
+`fix.dylib` 用后台短周期等待主程序完成动态注册，再通过 `dladdr(IMP)` 验证镜像
+确为 `/CTW Pro` 且相对偏移匹配。不能使用 `_dyld_get_image_header(0)`：真机
+实测该调用在此 dyld 闭包中返回 `fix.dylib` 基址，而不是主程序基址。
+
+运行期覆盖：
+
+| selector/消费者 | 行为 |
+| --- | --- |
+| `recharge:` | no-op |
+| `showQRCodeView:` / `scanQRCode:` / `qrCodeScannerDidScanResult:` | no-op |
+| `Jvgn...DwaNkQ` | no-op，关闭响应后自动捐赠弹窗 |
+| 捐赠标题的 `alertView:clickedButtonAtIndex:` | no-op，关闭确认提交与“退出”分支 |
+| `lockUI:` | no-op |
+| `isNeedCheckIP` / `isNeedFlushIP` | 始终 `NO` |
+| 两个状态 setter | 只允许写 `NO` |
+| `viewDidLoad` / `updateUITimer` | 调原实现后恢复本地状态、启用核心控件、隐藏捐赠 action 控件 |
+| `UILabel setText:` | 精确替换“正在适配网络节点...”和“测试权限:(null)” |
+
+本地状态显示为“网络节点已就绪”和“测试权限:永久”。NSUserDefaults sentinel
+`CTWProDeepPatchLocalAuthorization=YES` 只用于标识修复模块已运行；真正的保障来自
+上述消费者覆盖，不把 sentinel 冒充原授权源。
+
+`performeMachineStub`、`performeMachine:`、`nativeMachine:` 未修改，避免破坏核心
+改机逻辑。
+
+## 6. 构建、签名与归档
+
+实现文件：
 
 ```text
-scripts/patch_ctwpro_rootless_nolicense.py
-scripts/build_ctwpro_rootless_nolicense.sh
+work/ctwpro-rootless-5.6.0/patch-src/CTWProDeepPatch.m
+scripts/patch_ctwpro_rootless_deep.py
+scripts/build_ctwpro_rootless_deep.sh
 ```
 
 构建过程：
 
-1. 校验原 deb 和主程序 SHA256。
-2. 重新审计并从已验证的原始 `data.tar.gz` 提取 payload。
-3. 校验完整旧 load command 后写入两个等长补丁。
-4. 删除 `CTW Pro.app/extend.bin`。
-5. 提取并保留原主程序 38 项 entitlement，对 app 做 ad-hoc 重签。
-6. 将 control 版本提升为 `5.6.0-1`，规范 control/maintainer-script 权限。
-7. 使用 GNU tar `--format=ustar --sort=name --mtime=@0 --owner=0 --group=0
-   --no-xattrs`、`gzip -n` 和确定性 Unix ar 容器重包。
-8. 从候选 deb 重新提取并重复补丁、签名、权限、control 和归档验证，全部通过后
-   原子替换 `patched/` 中的正式文件。
+1. 校验原 deb 和原主程序 SHA256。
+2. 编译 arm64/iOS 12+ `fix.dylib`，install name 为
+   `@executable_path/fix.dylib`，关闭随机 UUID。
+3. 校验并替换完整 56 字节 load command，删除 `extend.bin`。
+4. 单独签名 dylib，并使用原主程序 38 项 entitlement 重签 app。
+5. control 版本提升到 `5.6.0-2`。
+6. 使用 deterministic USTAR、`gzip -n` 和固定 Unix ar 重包。
+7. 从候选 deb 重提取，重复 load command、签名、权限、control 和归档验证。
 
-签名后的主程序：
+最终签名文件：
 
 ```text
-Size:       24,106,048 bytes
-SHA256:     3317db92aefd2912d0adb95a39b6ce11614cf1a7eb516976c2784512da810e96
-Signature:  ad-hoc
-Entitlement keys: 38（与原始值语义一致）
+CTW Pro SHA256: fca654d7cce9db0c87c375142741e45761ab6dcc8f92618b80e9bdae04b1d9a0
+fix.dylib SHA256: ce8f19dfbc070f78f0ebb13e3f977cbf70416544e0dd6427cedf7603ddd4ab35
+Signature: ad-hoc
+Entitlement keys: 38
 ```
 
-## 6. 最终产物与验证
-
-最终 deb：
+## 7. 最终产物
 
 ```text
-/Users/zest/myworks/apt-ios-patch/patched/CTW_Pro企业级(无根版)_5.6.0-1_com.xxdevice.CTWPro.Rootless560_nolicense_ustar.deb
-Size:   21,959,938 bytes
-SHA256: 3bff4426fde21b807d491d39c6b09eaa99ae5c770dbce113b65516862a9e8225
+/Users/zest/myworks/apt-ios-patch/patched/CTW_Pro企业级(无根版)_5.6.0-2_com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb
+Size:   21,969,212 bytes
+SHA256: 68e14a7f8c17d181fb48a0dc16eadd7a85ce635470d3f339ba0973f3c2e4a9cb
 ```
 
-验证结果：
+连续两次从固定原包完整构建的 SHA256 一致。最终 deb 是标准三成员 Debian ar；
+control/data 均为 USTAR + deterministic gzip，无 PAX、AppleDouble 或 LFS pointer。
 
-- `Package=com.xxdevice.CTWPro.Rootless560`、`Version=5.6.0-1`、
-  `Architecture=iphoneos-arm64`。
-- 最终 deb 是标准 2.0 三成员 ar：`debian-binary`、`control.tar.gz`、
-  `data.tar.gz`。
-- control/data 均为 USTAR + deterministic gzip，无 PAX/AppleDouble 扩展头。
-- 从最终 deb 重提取后，补丁脚本再次验证 `0x1440/0x1458`。
-- `CTW Pro.app/extend.bin` 不存在，`CodeResources` 不引用它。
-- `codesign --verify --deep --strict` 通过。
-- 原/最终 payload 内容差分只有主程序、删除的 `extend.bin` 和重签新增的
-  `_CodeSignature`；其余业务文件相同。
-- 连续两次从固定原包完整构建的最终 SHA256 完全相同。
-
-复现命令：
+复现：
 
 ```bash
-./scripts/build_ctwpro_rootless_nolicense.sh
-shasum -a 256 'patched/CTW_Pro企业级(无根版)_5.6.0-1_com.xxdevice.CTWPro.Rootless560_nolicense_ustar.deb'
+./scripts/build_ctwpro_rootless_deep.sh
+shasum -a 256 'patched/CTW_Pro企业级(无根版)_5.6.0-2_com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb'
 ```
 
-## 7. Pages 发布
+## 8. 真机验证
 
-`pages-repo/` 已挂载最终补丁包：
+设备：`iPhone9,2 / iOS 15.8.8 / Frida 17.11.0`。
+
+安装时通过 root `frida-server` 上传并调用设备端 `dpkg`；设备端 deb SHA256 与本地
+一致，`dpkg-query` 返回：
+
+```text
+ii  com.xxdevice.ctwpro.rootless560 5.6.0-2 iphoneos-arm64
+```
+
+65 秒无人干预验收结果（约 32 个 UI timer 周期）：
+
+- `fix.dylib` 从实际 app 路径加载。
+- 14 个目标 IMP 均由 `fix.dylib` 替换。
+- “输入捐赠码”弹窗 `0`，提交 `0`，`/getlocation` `0`。
+- `lockUI:` `0`，`exit/_exit/kill/abort` `0`，探针错误 `0`。
+- 8/15/30/55 秒快照均为“测试权限:永久 / 网络节点已就绪”。
+- `isNeedCheckIP=0`、`isNeedFlushIP=0` 始终保持。
+
+主动调用已替换的 `recharge:` 后也没有弹窗或提交；扫码与自动响应消费者使用同一
+精确 IMP 覆盖策略。
+
+## 9. 核心功能网络边界
+
+真机点击“随机生成参数”时，原核心函数新增请求：
+
+```text
+http://api.ctwvip.xyz/vd?data=...
+```
+
+该请求返回 `HTTP 502`，随后原程序在 `CTW Pro+0xa5584` 显示：
+
+```text
+新机生成失败
+超时或非法请求,请检查网络连接!
+```
+
+因此随机新机参数至少此流程依赖已失效的后端 `/vd`。补丁没有修改
+`performeMachine*` 或 `nativeMachine:`；该失败是独立的服务端不可用，不是授权
+消费者回归。真机手动执行“重置并退出”产生的 `CTW Pro+0x3b1370 -> exit(0)` 也
+属于用户确认的正常重置路径，不归类为授权定时退出。
+
+## 10. Pages 发布
+
+Pages 最终条目：
 
 ```text
 Package: com.xxdevice.CTWPro.Rootless560
-Version: 5.6.0-1
+Version: 5.6.0-2
 Architecture: iphoneos-arm64
-Filename: ./debs/com.xxdevice.CTWPro.Rootless560_5.6.0-1_nolicense_ustar.deb
-Size: 21959938
-SHA256: 3bff4426fde21b807d491d39c6b09eaa99ae5c770dbce113b65516862a9e8225
+Filename: ./debs/com.xxdevice.CTWPro.Rootless560_5.6.0-2_deep_nolicense_ustar.deb
+Size: 21969212
+SHA256: 68e14a7f8c17d181fb48a0dc16eadd7a85ce635470d3f339ba0973f3c2e4a9cb
 Depiction: ./depictions/com.xxdevice.CTWPro.Rootless560.html
 ```
 
-`scripts/build_pages_repo.py` 的统一清单现包含 5 个最终补丁包。重新生成的
-`Packages`、`Packages.gz`、`Release`、首页和 depiction 已通过
-`scripts/verify_pages_repo.py`，Pages 内 CTW deb 与 `patched/` 原件哈希一致。
-`pages-repo/.gitattributes` 将 `.deb`/`.gz` 强制为普通 Git blob，扫描未发现
-LFS pointer。连续两次 Pages 生成哈希一致；临时本地 HTTP 验证覆盖 `/`、
-`Packages`、`Packages.gz`、depiction 和 CTW deb 下载路径。
-
-## 8. 运行验证边界
-
-本轮完成的是当前 deb 字节、静态触发链、装载边界、签名、归档和确定性构建
-验证。工作区没有用于安装和运行该 rootless 包的 iOS 15+ 越狱执行环境，因此
-尚未执行真机启动、卡密弹窗观察和核心功能回归。
-
-真机验收应从清理旧安装/授权缓存后的状态启动，确认不再出现卡密输入流程，并
-覆盖主界面、核心改机操作、前后台切换及至少原验证窗口加余量。若仍出现独立的
-授权症状，应从最早未闭合的运行时触发重新取证，而不是扩大修改到其他 timer 或
-退出调用。
+`scripts/build_pages_repo.py` 只挂载该最终版；重新生成并验证 `Packages`、
+`Packages.gz`、`Release`、首页、depiction 和 deb 下载路径后，旧
+`5.6.0-1` 临时包不再出现在 Pages 中。
