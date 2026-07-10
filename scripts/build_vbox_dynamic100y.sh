@@ -10,10 +10,10 @@ PATCHED_APP="$DEB_ROOT/var/jb/Applications/VBox.app"
 PATCHED_VBOX="$DEB_ROOT/var/jb/Applications/VBox.app/VBox"
 PATCHED_VBOC="$DEB_ROOT/var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib"
 ENTITLEMENTS="$ROOT/work/vbox-5.5-patched/VBox.entitlements.plist"
-OUTPUT_NAME="VBox_5.5_rootless_5.5-5_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
-PUBLISHED_NAME="VBox_5.5「无根」_5.5-5_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
+OUTPUT_NAME="VBox_5.5_rootless_5.5-6_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
+PUBLISHED_NAME="VBox_5.5「无根」_5.5-6_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb"
 
-if ! grep -qx 'Version: 5.5-5' "$DEB_ROOT/DEBIAN/control"; then
+if ! grep -qx 'Version: 5.5-6' "$DEB_ROOT/DEBIAN/control"; then
   echo "unexpected VBox control version" >&2
   exit 1
 fi

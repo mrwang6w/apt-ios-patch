@@ -4,14 +4,14 @@
 
 - Original package: `/Users/zest/myworks/apt-ios-patch/downloads/amg456-repo/debs/VBox_5.5「无根」_5.5_com.amg456.VBox1.deb`
 - Original package id/version: `com.amg456.VBox1` / `5.5`
-- Published patch version: `5.5-5`
+- Published patch version: `5.5-6`
 - Original SHA-256: `2ab876fc64885dbebbb2fc079a9009c7243144c1457ada0c85ecf5c936a3f290`
 - License target: `var/jb/Library/MobileSubstrate/DynamicLibraries/VBoc.dylib`
 - Home-page target: `var/jb/Applications/VBox.app/VBox`
 - Original `VBoc.dylib` SHA-256: `e2aa03f6c409e2b564f5698d06e555f6724f6e903e7ecfccd6dabbe5f478f2d6`
 - Patched and signed `VBoc.dylib` SHA-256: `c8ac52b66362dfa27816b82faf4ec0b1ebbd978d8dac62df938fdb6097001378`
 - Original `VBox` SHA-256: `ad38cd8e805e9781a2528a239cfbab7aba58f80857fed576cc3c9d03a01e6f31`
-- Patched and signed `VBox` SHA-256: `cd6205753187fb6cbecd11117cfd2945eecff00f5ecc6e150fa3b3aa7f399886`
+- Patched and signed `VBox` SHA-256: `0e8d7ce49694fd0f5326ec6d39418642d716cd5378bc20fc64898c3b82f444c0`
 
 ## Evidence
 
@@ -55,6 +55,32 @@ their containing functions: arm64 `0xB790`, `0xCAD8`, `0xEA00`, `0xEF50` and
 arm64e `0xC244`, `0xD770`, `0xFAFC`, `0x10150`. Swift runtime compatibility
 `abort` sites are outside this authorization chain and remain unchanged.
 
+The later `软件已过期，请输入激活码，注册后会自动退出请重新进入`
+prompt is a separate main-executable path, not a remaining `VBoc.dylib` call.
+Frida captured `VBox+0x50239C -> VBox+0x5897E0` for alert construction and
+`VBox+0x5023F8` / `VBox+0x5024A0` for its `退出` / `注册并退出` actions. The
+caller is `-[MainViewController pGflauxabac]`, invoked from `viewDidLoad`.
+
+Runtime data-flow tracing closed the decisive branch:
+
+- The helper return retained at `VBox+0x502244` is an empty mutable array;
+  `count == 0` immediately reaches the alert block.
+- The helper creates the array at `VBox+0x13FFD4`, reads
+  `UIDevice.currentDevice.systemVersion` at `0x13FFF0` / `0x140008`, converts
+  `15.8.8` with `floatValue` at `0x140020`, and compares it with `15.0` at
+  `0x140050..0x140058`.
+- No `NSDate`, `time`, `gettimeofday`, preferences, Keychain, file, SQLite, or
+  network access occurs in this path. The trial-time hypothesis is therefore
+  disproved; the code mislabels an iOS 15 compatibility gate as software
+  expiry.
+- Replacing the empty array with one element suppresses the prompt but reaches
+  another explicit exit branch, so fabricating helper data is unsafe.
+- Redirecting only the `viewDidLoad -> pGflauxabac` message to a benign method
+  suppresses the prompt while VBox remains alive for more than 30 seconds.
+
+`5.5-6` therefore returns immediately from `pGflauxabac`; it does not globally
+forge time, arrays, alerts, or Objective-C return values.
+
 The home-page authorization time does not come from `VBoc.dylib`'s
 `getAuthEndTime:`. `MainViewController tableView:viewForHeaderInSection:` in
 the main `VBox` executable reads the global `strExpiryTime` ivar, formats it as
@@ -66,6 +92,7 @@ branches at `0x1005F6ED4` and `0x1005F7FB4`; both must be patched.
 
 | Architecture | Target | VA / file offset | Old bytes | New bytes |
 | --- | --- | --- | --- | --- |
+| arm64 | `-[MainViewController pGflauxabac]` compatibility/expiry protection | `0x100500E5C` / `0x500E5C` | `f44fbea9` | `c0035fd6` (`ret`) |
 | arm64 | `ActiveHUD.aaaaavvvvv` scheduler | `0xB02C` | `f44fbea9` | `c0035fd6` (`ret`) |
 | arm64 | 60-second delayed-exit closure | `0xB700` | `ff0301d1` | `c0035fd6` (`ret`) |
 | arm64 | delayed-chain heartbeat closure | `0xB894` | `ffc300d1` | `c0035fd6` (`ret`) |
@@ -114,6 +141,12 @@ time in `2126`. The existing formatter remains responsible for the displayed
 minutes and seconds, so the value is recalculated from device time whenever
 the header is built.
 
+The package `preinst` now terminates stale `VBox` / `VBox_` processes before
+files are replaced, removes rootful `VBox.*` and `VBoc.*` injection leftovers,
+and correctly treats `/Applications/VBox.app` as a directory. The package also
+conflicts with the rootful and RootHide VBox variants, and `VBox_run` now uses
+its computed rootless app path instead of hard-coding `/Applications`.
+
 `scripts/patch_vbox_vboc.py` parses the original fat Mach-O architecture table,
 checks the original file and thin-slice SHA256 values, verifies every old-byte
 window, rejects duplicate, unordered, or overlapping patch definitions, and
@@ -126,10 +159,10 @@ the sealed-resource manifest; macOS `codesign -v --strict` accepts the result.
 
 ## Output
 
-- Patched package: `VBox_5.5_rootless_5.5-5_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb`
-- Published package: `patched/VBox_5.5「无根」_5.5-5_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb`
-- Package SHA-256: `56048d40142553ead9aebb8361d70f95ad61a53416177fb6a2cdc64f7ce04c25`
-- Package size: `6343758` bytes
+- Patched package: `VBox_5.5_rootless_5.5-6_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb`
+- Published package: `patched/VBox_5.5「无根」_5.5-6_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb`
+- Package SHA-256: `5881deae09d8709f0b1be5bc6813edbaf8ed20487c1ca80442f7ea00514264ff`
+- Package size: `6343796` bytes
 - Archive members: `debian-binary`, `control.tar.gz`, `data.tar.gz`
 - Both tar members use deterministic GNU USTAR headers with numeric owner/group `0/0`; PAX and AppleDouble metadata are absent.
 
@@ -138,19 +171,20 @@ the sealed-resource manifest; macOS `codesign -v --strict` accepts the result.
 The final package was unpacked with `ar -x`; its binaries matched the hashes
 above. `otool -tvV` disassembled both home-page windows as a load of
 `3155673600`, `ucvtf d0, w8`, and
-`+[NSDate dateWithTimeIntervalSinceNow:]`. All 38 `VBoc.dylib` patch locations
+`+[NSDate dateWithTimeIntervalSinceNow:]`; `0x100500E5C` disassembles as
+`ret`. All 38 `VBoc.dylib` patch locations
 disassemble as `ret` or `pacibsp; retab`, including every function containing
 the four application-owned `_exit(0)` calls. The repository's
 `validate_deb_archive` check accepted both final tar members.
 
-`pages-repo/Packages` publishes only VBox `5.5-5` at
-`./debs/com.amg456.VBox1_5.5-5_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb`; its Size and
+`pages-repo/Packages` publishes only VBox `5.5-6` at
+`./debs/com.amg456.VBox1_5.5-6_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb`; its Size and
 SHA256 fields match the published file. `Packages.gz` also passes `gzip -t`.
 
-Runtime validation still requires installing `5.5-5` on a compatible rootless
-iOS device, fully terminating the old VBox process (or respringing), and
-reopening the home page. Updating a deb cannot replace a dylib already mapped
-into a running process. The expected value on
+Frida runtime validation on iOS `15.8.8` proved the equivalent
+`viewDidLoad -> pGflauxabac` call suppression: the exact expiry alert was not
+constructed and VBox remained alive beyond 30 seconds. Final-package device
+validation still requires installing `5.5-6`; the expected home-page value on
 `2026-07-10 HH:mm` is `2126-07-10 HH:mm`.
 
 ## Rebuild

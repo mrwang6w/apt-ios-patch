@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Patch VBox 5.5's home-page expiry label to show now plus 100 years."""
+"""Patch VBox 5.5's main-program expiry UI and home-page expiry label."""
 
 from __future__ import annotations
 
@@ -12,6 +12,10 @@ ORIGINAL_SHA256 = "ad38cd8e805e9781a2528a239cfbab7aba58f80857fed576cc3c9d03a01e6
 SECONDS_100Y_CURRENT_WINDOW = 3_155_673_600  # 36524 days: 2026-07-10 -> 2126-07-10
 
 PATCHES = {
+    0x500E5C: (
+        bytes.fromhex("f44fbea9"),
+        bytes.fromhex("c0035fd6"),
+    ),
     0x5F6ED4: (
         bytes.fromhex(
             "006969f8 481900d0 01fd41f9 1f810a94 "
@@ -72,7 +76,7 @@ def verify_patched(path: Path) -> None:
                 f"patched-byte mismatch at file offset 0x{offset:X}: "
                 f"got {actual.hex()}, expected {new.hex()}"
             )
-        print(f"verified dynamic-expiry patch @ 0x{offset:X}: {actual.hex()}")
+        print(f"verified VBox main patch @ 0x{offset:X}: {actual.hex()}")
     print(f"verified patched binary: {path}")
     print(f"patched binary SHA256: {sha256(data)}")
 

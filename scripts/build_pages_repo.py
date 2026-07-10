@@ -81,11 +81,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "com.amg456.VBox1",
-        "source": PATCHED_DIR / "VBox_5.5「无根」_5.5-5_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb",
-        "deb_name": "com.amg456.VBox1_5.5-5_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb",
-        "publish_name": "VBox_5.5「无根」 Patch NoLicense NoHeartbeat NoDelayedExit Dynamic 100Y USTAR",
+        "source": PATCHED_DIR / "VBox_5.5「无根」_5.5-6_com.amg456.VBox1_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb",
+        "deb_name": "com.amg456.VBox1_5.5-6_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb",
+        "publish_name": "VBox_5.5「无根」 Patch NoLicense NoTrialGate NoHeartbeat Dynamic 100Y USTAR",
         "publish_section": "VBox虚拟盒子",
-        "publish_desc": "授权测试补丁包：禁用激活与网络错误弹窗的调度入口、异步 UI closure、注册/退出 action handler、周期心跳及全部已确认延迟退出路径；首页授权时间动态显示为设备当前时间加 100 年；使用无 PAX 扩展头的 USTAR deb 归档。",
+        "publish_desc": "授权测试补丁包：禁用主程序将 iOS 15 兼容性结果误判为软件过期的 pGflauxabac 保护链，并禁用注入层激活/网络错误弹窗、周期心跳及延迟退出；首页授权时间动态显示为设备当前时间加 100 年；使用无 PAX 扩展头的 USTAR deb 归档。",
         "depiction_name": "com.amg456.VBox1.html",
     },
     {

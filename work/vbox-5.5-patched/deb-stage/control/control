@@ -1,8 +1,9 @@
 Package: com.amg456.VBox1
-Version: 5.5-5
+Version: 5.5-6
 Priority: optional
 Section: VBox虚拟盒子
 Depends: firmware (>= 8.0), mobilesubstrate
+Conflicts: com.amg456.VBox, com.amg456.VBox2
 Architecture: iphoneos-arm64
 Name: VBox_5.5「无根」
 Author: VBox
