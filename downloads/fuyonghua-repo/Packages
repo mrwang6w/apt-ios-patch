@@ -1,0 +1,456 @@
+Package: app.awz4854.rootful
+Version: 15.0.1
+Priority: standard
+Section: AWZ爱伪装
+Depends: mobilesubstrate, coreutils-bin, zip, unzip
+Conflicts: app.awzios6.awz
+Architecture: iphoneos-arm
+Filename: ./debs/119.deb
+Size: 14958518
+Name: AWZ爱伪装_修复(有根)
+Author: awz
+Depiction: https://apt.fuyonghua.com/index.php?pid=119
+SileoDepiction: https://apt.fuyonghua.com/sileo/119
+Icon: file:///Applications/AWZ.app/AWZAppIcon60x60@2x.png
+MD5sum: 6ad4ee05bb717a4bd83bed34f69a06b2
+SHA1: faaa234156e1c9f8aa4f7873be2607fc15bf3e97
+SHA256: 255feb6c6acb0f85217bdb61910c39352d495633511f37dd16e9a245db400ec6
+
+Package: com.amg456.rootless
+Version: 18.1.1
+Priority: optional
+Section: AMG
+Maintainer: AMG官方源™
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Filename: ./debs/118.deb
+Size: 6275936
+Description: AMG 改串清理,全息备份,模拟定位,脚本调用,智能飞行,防越狱检测,支持iOS8-iOS17全系越狱可用,支持有根和无根,支持隐藏越狱RootHide等所有越狱工具,支持所有可越狱机型。
+Name: 纯净版18.1.1_AMG奔驰正版[无根]
+Author: AMG
+Depiction: https://apt.fuyonghua.com/index.php?pid=118
+SileoDepiction: https://apt.fuyonghua.com/sileo/118
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: 048a397472fbe7fab9c510a162542617
+SHA1: b47208d31d9e75a346c8786b6814c2e5d63f200a
+SHA256: 1a9900d726a59061bac3e393516ff2d5053eb6d2a5f7a6a1a936c051cdb19842
+
+Package: com.amg456.rootful
+Version: 18.1.1
+Priority: optional
+Section: AMG
+Maintainer: AMG官方源™
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm
+Filename: ./debs/117.deb
+Size: 6883780
+Description: AMG 改串清理,全息备份,模拟定位,脚本调用,智能飞行,防越狱检测,支持iOS8-iOS17全系越狱可用,支持有根和无根,支持隐藏越狱RootHide等所有越狱工具,支持所有可越狱机型。
+Name: 纯净版18.1.1_AMG奔驰正版[有根]
+Author: AMG
+Depiction: https://apt.fuyonghua.com/index.php?pid=117
+SileoDepiction: https://apt.fuyonghua.com/sileo/117
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: 286ba575bf86b6a78581f3b94ac9ce9b
+SHA1: 10aa217a73336f89a49182b86af42e37e231e8d2
+SHA256: 742eb76111784368da0dd2af1e3ed1f0b63f80f2d266194b990d454e4ceaab23
+
+Package: com.amg456.roothide
+Version: 18.1.1
+Priority: optional
+Section: AMG
+Maintainer: AMG官方源™
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64e
+Filename: ./debs/116.deb
+Size: 6249090
+Description: AMG 改串清理,全息备份,模拟定位,脚本调用,智能飞行,防越狱检测,支持iOS8-iOS17全系越狱可用,支持有根和无根,支持隐藏越狱RootHide等所有越狱工具,支持所有可越狱机型。
+Name: 纯净版18.1.1_AMG奔驰正版[隐根]
+Author: AMG
+Depiction: https://apt.fuyonghua.com/index.php?pid=116
+SileoDepiction: https://apt.fuyonghua.com/sileo/116
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: 1553176bab59c0a97db9ef73edf6996c
+SHA1: cadb7e7ee034d015ef6226469ea60d7a2802ea13
+SHA256: b361a6db1e110537bbf19937adda5096b256ef3c4b2c324f22666d4723b80616
+
+Package: com.amg456.CTWPro.roothide551
+Version: 5.5.1
+Priority: standard
+Section: Utilities
+Maintainer: ctwvip
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Architecture: iphoneos-arm64e
+Filename: ./debs/109.deb
+Size: 27277972
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: 551_CTW Pro(roothide版s)
+Author: ctwvip
+Depiction: https://apt.fuyonghua.com/index.php?pid=109
+SileoDepiction: https://apt.fuyonghua.com/sileo/109
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: 6a86cc7e09201b2670995c6fbde9b53b
+SHA1: f9d6b1b69d6dba1c97c33792e0cc14b6ae20ead0
+SHA256: 706800fea47d2cd1b6ab729f919f245e1e7ecbb465a813d66beb155e5a50ad9f
+
+Package: com.amg456.CTWPro.rootless551
+Version: 5.5.1
+Priority: standard
+Section: Utilities
+Maintainer: ctwvip
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Architecture: iphoneos-arm64
+Filename: ./debs/108.deb
+Size: 27295718
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: 551_CTW Pro(无根版s)
+Author: ctwvip
+Depiction: https://apt.fuyonghua.com/index.php?pid=108
+SileoDepiction: https://apt.fuyonghua.com/sileo/108
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: e51fb3abc4be8b96a92da2e3c31b5d3a
+SHA1: 75be55c0554f5bfca5829d12cce2dccd1a2d5703
+SHA256: f1913ba46e2938bdb505e827f5e390d24be024cdb67ceeaa458c996adfa63edb
+
+Package: com.amg456.CTWPro.rootless560
+Version: 5.6.0
+Priority: standard
+Section: Utilities
+Maintainer: ctwvip
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Architecture: iphoneos-arm64
+Filename: ./debs/107.deb
+Size: 27296062
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: 560_CTW Pro(无根版)
+Author: ctwvip
+Depiction: https://apt.fuyonghua.com/index.php?pid=107
+SileoDepiction: https://apt.fuyonghua.com/sileo/107
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: 7546c73b8b7e0bc923ac21e93d25ddb2
+SHA1: 0d276958bc49516208cfb75250c622a041fa7f8d
+SHA256: 38234f4381b36587d43fc0f78dd77e9d386b7760a5412152024379233c1891b4
+
+Package: com.amg456.CTWPro.roothide560
+Version: 5.6.0
+Priority: standard
+Section: Utilities
+Maintainer: ctwvip
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Architecture: iphoneos-arm64e
+Filename: ./debs/106.deb
+Size: 27278280
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: 560_CTW Pro(roothide版)
+Author: ctwvip
+Depiction: https://apt.fuyonghua.com/index.php?pid=106
+SileoDepiction: https://apt.fuyonghua.com/sileo/106
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: 5573f74bfc2a0afc36ee526e8ef0f8b1
+SHA1: 801ab1ddc8de1146e8d2dcb1eb2021fef33c4e31
+SHA256: e76c440aade5d665453471aa89a7e9145aefca3ede6bdae181e5a957be466868
+
+Package: com.amg456.CTWPro.roothide
+Version: 5.5.0
+Priority: standard
+Section: Utilities
+Maintainer: ctwvip
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Architecture: iphoneos-arm64e
+Filename: ./debs/105.deb
+Size: 27278282
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: CTW Pro(roothide修复版)
+Author: ctwvip
+Depiction: https://apt.fuyonghua.com/index.php?pid=105
+SileoDepiction: https://apt.fuyonghua.com/sileo/105
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: a06101a43a005071cacdf30af28a23de
+SHA1: 163276c70af55b31bbfe81748e86e44c3a24d64a
+SHA256: d624159a11689bd075e914169b0e3455e4979f2769389502f4a9f3215ab95f55
+
+Package: com.amg456.CTWPro.rootless
+Version: 5.5.0
+Priority: standard
+Section: Utilities
+Maintainer: ctwvip
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Architecture: iphoneos-arm64
+Filename: ./debs/104.deb
+Size: 27296058
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: CTW Pro(无根修复版)
+Author: ctwvip
+Depiction: https://apt.fuyonghua.com/index.php?pid=104
+SileoDepiction: https://apt.fuyonghua.com/sileo/104
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: 06dd5c74d6d09296446e8b368608b2db
+SHA1: b554c58a055bdf51ddf2e7bfb2f743fa306ebb45
+SHA256: f5e114462ceb09b21cfee4128e0ccb43143f3edf3713b438479c3e339771a996
+
+Package: com.amg456.VBox1
+Version: 5.5
+Priority: optional
+Section: VBox虚拟盒子
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Filename: ./debs/103.deb
+Size: 6437310
+Name: VBox_5.5「无根」
+Author: VBox
+Depiction: https://apt.fuyonghua.com/index.php?pid=103
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: c34fc63ae6e93e9ef2212d3edc76b3ff
+
+Package: com.amg456.VBox
+Version: 5.5
+Priority: optional
+Section: VBox虚拟盒子
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm
+Filename: ./debs/102.deb
+Size: 11452984
+Name: VBox_5.5「有根」
+Author: VBox
+Depiction: https://apt.fuyonghua.com/index.php?pid=102
+Icon: file:///Applications/VBox.app/AppIcon60x60@2x.png
+MD5sum: 408573200594b485c179ff429b3e2de0
+
+Package: com.amg456.VBox2
+Version: 5.5
+Priority: optional
+Section: VBox虚拟盒子
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64e
+Filename: ./debs/101.deb
+Size: 6414300
+Name: VBox_5.5「RootHide」
+Author: VBox
+Depiction: https://apt.fuyonghua.com/index.php?pid=101
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: 915e91e1f07b9b8bd0235fa2d2523ed7
+
+Package: com.amg456.roothide181
+Version: 18.1
+Priority: optional
+Section: AMG
+Maintainer: AMG官方源™
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64e
+Filename: ./debs/100.deb
+Size: 6247036
+Description: AMG 改串清理,全息备份,模拟定位,脚本调用,智能飞行,防越狱检测,支持iOS8-iOS17全系越狱可用,支持有根和无根,支持隐藏越狱RootHide等所有越狱工具,支持所有可越狱机型。
+Name: 18.1_AMG奔驰正版[隐根]
+Author: AMG
+Depiction: https://apt.fuyonghua.com/index.php?pid=100
+SileoDepiction: https://apt.fuyonghua.com/sileo/100
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: 163d3fe6d21ddc26f37d05b1306a8c24
+SHA1: cb92d2b1789934adbd6c71f75cd1bf40c51c1ef6
+SHA256: 51598101eacd1890ca54331acb5a5b56a139dcb156ffedf52c13a3506010b879
+
+Package: app.Razer854.rootful250
+Version: 2.5.0
+Priority: optional
+Section: Razer雷蛇
+Maintainer: Razer
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm
+Filename: ./debs/86.deb
+Size: 21957458
+Description: 本軟件僅用於清理手機數據，旨在保護手機用戶隱私。 不針對任何協力廠商平臺所開發！ 任何人不得將軟件用於非法用途！ 如利用軟件進行任何違法行為所產生的一切後果由違法者自行承擔！ 如不能合理合法使用本軟件，請勿下載使用！
+Name: 2.5.0_Razer雷蛇(有根)
+Author: Razer
+Depiction: https://apt.fuyonghua.com/index.php?pid=86
+SileoDepiction: https://apt.fuyonghua.com/sileo/86
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: a2bec75d80415df070eb191e26583ccd
+SHA1: c813ebd2d240b45479631cf8122c7bb6badda190
+SHA256: 70e5a25f3d992da6d1f08ffcb6f26314aac88ce43c83d10355ae7e6d21ffa8f5
+
+Package: app.Razer854.roothide250
+Version: 2.5.0
+Priority: optional
+Section: Razer雷蛇
+Maintainer: Razer
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64e
+Filename: ./debs/85.deb
+Size: 21960382
+Description: 本軟件僅用於清理手機數據，旨在保護手機用戶隱私。 不針對任何協力廠商平臺所開發！ 任何人不得將軟件用於非法用途！ 如利用軟件進行任何違法行為所產生的一切後果由違法者自行承擔！ 如不能合理合法使用本軟件，請勿下載使用！
+Name: 2.5.0_Razer雷蛇(隐根)
+Author: Razer
+Depiction: https://apt.fuyonghua.com/index.php?pid=85
+SileoDepiction: https://apt.fuyonghua.com/sileo/85
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: b4a36ddf621b9ed28a5a1c9f375f2157
+SHA1: f213a13d2a902778b1ee8366905460d0c9a4c819
+SHA256: d01b15de6d0513053f6a28c99eb07c7e876ec0cad6a9c78e9b0dea495074d1f8
+
+Package: app.Razer854.rootless250
+Version: 2.5.0
+Priority: optional
+Section: Razer雷蛇
+Maintainer: Razer
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Filename: ./debs/84.deb
+Size: 21521992
+Description: 本軟件僅用於清理手機數據，旨在保護手機用戶隱私。 不針對任何協力廠商平臺所開發！ 任何人不得將軟件用於非法用途！ 如利用軟件進行任何違法行為所產生的一切後果由違法者自行承擔！ 如不能合理合法使用本軟件，請勿下載使用！
+Name: 2.5.0_Razer雷蛇(无根)
+Author: Razer
+Depiction: https://apt.fuyonghua.com/index.php?pid=84
+SileoDepiction: https://apt.fuyonghua.com/sileo/84
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: 6f16e2e2960f8140328d8d3184b52139
+SHA1: 3ab720def41ede1605270f7f2d55a6f3d1a5ebbe
+SHA256: 3552acc850d48bd46066946fb6fb27f6f381f4334614cd9c433607a00849afd7
+
+Package: app.zorrom4854.rootful
+Version: 18.1.1
+Priority: optional
+Section: ZORRO佐罗
+Maintainer: zorro
+Depends: firmware (>= 8.0), mobilesubstrate
+Architecture: iphoneos-arm
+Filename: ./debs/82.deb
+Size: 14912038
+Description: 本軟件僅用於清理手機數據，旨在保護手機用戶隱私。 不針對任何協力廠商平臺所開發！ 任何人不得將軟件用於非法用途！ 如利用軟件進行任何違法行為所產生的一切後果由違法者自行承擔！ 如不能合理合法使用本軟件，請勿下載使用！
+Name: 18.1.1_ZORRO佐罗(有根)
+Author: zorro
+Depiction: https://apt.fuyonghua.com/index.php?pid=82
+SileoDepiction: https://apt.fuyonghua.com/sileo/82
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: 26f62dbd5b8cf92f66a0ac1058e3cb88
+SHA1: 97c4d5dd2e6c21ddbdb53c3f99cefb02655ba194
+SHA256: 63c08c9bcce106d349887ef548ce7b5dc4f3b3b318f7b7583b30eae612112836
+
+Package: app.zorrom4854.rootless
+Version: 18.1.1
+Priority: optional
+Section: ZORRO佐罗
+Maintainer: zorro
+Depends: firmware (>= 8.0), mobilesubstrate, gzip, ldid
+Architecture: iphoneos-arm64
+Filename: ./debs/81.deb
+Size: 17433438
+Description: 本軟件僅用於清理手機數據，旨在保護手機用戶隱私。 不針對任何協力廠商平臺所開發！ 任何人不得將軟件用於非法用途！ 如利用軟件進行任何違法行為所產生的一切後果由違法者自行承擔！ 如不能合理合法使用本軟件，請勿下載使用！
+Name: 18.1.1_ZORRO佐罗(无根)
+Author: zorro
+Depiction: https://apt.fuyonghua.com/index.php?pid=81
+SileoDepiction: https://apt.fuyonghua.com/sileo/81
+Icon: file:///Applications/Cydia.app/Sections/Tweaks.png
+MD5sum: ab092a6932e8fc105aaae194ca023540
+SHA1: 981cd847073d4ecb1ea58fc8b88174a603cfaf32
+SHA256: 2c4095666963a6883a79bb53df8488fee6a8f983e3e47ed386850dc98d7a1840
+
+Package: com.ssoes.renet
+Version: 1.2.1
+Section: 越狱插件
+Depends: firmware (>= 5.1.1)
+Architecture: iphoneos-arm
+Filename: ./debs/76.deb
+Size: 245572
+Name: 连个锤子-越狱联网一键修复
+Author: Tinyapps
+Depiction: https://apt.fuyonghua.com/index.php?pid=76
+SileoDepiction: https://apt.fuyonghua.com/sileo/76
+Icon: file:///Applications/Cydia.app/Sections/System.png
+Tag: purpose::extension, role::enduser, compatible::ios10, compatible::ios11, compatible::ios12
+MD5sum: e42fbc5c26eeea888c731c29513c4a76
+SHA1: b34eb27167aa470b6689f387aa60be2468e7c2bb
+SHA256: 2b99b341706fff0a48bfa0556c14fd76c1b854557e22b45e6c0d2b4ffff5d6c1
+
+Package: com.ssoes.Renet.rootless
+Version: 1.2.2
+Priority: optional
+Section: 越狱插件
+Maintainer: Renet
+Depends: firmware (>= 5.1.1)
+Architecture: iphoneos-arm64
+Filename: ./debs/75.deb
+Size: 301722
+Name: 连个锤子-联网修复-Rootless
+Author: Renet
+Depiction: https://apt.fuyonghua.com/index.php?pid=75
+SileoDepiction: https://apt.fuyonghua.com/sileo/75
+MD5sum: a120a9016dde2796d89cf57f05d62837
+SHA1: 923c8a28e0bba1d253a94ffb0622fbabcb1257ac
+SHA256: fccbb81e28fa32f7fbda00f1935a12cb3be81997509ed48c85324c3f8527c155
+
+Package: com.ssoes.Renet.Roohide
+Version: 1.2.2
+Priority: optional
+Section: 越狱插件
+Maintainer: Renet
+Pre-Depends: rootless-compat(>= 0.9)
+Depends: firmware (>= 5.1.1)
+Architecture: iphoneos-arm64e
+Filename: ./debs/74.deb
+Size: 596516
+Name: 连个锤子-联网修复-Roohide
+Author: Renet
+Depiction: https://apt.fuyonghua.com/index.php?pid=74
+SileoDepiction: https://apt.fuyonghua.com/sileo/74
+MD5sum: 2e7b147bba41880c320afbf1a3066e93
+SHA1: a78e8379525a6d9da82fc3c2b29860f26a114852
+SHA256: 6654b2db02bb31d59ae6c79cdbc4ffc94f52185a43261042ac1900e20eb91607
+
+Package: apt.cydiakk.filza
+Version: 4.0.1-3
+Priority: optional
+Section: 工具
+Maintainer: Cydiakk中文源™ <admin@cydiakk.com>
+Depends: firmware (>= 7.0), zip, unzip, gzip, unrar, p7zip
+Architecture: iphoneos-arm
+Filename: ./debs/73.deb
+Size: 10215862
+Installed-Size: 31815
+Description: 功能强大的文件管理软件 ，此版为正版分流，非破解版！
+Name: Filza File 文件管理器【正版】
+Author: TIGI Software
+Sponsor: Cydiakk中文源™ <http://apt.cydiakk.com/>
+Depiction: https://apt.fuyonghua.com/index.php?pid=73
+SileoDepiction: https://apt.fuyonghua.com/sileo/73
+Icon: file:///Applications/Cydia.app/Sections/Utilities.png
+Tag: purpose::uikit, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+MD5sum: c40e537010c59a738f9635fcea447092
+SHA1: e657b39aaeaa1f4f1452a503aa00091fb5c98c09
+SHA256: 8894126b9e646b24d2b31816444c724d08569f5b27a66a521becb58259e25337
+
+Package: com.sky.ykpro
+Version: 2.4.3
+Section: Packaging
+Maintainer: YKP
+Depends: firmware (>= 15.0), mobilesubstrate
+Architecture: iphoneos-arm64
+Filename: ./debs/58.deb
+Size: 7274110
+Description: 远程控制手机
+Name: 远控Pro(隐根RootHide)
+Author: YKP
+Depiction: 远程控制手机
+SileoDepiction: https://apt.fuyonghua.com/sileo/58
+Icon: file:///var/jb/Applications/YKApp.app/AppIcon60x60@2x.png
+MD5sum: 32e6faf41eba0daadd9b51fe758d3f7d
+SHA1: 9709923c1c0ce7ed35c65e9c0e8ff6597d56cfdd
+SHA256: 8b20eb0b6c879eaeb7b388a0e83f0936b3e20381232981cb2b94e6e32640779f
+
+Package: com.amg456.CTWPro
+Version: 5.5.0
+Priority: standard
+Section: Utilities
+Maintainer: ctwvip
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Architecture: iphoneos-arm
+Filename: ./debs/54.deb
+Size: 45833598
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
+Name: CTW Pro(有根)
+Author: ctwvip
+Depiction: https://apt.fuyonghua.com/index.php?pid=54
+SileoDepiction: https://apt.fuyonghua.com/sileo/54
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+MD5sum: 1b6fcd712ed6e6744717288db11dcdb7
+SHA1: e2583e115ac8ae058b53b2e52ca3280efdafeb0b
+SHA256: 84e06f7528d6286e34f724af8db93ea40bfda0b70ec84b32eb2380c5cd8e016b
+

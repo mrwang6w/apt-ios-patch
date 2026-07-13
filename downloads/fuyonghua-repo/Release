@@ -1,0 +1,8 @@
+Origin: AMG唯一正版官方源™
+Label: cy
+Suite: stable
+Version: 8.3
+Codename: cy
+Architectures: iphoneos-arm iphoneos-arm64 iphoneos-arm64e
+Components: main
+Description: AMG唯一正版官方源

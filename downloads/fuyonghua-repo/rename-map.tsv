@@ -1,0 +1,26 @@
+old	new	package	name	version	source_filename
+119.deb	AWZ爱伪装_修复(有根)_15.0.1_app.awz4854.rootful.deb	app.awz4854.rootful	AWZ爱伪装_修复(有根)	15.0.1	./debs/119.deb
+118.deb	纯净版18.1.1_AMG奔驰正版[无根]_18.1.1_com.amg456.rootless.deb	com.amg456.rootless	纯净版18.1.1_AMG奔驰正版[无根]	18.1.1	./debs/118.deb
+117.deb	纯净版18.1.1_AMG奔驰正版[有根]_18.1.1_com.amg456.rootful.deb	com.amg456.rootful	纯净版18.1.1_AMG奔驰正版[有根]	18.1.1	./debs/117.deb
+116.deb	纯净版18.1.1_AMG奔驰正版[隐根]_18.1.1_com.amg456.roothide.deb	com.amg456.roothide	纯净版18.1.1_AMG奔驰正版[隐根]	18.1.1	./debs/116.deb
+109.deb	551_CTW_Pro(roothide版s)_5.5.1_com.amg456.CTWPro.roothide551.deb	com.amg456.CTWPro.roothide551	551_CTW Pro(roothide版s)	5.5.1	./debs/109.deb
+108.deb	551_CTW_Pro(无根版s)_5.5.1_com.amg456.CTWPro.rootless551.deb	com.amg456.CTWPro.rootless551	551_CTW Pro(无根版s)	5.5.1	./debs/108.deb
+107.deb	560_CTW_Pro(无根版)_5.6.0_com.amg456.CTWPro.rootless560.deb	com.amg456.CTWPro.rootless560	560_CTW Pro(无根版)	5.6.0	./debs/107.deb
+106.deb	560_CTW_Pro(roothide版)_5.6.0_com.amg456.CTWPro.roothide560.deb	com.amg456.CTWPro.roothide560	560_CTW Pro(roothide版)	5.6.0	./debs/106.deb
+105.deb	CTW_Pro(roothide修复版)_5.5.0_com.amg456.CTWPro.roothide.deb	com.amg456.CTWPro.roothide	CTW Pro(roothide修复版)	5.5.0	./debs/105.deb
+104.deb	CTW_Pro(无根修复版)_5.5.0_com.amg456.CTWPro.rootless.deb	com.amg456.CTWPro.rootless	CTW Pro(无根修复版)	5.5.0	./debs/104.deb
+103.deb	VBox_5.5「无根」_5.5_com.amg456.VBox1.deb	com.amg456.VBox1	VBox_5.5「无根」	5.5	./debs/103.deb
+102.deb	VBox_5.5「有根」_5.5_com.amg456.VBox.deb	com.amg456.VBox	VBox_5.5「有根」	5.5	./debs/102.deb
+101.deb	VBox_5.5「RootHide」_5.5_com.amg456.VBox2.deb	com.amg456.VBox2	VBox_5.5「RootHide」	5.5	./debs/101.deb
+100.deb	18.1_AMG奔驰正版[隐根]_18.1_com.amg456.roothide181.deb	com.amg456.roothide181	18.1_AMG奔驰正版[隐根]	18.1	./debs/100.deb
+86.deb	2.5.0_Razer雷蛇(有根)_2.5.0_app.Razer854.rootful250.deb	app.Razer854.rootful250	2.5.0_Razer雷蛇(有根)	2.5.0	./debs/86.deb
+85.deb	2.5.0_Razer雷蛇(隐根)_2.5.0_app.Razer854.roothide250.deb	app.Razer854.roothide250	2.5.0_Razer雷蛇(隐根)	2.5.0	./debs/85.deb
+84.deb	2.5.0_Razer雷蛇(无根)_2.5.0_app.Razer854.rootless250.deb	app.Razer854.rootless250	2.5.0_Razer雷蛇(无根)	2.5.0	./debs/84.deb
+82.deb	18.1.1_ZORRO佐罗(有根)_18.1.1_app.zorrom4854.rootful.deb	app.zorrom4854.rootful	18.1.1_ZORRO佐罗(有根)	18.1.1	./debs/82.deb
+81.deb	18.1.1_ZORRO佐罗(无根)_18.1.1_app.zorrom4854.rootless.deb	app.zorrom4854.rootless	18.1.1_ZORRO佐罗(无根)	18.1.1	./debs/81.deb
+76.deb	连个锤子-越狱联网一键修复_1.2.1_com.ssoes.renet.deb	com.ssoes.renet	连个锤子-越狱联网一键修复	1.2.1	./debs/76.deb
+75.deb	连个锤子-联网修复-Rootless_1.2.2_com.ssoes.Renet.rootless.deb	com.ssoes.Renet.rootless	连个锤子-联网修复-Rootless	1.2.2	./debs/75.deb
+74.deb	连个锤子-联网修复-Roohide_1.2.2_com.ssoes.Renet.Roohide.deb	com.ssoes.Renet.Roohide	连个锤子-联网修复-Roohide	1.2.2	./debs/74.deb
+73.deb	Filza_File_文件管理器【正版】_4.0.1-3_apt.cydiakk.filza.deb	apt.cydiakk.filza	Filza File 文件管理器【正版】	4.0.1-3	./debs/73.deb
+58.deb	远控Pro(隐根RootHide)_2.4.3_com.sky.ykpro.deb	com.sky.ykpro	远控Pro(隐根RootHide)	2.4.3	./debs/58.deb
+54.deb	CTW_Pro(有根)_5.5.0_com.amg456.CTWPro.deb	com.amg456.CTWPro	CTW Pro(有根)	5.5.0	./debs/54.deb
