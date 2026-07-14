@@ -2,11 +2,9 @@
 #import <UIKit/UIKit.h>
 #import <dlfcn.h>
 #import <objc/runtime.h>
-#import <pthread.h>
 #import <stdatomic.h>
 #import <stdint.h>
 #import <string.h>
-#import <unistd.h>
 
 static _Atomic(uintptr_t) gOriginalViewDidLoad;
 static _Atomic(uintptr_t) gOriginalUpdateUITimer;
@@ -296,22 +294,30 @@ static BOOL InstallRuntimePatches(void) {
     return complete;
 }
 
-static void *PatchWorker(void *context) {
-    (void)context;
-    BOOL complete = NO;
-    for (;;) {
-        @autoreleasepool {
-            complete = InstallRuntimePatches();
+static void SchedulePatchAttempt(void);
+
+static void RunPatchAttempt(void) {
+    @autoreleasepool {
+        if (InstallRuntimePatches()) {
+            return;
         }
-        usleep(complete ? 250000 : 5000);
     }
-    return NULL;
+    SchedulePatchAttempt();
+}
+
+static void SchedulePatchAttempt(void) {
+    dispatch_after(
+        dispatch_time(DISPATCH_TIME_NOW, 50 * NSEC_PER_MSEC),
+        dispatch_get_main_queue(),
+        ^{
+            RunPatchAttempt();
+        }
+    );
 }
 
 __attribute__((constructor))
 static void CTWProDeepPatchInitialize(void) {
-    pthread_t worker;
-    if (pthread_create(&worker, NULL, PatchWorker, NULL) == 0) {
-        pthread_detach(worker);
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        RunPatchAttempt();
+    });
 }

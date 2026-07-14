@@ -14,8 +14,8 @@ import frida
 
 DEFAULT_DEB = Path(
     "/Users/zest/myworks/apt-ios-patch/patched/"
-    "CTW_Pro企业级(无根版)_5.6.0-2_"
-    "com.xxdevice.CTWPro.Rootless560_deep_nolicense_ustar.deb"
+    "560_CTW_Pro(无根版)_5.6.0-offline2_"
+    "com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
 )
 REMOTE_DEB = "/var/mobile/CTWPro.Rootless560_5.6.0-2.deb"
 REMOTE_HASH_LOG = "/var/mobile/CTWPro.Rootless560_5.6.0-2.sha256.log"
@@ -238,7 +238,10 @@ def main() -> None:
     parser.add_argument("deb", nargs="?", type=Path, default=DEFAULT_DEB)
     parser.add_argument("--chunk-size", type=int, default=512 * 1024)
     parser.add_argument("--wait", type=float, default=18.0)
+    parser.add_argument("--package", default="com.amg456.CTWPro.rootless560")
+    parser.add_argument("--version", default="5.6.0-offline2")
     args = parser.parse_args()
+    query_package = args.package.lower()
 
     deb = args.deb.resolve()
     if not deb.is_file():
@@ -294,15 +297,18 @@ def main() -> None:
             "dpkg-query",
             "-W",
             "-f=${Package} ${Version} ${Architecture}\\n",
-            "com.xxdevice.ctwpro.rootless560",
+            query_package,
         ],
         REMOTE_QUERY_LOG,
         True,
     )
     query_log = api.read(REMOTE_QUERY_LOG, 4096) or ""
     print(json.dumps({"query_result": query_result, "query_log": query_log}))
-    if query_result.get("status") != 0 or " 5.6.0-2 " not in query_log:
-        raise RuntimeError("device package version did not advance to 5.6.0-2")
+    expected_query = f"{query_package} {args.version} iphoneos-arm64\n"
+    if query_result.get("status") != 0 or query_log != expected_query:
+        raise RuntimeError(
+            f"unexpected device package query: {query_log!r} != {expected_query!r}"
+        )
 
     uicache_result = api.run(
         "/var/jb/usr/bin/uicache",

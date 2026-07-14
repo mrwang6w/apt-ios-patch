@@ -99,11 +99,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "com.amg456.CTWPro.rootless560",
-        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline1_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
-        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline1_deep_offline_ustar.deb",
-        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline1 Deep Offline USTAR",
+        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline2_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
+        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline2_deep_offline_ustar.deb",
+        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline2 Deep Offline USTAR",
         "publish_section": "CTW Pro",
-        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径，并由本地 fix.dylib 覆盖主程序原有捐赠码输入/扫码、提交 delegate、自动响应弹窗、节点状态、定时权限 UI 与 lockUI 消费者；保留核心改机函数和原 38 项 entitlements。独立随机真机参数接口仍需网络。",
+        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径，并由本地 fix.dylib 覆盖主程序原有捐赠码输入/扫码、提交 delegate、自动响应弹窗、节点状态、定时权限 UI 与 lockUI 消费者；fix.dylib 在应用启动后由主线程串行安装覆盖，避免 dyld constructor 阶段的动态类注册竞争；保留核心改机函数和原 38 项 entitlements。独立随机真机参数接口仍需网络。",
         "depiction_name": "com.amg456.CTWPro.rootless560.html",
     },
 ]
