@@ -1,5 +1,10 @@
 # CTW Pro 企业级无根版 5.6.0 深度去授权 Patch 分析链路
 
+> 历史状态：本文记录 `com.xxdevice.CTWPro.Rootless560` 的独立补丁与真机验证证据。
+> 该包与后续 `com.amg456` 版本写入相同载荷路径，现已从 Pages 下线；当前发布链见
+> `docs/CTW_Pro无根版_5.6.0_amg456深度离线补丁链路.md`。本文中的哈希和真机记录
+> 仍作为旧版本证据保留。
+
 ## 1. 输入与目标
 
 原始 deb：
@@ -250,9 +255,11 @@ http://api.ctwvip.xyz/vd?data=...
 消费者回归。真机手动执行“重置并退出”产生的 `CTW Pro+0x3b1370 -> exit(0)` 也
 属于用户确认的正常重置路径，不归类为授权定时退出。
 
-## 10. Pages 发布
+## 10. 历史 Pages 发布（已下线）
 
-Pages 最终条目：
+该版本曾使用以下 Pages 条目，现已由
+`com.amg456.CTWPro.rootless560 5.6.0-offline1` 替换，不再出现在当前
+`pages-repo/Packages`：
 
 ```text
 Package: com.xxdevice.CTWPro.Rootless560
@@ -264,6 +271,7 @@ SHA256: 68e14a7f8c17d181fb48a0dc16eadd7a85ce635470d3f339ba0973f3c2e4a9cb
 Depiction: ./depictions/com.xxdevice.CTWPro.Rootless560.html
 ```
 
-`scripts/build_pages_repo.py` 只挂载该最终版；重新生成并验证 `Packages`、
-`Packages.gz`、`Release`、首页、depiction 和 deb 下载路径后，旧
-`5.6.0-1` 临时包不再出现在 Pages 中。
+当时的 `scripts/build_pages_repo.py` 只挂载该 `5.6.0-2` 最终版；重新生成并验证
+`Packages`、`Packages.gz`、`Release`、首页、depiction 和 deb 下载路径后，旧
+`5.6.0-1` 临时包不再出现在 Pages 中。当前构建器已改为挂载后续 `com.amg456`
+组合版，因此本节只保留历史发布证据。

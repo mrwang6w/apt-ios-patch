@@ -72,22 +72,24 @@ Depiction: ./depictions/app.awz4854.rootful.html
 Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：移除后加卡密网络层与安装阶段 aloader 注入调用；双架构固定共享授权状态为有效，并使用无 PAX 扩展头的 USTAR deb 归档。
 
-Package: com.xxdevice.CTWPro.Rootless560
-Version: 5.6.0-2
+Package: com.amg456.CTWPro.rootless560
+Version: 5.6.0-offline1
 Priority: standard
 Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
-Conflicts: app.weiphone.ALS, app.weiphone.AWZ, app.weiphone.NZT, app.weiphone.LRN, app.weiphone.IGG
+Conflicts: com.xxdevice.ctwpro.rootless560
+Provides: com.xxdevice.ctwpro.rootless560
+Replaces: com.xxdevice.ctwpro.rootless560
 Architecture: iphoneos-arm64
 Section: CTW Pro
 Maintainer: Local Patch Repo
-Name: CTW Pro企业级(无根版) 5.6.0-2 Deep NoLicense USTAR
+Name: 560_CTW Pro(无根版) 5.6.0-offline1 Deep Offline USTAR
 Author: Local Patch Repo
-Filename: ./debs/com.xxdevice.CTWPro.Rootless560_5.6.0-2_deep_nolicense_ustar.deb
-Size: 21969212
-MD5sum: 989626e269d8f87b468eac2d785a9579
-SHA1: ca0acd16b8d01f686eaf883b3bd2d09f92bdb7ad
-SHA256: 68e14a7f8c17d181fb48a0dc16eadd7a85ce635470d3f339ba0973f3c2e4a9cb
-Depiction: ./depictions/com.xxdevice.CTWPro.Rootless560.html
+Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline1_deep_offline_ustar.deb
+Size: 26996946
+MD5sum: ac1ad98d99c4a5daf67852428f8fefb2
+SHA1: 5372018e6318186d0f84bb10a82acf2985e5e122
+SHA256: 35bfcbbd4f4e67631728cb0afecd57df8ab70edb00ec0a7cea42132a102bd871
+Depiction: ./depictions/com.amg456.CTWPro.rootless560.html
 Icon: ./CydiaIcon.png
-Description: 授权测试补丁包：移除后加 extend.bin 网络层，并由本地 fix.dylib 覆盖主程序捐赠码输入/扫码、提交 delegate、自动响应后弹窗、节点适配状态、定时权限 UI 与 lockUI 消费者；保留核心改机函数和原 38 项 entitlements，使用无 PAX 扩展头的 USTAR deb 归档。
+Description: 授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径，并由本地 fix.dylib 覆盖主程序原有捐赠码输入/扫码、提交 delegate、自动响应弹窗、节点状态、定时权限 UI 与 lockUI 消费者；保留核心改机函数和原 38 项 entitlements。独立随机真机参数接口仍需网络。
 

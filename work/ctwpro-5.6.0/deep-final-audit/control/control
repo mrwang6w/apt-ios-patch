@@ -1,0 +1,11 @@
+Package: com.amg456.CTWPro.rootless560
+Version: 5.6.0-offline1
+Priority: standard
+Section: Utilities
+Maintainer: ctwvip
+Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
+Architecture: iphoneos-arm64
+Name: 560_CTW Pro(无根版)
+Author: ctwvip
+Icon: file:///Applications/CTW Pro.app/AppIcon60x60@2x.png
+Description: 全新的越狱改机软件,支持iOS10-16,内核级屏蔽越狱,roothide隐藏越狱,深层机器参数修改,脚本调用,温度监控,秒杀AWZ,佐罗。
