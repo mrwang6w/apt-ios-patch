@@ -25,26 +25,6 @@ static id CallObject(id receiver, const char *selectorName) {
     return ((id (*)(id, SEL))implementation)(receiver, selector);
 }
 
-static id CallObjectUnsignedLongLong(
-    id receiver,
-    const char *selectorName,
-    unsigned long long value
-) {
-    if (receiver == nil) {
-        return nil;
-    }
-    SEL selector = sel_registerName(selectorName);
-    if (![receiver respondsToSelector:selector]) {
-        return nil;
-    }
-    IMP implementation = [receiver methodForSelector:selector];
-    return ((id (*)(id, SEL, unsigned long long))implementation)(
-        receiver,
-        selector,
-        value
-    );
-}
-
 static void CallVoidObject(id receiver, const char *selectorName, id value) {
     if (receiver == nil) {
         return;
@@ -269,7 +249,7 @@ static BOOL IsCompleteLocalConfig(NSDictionary *config) {
             @"random", @"machine", @"diskSize", @"serial_number", @"ncpu",
             @"unknownNumber", @"mac", @"system", @"kern_version", @"webkit",
             @"system_version", @"mode", @"active", @"boardSerial", @"darwin",
-            @"udid", @"update_time"
+            @"udid"
         ]];
     });
     return [config isKindOfClass:[NSDictionary class]] &&
@@ -287,50 +267,13 @@ static id LocalRandomConfig(id self, SEL _cmd) {
     }
 
     @synchronized (instance) {
-        id defaults = CallObject(instance, "defaultConfig");
-        if (![defaults isKindOfClass:[NSDictionary class]]) {
+        id generated = CallObject(instance, "makeRandomConfig");
+        if (!IsCompleteLocalConfig(generated)) {
             return nil;
         }
 
-        id random = CallObjectUnsignedLongLong(
-            instance,
-            "randomHexStringWithLength:",
-            40
-        );
-        id udid = CallObjectUnsignedLongLong(
-            instance,
-            "randomHexStringWithLength:",
-            40
-        );
-        id serialNumber = CallObjectUnsignedLongLong(
-            instance,
-            "randomAlphanumericStringWithLength:",
-            12
-        );
-        id boardSerial = CallObjectUnsignedLongLong(
-            instance,
-            "randomAlphanumericStringWithLength:",
-            16
-        );
-        id mac = CallObject(instance, "randomMacAddress");
-        id unknownNumber = CallObject(instance, "randomUnknownNumber");
-        if (random == nil || udid == nil || serialNumber == nil ||
-            boardSerial == nil || mac == nil || unknownNumber == nil) {
-            return nil;
-        }
-
-        NSMutableDictionary *config = [defaults mutableCopy];
-        config[@"random"] = random;
-        config[@"udid"] = udid;
-        config[@"serial_number"] = serialNumber;
-        config[@"boardSerial"] = boardSerial;
-        config[@"mac"] = mac;
-        config[@"unknownNumber"] = unknownNumber;
-        config[@"active"] = @0;
+        NSMutableDictionary *config = [generated mutableCopy];
         config[@"update_time"] = @([[NSDate date] timeIntervalSince1970]);
-        if (!IsCompleteLocalConfig(config)) {
-            return nil;
-        }
 
         NSError *error = nil;
         NSData *data = [NSJSONSerialization dataWithJSONObject:config
