@@ -99,11 +99,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "com.amg456.CTWPro.rootless560",
-        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline5_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
-        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline5_deep_offline_ustar.deb",
-        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline5 Deep Offline USTAR",
+        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline6_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
+        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline6_deep_offline_ustar.deb",
+        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline6 Deep Offline USTAR",
         "publish_section": "CTW Pro",
-        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径，并由本地 fix.dylib 覆盖主程序原有捐赠码输入/扫码、提交 delegate、自动响应弹窗、节点状态、定时权限 UI 与 lockUI 消费者；精确覆盖 MachinePreferences 的 randomPreferences: action，以兼容硬件/固件基线在本地生成身份字段并调用原 performeMachineStub 应用配置，不启动 /vd；保留原 38 项 entitlements。",
+        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径；本地 fix.dylib 精确覆盖 MachinePreferences 的 randomPreferences: action，增强主控制器定位，并按 config、缓存 JSON、defaultConfig 顺序选择硬件/固件基线，再生成身份字段并调用原 performeMachineStub 应用配置，不启动 /vd；失败时显示精确阶段码；保留原 38 项 entitlements。",
         "depiction_name": "com.amg456.CTWPro.rootless560.html",
     },
 ]

@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CASE="$ROOT/work/ctwpro-5.6.0"
 SOURCE="$ROOT/downloads/fuyonghua-repo/debs/560_CTW_Pro(无根版)_5.6.0_com.amg456.CTWPro.rootless560.deb"
 SOURCE_SHA256="38234f4381b36587d43fc0f78dd77e9d386b7760a5412152024379233c1891b4"
-OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline5_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
+OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline6_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
 OUTPUT="$ROOT/patched/$OUTPUT_NAME"
 AUDIT="$CASE/deep-source-audit"
 BUILD="$CASE/deep-build"
@@ -16,7 +16,7 @@ VERIFY="$CASE/deep-verify"
 PREPUBLISH_AUDIT="$CASE/deep-prepublish-audit"
 ENTITLEMENTS="$BUILD/CTWPro.entitlements.plist"
 SIGNED_ENTITLEMENTS="$BUILD/CTWPro.signed.entitlements.plist"
-PATCH_SOURCE="$ROOT/work/ctwpro-rootless-5.6.0/patch-src/CTWProDeepPatch.m"
+PATCH_SOURCE="$ROOT/patches/ctwpro/CTWProDeepPatch.m"
 PUBLISH_TMP="$ROOT/patched/.$OUTPUT_NAME.tmp"
 
 trap 'rm -f "$PUBLISH_TMP"' EXIT
@@ -113,7 +113,7 @@ result = []
 inserted = False
 for line in lines:
     if line == "Version: 5.6.0":
-        line = "Version: 5.6.0-offline5"
+        line = "Version: 5.6.0-offline6"
     result.append(line)
     if line.startswith("Depends:"):
         result.extend(
@@ -124,7 +124,7 @@ for line in lines:
             ]
         )
         inserted = True
-if not inserted or "Version: 5.6.0-offline5" not in result:
+if not inserted or "Version: 5.6.0-offline6" not in result:
     raise SystemExit("failed to update control metadata")
 path.write_text("\n".join(result) + "\n", encoding="utf-8")
 PY
@@ -174,6 +174,8 @@ codesign --verify --strict "$FIX"
 for selector in \
   randomPreferences: \
   performeMachineStub \
+  config \
+  readCachedConfigString \
   defaultConfig \
   randomHexStringWithLength: \
   randomAlphanumericStringWithLength: \
@@ -250,7 +252,7 @@ codesign --verify --deep --strict "$VERIFY_APP"
 codesign --verify --strict "$VERIFY_LICENSE"
 
 grep -qx 'Package: com.amg456.CTWPro.rootless560' "$VERIFY/control/control"
-grep -qx 'Version: 5.6.0-offline5' "$VERIFY/control/control"
+grep -qx 'Version: 5.6.0-offline6' "$VERIFY/control/control"
 grep -qx 'Conflicts: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Provides: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Replaces: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
