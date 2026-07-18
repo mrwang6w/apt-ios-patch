@@ -99,11 +99,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "com.amg456.CTWPro.rootless560",
-        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline3_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
-        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline3_deep_offline_ustar.deb",
-        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline3 Deep Offline USTAR",
+        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline4_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
+        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline4_deep_offline_ustar.deb",
+        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline4 Deep Offline USTAR",
         "publish_section": "CTW Pro",
-        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径，并由本地 fix.dylib 覆盖主程序原有捐赠码输入/扫码、提交 delegate、自动响应弹窗、节点状态、定时权限 UI 与 lockUI 消费者；随机真机参数改为调用包内 LKDeviceConfig 本地生成器并写入原配置缓存，不再请求 /vd；保留核心改机函数和原 38 项 entitlements。",
+        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径，并由本地 fix.dylib 覆盖主程序原有捐赠码输入/扫码、提交 delegate、自动响应弹窗、节点状态、定时权限 UI 与 lockUI 消费者；随机真机参数使用本地兼容硬件基线并随机化设备身份后写入原配置缓存，不再请求 /vd，避免机型与固件随机错配；保留核心改机函数和原 38 项 entitlements。",
         "depiction_name": "com.amg456.CTWPro.rootless560.html",
     },
 ]
