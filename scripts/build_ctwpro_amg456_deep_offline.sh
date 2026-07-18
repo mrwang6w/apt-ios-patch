@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CASE="$ROOT/work/ctwpro-5.6.0"
 SOURCE="$ROOT/downloads/fuyonghua-repo/debs/560_CTW_Pro(无根版)_5.6.0_com.amg456.CTWPro.rootless560.deb"
 SOURCE_SHA256="38234f4381b36587d43fc0f78dd77e9d386b7760a5412152024379233c1891b4"
-OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline2_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
+OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline3_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
 OUTPUT="$ROOT/patched/$OUTPUT_NAME"
 AUDIT="$CASE/deep-source-audit"
 BUILD="$CASE/deep-build"
@@ -20,6 +20,21 @@ PATCH_SOURCE="$ROOT/work/ctwpro-rootless-5.6.0/patch-src/CTWProDeepPatch.m"
 PUBLISH_TMP="$ROOT/patched/.$OUTPUT_NAME.tmp"
 
 trap 'rm -f "$PUBLISH_TMP"' EXIT
+
+verify_offline_random_contract() {
+  local dylib="$1"
+  local metadata
+  metadata="$(otool -ov "$dylib")"
+  for expected in \
+    'imp     0x9958 +[LKVdConfig randomConfig]' \
+    'imp     0xb6f8 -[LKDeviceConfig writeCachedConfigString:]' \
+    'imp     0xcc0c -[LKDeviceConfig makeRandomConfig]'; do
+    if ! rg -Fq "$expected" <<<"$metadata"; then
+      echo "offline random method contract is missing: $expected" >&2
+      return 1
+    fi
+  done
+}
 
 actual_sha256="$(shasum -a 256 "$SOURCE" | awk '{print $1}')"
 if [[ "$actual_sha256" != "$SOURCE_SHA256" ]]; then
@@ -53,7 +68,7 @@ result = []
 inserted = False
 for line in lines:
     if line == "Version: 5.6.0":
-        line = "Version: 5.6.0-offline2"
+        line = "Version: 5.6.0-offline3"
     result.append(line)
     if line.startswith("Depends:"):
         result.extend(
@@ -64,7 +79,7 @@ for line in lines:
             ]
         )
         inserted = True
-if not inserted or "Version: 5.6.0-offline2" not in result:
+if not inserted or "Version: 5.6.0-offline3" not in result:
     raise SystemExit("failed to update control metadata")
 path.write_text("\n".join(result) + "\n", encoding="utf-8")
 PY
@@ -85,6 +100,7 @@ python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" \
 codesign --force --sign - --timestamp=none "$LICENSE_DYLIB"
 codesign --verify --strict "$LICENSE_DYLIB"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" verify "$LICENSE_DYLIB"
+verify_offline_random_contract "$LICENSE_DYLIB"
 
 SDK="$(xcrun --sdk iphoneos --show-sdk-path)"
 xcrun --sdk iphoneos clang \
@@ -108,6 +124,12 @@ xcrun --sdk iphoneos clang \
 chmod 0755 "$FIX"
 codesign --force --sign - --timestamp=none "$FIX"
 codesign --verify --strict "$FIX"
+for selector in randomConfig makeRandomConfig writeCachedConfigString: setDevice_updated:; do
+  if ! strings -a "$FIX" | rg -Fxq "$selector"; then
+    echo "fix.dylib is missing offline random selector: $selector" >&2
+    exit 1
+  fi
+done
 
 codesign --force --sign - --timestamp=none \
   --identifier com.xxdevice.CTWPro \
@@ -162,12 +184,13 @@ VERIFY_FIX="$VERIFY_APP/fix.dylib"
 VERIFY_LICENSE="$VERIFY/rootfs/var/jb/Library/MobileSubstrate/DynamicLibraries/CTW.dylib"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_main.py" verify "$VERIFY_MAIN"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" verify "$VERIFY_LICENSE"
+verify_offline_random_contract "$VERIFY_LICENSE"
 codesign --verify --strict "$VERIFY_FIX"
 codesign --verify --deep --strict "$VERIFY_APP"
 codesign --verify --strict "$VERIFY_LICENSE"
 
 grep -qx 'Package: com.amg456.CTWPro.rootless560' "$VERIFY/control/control"
-grep -qx 'Version: 5.6.0-offline2' "$VERIFY/control/control"
+grep -qx 'Version: 5.6.0-offline3' "$VERIFY/control/control"
 grep -qx 'Conflicts: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Provides: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Replaces: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"

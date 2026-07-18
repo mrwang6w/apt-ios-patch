@@ -13,6 +13,54 @@ static _Atomic(uintptr_t) gOriginalSetNeedCheckIP;
 static _Atomic(uintptr_t) gOriginalSetNeedFlushIP;
 static _Atomic(uintptr_t) gOriginalLabelSetText;
 
+static id CallObject(id receiver, const char *selectorName) {
+    if (receiver == nil) {
+        return nil;
+    }
+    SEL selector = sel_registerName(selectorName);
+    if (![receiver respondsToSelector:selector]) {
+        return nil;
+    }
+    IMP implementation = [receiver methodForSelector:selector];
+    return ((id (*)(id, SEL))implementation)(receiver, selector);
+}
+
+static void CallVoidObject(id receiver, const char *selectorName, id value) {
+    if (receiver == nil) {
+        return;
+    }
+    SEL selector = sel_registerName(selectorName);
+    if (![receiver respondsToSelector:selector]) {
+        return;
+    }
+    IMP implementation = [receiver methodForSelector:selector];
+    ((void (*)(id, SEL, id))implementation)(receiver, selector, value);
+}
+
+static void CallVoidBool(id receiver, const char *selectorName, BOOL value) {
+    if (receiver == nil) {
+        return;
+    }
+    SEL selector = sel_registerName(selectorName);
+    if (![receiver respondsToSelector:selector]) {
+        return;
+    }
+    IMP implementation = [receiver methodForSelector:selector];
+    ((void (*)(id, SEL, BOOL))implementation)(receiver, selector, value);
+}
+
+static BOOL CallBoolObject(id receiver, const char *selectorName, id value) {
+    if (receiver == nil) {
+        return NO;
+    }
+    SEL selector = sel_registerName(selectorName);
+    if (![receiver respondsToSelector:selector]) {
+        return NO;
+    }
+    IMP implementation = [receiver methodForSelector:selector];
+    return ((BOOL (*)(id, SEL, id))implementation)(receiver, selector, value);
+}
+
 static IMP LoadOriginal(_Atomic(uintptr_t) *storage) {
     return (IMP)atomic_load_explicit(storage, memory_order_acquire);
 }
@@ -193,6 +241,60 @@ static void PatchedLabelSetText(UILabel *label, SEL _cmd, NSString *text) {
     }
 }
 
+static BOOL IsCompleteLocalConfig(NSDictionary *config) {
+    static NSSet<NSString *> *requiredKeys;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        requiredKeys = [NSSet setWithArray:@[
+            @"random", @"machine", @"diskSize", @"serial_number", @"ncpu",
+            @"unknownNumber", @"mac", @"system", @"kern_version", @"webkit",
+            @"system_version", @"mode", @"active", @"boardSerial", @"darwin",
+            @"udid"
+        ]];
+    });
+    return [config isKindOfClass:[NSDictionary class]] &&
+           [requiredKeys isSubsetOfSet:[NSSet setWithArray:config.allKeys]];
+}
+
+static id LocalRandomConfig(id self, SEL _cmd) {
+    (void)self;
+    (void)_cmd;
+
+    Class configClass = objc_getClass("LKDeviceConfig");
+    id instance = CallObject((id)configClass, "sharedInstance");
+    if (instance == nil) {
+        return nil;
+    }
+
+    @synchronized (instance) {
+        id generated = CallObject(instance, "makeRandomConfig");
+        if (!IsCompleteLocalConfig(generated)) {
+            return nil;
+        }
+
+        NSMutableDictionary *config = [generated mutableCopy];
+        config[@"update_time"] = @([[NSDate date] timeIntervalSince1970]);
+
+        NSError *error = nil;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:config
+                                                       options:0
+                                                         error:&error];
+        if (data == nil || error != nil) {
+            return nil;
+        }
+        NSString *json = [[NSString alloc] initWithData:data
+                                                encoding:NSUTF8StringEncoding];
+        if (json == nil ||
+            !CallBoolObject(instance, "writeCachedConfigString:", json)) {
+            return nil;
+        }
+
+        CallVoidObject(instance, "setConfig:", config);
+        CallVoidBool(instance, "setDevice_updated:", YES);
+        return config;
+    }
+}
+
 static BOOL InstallLabelPatch(void) {
     Method method = class_getInstanceMethod([UILabel class], @selector(setText:));
     if (method == NULL) {
@@ -253,6 +355,44 @@ static BOOL ReplaceExpected(
     return method_getImplementation(method) == replacement;
 }
 
+static BOOL ReplaceExpectedClassMethod(
+    Class cls,
+    const char *selectorName,
+    uintptr_t expectedOffset,
+    const char *expectedImage,
+    IMP replacement
+) {
+    if (cls == Nil) {
+        return NO;
+    }
+    Class metaclass = object_getClass(cls);
+    SEL selector = sel_registerName(selectorName);
+    Method method = class_getInstanceMethod(metaclass, selector);
+    if (method == NULL) {
+        return NO;
+    }
+
+    IMP current = method_getImplementation(method);
+    if (current == replacement) {
+        return YES;
+    }
+
+    Dl_info imageInfo = {0};
+    if (dladdr((const void *)current, &imageInfo) == 0 ||
+        imageInfo.dli_fbase == NULL ||
+        imageInfo.dli_fname == NULL ||
+        strstr(imageInfo.dli_fname, expectedImage) == NULL) {
+        return NO;
+    }
+    uintptr_t currentOffset = (uintptr_t)current - (uintptr_t)imageInfo.dli_fbase;
+    if (currentOffset != expectedOffset) {
+        return NO;
+    }
+
+    method_setImplementation(method, replacement);
+    return method_getImplementation(method) == replacement;
+}
+
 static BOOL InstallRuntimePatches(void) {
     Class viewController = objc_getClass("ViewController");
     if (viewController == Nil) {
@@ -291,6 +431,13 @@ static BOOL InstallRuntimePatches(void) {
                                 (IMP)AlwaysNo, NULL);
     complete &= ReplaceExpected(viewController, "setIsNeedFlushIP:", 0x56e438,
                                 (IMP)ForceNoFlush, &gOriginalSetNeedFlushIP);
+    complete &= ReplaceExpectedClassMethod(
+        objc_getClass("LKVdConfig"),
+        "randomConfig",
+        0x9958,
+        "/CTW.dylib",
+        (IMP)LocalRandomConfig
+    );
     return complete;
 }
 
