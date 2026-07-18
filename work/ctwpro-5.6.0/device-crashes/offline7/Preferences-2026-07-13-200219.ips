@@ -1,0 +1,152 @@
+{"app_name":"Preferences","timestamp":"2026-07-13 20:02:19.00 +0800","app_version":"1","slice_uuid":"d3e2449f-343d-3a81-869a-83513f163e69","build_version":"1112.96","platform":2,"bundleID":"com.apple.Preferences","share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"9CA1B954-C139-49B8-A5BA-F0CA36E6EADA","name":"Preferences"}
+{
+  "uptime" : 61000,
+  "procLaunch" : "2026-07-13 20:02:18.6508 +0800",
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 1486745064745,
+  "coalitionID" : 923,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-13 20:02:18.9965 +0800",
+  "incident" : "9CA1B954-C139-49B8-A5BA-F0CA36E6EADA",
+  "bug_type" : "309",
+  "pid" : 7827,
+  "procExitAbsTime" : 1486753322905,
+  "cpuType" : "ARM-64",
+  "procName" : "Preferences",
+  "procPath" : "\/Applications\/Preferences.app\/Preferences",
+  "bundleInfo" : {"CFBundleShortVersionString":"1","CFBundleVersion":"1112.96","CFBundleIdentifier":"com.apple.Preferences"},
+  "storeInfo" : {"deviceIdentifierForVendor":"5050B6C2-76B2-46B8-9F28-001FDE632624"},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.apple.Preferences",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "vmRegionInfo" : "0x119850000 is in 0x119850000-0x119854000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      mapped file              11201c000-119850000 [120.2M] r--\/rw- SM=COW  ...t_id=eb5c9039\n--->  VM_ALLOCATE              119850000-119854000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              119854000-119858000 [   16K] rw-\/rwx SM=PRV  ",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000032, 0x0000000119850000","rawCodes":[50,4723113984],"type":"EXC_BAD_ACCESS","signal":"SIGKILL - CODESIGNING","subtype":"UNKNOWN_0x32 at 0x0000000119850000"},
+  "termination" : {"namespace":"CODESIGNING","flags":0,"code":2},
+  "vmregioninfo" : "0x119850000 is in 0x119850000-0x119854000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      mapped file              11201c000-119850000 [120.2M] r--\/rw- SM=COW  ...t_id=eb5c9039\n--->  VM_ALLOCATE              119850000-119854000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              119854000-119858000 [   16K] rw-\/rwx SM=PRV  ",
+  "faultingThread" : 8,
+  "threads" : [{"id":230201,"queue":"com.apple.main-thread","frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":1},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":1},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":1},{"imageOffset":6536,"symbol":"GSEventRunModal","symbolLocation":160,"imageIndex":2},{"imageOffset":5134984,"symbol":"-[UIApplication _run]","symbolLocation":1080,"imageIndex":3},{"imageOffset":2617208,"symbol":"UIApplicationMain","symbolLocation":336,"imageIndex":3},{"imageOffset":52596,"imageIndex":4},{"imageOffset":115920,"symbol":"start","symbolLocation":444,"imageIndex":5}]},{"id":230202,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]},{"id":230203,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]},{"id":230204,"name":"com.apple.uikit.eventfetch-thread","frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":1},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":1},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":1},{"imageOffset":97964,"symbol":"-[NSRunLoop(NSRunLoop) runMode:beforeDate:]","symbolLocation":232,"imageIndex":7},{"imageOffset":356304,"symbol":"-[NSRunLoop(NSRunLoop) runUntilDate:]","symbolLocation":88,"imageIndex":7},{"imageOffset":4607732,"symbol":"-[UIEventFetcher threadMain]","symbolLocation":512,"imageIndex":3},{"imageOffset":412636,"symbol":"__NSThread__start__","symbolLocation":792,"imageIndex":7},{"imageOffset":13112,"symbol":"_pthread_start","symbolLocation":116,"imageIndex":6},{"imageOffset":6456,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":230205,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]},{"id":230206,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]},{"id":230207,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]},{"id":230208,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]},{"triggered":true,"id":230212,"threadState":{"x":[{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":4723130368},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":3405691582},"cpsr":{"value":0},"fp":{"value":0},"sp":{"value":4723195904},"esr":{"value":2181038095,"description":"(Instruction Abort) Permission fault"},"pc":{"value":4723113984,"matchesCrashFrame":1},"far":{"value":4723113984}},"frames":[{"imageOffset":4723113984,"imageIndex":8}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7436042240,
+    "size" : 212992,
+    "uuid" : "a0b29fd9-54cf-3871-a8e2-2b30ffceb58b",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6453055488,
+    "size" : 4448256,
+    "uuid" : "eec1287d-059b-38c8-9bc1-58a0c8b1e6c2",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/CoreFoundation",
+    "name" : "CoreFoundation"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7001853952,
+    "size" : 36864,
+    "uuid" : "bb434d86-0991-365f-bed3-c3923cf3073c",
+    "path" : "\/System\/Library\/PrivateFrameworks\/GraphicsServices.framework\/GraphicsServices",
+    "name" : "GraphicsServices"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6489997312,
+    "size" : 24756224,
+    "uuid" : "9d301877-2593-385c-8f72-f075aa0b48fa",
+    "path" : "\/System\/Library\/PrivateFrameworks\/UIKitCore.framework\/UIKitCore",
+    "name" : "UIKitCore"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4305928192,
+    "size" : 81920,
+    "uuid" : "d3e2449f-343d-3a81-869a-83513f163e69",
+    "path" : "\/Applications\/Preferences.app\/Preferences",
+    "name" : "Preferences"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4308844544,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/basebin\/gen\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7984021504,
+    "size" : 69632,
+    "uuid" : "a150c45a-fa09-3593-8e64-337bc555c085",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6477250560,
+    "size" : 3035136,
+    "uuid" : "f9235fc7-ec4e-31c9-b56e-95cf10b07239",
+    "path" : "\/System\/Library\/Frameworks\/Foundation.framework\/Foundation",
+    "name" : "Foundation"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  }
+],
+  "sharedCache" : {
+  "base" : 6449512448,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=910.2M resident=0K(0%) swapped_out_or_unallocated=910.2M(100%)\nWritable regions: Total=547.2M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=547.2M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nAccelerate framework               128K        1 \nActivity Tracing                   256K        1 \nCG raster data                     256K        3 \nColorSync                          144K        5 \nCoreAnimation                      384K       18 \nFoundation                          16K        1 \nKernel Alloc Once                   32K        1 \nMALLOC                           540.5M       29 \nMALLOC guard page                  128K        8 \nMemory Tag 255                    17.7M        3 \nSTACK GUARD                        128K        8 \nStack                             4816K        8 \nVM_ALLOCATE                        128K        6 \nVM_ALLOCATE (reserved)             272K        1         reserved VM address space (unallocated)\n__CTF                               756        1 \n__DATA                            27.2M      855 \n__DATA_CONST                      74.9M      874 \n__DATA_DIRTY                      3146K      719 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       186.2M        4 \n__OBJC_RO                         92.1M        1 \n__OBJC_RW                         3520K        1 \n__TEXT                           723.9M      880 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nmapped file                      365.8M       12 \nshared memory                       48K        3 \n===========                     =======  ======= \nTOTAL                              2.0G     3446 \nTOTAL, minus reserved VM space     2.0G     3446 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

@@ -1,0 +1,159 @@
+{"app_name":"akd","timestamp":"2026-07-13 09:04:41.00 +0800","app_version":"","slice_uuid":"402e0d51-6b6b-355b-878d-accca5829315","build_version":"","platform":2,"share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"1905D5EB-5D48-4E08-918F-5451A1507266","name":"akd"}
+{
+  "uptime" : 41000,
+  "procLaunch" : "2026-07-13 09:04:41.0856 +0800",
+  "procRole" : "Unspecified",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 1002630302373,
+  "coalitionID" : 675,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-13 09:04:41.5200 +0800",
+  "incident" : "1905D5EB-5D48-4E08-918F-5451A1507266",
+  "bug_type" : "309",
+  "pid" : 5428,
+  "procExitAbsTime" : 1002640716808,
+  "cpuType" : "ARM-64",
+  "procName" : "akd",
+  "procPath" : "\/System\/Library\/PrivateFrameworks\/AuthKit.framework\/akd",
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.apple.akd",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "vmRegionInfo" : "0x106500000 is in 0x106500000-0x106504000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      mapped file              104800000-106500000 [ 29.0M] r--\/r-- SM=ALI  ...t_id=eb2fc439\n--->  VM_ALLOCATE              106500000-106504000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              106504000-106508000 [   16K] rw-\/rwx SM=PRV  ",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000032, 0x0000000106500000","rawCodes":[50,4400873472],"type":"EXC_BAD_ACCESS","signal":"SIGKILL - CODESIGNING","subtype":"UNKNOWN_0x32 at 0x0000000106500000"},
+  "termination" : {"namespace":"CODESIGNING","flags":0,"code":2},
+  "vmregioninfo" : "0x106500000 is in 0x106500000-0x106504000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      mapped file              104800000-106500000 [ 29.0M] r--\/r-- SM=ALI  ...t_id=eb2fc439\n--->  VM_ALLOCATE              106500000-106504000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              106504000-106508000 [   16K] rw-\/rwx SM=PRV  ",
+  "faultingThread" : 4,
+  "threads" : [{"id":144133,"queue":"com.apple.main-thread","frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":125628,"symbol":"_xpc_pipe_mach_msg","symbolLocation":52,"imageIndex":1},{"imageOffset":122960,"symbol":"_xpc_pipe_routine","symbolLocation":352,"imageIndex":1},{"imageOffset":16200,"symbol":"_xpc_interface_routine","symbolLocation":180,"imageIndex":1},{"imageOffset":17660,"symbol":"_xpc_activate_endpoint","symbolLocation":164,"imageIndex":1},{"imageOffset":55372,"symbol":"_xpc_connection_init","symbolLocation":264,"imageIndex":1},{"imageOffset":50588,"symbol":"_xpc_connection_activate_if_needed","symbolLocation":320,"imageIndex":1},{"imageOffset":50788,"symbol":"xpc_connection_resume","symbolLocation":88,"imageIndex":1},{"imageOffset":553044,"imageIndex":2},{"imageOffset":552524,"imageIndex":2},{"imageOffset":197364,"imageIndex":2},{"imageOffset":115920,"symbol":"start","symbolLocation":444,"imageIndex":3}]},{"id":144136,"queue":"com.apple.authkit.pushServiceQueue","frames":[{"imageOffset":119500,"symbol":"icu::Locale::Locale(char const*, char const*, char const*, char const*)","symbolLocation":172,"imageIndex":4},{"imageOffset":119472,"symbol":"icu::Locale::Locale(char const*, char const*, char const*, char const*)","symbolLocation":144,"imageIndex":4},{"imageOffset":2032608,"symbol":"ucal_open","symbolLocation":280,"imageIndex":4},{"imageOffset":549188,"symbol":"-[__NSTimeZone secondsFromGMTForDate:]","symbolLocation":412,"imageIndex":5},{"imageOffset":30956,"symbol":"-[NSMutableURLRequest(AuthKit) ak_addTimeZoneHeaders]","symbolLocation":164,"imageIndex":6},{"imageOffset":165820,"imageIndex":2},{"imageOffset":495544,"imageIndex":2},{"imageOffset":494744,"imageIndex":2},{"imageOffset":493964,"imageIndex":2},{"imageOffset":18780,"symbol":"-[AKURLBag _urlBagFromCache:withError:]","symbolLocation":180,"imageIndex":6},{"imageOffset":277996,"symbol":"-[AKURLBag _requestEnvironmentsWithError:]","symbolLocation":56,"imageIndex":6},{"imageOffset":276744,"symbol":"-[AKURLBag APSEnvironment]","symbolLocation":28,"imageIndex":6},{"imageOffset":573604,"imageIndex":2},{"imageOffset":405652,"symbol":"_dispatch_call_block_and_release","symbolLocation":24,"imageIndex":7},{"imageOffset":409748,"symbol":"_dispatch_client_callout","symbolLocation":16,"imageIndex":7},{"imageOffset":42812,"symbol":"_dispatch_lane_serial_drain$VARIANT$mp","symbolLocation":644,"imageIndex":7},{"imageOffset":45604,"symbol":"_dispatch_lane_invoke$VARIANT$mp","symbolLocation":456,"imageIndex":7},{"imageOffset":85704,"symbol":"_dispatch_workloop_worker_thread","symbolLocation":632,"imageIndex":7},{"imageOffset":7680,"symbol":"_pthread_wqthread","symbolLocation":284,"imageIndex":8},{"imageOffset":6444,"symbol":"start_wqthread","symbolLocation":8,"imageIndex":8}]},{"id":144137,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":8}]},{"id":144138,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":8}]},{"triggered":true,"id":144142,"threadState":{"x":[{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":4400889856},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":3405691582},"cpsr":{"value":0},"fp":{"value":0},"sp":{"value":4400955392},"esr":{"value":2181038095,"description":"(Instruction Abort) Permission fault"},"pc":{"value":4400873472,"matchesCrashFrame":1},"far":{"value":4400873472}},"frames":[{"imageOffset":4400873472,"imageIndex":9}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7436042240,
+    "size" : 212992,
+    "uuid" : "a0b29fd9-54cf-3871-a8e2-2b30ffceb58b",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7984148480,
+    "size" : 233472,
+    "uuid" : "184a84ec-2aaa-3c97-80d3-d7584a851a54",
+    "path" : "\/usr\/lib\/system\/libxpc.dylib",
+    "name" : "libxpc.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4343578624,
+    "size" : 1032192,
+    "uuid" : "402e0d51-6b6b-355b-878d-accca5829315",
+    "path" : "\/System\/Library\/PrivateFrameworks\/AuthKit.framework\/akd",
+    "name" : "akd"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4347494400,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6450421760,
+    "size" : 2633728,
+    "uuid" : "562a8c22-417c-34c1-b7aa-5ca7fd827dce",
+    "path" : "\/usr\/lib\/libicucore.A.dylib",
+    "name" : "libicucore.A.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6453055488,
+    "size" : 4448256,
+    "uuid" : "eec1287d-059b-38c8-9bc1-58a0c8b1e6c2",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/CoreFoundation",
+    "name" : "CoreFoundation"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6756589568,
+    "size" : 761856,
+    "uuid" : "438baf3d-142a-3b63-88d9-bbc376e0edae",
+    "path" : "\/System\/Library\/PrivateFrameworks\/AuthKit.framework\/AuthKit",
+    "name" : "AuthKit"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6449840128,
+    "size" : 536576,
+    "uuid" : "9ccdbde3-15e1-3a45-b330-4a5e2c3f92bd",
+    "path" : "\/usr\/lib\/system\/libdispatch.dylib",
+    "name" : "libdispatch.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7984021504,
+    "size" : 69632,
+    "uuid" : "a150c45a-fa09-3593-8e64-337bc555c085",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  }
+],
+  "sharedCache" : {
+  "base" : 6449512448,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=280.7M resident=0K(0%) swapped_out_or_unallocated=280.7M(100%)\nWritable regions: Total=24.3M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=24.3M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nActivity Tracing                   256K        1 \nDispatch continuations            2048K        1 \nKernel Alloc Once                   32K        1 \nMALLOC                            18.2M       12 \nMALLOC guard page                   64K        4 \nMemory Tag 255                    17.7M        3 \nSTACK GUARD                         64K        4 \nStack                             2640K        4 \nVM_ALLOCATE                         80K        4 \nVM_ALLOCATE (reserved)             272K        1         reserved VM address space (unallocated)\n__DATA                            2719K      166 \n__DATA_CONST                       9.9M      180 \n__DATA_DIRTY                       315K      141 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       186.2M        3 \n__OBJC_RO                         92.1M        1 \n__OBJC_RW                         3520K        1 \n__TEXT                            94.5M      184 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nmapped file                       29.3M        3 \nshared memory                       64K        4 \n===========                     =======  ======= \nTOTAL                            461.3M      721 \nTOTAL, minus reserved VM space   461.0M      721 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

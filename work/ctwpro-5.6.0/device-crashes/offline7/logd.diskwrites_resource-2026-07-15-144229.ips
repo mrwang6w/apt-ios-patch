@@ -1,0 +1,131 @@
+{"share_with_app_devs":0,"app_version":"","bug_type":"145","timestamp":"2026-07-15 14:42:29.00 +0800","os_version":"iPhone OS 15.8.8 (19H422)","slice_uuid":"BB7BEA33-55CB-3336-8A30-3F6C13178DC6","is_first_party":1,"build_version":"","incident_id":"51903309-24E9-4D8A-B372-04D739584D72","app_name":"logd","name":"logd"}
+Date/Time:        2026-07-15 10:11:45.773 +0800
+End time:         2026-07-15 14:42:25.942 +0800
+OS Version:       iPhone OS 15.8.8 (Build 19H422)
+Architecture:     arm64
+Report Version:   35.1
+Incident Identifier: 51903309-24E9-4D8A-B372-04D739584D72
+
+Data Source:      Microstackshots
+Shared Cache:     A838E8BB-A068-30D0-95F3-E6DE6BD28566 slid base address 0x180a34000, slide 0xa34000
+
+Command:          logd
+Path:             /usr/libexec/logd
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+PID:              315
+
+Event:            disk writes
+Action taken:     none
+Writes:           1073.78 MB of file backed memory dirtied over 16240 seconds (66.12 KB per second average), exceeding limit of 12.43 KB per second over 86400 seconds
+Writes limit:     1073.74 MB
+Limit duration:   86400s
+Writes caused:    1073.78 MB
+Writes duration:  16240s
+Duration:         16240.17s
+Duration Sampled: 15937.16s
+Steps:            134 ( (10.49 MB/step))
+
+Hardware model:   iPhone9,2
+Active cpus:      2
+HW page size:     16384
+VM page size:     16384
+
+Advisory levels:  Battery -> 3, User -> 3, ThermalPressure -> 0, Combined -> 3
+Free disk space:  105.11 GB/119.18 GB, low space threshold 150 MB
+
+Heaviest stack for the target process:
+  100  ??? (libsystem_pthread.dylib + 6444) [0x1dc1a192c]
+  100  ??? (libsystem_pthread.dylib + 7680) [0x1dc1a1e00]
+  100  ??? (libdispatch.dylib + 85704) [0x180a98ec8]
+  90   ??? (libdispatch.dylib + 45556) [0x180a8f1f4]
+  90   ??? (libdispatch.dylib + 42812) [0x180a8e73c]
+  90   ??? (libdispatch.dylib + 409748) [0x180ae8094]
+  90   ??? (libdispatch.dylib + 70980) [0x180a95544]
+  83   ??? (logd + 67868) [0x10279091c]
+  83   ??? (logd + 66172) [0x10279027c]
+  83   ??? (logd + 79124) [0x102793514]
+  83   ??? (libsystem_kernel.dylib + 9320) [0x1bb70a468]
+
+
+Powerstats for:   logd [315]
+UUID:             BB7BEA33-55CB-3336-8A30-3F6C13178DC6
+Path:             /usr/libexec/logd
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+UID:              272
+Footprint:        7552 KB -> 5856 KB (-1696 KB) (max 8016 KB )
+Pageins:          37620 pages
+Start time:       2026-07-15 14:38:25.038 +0800
+End time:         2026-07-15 14:42:24.795 +0800
+Num samples:      100 (75%)
+Primary state:    81 samples Non-Frontmost App, Non-Suppressed, Kernel mode, Effective Thread QoS Utility, Requested Thread QoS Utility, Override Thread QoS Unspecified
+User Activity:    0 samples Idle, 100 samples Active
+Power Source:     0 samples on Battery, 100 samples on AC
+  100  ??? (libsystem_pthread.dylib + 6444) [0x1dc1a192c]
+    100  ??? (libsystem_pthread.dylib + 7680) [0x1dc1a1e00]
+      100  ??? (libdispatch.dylib + 85704) [0x180a98ec8]
+        90   ??? (libdispatch.dylib + 45556) [0x180a8f1f4]
+          90   ??? (libdispatch.dylib + 42812) [0x180a8e73c]
+            90   ??? (libdispatch.dylib + 409748) [0x180ae8094]
+              90   ??? (libdispatch.dylib + 70980) [0x180a95544]
+                83   ??? (logd + 67868) [0x10279091c]
+                  83   ??? (logd + 66172) [0x10279027c]
+                    83   ??? (logd + 79124) [0x102793514]
+                      83   ??? (libsystem_kernel.dylib + 9320) [0x1bb70a468]
+                        1    <Requested Thread QoS Background>
+                        1    <Effective Thread QoS User Initiated>
+                7    ??? (logd + 66172) [0x10279027c]
+                  7    ??? (logd + 79124) [0x102793514]
+                    7    ??? (libsystem_kernel.dylib + 9320) [0x1bb70a468]
+                      6    <Requested Thread QoS Background>
+                      1    <Effective Thread QoS Background, Requested Thread QoS Background>
+        9    ??? (libdispatch.dylib + 45604) [0x180a8f224]
+          8    ??? (libdispatch.dylib + 43024) [0x180a8e810]
+            8    ??? (libdispatch.dylib + 409748) [0x180ae8094]
+              8    ??? (libdispatch.dylib + 405652) [0x180ae7094]
+                8    ??? (logd + 26908) [0x10278691c]
+                  8    ??? (logd + 74788) [0x102792424]
+                    8    ??? (libdispatch.dylib + 72036) [0x180a95964]
+                      8    ??? (libdispatch.dylib + 409748) [0x180ae8094]
+                        8    ??? (logd + 74956) [0x1027924cc]
+                          8    ??? (libdispatch.dylib + 72036) [0x180a95964]
+                            8    ??? (libdispatch.dylib + 409748) [0x180ae8094]
+                              6    ??? (logd + 75184) [0x1027925b0]
+                                5    ??? (logd + 79124) [0x102793514]
+                                  5    ??? (libsystem_kernel.dylib + 9320) [0x1bb70a468]
+                                    4    <Effective Thread QoS Background, Requested Thread QoS Background>
+                                    1    <Requested Thread QoS Background>
+                                1    ??? (logd + 79084) [0x1027934ec]
+                                  1    ??? (libsystem_kernel.dylib + 8996) [0x1bb70a324]
+                                    1    <Effective Thread QoS Background, Requested Thread QoS Background>
+                              2    ??? (logd + 75324) [0x10279263c]
+                                2    ??? (logd + 79124) [0x102793514]
+                                  2    ??? (libsystem_kernel.dylib + 9320) [0x1bb70a468]
+                                    2    <Effective Thread QoS Background, Requested Thread QoS Background>
+          1    ??? (libdispatch.dylib + 42812) [0x180a8e73c]
+            1    ??? (libdispatch.dylib + 409748) [0x180ae8094]
+              1    ??? (libdispatch.dylib + 70980) [0x180a95544]
+                1    ??? (CacheDelete + 168952) [0x1ac59d3f8]
+                  1    ??? (logd + 102568) [0x1027990a8]
+                    1    ??? (libsystem_kernel.dylib + 9320) [0x1bb70a468]
+                      1    <Effective Thread QoS Background, Requested Thread QoS Background>
+        1    ??? (libdispatch.dylib + 118564) [0x180aa0f24]
+          1    ??? (libdispatch.dylib + 42512) [0x180a8e610]
+            1    ??? (libdispatch.dylib + 115524) [0x180aa0344]
+              1    ??? (libdispatch.dylib + 409928) [0x180ae8148]
+                1    ??? (libxpc.dylib + 58488) [0x1dc1cd478]
+                  1    ??? (libxpc.dylib + 57492) [0x1dc1cd094]
+                    1    ??? (logd + 38784) [0x102789780]
+                      1    ??? (logd + 33256) [0x1027881e8]
+                        1    ??? (logd + 33088) [0x102788140]
+                          1    ??? (libsystem_kernel.dylib + 8996) [0x1bb70a324]
+                            1    <Effective Thread QoS Background, Requested Thread QoS Background>
+
+  Binary Images:
+           0x102780000 -                ???  logd                    <BB7BEA33-55CB-3336-8A30-3F6C13178DC6>  /usr/libexec/logd
+           0x180a84000 -        0x180b06fff  libdispatch.dylib       <9CCDBDE3-15E1-3A45-B330-4A5E2C3F92BD>  /usr/lib/system/libdispatch.dylib
+           0x1ac574000 -        0x1ac5adfff  CacheDelete             <327386C2-E68F-38E2-8EB9-7FB3B32E7CC9>  /System/Library/PrivateFrameworks/CacheDelete.framework/CacheDelete
+           0x1bb708000 -        0x1bb73bfff  libsystem_kernel.dylib  <A0B29FD9-54CF-3871-A8E2-2B30FFCEB58B>  /usr/lib/system/libsystem_kernel.dylib
+           0x1dc1a0000 -        0x1dc1b0fff  libsystem_pthread.dylib <A150C45A-FA09-3593-8E64-337BC555C085>  /usr/lib/system/libsystem_pthread.dylib
+           0x1dc1bf000 -        0x1dc1f7fff  libxpc.dylib            <184A84EC-2AAA-3C97-80D3-D7584A851A54>  /usr/lib/system/libxpc.dylib

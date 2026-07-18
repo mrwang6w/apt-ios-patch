@@ -1,0 +1,151 @@
+{"app_name":"configd","timestamp":"2026-07-14 15:42:27.00 +0800","app_version":"","slice_uuid":"a0aa77be-39bd-38f2-8ed3-30247e58d0fe","build_version":"","platform":2,"share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"2B82DFEB-9207-4645-A32D-58EFFF05B4A8","name":"configd"}
+{
+  "uptime" : 21000,
+  "procLaunch" : "2026-07-14 13:38:16.9979 +0800",
+  "procRole" : "Unspecified",
+  "version" : 2,
+  "userID" : 0,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 340459709077,
+  "coalitionID" : 472,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-14 15:42:27.5414 +0800",
+  "incident" : "2B82DFEB-9207-4645-A32D-58EFFF05B4A8",
+  "bug_type" : "309",
+  "pid" : 2681,
+  "procExitAbsTime" : 519273155371,
+  "cpuType" : "ARM-64",
+  "procName" : "configd",
+  "procPath" : "\/usr\/libexec\/configd",
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.apple.configd",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "isCorpse" : 1,
+  "exception" : {"port":53779,"signal":"SIGKILL","guardId":0,"codes":"0x000000000000d213, 0x0000000000000000","violations":["INVALID_NAME"],"message":" INVALID_NAME on mach port 53779 (guarded with 0x0000000000000000)","subtype":"GUARD_TYPE_MACH_PORT","type":"EXC_GUARD","rawCodes":[53779,0]},
+  "termination" : {"namespace":"GUARD","flags":2,"code":2305845208237003283},
+  "faultingThread" : 2,
+  "threads" : [{"id":57112,"queue":"com.apple.main-thread","frames":[{"imageOffset":8636,"symbol":"__open","symbolLocation":8,"imageIndex":0},{"imageOffset":9556,"symbol":"open","symbolLocation":36,"imageIndex":0},{"imageOffset":323236,"imageIndex":1},{"imageOffset":216756,"symbol":"DHCPLeaseListWrite","symbolLocation":704,"imageIndex":1},{"imageOffset":69920,"imageIndex":1},{"imageOffset":136988,"imageIndex":1},{"imageOffset":114476,"imageIndex":1},{"imageOffset":156228,"symbol":"stop","symbolLocation":104,"imageIndex":1},{"imageOffset":24532,"imageIndex":2},{"imageOffset":51396,"symbol":"CFArrayApplyFunction","symbolLocation":80,"imageIndex":3},{"imageOffset":24000,"imageIndex":2},{"imageOffset":18644,"imageIndex":2},{"imageOffset":14152,"imageIndex":2},{"imageOffset":43516,"symbol":"__CFMachPortPerform","symbolLocation":172,"imageIndex":3},{"imageOffset":306284,"symbol":"__CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE1_PERFORM_FUNCTION__","symbolLocation":56,"imageIndex":3},{"imageOffset":320112,"symbol":"__CFRunLoopDoSource1","symbolLocation":596,"imageIndex":3},{"imageOffset":46176,"symbol":"__CFRunLoopRun","symbolLocation":2392,"imageIndex":3},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":3},{"imageOffset":627488,"symbol":"CFRunLoopRun","symbolLocation":60,"imageIndex":3},{"imageOffset":13592,"imageIndex":2},{"imageOffset":115920,"symbol":"start","symbolLocation":444,"imageIndex":4}]},{"id":57120,"name":"InterfaceNamer thread","frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":3},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":3},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":3},{"imageOffset":627488,"symbol":"CFRunLoopRun","symbolLocation":60,"imageIndex":3},{"imageOffset":88820,"imageIndex":2},{"imageOffset":13112,"symbol":"_pthread_start","symbolLocation":116,"imageIndex":5},{"imageOffset":6456,"symbol":"thread_start","symbolLocation":8,"imageIndex":5}]},{"triggered":true,"id":57125,"threadState":{"x":[{"value":15},{"value":53779},{"value":1},{"value":4294967295},{"value":192},{"value":4374064176},{"value":12},{"value":4374073120},{"value":8430343204,"symbolLocation":0,"symbol":"mach_task_self_"},{"value":16416751634487574533},{"value":416864},{"value":1548097},{"value":4373610496},{"value":0},{"value":3491112420},{"value":56504},{"value":18446744073709551597},{"value":134758804},{"value":0},{"value":4294967295},{"value":1},{"value":53779},{"value":771},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":7445690096},"cpsr":{"value":1610612736},"fp":{"value":6100430720},"sp":{"value":6100430688},"esr":{"value":1442840704,"description":" Address size fault"},"pc":{"value":7445678632,"matchesCrashFrame":1},"far":{"value":5569216512}},"frames":[{"imageOffset":2600,"symbol":"_kernelrpc_mach_port_mod_refs_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":14064,"symbol":"mach_port_mod_refs","symbolLocation":36,"imageIndex":0},{"imageOffset":13664,"imageIndex":6},{"imageOffset":13112,"symbol":"_pthread_start","symbolLocation":116,"imageIndex":5},{"imageOffset":6456,"symbol":"thread_start","symbolLocation":8,"imageIndex":5}]},{"id":57127,"frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":3},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":3},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":3},{"imageOffset":627488,"symbol":"CFRunLoopRun","symbolLocation":60,"imageIndex":3},{"imageOffset":32228,"symbol":"captived_thread","symbolLocation":244,"imageIndex":7},{"imageOffset":13112,"symbol":"_pthread_start","symbolLocation":116,"imageIndex":5},{"imageOffset":6456,"symbol":"thread_start","symbolLocation":8,"imageIndex":5}]},{"id":57130,"name":"com.apple.CFSocket.private","frames":[{"imageOffset":5808,"symbol":"__select","symbolLocation":8,"imageIndex":0},{"imageOffset":669896,"symbol":"__CFSocketManager","symbolLocation":628,"imageIndex":3},{"imageOffset":13112,"symbol":"_pthread_start","symbolLocation":116,"imageIndex":5},{"imageOffset":6456,"symbol":"thread_start","symbolLocation":8,"imageIndex":5}]},{"id":57132,"frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":3},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":3},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":3},{"imageOffset":627488,"symbol":"CFRunLoopRun","symbolLocation":60,"imageIndex":3},{"imageOffset":24680,"imageIndex":8},{"imageOffset":13112,"symbol":"_pthread_start","symbolLocation":116,"imageIndex":5},{"imageOffset":6456,"symbol":"thread_start","symbolLocation":8,"imageIndex":5}]},{"id":83796,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":5}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7445676032,
+    "size" : 212992,
+    "uuid" : "a0b29fd9-54cf-3871-a8e2-2b30ffceb58b",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4396433408,
+    "size" : 638976,
+    "uuid" : "67f25d2a-1397-32a9-926a-47d1b97fed48",
+    "path" : "\/System\/Library\/SystemConfiguration\/IPConfiguration.bundle\/IPConfiguration",
+    "name" : "IPConfiguration"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4369301504,
+    "size" : 425984,
+    "uuid" : "a0aa77be-39bd-38f2-8ed3-30247e58d0fe",
+    "path" : "\/usr\/libexec\/configd",
+    "name" : "configd"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6462689280,
+    "size" : 4448256,
+    "uuid" : "eec1287d-059b-38c8-9bc1-58a0c8b1e6c2",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/CoreFoundation",
+    "name" : "CoreFoundation"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4371824640,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/basebin\/gen\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7993655296,
+    "size" : 69632,
+    "uuid" : "a150c45a-fa09-3593-8e64-337bc555c085",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4371628032,
+    "size" : 16384,
+    "uuid" : "f6ec9e09-da63-3395-9908-500d58240053",
+    "path" : "\/System\/Library\/SystemConfiguration\/USBDeviceConfiguration.bundle\/USBDeviceConfiguration",
+    "name" : "USBDeviceConfiguration"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7951822848,
+    "size" : 208896,
+    "uuid" : "6cffb9d7-28e9-3866-9adc-0a143fca70b9",
+    "path" : "\/System\/Library\/SystemConfiguration\/CaptiveNetworkSupport.bundle\/CaptiveNetworkSupport",
+    "name" : "CaptiveNetworkSupport"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4374921216,
+    "size" : 32768,
+    "uuid" : "a8b263fd-15d2-3eba-a1e7-fa8bea2767d9",
+    "path" : "\/System\/Library\/SystemConfiguration\/EAPOLController.bundle\/EAPOLController",
+    "name" : "EAPOLController"
+  }
+],
+  "sharedCache" : {
+  "base" : 6459146240,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=483.1M resident=0K(0%) swapped_out_or_unallocated=483.1M(100%)\nWritable regions: Total=24.6M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=24.6M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nActivity Tracing                   256K        1 \nDispatch continuations            2048K        1 \nKernel Alloc Once                   32K        1 \nMALLOC                            18.1M       11 \nMALLOC guard page                   64K        4 \nSTACK GUARD                        112K        7 \nStack                             4272K        7 \n__CTF                               756        1 \n__DATA                            9551K      328 \n__DATA_CONST                      25.4M      340 \n__DATA_DIRTY                      1115K      275 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       186.7M       11 \n__LLVM                              32K        2 \n__OBJC_RO                         92.1M        1 \n__OBJC_RW                         3520K        1 \n__TEXT                           296.4M      350 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nmapped file                       29.1M        2 \nshared memory                       48K        3 \n===========                     =======  ======= \nTOTAL                            669.9M     1349 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

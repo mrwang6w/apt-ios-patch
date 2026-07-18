@@ -1,0 +1,81 @@
+{"app_name":"MultiICloudMailTask","timestamp":"2026-07-13 10:22:34.00 +0800","app_version":"0.1.7","slice_uuid":"d5c5c5fb-982d-3b75-83cd-8ef59c42da08","build_version":"7","platform":2,"bundleID":"com.zest.multiicloudmailtask","share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"B5999562-BAA1-4B1D-9CA1-53614953302D","name":"MultiICloudMailTask"}
+{
+  "uptime" : 46000,
+  "procLaunch" : "2026-07-13 10:20:01.6059 +0800",
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 1111128413976,
+  "coalitionID" : 1140,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-13 10:22:34.5691 +0800",
+  "incident" : "B5999562-BAA1-4B1D-9CA1-53614953302D",
+  "bug_type" : "309",
+  "pid" : 5956,
+  "procExitAbsTime" : 1114799582770,
+  "cpuType" : "ARM-64",
+  "procName" : "MultiICloudMailTask",
+  "procPath" : "\/private\/var\/containers\/Bundle\/Application\/B36EA36A-180A-43D9-B7C9-17FD6EE4FC0C\/MultiICloudMailTask.app\/MultiICloudMailTask",
+  "bundleInfo" : {"CFBundleShortVersionString":"0.1.7","CFBundleVersion":"7","CFBundleIdentifier":"com.zest.multiicloudmailtask"},
+  "storeInfo" : {"deviceIdentifierForVendor":"A2C66E0E-0BD5-45BD-B6E4-7911A6341CB1"},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.zest.multiicloudmailtask",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000001, 0x0000000103021934","rawCodes":[1,4345436468],"type":"EXC_BREAKPOINT","signal":"SIGTRAP"},
+  "termination" : {"flags":0,"code":9,"namespace":"SIGNAL","indicator":"Killed: 9","byProc":"frida-server","byPid":355},
+  "faultingThread" : 0,
+  "threads" : [{"triggered":true,"id":162029,"threadState":{"x":[{"value":4346118240},{"value":8774413212},{"value":6123620351},{"value":6123620351},{"value":83},{"value":77},{"value":0},{"value":2464},{"value":4345872704,"symbolLocation":0,"symbol":"dyld_all_image_infos"},{"value":1},{"value":8},{"value":4346118720},{"value":16711686},{"value":194924688},{"value":56},{"value":32369622321725440},{"value":7983980636,"symbolLocation":0,"symbol":"_simple_getenv"},{"value":0},{"value":0},{"value":4346118240},{"value":4346118240},{"value":6123631968},{"value":443},{"value":6123624864},{"value":6123621312},{"value":8774370332},{"value":3544},{"value":3544},{"value":4346132144}],"flavor":"ARM_THREAD_STATE64","lr":{"value":4345596068},"cpsr":{"value":536870912},"fp":{"value":6123621296},"sp":{"value":6123621264},"esr":{"value":3254779938,"description":" Address size fault"},"pc":{"value":4345436468,"matchesCrashFrame":1},"far":{"value":8420953744}},"queue":"com.apple.main-thread","frames":[{"imageOffset":39220,"symbol":"dyld4::RuntimeState::notifyObjCInit(dyld4::Loader const*)","symbolLocation":0,"imageIndex":0},{"imageOffset":198820,"symbol":"dyld4::APIs::runAllInitializersForMain()","symbolLocation":76,"imageIndex":0},{"imageOffset":121948,"symbol":"dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*)","symbolLocation":2620,"imageIndex":0},{"imageOffset":115888,"symbol":"start","symbolLocation":412,"imageIndex":0}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4345397248,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/basebin\/gen\/dyld",
+    "name" : "dyld"
+  }
+],
+  "sharedCache" : {
+  "base" : 6449512448,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=598.2M resident=0K(0%) swapped_out_or_unallocated=598.2M(100%)\nWritable regions: Total=523.1M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=523.1M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nKernel Alloc Once                   32K        1 \nMALLOC                           521.1M       10 \nMALLOC guard page                   64K        4 \nMemory Tag 255                     672K       18 \nSTACK GUARD                         16K        1 \nStack                             1008K        1 \n__CTF                               756        1 \n__DATA                            14.7M      423 \n__DATA_CONST                      35.4M      440 \n__DATA_DIRTY                      1552K      353 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       187.2M        3 \n__OBJC_RO                         92.1M        1 \n__OBJC_RW                         3520K        1 \n__TEXT                           411.0M      460 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nmapped file                         16K        1 \nshared memory                       16K        1 \n===========                     =======  ======= \nTOTAL                              1.2G     1722 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+    "queue" : "com.apple.main-thread"
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

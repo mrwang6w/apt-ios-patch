@@ -1,0 +1,161 @@
+{"app_name":"iCloudMailTask","timestamp":"2026-07-13 13:17:12.00 +0800","app_version":"0.2.0","slice_uuid":"a92ac726-6b06-36e8-b1ec-103297d36eca","build_version":"11","platform":2,"bundleID":"com.zest.multiicloudmailtask","share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"C10C61C6-F159-45BC-850E-BEFFFCABCA8E","name":"iCloudMailTask"}
+{
+  "uptime" : 56000,
+  "procLaunch" : "2026-07-13 13:16:00.2099 +0800",
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 1364531717904,
+  "coalitionID" : 1140,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-13 13:17:11.8256 +0800",
+  "incident" : "C10C61C6-F159-45BC-850E-BEFFFCABCA8E",
+  "bug_type" : "309",
+  "pid" : 7207,
+  "procExitAbsTime" : 1366250372170,
+  "cpuType" : "ARM-64",
+  "procName" : "iCloudMailTask",
+  "procPath" : "\/private\/var\/containers\/Bundle\/Application\/837916E1-2F0C-4F6A-9120-088E296F943E\/iCloudMailTask.app\/iCloudMailTask",
+  "bundleInfo" : {"CFBundleShortVersionString":"0.2.0","CFBundleVersion":"11","CFBundleIdentifier":"com.zest.multiicloudmailtask"},
+  "storeInfo" : {"deviceIdentifierForVendor":"2A8F3D3B-658C-4554-9CF5-6AD02D2045FA"},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.zest.multiicloudmailtask",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "vmRegionInfo" : "0x11d510000 is in 0x11d510000-0x11d514000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      CoreAnimation            11d508000-11d510000 [   32K] r--\/r-- SM=PRV  \n--->  VM_ALLOCATE              11d510000-11d514000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              11d514000-11d518000 [   16K] rw-\/rwx SM=PRV  ",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000032, 0x000000011d510000","rawCodes":[50,4786814976],"type":"EXC_BAD_ACCESS","signal":"SIGKILL - CODESIGNING","subtype":"UNKNOWN_0x32 at 0x000000011d510000"},
+  "termination" : {"namespace":"CODESIGNING","flags":0,"code":2},
+  "vmregioninfo" : "0x11d510000 is in 0x11d510000-0x11d514000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      CoreAnimation            11d508000-11d510000 [   32K] r--\/r-- SM=PRV  \n--->  VM_ALLOCATE              11d510000-11d514000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              11d514000-11d518000 [   16K] rw-\/rwx SM=PRV  ",
+  "faultingThread" : 3,
+  "threads" : [{"id":202179,"queue":"com.apple.main-thread","frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":1},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":1},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":1},{"imageOffset":6536,"symbol":"GSEventRunModal","symbolLocation":160,"imageIndex":2},{"imageOffset":5134984,"symbol":"-[UIApplication _run]","symbolLocation":1080,"imageIndex":3},{"imageOffset":2617208,"symbol":"UIApplicationMain","symbolLocation":336,"imageIndex":3},{"imageOffset":2035048,"symbol":"closure #1 in KitRendererCommon(_:)","symbolLocation":160,"imageIndex":4},{"imageOffset":1292348,"symbol":"runApp<A>(_:)","symbolLocation":180,"imageIndex":4},{"imageOffset":1184220,"symbol":"static App.main()","symbolLocation":96,"imageIndex":4},{"imageOffset":30952,"symbol":"static MultiICloudMailTaskApp.$main()","symbolLocation":40,"imageIndex":5},{"imageOffset":31628,"symbol":"main","symbolLocation":12,"imageIndex":5},{"imageOffset":115920,"symbol":"start","symbolLocation":444,"imageIndex":6}]},{"id":202181,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":7}]},{"id":202185,"name":"com.apple.uikit.eventfetch-thread","frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":1},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":1},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":1},{"imageOffset":97964,"symbol":"-[NSRunLoop(NSRunLoop) runMode:beforeDate:]","symbolLocation":232,"imageIndex":8},{"imageOffset":356304,"symbol":"-[NSRunLoop(NSRunLoop) runUntilDate:]","symbolLocation":88,"imageIndex":8},{"imageOffset":4607732,"symbol":"-[UIEventFetcher threadMain]","symbolLocation":512,"imageIndex":3},{"imageOffset":412636,"symbol":"__NSThread__start__","symbolLocation":792,"imageIndex":8},{"imageOffset":13112,"symbol":"_pthread_start","symbolLocation":116,"imageIndex":7},{"imageOffset":6456,"symbol":"thread_start","symbolLocation":8,"imageIndex":7}]},{"triggered":true,"id":202427,"threadState":{"x":[{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":4786831360},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":3405691582},"cpsr":{"value":0},"fp":{"value":0},"sp":{"value":4786896896},"esr":{"value":2181038095,"description":"(Instruction Abort) Permission fault"},"pc":{"value":4786814976,"matchesCrashFrame":1},"far":{"value":4786814976}},"frames":[{"imageOffset":4786814976,"imageIndex":9}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7436042240,
+    "size" : 212992,
+    "uuid" : "a0b29fd9-54cf-3871-a8e2-2b30ffceb58b",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6453055488,
+    "size" : 4448256,
+    "uuid" : "eec1287d-059b-38c8-9bc1-58a0c8b1e6c2",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/CoreFoundation",
+    "name" : "CoreFoundation"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7001853952,
+    "size" : 36864,
+    "uuid" : "bb434d86-0991-365f-bed3-c3923cf3073c",
+    "path" : "\/System\/Library\/PrivateFrameworks\/GraphicsServices.framework\/GraphicsServices",
+    "name" : "GraphicsServices"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6489997312,
+    "size" : 24756224,
+    "uuid" : "9d301877-2593-385c-8f72-f075aa0b48fa",
+    "path" : "\/System\/Library\/PrivateFrameworks\/UIKitCore.framework\/UIKitCore",
+    "name" : "UIKitCore"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6577319936,
+    "size" : 14946304,
+    "uuid" : "a62d133a-55df-3b0d-b8de-8334d87722d0",
+    "path" : "\/System\/Library\/Frameworks\/SwiftUI.framework\/SwiftUI",
+    "name" : "SwiftUI"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4333944832,
+    "size" : 835584,
+    "uuid" : "a92ac726-6b06-36e8-b1ec-103297d36eca",
+    "path" : "\/private\/var\/containers\/Bundle\/Application\/837916E1-2F0C-4F6A-9120-088E296F943E\/iCloudMailTask.app\/iCloudMailTask",
+    "name" : "iCloudMailTask"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4339007488,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/basebin\/gen\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7984021504,
+    "size" : 69632,
+    "uuid" : "a150c45a-fa09-3593-8e64-337bc555c085",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6477250560,
+    "size" : 3035136,
+    "uuid" : "f9235fc7-ec4e-31c9-b56e-95cf10b07239",
+    "path" : "\/System\/Library\/Frameworks\/Foundation.framework\/Foundation",
+    "name" : "Foundation"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  }
+],
+  "sharedCache" : {
+  "base" : 6449512448,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=600.9M resident=0K(0%) swapped_out_or_unallocated=600.9M(100%)\nWritable regions: Total=546.4M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=546.4M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nActivity Tracing                   256K        1 \nCG raster data                     160K        5 \nColorSync                          128K        4 \nCoreAnimation                      704K       29 \nFoundation                          16K        1 \nKernel Alloc Once                   32K        1 \nMALLOC                           541.2M       75 \nMALLOC guard page                  128K        8 \nMemory Tag 255                    17.7M        3 \nSTACK GUARD                         48K        3 \nStack                             2096K        3 \nVM_ALLOCATE                       1168K        8 \nVM_ALLOCATE (reserved)             272K        1         reserved VM address space (unallocated)\n__CTF                               756        1 \n__DATA                            14.8M      431 \n__DATA_CONST                      35.5M      448 \n__DATA_DIRTY                      1565K      361 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       187.3M        4 \n__OBJC_RO                         92.1M        1 \n__OBJC_RW                         3520K        1 \n__TEXT                           413.6M      453 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nmapped file                      378.3M       19 \nshared memory                       48K        3 \n===========                     =======  ======= \nTOTAL                              1.7G     1867 \nTOTAL, minus reserved VM space     1.7G     1867 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

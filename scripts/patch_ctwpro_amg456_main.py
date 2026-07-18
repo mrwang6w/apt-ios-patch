@@ -19,6 +19,38 @@ LC_CODE_SIGNATURE = 0x1D
 DYLIB_COMMAND_SIZE = 0x38
 DYLIB_NAME_OFFSET = 0x18
 FIX_PATH = b"@executable_path/fix.dylib"
+NOP = bytes.fromhex("1f2003d5")
+EXIT_SETUP = bytes.fromhex("200180d2300080d2")
+
+# performeMachineStub is registered at 0x53DE04 and ends before
+# performeMachine: at 0x546CD4. These are all direct exit(9) syscall
+# instructions in that exact function; the surrounding state machine remains.
+STUB_EXIT_SYSCALLS = {
+    0x53DEEC: bytes.fromhex("812705d4"),
+    0x53E2AC: bytes.fromhex("214d08d4"),
+    0x53EB9C: bytes.fromhex("214d08d4"),
+    0x53ED70: bytes.fromhex("c1ae08d4"),
+    0x53F0D0: bytes.fromhex("c1ae08d4"),
+    0x53F280: bytes.fromhex("017517d4"),
+    0x53F3B4: bytes.fromhex("81db18d4"),
+    0x53F650: bytes.fromhex("81db18d4"),
+    0x53F878: bytes.fromhex("e14808d4"),
+    0x53FD78: bytes.fromhex("81f21dd4"),
+    0x53FF78: bytes.fromhex("81f21dd4"),
+    0x5400E8: bytes.fromhex("815819d4"),
+    0x540774: bytes.fromhex("813b09d4"),
+    0x541068: bytes.fromhex("813b09d4"),
+    0x541270: bytes.fromhex("41ce01d4"),
+    0x541324: bytes.fromhex("41ce01d4"),
+    0x541E8C: bytes.fromhex("a18318d4"),
+    0x542154: bytes.fromhex("815200d4"),
+    0x5421A0: bytes.fromhex("a18318d4"),
+    0x5421F4: bytes.fromhex("815200d4"),
+    0x543C64: bytes.fromhex("41cf03d4"),
+    0x544918: bytes.fromhex("41cf03d4"),
+    0x545D7C: bytes.fromhex("817f01d4"),
+    0x545F68: bytes.fromhex("817f01d4"),
+}
 
 # These are the main-executable IMPs checked by CTWProDeepPatch.m. The hashes
 # bind this injector to the exact implementation that was runtime-tested.
@@ -95,8 +127,29 @@ def verify_imp_bytes(data: bytes) -> None:
             )
 
 
+def verify_original_stub_exits(data: bytes) -> None:
+    for offset, expected in STUB_EXIT_SYSCALLS.items():
+        if data[offset - len(EXIT_SETUP) : offset] != EXIT_SETUP:
+            raise ValueError(f"exit(9) setup mismatch at 0x{offset - 8:X}")
+        actual = data[offset : offset + len(expected)]
+        if actual != expected:
+            raise ValueError(
+                f"exit syscall mismatch at 0x{offset:X}: "
+                f"got {actual.hex()}, expected {expected.hex()}"
+            )
+
+
+def verify_patched_stub_exits(data: bytes) -> None:
+    for offset in STUB_EXIT_SYSCALLS:
+        if data[offset - len(EXIT_SETUP) : offset] != EXIT_SETUP:
+            raise ValueError(f"patched exit(9) setup mismatch at 0x{offset - 8:X}")
+        if data[offset : offset + len(NOP)] != NOP:
+            raise ValueError(f"exit syscall remains at 0x{offset:X}")
+
+
 def verify_patched(data: bytes) -> None:
     verify_imp_bytes(data)
+    verify_patched_stub_exits(data)
     commands = load_commands(data)
     matches = [
         item for item in commands if item[1] == LC_LOAD_DYLIB and FIX_PATH in item[2]
@@ -120,6 +173,7 @@ def patch(source: Path, output: Path) -> None:
             f"unexpected CTW Pro SHA256: {actual_hash}; expected {ORIGINAL_MAIN_SHA256}"
         )
     verify_imp_bytes(data)
+    verify_original_stub_exits(data)
 
     commands = load_commands(data)
     final_offset, final_command, final_bytes = commands[-1]
@@ -143,6 +197,8 @@ def patch(source: Path, output: Path) -> None:
     data[
         MOVED_CODE_SIGNATURE_OFFSET : MOVED_CODE_SIGNATURE_OFFSET + len(final_bytes)
     ] = final_bytes
+    for offset in STUB_EXIT_SYSCALLS:
+        data[offset : offset + len(NOP)] = NOP
     verify_patched(data)
 
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -150,6 +206,7 @@ def patch(source: Path, output: Path) -> None:
     print(f"patched: {output}")
     print(f"unsigned SHA256: {sha256(data)}")
     print(f"inserted LC_LOAD_DYLIB at 0x{LOAD_COMMAND_OFFSET:X}: {FIX_PATH.decode()}")
+    print(f"disabled performeMachineStub exit(9) syscalls: {len(STUB_EXIT_SYSCALLS)}")
 
 
 def main() -> None:

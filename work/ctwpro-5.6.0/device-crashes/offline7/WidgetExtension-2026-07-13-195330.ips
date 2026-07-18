@@ -1,0 +1,80 @@
+{"app_name":"WidgetExtension","timestamp":"2026-07-13 19:53:30.00 +0800","app_version":"2.2.88","slice_uuid":"3ceb83e6-f320-35f5-83fa-060aa8d45a7d","build_version":"3308","platform":2,"bundleID":"com.liguangming.Shadowrocket.Widget","share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"6596B275-0793-407C-B679-EE7D8C239DCE","name":"WidgetExtension"}
+{
+  "uptime" : 61000,
+  "procLaunch" : "2026-07-13 19:53:30.4178 +0800",
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 1474067184455,
+  "coalitionID" : 1320,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-13 19:53:30.4203 +0800",
+  "incident" : "6596B275-0793-407C-B679-EE7D8C239DCE",
+  "bug_type" : "309",
+  "pid" : 7751,
+  "procExitAbsTime" : 1474067232132,
+  "cpuType" : "ARM-64",
+  "procName" : "WidgetExtension",
+  "procPath" : "\/private\/var\/containers\/Bundle\/Application\/03C87FC2-CA58-4D3C-BB8B-09C62E8CF010\/Shadowrocket.app\/PlugIns\/WidgetExtension.appex\/WidgetExtension",
+  "bundleInfo" : {"CFBundleShortVersionString":"2.2.88","CFBundleVersion":"3308","CFBundleIdentifier":"com.liguangming.Shadowrocket.Widget"},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.liguangming.Shadowrocket.Widget",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000000, 0x0000000000000000","rawCodes":[0,0],"type":"EXC_CRASH","signal":"SIGABRT"},
+  "termination" : {"code":1,"flags":518,"namespace":"DYLD","indicator":"Library missing","details":["(terminated at launch; ignore backtrace)"],"reasons":["Library not loaded: '\/System\/Library\/Frameworks\/AppIntents.framework\/AppIntents'","Referenced from: '\/Volumes\/VOLUME\/*\/Shadowrocket.app\/PlugIns\/WidgetExtension.appex\/WidgetExtension'","Reason: tried: '\/System\/Library\/Frameworks\/AppIntents.framework\/AppIntents' (no such file)"]},
+  "faultingThread" : 0,
+  "threads" : [{"triggered":true,"id":227580,"threadState":{"x":[{"value":6},{"value":1},{"value":6137932952},{"value":222},{"value":6137931928},{"value":0},{"value":0},{"value":3632},{"value":32},{"value":9},{"value":6137932191},{"value":321},{"value":8028074728750348357},{"value":3420595450584051310},{"value":8666461036819540311},{"value":31084746137036148},{"value":521},{"value":1038128},{"value":0},{"value":0},{"value":6137931928},{"value":222},{"value":6137932952},{"value":1},{"value":6},{"value":6137931928},{"value":1024},{"value":1024},{"value":263}],"flavor":"ARM_THREAD_STATE64","lr":{"value":4332947164},"cpsr":{"value":0},"fp":{"value":6137931872},"sp":{"value":6137931808},"esr":{"value":1442840704,"description":" Address size fault"},"pc":{"value":4332925644,"matchesCrashFrame":1},"far":{"value":4330438656}},"frames":[{"imageOffset":291532,"symbol":"__abort_with_payload","symbolLocation":8,"imageIndex":0},{"imageOffset":313052,"symbol":"abort_with_payload_wrapper_internal","symbolLocation":100,"imageIndex":0},{"imageOffset":313100,"symbol":"abort_with_payload","symbolLocation":12,"imageIndex":0},{"imageOffset":133800,"symbol":"dyld4::halt(char const*)","symbolLocation":576,"imageIndex":0},{"imageOffset":122436,"symbol":"dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*)","symbolLocation":3108,"imageIndex":0},{"imageOffset":115888,"symbol":"start","symbolLocation":412,"imageIndex":0}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4332634112,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  }
+],
+  "sharedCache" : {
+  "base" : 6449512448,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=944K resident=0K(0%) swapped_out_or_unallocated=944K(100%)\nWritable regions: Total=2064K written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=2064K(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nSTACK GUARD                         16K        1 \nStack                             1008K        1 \nVM_ALLOCATE                         16K        1 \n__DATA                              80K        3 \n__DATA_CONST                        96K        2 \n__LINKEDIT                         288K        2 \n__TEXT                             656K        2 \ndyld private memory               1024K        1 \n===========                     =======  ======= \nTOTAL                             3184K       13 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

@@ -1,0 +1,197 @@
+{"app_name":"MultiICloudMailTask","timestamp":"2026-07-13 12:47:21.00 +0800","app_version":"0.1.8","slice_uuid":"6be37a92-01eb-3e2a-afbe-e82f37c7167a","build_version":"8","platform":2,"bundleID":"com.zest.multiicloudmailtask","share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"4AD52407-A6AD-4D5A-9E0A-14F3A14DE16B","name":"MultiICloudMailTask"}
+{
+  "uptime" : 55000,
+  "procLaunch" : "2026-07-13 12:32:00.5608 +0800",
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 1301180279766,
+  "coalitionID" : 1140,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-13 12:47:21.2675 +0800",
+  "incident" : "4AD52407-A6AD-4D5A-9E0A-14F3A14DE16B",
+  "bug_type" : "309",
+  "pid" : 6898,
+  "procExitAbsTime" : 1323276340712,
+  "cpuType" : "ARM-64",
+  "procName" : "MultiICloudMailTask",
+  "procPath" : "\/private\/var\/containers\/Bundle\/Application\/B36EA36A-180A-43D9-B7C9-17FD6EE4FC0C\/MultiICloudMailTask.app\/MultiICloudMailTask",
+  "bundleInfo" : {"CFBundleShortVersionString":"0.1.8","CFBundleVersion":"8","CFBundleIdentifier":"com.zest.multiicloudmailtask"},
+  "storeInfo" : {"deviceIdentifierForVendor":"A2C66E0E-0BD5-45BD-B6E4-7911A6341CB1"},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.zest.multiicloudmailtask",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "vmRegionInfo" : "0x122e00000 is in 0x122e00000-0x122e04000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      MALLOC_TINY              122d00000-122e00000 [ 1024K] rw-\/rwx SM=PRV  \n--->  VM_ALLOCATE              122e00000-122e04000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              122e04000-122e08000 [   16K] rw-\/rwx SM=PRV  ",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000032, 0x0000000122e00000","rawCodes":[50,4880072704],"type":"EXC_BAD_ACCESS","signal":"SIGKILL - CODESIGNING","subtype":"UNKNOWN_0x32 at 0x0000000122e00000"},
+  "termination" : {"namespace":"CODESIGNING","flags":0,"code":2},
+  "vmregioninfo" : "0x122e00000 is in 0x122e00000-0x122e04000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      MALLOC_TINY              122d00000-122e00000 [ 1024K] rw-\/rwx SM=PRV  \n--->  VM_ALLOCATE              122e00000-122e04000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              122e04000-122e08000 [   16K] rw-\/rwx SM=PRV  ",
+  "faultingThread" : 5,
+  "threads" : [{"id":192218,"queue":"com.apple.main-thread","frames":[{"imageOffset":11604,"symbol":"objc_release","symbolLocation":68,"imageIndex":0},{"imageOffset":1404548,"symbol":"-[UIView traitCollection]","symbolLocation":476,"imageIndex":1},{"imageOffset":1758772,"symbol":"-[UIView _wrappedProcessTraitCollectionDidChange:forceNotification:]","symbolLocation":484,"imageIndex":1},{"imageOffset":1758892,"symbol":"-[UIView _wrappedProcessTraitCollectionDidChange:forceNotification:]","symbolLocation":604,"imageIndex":1},{"imageOffset":1758824,"symbol":"-[UIView _wrappedProcessTraitCollectionDidChange:forceNotification:]","symbolLocation":536,"imageIndex":1},{"imageOffset":1794960,"symbol":"-[UIView _processDidChangeRecursivelyFromOldTraits:toCurrentTraits:forceNotification:]","symbolLocation":132,"imageIndex":1},{"imageOffset":1480276,"symbol":"specialized PlatformViewHost.updateEnvironment(_:viewPhase:focusedValues:)","symbolLocation":340,"imageIndex":2},{"imageOffset":318004,"symbol":"specialized closure #3 in closure #1 in PlatformViewChild.updateValue()","symbolLocation":76,"imageIndex":2},{"imageOffset":759064,"symbol":"specialized closure #1 in PlatformViewChild.updateValue()","symbolLocation":2384,"imageIndex":2},{"imageOffset":3779216,"symbol":"partial apply for specialized implicit closure #2 in implicit closure #1 in closure #1 in closure #1 in Attribute.init<A>(_:)","symbolLocation":52,"imageIndex":2},{"imageOffset":16660,"symbol":"AG::Graph::UpdateStack::update()","symbolLocation":516,"imageIndex":3},{"imageOffset":14464,"symbol":"AG::Graph::update_attribute(AG::data::ptr<AG::Node>, unsigned int)","symbolLocation":392,"imageIndex":3},{"imageOffset":10132,"symbol":"AG::Subgraph::update(unsigned int)","symbolLocation":856,"imageIndex":3},{"imageOffset":19704,"symbol":"ViewGraph.updateOutputs()","symbolLocation":228,"imageIndex":2},{"imageOffset":81440,"symbol":"closure #1 in ViewRendererHost.render(interval:updateDisplayList:)","symbolLocation":2076,"imageIndex":2},{"imageOffset":788696,"symbol":"ViewRendererHost.render(interval:updateDisplayList:)","symbolLocation":364,"imageIndex":2},{"imageOffset":149032,"symbol":"_UIHostingView.layoutSubviews()","symbolLocation":248,"imageIndex":2},{"imageOffset":162652,"symbol":"@objc _UIHostingView.layoutSubviews()","symbolLocation":24,"imageIndex":2},{"imageOffset":1556852,"symbol":"-[UIView(CALayerDelegate) layoutSublayersOfLayer:]","symbolLocation":2556,"imageIndex":1},{"imageOffset":251168,"symbol":"CA::Layer::layout_if_needed(CA::Transaction*)","symbolLocation":528,"imageIndex":4},{"imageOffset":197268,"symbol":"CA::Layer::layout_and_display_if_needed(CA::Transaction*)","symbolLocation":132,"imageIndex":4},{"imageOffset":277704,"symbol":"CA::Context::commit_transaction(CA::Transaction*, double, double*)","symbolLocation":464,"imageIndex":4},{"imageOffset":313244,"symbol":"CA::Transaction::commit()","symbolLocation":708,"imageIndex":4},{"imageOffset":3363764,"symbol":"__34-[UIApplication _firstCommitBlock]_block_invoke_2","symbolLocation":40,"imageIndex":1},{"imageOffset":448140,"symbol":"__CFRUNLOOP_IS_CALLING_OUT_TO_A_BLOCK__","symbolLocation":20,"imageIndex":5},{"imageOffset":451760,"symbol":"__CFRunLoopDoBlocks","symbolLocation":408,"imageIndex":5},{"imageOffset":44572,"symbol":"__CFRunLoopRun","symbolLocation":788,"imageIndex":5},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":5},{"imageOffset":6536,"symbol":"GSEventRunModal","symbolLocation":160,"imageIndex":6},{"imageOffset":5134984,"symbol":"-[UIApplication _run]","symbolLocation":1080,"imageIndex":1},{"imageOffset":2617208,"symbol":"UIApplicationMain","symbolLocation":336,"imageIndex":1},{"imageOffset":2035048,"symbol":"closure #1 in KitRendererCommon(_:)","symbolLocation":160,"imageIndex":2},{"imageOffset":1292348,"symbol":"runApp<A>(_:)","symbolLocation":180,"imageIndex":2},{"imageOffset":1184220,"symbol":"static App.main()","symbolLocation":96,"imageIndex":2},{"imageOffset":30952,"symbol":"static MultiICloudMailTaskApp.$main()","symbolLocation":40,"imageIndex":7},{"imageOffset":31628,"symbol":"main","symbolLocation":12,"imageIndex":7},{"imageOffset":115920,"symbol":"start","symbolLocation":444,"imageIndex":8}]},{"id":192224,"name":"com.apple.uikit.eventfetch-thread","frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":9},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":9},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":5},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":5},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":5},{"imageOffset":97964,"symbol":"-[NSRunLoop(NSRunLoop) runMode:beforeDate:]","symbolLocation":232,"imageIndex":10},{"imageOffset":356304,"symbol":"-[NSRunLoop(NSRunLoop) runUntilDate:]","symbolLocation":88,"imageIndex":10},{"imageOffset":4607732,"symbol":"-[UIEventFetcher threadMain]","symbolLocation":512,"imageIndex":1},{"imageOffset":412636,"symbol":"__NSThread__start__","symbolLocation":792,"imageIndex":10},{"imageOffset":13112,"symbol":"_pthread_start","symbolLocation":116,"imageIndex":11},{"imageOffset":6456,"symbol":"thread_start","symbolLocation":8,"imageIndex":11}]},{"id":192434,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":11}]},{"id":193134,"queue":"com.apple.network.connections","frames":[{"imageOffset":4404,"symbol":"kevent_id","symbolLocation":8,"imageIndex":9},{"imageOffset":140468,"symbol":"_dispatch_kq_poll","symbolLocation":228,"imageIndex":12},{"imageOffset":139276,"symbol":"_dispatch_kq_drain","symbolLocation":156,"imageIndex":12},{"imageOffset":138988,"symbol":"_dispatch_event_loop_drain$VARIANT$mp","symbolLocation":344,"imageIndex":12},{"imageOffset":50440,"symbol":"_dispatch_workloop_invoke$VARIANT$mp","symbolLocation":2060,"imageIndex":12},{"imageOffset":85704,"symbol":"_dispatch_workloop_worker_thread","symbolLocation":632,"imageIndex":12},{"imageOffset":7680,"symbol":"_pthread_wqthread","symbolLocation":284,"imageIndex":11},{"imageOffset":6444,"symbol":"start_wqthread","symbolLocation":8,"imageIndex":11}]},{"id":193158,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":11}]},{"triggered":true,"id":193840,"threadState":{"x":[{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":4880089088},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":3405691582},"cpsr":{"value":0},"fp":{"value":0},"sp":{"value":4880154624},"esr":{"value":2181038095,"description":"(Instruction Abort) Permission fault"},"pc":{"value":4880072704,"matchesCrashFrame":1},"far":{"value":4880072704}},"frames":[{"imageOffset":4880072704,"imageIndex":13}]},{"id":195114,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":11}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6848032768,
+    "size" : 229376,
+    "uuid" : "f1b36686-ed48-35ef-8896-0cea8e9da1c0",
+    "path" : "\/usr\/lib\/libobjc.A.dylib",
+    "name" : "libobjc.A.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6489997312,
+    "size" : 24756224,
+    "uuid" : "9d301877-2593-385c-8f72-f075aa0b48fa",
+    "path" : "\/System\/Library\/PrivateFrameworks\/UIKitCore.framework\/UIKitCore",
+    "name" : "UIKitCore"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6577319936,
+    "size" : 14946304,
+    "uuid" : "a62d133a-55df-3b0d-b8de-8334d87722d0",
+    "path" : "\/System\/Library\/Frameworks\/SwiftUI.framework\/SwiftUI",
+    "name" : "SwiftUI"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7349354496,
+    "size" : 221184,
+    "uuid" : "ac489305-f333-37c8-8e33-6721f32fb741",
+    "path" : "\/System\/Library\/PrivateFrameworks\/AttributeGraph.framework\/AttributeGraph",
+    "name" : "AttributeGraph"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6514896896,
+    "size" : 3047424,
+    "uuid" : "bfb37348-30c8-3723-84e1-7b04acacc5be",
+    "path" : "\/System\/Library\/Frameworks\/QuartzCore.framework\/QuartzCore",
+    "name" : "QuartzCore"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6453055488,
+    "size" : 4448256,
+    "uuid" : "eec1287d-059b-38c8-9bc1-58a0c8b1e6c2",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/CoreFoundation",
+    "name" : "CoreFoundation"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7001853952,
+    "size" : 36864,
+    "uuid" : "bb434d86-0991-365f-bed3-c3923cf3073c",
+    "path" : "\/System\/Library\/PrivateFrameworks\/GraphicsServices.framework\/GraphicsServices",
+    "name" : "GraphicsServices"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4363354112,
+    "size" : 786432,
+    "uuid" : "6be37a92-01eb-3e2a-afbe-e82f37c7167a",
+    "path" : "\/private\/var\/containers\/Bundle\/Application\/B36EA36A-180A-43D9-B7C9-17FD6EE4FC0C\/MultiICloudMailTask.app\/MultiICloudMailTask",
+    "name" : "MultiICloudMailTask"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4367908864,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/private\/preboot\/32AA6407BAA95597014A6E0B9C41EDFAF1FD8174C46D8E437F3082BD9948F79EFF4F691080B3D6D3E7EEC6383662C115\/dopamine-fYddKK\/procursus\/basebin\/gen\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7436042240,
+    "size" : 212992,
+    "uuid" : "a0b29fd9-54cf-3871-a8e2-2b30ffceb58b",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6477250560,
+    "size" : 3035136,
+    "uuid" : "f9235fc7-ec4e-31c9-b56e-95cf10b07239",
+    "path" : "\/System\/Library\/Frameworks\/Foundation.framework\/Foundation",
+    "name" : "Foundation"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7984021504,
+    "size" : 69632,
+    "uuid" : "a150c45a-fa09-3593-8e64-337bc555c085",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6449840128,
+    "size" : 536576,
+    "uuid" : "9ccdbde3-15e1-3a45-b330-4a5e2c3f92bd",
+    "path" : "\/usr\/lib\/system\/libdispatch.dylib",
+    "name" : "libdispatch.dylib"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  }
+],
+  "sharedCache" : {
+  "base" : 6449512448,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=601.2M resident=0K(0%) swapped_out_or_unallocated=601.2M(100%)\nWritable regions: Total=562.2M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=562.2M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nActivity Tracing                   256K        1 \nCG raster data                     416K       10 \nColorSync                          144K        5 \nCoreAnimation                     4480K      126 \nFoundation                          16K        1 \nKernel Alloc Once                   32K        1 \nMALLOC                           547.5M      146 \nMALLOC guard page                  192K       12 \nMemory Tag 255                    17.7M        3 \nSTACK GUARD                         96K        6 \nStack                             3728K        6 \nVM_ALLOCATE                       3216K        8 \nVM_ALLOCATE (reserved)             272K        1         reserved VM address space (unallocated)\n__CTF                               756        1 \n__DATA                            14.8M      431 \n__DATA_CONST                      35.6M      448 \n__DATA_DIRTY                      1565K      361 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       187.3M        4 \n__OBJC_RO                         92.1M        1 \n__OBJC_RW                         3520K        1 \n__TEXT                           413.9M      453 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nlibnetwork                         128K        8 \nmapped file                      395.3M       28 \nshared memory                     2096K        5 \n===========                     =======  ======= \nTOTAL                              1.7G     2070 \nTOTAL, minus reserved VM space     1.7G     2070 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

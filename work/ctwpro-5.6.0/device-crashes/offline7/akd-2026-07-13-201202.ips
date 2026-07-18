@@ -1,0 +1,132 @@
+{"app_name":"akd","timestamp":"2026-07-13 20:12:02.00 +0800","app_version":"","slice_uuid":"402e0d51-6b6b-355b-878d-accca5829315","build_version":"","platform":2,"share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"iPhone OS 15.8.8 (19H422)","incident_id":"AB844B6D-C679-4D04-BE45-C77270BA7FBE","name":"akd"}
+{
+  "uptime" : 62000,
+  "procLaunch" : "2026-07-13 20:12:01.4813 +0800",
+  "procRole" : "Unspecified",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iPhone9,2",
+  "procStartAbsTime" : 1500734805218,
+  "coalitionID" : 675,
+  "osVersion" : {
+    "isEmbedded" : true,
+    "train" : "iPhone OS 15.8.8",
+    "releaseType" : "User",
+    "build" : "19H422"
+  },
+  "captureTime" : "2026-07-13 20:12:02.2732 +0800",
+  "incident" : "AB844B6D-C679-4D04-BE45-C77270BA7FBE",
+  "bug_type" : "309",
+  "pid" : 7906,
+  "procExitAbsTime" : 1500753774028,
+  "cpuType" : "ARM-64",
+  "procName" : "akd",
+  "procPath" : "\/System\/Library\/PrivateFrameworks\/AuthKit.framework\/akd",
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.apple.akd",
+  "crashReporterKey" : "12f1b6f49a0c27006aaed8abece8352c9a2f6ccb",
+  "basebandVersion" : "12.00.00",
+  "vmRegionInfo" : "0x106300000 is in 0x106300000-0x106304000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      MALLOC_TINY              106200000-106300000 [ 1024K] rw-\/rwx SM=PRV  \n--->  VM_ALLOCATE              106300000-106304000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              106304000-106308000 [   16K] rw-\/rwx SM=PRV  ",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000032, 0x0000000106300000","rawCodes":[50,4398776320],"type":"EXC_BAD_ACCESS","signal":"SIGKILL - CODESIGNING","subtype":"UNKNOWN_0x32 at 0x0000000106300000"},
+  "termination" : {"namespace":"CODESIGNING","flags":0,"code":2},
+  "vmregioninfo" : "0x106300000 is in 0x106300000-0x106304000;  bytes after start: 0  bytes before end: 16383\n      REGION TYPE                 START - END      [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      MALLOC_TINY              106200000-106300000 [ 1024K] rw-\/rwx SM=PRV  \n--->  VM_ALLOCATE              106300000-106304000 [   16K] r-x\/rwx SM=PRV  \n      VM_ALLOCATE              106304000-106308000 [   16K] rw-\/rwx SM=PRV  ",
+  "faultingThread" : 6,
+  "threads" : [{"id":233021,"queue":"com.apple.main-thread","frames":[{"imageOffset":2732,"symbol":"mach_msg_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":4220,"symbol":"mach_msg","symbolLocation":72,"imageIndex":0},{"imageOffset":27784,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":368,"imageIndex":1},{"imageOffset":44944,"symbol":"__CFRunLoopRun","symbolLocation":1160,"imageIndex":1},{"imageOffset":123252,"symbol":"CFRunLoopRunSpecific","symbolLocation":572,"imageIndex":1},{"imageOffset":97964,"symbol":"-[NSRunLoop(NSRunLoop) runMode:beforeDate:]","symbolLocation":232,"imageIndex":2},{"imageOffset":99872,"symbol":"-[NSRunLoop(NSRunLoop) run]","symbolLocation":88,"imageIndex":2},{"imageOffset":197424,"imageIndex":3},{"imageOffset":115920,"symbol":"start","symbolLocation":444,"imageIndex":4}]},{"id":233022,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":5}]},{"id":233023,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":5}]},{"id":233024,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":5}]},{"id":233025,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":5}]},{"id":233027,"frames":[{"imageOffset":6436,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":5}]},{"triggered":true,"id":233032,"threadState":{"x":[{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":4398792704},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":3405691582},"cpsr":{"value":0},"fp":{"value":0},"sp":{"value":4398858240},"esr":{"value":2181038095,"description":"(Instruction Abort) Permission fault"},"pc":{"value":4398776320,"matchesCrashFrame":1},"far":{"value":4398776320}},"frames":[{"imageOffset":4398776320,"imageIndex":6}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7436042240,
+    "size" : 212992,
+    "uuid" : "a0b29fd9-54cf-3871-a8e2-2b30ffceb58b",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6453055488,
+    "size" : 4448256,
+    "uuid" : "eec1287d-059b-38c8-9bc1-58a0c8b1e6c2",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/CoreFoundation",
+    "name" : "CoreFoundation"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 6477250560,
+    "size" : 3035136,
+    "uuid" : "f9235fc7-ec4e-31c9-b56e-95cf10b07239",
+    "path" : "\/System\/Library\/Frameworks\/Foundation.framework\/Foundation",
+    "name" : "Foundation"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4329963520,
+    "size" : 1032192,
+    "uuid" : "402e0d51-6b6b-355b-878d-accca5829315",
+    "path" : "\/System\/Library\/PrivateFrameworks\/AuthKit.framework\/akd",
+    "name" : "akd"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4331421696,
+    "size" : 393216,
+    "uuid" : "444f5041-322e-342e-3900-6ae7fb25eb29",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 7984021504,
+    "size" : 69632,
+    "uuid" : "a150c45a-fa09-3593-8e64-337bc555c085",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  }
+],
+  "sharedCache" : {
+  "base" : 6449512448,
+  "size" : 2334752768,
+  "uuid" : "a838e8bb-a068-30d0-95f3-e6de6bd28566"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=354.2M resident=0K(0%) swapped_out_or_unallocated=354.2M(100%)\nWritable regions: Total=28.0M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=28.0M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nActivity Tracing                   256K        1 \nDispatch continuations            2048K        1 \nKernel Alloc Once                   32K        1 \nMALLOC                            20.5M       23 \nMALLOC guard page                  128K        8 \nMemory Tag 255                    17.7M        3 \nSQLite page cache                  256K        4 \nSTACK GUARD                         96K        6 \nStack                             3728K        6 \nVM_ALLOCATE                         80K        4 \nVM_ALLOCATE (reserved)             272K        1         reserved VM address space (unallocated)\n__CTF                               756        1 \n__DATA                            5833K      259 \n__DATA_CONST                      16.3M      275 \n__DATA_DIRTY                       547K      222 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       186.2M        3 \n__OBJC_RO                         92.1M        1 \n__OBJC_RW                         3520K        1 \n__TEXT                           168.1M      279 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nlibnetwork                         128K        8 \nmapped file                       29.5M        7 \nshared memory                       64K        4 \n===========                     =======  ======= \nTOTAL                            548.5M     1121 \nTOTAL, minus reserved VM space   548.2M     1121 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60da5e84ab0ca017dace9abf",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000008
+    },
+    {
+      "rolloutId" : "61030413bfe6dc472e1c980c",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000489
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}
