@@ -1,6 +1,0 @@
-#!/bin/sh
-
-cd /var/jb
-launchctl unload /var/jb/Library/LaunchDaemons/com.xxdevice.ctwsrv.plist
-
-exit 0
