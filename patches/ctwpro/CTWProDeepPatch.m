@@ -302,9 +302,45 @@ static NSDictionary *CachedConfigDictionary(id instance) {
     return [object isKindOfClass:[NSDictionary class]] ? object : nil;
 }
 
-static NSDictionary *BuildLocalRandomConfig(NSString **failureStage) {
-    *failureStage = @"config-instance";
+static Class LoadDeviceConfigClass(NSString **failureStage) {
     Class configClass = objc_getClass("LKDeviceConfig");
+    if (configClass != Nil) {
+        return configClass;
+    }
+
+    static const char *paths[] = {
+        "/var/jb/Library/MobileSubstrate/DynamicLibraries/CTW.dylib",
+        "/Library/MobileSubstrate/DynamicLibraries/CTW.dylib"
+    };
+    BOOL loadedImage = NO;
+    for (NSUInteger index = 0; index < sizeof(paths) / sizeof(paths[0]); index++) {
+        void *handle = dlopen(paths[index], RTLD_NOW | RTLD_GLOBAL);
+        if (handle == NULL) {
+            continue;
+        }
+        loadedImage = YES;
+        configClass = objc_getClass("LKDeviceConfig");
+        if (configClass != Nil) {
+            return configClass;
+        }
+    }
+
+    *failureStage = loadedImage ? @"config-class" : @"config-dlopen";
+    return Nil;
+}
+
+static NSDictionary *BuildLocalRandomConfig(NSString **failureStage) {
+    Class configClass = LoadDeviceConfigClass(failureStage);
+    if (configClass == Nil) {
+        return nil;
+    }
+    SEL sharedSelector = sel_registerName("sharedInstance");
+    if (![(id)configClass respondsToSelector:sharedSelector]) {
+        *failureStage = @"config-shared-selector";
+        return nil;
+    }
+
+    *failureStage = @"config-shared-instance";
     id instance = CallObject((id)configClass, "sharedInstance");
     if (instance == nil) {
         return nil;
