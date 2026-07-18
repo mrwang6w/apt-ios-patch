@@ -25,6 +25,26 @@ static id CallObject(id receiver, const char *selectorName) {
     return ((id (*)(id, SEL))implementation)(receiver, selector);
 }
 
+static id CallObjectUnsignedLongLong(
+    id receiver,
+    const char *selectorName,
+    unsigned long long value
+) {
+    if (receiver == nil) {
+        return nil;
+    }
+    SEL selector = sel_registerName(selectorName);
+    if (![receiver respondsToSelector:selector]) {
+        return nil;
+    }
+    IMP implementation = [receiver methodForSelector:selector];
+    return ((id (*)(id, SEL, unsigned long long))implementation)(
+        receiver,
+        selector,
+        value
+    );
+}
+
 static void CallVoidObject(id receiver, const char *selectorName, id value) {
     if (receiver == nil) {
         return;
@@ -249,17 +269,14 @@ static BOOL IsCompleteLocalConfig(NSDictionary *config) {
             @"random", @"machine", @"diskSize", @"serial_number", @"ncpu",
             @"unknownNumber", @"mac", @"system", @"kern_version", @"webkit",
             @"system_version", @"mode", @"active", @"boardSerial", @"darwin",
-            @"udid"
+            @"udid", @"update_time"
         ]];
     });
     return [config isKindOfClass:[NSDictionary class]] &&
            [requiredKeys isSubsetOfSet:[NSSet setWithArray:config.allKeys]];
 }
 
-static id LocalRandomConfig(id self, SEL _cmd) {
-    (void)self;
-    (void)_cmd;
-
+static NSDictionary *BuildLocalRandomConfig(void) {
     Class configClass = objc_getClass("LKDeviceConfig");
     id instance = CallObject((id)configClass, "sharedInstance");
     if (instance == nil) {
@@ -267,13 +284,50 @@ static id LocalRandomConfig(id self, SEL _cmd) {
     }
 
     @synchronized (instance) {
-        id generated = CallObject(instance, "makeRandomConfig");
-        if (!IsCompleteLocalConfig(generated)) {
+        id defaults = CallObject(instance, "defaultConfig");
+        if (![defaults isKindOfClass:[NSDictionary class]]) {
             return nil;
         }
 
-        NSMutableDictionary *config = [generated mutableCopy];
+        id random = CallObjectUnsignedLongLong(
+            instance,
+            "randomHexStringWithLength:",
+            40
+        );
+        id udid = CallObjectUnsignedLongLong(
+            instance,
+            "randomHexStringWithLength:",
+            40
+        );
+        id serialNumber = CallObjectUnsignedLongLong(
+            instance,
+            "randomAlphanumericStringWithLength:",
+            12
+        );
+        id boardSerial = CallObjectUnsignedLongLong(
+            instance,
+            "randomAlphanumericStringWithLength:",
+            16
+        );
+        id mac = CallObject(instance, "randomMacAddress");
+        id unknownNumber = CallObject(instance, "randomUnknownNumber");
+        if (random == nil || udid == nil || serialNumber == nil ||
+            boardSerial == nil || mac == nil || unknownNumber == nil) {
+            return nil;
+        }
+
+        NSMutableDictionary *config = [defaults mutableCopy];
+        config[@"random"] = random;
+        config[@"udid"] = udid;
+        config[@"serial_number"] = serialNumber;
+        config[@"boardSerial"] = boardSerial;
+        config[@"mac"] = mac;
+        config[@"unknownNumber"] = unknownNumber;
+        config[@"active"] = @0;
         config[@"update_time"] = @([[NSDate date] timeIntervalSince1970]);
+        if (!IsCompleteLocalConfig(config)) {
+            return nil;
+        }
 
         NSError *error = nil;
         NSData *data = [NSJSONSerialization dataWithJSONObject:config
@@ -292,6 +346,143 @@ static id LocalRandomConfig(id self, SEL _cmd) {
         CallVoidObject(instance, "setConfig:", config);
         CallVoidBool(instance, "setDevice_updated:", YES);
         return config;
+    }
+}
+
+static UIViewController *FindController(
+    UIViewController *controller,
+    Class targetClass
+) {
+    if (controller == nil) {
+        return nil;
+    }
+    if ([controller isKindOfClass:targetClass]) {
+        return controller;
+    }
+    if ([controller isKindOfClass:[UINavigationController class]]) {
+        for (UIViewController *child in
+             [(UINavigationController *)controller viewControllers].reverseObjectEnumerator) {
+            UIViewController *match = FindController(child, targetClass);
+            if (match != nil) {
+                return match;
+            }
+        }
+    }
+    if ([controller isKindOfClass:[UITabBarController class]]) {
+        UIViewController *match = FindController(
+            [(UITabBarController *)controller selectedViewController],
+            targetClass
+        );
+        if (match != nil) {
+            return match;
+        }
+    }
+    for (UIViewController *child in controller.childViewControllers) {
+        UIViewController *match = FindController(child, targetClass);
+        if (match != nil) {
+            return match;
+        }
+    }
+    return FindController(controller.presentedViewController, targetClass);
+}
+
+static UIViewController *FindMainViewController(void) {
+    Class targetClass = objc_getClass("ViewController");
+    if (targetClass == Nil) {
+        return nil;
+    }
+    for (UIWindow *window in [UIApplication sharedApplication].windows) {
+        UIViewController *match = FindController(
+            window.rootViewController,
+            targetClass
+        );
+        if (match != nil) {
+            return match;
+        }
+    }
+    return nil;
+}
+
+static IMP ExpectedMainImplementation(
+    Class cls,
+    const char *selectorName,
+    uintptr_t expectedOffset
+) {
+    Method method = class_getInstanceMethod(cls, sel_registerName(selectorName));
+    if (method == NULL) {
+        return NULL;
+    }
+    IMP implementation = method_getImplementation(method);
+    Dl_info imageInfo = {0};
+    if (dladdr((const void *)implementation, &imageInfo) == 0 ||
+        imageInfo.dli_fbase == NULL || imageInfo.dli_fname == NULL ||
+        strstr(imageInfo.dli_fname, "/CTW Pro") == NULL) {
+        return NULL;
+    }
+    uintptr_t offset =
+        (uintptr_t)implementation - (uintptr_t)imageInfo.dli_fbase;
+    return offset == expectedOffset ? implementation : NULL;
+}
+
+static void ShowOfflineRandomError(UIViewController *controller) {
+    UIAlertController *alert = [UIAlertController
+        alertControllerWithTitle:@"离线新机生成失败"
+                         message:@"本地配置或应用入口校验失败，未执行改机。"
+                  preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确认"
+                                             style:UIAlertActionStyleDefault
+                                           handler:nil]];
+    [controller presentViewController:alert animated:YES completion:nil];
+}
+
+static void LocalRandomPreferences(id self, SEL _cmd, id sender) {
+    (void)_cmd;
+    if (![self isKindOfClass:[UIViewController class]]) {
+        return;
+    }
+
+    UIViewController *preferences = (UIViewController *)self;
+    UIViewController *mainController = FindMainViewController();
+    Class mainClass = objc_getClass("ViewController");
+    IMP applyImplementation = ExpectedMainImplementation(
+        mainClass,
+        "performeMachineStub",
+        0x53de04
+    );
+    if (mainController == nil || applyImplementation == NULL ||
+        BuildLocalRandomConfig() == nil) {
+        if ([sender respondsToSelector:@selector(setEnabled:)]) {
+            [sender setEnabled:YES];
+        }
+        ShowOfflineRandomError(preferences);
+        return;
+    }
+
+    if ([sender respondsToSelector:@selector(setEnabled:)]) {
+        [sender setEnabled:NO];
+    }
+
+    void (^applyConfig)(void) = ^{
+        RepairController(mainController);
+        SEL selector = sel_registerName("performeMachineStub");
+        ((void (*)(id, SEL))applyImplementation)(mainController, selector);
+    };
+
+    UINavigationController *navigationController =
+        preferences.navigationController;
+    if (navigationController != nil &&
+        [navigationController.viewControllers containsObject:preferences] &&
+        navigationController.viewControllers.count > 1) {
+        [navigationController popViewControllerAnimated:YES];
+        dispatch_after(
+            dispatch_time(DISPATCH_TIME_NOW, 350 * NSEC_PER_MSEC),
+            dispatch_get_main_queue(),
+            applyConfig
+        );
+    } else if (preferences.presentingViewController != nil) {
+        [preferences dismissViewControllerAnimated:YES completion:applyConfig];
+    } else {
+        applyConfig();
     }
 }
 
@@ -355,47 +546,10 @@ static BOOL ReplaceExpected(
     return method_getImplementation(method) == replacement;
 }
 
-static BOOL ReplaceExpectedClassMethod(
-    Class cls,
-    const char *selectorName,
-    uintptr_t expectedOffset,
-    const char *expectedImage,
-    IMP replacement
-) {
-    if (cls == Nil) {
-        return NO;
-    }
-    Class metaclass = object_getClass(cls);
-    SEL selector = sel_registerName(selectorName);
-    Method method = class_getInstanceMethod(metaclass, selector);
-    if (method == NULL) {
-        return NO;
-    }
-
-    IMP current = method_getImplementation(method);
-    if (current == replacement) {
-        return YES;
-    }
-
-    Dl_info imageInfo = {0};
-    if (dladdr((const void *)current, &imageInfo) == 0 ||
-        imageInfo.dli_fbase == NULL ||
-        imageInfo.dli_fname == NULL ||
-        strstr(imageInfo.dli_fname, expectedImage) == NULL) {
-        return NO;
-    }
-    uintptr_t currentOffset = (uintptr_t)current - (uintptr_t)imageInfo.dli_fbase;
-    if (currentOffset != expectedOffset) {
-        return NO;
-    }
-
-    method_setImplementation(method, replacement);
-    return method_getImplementation(method) == replacement;
-}
-
 static BOOL InstallRuntimePatches(void) {
     Class viewController = objc_getClass("ViewController");
-    if (viewController == Nil) {
+    Class machinePreferences = objc_getClass("MachinePreferences");
+    if (viewController == Nil || machinePreferences == Nil) {
         return NO;
     }
 
@@ -431,13 +585,8 @@ static BOOL InstallRuntimePatches(void) {
                                 (IMP)AlwaysNo, NULL);
     complete &= ReplaceExpected(viewController, "setIsNeedFlushIP:", 0x56e438,
                                 (IMP)ForceNoFlush, &gOriginalSetNeedFlushIP);
-    complete &= ReplaceExpectedClassMethod(
-        objc_getClass("LKVdConfig"),
-        "randomConfig",
-        0x9958,
-        "/CTW.dylib",
-        (IMP)LocalRandomConfig
-    );
+    complete &= ReplaceExpected(machinePreferences, "randomPreferences:",
+                                0x84488, (IMP)LocalRandomPreferences, NULL);
     return complete;
 }
 

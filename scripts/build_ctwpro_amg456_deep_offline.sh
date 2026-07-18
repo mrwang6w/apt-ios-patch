@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CASE="$ROOT/work/ctwpro-5.6.0"
 SOURCE="$ROOT/downloads/fuyonghua-repo/debs/560_CTW_Pro(无根版)_5.6.0_com.amg456.CTWPro.rootless560.deb"
 SOURCE_SHA256="38234f4381b36587d43fc0f78dd77e9d386b7760a5412152024379233c1891b4"
-OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline3_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
+OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline5_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
 OUTPUT="$ROOT/patched/$OUTPUT_NAME"
 AUDIT="$CASE/deep-source-audit"
 BUILD="$CASE/deep-build"
@@ -21,16 +21,61 @@ PUBLISH_TMP="$ROOT/patched/.$OUTPUT_NAME.tmp"
 
 trap 'rm -f "$PUBLISH_TMP"' EXIT
 
-verify_offline_random_contract() {
+verify_offline_random_helpers() {
   local dylib="$1"
   local metadata
   metadata="$(otool -ov "$dylib")"
   for expected in \
-    'imp     0x9958 +[LKVdConfig randomConfig]' \
     'imp     0xb6f8 -[LKDeviceConfig writeCachedConfigString:]' \
-    'imp     0xcc0c -[LKDeviceConfig makeRandomConfig]'; do
+    'imp     0xc064 -[LKDeviceConfig randomHexStringWithLength:]' \
+    'imp     0xc0f8 -[LKDeviceConfig randomAlphanumericStringWithLength:]' \
+    'imp     0xcae8 -[LKDeviceConfig randomMacAddress]' \
+    'imp     0xcbb0 -[LKDeviceConfig randomUnknownNumber]' \
+    'imp     0xd6f4 -[LKDeviceConfig defaultConfig]'; do
     if ! rg -Fq "$expected" <<<"$metadata"; then
-      echo "offline random method contract is missing: $expected" >&2
+      echo "offline random helper contract is missing: $expected" >&2
+      return 1
+    fi
+  done
+}
+
+verify_random_action_contract() {
+  local main="$1"
+  local nib="$2"
+  python3 - "$main" <<'PY'
+import sys
+from pathlib import Path
+
+blob = Path(sys.argv[1]).read_bytes()
+checks = {
+    0x154FDDE: bytes.fromhex(
+        "72616e646f6d507265666572656e6365733a00"
+    ),
+    0xD5424: bytes.fromhex(
+        "c0a300d000783791a90e5194e10300aaa282d7101f2003d5"
+        "96a40090d6ce3391e00313aae30316aab80c5194"
+    ),
+    0x84488: bytes.fromhex(
+        "fc6fbaa9fa6701a9f85f02a9f65703a9"
+        "f44f04a9fd7b05a9fd430191ff0301d1"
+    ),
+    0x53DE04: bytes.fromhex(
+        "e923b96dfc6f01a9fa6702a9f85f03a9"
+        "f65704a9f44f05a9fd7b06a9fd830191"
+    ),
+}
+for offset, expected in checks.items():
+    actual = blob[offset:offset + len(expected)]
+    if actual != expected:
+        raise SystemExit(
+            f"random action contract mismatch at {offset:#x}: "
+            f"{actual.hex()} != {expected.hex()}"
+        )
+print("random action contract verified: selector, registration, action and apply IMP")
+PY
+  for action in randomPreferences: nativePreferences:; do
+    if ! strings -a "$nib" | rg -Fxq "$action"; then
+      echo "storyboard random action is missing: $action" >&2
       return 1
     fi
   done
@@ -68,7 +113,7 @@ result = []
 inserted = False
 for line in lines:
     if line == "Version: 5.6.0":
-        line = "Version: 5.6.0-offline3"
+        line = "Version: 5.6.0-offline5"
     result.append(line)
     if line.startswith("Depends:"):
         result.extend(
@@ -79,7 +124,7 @@ for line in lines:
             ]
         )
         inserted = True
-if not inserted or "Version: 5.6.0-offline3" not in result:
+if not inserted or "Version: 5.6.0-offline5" not in result:
     raise SystemExit("failed to update control metadata")
 path.write_text("\n".join(result) + "\n", encoding="utf-8")
 PY
@@ -90,9 +135,11 @@ APP="$ROOTFS/var/jb/Applications/CTW Pro.app"
 MAIN="$APP/CTW Pro"
 FIX="$APP/fix.dylib"
 LICENSE_DYLIB="$ROOTFS/var/jb/Library/MobileSubstrate/DynamicLibraries/CTW.dylib"
+RANDOM_ACTION_NIB="$APP/zh-Hans.lproj/Main.storyboardc/UITableViewController-Kzn-J4-oBc.nib"
 
 ldid -e "$MAIN" > "$ENTITLEMENTS"
 plutil -lint "$ENTITLEMENTS"
+verify_random_action_contract "$MAIN" "$RANDOM_ACTION_NIB"
 
 python3 "$ROOT/scripts/patch_ctwpro_amg456_main.py" patch "$MAIN" "$MAIN"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" \
@@ -100,7 +147,7 @@ python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" \
 codesign --force --sign - --timestamp=none "$LICENSE_DYLIB"
 codesign --verify --strict "$LICENSE_DYLIB"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" verify "$LICENSE_DYLIB"
-verify_offline_random_contract "$LICENSE_DYLIB"
+verify_offline_random_helpers "$LICENSE_DYLIB"
 
 SDK="$(xcrun --sdk iphoneos --show-sdk-path)"
 xcrun --sdk iphoneos clang \
@@ -124,7 +171,17 @@ xcrun --sdk iphoneos clang \
 chmod 0755 "$FIX"
 codesign --force --sign - --timestamp=none "$FIX"
 codesign --verify --strict "$FIX"
-for selector in randomConfig makeRandomConfig writeCachedConfigString: setDevice_updated:; do
+for selector in \
+  randomPreferences: \
+  performeMachineStub \
+  defaultConfig \
+  randomHexStringWithLength: \
+  randomAlphanumericStringWithLength: \
+  randomMacAddress \
+  randomUnknownNumber \
+  writeCachedConfigString: \
+  setConfig: \
+  setDevice_updated:; do
   if ! strings -a "$FIX" | rg -Fxq "$selector"; then
     echo "fix.dylib is missing offline random selector: $selector" >&2
     exit 1
@@ -136,6 +193,7 @@ codesign --force --sign - --timestamp=none \
   --entitlements "$ENTITLEMENTS" "$APP"
 codesign --verify --deep --strict "$APP"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_main.py" verify "$MAIN"
+verify_random_action_contract "$MAIN" "$RANDOM_ACTION_NIB"
 
 ldid -e "$MAIN" > "$SIGNED_ENTITLEMENTS"
 python3 - "$ENTITLEMENTS" "$SIGNED_ENTITLEMENTS" <<'PY'
@@ -182,15 +240,17 @@ VERIFY_APP="$VERIFY/rootfs/var/jb/Applications/CTW Pro.app"
 VERIFY_MAIN="$VERIFY_APP/CTW Pro"
 VERIFY_FIX="$VERIFY_APP/fix.dylib"
 VERIFY_LICENSE="$VERIFY/rootfs/var/jb/Library/MobileSubstrate/DynamicLibraries/CTW.dylib"
+VERIFY_RANDOM_ACTION_NIB="$VERIFY_APP/zh-Hans.lproj/Main.storyboardc/UITableViewController-Kzn-J4-oBc.nib"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_main.py" verify "$VERIFY_MAIN"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" verify "$VERIFY_LICENSE"
-verify_offline_random_contract "$VERIFY_LICENSE"
+verify_offline_random_helpers "$VERIFY_LICENSE"
+verify_random_action_contract "$VERIFY_MAIN" "$VERIFY_RANDOM_ACTION_NIB"
 codesign --verify --strict "$VERIFY_FIX"
 codesign --verify --deep --strict "$VERIFY_APP"
 codesign --verify --strict "$VERIFY_LICENSE"
 
 grep -qx 'Package: com.amg456.CTWPro.rootless560' "$VERIFY/control/control"
-grep -qx 'Version: 5.6.0-offline3' "$VERIFY/control/control"
+grep -qx 'Version: 5.6.0-offline5' "$VERIFY/control/control"
 grep -qx 'Conflicts: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Provides: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Replaces: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"

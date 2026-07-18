@@ -8,7 +8,7 @@
 - `app.Razer854.rootless` / `2.5.0-11_Razer雷蛇(无根) Patch AuthState USTAR` / `debs/app.Razer854.rootless_2.5.0-11_authstate_ustar.deb` / `21217862` bytes / SHA256 `53deb601ec0458da67379ddd0390b5f57e06ef7549079756bb3f7c8f351a8e21`
 - `com.amg456.VBox1` / `VBox_5.5「无根」 Patch NoLicense NoTrialGate NoHeartbeat Dynamic 100Y USTAR` / `debs/com.amg456.VBox1_5.5-6_nolicense_noheartbeat_nodelayedexit_dynamic100y_ustar.deb` / `6343796` bytes / SHA256 `5881deae09d8709f0b1be5bc6813edbaf8ed20487c1ca80442f7ea00514264ff`
 - `app.awz4854.rootful` / `AWZ爱伪装_修复(有根) 15.0.1-1 Patch NoLicense USTAR` / `debs/app.awz4854.rootful_15.0.1-1_nolicense_ustar.deb` / `13030492` bytes / SHA256 `3564d982efc5a79e82a818a4a487372fb9133df7c2c31cbd59366d937b379fd7`
-- `com.amg456.CTWPro.rootless560` / `560_CTW Pro(无根版) 5.6.0-offline3 Deep Offline USTAR` / `debs/com.amg456.CTWPro.rootless560_5.6.0-offline3_deep_offline_ustar.deb` / `26999590` bytes / SHA256 `34a73ef97752765c87730be4917266f4ffbe3275645cf265e39fea3fcaf065e2`
+- `com.amg456.CTWPro.rootless560` / `560_CTW Pro(无根版) 5.6.0-offline5 Deep Offline USTAR` / `debs/com.amg456.CTWPro.rootless560_5.6.0-offline5_deep_offline_ustar.deb` / `27002844` bytes / SHA256 `ddd484af44db1afd02d45462dcd8e5b160a235ac30c5eee7839fa466105dfd50`
 
 > 注意：APT 升级判断以 deb control 中的 `Version` 为准；需要强制覆盖已安装包时，应同步提升 control `Version` 并重新生成 Pages metadata。
 

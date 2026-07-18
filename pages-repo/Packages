@@ -73,7 +73,7 @@ Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：移除后加卡密网络层与安装阶段 aloader 注入调用；双架构固定共享授权状态为有效，并使用无 PAX 扩展头的 USTAR deb 归档。
 
 Package: com.amg456.CTWPro.rootless560
-Version: 5.6.0-offline3
+Version: 5.6.0-offline5
 Priority: standard
 Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
 Conflicts: com.xxdevice.ctwpro.rootless560
@@ -82,14 +82,14 @@ Replaces: com.xxdevice.ctwpro.rootless560
 Architecture: iphoneos-arm64
 Section: CTW Pro
 Maintainer: Local Patch Repo
-Name: 560_CTW Pro(无根版) 5.6.0-offline3 Deep Offline USTAR
+Name: 560_CTW Pro(无根版) 5.6.0-offline5 Deep Offline USTAR
 Author: Local Patch Repo
-Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline3_deep_offline_ustar.deb
-Size: 26999590
-MD5sum: ad75836009ca561f657216ede2dcaa50
-SHA1: 86a1a9e5015da758d728b14803bf3876bf357e48
-SHA256: 34a73ef97752765c87730be4917266f4ffbe3275645cf265e39fea3fcaf065e2
+Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline5_deep_offline_ustar.deb
+Size: 27002844
+MD5sum: 7560dbffa9b44f98ac64f18d451b673d
+SHA1: 2927a000bfd2c70c35bd476236585c10916fbe64
+SHA256: ddd484af44db1afd02d45462dcd8e5b160a235ac30c5eee7839fa466105dfd50
 Depiction: ./depictions/com.amg456.CTWPro.rootless560.html
 Icon: ./CydiaIcon.png
-Description: 授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径，并由本地 fix.dylib 覆盖主程序原有捐赠码输入/扫码、提交 delegate、自动响应弹窗、节点状态、定时权限 UI 与 lockUI 消费者；随机真机参数改为调用包内 LKDeviceConfig 本地生成器并写入原配置缓存，不再请求 /vd；保留核心改机函数和原 38 项 entitlements。
+Description: 授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径，并由本地 fix.dylib 覆盖主程序原有捐赠码输入/扫码、提交 delegate、自动响应弹窗、节点状态、定时权限 UI 与 lockUI 消费者；精确覆盖 MachinePreferences 的 randomPreferences: action，以兼容硬件/固件基线在本地生成身份字段并调用原 performeMachineStub 应用配置，不启动 /vd；保留原 38 项 entitlements。
 
