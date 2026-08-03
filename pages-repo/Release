@@ -8,11 +8,11 @@ Components: main
 Description: 自用授权测试源：Pages 挂载已完成目标的最终 patched 补丁 deb，不发布中间态补丁包或原始源全量资源。
 Date: Wed, 08 Jul 2026 11:44:22 +0000
 MD5Sum:
- a48202494de75a76dec1bd2e0db6ba77 4782 Packages
- baa6a65491c3afaf9fe7bc9caef0f2bd 2277 Packages.gz
+ 88613cb7eb06e91c4cd2df8fdf0391ac 4790 Packages
+ 58493cf2fe2c7057bfd83e78b1d5e036 2286 Packages.gz
 SHA1:
- df204417c3fb5ad69acc4275d7319f265c3c350d 4782 Packages
- 73a2cddbc45b3c351b168b181007c69dfbebcb75 2277 Packages.gz
+ be7975da8813fd70b9cca600a5f9445baa29a41f 4790 Packages
+ f6498b5a7dcb979a09c0098c3f0197624038e351 2286 Packages.gz
 SHA256:
- 3c2f765586220be2924f65f03ab350ecdd97e95929b3bf6a61abe431e10e94e5 4782 Packages
- f97c1b33035280007e786ca04f412f9c869440f726d642d9975d517b83a7407c 2277 Packages.gz
+ c97109860399ab94052b3d779818d578772f111fbbbb6d25d225d88959b36772 4790 Packages
+ c58cce213a74a8ab528559dedaa4547155fdb47771e58355769a4d60b33c090a 2286 Packages.gz

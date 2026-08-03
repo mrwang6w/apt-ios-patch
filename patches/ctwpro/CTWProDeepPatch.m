@@ -455,96 +455,6 @@ static NSDictionary *BuildLocalRandomConfig(NSString **failureStage) {
     }
 }
 
-static UIViewController *FindController(
-    UIViewController *controller,
-    Class targetClass
-) {
-    if (controller == nil) {
-        return nil;
-    }
-    if ([controller isKindOfClass:targetClass]) {
-        return controller;
-    }
-    if ([controller isKindOfClass:[UINavigationController class]]) {
-        for (UIViewController *child in
-             [(UINavigationController *)controller viewControllers].reverseObjectEnumerator) {
-            UIViewController *match = FindController(child, targetClass);
-            if (match != nil) {
-                return match;
-            }
-        }
-    }
-    if ([controller isKindOfClass:[UITabBarController class]]) {
-        UIViewController *match = FindController(
-            [(UITabBarController *)controller selectedViewController],
-            targetClass
-        );
-        if (match != nil) {
-            return match;
-        }
-    }
-    for (UIViewController *child in controller.childViewControllers) {
-        UIViewController *match = FindController(child, targetClass);
-        if (match != nil) {
-            return match;
-        }
-    }
-    return FindController(controller.presentedViewController, targetClass);
-}
-
-static UIViewController *FindMainViewController(UIViewController *preferences) {
-    Class targetClass = objc_getClass("ViewController");
-    if (targetClass == Nil) {
-        return nil;
-    }
-
-    UIViewController *match = FindController(
-        preferences.navigationController,
-        targetClass
-    );
-    if (match != nil) {
-        return match;
-    }
-    for (UIViewController *controller = preferences.parentViewController;
-         controller != nil;
-         controller = controller.parentViewController) {
-        match = FindController(controller, targetClass);
-        if (match != nil) {
-            return match;
-        }
-    }
-    for (UIViewController *controller = preferences.presentingViewController;
-         controller != nil;
-         controller = controller.presentingViewController) {
-        match = FindController(controller, targetClass);
-        if (match != nil) {
-            return match;
-        }
-    }
-
-    UIApplication *application = [UIApplication sharedApplication];
-    UIWindow *preferencesWindow = preferences.viewIfLoaded.window;
-    match = FindController(preferencesWindow.rootViewController, targetClass);
-    if (match != nil) {
-        return match;
-    }
-    UIWindow *delegateWindow = CallObject(application.delegate, "window");
-    match = FindController(delegateWindow.rootViewController, targetClass);
-    if (match != nil) {
-        return match;
-    }
-    for (UIWindow *window in application.windows) {
-        match = FindController(
-            window.rootViewController,
-            targetClass
-        );
-        if (match != nil) {
-            return match;
-        }
-    }
-    return nil;
-}
-
 static IMP ExpectedMainImplementation(
     Class cls,
     const char *selectorName,
@@ -731,7 +641,7 @@ static BOOL ApplyRandomModelValues(
         return NO;
     }
 
-    CallVoidBool(preferences, "setIsNative:", NO);
+    CallVoidBool(preferences, "setIsNative:", YES);
     if (!CallVoid((id)objc_getClass("MachinePreferences"), "save")) {
         *failureStage = @"model-save";
         return NO;
@@ -962,29 +872,6 @@ static void LocalRandomPreferences(id self, SEL _cmd, id sender) {
     }
 
     UIViewController *preferences = (UIViewController *)self;
-    UIViewController *mainController = FindMainViewController(preferences);
-    if (mainController == nil) {
-        if ([sender respondsToSelector:@selector(setEnabled:)]) {
-            [sender setEnabled:YES];
-        }
-        ShowOfflineRandomError(preferences, @"controller");
-        return;
-    }
-
-    Class mainClass = objc_getClass("ViewController");
-    Method applyMethod = class_getInstanceMethod(
-        mainClass,
-        sel_registerName("performeMachineStub")
-    );
-    if (applyMethod == NULL ||
-        method_getImplementation(applyMethod) != (IMP)LocalApplyMachine) {
-        if ([sender respondsToSelector:@selector(setEnabled:)]) {
-            [sender setEnabled:YES];
-        }
-        ShowOfflineRandomError(preferences, @"apply-contract");
-        return;
-    }
-
     NSString *failureStage = nil;
     id model = CaptureNativeMachineModel(self, sender, &failureStage);
     if (model == nil) {
@@ -1006,32 +893,7 @@ static void LocalRandomPreferences(id self, SEL _cmd, id sender) {
     }
 
     if ([sender respondsToSelector:@selector(setEnabled:)]) {
-        [sender setEnabled:NO];
-    }
-
-    void (^applyConfig)(void) = ^{
-        RepairController(mainController);
-        LocalApplyMachine(
-            mainController,
-            sel_registerName("performeMachineStub")
-        );
-    };
-
-    UINavigationController *navigationController =
-        preferences.navigationController;
-    if (navigationController != nil &&
-        [navigationController.viewControllers containsObject:preferences] &&
-        navigationController.viewControllers.count > 1) {
-        [navigationController popViewControllerAnimated:YES];
-        dispatch_after(
-            dispatch_time(DISPATCH_TIME_NOW, 350 * NSEC_PER_MSEC),
-            dispatch_get_main_queue(),
-            applyConfig
-        );
-    } else if (preferences.presentingViewController != nil) {
-        [preferences dismissViewControllerAnimated:YES completion:applyConfig];
-    } else {
-        applyConfig();
+        [sender setEnabled:YES];
     }
 }
 

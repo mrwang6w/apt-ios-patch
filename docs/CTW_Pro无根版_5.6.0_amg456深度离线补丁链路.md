@@ -183,6 +183,16 @@ randomPreferences:
    `SIGKILL`，再按 `SettingsBackup` 清空主容器、App Group、插件容器和剪贴板；
    仅保留 `.com.apple.mobile_container_manager.metadata.plist`，任一失败集中弹窗。
 
+`offline11` 将界面交互拆回两个原生阶段：“随机生成”只生成、保存并
+刷新参数，不再弹回主界面或直接抹机；用户返回主界面后再由“一键新机”
+确认执行本地 `performeMachineStub`。该版随后暴露了独立的数据源问题：模型
+已写入完整随机值，但 `setIsNative:NO` 会把 table datasource 切到真机上为空的
+random store，因此 `reloadData` 后列表仍是空值。
+
+`offline12` 仅把该路由修正为显式 `setIsNative:YES`，使表格继续读取
+`nativePreferences:` 创建且已被本地随机值覆盖的同一模型。不写主程序私有
+global slot，也不增加第二套参数模型。
+
 补丁不调用原 `randomPreferences:`，因此不会创建 `/vd` 请求；通用
 `NSURLSession` 创建点 `+0x990f58` 和 completion `+0x992740` 均保持不变，避免破坏
 `/upload3`、`/upload`、`/getlocation` 等其它业务。
@@ -231,24 +241,24 @@ Pages 只发布新的 `com.amg456.CTWPro.rootless560` 条目，不并列发布�
 7. 对比载荷只允许 2 个文件新增、2 个文件变化、0 个文件删除。
 8. 全部验证完成后原子发布到 `patched/`，避免 Pages 读取旧成品。
 
-`offline10` 已从固定原包连续完成两次全量重建；deb、`fix.dylib`、主程序和
+`offline12` 已从固定原包连续完成两次全量重建；deb、`fix.dylib`、主程序和
 `CTW.dylib` 的 SHA256 均逐项一致。
 
 ## 7. 最终产物
 
 ```text
-patched/560_CTW_Pro(无根版)_5.6.0-offline10_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb
+patched/560_CTW_Pro(无根版)_5.6.0-offline12_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb
 ```
 
 - Package: `com.amg456.CTWPro.rootless560`
-- Version: `5.6.0-offline10`
-- Size: `27,008,562` bytes
-- SHA256: `66710b9935b5a16933ab4fb14b2bba324e9910dda5fe865bb7c494d5ca0a697b`
+- Version: `5.6.0-offline12`
+- Size: `27,007,488` bytes
+- SHA256: `f9501c37e7a3f1056fed5b55f8894833c8346ff18abd4dc7189563dbd70f12ac`
 
 最终 Mach-O：
 
-- `CTW Pro`: `928ec66ec03e663c5ecdc88d5c1049060545cb656690326556f1f0921a4177f9`
-- `fix.dylib`: `a20c0ae422abcd7492475ecfdd646472bad3180f8688e544f356a76c89a94953`
+- `CTW Pro`: `31e94bcacffe7f3a3510ddebb8bbb141af3b316e48978c5c1236b7bcdf8f903e`
+- `fix.dylib`: `41084d8ee3e1de220e438dec7cf27efb49b030d21a0b2127bc0a6beeeb337703`
 - `CTW.dylib`: `8d278269c4b2ce8b7cf7dff6e5a4e88bc2a1fe0cf6501c408265a813135a9df2`
 
 载荷差异：
@@ -277,6 +287,21 @@ UDID、序列号和 MAC 一致；Telegram PID `2488` 收到 `SIGKILL`，主容�
 6 个插件容器均只剩 metadata plist，剪贴板为空，无错误弹窗，CTW Pro 持续存活
 32 秒。Telegram 重启后显示 `Start Messaging`，证明已进入全新用户状态。
 
+`offline11` 数据路由探针确认：点击随机后捕获模型的 `control=1`，机型、
+UDID、序列号、IDFA 和 IDFV 均非空；`isNative=NO` 时 22 行列表为空或异常值，
+仅动态改为 `YES` 并 `reloadData` 后，22 行立即完整回填，且表格 getter 的
+receiver 与捕获模型为同一对象。
+
+`offline12` 通过 USB 安装后从干净重启验证：点击“新机参数 → 随机生成”后
+导航栈顶仍是 `MachinePreferences`，`isNative=1`，22 行参数立即完整回填；
+模型、`LKDeviceConfig` 和可见表格中的机型、UDID、序列号、MAC 精确一致，
+IMEI 为 `unknownNumber` 前 15 位，IDFA/IDFV 非空，无错误弹窗。
+
+同一版本的完整两阶段流程也已通过：返回主界面后点击“一键新机”并
+确认，`performeMachineStub` 精确命中一次；Telegram 收到 `SIGKILL`，主容器、
+App Group 和 6 个 PluginKit 容器的测试 marker 全部删除，各路径只剩 metadata，
+剪贴板为空；CTW Pro 继续存活 30 秒，Telegram 未运行。
+
 ## 9. Pages 发布
 
 `scripts/build_pages_repo.py` 从 `patched/` 读取上述最终成品。更新 deb 后必须重新生成
@@ -292,10 +317,10 @@ gzip -t pages-repo/Packages.gz
 
 ```text
 Package: com.amg456.CTWPro.rootless560
-Version: 5.6.0-offline10
-Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline10_deep_offline_ustar.deb
-Size: 27008562
-SHA256: 66710b9935b5a16933ab4fb14b2bba324e9910dda5fe865bb7c494d5ca0a697b
+Version: 5.6.0-offline12
+Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline12_deep_offline_ustar.deb
+Size: 27007488
+SHA256: f9501c37e7a3f1056fed5b55f8894833c8346ff18abd4dc7189563dbd70f12ac
 Depiction: ./depictions/com.amg456.CTWPro.rootless560.html
 ```
 
