@@ -99,11 +99,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "com.amg456.CTWPro.rootless560",
-        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline8_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
-        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline8_deep_offline_ustar.deb",
-        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline8 Deep Offline USTAR",
+        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline10_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
+        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline10_deep_offline_ustar.deb",
+        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline10 Deep Offline USTAR",
         "publish_section": "CTW Pro",
-        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径；本地 fix.dylib 精确覆盖 MachinePreferences 的 randomPreferences: action，在 App runtime 缺少 LKDeviceConfig 时显式加载已补丁 CTW.dylib，生成本地配置后调用原 performeMachineStub；同时仅禁用该 stub 精确范围内 24 个 exit(9) syscall，避免配置应用后主动终止；不启动 /vd，失败时显示精确阶段码；保留原 38 项 entitlements。",
+        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径；本地 fix.dylib 覆盖 MachinePreferences 的 randomPreferences: 与 ViewController 的 performeMachineStub，生成 active=1 的本地配置并写入随机 UDID、序列号、IMEI、IDFA、IDFV、MAC、运营商和网络参数；按 Applylist 终止目标进程，清空主容器、App Group、插件容器及剪贴板。真机验证 Telegram 重启进入 Start Messaging 新用户界面；不启动 /vd，失败时显示精确阶段码；保留原 38 项 entitlements。",
         "depiction_name": "com.amg456.CTWPro.rootless560.html",
     },
 ]

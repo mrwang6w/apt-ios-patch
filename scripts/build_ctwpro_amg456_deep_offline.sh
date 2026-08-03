@@ -3,9 +3,25 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CASE="$ROOT/work/ctwpro-5.6.0"
+XCODE_DEVELOPER="/Applications/Xcode.app/Contents/Developer"
+XCODE_TOOLCHAIN="$XCODE_DEVELOPER/Toolchains/XcodeDefault.xctoolchain/usr/bin"
+XCODE_STRINGS="$XCODE_TOOLCHAIN/strings"
+XCODE_OTOOL="/Library/Developer/CommandLineTools/usr/bin/otool"
+CLANG="$XCODE_TOOLCHAIN/clang"
+SDK="$XCODE_DEVELOPER/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+for required_tool in "$XCODE_STRINGS" "$XCODE_OTOOL" "$CLANG"; do
+  if [[ ! -x "$required_tool" ]]; then
+    echo "required Xcode tool is missing: $required_tool" >&2
+    exit 1
+  fi
+done
+if [[ ! -d "$SDK" ]]; then
+  echo "required iPhoneOS SDK is missing: $SDK" >&2
+  exit 1
+fi
 SOURCE="$ROOT/downloads/fuyonghua-repo/debs/560_CTW_Pro(无根版)_5.6.0_com.amg456.CTWPro.rootless560.deb"
 SOURCE_SHA256="38234f4381b36587d43fc0f78dd77e9d386b7760a5412152024379233c1891b4"
-OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline8_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
+OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline10_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
 OUTPUT="$ROOT/patched/$OUTPUT_NAME"
 AUDIT="$CASE/deep-source-audit"
 BUILD="$CASE/deep-build"
@@ -24,7 +40,7 @@ trap 'rm -f "$PUBLISH_TMP"' EXIT
 verify_offline_random_helpers() {
   local dylib="$1"
   local metadata
-  metadata="$(otool -ov "$dylib")"
+  metadata="$("$XCODE_OTOOL" -ov "$dylib")"
   for expected in \
     'imp     0xb6f8 -[LKDeviceConfig writeCachedConfigString:]' \
     'imp     0xc064 -[LKDeviceConfig randomHexStringWithLength:]' \
@@ -32,7 +48,7 @@ verify_offline_random_helpers() {
     'imp     0xcae8 -[LKDeviceConfig randomMacAddress]' \
     'imp     0xcbb0 -[LKDeviceConfig randomUnknownNumber]' \
     'imp     0xd6f4 -[LKDeviceConfig defaultConfig]'; do
-    if ! rg -Fq "$expected" <<<"$metadata"; then
+    if ! grep -Fq -- "$expected" <<<"$metadata"; then
       echo "offline random helper contract is missing: $expected" >&2
       return 1
     fi
@@ -42,11 +58,25 @@ verify_offline_random_helpers() {
 verify_random_action_contract() {
   local main="$1"
   local nib="$2"
-  python3 - "$main" <<'PY'
+  local expected_stub_prefix="${3:-original}"
+  python3 - "$main" "$expected_stub_prefix" <<'PY'
 import sys
 from pathlib import Path
 
 blob = Path(sys.argv[1]).read_bytes()
+expected_stub_prefix = sys.argv[2]
+stub_prefixes = {
+    "original": bytes.fromhex(
+        "e923b96dfc6f01a9fa6702a9f85f03a9"
+        "f65704a9f44f05a9fd7b06a9fd830191"
+    ),
+    "disabled": bytes.fromhex(
+        "c0035fd6fc6f01a9fa6702a9f85f03a9"
+        "f65704a9f44f05a9fd7b06a9fd830191"
+    ),
+}
+if expected_stub_prefix not in stub_prefixes:
+    raise SystemExit(f"unknown stub contract: {expected_stub_prefix}")
 checks = {
     0x154FDDE: bytes.fromhex(
         "72616e646f6d507265666572656e6365733a00"
@@ -59,10 +89,7 @@ checks = {
         "fc6fbaa9fa6701a9f85f02a9f65703a9"
         "f44f04a9fd7b05a9fd430191ff0301d1"
     ),
-    0x53DE04: bytes.fromhex(
-        "e923b96dfc6f01a9fa6702a9f85f03a9"
-        "f65704a9f44f05a9fd7b06a9fd830191"
-    ),
+    0x53DE04: stub_prefixes[expected_stub_prefix],
 }
 for offset, expected in checks.items():
     actual = blob[offset:offset + len(expected)]
@@ -71,10 +98,13 @@ for offset, expected in checks.items():
             f"random action contract mismatch at {offset:#x}: "
             f"{actual.hex()} != {expected.hex()}"
         )
-print("random action contract verified: selector, registration, action and apply IMP")
+print(
+    "random action contract verified: "
+    f"selector, registration, action and {expected_stub_prefix} apply IMP"
+)
 PY
   for action in randomPreferences: nativePreferences:; do
-    if ! strings -a "$nib" | rg -Fxq "$action"; then
+    if ! "$XCODE_STRINGS" -a "$nib" | grep -Fxq -- "$action"; then
       echo "storyboard random action is missing: $action" >&2
       return 1
     fi
@@ -113,7 +143,7 @@ result = []
 inserted = False
 for line in lines:
     if line == "Version: 5.6.0":
-        line = "Version: 5.6.0-offline8"
+        line = "Version: 5.6.0-offline10"
     result.append(line)
     if line.startswith("Depends:"):
         result.extend(
@@ -124,7 +154,7 @@ for line in lines:
             ]
         )
         inserted = True
-if not inserted or "Version: 5.6.0-offline8" not in result:
+if not inserted or "Version: 5.6.0-offline10" not in result:
     raise SystemExit("failed to update control metadata")
 path.write_text("\n".join(result) + "\n", encoding="utf-8")
 PY
@@ -139,7 +169,7 @@ RANDOM_ACTION_NIB="$APP/zh-Hans.lproj/Main.storyboardc/UITableViewController-Kzn
 
 ldid -e "$MAIN" > "$ENTITLEMENTS"
 plutil -lint "$ENTITLEMENTS"
-verify_random_action_contract "$MAIN" "$RANDOM_ACTION_NIB"
+verify_random_action_contract "$MAIN" "$RANDOM_ACTION_NIB" original
 
 python3 "$ROOT/scripts/patch_ctwpro_amg456_main.py" patch "$MAIN" "$MAIN"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" \
@@ -149,8 +179,7 @@ codesign --verify --strict "$LICENSE_DYLIB"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" verify "$LICENSE_DYLIB"
 verify_offline_random_helpers "$LICENSE_DYLIB"
 
-SDK="$(xcrun --sdk iphoneos --show-sdk-path)"
-xcrun --sdk iphoneos clang \
+"$CLANG" \
   -arch arm64 \
   -isysroot "$SDK" \
   -miphoneos-version-min=12.0 \
@@ -173,7 +202,11 @@ codesign --force --sign - --timestamp=none "$FIX"
 codesign --verify --strict "$FIX"
 for selector in \
   randomPreferences: \
+  nativePreferences: \
   performeMachineStub \
+  setValue:forKey: \
+  save \
+  reloadData \
   config \
   readCachedConfigString \
   defaultConfig \
@@ -184,18 +217,22 @@ for selector in \
   writeCachedConfigString: \
   setConfig: \
   setDevice_updated:; do
-  if ! strings -a "$FIX" | rg -Fxq "$selector"; then
+  if ! "$XCODE_STRINGS" -a "$FIX" | grep -Fxq -- "$selector"; then
     echo "fix.dylib is missing offline random selector: $selector" >&2
     exit 1
   fi
 done
 for marker in \
   /var/jb/Library/MobileSubstrate/DynamicLibraries/CTW.dylib \
+  Applylist \
+  SettingsBackup \
+  ContainerRebuild \
+  ClearPB \
   config-dlopen \
   config-class \
   config-shared-selector \
   config-shared-instance; do
-  if ! strings -a "$FIX" | rg -Fxq "$marker"; then
+  if ! "$XCODE_STRINGS" -a "$FIX" | grep -Fxq -- "$marker"; then
     echo "fix.dylib is missing runtime load marker: $marker" >&2
     exit 1
   fi
@@ -206,7 +243,7 @@ codesign --force --sign - --timestamp=none \
   --entitlements "$ENTITLEMENTS" "$APP"
 codesign --verify --deep --strict "$APP"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_main.py" verify "$MAIN"
-verify_random_action_contract "$MAIN" "$RANDOM_ACTION_NIB"
+verify_random_action_contract "$MAIN" "$RANDOM_ACTION_NIB" disabled
 
 ldid -e "$MAIN" > "$SIGNED_ENTITLEMENTS"
 python3 - "$ENTITLEMENTS" "$SIGNED_ENTITLEMENTS" <<'PY'
@@ -221,12 +258,12 @@ if before != after:
 print(f"entitlements verified: {len(before)} keys")
 PY
 
-if ! otool -l "$MAIN" | rg -A6 -B4 '@executable_path/fix\.dylib' \
-  | rg -q 'LC_LOAD_DYLIB'; then
+if ! "$XCODE_OTOOL" -l "$MAIN" | grep -A6 -B4 -E '@executable_path/fix\.dylib' \
+  | grep -q 'LC_LOAD_DYLIB'; then
   echo "strong fix.dylib load command is missing" >&2
   exit 1
 fi
-if ! otool -D "$FIX" | rg -q '^@executable_path/fix\.dylib$'; then
+if ! "$XCODE_OTOOL" -D "$FIX" | grep -q '^@executable_path/fix\.dylib$'; then
   echo "fix.dylib install name is incorrect" >&2
   exit 1
 fi
@@ -257,13 +294,13 @@ VERIFY_RANDOM_ACTION_NIB="$VERIFY_APP/zh-Hans.lproj/Main.storyboardc/UITableView
 python3 "$ROOT/scripts/patch_ctwpro_amg456_main.py" verify "$VERIFY_MAIN"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" verify "$VERIFY_LICENSE"
 verify_offline_random_helpers "$VERIFY_LICENSE"
-verify_random_action_contract "$VERIFY_MAIN" "$VERIFY_RANDOM_ACTION_NIB"
+verify_random_action_contract "$VERIFY_MAIN" "$VERIFY_RANDOM_ACTION_NIB" disabled
 codesign --verify --strict "$VERIFY_FIX"
 codesign --verify --deep --strict "$VERIFY_APP"
 codesign --verify --strict "$VERIFY_LICENSE"
 
 grep -qx 'Package: com.amg456.CTWPro.rootless560' "$VERIFY/control/control"
-grep -qx 'Version: 5.6.0-offline8' "$VERIFY/control/control"
+grep -qx 'Version: 5.6.0-offline10' "$VERIFY/control/control"
 grep -qx 'Conflicts: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Provides: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Replaces: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"

@@ -13,8 +13,8 @@ downloads/fuyonghua-repo/debs/560_CTW_Pro(无根版)_5.6.0_com.amg456.CTWPro.roo
 - Size: `27,296,062` bytes
 - SHA256: `38234f4381b36587d43fc0f78dd77e9d386b7760a5412152024379233c1891b4`
 
-目标是闭合两层授权链，并让随机新机配置脱离失效的 `/vd` 服务，同时不修改核心
-改机实现：
+目标是闭合两层授权链，并让随机新机配置与抹机流程脱离失效的
+`/vd` 服务和会主动终止进程的原 stub：
 
 1. 后加 `CTW.dylib` 的卡密激活、启动复核、周期心跳和失败退出链。
 2. 主程序原有的捐赠码、节点复核、定时权限 UI 和锁 UI 消费者。
@@ -78,6 +78,7 @@ downloads/fuyonghua-repo/debs/560_CTW_Pro(无根版)_5.6.0_com.amg456.CTWPro.roo
 | `0x56d67c` | `setIsNeedCheckIP:` 只允许写假 |
 | `0x56dd44` | `isNeedFlushIP` 固定为假 |
 | `0x56e438` | `setIsNeedFlushIP:` 只允许写假 |
+| `0x53de04` | 以本地容器清理替换 `ViewController -performeMachineStub` |
 | `0x84488` | 以本地随机配置替换 `MachinePreferences -randomPreferences:` |
 
 模块还替换两条已知授权状态文案，并隐藏 action 指向捐赠入口的控件。
@@ -156,6 +157,32 @@ randomPreferences:
 24 条 `svc` 改为 `nop`。stub 的状态机、配置应用调用和返回路径保持不变；补丁器在
 构建和重提取验证阶段都会确认 24 个退出点全部为 `nop`。
 
+随后两轮真机 Frida 证据均记录了
+`cache-write-complete → config-result-ready → apply-stub-branch`；其中一轮还直接记录
+`stub-enter`，之后下一条记录就是 `process-terminated`，且 `crash=null`。这证明本地配置
+已写入，终止边界位于 `performeMachineStub` 内。针对 `dispatch_async` 的窄 GOT rebind
+也已真机安装并确认原 slot 归属 `libdispatch.dylib`，但终止前没有目标 wrapper 提交，
+因此该候选方案被否证，没有进入永久补丁。
+
+`offline9` 改为只在主程序文件偏移 `0x53de04` 将 stub 首指令
+`e923b96d` 改为 `c0035fd6`（`ret`）。真机动态先以同等 no-op 替换验证：点击随机生成后
+命中一次 stub replacement，`randomPreferences:` 正常返回，进程持续存活 60 秒，随后仅因
+测试脚本主动 detach。永久补丁保留 `fix.dylib` 对 stub 来源和 `+0x53de04` 偏移的校验，
+调用返回后再次修复主界面状态。
+
+真机随后证明 `offline9` 只解决了终止问题：界面可返回，但原 stub 被置空后
+没有生成 App 模型参数，也没有清理目标 App 容器。`offline10` 因此在同一个
+`fix.dylib` 内补齐三段本地逻辑：
+
+1. 给原生混淆模型类添加本类 `-init` 实现，强引用捕获 `nativePreferences:`
+   创建或复用的模型；不再读取已证明为悬空对象的 `main+0x16d2750`。
+2. 将本地配置设为 `active=1`，同步写入模型的 UDID、序列号、IMEI、IDFA、
+   IDFV、MAC、运营商和网络参数，再调用原生 `save`。全流程不调用
+   `+[LKVdConfig randomConfig]`。
+3. 用本地 `performeMachineStub` 替换实现读取 `Applylist`，先向目标 App 发送
+   `SIGKILL`，再按 `SettingsBackup` 清空主容器、App Group、插件容器和剪贴板；
+   仅保留 `.com.apple.mobile_container_manager.metadata.plist`，任一失败集中弹窗。
+
 补丁不调用原 `randomPreferences:`，因此不会创建 `/vd` 请求；通用
 `NSURLSession` 创建点 `+0x990f58` 和 completion `+0x992740` 均保持不变，避免破坏
 `/upload3`、`/upload`、`/getlocation` 等其它业务。
@@ -163,9 +190,9 @@ randomPreferences:
 - load command/IMP 指纹实现：`scripts/patch_ctwpro_amg456_main.py`
 - 运行时模块源码：`patches/ctwpro/CTWProDeepPatch.m`
 
-核心 `performeMachineStub`、`performeMachine:`、`nativeMachine:`、`ctwsrv`、
-`0CTW.dylib` 和 `ctwsup.dylib` 均未修改；`offline8` 只在运行时调用经过偏移校验的
-原 stub。
+核心 `performeMachine:`、`nativeMachine:`、`ctwsrv`、`0CTW.dylib` 和
+`ctwsup.dylib` 均未修改；主程序内的 `performeMachineStub` 入口仍保持 `ret` 作为失效关闭，
+真正的本地抹机实现由 `fix.dylib` 运行时精确替换。
 
 ## 5. 包迁移元数据
 
@@ -195,7 +222,8 @@ Pages 只发布新的 `com.amg456.CTWPro.rootless560` 条目，不并列发布�
 
 1. 校验原 deb、主程序和 `CTW.dylib` 输入哈希。
 2. 校验原授权消费者，以及 `randomPreferences:` selector、`+initialize` 注册指令、
-   `+0x84488` action 和 `+0x53de04` apply IMP 指纹，并插入 `fix.dylib` 强依赖。
+   `+0x84488` action 和 `+0x53de04` 原始/禁用 apply IMP 指纹，插入 `fix.dylib` 强依赖，
+   并将 stub 精确入口改为 `ret` 作为后备拒绝路径。
 3. 应用并验证 8 个 `CTW.dylib` 补丁。
 4. 编译、签名 `fix.dylib`，保留并复核主程序 38 项 entitlement。
 5. 使用 deterministic USTAR、`gzip -n` 和固定 Unix ar 重包。
@@ -203,24 +231,24 @@ Pages 只发布新的 `com.amg456.CTWPro.rootless560` 条目，不并列发布�
 7. 对比载荷只允许 2 个文件新增、2 个文件变化、0 个文件删除。
 8. 全部验证完成后原子发布到 `patched/`，避免 Pages 读取旧成品。
 
-`offline8` 已从固定原包连续完成两次全量重建；deb、`fix.dylib`、主程序和
+`offline10` 已从固定原包连续完成两次全量重建；deb、`fix.dylib`、主程序和
 `CTW.dylib` 的 SHA256 均逐项一致。
 
 ## 7. 最终产物
 
 ```text
-patched/560_CTW_Pro(无根版)_5.6.0-offline8_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb
+patched/560_CTW_Pro(无根版)_5.6.0-offline10_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb
 ```
 
 - Package: `com.amg456.CTWPro.rootless560`
-- Version: `5.6.0-offline8`
-- Size: `27,004,278` bytes
-- SHA256: `5e67b0387b8dc3e2777aa483ca6ed150ec1733ca3ca3b59fac5c0710067b1d1d`
+- Version: `5.6.0-offline10`
+- Size: `27,008,562` bytes
+- SHA256: `66710b9935b5a16933ab4fb14b2bba324e9910dda5fe865bb7c494d5ca0a697b`
 
 最终 Mach-O：
 
-- `CTW Pro`: `2b3728002711c92d42dad4f681442978dd94a8efea14d7f6fffa36cc181e2820`
-- `fix.dylib`: `9e8e9f1fcd9c67ef1f75965fd8c4c0056fbf4201e40f97d4a19f6e3ebb77b3fd`
+- `CTW Pro`: `928ec66ec03e663c5ecdc88d5c1049060545cb656690326556f1f0921a4177f9`
+- `fix.dylib`: `a20c0ae422abcd7492475ecfdd646472bad3180f8688e544f356a76c89a94953`
 - `CTW.dylib`: `8d278269c4b2ce8b7cf7dff6e5a4e88bc2a1fe0cf6501c408265a813135a9df2`
 
 载荷差异：
@@ -233,15 +261,21 @@ patched/560_CTW_Pro(无根版)_5.6.0-offline8_com.amg456.CTWPro.rootless560_deep
 
 历史真机证据已确认原始点击链会发出 `http://api.ctwvip.xyz/vd?data=...`，并在服务
 返回 502 后显示“超时或非法请求”。`offline5` 真机已进入本地补丁拒绝分支且未执行
-改机；`offline8` 的 NIB action、运行时注册点、原 apply 入口、本地 helper、显式
-`CTW.dylib` 加载回退、三层配置
-基线、缓存写入 selector、24 个 stub 退出点和载荷均已完成静态闭环。
+改机；`offline7/offline8` 动态日志证明本地 helper、显式 `CTW.dylib` 加载回退、三层
+配置基线、序列化和缓存写入全部完成，并把后续直接终止收窄到原
+`performeMachineStub +0x53de04` 路径。
 
-当前设备可以通过 USB 枚举并正常桌面启动 App，但 Frida `17.15.3` 和与历史服务端
-匹配的 `17.11.0` 客户端附加均返回 `unexpected early end-of-stream`；SSH/端口转发也
-没有可用 root shell。因此尚未取得 `offline8` 点击后“零 `/vd`、缓存身份字段变化、
-原 stub 执行且不闪退”的最终真机证据。静态构建通过不替代这项回归；安装后若仍被
-拒绝，应记录提示中的精确阶段码。
+`offline9` 的等价动态 no-op 已取得闭环证据：`randomPreferences:` 返回，stub replacement
+恰好命中一次，进程持续存活 60 秒。随后已把最终 offline9 deb 安装到 USB 真机，
+非替换探针确认主程序 `+0x53de04` 实包字节为 `c0035fd6`，`randomPreferences:` 已归属
+`fix.dylib +0x4708`；触发后 `random-enter → random-leave → trigger-returned`，缓存
+`random/udid/serial_number/boardSerial/mac/unknownNumber/update_time` 全部变化，进程继续
+存活 40 秒且无 `process-terminated`。
+
+`offline10` 真机闭环验证得到：模型 `control=1`、`LKDeviceConfig active=1`，两者的
+UDID、序列号和 MAC 一致；Telegram PID `2488` 收到 `SIGKILL`，主容器、App Group 和
+6 个插件容器均只剩 metadata plist，剪贴板为空，无错误弹窗，CTW Pro 持续存活
+32 秒。Telegram 重启后显示 `Start Messaging`，证明已进入全新用户状态。
 
 ## 9. Pages 发布
 
@@ -258,10 +292,10 @@ gzip -t pages-repo/Packages.gz
 
 ```text
 Package: com.amg456.CTWPro.rootless560
-Version: 5.6.0-offline8
-Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline8_deep_offline_ustar.deb
-Size: 27004278
-SHA256: 5e67b0387b8dc3e2777aa483ca6ed150ec1733ca3ca3b59fac5c0710067b1d1d
+Version: 5.6.0-offline10
+Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline10_deep_offline_ustar.deb
+Size: 27008562
+SHA256: 66710b9935b5a16933ab4fb14b2bba324e9910dda5fe865bb7c494d5ca0a697b
 Depiction: ./depictions/com.amg456.CTWPro.rootless560.html
 ```
 

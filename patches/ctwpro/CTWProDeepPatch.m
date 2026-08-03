@@ -1,16 +1,32 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <dlfcn.h>
+#import <errno.h>
 #import <objc/runtime.h>
+#import <signal.h>
 #import <stdatomic.h>
 #import <stdint.h>
+#import <stdlib.h>
 #import <string.h>
+#import <unistd.h>
+
+extern int proc_listpids(
+    uint32_t type,
+    uint32_t typeinfo,
+    void *buffer,
+    int buffersize
+);
+extern int proc_pidpath(int pid, void *buffer, uint32_t buffersize);
+
+#define CTW_PROC_ALL_PIDS 1
 
 static _Atomic(uintptr_t) gOriginalViewDidLoad;
 static _Atomic(uintptr_t) gOriginalUpdateUITimer;
 static _Atomic(uintptr_t) gOriginalAlertHandler;
 static _Atomic(uintptr_t) gOriginalSetNeedCheckIP;
 static _Atomic(uintptr_t) gOriginalSetNeedFlushIP;
+static _Atomic(uintptr_t) gOriginalMachineModelInit;
+static id gCapturedMachineModel;
 static _Atomic(uintptr_t) gOriginalLabelSetText;
 
 static id CallObject(id receiver, const char *selectorName) {
@@ -67,6 +83,19 @@ static void CallVoidBool(id receiver, const char *selectorName, BOOL value) {
     }
     IMP implementation = [receiver methodForSelector:selector];
     ((void (*)(id, SEL, BOOL))implementation)(receiver, selector, value);
+}
+
+static BOOL CallVoid(id receiver, const char *selectorName) {
+    if (receiver == nil) {
+        return NO;
+    }
+    SEL selector = sel_registerName(selectorName);
+    if (![receiver respondsToSelector:selector]) {
+        return NO;
+    }
+    IMP implementation = [receiver methodForSelector:selector];
+    ((void (*)(id, SEL))implementation)(receiver, selector);
+    return YES;
 }
 
 static BOOL CallBoolObject(id receiver, const char *selectorName, id value) {
@@ -394,7 +423,7 @@ static NSDictionary *BuildLocalRandomConfig(NSString **failureStage) {
         config[@"boardSerial"] = boardSerial;
         config[@"mac"] = mac;
         config[@"unknownNumber"] = unknownNumber;
-        config[@"active"] = @0;
+        config[@"active"] = @1;
         config[@"update_time"] = @([[NSDate date] timeIntervalSince1970]);
         *failureStage = @"final-config";
         if (!IsCompleteLocalConfig(config)) {
@@ -537,6 +566,180 @@ static IMP ExpectedMainImplementation(
     return offset == expectedOffset ? implementation : NULL;
 }
 
+static id CapturingMachineModelInit(id self, SEL _cmd) {
+    IMP original = LoadOriginal(&gOriginalMachineModelInit);
+    if (original == NULL) {
+        return nil;
+    }
+    id model = ((id (*)(id, SEL))original)(self, _cmd);
+    gCapturedMachineModel = model;
+    return model;
+}
+
+static BOOL InstallMachineModelCapture(Class dataClass) {
+    SEL selector = @selector(init);
+    Method method = class_getInstanceMethod(dataClass, selector);
+    if (method == NULL) {
+        return NO;
+    }
+
+    IMP replacement = (IMP)CapturingMachineModelInit;
+    IMP current = method_getImplementation(method);
+    if (current == replacement) {
+        return LoadOriginal(&gOriginalMachineModelInit) != NULL;
+    }
+    if (LoadOriginal(&gOriginalMachineModelInit) != NULL) {
+        return NO;
+    }
+
+    StoreOriginalOnce(&gOriginalMachineModelInit, current);
+    const char *types = method_getTypeEncoding(method);
+    if (types == NULL ||
+        !class_addMethod(dataClass, selector, replacement, types)) {
+        return NO;
+    }
+    return method_getImplementation(
+        class_getInstanceMethod(dataClass, selector)
+    ) == replacement;
+}
+
+static id CaptureNativeMachineModel(
+    id preferences,
+    id sender,
+    NSString **failureStage
+) {
+    Class dataClass = objc_getClass(
+        "XOOzsMKFjKOTTWpGaSiRovjOEBkIbziXWYeTFbNowILLPbtrlKiQXgHNTzcsEDDcOTqJQ"
+    );
+    if (dataClass == Nil) {
+        *failureStage = @"model-class";
+        return nil;
+    }
+
+    IMP nativeImplementation = ExpectedMainImplementation(
+        [preferences class],
+        "nativePreferences:",
+        0x88254
+    );
+    if (nativeImplementation == NULL) {
+        *failureStage = @"native-contract";
+        return nil;
+    }
+
+    @try {
+        ((void (*)(id, SEL, id))nativeImplementation)(
+            preferences,
+            sel_registerName("nativePreferences:"),
+            sender
+        );
+    } @catch (__unused NSException *exception) {
+        *failureStage = @"native-call";
+        return nil;
+    }
+
+    id model = gCapturedMachineModel;
+    if (model == nil || ![model isKindOfClass:dataClass]) {
+        *failureStage = @"model-capture";
+        return nil;
+    }
+    return model;
+}
+
+static BOOL ApplyRandomModelValues(
+    id preferences,
+    id model,
+    NSDictionary *config,
+    NSString **failureStage
+) {
+    NSString *machine = config[@"machine"];
+    NSString *mode = config[@"mode"];
+    NSString *random = config[@"random"];
+    NSString *udid = config[@"udid"];
+    NSString *serialNumber = config[@"serial_number"];
+    NSString *mac = config[@"mac"];
+    NSString *systemVersion = config[@"system_version"];
+    NSString *unknownNumber = [config[@"unknownNumber"] stringValue];
+    if (unknownNumber.length > 15) {
+        unknownNumber = [unknownNumber substringToIndex:15];
+    }
+    if (model == nil || machine.length == 0 || mode.length == 0 ||
+        random.length == 0 || udid.length == 0 || serialNumber.length == 0 ||
+        mac.length == 0 || systemVersion.length == 0 ||
+        unknownNumber.length == 0) {
+        *failureStage = @"model-values";
+        return NO;
+    }
+
+    NSArray<NSDictionary *> *carriers = @[
+        @{
+            @"name": @"中国移动", @"mcc": @"460", @"mnc": @"00",
+            @"radio": @"CTRadioAccessTechnologyLTE"
+        },
+        @{
+            @"name": @"中国联通", @"mcc": @"460", @"mnc": @"01",
+            @"radio": @"CTRadioAccessTechnologyLTE"
+        },
+        @{
+            @"name": @"中国电信", @"mcc": @"460", @"mnc": @"03",
+            @"radio": @"CTRadioAccessTechnologyLTE"
+        }
+    ];
+    NSDictionary *carrier = carriers[
+        arc4random_uniform((uint32_t)carriers.count)
+    ];
+    NSString *uuid = [NSUUID UUID].UUIDString;
+    NSString *idfa = [NSUUID UUID].UUIDString;
+    NSString *suffix = [random substringToIndex:MIN((NSUInteger)6, random.length)];
+    uint32_t subnet = arc4random_uniform(250) + 2;
+    uint32_t host = arc4random_uniform(250) + 2;
+
+    @try {
+        NSDictionary<NSString *, id> *values = @{
+            @"control": @1,
+            @"mcdata": machine,
+            @"HqWSUyrjbTUzCPTazXvClMsmRtTfgqkGkEvfqppATSWkzaHNNLPWHjKAzgCneDvTzjDlQPmA": udid,
+            @"bqxafqLuDXtlLKFqRbPMxgliYzwnXuSFMenOjvRrfimIhaKOqiHedZNsPwLctqbxkpfg": serialNumber,
+            @"IQvOpDvTZnSCwoCBHSQZwlQkQdLYNjiGGsGZQeqQQyUlfnyeQGHxWoOMUpvyQcKEYLtrDA": unknownNumber,
+            @"NYwvVoabtQxxrAaNZcZLxjEnzDxWUrZBMXpvQIJlnhemIFuBYkCUpEWyMmyjyNYg": [@"iPhone-" stringByAppendingString:suffix.uppercaseString],
+            @"WaVtzcpxylDkuyLRkDnABdUIQVIfehkltuPHCuRteQsSpiivERZurxDemNNnFjqbLSJrdDmnGw": mode,
+            @"domain": machine,
+            @"sbXrnbPhJnwudayxwwOfBvhAzfzBuHmWjnZsXtZNvZrfshIccKDzVYzghyUAirwmKuhzObA": machine,
+            @"identifierForVendor": uuid,
+            @"advertisingIdentifier": idfa,
+            @"jNQIGodfXDzOKALLzABzIGQYakInudUHTsQBYzYfiATwKfHSIILgMpEBDHecfaBgA": [@"WiFi-" stringByAppendingString:suffix.uppercaseString],
+            @"maLJLLPwAZVHkkbkRRqHrrdyxsJPkoPEZCbipLJsAWpIjsVCSyZgENgsFwnWjuFjabrwdgQ": mac,
+            @"cLZdCrrDMbyysKCAOXEwMJSseimwdwLjwqsWVaXiExElYOsxraTZLUIcanTErEzJexCwEww": mac,
+            @"cczmztMdiHXMVRwefgbiCrSwywunGbCUsgoaNYVhaIidwVcZqCGKfZlBEGMlcXhetxmKkrPnhjAQ": [NSString stringWithFormat:@"192.168.%u.1", subnet],
+            @"KZLRCaLvYTCFuHfSqaDrxrxkedkBvJKNlgZnXDeTSRCtUMhsPBskwLenHeezPpagxpKg": [NSString stringWithFormat:@"192.168.%u.%u", subnet, host],
+            @"brightness": @((arc4random_uniform(81) + 15) / 100.0),
+            @"uUojPBFHpzwBfxnlMnifHEeTTXtnIEnelcdrpUgJhvZOGoDfZfasVhAtpyGkCGCJoiUA": @((arc4random_uniform(51) + 50) / 100.0),
+            @"GOcuqPfvHaENZkclImuXKUbaOEHHaePFSfNIIiLcvQNmVczGtXJhSEEENnrvEyIHATbQ": @(arc4random_uniform(3) + 1),
+            @"twhuxDfnZWriUzkpYMZUEuuVzSexOPLOYuTqbFVsumbfphSYxwuraqwBxFmAWMSSLdSkdUlYA": systemVersion,
+            @"carrierName": carrier[@"name"],
+            @"carrierNameDisplay": carrier[@"name"],
+            @"mobileCountryCode": carrier[@"mcc"],
+            @"mobileNetworkCode": carrier[@"mnc"],
+            @"isoCountryCode": @"cn",
+            @"radioAccessTechnology": carrier[@"radio"],
+            @"MIEMhxTVAGouTqlnGbKAvNMLvhtNFAGOZzfhMKSsNvRbjEvIqCDGeHShCCvUSSQbuQw": @"WIFI"
+        };
+        for (NSString *key in values) {
+            [model setValue:values[key] forKey:key];
+        }
+    } @catch (__unused NSException *exception) {
+        *failureStage = @"model-write";
+        return NO;
+    }
+
+    CallVoidBool(preferences, "setIsNative:", NO);
+    if (!CallVoid((id)objc_getClass("MachinePreferences"), "save")) {
+        *failureStage = @"model-save";
+        return NO;
+    }
+    CallVoid(CallObject(preferences, "tableView"), "reloadData");
+    return YES;
+}
+
 static void ShowOfflineRandomError(
     UIViewController *controller,
     NSString *failureStage
@@ -553,6 +756,203 @@ static void ShowOfflineRandomError(
                                              style:UIAlertActionStyleDefault
                                            handler:nil]];
     [controller presentViewController:alert animated:YES completion:nil];
+}
+
+static BOOL IsAllowedContainerPath(NSString *path) {
+    if (![path isKindOfClass:[NSString class]]) {
+        return NO;
+    }
+    NSString *standard = path.stringByStandardizingPath;
+    static NSArray<NSString *> *prefixes;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        prefixes = @[
+            @"/private/var/mobile/Containers/Data/Application/",
+            @"/private/var/mobile/Containers/Shared/AppGroup/",
+            @"/private/var/mobile/Containers/Data/PluginKitPlugin/",
+            @"/var/mobile/Containers/Data/Application/",
+            @"/var/mobile/Containers/Shared/AppGroup/",
+            @"/var/mobile/Containers/Data/PluginKitPlugin/"
+        ];
+    });
+    for (NSString *prefix in prefixes) {
+        if (![standard hasPrefix:prefix]) {
+            continue;
+        }
+        NSString *leaf = [standard substringFromIndex:prefix.length];
+        return leaf.length > 0 && [leaf rangeOfString:@"/"].location == NSNotFound;
+    }
+    return NO;
+}
+
+static void ClearContainerContents(
+    NSString *path,
+    NSMutableArray<NSString *> *errors
+) {
+    if (!IsAllowedContainerPath(path)) {
+        [errors addObject:[NSString stringWithFormat:@"拒绝异常容器路径: %@", path ?: @"(null)"]];
+        return;
+    }
+
+    NSFileManager *manager = [NSFileManager defaultManager];
+    BOOL isDirectory = NO;
+    if (![manager fileExistsAtPath:path isDirectory:&isDirectory] || !isDirectory) {
+        [errors addObject:[NSString stringWithFormat:@"容器不存在: %@", path]];
+        return;
+    }
+
+    NSError *listError = nil;
+    NSArray<NSString *> *items = [manager contentsOfDirectoryAtPath:path
+                                                              error:&listError];
+    if (items == nil) {
+        [errors addObject:[NSString stringWithFormat:
+            @"读取容器失败: %@ (%@)", path, listError.localizedDescription ?: @"unknown"
+        ]];
+        return;
+    }
+
+    for (NSString *item in items) {
+        if ([item isEqualToString:@".com.apple.mobile_container_manager.metadata.plist"]) {
+            continue;
+        }
+        NSString *child = [path stringByAppendingPathComponent:item];
+        NSError *removeError = nil;
+        if (![manager removeItemAtPath:child error:&removeError]) {
+            [errors addObject:[NSString stringWithFormat:
+                @"删除失败: %@ (%@)", child,
+                removeError.localizedDescription ?: @"unknown"
+            ]];
+        }
+    }
+}
+
+static void TerminateExecutable(
+    NSString *executable,
+    NSMutableArray<NSString *> *errors
+) {
+    if (![executable isKindOfClass:[NSString class]] || executable.length == 0) {
+        [errors addObject:@"目标 App 缺少 exec 字段"];
+        return;
+    }
+
+    int bytes = proc_listpids(CTW_PROC_ALL_PIDS, 0, NULL, 0);
+    if (bytes <= 0) {
+        [errors addObject:[NSString stringWithFormat:@"无法枚举进程: %@", executable]];
+        return;
+    }
+    bytes += (int)(32 * sizeof(int));
+    int *pids = calloc(1, (size_t)bytes);
+    if (pids == NULL) {
+        [errors addObject:@"进程枚举内存不足"];
+        return;
+    }
+
+    int used = proc_listpids(CTW_PROC_ALL_PIDS, 0, pids, bytes);
+    int count = MAX(used, 0) / (int)sizeof(int);
+    for (int index = 0; index < count; index++) {
+        int pid = pids[index];
+        if (pid <= 1 || pid == getpid()) {
+            continue;
+        }
+        char pathBuffer[4096] = {0};
+        if (proc_pidpath(pid, pathBuffer, sizeof(pathBuffer)) <= 0) {
+            continue;
+        }
+        NSString *processPath = [NSString stringWithUTF8String:pathBuffer];
+        if (![processPath.lastPathComponent isEqualToString:executable]) {
+            continue;
+        }
+        if (kill(pid, SIGKILL) != 0 && errno != ESRCH) {
+            [errors addObject:[NSString stringWithFormat:
+                @"终止 %@ 失败: %s", executable, strerror(errno)
+            ]];
+        }
+    }
+    free(pids);
+}
+
+static void LocalApplyMachine(id self, SEL _cmd) {
+    (void)_cmd;
+    if (![NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            LocalApplyMachine(self, sel_registerName("performeMachineStub"));
+        });
+        return;
+    }
+
+    NSMutableArray<NSString *> *errors = [NSMutableArray array];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    id applyValue = [defaults objectForKey:@"Applylist"];
+    NSArray *applications = [applyValue isKindOfClass:[NSArray class]]
+        ? applyValue : nil;
+    NSDictionary *settings = [[defaults objectForKey:@"SettingsBackup"]
+        isKindOfClass:[NSDictionary class]]
+        ? [defaults objectForKey:@"SettingsBackup"] : @{};
+    if (applications.count == 0) {
+        [errors addObject:@"没有选中的 App"];
+    }
+
+    for (id value in applications) {
+        if (![value isKindOfClass:[NSDictionary class]]) {
+            [errors addObject:@"Applylist 包含异常记录"];
+            continue;
+        }
+        TerminateExecutable(value[@"exec"], errors);
+    }
+    if (applications.count > 0) {
+        usleep(200000);
+    }
+
+    if ([settings[@"ContainerRebuild"] boolValue]) {
+        for (NSDictionary *application in applications) {
+            if (![application isKindOfClass:[NSDictionary class]]) {
+                continue;
+            }
+            ClearContainerContents(application[@"container"], errors);
+
+            id groupsValue = application[@"groupContainers"];
+            if ([groupsValue isKindOfClass:[NSDictionary class]]) {
+                for (id groupPath in [groupsValue allValues]) {
+                    ClearContainerContents(groupPath, errors);
+                }
+            }
+
+            id pluginsValue = application[@"pluginDataContainers"];
+            if ([pluginsValue isKindOfClass:[NSArray class]]) {
+                for (id pluginValue in pluginsValue) {
+                    if (![pluginValue isKindOfClass:[NSDictionary class]]) {
+                        [errors addObject:@"插件容器记录异常"];
+                        continue;
+                    }
+                    ClearContainerContents(pluginValue[@"path"], errors);
+                }
+            }
+        }
+    }
+
+    if ([settings[@"ClearPB"] boolValue]) {
+        [UIPasteboard generalPasteboard].items = @[];
+    }
+
+    RepairController(self);
+    if ([self isKindOfClass:[UIViewController class]] && errors.count > 0) {
+        NSString *message = [errors componentsJoinedByString:@"\n"];
+        UIAlertController *alert = [UIAlertController
+            alertControllerWithTitle:@"本地抹机未完整完成"
+                             message:message
+                      preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确认"
+                                                 style:UIAlertActionStyleDefault
+                                               handler:nil]];
+        [(UIViewController *)self presentViewController:alert
+                                               animated:YES
+                                             completion:nil];
+    } else {
+        UILabel *status = ObjectProperty(self, @selector(statusDescription));
+        if ([status isKindOfClass:[UILabel class]]) {
+            status.text = @"本地新机已完成";
+        }
+    }
 }
 
 static void LocalRandomPreferences(id self, SEL _cmd, id sender) {
@@ -572,12 +972,12 @@ static void LocalRandomPreferences(id self, SEL _cmd, id sender) {
     }
 
     Class mainClass = objc_getClass("ViewController");
-    IMP applyImplementation = ExpectedMainImplementation(
+    Method applyMethod = class_getInstanceMethod(
         mainClass,
-        "performeMachineStub",
-        0x53de04
+        sel_registerName("performeMachineStub")
     );
-    if (applyImplementation == NULL) {
+    if (applyMethod == NULL ||
+        method_getImplementation(applyMethod) != (IMP)LocalApplyMachine) {
         if ([sender respondsToSelector:@selector(setEnabled:)]) {
             [sender setEnabled:YES];
         }
@@ -586,7 +986,18 @@ static void LocalRandomPreferences(id self, SEL _cmd, id sender) {
     }
 
     NSString *failureStage = nil;
-    if (BuildLocalRandomConfig(&failureStage) == nil) {
+    id model = CaptureNativeMachineModel(self, sender, &failureStage);
+    if (model == nil) {
+        if ([sender respondsToSelector:@selector(setEnabled:)]) {
+            [sender setEnabled:YES];
+        }
+        ShowOfflineRandomError(preferences, failureStage);
+        return;
+    }
+
+    NSDictionary *config = BuildLocalRandomConfig(&failureStage);
+    if (config == nil ||
+        !ApplyRandomModelValues(self, model, config, &failureStage)) {
         if ([sender respondsToSelector:@selector(setEnabled:)]) {
             [sender setEnabled:YES];
         }
@@ -600,8 +1011,10 @@ static void LocalRandomPreferences(id self, SEL _cmd, id sender) {
 
     void (^applyConfig)(void) = ^{
         RepairController(mainController);
-        SEL selector = sel_registerName("performeMachineStub");
-        ((void (*)(id, SEL))applyImplementation)(mainController, selector);
+        LocalApplyMachine(
+            mainController,
+            sel_registerName("performeMachineStub")
+        );
     };
 
     UINavigationController *navigationController =
@@ -685,11 +1098,16 @@ static BOOL ReplaceExpected(
 static BOOL InstallRuntimePatches(void) {
     Class viewController = objc_getClass("ViewController");
     Class machinePreferences = objc_getClass("MachinePreferences");
-    if (viewController == Nil || machinePreferences == Nil) {
+    Class machineModel = objc_getClass(
+        "XOOzsMKFjKOTTWpGaSiRovjOEBkIbziXWYeTFbNowILLPbtrlKiQXgHNTzcsEDDcOTqJQ"
+    );
+    if (viewController == Nil || machinePreferences == Nil ||
+        machineModel == Nil) {
         return NO;
     }
 
     BOOL complete = InstallLabelPatch();
+    complete &= InstallMachineModelCapture(machineModel);
     complete &= ReplaceExpected(viewController, "viewDidLoad", 0x5025c0,
                                 (IMP)PatchedViewDidLoad, &gOriginalViewDidLoad);
     complete &= ReplaceExpected(viewController, "updateUITimer", 0x515af0,
@@ -721,6 +1139,8 @@ static BOOL InstallRuntimePatches(void) {
                                 (IMP)AlwaysNo, NULL);
     complete &= ReplaceExpected(viewController, "setIsNeedFlushIP:", 0x56e438,
                                 (IMP)ForceNoFlush, &gOriginalSetNeedFlushIP);
+    complete &= ReplaceExpected(viewController, "performeMachineStub", 0x53de04,
+                                (IMP)LocalApplyMachine, NULL);
     complete &= ReplaceExpected(machinePreferences, "randomPreferences:",
                                 0x84488, (IMP)LocalRandomPreferences, NULL);
     return complete;
