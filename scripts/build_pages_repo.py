@@ -719,7 +719,7 @@ https://<user>.github.io/<repo>/
 本仓库对应：
 
 ```text
-https://myzest.github.io/apt-ios-patch/
+https://mrwang6w.github.io/apt-ios-patch/
 ```
 
 ## Git LFS 注意事项
