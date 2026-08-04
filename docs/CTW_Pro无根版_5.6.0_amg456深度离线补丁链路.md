@@ -193,12 +193,33 @@ random store，因此 `reloadData` 后列表仍是空值。
 `nativePreferences:` 创建且已被本地随机值覆盖的同一模型。不写主程序私有
 global slot，也不增加第二套参数模型。
 
+`offline13` 至 `offline16` 为未发布的真机定位版本。证据最终表明，CTW 页面和
+`LKDeviceConfig` 只负责自身显示/缓存，而 Telegram 的实际画像由
+`/var/jb/var/mobile/Library/Preferences/AMG/faker.plist` 控制。该文件字段采用
+AES-128-ECB + PKCS#7 + Base64，密钥为 `AMG2018` 后补 9 个零字节。真机临时写入
+`Model=CTW-PROBE-MODEL`、`SystemVer=99.9.9` 后，Telegram 冷启动的
+`uname.machine`、`UIDevice.systemVersion` 和 `MGCopyAnswer(ProductVersion)` 均同步变化，
+闭合了真实状态所有权。
+
+`offline17` 在原有交互上补齐目标 App 画像：
+
+1. 随机范围限制为 `iPhone9,1..4` 与 iOS `15.8.4/15.8.5` 的兼容组合，并排除
+   上一次机型和系统版本，避免连续点击看起来“没有变化”。
+2. `fix.dylib` 保存 CTW 模型后，原子加密更新 `faker.plist` 的 `Model`、
+   `SystemVer`、`BuildVersion`、`Name`、`UDID`、`SerialNumber`、`IDFA`、`IDFV`、
+   Wi-Fi/蓝牙地址、SSID/BSSID 和 DeviceToken。
+3. 新增最小 `zzCTWIdentityBridge.dylib`，目标 App 启动时读取同一画像并通过
+   `MSHookFunction` 覆盖 `MGCopyAnswer` 的 `ProductType`、`ProductVersion`、
+   `BuildVersion`、`UniqueDeviceID`、`SerialNumber`、`WiFiAddress`、
+   `BluetoothAddress` 和 `UserAssignedDeviceName`。Apple App、CTW Pro 和 AMG 自身跳过。
+
 补丁不调用原 `randomPreferences:`，因此不会创建 `/vd` 请求；通用
 `NSURLSession` 创建点 `+0x990f58` 和 completion `+0x992740` 均保持不变，避免破坏
 `/upload3`、`/upload`、`/getlocation` 等其它业务。
 
 - load command/IMP 指纹实现：`scripts/patch_ctwpro_amg456_main.py`
 - 运行时模块源码：`patches/ctwpro/CTWProDeepPatch.m`
+- MobileGestalt bridge：`patches/ctwpro/CTWProIdentityBridge.m`
 
 核心 `performeMachine:`、`nativeMachine:`、`ctwsrv`、`0CTW.dylib` 和
 `ctwsup.dylib` 均未修改；主程序内的 `performeMachineStub` 入口仍保持 `ret` 作为失效关闭，
@@ -235,36 +256,39 @@ Pages 只发布新的 `com.amg456.CTWPro.rootless560` 条目，不并列发布�
    `+0x84488` action 和 `+0x53de04` 原始/禁用 apply IMP 指纹，插入 `fix.dylib` 强依赖，
    并将 stub 精确入口改为 `ret` 作为后备拒绝路径。
 3. 应用并验证 8 个 `CTW.dylib` 补丁。
-4. 编译、签名 `fix.dylib`，保留并复核主程序 38 项 entitlement。
+4. 编译、签名 `fix.dylib` 与 `zzCTWIdentityBridge.dylib`，生成注入过滤器，保留并
+   复核主程序 38 项 entitlement。
 5. 使用 deterministic USTAR、`gzip -n` 和固定 Unix ar 重包。
 6. 从候选 deb 重提取并复核 control、补丁、签名、权限和 load command。
-7. 对比载荷只允许 2 个文件新增、2 个文件变化、0 个文件删除。
+7. 对比载荷只允许 4 个文件新增、2 个文件变化、0 个文件删除。
 8. 全部验证完成后原子发布到 `patched/`，避免 Pages 读取旧成品。
 
-`offline12` 已从固定原包连续完成两次全量重建；deb、`fix.dylib`、主程序和
-`CTW.dylib` 的 SHA256 均逐项一致。
+`offline17` 已从固定原包重复完成全量重建；deb、`fix.dylib`、主程序、
+`CTW.dylib` 和 `zzCTWIdentityBridge.dylib` 的 SHA256 均逐项一致。
 
 ## 7. 最终产物
 
 ```text
-patched/560_CTW_Pro(无根版)_5.6.0-offline12_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb
+patched/560_CTW_Pro(无根版)_5.6.0-offline17_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb
 ```
 
 - Package: `com.amg456.CTWPro.rootless560`
-- Version: `5.6.0-offline12`
-- Size: `27,007,488` bytes
-- SHA256: `f9501c37e7a3f1056fed5b55f8894833c8346ff18abd4dc7189563dbd70f12ac`
+- Version: `5.6.0-offline17`
+- Size: `27,014,288` bytes
+- SHA256: `f7ac9322fec890fdecc6978ac67b834adad5785d9242c8c81621ce1ca8f9432f`
 
 最终 Mach-O：
 
-- `CTW Pro`: `31e94bcacffe7f3a3510ddebb8bbb141af3b316e48978c5c1236b7bcdf8f903e`
-- `fix.dylib`: `41084d8ee3e1de220e438dec7cf27efb49b030d21a0b2127bc0a6beeeb337703`
+- `CTW Pro`: `ee2de2c9c7ee2b3e591099af5a87f1dc6489fee11daa66e8f0de7cc622e9821d`
+- `fix.dylib`: `0afcf5ed76d28e401aaadcccb1d5d66e349eb02703bb833ed32cc83db05c5f23`
 - `CTW.dylib`: `8d278269c4b2ce8b7cf7dff6e5a4e88bc2a1fe0cf6501c408265a813135a9df2`
+- `zzCTWIdentityBridge.dylib`: `754b10a2fedb3038aa4f5ff55dcc4a18e86f8319f4d135ee256c7751bae366b5`
 
 载荷差异：
 
 - 修改：`CTW Pro`、`CTW.dylib`
-- 新增：`fix.dylib`、`_CodeSignature/CodeResources`
+- 新增：`fix.dylib`、`_CodeSignature/CodeResources`、
+  `zzCTWIdentityBridge.dylib`、`zzCTWIdentityBridge.plist`
 - 删除：无
 
 ## 8. 运行边界
@@ -302,6 +326,35 @@ IMEI 为 `unknownNumber` 前 15 位，IDFA/IDFV 非空，无错误弹窗。
 App Group 和 6 个 PluginKit 容器的测试 marker 全部删除，各路径只剩 metadata，
 剪贴板为空；CTW Pro 继续存活 30 秒，Telegram 未运行。
 
+`offline17` 在同一 USB 真机连续随机 5 次，实测序列为：
+
+```text
+iPhone9,2 / 15.8.4
+iPhone9,1 / 15.8.5
+iPhone9,3 / 15.8.4
+iPhone9,1 / 15.8.5
+iPhone9,2 / 15.8.4
+```
+
+每次 UDID、序列号、随机种子和 MAC 同步变化且无错误弹窗。最终 Telegram 冷启动
+加载 `zzCTWIdentityBridge.dylib` 后，页面画像与运行 API 一致：
+
+```text
+MG ProductType      = iPhone9,2
+MG ProductVersion   = 15.8.4
+MG BuildVersion     = 19H390
+MG UniqueDeviceID   = 47e211cc14a19af336a9205cf141b2c851bcc385
+MG SerialNumber     = CVIX3D1NIQ7W
+MG WiFiAddress      = 40:c5:62:b9:10:86
+uname hw.machine    = iPhone9,2
+UIDevice version    = 15.8.4
+```
+
+随后执行“一键新机”，Telegram 主容器、App Group 与 6 个插件容器均只剩 metadata
+plist，测试 `lk_device_config.json` 已删除；全局 `faker.plist` 保留。清理后通过
+`uiopen --bundleid ph.telegra.Telegraph` 正常冷启动并再附加验证，上述型号、系统、
+Build、UDID、序列号、IDFA 和 IDFV 均保持不变。
+
 ## 9. Pages 发布
 
 `scripts/build_pages_repo.py` 从 `patched/` 读取上述最终成品。更新 deb 后必须重新生成
@@ -317,10 +370,10 @@ gzip -t pages-repo/Packages.gz
 
 ```text
 Package: com.amg456.CTWPro.rootless560
-Version: 5.6.0-offline12
-Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline12_deep_offline_ustar.deb
-Size: 27007488
-SHA256: f9501c37e7a3f1056fed5b55f8894833c8346ff18abd4dc7189563dbd70f12ac
+Version: 5.6.0-offline17
+Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline17_deep_offline_ustar.deb
+Size: 27014288
+SHA256: f7ac9322fec890fdecc6978ac67b834adad5785d9242c8c81621ce1ca8f9432f
 Depiction: ./depictions/com.amg456.CTWPro.rootless560.html
 ```
 

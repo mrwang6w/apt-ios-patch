@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CommonCrypto/CommonCryptor.h>
 #import <dlfcn.h>
 #import <errno.h>
 #import <objc/runtime.h>
@@ -28,6 +29,133 @@ static _Atomic(uintptr_t) gOriginalSetNeedFlushIP;
 static _Atomic(uintptr_t) gOriginalMachineModelInit;
 static id gCapturedMachineModel;
 static _Atomic(uintptr_t) gOriginalLabelSetText;
+
+typedef struct {
+    const char *machine;
+    const char *mode;
+    const char *width;
+    const char *height;
+    uint64_t memoryBytes;
+    uint64_t storageBytes;
+} CTWModelProfile;
+
+typedef struct {
+    const char *version;
+    const char *build;
+    const char *webkitVersion;
+} CTWSystemProfile;
+
+static const CTWModelProfile kCompatibleModelProfiles[] = {
+    {"iPhone9,1", "D10AP", "750", "1334", 2097807360ULL, 127968497664ULL},
+    {"iPhone9,2", "D11AP", "1242", "2208", 3144810496ULL, 127968497664ULL},
+    {"iPhone9,3", "D101AP", "750", "1334", 2097807360ULL, 127968497664ULL},
+    {"iPhone9,4", "D111AP", "1242", "2208", 3144810496ULL, 127968497664ULL},
+};
+
+static const CTWSystemProfile kCompatibleSystemProfiles[] = {
+    {"15.8.4", "19H390", "15_8_4"},
+    {"15.8.5", "19H394", "15_8_5"},
+};
+
+static NSString *const kCompatibleKernelVersion = @"21.6.0";
+static NSString *const kCompatibleDarwinVersion =
+    @"Darwin Kernel Version 21.6.0: Sun Oct 15 00:18:06 PDT 2023; "
+     "root:xnu-8020.241.42~8/RELEASE_ARM64_T8010";
+
+static NSString *ProfileString(const char *value) {
+    return value == NULL ? nil : [NSString stringWithUTF8String:value];
+}
+
+static BOOL CompatibleProfilesAreValid(void) {
+    static BOOL valid;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableSet<NSString *> *machines = [NSMutableSet set];
+        NSMutableSet<NSString *> *versions = [NSMutableSet set];
+        valid = sizeof(kCompatibleModelProfiles) /
+                    sizeof(kCompatibleModelProfiles[0]) >= 2 &&
+                sizeof(kCompatibleSystemProfiles) /
+                    sizeof(kCompatibleSystemProfiles[0]) >= 2;
+        for (NSUInteger index = 0;
+             valid && index < sizeof(kCompatibleModelProfiles) /
+                                sizeof(kCompatibleModelProfiles[0]);
+             index++) {
+            const CTWModelProfile *profile = &kCompatibleModelProfiles[index];
+            NSString *machine = ProfileString(profile->machine);
+            valid = machine.length > 0 && ProfileString(profile->mode).length > 0 &&
+                    ProfileString(profile->width).length > 0 &&
+                    ProfileString(profile->height).length > 0 &&
+                    profile->memoryBytes > 0 &&
+                    profile->storageBytes > profile->memoryBytes &&
+                    ![machines containsObject:machine];
+            if (valid) {
+                [machines addObject:machine];
+            }
+        }
+        for (NSUInteger index = 0;
+             valid && index < sizeof(kCompatibleSystemProfiles) /
+                                sizeof(kCompatibleSystemProfiles[0]);
+             index++) {
+            const CTWSystemProfile *profile = &kCompatibleSystemProfiles[index];
+            NSString *version = ProfileString(profile->version);
+            valid = version.length > 0 && ProfileString(profile->build).length > 0 &&
+                    ProfileString(profile->webkitVersion).length > 0 &&
+                    ![versions containsObject:version];
+            if (valid) {
+                [versions addObject:version];
+            }
+        }
+    });
+    return valid;
+}
+
+static NSUInteger RandomIndexExcluding(NSUInteger count, NSInteger excluded) {
+    if (excluded < 0 || (NSUInteger)excluded >= count) {
+        return arc4random_uniform((uint32_t)count);
+    }
+    NSUInteger index = arc4random_uniform((uint32_t)(count - 1));
+    return index >= (NSUInteger)excluded ? index + 1 : index;
+}
+
+static NSInteger ModelProfileIndex(NSString *machine) {
+    for (NSUInteger index = 0;
+         index < sizeof(kCompatibleModelProfiles) /
+                     sizeof(kCompatibleModelProfiles[0]);
+         index++) {
+        if ([machine isEqualToString:ProfileString(
+                kCompatibleModelProfiles[index].machine)]) {
+            return (NSInteger)index;
+        }
+    }
+    return NSNotFound;
+}
+
+static NSInteger SystemProfileIndex(NSString *version) {
+    for (NSUInteger index = 0;
+         index < sizeof(kCompatibleSystemProfiles) /
+                     sizeof(kCompatibleSystemProfiles[0]);
+         index++) {
+        if ([version isEqualToString:ProfileString(
+                kCompatibleSystemProfiles[index].version)]) {
+            return (NSInteger)index;
+        }
+    }
+    return NSNotFound;
+}
+
+static NSString *WebKitUserAgent(const CTWSystemProfile *profile) {
+    return [NSString stringWithFormat:
+        @"Mozilla/5.0 (iPhone; CPU iPhone OS %s like Mac OS X) "
+         "AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+        profile->webkitVersion
+    ];
+}
+
+static NSString *RandomLinkLocalIPv6(void) {
+    return [NSString stringWithFormat:@"fe80::%x:%x:%x:%x",
+        arc4random_uniform(0x10000), arc4random_uniform(0x10000),
+        arc4random_uniform(0x10000), arc4random_uniform(0x10000)];
+}
 
 static id CallObject(id receiver, const char *selectorName) {
     if (receiver == nil) {
@@ -222,6 +350,51 @@ static void NoopVoid(id self, SEL _cmd) {
     (void)_cmd;
 }
 
+static BOOL DisableLocalDeviceConfigOverrides(Class configClass) {
+    static const struct {
+        const char *selector;
+        uintptr_t offset;
+    } contracts[] = {
+        {"_setupConfig", 0xb8f4},
+        {"saveActivedConfig", 0xbf80},
+    };
+    Method methods[sizeof(contracts) / sizeof(contracts[0])] = {0};
+    IMP replacement = (IMP)NoopVoid;
+    for (NSUInteger index = 0;
+         index < sizeof(contracts) / sizeof(contracts[0]);
+         index++) {
+        Method method = class_getInstanceMethod(
+            configClass,
+            sel_registerName(contracts[index].selector)
+        );
+        if (method == NULL) {
+            return NO;
+        }
+        methods[index] = method;
+        IMP current = method_getImplementation(method);
+        if (current == replacement) {
+            continue;
+        }
+        Dl_info imageInfo = {0};
+        if (dladdr((const void *)current, &imageInfo) == 0 ||
+            imageInfo.dli_fbase == NULL || imageInfo.dli_fname == NULL ||
+            strstr(imageInfo.dli_fname, "/CTW.dylib") == NULL ||
+            (uintptr_t)current - (uintptr_t)imageInfo.dli_fbase !=
+                contracts[index].offset) {
+            return NO;
+        }
+    }
+    for (NSUInteger index = 0;
+         index < sizeof(methods) / sizeof(methods[0]);
+         index++) {
+        method_setImplementation(methods[index], replacement);
+        if (method_getImplementation(methods[index]) != replacement) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 static BOOL AlwaysNo(id self, SEL _cmd) {
     (void)self;
     (void)_cmd;
@@ -334,6 +507,10 @@ static NSDictionary *CachedConfigDictionary(id instance) {
 static Class LoadDeviceConfigClass(NSString **failureStage) {
     Class configClass = objc_getClass("LKDeviceConfig");
     if (configClass != Nil) {
+        if (!DisableLocalDeviceConfigOverrides(configClass)) {
+            *failureStage = @"config-setup-contract";
+            return Nil;
+        }
         return configClass;
     }
 
@@ -350,6 +527,10 @@ static Class LoadDeviceConfigClass(NSString **failureStage) {
         loadedImage = YES;
         configClass = objc_getClass("LKDeviceConfig");
         if (configClass != Nil) {
+            if (!DisableLocalDeviceConfigOverrides(configClass)) {
+                *failureStage = @"config-setup-contract";
+                return Nil;
+            }
             return configClass;
         }
     }
@@ -388,6 +569,35 @@ static NSDictionary *BuildLocalRandomConfig(NSString **failureStage) {
             return nil;
         }
 
+        *failureStage = @"profile-data";
+        if (!CompatibleProfilesAreValid()) {
+            return nil;
+        }
+        NSUInteger modelCount = sizeof(kCompatibleModelProfiles) /
+                                sizeof(kCompatibleModelProfiles[0]);
+        NSUInteger systemCount = sizeof(kCompatibleSystemProfiles) /
+                                 sizeof(kCompatibleSystemProfiles[0]);
+        const CTWModelProfile *modelProfile = &kCompatibleModelProfiles[
+            RandomIndexExcluding(
+                modelCount,
+                ModelProfileIndex(baseline[@"machine"])
+            )
+        ];
+        const CTWSystemProfile *systemProfile = &kCompatibleSystemProfiles[
+            RandomIndexExcluding(
+                systemCount,
+                SystemProfileIndex(baseline[@"system_version"])
+            )
+        ];
+        NSString *machine = ProfileString(modelProfile->machine);
+        NSString *mode = ProfileString(modelProfile->mode);
+        NSString *systemVersion = ProfileString(systemProfile->version);
+        NSString *webkit = WebKitUserAgent(systemProfile);
+        if (machine.length == 0 || mode.length == 0 ||
+            systemVersion.length == 0 || webkit.length == 0) {
+            return nil;
+        }
+
         *failureStage = @"random-helper";
         id random = CallObjectUnsignedLongLong(
             instance,
@@ -417,6 +627,15 @@ static NSDictionary *BuildLocalRandomConfig(NSString **failureStage) {
         }
 
         NSMutableDictionary *config = [baseline mutableCopy];
+        config[@"machine"] = machine;
+        config[@"mode"] = mode;
+        config[@"diskSize"] = @(modelProfile->memoryBytes);
+        config[@"ncpu"] = @2;
+        config[@"system"] = @"iOS";
+        config[@"kern_version"] = kCompatibleKernelVersion;
+        config[@"webkit"] = webkit;
+        config[@"system_version"] = systemVersion;
+        config[@"darwin"] = kCompatibleDarwinVersion;
         config[@"random"] = random;
         config[@"udid"] = udid;
         config[@"serial_number"] = serialNumber;
@@ -430,29 +649,43 @@ static NSDictionary *BuildLocalRandomConfig(NSString **failureStage) {
             return nil;
         }
 
-        *failureStage = @"serialize";
-        NSError *error = nil;
-        NSData *data = [NSJSONSerialization dataWithJSONObject:config
-                                                       options:0
-                                                         error:&error];
-        if (data == nil || error != nil) {
-            return nil;
-        }
-        NSString *json = [[NSString alloc] initWithData:data
-                                                encoding:NSUTF8StringEncoding];
-        if (json == nil) {
-            return nil;
-        }
-
-        *failureStage = @"cache-write";
-        if (!CallBoolObject(instance, "writeCachedConfigString:", json)) {
-            return nil;
-        }
-        CallVoidObject(instance, "setConfig:", config);
-        CallVoidBool(instance, "setDevice_updated:", YES);
         *failureStage = nil;
         return config;
     }
+}
+
+static BOOL PersistLocalRandomConfig(
+    NSDictionary *config,
+    NSString **failureStage
+) {
+    Class configClass = LoadDeviceConfigClass(failureStage);
+    id instance = CallObject((id)configClass, "sharedInstance");
+    if (instance == nil) {
+        *failureStage = @"config-shared-instance";
+        return NO;
+    }
+
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:config
+                                                   options:0
+                                                     error:&error];
+    NSString *json = data == nil ? nil : [[NSString alloc]
+        initWithData:data encoding:NSUTF8StringEncoding];
+    if (json == nil || error != nil) {
+        *failureStage = @"serialize";
+        return NO;
+    }
+
+    @synchronized (instance) {
+        if (!CallBoolObject(instance, "writeCachedConfigString:", json)) {
+            *failureStage = @"cache-write";
+            return NO;
+        }
+        CallVoidObject(instance, "setConfig:", config);
+        CallVoidBool(instance, "setDevice_updated:", YES);
+    }
+    *failureStage = nil;
+    return YES;
 }
 
 static IMP ExpectedMainImplementation(
@@ -555,6 +788,125 @@ static id CaptureNativeMachineModel(
     return model;
 }
 
+typedef CCCryptorStatus (*CCCryptFunction)(
+    CCOperation,
+    CCAlgorithm,
+    CCOptions,
+    const void *,
+    size_t,
+    const void *,
+    const void *,
+    size_t,
+    void *,
+    size_t,
+    size_t *
+);
+
+static NSString *AMGEncryptString(NSString *plainText) {
+    if (![plainText isKindOfClass:[NSString class]]) {
+        return nil;
+    }
+
+    CCCryptFunction crypt = (CCCryptFunction)dlsym(RTLD_DEFAULT, "CCCrypt");
+    if (crypt == NULL) {
+        return nil;
+    }
+    NSData *input = [plainText dataUsingEncoding:NSUTF8StringEncoding];
+    if (input == nil) {
+        return nil;
+    }
+
+    static const uint8_t key[kCCKeySizeAES128] = {
+        'A', 'M', 'G', '2', '0', '1', '8'
+    };
+    size_t outputCapacity = input.length + kCCBlockSizeAES128;
+    void *output = calloc(1, outputCapacity);
+    if (output == NULL) {
+        return nil;
+    }
+
+    size_t outputLength = 0;
+    CCCryptorStatus status = crypt(
+        kCCEncrypt,
+        kCCAlgorithmAES,
+        kCCOptionPKCS7Padding | kCCOptionECBMode,
+        key,
+        sizeof(key),
+        NULL,
+        input.bytes,
+        input.length,
+        output,
+        outputCapacity,
+        &outputLength
+    );
+    if (status != kCCSuccess) {
+        free(output);
+        return nil;
+    }
+
+    NSData *encrypted = [NSData dataWithBytesNoCopy:output
+                                              length:outputLength
+                                        freeWhenDone:YES];
+    return [encrypted base64EncodedStringWithOptions:0];
+}
+
+static BOOL WriteAMGProfile(
+    NSDictionary<NSString *, NSString *> *plainValues,
+    NSString **failureStage
+) {
+    NSString *contract = AMGEncryptString(@"iPhone 17e");
+    if (![contract isEqualToString:@"CZjs+FPhEmQb72XRMX7b9w=="]) {
+        *failureStage = @"amg-crypto-contract";
+        return NO;
+    }
+
+    NSString *path = @"/var/jb/var/mobile/Library/Preferences/AMG/faker.plist";
+    NSMutableDictionary *profile = [NSMutableDictionary
+        dictionaryWithContentsOfFile:path];
+    if (profile == nil) {
+        *failureStage = @"amg-profile-read";
+        return NO;
+    }
+
+    NSMutableDictionary<NSString *, NSString *> *encryptedValues =
+        [NSMutableDictionary dictionaryWithCapacity:plainValues.count];
+    for (NSString *key in plainValues) {
+        NSString *encrypted = AMGEncryptString(plainValues[key]);
+        if (encrypted == nil) {
+            *failureStage = @"amg-profile-encrypt";
+            return NO;
+        }
+        encryptedValues[key] = encrypted;
+        profile[key] = encrypted;
+    }
+
+    NSError *error = nil;
+    NSData *serialized = [NSPropertyListSerialization
+        dataWithPropertyList:profile
+                      format:NSPropertyListXMLFormat_v1_0
+                     options:0
+                       error:&error];
+    if (serialized == nil || error != nil) {
+        *failureStage = @"amg-profile-serialize";
+        return NO;
+    }
+    if (![serialized writeToFile:path
+                         options:NSDataWritingAtomic
+                           error:&error] || error != nil) {
+        *failureStage = @"amg-profile-write";
+        return NO;
+    }
+
+    NSDictionary *verified = [NSDictionary dictionaryWithContentsOfFile:path];
+    for (NSString *key in encryptedValues) {
+        if (![verified[key] isEqualToString:encryptedValues[key]]) {
+            *failureStage = @"amg-profile-verify";
+            return NO;
+        }
+    }
+    return YES;
+}
+
 static BOOL ApplyRandomModelValues(
     id preferences,
     id model,
@@ -568,6 +920,16 @@ static BOOL ApplyRandomModelValues(
     NSString *serialNumber = config[@"serial_number"];
     NSString *mac = config[@"mac"];
     NSString *systemVersion = config[@"system_version"];
+    NSInteger modelIndex = ModelProfileIndex(machine);
+    NSInteger systemIndex = SystemProfileIndex(systemVersion);
+    if (modelIndex == NSNotFound || systemIndex == NSNotFound) {
+        *failureStage = @"model-profile";
+        return NO;
+    }
+    const CTWModelProfile *modelProfile =
+        &kCompatibleModelProfiles[(NSUInteger)modelIndex];
+    const CTWSystemProfile *systemProfile =
+        &kCompatibleSystemProfiles[(NSUInteger)systemIndex];
     NSString *unknownNumber = [config[@"unknownNumber"] stringValue];
     if (unknownNumber.length > 15) {
         unknownNumber = [unknownNumber substringToIndex:15];
@@ -597,9 +959,14 @@ static BOOL ApplyRandomModelValues(
     NSDictionary *carrier = carriers[
         arc4random_uniform((uint32_t)carriers.count)
     ];
-    NSString *uuid = [NSUUID UUID].UUIDString;
+    NSString *idfv = [NSUUID UUID].UUIDString;
     NSString *idfa = [NSUUID UUID].UUIDString;
     NSString *suffix = [random substringToIndex:MIN((NSUInteger)6, random.length)];
+    NSString *deviceName = [@"iPhone-" stringByAppendingString:suffix.uppercaseString];
+    NSString *ssid = [@"WiFi-" stringByAppendingString:suffix.uppercaseString];
+    NSString *deviceToken = [random stringByAppendingString:
+        [udid substringToIndex:MIN((NSUInteger)24, udid.length)]];
+    double brightness = (arc4random_uniform(81) + 15) / 100.0;
     uint32_t subnet = arc4random_uniform(250) + 2;
     uint32_t host = arc4random_uniform(250) + 2;
 
@@ -610,18 +977,26 @@ static BOOL ApplyRandomModelValues(
             @"HqWSUyrjbTUzCPTazXvClMsmRtTfgqkGkEvfqppATSWkzaHNNLPWHjKAzgCneDvTzjDlQPmA": udid,
             @"bqxafqLuDXtlLKFqRbPMxgliYzwnXuSFMenOjvRrfimIhaKOqiHedZNsPwLctqbxkpfg": serialNumber,
             @"IQvOpDvTZnSCwoCBHSQZwlQkQdLYNjiGGsGZQeqQQyUlfnyeQGHxWoOMUpvyQcKEYLtrDA": unknownNumber,
-            @"NYwvVoabtQxxrAaNZcZLxjEnzDxWUrZBMXpvQIJlnhemIFuBYkCUpEWyMmyjyNYg": [@"iPhone-" stringByAppendingString:suffix.uppercaseString],
+            @"NYwvVoabtQxxrAaNZcZLxjEnzDxWUrZBMXpvQIJlnhemIFuBYkCUpEWyMmyjyNYg": deviceName,
             @"WaVtzcpxylDkuyLRkDnABdUIQVIfehkltuPHCuRteQsSpiivERZurxDemNNnFjqbLSJrdDmnGw": mode,
+            @"build": ProfileString(systemProfile->build),
             @"domain": machine,
+            @"model": @"iPhone",
             @"sbXrnbPhJnwudayxwwOfBvhAzfzBuHmWjnZsXtZNvZrfshIccKDzVYzghyUAirwmKuhzObA": machine,
-            @"identifierForVendor": uuid,
+            @"identifierForVendor": idfv,
             @"advertisingIdentifier": idfa,
-            @"jNQIGodfXDzOKALLzABzIGQYakInudUHTsQBYzYfiATwKfHSIILgMpEBDHecfaBgA": [@"WiFi-" stringByAppendingString:suffix.uppercaseString],
+            @"jNQIGodfXDzOKALLzABzIGQYakInudUHTsQBYzYfiATwKfHSIILgMpEBDHecfaBgA": ssid,
             @"maLJLLPwAZVHkkbkRRqHrrdyxsJPkoPEZCbipLJsAWpIjsVCSyZgENgsFwnWjuFjabrwdgQ": mac,
             @"cLZdCrrDMbyysKCAOXEwMJSseimwdwLjwqsWVaXiExElYOsxraTZLUIcanTErEzJexCwEww": mac,
             @"cczmztMdiHXMVRwefgbiCrSwywunGbCUsgoaNYVhaIidwVcZqCGKfZlBEGMlcXhetxmKkrPnhjAQ": [NSString stringWithFormat:@"192.168.%u.1", subnet],
             @"KZLRCaLvYTCFuHfSqaDrxrxkedkBvJKNlgZnXDeTSRCtUMhsPBskwLenHeezPpagxpKg": [NSString stringWithFormat:@"192.168.%u.%u", subnet, host],
-            @"brightness": @((arc4random_uniform(81) + 15) / 100.0),
+            @"zpxUqMISNJWZLHlOBediVxXcdVUKrrmqXvSsMifSjFKYDoWjrvzDixnbpxPazLLQtXmbgiEnw": RandomLinkLocalIPv6(),
+            @"FyUiDZGYamUMxCIztFXWObToSHjJKhwAjmfevOxwXuTZJLKeIYwcyFGcVLPhNfKILdMwHFGg": RandomLinkLocalIPv6(),
+            @"WRWFKvOtwaEmWymaXsXNJurBExDTxJiSyWdHDRqKDphqnZaJvFzmXFGSigZzYLCTMuKZzvwZw": @(modelProfile->memoryBytes),
+            @"UByrXfBwjMONBlVOksHDHDuTKiklVRXQGbzQauRwxZywikXAEtVMuCrFqmFWxVbapQ": @(modelProfile->storageBytes),
+            @"wnXAAOsrwroZGyAduvxMPWBIQWSoiPOMveyZYDLdLbodPFGgTYnnvZDFMVcZYMpGhQZajiXQ": ProfileString(modelProfile->width),
+            @"sElfHvGJordWkPBLWclpSrcMlRSTAUNaYUVsRTMTxTDSOJZeOMhxfBUANFdqFHvjrfoFlLA": ProfileString(modelProfile->height),
+            @"brightness": @(brightness),
             @"uUojPBFHpzwBfxnlMnifHEeTTXtnIEnelcdrpUgJhvZOGoDfZfasVhAtpyGkCGCJoiUA": @((arc4random_uniform(51) + 50) / 100.0),
             @"GOcuqPfvHaENZkclImuXKUbaOEHHaePFSfNIIiLcvQNmVczGtXJhSEEENnrvEyIHATbQ": @(arc4random_uniform(3) + 1),
             @"twhuxDfnZWriUzkpYMZUEuuVzSexOPLOYuTqbFVsumbfphSYxwuraqwBxFmAWMSSLdSkdUlYA": systemVersion,
@@ -636,6 +1011,8 @@ static BOOL ApplyRandomModelValues(
         for (NSString *key in values) {
             [model setValue:values[key] forKey:key];
         }
+        [[NSUserDefaults standardUserDefaults] setObject:config[@"webkit"]
+                                                  forKey:@"UA"];
     } @catch (__unused NSException *exception) {
         *failureStage = @"model-write";
         return NO;
@@ -644,6 +1021,30 @@ static BOOL ApplyRandomModelValues(
     CallVoidBool(preferences, "setIsNative:", YES);
     if (!CallVoid((id)objc_getClass("MachinePreferences"), "save")) {
         *failureStage = @"model-save";
+        return NO;
+    }
+    if (!PersistLocalRandomConfig(config, failureStage)) {
+        return NO;
+    }
+    if (deviceToken.length != 64 || !WriteAMGProfile(@{
+        @"Model": machine,
+        @"SystemVer": systemVersion,
+        @"BuildVersion": ProfileString(systemProfile->build),
+        @"Name": deviceName,
+        @"Brightness": [NSString stringWithFormat:@"%.6f", brightness],
+        @"UDID": udid,
+        @"SerialNumber": serialNumber,
+        @"IDFA": idfa,
+        @"IDFV": idfv,
+        @"WifiAddress": mac,
+        @"BlueAddress": mac,
+        @"BSSID": mac,
+        @"SSID": ssid,
+        @"DeviceToken": deviceToken
+    }, failureStage)) {
+        if (failureStage != NULL && *failureStage == nil) {
+            *failureStage = @"amg-profile-values";
+        }
         return NO;
     }
     CallVoid(CallObject(preferences, "tableView"), "reloadData");

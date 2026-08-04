@@ -99,11 +99,11 @@ PATCHED_PACKAGES = [
     },
     {
         "package_id": "com.amg456.CTWPro.rootless560",
-        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline12_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
-        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline12_deep_offline_ustar.deb",
-        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline12 Deep Offline USTAR",
+        "source": PATCHED_DIR / "560_CTW_Pro(无根版)_5.6.0-offline17_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb",
+        "deb_name": "com.amg456.CTWPro.rootless560_5.6.0-offline17_deep_offline_ustar.deb",
+        "publish_name": "560_CTW Pro(无根版) 5.6.0-offline17 Deep Offline USTAR",
         "publish_section": "CTW Pro",
-        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径；本地 fix.dylib 覆盖 MachinePreferences 的 randomPreferences: 与 ViewController 的 performeMachineStub。“随机生成”会留在新机参数页并立即回填 active=1 的机型、UDID、序列号、IMEI、IDFA、IDFV、MAC、运营商和网络参数；返回主界面后点击“一键新机”，按 Applylist 终止目标进程并清空主容器、App Group、插件容器及剪贴板；不启动 /vd，失败时显示精确阶段码；保留原 38 项 entitlements。",
+        "publish_desc": "授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径；本地 fix.dylib 覆盖 MachinePreferences 的 randomPreferences: 与 ViewController 的 performeMachineStub。“随机生成”会留在新机参数页并立即回填兼容的 A10 机型/iOS 组合及 UDID、序列号、IMEI、IDFA、IDFV、MAC、运营商和网络参数，同时加密更新 AMG faker.plist；zzCTWIdentityBridge.dylib 补齐 MGCopyAnswer 的 ProductType、ProductVersion、BuildVersion 等身份项，使目标 App 冷启动后与页面画像一致。返回主界面点击“一键新机”会按 Applylist 清空主容器、App Group、插件容器及剪贴板，但保留全局画像；不启动 /vd，失败时显示精确阶段码；保留原 38 项 entitlements。",
         "depiction_name": "com.amg456.CTWPro.rootless560.html",
     },
 ]

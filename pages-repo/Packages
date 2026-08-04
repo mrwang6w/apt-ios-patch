@@ -73,7 +73,7 @@ Icon: ./CydiaIcon.png
 Description: 授权测试补丁包：移除后加卡密网络层与安装阶段 aloader 注入调用；双架构固定共享授权状态为有效，并使用无 PAX 扩展头的 USTAR deb 归档。
 
 Package: com.amg456.CTWPro.rootless560
-Version: 5.6.0-offline12
+Version: 5.6.0-offline17
 Priority: standard
 Depends: firmware (>= 4.0), mobilesubstrate, wget, gzip, coreutils
 Conflicts: com.xxdevice.ctwpro.rootless560
@@ -82,14 +82,14 @@ Replaces: com.xxdevice.ctwpro.rootless560
 Architecture: iphoneos-arm64
 Section: CTW Pro
 Maintainer: Local Patch Repo
-Name: 560_CTW Pro(无根版) 5.6.0-offline12 Deep Offline USTAR
+Name: 560_CTW Pro(无根版) 5.6.0-offline17 Deep Offline USTAR
 Author: Local Patch Repo
-Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline12_deep_offline_ustar.deb
-Size: 27007488
-MD5sum: 7864f705c5482e5b3dd068824b6d464d
-SHA1: 6c9b8d2ed81f214a97980e2a56680661e0c4a7c0
-SHA256: f9501c37e7a3f1056fed5b55f8894833c8346ff18abd4dc7189563dbd70f12ac
+Filename: ./debs/com.amg456.CTWPro.rootless560_5.6.0-offline17_deep_offline_ustar.deb
+Size: 27014288
+MD5sum: 999d22800efbffd1afc58b2c6c5f32ba
+SHA1: a05079d82260b1b3d6878fcfeb6acf634041550e
+SHA256: f7ac9322fec890fdecc6978ac67b834adad5785d9242c8c81621ce1ca8f9432f
 Depiction: ./depictions/com.amg456.CTWPro.rootless560.html
 Icon: ./CydiaIcon.png
-Description: 授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径；本地 fix.dylib 覆盖 MachinePreferences 的 randomPreferences: 与 ViewController 的 performeMachineStub。“随机生成”会留在新机参数页并立即回填 active=1 的机型、UDID、序列号、IMEI、IDFA、IDFV、MAC、运营商和网络参数；返回主界面后点击“一键新机”，按 Applylist 终止目标进程并清空主容器、App Group、插件容器及剪贴板；不启动 /vd，失败时显示精确阶段码；保留原 38 项 entitlements。
+Description: 授权测试补丁包：禁用 CTW.dylib 卡密激活、启动复核、周期心跳、失败弹窗和退出路径；本地 fix.dylib 覆盖 MachinePreferences 的 randomPreferences: 与 ViewController 的 performeMachineStub。“随机生成”会留在新机参数页并立即回填兼容的 A10 机型/iOS 组合及 UDID、序列号、IMEI、IDFA、IDFV、MAC、运营商和网络参数，同时加密更新 AMG faker.plist；zzCTWIdentityBridge.dylib 补齐 MGCopyAnswer 的 ProductType、ProductVersion、BuildVersion 等身份项，使目标 App 冷启动后与页面画像一致。返回主界面点击“一键新机”会按 Applylist 清空主容器、App Group、插件容器及剪贴板，但保留全局画像；不启动 /vd，失败时显示精确阶段码；保留原 38 项 entitlements。
 

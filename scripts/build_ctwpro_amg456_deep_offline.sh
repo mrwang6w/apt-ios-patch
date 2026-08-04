@@ -21,7 +21,7 @@ if [[ ! -d "$SDK" ]]; then
 fi
 SOURCE="$ROOT/downloads/fuyonghua-repo/debs/560_CTW_Pro(无根版)_5.6.0_com.amg456.CTWPro.rootless560.deb"
 SOURCE_SHA256="38234f4381b36587d43fc0f78dd77e9d386b7760a5412152024379233c1891b4"
-OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline12_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
+OUTPUT_NAME="560_CTW_Pro(无根版)_5.6.0-offline17_com.amg456.CTWPro.rootless560_deep_offline_ustar.deb"
 OUTPUT="$ROOT/patched/$OUTPUT_NAME"
 AUDIT="$CASE/deep-source-audit"
 BUILD="$CASE/deep-build"
@@ -33,6 +33,7 @@ PREPUBLISH_AUDIT="$CASE/deep-prepublish-audit"
 ENTITLEMENTS="$BUILD/CTWPro.entitlements.plist"
 SIGNED_ENTITLEMENTS="$BUILD/CTWPro.signed.entitlements.plist"
 PATCH_SOURCE="$ROOT/patches/ctwpro/CTWProDeepPatch.m"
+BRIDGE_SOURCE="$ROOT/patches/ctwpro/CTWProIdentityBridge.m"
 PUBLISH_TMP="$ROOT/patched/.$OUTPUT_NAME.tmp"
 
 trap 'rm -f "$PUBLISH_TMP"' EXIT
@@ -111,11 +112,41 @@ PY
   done
 }
 
+verify_compatible_profile_contract() {
+  python3 - "$1" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+source = Path(sys.argv[1]).read_text(encoding="utf-8")
+models = re.findall(
+    r'\{"(iPhone9,[1-4])", "(D(?:10|11|101|111)AP)", "(\d+)", '
+    r'"(\d+)", (\d+)ULL, (\d+)ULL\}',
+    source,
+)
+systems = re.findall(r'\{"(15\.8\.[45])", "(19H39[04])", "(15_8_[45])"\}', source)
+expected_models = {
+    ("iPhone9,1", "D10AP", "750", "1334", "2097807360", "127968497664"),
+    ("iPhone9,2", "D11AP", "1242", "2208", "3144810496", "127968497664"),
+    ("iPhone9,3", "D101AP", "750", "1334", "2097807360", "127968497664"),
+    ("iPhone9,4", "D111AP", "1242", "2208", "3144810496", "127968497664"),
+}
+expected_systems = {
+    ("15.8.4", "19H390", "15_8_4"),
+    ("15.8.5", "19H394", "15_8_5"),
+}
+if set(models) != expected_models or set(systems) != expected_systems:
+    raise SystemExit(f"compatible profile contract mismatch: models={models} systems={systems}")
+print("compatible profile contract verified: 4 A10 models x 2 iOS builds")
+PY
+}
+
 actual_sha256="$(shasum -a 256 "$SOURCE" | awk '{print $1}')"
 if [[ "$actual_sha256" != "$SOURCE_SHA256" ]]; then
   echo "unexpected source deb SHA256: $actual_sha256" >&2
   exit 1
 fi
+verify_compatible_profile_contract "$PATCH_SOURCE"
 
 rm -rf "$AUDIT" "$BUILD" "$VERIFY" "$PREPUBLISH_AUDIT"
 python3 "$ROOT/skills/ios-deb-reverse-patcher/scripts/deb_audit.py" \
@@ -143,7 +174,7 @@ result = []
 inserted = False
 for line in lines:
     if line == "Version: 5.6.0":
-        line = "Version: 5.6.0-offline12"
+        line = "Version: 5.6.0-offline17"
     result.append(line)
     if line.startswith("Depends:"):
         result.extend(
@@ -154,7 +185,7 @@ for line in lines:
             ]
         )
         inserted = True
-if not inserted or "Version: 5.6.0-offline12" not in result:
+if not inserted or "Version: 5.6.0-offline17" not in result:
     raise SystemExit("failed to update control metadata")
 path.write_text("\n".join(result) + "\n", encoding="utf-8")
 PY
@@ -165,6 +196,8 @@ APP="$ROOTFS/var/jb/Applications/CTW Pro.app"
 MAIN="$APP/CTW Pro"
 FIX="$APP/fix.dylib"
 LICENSE_DYLIB="$ROOTFS/var/jb/Library/MobileSubstrate/DynamicLibraries/CTW.dylib"
+IDENTITY_BRIDGE="$ROOTFS/var/jb/Library/MobileSubstrate/DynamicLibraries/zzCTWIdentityBridge.dylib"
+IDENTITY_FILTER="$ROOTFS/var/jb/Library/MobileSubstrate/DynamicLibraries/zzCTWIdentityBridge.plist"
 RANDOM_ACTION_NIB="$APP/zh-Hans.lproj/Main.storyboardc/UITableViewController-Kzn-J4-oBc.nib"
 
 ldid -e "$MAIN" > "$ENTITLEMENTS"
@@ -222,6 +255,60 @@ for selector in \
     exit 1
   fi
 done
+
+cat > "$IDENTITY_FILTER" <<'PLIST'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Filter</key>
+  <dict>
+    <key>Bundles</key>
+    <array>
+      <string>com.apple.UIKit</string>
+    </array>
+  </dict>
+</dict>
+</plist>
+PLIST
+chmod 0644 "$IDENTITY_FILTER"
+plutil -lint "$IDENTITY_FILTER"
+
+"$CLANG" \
+  -arch arm64 \
+  -isysroot "$SDK" \
+  -miphoneos-version-min=12.0 \
+  -dynamiclib \
+  -fobjc-arc \
+  -fblocks \
+  -fvisibility=hidden \
+  -O2 \
+  -Wall \
+  -Wextra \
+  -Werror \
+  -Wl,-no_uuid \
+  -Wl,-install_name,/var/jb/Library/MobileSubstrate/DynamicLibraries/zzCTWIdentityBridge.dylib \
+  -framework Foundation \
+  -framework CoreFoundation \
+  "$BRIDGE_SOURCE" \
+  -o "$IDENTITY_BRIDGE"
+chmod 0755 "$IDENTITY_BRIDGE"
+codesign --force --sign - --timestamp=none "$IDENTITY_BRIDGE"
+codesign --verify --strict "$IDENTITY_BRIDGE"
+for marker in \
+  MGCopyAnswer \
+  MSHookFunction \
+  ProductType \
+  ProductVersion \
+  UniqueDeviceID \
+  SerialNumber \
+  WiFiAddress \
+  /var/jb/var/mobile/Library/Preferences/AMG/faker.plist; do
+  if ! "$XCODE_STRINGS" -a "$IDENTITY_BRIDGE" | grep -Fxq -- "$marker"; then
+    echo "identity bridge is missing marker: $marker" >&2
+    exit 1
+  fi
+done
 for marker in \
   /var/jb/Library/MobileSubstrate/DynamicLibraries/CTW.dylib \
   Applylist \
@@ -231,7 +318,24 @@ for marker in \
   config-dlopen \
   config-class \
   config-shared-selector \
-  config-shared-instance; do
+  config-shared-instance \
+  config-setup-contract \
+  _setupConfig \
+  profile-data \
+  model-profile \
+  iPhone9,1 \
+  iPhone9,2 \
+  iPhone9,3 \
+  iPhone9,4 \
+  15.8.4 \
+  15.8.5 \
+  19H390 \
+  19H394 \
+  AMG2018 \
+  /var/jb/var/mobile/Library/Preferences/AMG/faker.plist \
+  amg-crypto-contract \
+  amg-profile-write \
+  amg-profile-verify; do
   if ! "$XCODE_STRINGS" -a "$FIX" | grep -Fxq -- "$marker"; then
     echo "fix.dylib is missing runtime load marker: $marker" >&2
     exit 1
@@ -267,6 +371,11 @@ if ! "$XCODE_OTOOL" -D "$FIX" | grep -q '^@executable_path/fix\.dylib$'; then
   echo "fix.dylib install name is incorrect" >&2
   exit 1
 fi
+if ! "$XCODE_OTOOL" -D "$IDENTITY_BRIDGE" \
+  | grep -q '^/var/jb/Library/MobileSubstrate/DynamicLibraries/zzCTWIdentityBridge\.dylib$'; then
+  echo "identity bridge install name is incorrect" >&2
+  exit 1
+fi
 
 printf '2.0\n' > "$PARTS/debian-binary"
 COPYFILE_DISABLE=1 gtar --format=ustar --sort=name --numeric-owner \
@@ -290,6 +399,8 @@ VERIFY_APP="$VERIFY/rootfs/var/jb/Applications/CTW Pro.app"
 VERIFY_MAIN="$VERIFY_APP/CTW Pro"
 VERIFY_FIX="$VERIFY_APP/fix.dylib"
 VERIFY_LICENSE="$VERIFY/rootfs/var/jb/Library/MobileSubstrate/DynamicLibraries/CTW.dylib"
+VERIFY_IDENTITY_BRIDGE="$VERIFY/rootfs/var/jb/Library/MobileSubstrate/DynamicLibraries/zzCTWIdentityBridge.dylib"
+VERIFY_IDENTITY_FILTER="$VERIFY/rootfs/var/jb/Library/MobileSubstrate/DynamicLibraries/zzCTWIdentityBridge.plist"
 VERIFY_RANDOM_ACTION_NIB="$VERIFY_APP/zh-Hans.lproj/Main.storyboardc/UITableViewController-Kzn-J4-oBc.nib"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_main.py" verify "$VERIFY_MAIN"
 python3 "$ROOT/scripts/patch_ctwpro_amg456_license.py" verify "$VERIFY_LICENSE"
@@ -298,9 +409,11 @@ verify_random_action_contract "$VERIFY_MAIN" "$VERIFY_RANDOM_ACTION_NIB" disable
 codesign --verify --strict "$VERIFY_FIX"
 codesign --verify --deep --strict "$VERIFY_APP"
 codesign --verify --strict "$VERIFY_LICENSE"
+codesign --verify --strict "$VERIFY_IDENTITY_BRIDGE"
+plutil -lint "$VERIFY_IDENTITY_FILTER"
 
 grep -qx 'Package: com.amg456.CTWPro.rootless560' "$VERIFY/control/control"
-grep -qx 'Version: 5.6.0-offline12' "$VERIFY/control/control"
+grep -qx 'Version: 5.6.0-offline17' "$VERIFY/control/control"
 grep -qx 'Conflicts: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Provides: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
 grep -qx 'Replaces: com.xxdevice.ctwpro.rootless560' "$VERIFY/control/control"
@@ -328,6 +441,8 @@ changed = {name for name in set(before) & set(after) if before[name] != after[na
 expected_added = {
     "var/jb/Applications/CTW Pro.app/_CodeSignature/CodeResources",
     "var/jb/Applications/CTW Pro.app/fix.dylib",
+    "var/jb/Library/MobileSubstrate/DynamicLibraries/zzCTWIdentityBridge.dylib",
+    "var/jb/Library/MobileSubstrate/DynamicLibraries/zzCTWIdentityBridge.plist",
 }
 expected_changed = {
     "var/jb/Applications/CTW Pro.app/CTW Pro",
@@ -338,18 +453,20 @@ if added != expected_added or removed or changed != expected_changed:
         f"unexpected payload diff: added={sorted(added)} "
         f"removed={sorted(removed)} changed={sorted(changed)}"
     )
-print("payload diff verified: 2 added, 2 changed, 0 removed")
+print("payload diff verified: 4 added, 2 changed, 0 removed")
 PY
 
 for file in \
   "$VERIFY_MAIN" \
   "$VERIFY_FIX" \
   "$VERIFY_LICENSE" \
+  "$VERIFY_IDENTITY_BRIDGE" \
   "$VERIFY/rootfs/var/jb/Library/MobileSubstrate/DynamicLibraries/0CTW.dylib" \
   "$VERIFY/rootfs/var/jb/Library/MobileSubstrate/DynamicLibraries/ctwsup.dylib" \
   "$VERIFY/rootfs/var/jb/usr/bin/ctwsrv"; do
   test "$(stat -f '%OLp' "$file")" = "755"
 done
+test "$(stat -f '%OLp' "$VERIFY_IDENTITY_FILTER")" = "644"
 
 python3 "$ROOT/skills/ios-deb-reverse-patcher/scripts/deb_audit.py" \
   "$CANDIDATE" --out "$PREPUBLISH_AUDIT"
